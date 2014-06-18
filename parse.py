@@ -1,13 +1,19 @@
 from pprint import pprint as pp
 import re
 
-f = open("archives/numpy-discussion/2001-November.txt")
+## TODO: deal with the occasional RE: block that gets treated like a header, as in 
+## Message-ID: <Pine.SOL.4.30.0111011916360.17706-100000@mimosa.csv.warwick.ac.uk>
 
-top_exp = re.compile("From .*\d\d\d\d\n")
+def open_mail_archive(filename):
+    f = open(filename)
 
-mails = top_exp.split(f.read())
+    top_exp = re.compile("From .*\d\d\d\d\n")
 
-mails = [m for m in mails if m is not '']
+    mails = top_exp.split(f.read())
+
+    mails = [m for m in mails if m is not '']
+
+    return mails
 
 # mexp = re.compile("From: (.*)\nDate: (.*)\nSubject: ([-\w\s[\]():]*)\n(?:In-Reply-To: ([-\w\d\s[\]()<>]*))?\n?(?:References: ([-\w\d\s[\]()<>]*))?\n?Message-ID: (.*)(\n\n((?:.*\n)*.*)")
 
@@ -35,7 +41,8 @@ def mail_to_dict(mail):
     
     return rep
 
+mails = open_mail_archive("archives/numpy-discussion/2001-November.txt")
 dicts = [mail_to_dict(m) for m in mails]
 rejects = [m for m in mails if mail_to_dict(m) is None]
 
-pp(dicts)
+#pp(dicts)
