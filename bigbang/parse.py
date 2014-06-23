@@ -12,12 +12,6 @@ def open_mail_archive(filename):
 
     mails = top_exp.split(f.read())
 
-    mails = [m for m in mails if m is not '']
+    messages = [email.message_from_string(m) for m in mails if m is not '']
 
-    return mails
-
-def mail_to_dict(mail):
-
-    message = email.message_from_string(mail)
-
-    return message
+    return messages
