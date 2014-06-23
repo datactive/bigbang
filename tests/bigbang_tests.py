@@ -1,27 +1,24 @@
 from nose.tools import *
-import bigbang
+import bigbang.parse as parse
 import os
 
 test_txt = ""
 
 def setup():
-    # load a sample txt file
-    dirname = os.path.dirname(os.path.abspath(__file__))
-
-    test_file = open(os.path.join(dirname,"2001-November.txt"))
-
-    global test_txt
-    test_txt = test_file.read()
-
+    pass
+    
 def teardown():
-    print "TEAR DOWN!"
+    pass
 
 @with_setup(setup, teardown)
-def test_basic():
+def test_parse():
 
-    print test_txt
-    if len(test_txt) > 0:
-        pass
-    else:
-        assert False
-    print "I RAN!"
+    dirname = os.path.dirname(os.path.abspath(__file__))
+    test_file_name = os.path.join(dirname,"2001-November.txt")
+
+    mails = parse.open_mail_archive(test_file_name)
+
+    messages = [parse.mail_to_dict(m) for m in mails]
+
+    for message in messages:
+        assert len(message.items()) <= 6, "too many fields:\n%s" % (message)
