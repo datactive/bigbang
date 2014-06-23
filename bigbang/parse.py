@@ -12,3 +12,8 @@ def open_mail_archive(filename):
     messages = [email.message_from_string(m) for m in mails if m is not '']
 
     return messages
+
+msg_id_re = re.compile("<\S*@\S*>")
+
+def split_references(refs):
+    return msg_id_re.findall(refs)
