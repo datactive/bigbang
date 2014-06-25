@@ -1,6 +1,8 @@
 from nose.tools import *
 import bigbang.parse as parse
+import bigbang.network as network
 import os
+
 
 test_txt = ""
 

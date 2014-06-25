@@ -4,13 +4,11 @@ from pprint import pprint as pp
 
 fn = "archives/numpy-discussion/2001-November.txt"
 
-mails = parse.open_mail_archive(fn)
-
-dicts = [parse.mail_to_dict(m) for m in mails]
+messages = parse.open_mail_archive(fn)
 
 G = nx.DiGraph()
 
-for d in dicts:
+for d in messages:
 
     #pp(d)
 

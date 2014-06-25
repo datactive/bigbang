@@ -17,3 +17,11 @@ msg_id_re = re.compile("<\S*@\S*>")
 
 def split_references(refs):
     return msg_id_re.findall(refs)
+
+msg_id_re = re.compile("<\S*@\S*>")
+
+def get_refs(refs):
+    return msg_id_re.findall(refs)
+
+def clean_mid(mid):
+    return get_refs(mid)[0]
