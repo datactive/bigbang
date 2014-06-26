@@ -23,8 +23,8 @@ pdig.write_png('interactions.png',prog='neato')
 
 #nx.write_dot(IG,"interactions.dot")
 
-#nx.draw_shell(G)
+#nx.draw_shell(IG)
 #plt.show()
-#nx.write_gml(G,"mails.gml")
+nx.write_gml(IG,"interactions.gml")
 
 #pp(G.nodes(data=True))
