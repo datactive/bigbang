@@ -1,6 +1,7 @@
 import bigbang.parse as parse
 import bigbang.graph as graph
 import networkx as nx
+import matplotlib.pyplot as plt
 from pprint import pprint as pp
 
 fn = "archives/numpy-discussion/2001-November.txt"
@@ -19,12 +20,24 @@ pdig.set_overlap('False')
 
 pdig.write_png('interactions.png',prog='neato')
 
-#print nx.connected_components(G.to_undirected())
-
-#nx.write_dot(IG,"interactions.dot")
-
-#nx.draw_shell(IG)
-#plt.show()
 nx.write_gml(IG,"interactions.gml")
 
-#pp(G.nodes(data=True))
+# matplotlib visualization
+pos = nx.graphviz_layout(IG,prog='neato')
+node_size = [data['sent'] * 40 for name,data in IG.nodes(data=True)]
+
+nx.draw(IG,
+        pos,
+        node_size = node_size,
+        node_color = 'w',
+        alpha = 0.4
+)
+
+
+# edge width is proportional to replies sent
+edgewidth=[d['weight'] for (u,v,d) in IG.edges(data=True)]
+
+#overlay edges with width based on weight
+nx.draw_networkx_edges(IG,pos,alpha=0.5,width=edgewidth,edge_color='r')
+
+plt.show()
