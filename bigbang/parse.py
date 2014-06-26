@@ -29,7 +29,4 @@ def clean_mid(mid):
 msg_from_re = re.compile("\(([^()]+)\)")
 
 def clean_from(m_from):
-    print m_from
-    print msg_from_re.findall(m_from)[0]
-
     return msg_from_re.findall(m_from)[0]
