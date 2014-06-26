@@ -1,4 +1,5 @@
-import parse
+import bigbang.parse as parse
+import bigbang.graph as graph
 import networkx as nx
 from pprint import pprint as pp
 
@@ -6,25 +7,18 @@ fn = "archives/numpy-discussion/2001-November.txt"
 
 messages = parse.open_mail_archive(fn)
 
-G = nx.DiGraph()
+#import pdb; pdb.set_trace()
 
-for d in messages:
+RG = graph.messages_to_reply_graph(messages)
 
-    #pp(d)
+IG = graph.messages_to_interaction_graph(messages)
 
-    mid = d['Message-ID']
+#print nx.connected_components(G.to_undirected())
 
-    G.add_node(mid)
-    G.node[mid]['From'] = d['From']
-    G.node[mid]['Date'] = d['Date']
-    G.node[mid]['Message'] = d['Message']
-    
-    if 'References' in d:
-        G.add_edge(mid,d['References'])
+nx.write_dot(IG,"interactions.dot")
 
-    if 'In-Reply-To' in d:
-        G.add_edge(mid,d['In-Reply-To'])
-
-nx.write_gexf(G,"mails.gexf")
+#nx.draw_shell(G)
+#plt.show()
+#nx.write_gml(G,"mails.gml")
 
 #pp(G.nodes(data=True))

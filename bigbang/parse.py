@@ -25,3 +25,11 @@ def get_refs(refs):
 
 def clean_mid(mid):
     return get_refs(mid)[0]
+
+msg_from_re = re.compile("\(([^()]+)\)")
+
+def clean_from(m_from):
+    print m_from
+    print msg_from_re.findall(m_from)[0]
+
+    return msg_from_re.findall(m_from)[0]
