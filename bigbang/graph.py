@@ -43,6 +43,9 @@ def messages_to_interaction_graph(messages):
         reply_counts[m_from] = reply_counts.get(m_from,{})
         IG.add_node(m_from)
 
+    for sender,count in sender_counts.items():
+        IG.node[sender]['sent'] = count
+
     replies = [m for m in messages if 'In-Reply-To' in m]
 
     for m in replies:
@@ -51,12 +54,13 @@ def messages_to_interaction_graph(messages):
 
         if reply_to_mid in from_dict:
             m_to = from_dict[reply_to_mid]
-
             reply_counts[m_from][m_to] = reply_counts[m_from].get(m_to,0) + 1
-
-            IG.add_edge(m_from,m_to)
         else:
             print reply_to_mid + " not in archive"
+
+    for m_from, edges in reply_counts.items():
+        for m_to, count in edges.items():
+            IG.add_edge(m_from,m_to,weight=count)
 
     pp(sender_counts)
     pp(reply_counts)
