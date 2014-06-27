@@ -1,6 +1,7 @@
 from pprint import pprint as pp
 import email
 import re
+import dateutil.parser as dparse
 
 def open_mail_archive(filename):
     f = open(filename)

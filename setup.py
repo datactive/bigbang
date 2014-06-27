@@ -10,7 +10,7 @@ config = {
     'download_url': 'Where to download it.',
     'author_email': 'sb@ischool.berkeley.edu',
     'version': '0.1',
-    'install_requires': ['nose','networkx','pydot'],
+    'install_requires': ['nose','networkx','pydot','pytz'],
     'packages': ['bigbang'],
     'scripts': [],
     'name': 'BigBang'
