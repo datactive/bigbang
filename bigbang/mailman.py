@@ -3,10 +3,8 @@ import urllib
 import re
 import os
 import parse
-from dateutil import parser as dp
 from pprint import pprint as pp
-import matplotlib.pyplot as plt
-import pytz
+
 
 ARCHIVE_DIR = "archives"
 
@@ -68,27 +66,6 @@ def open_list_archives(url):
     print 'Opening %d archive files' % (len(txts))
     arch = [parse.open_mail_archive(txt) for txt in txts]
 
-    return arch
-
-
-def plot_archive(url):
-    arch = open_list_archives(url)
-
     messages = [item for sublist in arch for item in sublist]
+    return messages
 
-    dates = []
-    broke = []
-
-    for m in messages:
-        try:
-            date = dp.parse(m.get('Date'))
-
-            if date.tzinfo is None:
-                date = pytz.utc.localize(date)
-
-            dates.append(date)
-        except Exception as e:
-            print e
-            broke.append(m)
-
-    return dates, broke
