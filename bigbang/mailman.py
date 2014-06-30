@@ -42,11 +42,12 @@ def collect_from_url(url):
     # download monthly archives   
     for res in results:
         result_path = os.path.join(arc_dir,res)
+        #this check is redundant with urlretrieve
         if not os.path.isfile(result_path):
             gz_url = url + res
             pp('retrieving %s' % gz_url)
-            info = gz = urllib.urlretrieve(gz_url,result_path)
-            print info[0].gettype()
+            info = urllib.urlretrieve(gz_url,result_path)
+            print info
 
 # This works for the names of the files. Order them.
 # datetime.datetime.strptime('2000-November',"%Y-%B")
