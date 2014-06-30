@@ -1,5 +1,6 @@
 import urllib2
 import urllib
+import gzip
 import re
 import os
 import parse
@@ -49,6 +50,26 @@ def collect_from_url(url):
             info = urllib.urlretrieve(gz_url,result_path)
             print info
 
+def unzip_archive(url):
+    arc_dir = archive_directory(get_list_name(url))
+
+    gzs = [os.path.join(arc_dir,fn) for fn
+           in os.listdir(arc_dir)
+           if fn.endswith('.txt.gz')]
+
+    print 'unzipping %d archive files' % (len(gzs))
+
+    for gz in gzs:
+        f = gzip.open(gz,'rb')
+        content = f.read()
+        f.close()
+
+        txt_fn = str(gz[:-3])
+
+        f2 = open(txt_fn,'w')
+        f2.write(content)
+        f2.close()
+
 # This works for the names of the files. Order them.
 # datetime.datetime.strptime('2000-November',"%Y-%B")
 
@@ -61,7 +82,7 @@ def open_list_archives(url):
     arc_dir = archive_directory(list_name)
 
     txts = [os.path.join(arc_dir,fn) for fn
-            in os.listdir('archives/numpy-discussion')
+            in os.listdir(arc_dir)
             if fn.endswith('.txt')]
 
     print 'Opening %d archive files' % (len(txts))
