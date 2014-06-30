@@ -60,15 +60,18 @@ def unzip_archive(url):
     print 'unzipping %d archive files' % (len(gzs))
 
     for gz in gzs:
-        f = gzip.open(gz,'rb')
-        content = f.read()
-        f.close()
+        try:
+            f = gzip.open(gz,'rb')
+            content = f.read()
+            f.close()
 
-        txt_fn = str(gz[:-3])
+            txt_fn = str(gz[:-3])
 
-        f2 = open(txt_fn,'w')
-        f2.write(content)
-        f2.close()
+            f2 = open(txt_fn,'w')
+            f2.write(content)
+            f2.close()
+        except Exception as e:
+            print e
 
 # This works for the names of the files. Order them.
 # datetime.datetime.strptime('2000-November',"%Y-%B")
