@@ -11,19 +11,15 @@ re_cache = {
 }
 
 def open_mail_archive(filename):
-    f = open(filename)
-
-    mails = re_cache['top_exp'].split(f.read())
-
-    messages = [email.message_from_string(m) for m in mails if m is not '']
-
-    return messages
+    with open(filename, 'r') as f:
+        mails = re_cache['top_exp'].split(f.read())
+        return [email.message_from_string(m) for m in mails if m is not '']
 
 def split_references(refs):
-    return msg_id_re.findall(refs)
+    return re_cache['msg_id'].findall(refs)
 
 def get_refs(refs):
-    return msg_id_re.findall(refs)
+    return re_cache['msg_id'].findall(refs)
 
 def clean_mid(mid):
     return get_refs(mid)[0]
