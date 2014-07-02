@@ -1,4 +1,6 @@
 import parse
+import math
+import numpy as np
 import networkx as nx
 #import matplotlib.pyplot as plt
 from pprint import pprint as pp
@@ -66,3 +68,34 @@ def messages_to_interaction_graph(messages):
     pp(reply_counts)
 
     return IG
+
+# Ulanowicz ecosystem health measures
+# input is weighted adjacency matrix
+def ascendancy(am):
+    #total system throughput
+    tst = np.sum(am)
+
+    # should these be normalized?!?!
+    #output rates
+    s0 = np.tile(np.sum(am,0).T,(am.shape[0],1))
+    #input rates
+    s1 = np.tile(np.sum(am,1).T,(am.shape[1],1)).T
+
+    logs = np.nan_to_num(np.log(am * np.sum(am) / (s0 * s1)))
+
+    #ascendancy!
+    A = np.sum(am * logs)
+
+    return A
+
+def capacity(am):
+    # total system throughput
+    tst = np.sum(am)
+
+    logs = np.nan_to_num(np.log(am / tst))
+
+    return - np.sum(am * logs)
+
+def overhead(am):
+    #could be more efficient...
+    return capacity(am) - ascendancy(am)
