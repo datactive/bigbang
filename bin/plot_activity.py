@@ -54,6 +54,25 @@ activity = np.zeros([len(from_list),max(days)-min(days)+1])
 # the ordinal day semantics of position 0 in the activity array
 day_offset = data['Date'].min().toordinal()
 
+# take an array of data D, divide it into B bins
+# each containing the sum of the consequetive len(D)/B
+# entries
+#def rebin(d,b):
+#    bin_width = math.floor(len(d) / b)
+#    return bin_width # broken
+
+# smooth out values by average over adjacent n
+def smooth(d,n):
+    o = np.zeros(len(d))
+
+    for i in range(n):
+        o += np.roll(d,i)
+
+    o = o / n
+
+    return o
+
+
 for values in data.values:
     date = values[0]
     m_from = values[1]
@@ -63,3 +82,9 @@ for values in data.values:
 
     activity[m_from_i,day_i] = activity[m_from_i,day_i] + 1
 
+total_activity = np.sum(activity,0)
+participant_activity = np.sum(activity > 0,0)
+
+plt.plot(smooth(total_activity,30),'r')
+plt.plot(smooth(participant_activity,30),'b')
+plt.show()
