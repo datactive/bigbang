@@ -1,7 +1,7 @@
 from pprint import pprint as pp
 import email
 import re
-import dateutil.parser as dparse
+import dateutil.parser as dp
 
 
 re_cache = {
@@ -26,3 +26,6 @@ def clean_mid(mid):
 
 def clean_from(m_from):
     return re_cache['msg_from'].findall(m_from)[0]
+
+def get_date(message):
+    return dp.parse(message.get('Date'))

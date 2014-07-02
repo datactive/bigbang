@@ -1,6 +1,6 @@
 import bigbang.mailman as mailman
+from bigbang.parse import get_date
 import pandas as pd
-from dateutil import parser as dp
 import datetime
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,7 +20,7 @@ for m in messages:
     froms.append(m_from)
     
     try:
-        date = dp.parse(m.get('Date'))
+        date = get_date(m)
 
         if date.tzinfo is None:
             date = pytz.utc.localize(date)
