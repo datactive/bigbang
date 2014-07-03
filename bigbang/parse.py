@@ -2,7 +2,7 @@ from pprint import pprint as pp
 import email
 import re
 import dateutil.parser as dp
-
+import pytz
 
 re_cache = {
   'top_exp'     : re.compile("From .*\d\d\d\d\n"),
@@ -28,4 +28,19 @@ def clean_from(m_from):
     return re_cache['msg_from'].findall(m_from)[0]
 
 def get_date(message):
-    return dp.parse(message.get('Date'))
+    ds = message.get('Date')
+    try:
+        # some mail clients add a parenthetical timezone
+        ds = re.sub("\(.*$","",ds)
+        ds = re.sub("--","-",ds)
+
+        date = dp.parse(ds)
+
+        # this adds noise and could raise trouble
+        if date.tzinfo is None:
+            date = pytz.utc.localize(date)
+
+        return date
+    except TypeError:
+        print ds
+        import pdb;pdb.set_trace()

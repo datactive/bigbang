@@ -22,9 +22,6 @@ for m in messages:
     try:
         date = get_date(m)
 
-        if date.tzinfo is None:
-            date = pytz.utc.localize(date)
-
         dates.append(date)
 
     except Exception as e:
