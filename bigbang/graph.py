@@ -64,8 +64,6 @@ def messages_to_interaction_graph(messages):
         for m_to, count in edges.items():
             IG.add_edge(m_from,m_to,weight=count)
 
-    pp(sender_counts)
-    pp(reply_counts)
 
     return IG
 
