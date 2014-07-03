@@ -25,7 +25,10 @@ def clean_mid(mid):
     return get_refs(mid)[0]
 
 def clean_from(m_from):
-    return re_cache['msg_from'].findall(m_from)[0]
+    try:
+        return re_cache['msg_from'].findall(m_from)[0]
+    except IndexError:
+        return m_from
 
 def get_date(message):
     ds = message.get('Date')
