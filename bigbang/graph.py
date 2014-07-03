@@ -67,6 +67,25 @@ def messages_to_interaction_graph(messages):
 
     return IG
 
+
+#turn an interaction graph into a weighted edge matrix
+def interaction_graph_to_matrix(dg):
+    nodes = dg.nodes()
+
+    n_nodes = len(nodes)
+
+    # n x n where n is number of nodes
+    matrix = np.zeros([n_nodes,n_nodes])
+
+    for m_from,m_to,data in dg.edges(data=True):
+        i = nodes.index(m_from)
+        j = nodes.index(m_to)
+
+        matrix[i,j] = data['weight']
+
+    return matrix
+
+
 # Ulanowicz ecosystem health measures
 # input is weighted adjacency matrix
 def ascendancy(am):
