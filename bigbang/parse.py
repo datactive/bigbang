@@ -36,6 +36,7 @@ def get_date(message):
         # some mail clients add a parenthetical timezone
         ds = re.sub("\(.*$","",ds)
         ds = re.sub("--","-",ds)
+        ds = re.sub(" Hora.*$","",ds)
 
         date = dp.parse(ds)
 
@@ -45,5 +46,7 @@ def get_date(message):
 
         return date
     except TypeError:
+        print "Date parsing error on: " 
         print ds
-        import pdb;pdb.set_trace()
+        
+        return None
