@@ -65,7 +65,7 @@ def activity(messages):
 
         activity[m_from_i,day_i] = activity[m_from_i,day_i] + 1
 
-    return activity
+    return activity, np.arange(min(days),max(days)+1)
 
 
 def plot_ascendancy(messages):
@@ -117,8 +117,8 @@ url2 = "http://mail.scipy.org/pipermail/ipython-user/"
 messages1 = mailman.open_list_archives(url1)
 messages2 = mailman.open_list_archives(url2)
 
-activity1 = activity(messages1)
-activity2 = activity(messages2)
+activity1,dates1 = activity(messages1)
+activity2,dates2  = activity(messages2)
 
 
 total_activity1 = np.sum(activity1,0)
@@ -127,12 +127,14 @@ total_activity2 = np.sum(activity2,0)
 participant_activity1 = np.sum(activity1 > 0,0)
 participant_activity2 = np.sum(activity2 > 0,0)
 
-plt.plot(smooth(total_activity1,360),'r')
-plt.plot(smooth(total_activity2,360),'b')
+plt.plot_date(dates1,smooth(total_activity1,50),'r',label="dev activity",xdate=True)
+plt.plot_date(dates2,smooth(total_activity2,50),'b',label="user activity",xdate=True)
+plt.legend()
 plt.show()
 
-plt.plot(smooth(participant_activity1,360),'r')
-plt.plot(smooth(participant_activity2,360),'b')
+plt.plot_date(dates1,smooth(participant_activity1,50),'r',label="dev participants",xdate=True)
+plt.plot_date(dates2,smooth(participant_activity2,50),'b',label="user participants",xdate=True)
+plt.legend()
 plt.show()
 
 
