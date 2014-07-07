@@ -30,7 +30,9 @@ nx.draw(IG,
         pos,
         node_size = node_size,
         node_color = 'w',
-        alpha = 0.4
+        alpha = 0.4,
+        font_size=18,
+        font_weight='bold'
 )
 
 

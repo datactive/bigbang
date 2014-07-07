@@ -22,7 +22,11 @@ def get_refs(refs):
     return re_cache['msg_id'].findall(refs)
 
 def clean_mid(mid):
-    return get_refs(mid)[0]
+    try:
+        return get_refs(mid)[0]
+    except IndexError:
+        print mid
+        return mid
 
 def clean_from(m_from):
     try:
