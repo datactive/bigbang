@@ -12,11 +12,11 @@ Installation
 Big Bang uses a lot of SciPy packages that use native (e.g. C) code.
 These need to be installed separately.
 
-* (numpy)[http://docs.scipy.org/doc/numpy/user/install.html]
-* (matplotlib)[http://matplotlib.org/users/installing.html]
-* (graphviz)[http://www.graphviz.org/]
+* [numpy](http://docs.scipy.org/doc/numpy/user/install.html)
+* [matplotlib](http://matplotlib.org/users/installing.html)
+* [graphviz](http://www.graphviz.org/)
 
-You might try to (Anaconda)[https://store.continuum.io/cshop/anaconda/] Python distribution, which comes with these and other packages installed easily.
+You might try to [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution, which comes with these and other packages installed easily.
 
 1. Clone this repo.
 
@@ -24,5 +24,5 @@ You might try to (Anaconda)[https://store.continuum.io/cshop/anaconda/] Python d
 
 3. `cd` into the directory of the cloned repo and run
 
-    python setup.py develop 
+    `python setup.py develop `
  
