@@ -28,7 +28,7 @@ def messages_to_reply_graph(messages):
 
     return G
 
-def messages_to_interaction_graph(messages):
+def messages_to_interaction_graph(messages,verbose=False):
     
     IG = nx.DiGraph()
 
@@ -58,7 +58,8 @@ def messages_to_interaction_graph(messages):
             m_to = from_dict[reply_to_mid]
             reply_counts[m_from][m_to] = reply_counts[m_from].get(m_to,0) + 1
         else:
-            print reply_to_mid + " not in archive"
+            if verbose:
+                print reply_to_mid + " not in archive"
 
     for m_from, edges in reply_counts.items():
         for m_to, count in edges.items():
