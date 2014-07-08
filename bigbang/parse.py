@@ -54,3 +54,8 @@ def get_date(message):
         print ds
         
         return None
+    except ValueError:
+        print "Date parsing error on: " 
+        print ds
+        
+        return None
