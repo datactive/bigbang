@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import pytz
+import pickle
+import os
 
 
 def process_messages(messages):
@@ -38,7 +40,6 @@ def to_dataframe(dates,froms):
 
     return data
 
-
 def activity(messages):
     dates, froms, broke = process_messages(messages)
 
@@ -65,36 +66,30 @@ def activity(messages):
 
         activity[m_from_i,day_i] = activity[m_from_i,day_i] + 1
 
-    return activity, np.arange(min(days),max(days)+1)
+    return activity, np.arange(min(days),max(days)+1), from_list
 
 
-def plot_ascendancy(messages):
-    IG = graph.messages_to_interaction_graph(messages)
-    matrix = graph.interaction_graph_to_matrix(IG)
-
-    # removing last email in case it was sent in 2083.
-    # don't ask
-    #sorted_messages = sorted(messages,key=get_date)[:-1]
-
+def compute_ascendancy(messages,duration=50):
+    print('compute ascendancy')
     dated_messages = {}
 
     for m in messages:
-        o = get_date(m).toordinal()
+        d = get_date(m)
 
-        dated_messages[o] = dated_messages.get(o,[])
-        dated_messages[o].append(m)
+        if d is not None and d < datetime.datetime.now(pytz.utc):
+            o = d.toordinal()        
+            dated_messages[o] = dated_messages.get(o,[])
+            dated_messages[o].append(m)
 
-
+    days = [k for k in dated_messages.keys()]
+    day_offset = min(days)
     epoch = max(days)-min(days)
-
-    step = 1
-    duration = 100
 
     ascendancy = np.zeros([max(days)-min(days)+1])
     capacity = np.zeros(([max(days)-min(days)+1]))
 
-    for i in range(epoch/step):
-        min_d = min(days) + i * step
+    for i in range(epoch):
+        min_d = min(days) + i
         max_d = min_d + duration
 
         block_messages = []
@@ -111,29 +106,54 @@ def plot_ascendancy(messages):
     return ascendancy, capacity
 
 
-url1 = "http://mail.scipy.org/pipermail/ipython-dev/"
-url2 = "http://mail.scipy.org/pipermail/ipython-user/"
-
-messages1 = mailman.open_list_archives(url1)
-messages2 = mailman.open_list_archives(url2)
-
-activity1,dates1 = activity(messages1)
-activity2,dates2  = activity(messages2)
+urls = ["http://mail.scipy.org/pipermail/ipython-dev/",
+        "http://mail.scipy.org/pipermail/ipython-user/",
+        "http://mail.scipy.org/pipermail/scipy-dev/",
+        "http://mail.scipy.org/pipermail/scipy-user/",
+        "http://mail.scipy.org/pipermail/numpy-discussion/"]
 
 
-total_activity1 = np.sum(activity1,0)
-total_activity2 = np.sum(activity2,0)
+activities = []
 
-participant_activity1 = np.sum(activity1 > 0,0)
-participant_activity2 = np.sum(activity2 > 0,0)
+if os.path.exists('save.p'):
+    activities = pickle.load(open('save.p','rb'))
+else:
+    mlists = [mailman.open_list_archives(url) for url in urls]
+    activities = [(activity(ml),compute_ascendancy(ml)) for ml in mlists]
+    pickle.dump(activities,open('save.p','wb'))
 
-plt.plot_date(dates1,smooth(total_activity1,50),'r',label="dev activity",xdate=True)
-plt.plot_date(dates2,smooth(total_activity2,50),'b',label="user activity",xdate=True)
-plt.legend()
-plt.show()
+#total_activity = [np.sum(activity,0) for activity,dates,from_l in activities]
+#participant_activity1 = [np.sum(activity > 0,0) for activity,dates,from_l in activities]
 
-plt.plot_date(dates1,smooth(participant_activity1,50),'r',label="dev participants",xdate=True)
-plt.plot_date(dates2,smooth(participant_activity2,50),'b',label="user participants",xdate=True)
+smooth_factor = 50
+
+for i, ((activity,dates,froml),(ascendancy,capacity)) in enumerate([activities[4]]):
+
+    colors = 'rgbkm'
+
+    total_activity = np.sum(activity,0)
+
+    smooth_activity = smooth(total_activity,smooth_factor)
+    cropped_capacity = capacity[smooth_factor:-smooth_factor]
+    
+    scaled_activity = smooth_activity * np.mean(cropped_capacity) / np.mean(smooth_activity)
+
+    plt.plot_date(
+        #use convolve?
+        dates[smooth_factor:-smooth_factor],
+        scaled_activity,'-'+colors[i],
+        label=mailman.get_list_name(urls[i]) + ' activity',xdate=True)
+
+    print urls[i]
+    print dates.shape
+    print ascendancy.shape
+    plt.plot_date(
+        dates,
+        capacity-ascendancy,":"+colors[i],
+        label=(mailman.get_list_name(urls[i]) + ' overhead'),xdate=True)
+
+
+
 plt.legend()
 plt.show()
 
