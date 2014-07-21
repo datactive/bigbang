@@ -8,7 +8,10 @@ import numpy as np
 import math
 import pytz
 
-url = "http://mail.scipy.org/pipermail/scipy-dev/"
+URLS_FILE = "urls.txt"
+for url in open(URLS_FILE):
+    url = url.rstrip()
+    break  # just grab the first one, for now
 
 messages = mailman.open_list_archives(url)
 
