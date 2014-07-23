@@ -12,6 +12,9 @@ ARCHIVE_DIR = "archives"
 ml_exp = re.compile('/([\w-]*)/$')
 
 gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
+ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
+
+mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
 
 def get_list_name(url):
     url = url.rstrip()
@@ -33,7 +36,9 @@ def collect_from_url(url):
     response = urllib2.urlopen(url)
     html = response.read()
 
-    results = gz_exp.findall(html)
+    results = []
+    for exp in mailing_list_path_expressions:
+      results.extend(exp.findall(html))
 
     pp(results)
 
@@ -83,10 +88,12 @@ def unzip_archive(url):
 def open_list_archives(url):
     list_name = get_list_name(url)
     arc_dir = archive_directory(list_name)
+    
+    file_extensions = [".txt", ".mail"]
 
     txts = [os.path.join(arc_dir,fn) for fn
             in os.listdir(arc_dir)
-            if fn.endswith('.txt')]
+            if any([fn.endswith(extension) for extension in file_extensions])]
 
     print 'Opening %d archive files' % (len(txts))
     arch = [parse.open_mail_archive(txt) for txt in txts]

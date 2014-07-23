@@ -11,6 +11,10 @@ import pytz
 import pickle
 import os
 
+URLS_FILE = "urls.txt"
+for url in open(URLS_FILE):
+    url = url.rstrip()
+    break  # just grab the first one, for now
 
 def process_messages(messages):
     dates = []
