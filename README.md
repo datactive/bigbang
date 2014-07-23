@@ -16,7 +16,7 @@ These need to be installed separately.
 * [matplotlib](http://matplotlib.org/users/installing.html)
 * [graphviz](http://www.graphviz.org/)
 
-You might try to [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution, which comes with these and other packages installed easily.
+You might try to [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution, which comes with these and other packages installed easily; or follow [these instructions](http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/) for installing various Scientific Python packages using Homebrew and pip.
 
 1. Clone this repo.
 
