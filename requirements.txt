@@ -2,3 +2,6 @@ matplotlib
 networkx
 nose
 pytz
+numpy
+dateutil
+python-dateutil
