@@ -4,9 +4,15 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from pprint import pprint as pp
 
-fn = "archives/numpy-discussion/2001-November.txt"
+fns = ["archives/numpy-discussion/2011-November.txt",
+       "archives/ipython-dev/2011-November.txt",
+       "archives/ipython-user/2011-November.txt",
+       "archives/scipy-dev/2011-November.txt",
+       "archives/scipy-user/2011-November.txt"]
 
-messages = parse.open_mail_archive(fn)
+mls = [parse.open_mail_archive(fn) for fn in fns]
+
+messages = [m for ml in mls for m in ml]
 
 #import pdb; pdb.set_trace()
 
@@ -43,3 +49,5 @@ edgewidth=[d['weight'] for (u,v,d) in IG.edges(data=True)]
 nx.draw_networkx_edges(IG,pos,alpha=0.5,width=edgewidth,edge_color='r')
 
 plt.show()
+
+nx.write_gexf(IG,'nov-11.gexf')
