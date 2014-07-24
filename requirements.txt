@@ -3,5 +3,6 @@ networkx
 nose
 pytz
 numpy
-dateutil
+pandas
+ipython
 python-dateutil

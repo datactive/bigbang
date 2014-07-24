@@ -1,0 +1,10 @@
+matplotlib
+networkx
+nose
+pytz
+numpy
+ipython
+ipython-notebook
+pandas
+pydot
+-c https://conda.binstar.org/asmeurer python-dateutil
