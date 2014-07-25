@@ -1,3 +1,5 @@
+-e .
+
 matplotlib
 networkx
 nose
