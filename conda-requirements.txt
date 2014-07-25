@@ -7,4 +7,4 @@ ipython
 ipython-notebook
 pandas
 pydot
--c https://conda.binstar.org/asmeurer python-dateutil
+python-dateutil

@@ -1,4 +1,4 @@
-bigbang
+# bigbang
 =======
 
 Bigbang is a toolkit for studying communications data from collaborative projects.
@@ -6,23 +6,62 @@ Bigbang is a toolkit for studying communications data from collaborative project
 The focus of the early milestones will be on mailing list or listserve analysis,
   with a focus on Mailman and Sourceforge mail archives, as well as .mbox files.
 
-Installation
-------------
+## Installation
 
 Big Bang uses a lot of SciPy packages that use native (e.g. C) code.
-These need to be installed separately.
+This complicates installation.
+
+There are two package management systems you can use for installing Python projects.
+I recommend using conda for installation. You can also use pip.
+
+### conda installation
+
+The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution which comes with scientific packages pre-installed and the ``conda`` package management system.
+
+1. Clone this repo
+
+2. Make a new conda environment called ``bigbang``
+
+    ``conda create -n bigbang python``
+
+3. Run this script to install the dependencies
+
+    ``bash conda-setup.sh``
+
+You should be good to go.
+
+### pip installation
+
+You're going to have to manually install a bunch of programs if you do it this way. 
+You can try following [these instructions](http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/) for installing various Scientific Python packages using Homebrew and pip.
+
+These are some of the packages you will need to install. You can discover others ones you will need be seeing where pip chokes.
 
 * [numpy](http://docs.scipy.org/doc/numpy/user/install.html)
 * [matplotlib](http://matplotlib.org/users/installing.html)
 * [graphviz](http://www.graphviz.org/)
 
-You might try to [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution, which comes with these and other packages installed easily; or follow [these instructions](http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/) for installing various Scientific Python packages using Homebrew and pip.
+When you think you've got what you need installed, follow these instructions:
 
 1. Clone this repo.
 
 2. (Optional) Make a new virtualenv.
 
-3. `cd` into the directory of the cloned repo and run
+3. Install the remaining dependencies to the virtual environment using pip.
+
+    ``pip install -r requirements.txt``
+
+4. `cd` into the directory of the cloned repo and run
 
     `python setup.py develop `
  
+## Using BigBang
+
+BigBang is presently an environment for scientific exploration of mailing list data.
+
+The best way to learn about how to use BigBang is to look at the I Python notebook examples provided in this repository.
+In the home directory of this repository, run:
+
+    ipython notebook examples/
+
+and play around.
