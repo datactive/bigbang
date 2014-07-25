@@ -129,9 +129,9 @@ else:
 #total_activity = [np.sum(activity,0) for activity,dates,from_l in activities]
 #participant_activity1 = [np.sum(activity > 0,0) for activity,dates,from_l in activities]
 
-smooth_factor = 50
+smooth_factor = 120
 
-for i, ((activity,dates,froml),(ascendancy,capacity)) in enumerate([activities[4]]):
+for i, ((activity,dates,froml),(ascendancy,capacity)) in enumerate(activities):
 
     colors = 'rgbkm'
 
@@ -145,9 +145,10 @@ for i, ((activity,dates,froml),(ascendancy,capacity)) in enumerate([activities[4
     plt.plot_date(
         #use convolve?
         dates[smooth_factor:-smooth_factor],
-        scaled_activity,'-'+colors[i],
+        smooth_activity,'-'+colors[i],
         label=mailman.get_list_name(urls[i]) + ' activity',xdate=True)
 
+    """
     print urls[i]
     print dates.shape
     print ascendancy.shape
@@ -155,10 +156,12 @@ for i, ((activity,dates,froml),(ascendancy,capacity)) in enumerate([activities[4
         dates,
         capacity-ascendancy,":"+colors[i],
         label=(mailman.get_list_name(urls[i]) + ' overhead'),xdate=True)
+    """
 
 
-
-plt.legend()
+plt.axvline(x=733140,color='c',ls='dashed')
+#plt.legend()
+plt.savefig("activites-marked.png")
 plt.show()
 
 
