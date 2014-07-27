@@ -65,3 +65,21 @@ In the home directory of this repository, run:
     ipython notebook examples/
 
 and play around.
+
+## Usage
+
+BigBang supports data collection from public mailing lists and data analysis.
+
+### Collecting from Mailman
+
+BigBang comes with a script for collecting files from public Mailman web archives. And example of this is the [scipy-dev](http://mail.scipy.org/pipermail/scipy-dev/) mailing list page.
+
+From the directory of the this checked out repository, you can collect the archives from a web URL with the following command:
+
+    `python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/`
+
+You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
+
+    `python bin/collect_mail.py -f examples/urls.txt`
+
+Once the data has been collected, BigBang has functions to support analysis.
