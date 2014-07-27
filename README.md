@@ -28,6 +28,10 @@ The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution w
 
     ``bash conda-setup.sh``
 
+4. Now install the local package, editable, using pip
+
+   ``pip install -e .``
+
 You should be good to go.
 
 ### pip installation
