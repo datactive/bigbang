@@ -1,0 +1,5 @@
+http://mail.scipy.org/pipermail/ipython-dev/
+http://mail.scipy.org/pipermail/ipython-user/
+http://mail.scipy.org/pipermail/scipy-dev/
+http://mail.scipy.org/pipermail/scipy-user/
+http://mail.scipy.org/pipermail/numpy-discussion/
