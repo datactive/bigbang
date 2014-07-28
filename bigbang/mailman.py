@@ -7,8 +7,6 @@ import parse
 from pprint import pprint as pp
 
 
-ARCHIVE_DIR = "archives"
-
 ml_exp = re.compile('/([\w-]*)/$')
 
 gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
@@ -21,14 +19,14 @@ def get_list_name(url):
 
     return ml_exp.search(url).groups()[0]
 
-def archive_directory(list_name):
-    arc_dir = os.path.join(ARCHIVE_DIR,list_name)
+def archive_directory(base_dir,list_name):
+    arc_dir = os.path.join(base_dir,list_name)
     if not os.path.exists(arc_dir):
         os.makedirs(arc_dir)
     return arc_dir
 
 
-def collect_from_url(url):
+def collect_from_url(url,base_arch_dir="archives"):
     list_name = get_list_name(url)
     
     pp("Getting archive page for %s" % list_name)
@@ -43,7 +41,7 @@ def collect_from_url(url):
     pp(results)
 
     # directory for downloaded files
-    arc_dir = archive_directory(list_name)
+    arc_dir = archive_directory(base_arch_dir,list_name)
 
     # download monthly archives   
     for res in results:
@@ -55,8 +53,8 @@ def collect_from_url(url):
             info = urllib.urlretrieve(gz_url,result_path)
             print info
 
-def unzip_archive(url):
-    arc_dir = archive_directory(get_list_name(url))
+def unzip_archive(url,base_arc_dir="archives"):
+    arc_dir = archive_directory(base_arc_dir,get_list_name(url))
 
     gzs = [os.path.join(arc_dir,fn) for fn
            in os.listdir(arc_dir)
@@ -85,9 +83,9 @@ def unzip_archive(url):
 #datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
 
 
-def open_list_archives(url):
+def open_list_archives(url,base_arc_dir="archives"):
     list_name = get_list_name(url)
-    arc_dir = archive_directory(list_name)
+    arc_dir = archive_directory(base_arc_dir,list_name)
     
     file_extensions = [".txt", ".mail"]
 
