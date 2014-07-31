@@ -1,6 +1,8 @@
 from nose.tools import *
 import bigbang.parse as parse
 import os
+import bigbang.mailman as mailman
+import bigbang.process as process
 
 
 test_txt = ""
@@ -26,3 +28,19 @@ def test_split_references():
     refs = " <ye1y9ljtxwk.fsf@orange30.ex.ac.uk>\n\t<055701c16727$b57fed90$8fd6afcf@pixi.com>"
     split = parse.split_references(refs)
     assert len(split) == 2, split
+
+def test_mailman_chain():
+    url = "http://mail.scipy.org/pipermail/ipython-dev/"
+
+    mailman.collect_from_url(url)
+    mailman.unzip_archive(url)
+
+    ml = mailman.open_list_archives(url,"archives")
+
+    dates, froms, broke = process.process_messages(ml)
+    assert len(dates) == len(froms)
+    assert len(broke) == 0
+    
+    process.activity(ml)
+
+    assert True
