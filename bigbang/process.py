@@ -8,6 +8,40 @@ import pytz
 #import pickle
 #import os
 
+# turn a list of parsed messages into
+# a dataframe of message data, indexed
+# by message-id, with column-names from
+# headers
+def messages_to_dataframe(messages):
+    # extract data into a list of tuples -- records -- with
+    # the Message-ID separated out as an index 
+    pm = [(m.get('Message-ID'), 
+           (m.get('From'),
+            m.get('Subject'),
+            get_date(m),
+            m.get('In-Reply-To'),
+            m.get('References'),
+            m.get_payload()))
+          for m in messages]
+
+    ids,records = zip(*pm)
+
+    import pdb
+    pdb.set_trace()
+
+
+    mdf = pd.DataFrame.from_records(list(records),
+                                    index=list(ids),
+                                    columns=['From',
+                                             'Subject',
+                                             'Date',
+                                             'In-Reply-To',
+                                             'References',
+                                             'Body'])
+    mdf.index.name = 'Message-ID'
+                              
+    return mdf
+
 
 def process_messages(messages):
     dates = []
@@ -29,36 +63,18 @@ def process_messages(messages):
     return dates, froms, broke
 
 def activity(messages,clean=True):
-    dates, froms, broke = process_messages(messages)
+    mdf = messages_to_dataframe(messages)
+
+    if clean:
+        #unnecessary?
+        mdf = mdf.dropna(subset=['Date'])
+        mdf = mdf[mdf['Date'] <  datetime.datetime.now(pytz.utc)]
 
 
-    # clean out messages from the future
-    records = zip(*[x for x in zip(dates,froms) 
-                    if x[0] is not None
-                    and (x[0] < datetime.datetime.now(pytz.utc) or not clean)])
+    mdf2 = mdf[['From','Date']]
+    mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
 
-    dates = records[0]
-    froms = records[1]
-
-    ## an array
-    ## * columns are From addresses
-    ## * rows are ordinal days
-    ## * values are number of messages sent From x on day y
-    from_list = list(set(froms))
-    days = [d.toordinal() for d in dates] #[d.toordinal() for d in data['Date']]
-
-    activity = np.zeros([len(from_list),max(days)-min(days)+1])
-    
-    # the ordinal day semantics of position 0 in the activity array
-    day_offset = min(days)
-
-    for date,m_from in zip(dates,froms):
-        m_from_i = from_list.index(m_from)
-        day_i = date.toordinal() - day_offset
-
-        activity[m_from_i,day_i] = activity[m_from_i,day_i] + 1
-
-    return activity, np.arange(min(days),max(days)+1), from_list
+    return activity = mdf2.groupby(['From','Date']).size().unstack('From').fillna(0)
 
 def compute_ascendancy(messages,duration=50):
     print('compute ascendancy')
