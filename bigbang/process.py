@@ -26,10 +26,6 @@ def messages_to_dataframe(messages):
 
     ids,records = zip(*pm)
 
-    import pdb
-    pdb.set_trace()
-
-
     mdf = pd.DataFrame.from_records(list(records),
                                     index=list(ids),
                                     columns=['From',
@@ -74,7 +70,14 @@ def activity(messages,clean=True):
     mdf2 = mdf[['From','Date']]
     mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
 
-    return activity = mdf2.groupby(['From','Date']).size().unstack('From').fillna(0)
+    activity = mdf2.groupby(['From','Date']).size().unstack('From').fillna(0)
+
+    new_date_range = np.arange(mdf2['Date'].min(),mdf2['Date'].max())
+    #activity.set_index('Date')
+    
+    activity = activity.reindex(new_date_range,fill_value=0)
+
+    return activity
 
 def compute_ascendancy(messages,duration=50):
     print('compute ascendancy')
