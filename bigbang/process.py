@@ -1,4 +1,3 @@
-import bigbang.graph as graph
 from bigbang.parse import get_date
 import pandas as pd
 import datetime
@@ -77,42 +76,6 @@ def activity(messages,clean=True):
     activity = activity.reindex(new_date_range,fill_value=0)
 
     return activity
-
-def compute_ascendancy(messages,duration=50):
-    print('compute ascendancy')
-    dated_messages = {}
-
-    for m in messages:
-        d = get_date(m)
-
-        if d is not None and d < datetime.datetime.now(pytz.utc):
-            o = d.toordinal()        
-            dated_messages[o] = dated_messages.get(o,[])
-            dated_messages[o].append(m)
-
-    days = [k for k in dated_messages.keys()]
-    day_offset = min(days)
-    epoch = max(days)-min(days)
-
-    ascendancy = np.zeros([max(days)-min(days)+1])
-    capacity = np.zeros(([max(days)-min(days)+1]))
-
-    for i in range(epoch):
-        min_d = min(days) + i
-        max_d = min_d + duration
-
-        block_messages = []
-
-        for d in range(min_d,max_d):
-            block_messages.extend(dated_messages.get(d,[]))
-
-        b_IG = graph.messages_to_interaction_graph(block_messages)
-        b_matrix = graph.interaction_graph_to_matrix(b_IG)
-
-        ascendancy[min_d-day_offset] = graph.ascendancy(b_matrix)
-        capacity[min_d-day_offset] = graph.capacity(b_matrix)
-
-    return ascendancy, capacity
 
 # This is a touch hacky.
 # Better to use numpy convolve
