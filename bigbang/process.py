@@ -46,3 +46,20 @@ def matricize(series, func):
       matrix.iloc[index,second_index] = func(element, second_element)
   
   return matrix
+
+def minimum_greater_than_zero(column, dataframe):
+  minimum = 100
+  for value in dataframe[column]:
+    if value < minimum:
+      if value != 0:
+        minimum = value
+  return minimum
+
+def sorted_lev(from_dataframe):
+  distancedf = matricize(from_dataframe.columns, lambda a,b: Levenshtein.distance(a,b)) # calculate the edit distance between the two From titles
+  df = distancedf.astype(int) # specify that the values in the matrix are integers
+  sort_for_this_df = partial(minimum_greater_than_zero, dataframe=df)
+  new_columns = sorted(df.columns, key=sort_for_this_df)
+  new_df = df.reindex(index=new_columns, columns=new_columns)
+  
+  return new_df
