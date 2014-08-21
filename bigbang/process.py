@@ -157,18 +157,27 @@ def matricize(series, func):
   
   return matrix
 
-def minimum_greater_than_zero(column, dataframe):
+def minimum_but_not_self(column, dataframe):
   minimum = 100
-  for value in dataframe[column]:
+  for index, value in dataframe[column].iteritems():
+    if index == column:
+      continue
     if value < minimum:
-      if value != 0:
-        minimum = value
+      minimum = value
   return minimum
 
+simple_lev_distance = Levenshtein.distance
+
+def lev_distance_normalized(a,b):
+  stop_characters = '"<>'
+  a_normal = a.lower().translate(None, stop_characters)
+  b_normal = b.lower().translate(None, stop_characters)
+  return Levenshtein.distance(a_normal, b_normal)
+
 def sorted_lev(from_dataframe):
-  distancedf = matricize(from_dataframe.columns, lambda a,b: Levenshtein.distance(a,b)) # calculate the edit distance between the two From titles
+  distancedf = matricize(from_dataframe.columns, lev_distance_normalized)
   df = distancedf.astype(int) # specify that the values in the matrix are integers
-  sort_for_this_df = partial(minimum_greater_than_zero, dataframe=df)
+  sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
   new_columns = sorted(df.columns, key=sort_for_this_df)
   new_df = df.reindex(index=new_columns, columns=new_columns)
   
