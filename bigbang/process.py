@@ -7,6 +7,9 @@ import pytz
 #import pickle
 #import os
 
+import Levenshtein
+from functools import partial
+
 # turn a list of parsed messages into
 # a dataframe of message data, indexed
 # by message-id, with column-names from
@@ -76,6 +79,19 @@ def activity(messages,clean=True):
     activity = activity.reindex(new_date_range,fill_value=0)
 
     return activity
+
+# takes a DataFrame in the format returned by activity
+# takes a list of tuples of format ('from 1', 'from 2') to consolidate
+# returns the consolidated DataFrame (a copy, not in place)
+def consolidate_senders_activity(activity_df, to_consolidate):
+  df = activity_df.copy(deep=True)
+  for consolidate in to_consolidate:
+    column_a, column_b = consolidate
+    if column_a in df.columns and column_b in df.columns:
+      df[column_a] = df[column_a] + df[column_b]
+      df.drop(column_b, inplace=True, axis=1) # delete the second column
+  return df
+
 
 # This is a touch hacky.
 # Better to use numpy convolve
