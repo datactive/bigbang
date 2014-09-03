@@ -80,6 +80,54 @@ def activity(messages,clean=True):
 
     return activity
 
+# takes a DataFrame in the format returned by activity
+# takes a list of tuples of format ('from 1', 'from 2') to consolidate
+# returns the consolidated DataFrame (a copy, not in place)
+def consolidate_senders_activity(activity_df, to_consolidate):
+  df = activity_df.copy(deep=True)
+  for consolidate in to_consolidate:
+    column_a, column_b = consolidate
+    if column_a in df.columns and column_b in df.columns:
+      df[column_a] = df[column_a] + df[column_b]
+      df.drop(column_b, inplace=True, axis=1) # delete the second column
+  return df
+
+def compute_ascendancy(messages,duration=50):
+    print('compute ascendancy')
+    dated_messages = {}
+
+    for m in messages:
+        d = get_date(m)
+
+        if d is not None and d < datetime.datetime.now(pytz.utc):
+            o = d.toordinal()        
+            dated_messages[o] = dated_messages.get(o,[])
+            dated_messages[o].append(m)
+
+    days = [k for k in dated_messages.keys()]
+    day_offset = min(days)
+    epoch = max(days)-min(days)
+
+    ascendancy = np.zeros([max(days)-min(days)+1])
+    capacity = np.zeros(([max(days)-min(days)+1]))
+
+    for i in range(epoch):
+        min_d = min(days) + i
+        max_d = min_d + duration
+
+        block_messages = []
+
+        for d in range(min_d,max_d):
+            block_messages.extend(dated_messages.get(d,[]))
+
+        b_IG = graph.messages_to_interaction_graph(block_messages)
+        b_matrix = graph.interaction_graph_to_matrix(b_IG)
+
+        ascendancy[min_d-day_offset] = graph.ascendancy(b_matrix)
+        capacity[min_d-day_offset] = graph.capacity(b_matrix)
+
+    return ascendancy, capacity
+
 # This is a touch hacky.
 # Better to use numpy convolve
 # http://stackoverflow.com/questions/11352047/finding-moving-average-from-data-points-in-python
@@ -108,18 +156,27 @@ def matricize(series, func):
   
   return matrix
 
-def minimum_greater_than_zero(column, dataframe):
+def minimum_but_not_self(column, dataframe):
   minimum = 100
-  for value in dataframe[column]:
+  for index, value in dataframe[column].iteritems():
+    if index == column:
+      continue
     if value < minimum:
-      if value != 0:
-        minimum = value
+      minimum = value
   return minimum
 
+simple_lev_distance = Levenshtein.distance
+
+def lev_distance_normalized(a,b):
+  stop_characters = '"<>'
+  a_normal = a.lower().translate(None, stop_characters)
+  b_normal = b.lower().translate(None, stop_characters)
+  return Levenshtein.distance(a_normal, b_normal)
+
 def sorted_lev(from_dataframe):
-  distancedf = matricize(from_dataframe.columns, lambda a,b: Levenshtein.distance(a,b)) # calculate the edit distance between the two From titles
+  distancedf = matricize(from_dataframe.columns, lev_distance_normalized)
   df = distancedf.astype(int) # specify that the values in the matrix are integers
-  sort_for_this_df = partial(minimum_greater_than_zero, dataframe=df)
+  sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
   new_columns = sorted(df.columns, key=sort_for_this_df)
   new_df = df.reindex(index=new_columns, columns=new_columns)
   
