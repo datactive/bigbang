@@ -8,3 +8,4 @@ numpy
 pandas
 ipython
 python-dateutil
+python-Levenshtein
