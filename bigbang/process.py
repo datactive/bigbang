@@ -21,7 +21,7 @@ def messages_to_dataframe(messages):
             m.get('In-Reply-To'),
             m.get('References'),
             m.get_payload()))
-          for m in messages]
+          for m in messages if m.get('Message-ID')]
 
     ids,records = zip(*pm)
 
@@ -63,8 +63,7 @@ def activity(messages,clean=True):
     if clean:
         #unnecessary?
         mdf = mdf.dropna(subset=['Date'])
-        mdf = mdf[mdf['Date'] <  datetime.datetime.now(pytz.utc)]
-
+        mdf = mdf[mdf['Date'] <  datetime.datetime.now(pytz.utc)] # drop messages apparently in the future
 
     mdf2 = mdf[['From','Date']]
     mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
@@ -93,3 +92,15 @@ def smooth(a,factor):
     #TODO: need to trim the outsides
 
     return k[factor:-factor]
+
+# create a matrix by applying func to pairwise combinations of elements in a Series
+# returns a square matrix as a DataFrame
+# should return a symmetric matrix if func(a,b) == func(b,a)
+# should return the identity matrix if func == '=='
+def matricize(series, func):
+  matrix = pd.DataFrame(columns=series, index=series)
+  for index, element in enumerate(series):
+    for second_index, second_element in enumerate(series):
+      matrix.iloc[index,second_index] = func(element, second_element)
+  
+  return matrix
