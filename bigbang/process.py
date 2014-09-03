@@ -1,84 +1,8 @@
-from bigbang.parse import get_date
 import pandas as pd
-import datetime
 import numpy as np
-#import math
-import pytz
-#import pickle
-#import os
 
 import Levenshtein
 from functools import partial
-
-# turn a list of parsed messages into
-# a dataframe of message data, indexed
-# by message-id, with column-names from
-# headers
-def messages_to_dataframe(messages):
-    # extract data into a list of tuples -- records -- with
-    # the Message-ID separated out as an index 
-    pm = [(m.get('Message-ID'), 
-           (m.get('From'),
-            m.get('Subject'),
-            get_date(m),
-            m.get('In-Reply-To'),
-            m.get('References'),
-            m.get_payload()))
-          for m in messages if m.get('Message-ID')]
-
-    ids,records = zip(*pm)
-
-    mdf = pd.DataFrame.from_records(list(records),
-                                    index=list(ids),
-                                    columns=['From',
-                                             'Subject',
-                                             'Date',
-                                             'In-Reply-To',
-                                             'References',
-                                             'Body'])
-    mdf.index.name = 'Message-ID'
-                              
-    return mdf
-
-
-def process_messages(messages):
-    dates = []
-    froms = []
-    broke = []
-    
-    for m in messages:
-        m_from = m.get('From')
-        froms.append(m_from)
-        
-        try:
-            date = get_date(m)
-            dates.append(date)
-        except Exception as e:
-            print e
-            dates.append(pd.NaT)
-            broke.append(m)
-        
-    return dates, froms, broke
-
-def activity(messages,clean=True):
-    mdf = messages_to_dataframe(messages)
-
-    if clean:
-        #unnecessary?
-        mdf = mdf.dropna(subset=['Date'])
-        mdf = mdf[mdf['Date'] <  datetime.datetime.now(pytz.utc)] # drop messages apparently in the future
-
-    mdf2 = mdf[['From','Date']]
-    mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
-
-    activity = mdf2.groupby(['From','Date']).size().unstack('From').fillna(0)
-
-    new_date_range = np.arange(mdf2['Date'].min(),mdf2['Date'].max())
-    #activity.set_index('Date')
-    
-    activity = activity.reindex(new_date_range,fill_value=0)
-
-    return activity
 
 # takes a DataFrame in the format returned by activity
 # takes a list of tuples of format ('from 1', 'from 2') to consolidate
