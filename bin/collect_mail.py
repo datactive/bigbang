@@ -1,11 +1,15 @@
 import sys, getopt
-import bigbang.mailman as mailman
+#import bigbang.mailman as mailman
+import bigbang.w3crawl as mailman
 from pprint import pprint as pp
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 def collect_from_url(url):
     url = url.rstrip()
     mailman.collect_from_url(url)
-    mailman.unzip_archive(url)
+    #mailman.unzip_archive(url)
 
 def collect_from_file(urls_file):
     for url in open(urls_file):
