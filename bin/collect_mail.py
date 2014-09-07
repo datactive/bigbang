@@ -1,6 +1,5 @@
 import sys, getopt
-#import bigbang.mailman as mailman
-import bigbang.w3crawl as mailman
+import bigbang.mailman as mailman
 from pprint import pprint as pp
 import logging
 

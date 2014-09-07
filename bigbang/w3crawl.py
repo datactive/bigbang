@@ -12,26 +12,7 @@ import email
 import email.parser
 import mailbox
 import time
-
-ml_exp = re.compile('/([\w-]*)/$')
-
-gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
-ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
-
-mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
-
-# should work for W3C lists unchanged
-def get_list_name(url):
-    url = url.rstrip()
-
-    return ml_exp.search(url).groups()[0]
-
-# should work for W3C lists unchanged
-def archive_directory(base_dir,list_name):
-    arc_dir = os.path.join(base_dir,list_name)
-    if not os.path.exists(arc_dir):
-        os.makedirs(arc_dir)
-    return arc_dir
+import mailman
 
 class W3cMailingListArchivesParser(email.parser.Parser):
   parse = None
@@ -71,9 +52,8 @@ class W3cMailingListArchivesParser(email.parser.Parser):
     return header_text.split(':',1)[1]
 
 def collect_from_url(url,base_arch_dir="archives"):
-    list_name = get_list_name(url)
-    
-    logging.info("Getting archive page for %s" % list_name)
+    list_name = mailman.get_list_name(url)
+    logging.info("Getting W3C list archive for %s" % list_name)
 
     response = urllib2.urlopen(url)
     html = response.read()    
@@ -87,7 +67,7 @@ def collect_from_url(url,base_arch_dir="archives"):
       time_period_indices.append(link)
 
     # directory for downloaded files
-    arc_dir = archive_directory(base_arch_dir,list_name)
+    arc_dir = mailman.archive_directory(base_arch_dir,list_name)
     
     for link in time_period_indices:
       link_url = urlparse.urljoin(url, link)

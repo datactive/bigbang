@@ -5,12 +5,13 @@ import re
 import os
 import parse
 from pprint import pprint as pp
-
+import w3crawl
 
 ml_exp = re.compile('/([\w-]*)/$')
 
 gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
+w3c_archives_exp = re.compile('lists\.w3\.org')
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
 
@@ -28,8 +29,10 @@ def archive_directory(base_dir,list_name):
 
 def collect_from_url(url,base_arch_dir="archives"):
     list_name = get_list_name(url)
-    
     pp("Getting archive page for %s" % list_name)
+    
+    if w3c_archives_exp.search(url):
+      return w3crawl.collect_from_url(url, base_arch_dir)
 
     response = urllib2.urlopen(url)
     html = response.read()
