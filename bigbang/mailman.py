@@ -87,7 +87,7 @@ def open_list_archives(url,base_arc_dir="archives"):
     list_name = get_list_name(url)
     arc_dir = archive_directory(base_arc_dir,list_name)
     
-    file_extensions = [".txt", ".mail"]
+    file_extensions = [".txt", ".mail", ".mbox"]
 
     txts = [os.path.join(arc_dir,fn) for fn
             in os.listdir(arc_dir)
