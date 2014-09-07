@@ -4,8 +4,14 @@ import gzip
 import re
 import os
 import parse
+import urlparse
 import logging
 from bs4 import BeautifulSoup
+from email.mime.text import MIMEText
+import email
+import email.parser
+import mailbox
+import time
 
 ml_exp = re.compile('/([\w-]*)/$')
 
@@ -27,10 +33,45 @@ def archive_directory(base_dir,list_name):
         os.makedirs(arc_dir)
     return arc_dir
 
+class W3cMailingListArchivesParser(email.parser.Parser):
+  parse = None
+  # doesn't yet implement the file version
+  
+  # takes the full HTML of a single message page; returns an email Message
+  # currently returns an mboxMessage, with appropriate From separator line
+  # TODO: parse To, CC (Archived-At?, others?) headers
+  # TODO: support headersonly option
+  def parsestr(self, text, headersonly=None):
+    soup = BeautifulSoup(text)
+    body = unicode(soup.select('#body')[0].get_text()).encode('utf-8')
+    msg = MIMEText(body,'plain','utf-8')
+    
+    from_text = self._parse_dfn_header(unicode(soup.select('#from')[0].get_text()).encode('utf-8'))
+    from_name = from_text.split('<')[0].strip()
+    from_address = unicode(soup.select('#from a')[0].get_text()).encode('utf-8')
+    
+    from_addr = email.utils.formataddr((from_name, from_address))
+    msg['From'] = from_addr
+    
+    subject = unicode(soup.select('h1')[0].get_text()).encode('utf-8')
+    msg['Subject'] = subject
+    
+    message_id = self._parse_dfn_header(unicode(soup.select('#message-id')[0].get_text()).encode('utf-8'))
+    msg['Message-ID'] = message_id
+    
+    message_date = self._parse_dfn_header(unicode(soup.select('#date')[0].get_text()).encode('utf-8'))
+    msg['Date'] = message_date
+    
+    mbox_message = mailbox.mboxMessage(msg)
+    mbox_message.set_from(from_address, email.utils.parsedate(message_date))
+    
+    return mbox_message
+    
+  def _parse_dfn_header(self, header_text):
+    return header_text.split(':',1)[1]
 
 def collect_from_url(url,base_arch_dir="archives"):
-    #list_name = get_list_name(url)
-    list_name = 'test'
+    list_name = get_list_name(url)
     
     logging.info("Getting archive page for %s" % list_name)
 
@@ -38,74 +79,49 @@ def collect_from_url(url,base_arch_dir="archives"):
     html = response.read()    
     soup = BeautifulSoup(html)
 
+    time_period_indices = list()
     rows = soup.select('tbody tr')
     for row in rows:
-      link = row.select('td:nth-of-type(1) a')[0]
-      logging.info(link.get('href'))
-
-    # results = []
-    # for exp in mailing_list_path_expressions:
-    #   results.extend(exp.findall(html))
+      link = row.select('td:nth-of-type(1) a')[0].get('href')
+      logging.info("Found time period archive page: %s" % link)
+      time_period_indices.append(link)
 
     # directory for downloaded files
     arc_dir = archive_directory(base_arch_dir,list_name)
-
-    # TODO: for each time-period index, load each individual message page
-    # ... and then parse it into mailing list format with fields
-    # ... and store it (perhaps in mbox format, if Python exports it easily)
-
-    # download monthly archives   
-    # for res in results:
-    #     result_path = os.path.join(arc_dir,res)
-    #     #this check is redundant with urlretrieve
-    #     if not os.path.isfile(result_path):
-    #         gz_url = url + res
-    #         pp('retrieving %s' % gz_url)
-    #         info = urllib.urlretrieve(gz_url,result_path)
-    #         print info
-
-def unzip_archive(url,base_arc_dir="archives"):
-    arc_dir = archive_directory(base_arc_dir,get_list_name(url))
-
-    gzs = [os.path.join(arc_dir,fn) for fn
-           in os.listdir(arc_dir)
-           if fn.endswith('.txt.gz')]
-
-    print 'unzipping %d archive files' % (len(gzs))
-
-    for gz in gzs:
-        try:
-            f = gzip.open(gz,'rb')
-            content = f.read()
-            f.close()
-
-            txt_fn = str(gz[:-3])
-
-            f2 = open(txt_fn,'w')
-            f2.write(content)
-            f2.close()
-        except Exception as e:
-            print e
-
-# This works for the names of the files. Order them.
-# datetime.datetime.strptime('2000-November',"%Y-%B")
-
-# This doesn't yet work for parsing the dates. Because of %z Bullshit
-#datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
-
-
-def open_list_archives(url,base_arc_dir="archives"):
-    list_name = get_list_name(url)
-    arc_dir = archive_directory(base_arc_dir,list_name)
     
-    file_extensions = [".txt", ".mail"]
-
-    txts = [os.path.join(arc_dir,fn) for fn
-            in os.listdir(arc_dir)
-            if any([fn.endswith(extension) for extension in file_extensions])]
-
-    print 'Opening %d archive files' % (len(txts))
-    arch = [parse.open_mail_archive(txt) for txt in txts]
-
-    messages = [item for sublist in arch for item in sublist]
-    return messages
+    for link in time_period_indices:
+      link_url = urlparse.urljoin(url, link)
+      response = urllib2.urlopen(link_url)
+      html = response.read()    
+      soup = BeautifulSoup(html)
+      
+      message_links = list()
+      messages = list()
+      
+      anchors = soup.select('div.messages-list a')
+      for anchor in anchors:
+        if anchor.get('href'):
+          message_url = urlparse.urljoin(link_url, anchor.get('href'))
+          message_links.append(message_url)
+      
+      for message_link in message_links:
+        response = urllib2.urlopen(message_link)
+        html = response.read()    
+        
+        message = W3cMailingListArchivesParser().parsestr(html)
+        messages.append(message)
+        time.sleep(1) # wait between loading messages, for politeness
+      
+      year_month_mbox = time.strftime('%Y-%m', email.utils.parsedate(messages[0]['Date'])) + '.mbox'
+      mbox_path = os.path.join(arc_dir, year_month_mbox)
+      mbox = mailbox.mbox(mbox_path)
+      mbox.lock()
+      
+      try:
+        for message in messages:
+          mbox.add(message)
+        mbox.flush()
+      finally:
+        mbox.unlock()
+      
+      logging.info('Saved ' + year_month_mbox)
