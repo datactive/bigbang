@@ -18,8 +18,8 @@ def messages_to_dataframe(messages):
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index 
     pm = [(m.get('Message-ID'), 
-           (m.get('From'),
-            m.get('Subject'),
+           (unicode(m.get('From'), 'utf-8'),
+            unicode(m.get('Subject'), 'utf-8'),
             get_date(m),
             m.get('In-Reply-To'),
             m.get('References'),
@@ -168,9 +168,10 @@ def minimum_but_not_self(column, dataframe):
 simple_lev_distance = Levenshtein.distance
 
 def lev_distance_normalized(a,b):
-  stop_characters = '"<>'
-  a_normal = a.lower().translate(None, stop_characters)
-  b_normal = b.lower().translate(None, stop_characters)
+  stop_characters = unicode('"<>')
+  stop_characters_map = dict((ord(char), None) for char in stop_characters)
+  a_normal = a.lower().translate(stop_characters_map)
+  b_normal = b.lower().translate(stop_characters_map)
   return Levenshtein.distance(a_normal, b_normal)
 
 def sorted_lev(from_dataframe):
