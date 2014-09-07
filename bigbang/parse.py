@@ -3,6 +3,7 @@ import email
 import re
 import dateutil.parser as dp
 import pytz
+import mailbox
 
 re_cache = {
   'top_exp'     : re.compile("From .*\d\d\d\d\n"),
@@ -11,9 +12,8 @@ re_cache = {
 }
 
 def open_mail_archive(filename):
-    with open(filename, 'r') as f:
-        mails = re_cache['top_exp'].split(f.read())
-        return [email.message_from_string(m) for m in mails if m is not '']
+    box = mailbox.mbox(filename, create=False)
+    return box.values()
 
 def split_references(refs):
     return re_cache['msg_id'].findall(refs)
