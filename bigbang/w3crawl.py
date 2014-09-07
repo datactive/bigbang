@@ -37,11 +37,11 @@ class W3cMailingListArchivesParser(email.parser.Parser):
     subject = unicode(soup.select('h1')[0].get_text()).encode('utf-8')
     msg['Subject'] = subject
     
-    message_id = self._parse_dfn_header(unicode(soup.select('#message-id')[0].get_text()).encode('utf-8'))
-    msg['Message-ID'] = message_id
+    message_id = self._parse_dfn_header(unicode(soup.select('#message-id')[0].get_text().strip()).encode('utf-8'))
+    msg['Message-ID'] = message_id.strip()
     
-    message_date = self._parse_dfn_header(unicode(soup.select('#date')[0].get_text()).encode('utf-8'))
-    msg['Date'] = message_date
+    message_date = self._parse_dfn_header(unicode(soup.select('#date')[0].get_text().strip()).encode('utf-8'))
+    msg['Date'] = message_date.strip()
     
     mbox_message = mailbox.mboxMessage(msg)
     mbox_message.set_from(from_address, email.utils.parsedate(message_date))
