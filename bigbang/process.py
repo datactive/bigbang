@@ -6,6 +6,7 @@ import numpy as np
 import pytz
 #import pickle
 #import os
+import email.utils
 
 import Levenshtein
 from functools import partial
@@ -182,3 +183,8 @@ def sorted_lev(from_dataframe):
   new_df = df.reindex(index=new_columns, columns=new_columns)
   
   return new_df
+
+def domain_name_from_email(name):
+  address = email.utils.parseaddr(name)[1]
+  domain = address.split('@')[1]
+  return domain.lower()
