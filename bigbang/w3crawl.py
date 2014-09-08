@@ -22,14 +22,15 @@ class W3cMailingListArchivesParser(email.parser.Parser):
   # currently returns an mboxMessage, with appropriate From separator line
   # TODO: parse To, CC (Archived-At?, others?) headers
   # TODO: support headersonly option
+  # TODO: ignore spam (has separate error message in w3c archives)
   def parsestr(self, text, headersonly=None):
     soup = BeautifulSoup(text)
-    body = unicode(soup.select('#body')[0].get_text()).encode('utf-8')
+    body = self._text_for_selector(soup, '#body')
     msg = MIMEText(body,'plain','utf-8')
     
     from_text = self._parse_dfn_header(self._text_for_selector(soup, '#from'))
     from_name = from_text.split('<')[0].strip()
-    from_address = self._parse_dfn_header(self._text_for_selector(soup,'#from a'))
+    from_address = self._text_for_selector(soup,'#from a')
     
     from_addr = email.utils.formataddr((from_name, from_address))
     msg['From'] = from_addr
@@ -49,7 +50,12 @@ class W3cMailingListArchivesParser(email.parser.Parser):
     return mbox_message
     
   def _parse_dfn_header(self, header_text):
-    return header_text.split(':',1)[1]
+    header_texts = header_text.split(':',1)
+    if len(header_texts) == 2:
+      return header_texts[1]
+    else:
+      logging.warning("Split failed on %s", header_text)
+      return ''
   
   def _text_for_selector(self, soup, selector):
     results = soup.select(selector)
@@ -57,6 +63,7 @@ class W3cMailingListArchivesParser(email.parser.Parser):
       result = results[0].get_text()
     else:
       result = ''
+      logging.warning('No matching text for selector %s', selector)
     
     return unicode(result).encode('utf-8')
 
