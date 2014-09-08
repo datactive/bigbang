@@ -5,18 +5,27 @@ import pandas as pd
 import pytz
 
 
+def load(path):
+    data = pd.read_csv(path)
+    return Archive(data)
+
 class Archive:
     """
     A representation of a mailing list archive.
     """
 
-    messages = None
     data = None
     activity = None
 
-    def __init__(self, messages):
-        self.messages = messages
-        self.data = self.messages_to_dataframe(messages)
+    def __init__(self, data):
+        if type(data) is list:
+            self.data = self.messages_to_dataframe(data)
+        elif type(date) is pandas.core.frame.DataFrame:
+            self.data = data
+        elif type(data) is str:
+            ## should this laod from path or collect from web?
+            ## or check one and do the other if not available?
+            print "TODO: Implement initialization from string"
 
     # turn a list of parsed messages into
     # a dataframe of message data, indexed
@@ -50,11 +59,11 @@ class Archive:
 
     def get_activity(self):
         if self.activity is None:
-            self.activity = self.compute_activity(self.messages)
+            self.activity = self.compute_activity(self)
 
         return self.activity
 
-    def compute_activity(self,messages,clean=True):
+    def compute_activity(self,clean=True):
         mdf = self.data
 
         if clean:
@@ -73,3 +82,6 @@ class Archive:
         activity = activity.reindex(new_date_range,fill_value=0)
 
         return activity
+
+    def save(self,path):
+        self.data.to_csv(path,",")
