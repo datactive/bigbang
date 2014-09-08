@@ -13,6 +13,7 @@ import email.parser
 import mailbox
 import time
 import mailman
+import dateutil
 
 class W3cMailingListArchivesParser(email.parser.Parser):
   parse = None
@@ -91,6 +92,16 @@ def collect_from_url(url,base_arch_dir="archives"):
       html = response.read()    
       soup = BeautifulSoup(html)
       
+      end_date_string = soup.select('#end')[0].parent.parent.select('em')[0].get_text()
+      end_date = dateutil.parser.parse(end_date_string)
+      year_month_mbox = end_date.strftime('%Y-%m') + '.mbox'
+      mbox_path = os.path.join(arc_dir, year_month_mbox)
+      
+      if os.path.isfile(mbox_path): # looks like we've already downloaded this timeperiod
+        logging.info('Looks like %s already exists, moving on.' % mbox_path)
+        continue
+      logging.info('Downloading messages to archive to %s.' % mbox_path)
+      
       message_links = list()
       messages = list()
       
@@ -108,8 +119,6 @@ def collect_from_url(url,base_arch_dir="archives"):
         messages.append(message)
         time.sleep(1) # wait between loading messages, for politeness
       
-      year_month_mbox = time.strftime('%Y-%m', email.utils.parsedate(messages[0]['Date'])) + '.mbox'
-      mbox_path = os.path.join(arc_dir, year_month_mbox)
       mbox = mailbox.mbox(mbox_path)
       mbox.lock()
       
