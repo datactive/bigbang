@@ -1,5 +1,6 @@
 from bigbang.parse import get_date
 import datetime
+import mailman
 import numpy as np
 import pandas as pd
 import pytz
@@ -17,15 +18,14 @@ class Archive:
     data = None
     activity = None
 
-    def __init__(self, data):
+    def __init__(self, data,archive_dir="archives"):
         if type(data) is list:
             self.data = self.messages_to_dataframe(data)
-        elif type(date) is pandas.core.frame.DataFrame:
+        elif type(data) is pd.core.frame.DataFrame:
             self.data = data
         elif type(data) is str:
-            ## should this laod from path or collect from web?
-            ## or check one and do the other if not available?
-            print "TODO: Implement initialization from string"
+            messages = mailman.open_list_archives(data,base_arc_dir=archive_dir)
+            self.data= self.messages_to_dataframe(messages)
 
     # turn a list of parsed messages into
     # a dataframe of message data, indexed
