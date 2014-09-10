@@ -1,9 +1,8 @@
 from nose.tools import *
 import bigbang.parse as parse
 import os
+import bigbang.archive as archive
 import bigbang.mailman as mailman
-import bigbang.process as process
-
 
 test_txt = ""
 
@@ -35,12 +34,12 @@ def test_mailman_chain():
     mailman.collect_from_url(url)
     mailman.unzip_archive(url)
 
-    ml = mailman.open_list_archives(url,"archives")
+    arx = archive.Archive(url)
 
-    dates, froms, broke = process.process_messages(ml)
-    assert len(dates) == len(froms)
-    assert len(broke) == 0
-    
-    process.activity(ml)
+    arx.save("test.csv")
 
-    assert True
+    arx2 = archive.load("test.csv")
+
+    assert arx.data.shape == arx.data.shape
+
+    os.remove("test.csv")
