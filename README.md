@@ -1,14 +1,14 @@
-# bigbang
+# BigBang
 =======
 
-Bigbang is a toolkit for studying communications data from collaborative projects.
+BigBang is a toolkit for studying communications data from collaborative projects.
 
 The focus of the early milestones will be on mailing list or listserve analysis,
   with a focus on Mailman and Sourceforge mail archives, as well as .mbox files.
 
 ## Installation
 
-Big Bang uses a lot of SciPy packages that use native (e.g. C) code.
+BigBang uses a lot of SciPy packages that use native (e.g. C) code.
 This complicates installation.
 
 There are two package management systems you can use for installing Python projects.
