@@ -1,6 +1,7 @@
 from bigbang.parse import get_date
 import datetime
 import mailman
+import mailbox
 import numpy as np
 import pandas as pd
 import pytz
@@ -18,13 +19,21 @@ class Archive:
     data = None
     activity = None
 
-    def __init__(self, data,archive_dir="archives"):
+    def __init__(self, data,archive_dir="archives",mbox=False):
         if type(data) is list:
             self.data = self.messages_to_dataframe(data)
         elif type(data) is pd.core.frame.DataFrame:
             self.data = data
         elif type(data) is str:
-            messages = mailman.open_list_archives(data,base_arc_dir=archive_dir)
+            messages = None
+
+            if mbox:
+                # treat string as the path to a file that is an mbox
+                box = mailbox.mbox(data, create=False)
+                messages = box.values()
+            else:
+                # assume string is the path to a directory with many  
+                messages = mailman.open_list_archives(data,base_arc_dir=archive_dir)
             self.data= self.messages_to_dataframe(messages)
 
     # turn a list of parsed messages into
