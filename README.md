@@ -29,6 +29,7 @@ The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution w
 3. Run this script to install the dependencies
 
     ``cd bigbang``
+    
     ``bash conda-setup.sh``
 ``
 
