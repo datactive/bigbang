@@ -18,7 +18,9 @@ I recommend using conda for installation. You can also use pip.
 
 The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution which comes with scientific packages pre-installed and the ``conda`` package management system.
 
-1. Clone this repo
+1. Clone this repository:
+
+    ``git clone git@github.com:sbenthall/bigbang.git``
 
 2. Make a new conda environment called ``bigbang``
 
@@ -26,11 +28,9 @@ The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution w
 
 3. Run this script to install the dependencies
 
+    ``cd bigbang``
     ``bash conda-setup.sh``
-
-4. Now install the local package, editable, using pip
-
-   ``pip install -e .``
+``
 
 You should be good to go.
 
