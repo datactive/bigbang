@@ -66,6 +66,7 @@ BigBang is presently an environment for scientific exploration of mailing list d
 The best way to learn about how to use BigBang is to look at the I Python notebook examples provided in this repository.
 In the home directory of this repository, run:
 
+    source activate bigbang
     ipython notebook examples/
 
 and play around.
