@@ -3,3 +3,4 @@ http://mail.scipy.org/pipermail/ipython-user/
 http://mail.scipy.org/pipermail/scipy-dev/
 http://mail.scipy.org/pipermail/scipy-user/
 http://mail.scipy.org/pipermail/numpy-discussion/
+http://www.ietf.org/mail-archive/text/ietf-privacy/
