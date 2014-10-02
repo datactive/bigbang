@@ -2,6 +2,7 @@ from bigbang.parse import get_date
 import pandas as pd
 import datetime
 import numpy as np
+import email.utils
 
 import Levenshtein
 from functools import partial
@@ -58,9 +59,10 @@ def minimum_but_not_self(column, dataframe):
 simple_lev_distance = Levenshtein.distance
 
 def lev_distance_normalized(a,b):
-  stop_characters = '"<>'
-  a_normal = a.lower().translate(None, stop_characters)
-  b_normal = b.lower().translate(None, stop_characters)
+  stop_characters = unicode('"<>')
+  stop_characters_map = dict((ord(char), None) for char in stop_characters)
+  a_normal = a.lower().translate(stop_characters_map)
+  b_normal = b.lower().translate(stop_characters_map)
   return Levenshtein.distance(a_normal, b_normal)
 
 def sorted_lev(from_dataframe):
