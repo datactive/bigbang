@@ -15,6 +15,16 @@ w3c_archives_exp = re.compile('lists\.w3\.org')
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
 
+
+def collect_from_url(url):
+    url = url.rstrip()
+    mailman.collect_from_url(url)
+    mailman.unzip_archive(url)
+
+def collect_from_file(urls_file):
+    for url in open(urls_file):
+        collect_from_url(url)
+
 def get_list_name(url):
     url = url.rstrip()
 

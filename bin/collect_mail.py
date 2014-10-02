@@ -5,15 +5,6 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-def collect_from_url(url):
-    url = url.rstrip()
-    mailman.collect_from_url(url)
-    mailman.unzip_archive(url)
-
-def collect_from_file(urls_file):
-    for url in open(urls_file):
-        collect_from_url(url)
-
 def main(argv):
     inputfile = ''
     outputfile = ''
@@ -39,10 +30,10 @@ def main(argv):
 
     for opt, arg in opts:
         if opt == '-u':
-            collect_from_url(arg)
+            mailman.collect_from_url(arg)
             sys.exit()
         elif opt == '-f':
-            collect_from_file(arg)
+            mailman.collect_from_file(arg)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
