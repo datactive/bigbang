@@ -90,8 +90,3 @@ In the home directory of this repository, run:
     ipython notebook examples/
 
 and play around.
-
-## Usage
-
-BigBang supports data collection from public mailing lists and data analysis.
-
