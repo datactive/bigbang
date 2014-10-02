@@ -1,6 +1,9 @@
 import sys, getopt
 import bigbang.mailman as mailman
 from pprint import pprint as pp
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 def collect_from_url(url):
     url = url.rstrip()
