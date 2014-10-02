@@ -1,5 +1,6 @@
 -e .
 
+coverage
 matplotlib
 networkx
 nose
