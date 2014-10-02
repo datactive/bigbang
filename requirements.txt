@@ -1,5 +1,6 @@
 -e .
 
+bs4
 coverage
 matplotlib
 networkx

@@ -1,3 +1,4 @@
+beautiful-soup
 coverage
 matplotlib
 networkx
