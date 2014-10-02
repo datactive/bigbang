@@ -11,6 +11,12 @@ def load(path):
     data = pd.read_csv(path)
     return Archive(data)
 
+class MissingDataException(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+
 class Archive:
     """
     A representation of a mailing list archive.
@@ -34,6 +40,10 @@ class Archive:
             else:
                 # assume string is the path to a directory with many  
                 messages = mailman.open_list_archives(data,base_arc_dir=archive_dir)
+
+                if len(messages) == 0:
+                    raise MissingDataException("No messages in %s under %s. Did you run the collect_mail.py script?" % (archive_dir,data))
+
             self.data= self.messages_to_dataframe(messages)
 
     # turn a list of parsed messages into
