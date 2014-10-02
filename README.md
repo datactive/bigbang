@@ -14,19 +14,23 @@ This complicates installation.
 There are two package management systems you can use for installing Python projects.
 I recommend using conda for installation. You can also use pip.
 
+You will need to install [Graphviz](http://www.graphviz.org/) separately, as this is currently not supportedcross-platform either by pip or Anaconda.
+
 ### conda installation
 
 The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution which comes with scientific packages pre-installed and the ``conda`` package management system.
 
-1. Clone this repository:
+1. Install [Graphviz](http://www.graphviz.org/) based on the website's instructions for your operating system.
+
+2. Clone this repository:
 
     ``git clone git@github.com:sbenthall/bigbang.git``
 
-2. Make a new conda environment called ``bigbang``
+3. Make a new conda environment called ``bigbang``
 
     ``conda create -n bigbang python``
 
-3. Run this script to install the dependencies
+4. Run this script to install the dependencies
 
     ``cd bigbang``
     
@@ -59,7 +63,22 @@ When you think you've got what you need installed, follow these instructions:
 4. `cd` into the directory of the cloned repo and run
 
     `python setup.py develop `
- 
+
+### Collecting from Mailman
+
+BigBang comes with a script for collecting files from public Mailman web archives. And example of this is the [scipy-dev](http://mail.scipy.org/pipermail/scipy-dev/) mailing list page.
+
+From the directory of the this checked out repository (i.e. you may need to `cd bigbang`), you can collect the archives from a web URL with the following command:
+
+    python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+
+You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
+
+    python bin/collect_mail.py -f examples/urls.txt
+
+Once the data has been collected, BigBang has functions to support analysis.
+
+
 ## Using BigBang
 
 BigBang is presently an environment for scientific exploration of mailing list data.
@@ -76,16 +95,3 @@ and play around.
 
 BigBang supports data collection from public mailing lists and data analysis.
 
-### Collecting from Mailman
-
-BigBang comes with a script for collecting files from public Mailman web archives. And example of this is the [scipy-dev](http://mail.scipy.org/pipermail/scipy-dev/) mailing list page.
-
-From the directory of the this checked out repository, you can collect the archives from a web URL with the following command:
-
-    `python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/`
-
-You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
-
-    `python bin/collect_mail.py -f examples/urls.txt`
-
-Once the data has been collected, BigBang has functions to support analysis.
