@@ -2,12 +2,15 @@
 
 bs4
 coverage
+ipython
+jinja2
 matplotlib
 networkx
 nose
-pytz
 numpy
 pandas
-ipython
 python-dateutil
 python-Levenshtein
+pytz
+pyzmq
+tornado
