@@ -1,5 +1,4 @@
 # BigBang
-=======
 
 BigBang is a toolkit for studying communications data from collaborative projects.
 
@@ -35,7 +34,6 @@ The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution w
     ``cd bigbang``
     
     ``bash conda-setup.sh``
-``
 
 You should be good to go.
 
@@ -83,8 +81,7 @@ Once the data has been collected, BigBang has functions to support analysis.
 
 BigBang is presently an environment for scientific exploration of mailing list data.
 
-The best way to learn about how to use BigBang is to look at the I Python notebook examples provided in this repository.
-In the home directory of this repository, run:
+The best way to learn about how to use BigBang is to look at the I Python notebook examples provided in this repository. In the home directory of this repository, run:
 
     source activate bigbang
     ipython notebook examples/
