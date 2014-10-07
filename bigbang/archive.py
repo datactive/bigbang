@@ -25,15 +25,34 @@ class Archive:
     data = None
     activity = None
 
-    def __init__(self, data,archive_dir="archives",mbox=False):
+    def __init__(self, data,archive_dir="archives",single_file=False):
+        """
+        Initializes an Archive object.
+
+        The behavior of the constructor depends on the type
+        of its first argument, data.
+
+        If data is a list, then it is treated as am iterator of messages,
+        as parsed by the mailman.mbox class in the Python standard library.
+
+        If data is a Pandas DataFrame, it is treated as a representation of
+        email messages with columns for Message-ID, From, Date, In-Reply-To,
+        References, and Body. The created Archive becomes a wrapper around a
+        copy of the input DataFrame.
+
+        If data is a string, then it is interpreted as a path to either a
+        single .mbox file (if the optional argument single_file is True) or else
+        to a directory of .mbox files (also in .mbox format). Note that the
+        file extensions need not be .mbox; frequently they will be .txt. 
+        """
         if type(data) is list:
             self.data = self.messages_to_dataframe(data)
         elif type(data) is pd.core.frame.DataFrame:
-            self.data = data
+            self.data = data.copy()
         elif type(data) is str:
             messages = None
 
-            if mbox:
+            if single_file:
                 # treat string as the path to a file that is an mbox
                 box = mailbox.mbox(data, create=False)
                 messages = box.values()

@@ -3,6 +3,7 @@ import urllib
 import gzip
 import re
 import os
+import mailbox
 import parse
 from pprint import pprint as pp
 import w3crawl
@@ -107,8 +108,9 @@ def open_list_archives(url,base_arc_dir="archives"):
             if any([fn.endswith(extension) for extension in file_extensions])]
 
     print 'Opening %d archive files' % (len(txts))
-    arch = [parse.open_mail_archive(txt) for txt in txts]
+    arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
 
     messages = [item for sublist in arch for item in sublist]
     return messages
+
 
