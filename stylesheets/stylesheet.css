@@ -85,7 +85,7 @@ header h2 {
 }
 
 header img { 
-  float:right;
+  float:left;
   padding:10px;
   width:70px
 }
