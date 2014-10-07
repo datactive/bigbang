@@ -43,7 +43,10 @@ class Archive:
         If data is a string, then it is interpreted as a path to either a
         single .mbox file (if the optional argument single_file is True) or else
         to a directory of .mbox files (also in .mbox format). Note that the
-        file extensions need not be .mbox; frequently they will be .txt. 
+        file extensions need not be .mbox; frequently they will be .txt.
+
+        Upon initialization, the Archive object drops duplicate entries
+        and sorts its member variable *data* by Date.
         """
         if type(data) is list:
             self.data = self.messages_to_dataframe(data)
@@ -64,6 +67,14 @@ class Archive:
                     raise MissingDataException("No messages in %s under %s. Did you run the collect_mail.py script?" % (archive_dir,data))
 
             self.data= self.messages_to_dataframe(messages)
+            self.data.drop_duplicates(inplace=True)
+
+            # Drops any entries with no Date field.
+            # It may be wiser to optionally 
+            # do interpolation here.
+            self.data.dropna(subset=['Date'],inplace=True)
+
+            self.data.sort(columns='Date',inplace=True)
 
     # turn a list of parsed messages into
     # a dataframe of message data, indexed
