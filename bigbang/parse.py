@@ -25,8 +25,11 @@ def clean_mid(mid):
 
 def clean_from(m_from):
     try:
-        return re_cache['msg_from'].findall(m_from)[0]
+        #import pdb; pdb.set_trace()
+        #return re_cache['msg_from'].findall(m_from)[0]
+        return m_from[m_from.index("(") + 1:m_from.rindex(")")]
     except IndexError:
+        print("No change of 'from'")
         return m_from
 
 def get_date(message):
