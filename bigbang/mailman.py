@@ -98,6 +98,17 @@ def unzip_archive(url,base_arc_dir="archives"):
 
 
 def open_list_archives(url,base_arc_dir="archives"):
+    """
+    Returns a list of all email messages contained in the specified directory.
+
+    The argument *url* here is taken to be the name of a subdirectory
+    of the directory specified in argument *base_arc_dir*.
+
+    This directory is expected to contain files with extensions .txt,
+    .mail, or .mbox. These files are all expected to be in mbox format--
+    i.e. a series of blocks of text starting with headers (colon-separated
+    key-value pairs) followed by an email body.
+    """
     list_name = get_list_name(url)
     arc_dir = archive_directory(base_arc_dir,list_name)
     
