@@ -19,12 +19,12 @@ mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
 
 def collect_from_url(url):
     url = url.rstrip()
-    mailman.collect_from_url(url)
-    mailman.unzip_archive(url)
+    collect_archive_from_url(url)
+    unzip_archive(url)
 
 def collect_from_file(urls_file):
     for url in open(urls_file):
-        collect_from_url(url)
+        collect_archive_from_url(url)
 
 def get_list_name(url):
     url = url.rstrip()
@@ -38,7 +38,7 @@ def archive_directory(base_dir,list_name):
     return arc_dir
 
 
-def collect_from_url(url,base_arch_dir="archives"):
+def collect_archive_from_url(url,base_arch_dir="archives"):
     list_name = get_list_name(url)
     pp("Getting archive page for %s" % list_name)
     
