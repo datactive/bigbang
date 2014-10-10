@@ -8,7 +8,7 @@ Mailman, or [.mbox][mbox] files.
 
 ## Installation
 
-BigBang depends on several scientific computing packages that you must first install on your system these include:
+BigBang depends on several scientific computing packages that you must first install on your system, which include:
 
 * [numpy](http://docs.scipy.org/doc/numpy/user/install.html)
 * [matplotlib](http://matplotlib.org/users/installing.html)
