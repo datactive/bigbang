@@ -6,8 +6,7 @@ import pytz
 
 re_cache = {
   'top_exp'     : re.compile("From .*\d\d\d\d\n"),
-  'msg_id'      : re.compile("<\S*@\S*>"),
-  'msg_from'    : re.compile("\(([^()]+)\)")
+  'msg_id'      : re.compile("<\S*@\S*>")
 }
 
 def split_references(refs):
@@ -24,14 +23,8 @@ def clean_mid(mid):
         return mid
 
 def clean_from(m_from):
-    try:
-        #import pdb; pdb.set_trace()
-        #return re_cache['msg_from'].findall(m_from)[0]
-        return m_from[m_from.index("(") + 1:m_from.rindex(")")]
-    except IndexError:
-        print("No change of 'from'")
-        return m_from
-
+    return m_from[m_from.index("(") + 1:m_from.rindex(")")]
+    
 def get_date(message):
     ds = message.get('Date')
     try:
