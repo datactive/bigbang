@@ -33,7 +33,7 @@ using either `conda` or `pip`.
 
 Run the following commands:
 
-    git clone git@github.com:sbenthall/bigbang.git
+    git clone https://github.com/sbenthall/bigbang.git
     conda create -n bigbang python
     cd bigbang
     bash conda-setup.sh
@@ -42,7 +42,7 @@ Run the following commands:
 
 Run the following commands:
 
-    git clone git@github.com:sbenthall/bigbang.git
+    git clone https://github.com/sbenthall/bigbang.git
     # optionally create a new virtualenv here
     pip install -r requirements.txt
     python setup.py develop
