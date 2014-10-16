@@ -30,7 +30,7 @@ def collect_from_url(url):
 
 def collect_from_file(urls_file):
     for url in open(urls_file):
-        collect_archive_from_url(url)
+        collect_from_url(url)
 
 def get_list_name(url):
     try:
