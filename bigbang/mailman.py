@@ -64,8 +64,15 @@ def collect_archive_from_url(url,base_arch_dir="archives"):
         if not os.path.isfile(result_path):
             gz_url = url + res
             pp('retrieving %s' % gz_url)
-            info = urllib.urlretrieve(gz_url,result_path)
-            print info
+            resp = urllib2.urlopen(gz_url)
+            if resp.getcode() == 200:
+                print("200 - writing file to %s" % (result_path))
+                output = open(result_path,'wb')
+                output.write(resp.read())
+                output.close()
+            else:
+                print("%s error code trying to retrieve %s" %
+                      (str(resp.getcode(),gz_url)))
 
 def unzip_archive(url,base_arc_dir="archives"):
     arc_dir = archive_directory(base_arc_dir,get_list_name(url))
