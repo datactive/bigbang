@@ -16,6 +16,12 @@ w3c_archives_exp = re.compile('lists\.w3\.org')
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
 
+class InvalidURLException(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+
 
 def collect_from_url(url):
     url = url.rstrip()
@@ -27,9 +33,12 @@ def collect_from_file(urls_file):
         collect_archive_from_url(url)
 
 def get_list_name(url):
-    url = url.rstrip()
+    try:
+        url = url.rstrip()
 
-    return ml_exp.search(url).groups()[0]
+        return ml_exp.search(url).groups()[0]
+    except AttributeError:
+        raise InvalidURLException("No mailing list name found at %s" % url)
 
 def archive_directory(base_dir,list_name):
     arc_dir = os.path.join(base_dir,list_name)
