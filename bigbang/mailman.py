@@ -4,9 +4,9 @@ import gzip
 import re
 import os
 import mailbox
-import parse
+from . import parse
 from pprint import pprint as pp
-import w3crawl
+from . import w3crawl
 
 ml_exp = re.compile('/([\w-]*)/$')
 
@@ -16,9 +16,12 @@ w3c_archives_exp = re.compile('lists\.w3\.org')
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
 
+
 class InvalidURLException(Exception):
+
     def __init__(self, value):
         self.value = value
+
     def __str__(self):
         return repr(self.value)
 
@@ -28,9 +31,11 @@ def collect_from_url(url):
     collect_archive_from_url(url)
     unzip_archive(url)
 
+
 def collect_from_file(urls_file):
     for url in open(urls_file):
         collect_from_url(url)
+
 
 def get_list_name(url):
     try:
@@ -40,53 +45,55 @@ def get_list_name(url):
     except AttributeError:
         raise InvalidURLException("No mailing list name found at %s" % url)
 
-def archive_directory(base_dir,list_name):
-    arc_dir = os.path.join(base_dir,list_name)
+
+def archive_directory(base_dir, list_name):
+    arc_dir = os.path.join(base_dir, list_name)
     if not os.path.exists(arc_dir):
         os.makedirs(arc_dir)
     return arc_dir
 
 
-def collect_archive_from_url(url,base_arch_dir="archives"):
+def collect_archive_from_url(url, base_arch_dir="archives"):
     list_name = get_list_name(url)
     pp("Getting archive page for %s" % list_name)
-    
+
     if w3c_archives_exp.search(url):
-      return w3crawl.collect_from_url(url, base_arch_dir)
+        return w3crawl.collect_from_url(url, base_arch_dir)
 
     response = urllib2.urlopen(url)
     html = response.read()
 
     results = []
     for exp in mailing_list_path_expressions:
-      results.extend(exp.findall(html))
+        results.extend(exp.findall(html))
 
     pp(results)
 
     # directory for downloaded files
-    arc_dir = archive_directory(base_arch_dir,list_name)
+    arc_dir = archive_directory(base_arch_dir, list_name)
 
-    # download monthly archives   
+    # download monthly archives
     for res in results:
-        result_path = os.path.join(arc_dir,res)
-        #this check is redundant with urlretrieve
+        result_path = os.path.join(arc_dir, res)
+        # this check is redundant with urlretrieve
         if not os.path.isfile(result_path):
             gz_url = url + res
             pp('retrieving %s' % gz_url)
             resp = urllib2.urlopen(gz_url)
             if resp.getcode() == 200:
                 print("200 - writing file to %s" % (result_path))
-                output = open(result_path,'wb')
+                output = open(result_path, 'wb')
                 output.write(resp.read())
                 output.close()
             else:
                 print("%s error code trying to retrieve %s" %
-                      (str(resp.getcode(),gz_url)))
+                      (str(resp.getcode(), gz_url)))
 
-def unzip_archive(url,base_arc_dir="archives"):
-    arc_dir = archive_directory(base_arc_dir,get_list_name(url))
 
-    gzs = [os.path.join(arc_dir,fn) for fn
+def unzip_archive(url, base_arc_dir="archives"):
+    arc_dir = archive_directory(base_arc_dir, get_list_name(url))
+
+    gzs = [os.path.join(arc_dir, fn) for fn
            in os.listdir(arc_dir)
            if fn.endswith('.txt.gz')]
 
@@ -94,13 +101,13 @@ def unzip_archive(url,base_arc_dir="archives"):
 
     for gz in gzs:
         try:
-            f = gzip.open(gz,'rb')
+            f = gzip.open(gz, 'rb')
             content = f.read()
             f.close()
 
             txt_fn = str(gz[:-3])
 
-            f2 = open(txt_fn,'w')
+            f2 = open(txt_fn, 'w')
             f2.write(content)
             f2.close()
         except Exception as e:
@@ -110,10 +117,10 @@ def unzip_archive(url,base_arc_dir="archives"):
 # datetime.datetime.strptime('2000-November',"%Y-%B")
 
 # This doesn't yet work for parsing the dates. Because of %z Bullshit
-#datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
+# datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
 
 
-def open_list_archives(url,base_arc_dir="archives"):
+def open_list_archives(url, base_arc_dir="archives"):
     """
     Returns a list of all email messages contained in the specified directory.
 
@@ -126,11 +133,11 @@ def open_list_archives(url,base_arc_dir="archives"):
     key-value pairs) followed by an email body.
     """
     list_name = get_list_name(url)
-    arc_dir = archive_directory(base_arc_dir,list_name)
-    
+    arc_dir = archive_directory(base_arc_dir, list_name)
+
     file_extensions = [".txt", ".mail", ".mbox"]
 
-    txts = [os.path.join(arc_dir,fn) for fn
+    txts = [os.path.join(arc_dir, fn) for fn
             in os.listdir(arc_dir)
             if any([fn.endswith(extension) for extension in file_extensions])]
 
@@ -139,5 +146,3 @@ def open_list_archives(url,base_arc_dir="archives"):
 
     messages = [item for sublist in arch for item in sublist]
     return messages
-
-
