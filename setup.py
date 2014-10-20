@@ -10,10 +10,17 @@ config = {
     'download_url': 'Where to download it.',
     'author_email': 'sb@ischool.berkeley.edu',
     'version': '0.1',
-    'install_requires': ['nose','networkx','pydot','pytz','python-dateutil','numpy','matplotlib','pandas'],
+    'install_requires': [
+        'nose',
+        'networkx',
+        'pydot',
+        'pytz',
+        'python-dateutil',
+        'numpy',
+        'matplotlib',
+        'pandas'],
     'packages': ['bigbang'],
     'scripts': [],
-    'name': 'BigBang'
-}
+    'name': 'BigBang'}
 
 setup(**config)

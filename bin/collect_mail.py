@@ -1,15 +1,17 @@
-import sys, getopt
+import sys
+import getopt
 import bigbang.mailman as mailman
 from pprint import pprint as pp
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 def main(argv):
     inputfile = ''
     outputfile = ''
     try:
-        opts, args = getopt.getopt(argv,"u:f:")
+        opts, args = getopt.getopt(argv, "u:f:")
     except getopt.GetoptError as e:
         print 'GetoptError: %s' % (e)
         sys.exit(2)
@@ -36,4 +38,4 @@ def main(argv):
             mailman.collect_from_file(arg)
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+    main(sys.argv[1:])
