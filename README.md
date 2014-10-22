@@ -46,7 +46,7 @@ Run the following commands:
 
 ```bash
 $git clone https://github.com/sbenthall/bigbang.git
-$# optionally create a new virtualenv here
+# optionally create a new virtualenv here
 $pip install -r requirements.txt
 $python setup.py develop
 ```
