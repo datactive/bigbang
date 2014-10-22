@@ -33,19 +33,23 @@ using either `conda` or `pip`.
 
 Run the following commands:
 
-    git clone https://github.com/sbenthall/bigbang.git
-    conda create -n bigbang python
-    cd bigbang
-    bash conda-setup.sh
+```bash
+$ git clone https://github.com/sbenthall/bigbang.git
+$ conda create -n bigbang python
+$ cd bigbang
+$ bash conda-setup.sh
+```
 
 ### pip installation
 
 Run the following commands:
 
-    git clone https://github.com/sbenthall/bigbang.git
-    # optionally create a new virtualenv here
-    pip install -r requirements.txt
-    python setup.py develop
+```bash
+$ git clone https://github.com/sbenthall/bigbang.git
+# optionally create a new virtualenv here
+$ pip install -r requirements.txt
+$ python setup.py develop
+```
 
 ## Usage
 
@@ -53,8 +57,10 @@ There are serveral IPython notebooks in the `examples/` directory of this
 repository. To open them and begin exploring, run the following commands in the
 root directory of this repository:
 
-    source activate bigbang
-    ipython notebook examples/
+```bash
+$ source activate bigbang
+$ ipython notebook examples/
+```
 
 ### Collecting from Mailman
 
@@ -64,11 +70,15 @@ archives. An example of this is the
 collect the archives of the scipy-dev mailing list, run the following command
 from the root directory of this repository:
 
-    python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+```bash
+$ python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
-    python bin/collect_mail.py -f examples/urls.txt
+```bash
+$ python bin/collect_mail.py -f examples/urls.txt
+```
 
 Once the data has been collected, BigBang has functions to support analysis.
 
