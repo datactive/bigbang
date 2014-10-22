@@ -58,8 +58,8 @@ repository. To open them and begin exploring, run the following commands in the
 root directory of this repository:
 
 ```bash
-$source activate bigbang
-$ipython notebook examples/
+$ source activate bigbang
+$ ipython notebook examples/
 ```
 
 ### Collecting from Mailman
