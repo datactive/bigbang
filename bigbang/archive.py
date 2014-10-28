@@ -1,6 +1,6 @@
 from bigbang.parse import get_date
 import datetime
-from . import mailman
+import mailman
 import mailbox
 import numpy as np
 import pandas as pd

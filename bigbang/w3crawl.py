@@ -12,7 +12,7 @@ import email
 import email.parser
 import mailbox
 import time
-from . import mailman
+import mailman
 import dateutil
 
 
