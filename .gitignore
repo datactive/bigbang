@@ -51,3 +51,9 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Ignore the archive files
+./archives/*
+
+# Ignore the git repos for the git_data
+./git_data/sample_git_repos/*
+./git_data/sample_git_repos/
