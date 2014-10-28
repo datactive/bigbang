@@ -1,0 +1,5 @@
+{
+    "npm": "sample_git_repos/npm", 
+    "scipy": "sample_git_repos/scipy", 
+    "django": "sample_git_repos/django"
+}
