@@ -3,23 +3,20 @@ import email
 import re
 import dateutil.parser as dp
 import pytz
-import mailbox
 
 re_cache = {
-  'top_exp'     : re.compile("From .*\d\d\d\d\n"),
-  'msg_id'      : re.compile("<\S*@\S*>"),
-  'msg_from'    : re.compile("\(([^()]+)\)")
+    'top_exp': re.compile("From .*\d\d\d\d\n"),
+    'msg_id': re.compile("<\S*@\S*>")
 }
 
-def open_mail_archive(filename):
-    box = mailbox.mbox(filename, create=False)
-    return box.values()
 
 def split_references(refs):
     return re_cache['msg_id'].findall(refs)
 
+
 def get_refs(refs):
     return re_cache['msg_id'].findall(refs)
+
 
 def clean_mid(mid):
     try:
@@ -28,19 +25,18 @@ def clean_mid(mid):
         print mid
         return mid
 
+
 def clean_from(m_from):
-    try:
-        return re_cache['msg_from'].findall(m_from)[0]
-    except IndexError:
-        return m_from
+    return m_from[m_from.index("(") + 1:m_from.rindex(")")]
+
 
 def get_date(message):
     ds = message.get('Date')
     try:
         # some mail clients add a parenthetical timezone
-        ds = re.sub("\(.*$","",ds)
-        ds = re.sub("--","-",ds)
-        ds = re.sub(" Hora.*$","",ds)
+        ds = re.sub("\(.*$", "", ds)
+        ds = re.sub("--", "-", ds)
+        ds = re.sub(" Hora.*$", "", ds)
 
         date = dp.parse(ds)
 
@@ -50,12 +46,12 @@ def get_date(message):
 
         return date
     except TypeError:
-        print "Date parsing error on: " 
+        print "Date parsing error on: "
         print ds
-        
+
         return None
     except ValueError:
-        print "Date parsing error on: " 
+        print "Date parsing error on: "
         print ds
-        
+
         return None

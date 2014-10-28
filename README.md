@@ -1,91 +1,87 @@
 # BigBang
-=======
 
-BigBang is a toolkit for studying communications data from collaborative projects.
+BigBang is a toolkit for studying communications data from collaborative
+projects. It currently supports analyzing mailing lists from Sourceforge,
+Mailman, or [.mbox][mbox] files.
 
-The focus of the early milestones will be on mailing list or listserve analysis,
-  with a focus on Mailman and Sourceforge mail archives, as well as .mbox files.
+[mbox]: http://tools.ietf.org/html/rfc4155
 
 ## Installation
 
-BigBang uses a lot of SciPy packages that use native (e.g. C) code.
-This complicates installation.
-
-There are two package management systems you can use for installing Python projects.
-I recommend using conda for installation. You can also use pip.
-
-### conda installation
-
-The [Anaconda](https://store.continuum.io/cshop/anaconda/) Python distribution which comes with scientific packages pre-installed and the ``conda`` package management system.
-
-1. Clone this repository:
-
-    ``git clone git@github.com:sbenthall/bigbang.git``
-
-2. Make a new conda environment called ``bigbang``
-
-    ``conda create -n bigbang python``
-
-3. Run this script to install the dependencies
-
-    ``cd bigbang``
-    
-    ``bash conda-setup.sh``
-``
-
-You should be good to go.
-
-### pip installation
-
-You're going to have to manually install a bunch of programs if you do it this way. 
-You can try following [these instructions](http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/) for installing various Scientific Python packages using Homebrew and pip.
-
-These are some of the packages you will need to install. You can discover others ones you will need be seeing where pip chokes.
+BigBang depends on several scientific computing packages that you must first install on your system, which include:
 
 * [numpy](http://docs.scipy.org/doc/numpy/user/install.html)
 * [matplotlib](http://matplotlib.org/users/installing.html)
 * [graphviz](http://www.graphviz.org/)
 
-When you think you've got what you need installed, follow these instructions:
 
-1. Clone this repo.
+You can use the [Anaconda](http://tools.ietf.org/html/rfc4155) distribution to
+install `numpy` and `matplotlib` on almost any platform. This will also install
+the `conda` package management system, which you can use to complete
+installation. **Note** that Anaconda does not include Graphviz, so you will
+have to install that separately.
 
-2. (Optional) Make a new virtualenv.
+If you choose not to use Anaconda, you will have to install each of the
+above-mentioned packages for your platform. If you're using OS X [these instructions][osx] may be helpful.
 
-3. Install the remaining dependencies to the virtual environment using pip.
+[osx]: http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/
 
-    ``pip install -r requirements.txt``
+Once these dependencies are installed, you can install BigBang
+using either `conda` or `pip`.
 
-4. `cd` into the directory of the cloned repo and run
+### conda installation
 
-    `python setup.py develop `
- 
-## Using BigBang
+Run the following commands:
 
-BigBang is presently an environment for scientific exploration of mailing list data.
+```bash
+git clone https://github.com/sbenthall/bigbang.git
+conda create -n bigbang python
+cd bigbang
+bash conda-setup.sh
+```
 
-The best way to learn about how to use BigBang is to look at the I Python notebook examples provided in this repository.
-In the home directory of this repository, run:
+### pip installation
 
-    source activate bigbang
-    ipython notebook examples/
+Run the following commands:
 
-and play around.
+```bash
+git clone https://github.com/sbenthall/bigbang.git
+# optionally create a new virtualenv here
+pip install -r requirements.txt
+python setup.py develop
+```
 
 ## Usage
 
-BigBang supports data collection from public mailing lists and data analysis.
+There are serveral IPython notebooks in the `examples/` directory of this
+repository. To open them and begin exploring, run the following commands in the
+root directory of this repository:
+
+```bash
+source activate bigbang
+ipython notebook examples/
+```
 
 ### Collecting from Mailman
 
-BigBang comes with a script for collecting files from public Mailman web archives. And example of this is the [scipy-dev](http://mail.scipy.org/pipermail/scipy-dev/) mailing list page.
+BigBang comes with a script for collecting files from public Mailman web
+archives. An example of this is the
+[scipy-dev](http://mail.scipy.org/pipermail/scipy-dev/) mailing list page. To
+collect the archives of the scipy-dev mailing list, run the following command
+from the root directory of this repository:
 
-From the directory of the this checked out repository, you can collect the archives from a web URL with the following command:
-
-    `python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/`
+```bash
+python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
-    `python bin/collect_mail.py -f examples/urls.txt`
+```bash
+python bin/collect_mail.py -f examples/urls.txt
+```
 
 Once the data has been collected, BigBang has functions to support analysis.
+
+## License
+
+GPLv2, see LICENSE for its text.

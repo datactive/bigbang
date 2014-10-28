@@ -1,3 +1,5 @@
+beautiful-soup
+coverage
 matplotlib
 networkx
 nose
