@@ -4,9 +4,9 @@ import gzip
 import re
 import os
 import mailbox
-from . import parse
+import parse
 from pprint import pprint as pp
-from . import w3crawl
+import w3crawl
 
 ml_exp = re.compile('/([\w-]*)/$')
 
