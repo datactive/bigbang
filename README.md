@@ -90,7 +90,7 @@ A new branch of BigBang is collecting git commit information for projects. We ca
 
 As of now, the git collection clones targeted repos into '<./git_data/sample_git_repos>' which can take some time. After cloning these repos, &Repo.py& will collect information from these them. It works very similarly to mail collection. While in the bigbang directory, run
 
-``bash
+```bash
 python bin/collect_git.py -u https://github.com/scipy/scipy.git
 ```
 
