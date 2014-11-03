@@ -1,3 +1,4 @@
+from bigbang.parse import get_date
 import urllib2
 import urllib
 import gzip
@@ -5,6 +6,7 @@ import re
 import os
 import mailbox
 import parse
+import pandas as pd
 from pprint import pprint as pp
 import w3crawl
 
@@ -26,10 +28,26 @@ class InvalidURLException(Exception):
         return repr(self.value)
 
 
+class MissingDataException(Exception):
+
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
 def collect_from_url(url):
     url = url.rstrip()
     collect_archive_from_url(url)
     unzip_archive(url)
+    data = open_list_archives(url)
+
+    # hard coding the archives directory in too many places
+    # need to push this default to a configuration file
+    path = os.path.join("archives",get_list_name(url) + ".csv")
+    data.to_csv(path, ",")
+
 
 
 def collect_from_file(urls_file):
@@ -120,7 +138,7 @@ def unzip_archive(url, base_arc_dir="archives"):
 # datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
 
 
-def open_list_archives(url, base_arc_dir="archives"):
+def open_list_archives(url, base_arc_dir="archives", single_file=False):
     """
     Returns a list of all email messages contained in the specified directory.
 
@@ -132,17 +150,66 @@ def open_list_archives(url, base_arc_dir="archives"):
     i.e. a series of blocks of text starting with headers (colon-separated
     key-value pairs) followed by an email body.
     """
-    list_name = get_list_name(url)
-    arc_dir = archive_directory(base_arc_dir, list_name)
 
-    file_extensions = [".txt", ".mail", ".mbox"]
+    messages = None
 
-    txts = [os.path.join(arc_dir, fn) for fn
-            in os.listdir(arc_dir)
-            if any([fn.endswith(extension) for extension in file_extensions])]
+    if single_file:
+        # treat string as the path to a file that is an mbox
+        box = mailbox.mbox(data, create=False)
+        messages = box.values()
+    else:
+        # assume string is the path to a directory with many
 
-    print 'Opening %d archive files' % (len(txts))
-    arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
+        list_name = get_list_name(url)
+        arc_dir = archive_directory(base_arc_dir, list_name)
 
-    messages = [item for sublist in arch for item in sublist]
-    return messages
+        file_extensions = [".txt", ".mail", ".mbox"]
+
+        txts = [os.path.join(arc_dir, fn) for fn
+                in os.listdir(arc_dir)
+                if any([fn.endswith(extension) for extension in file_extensions])]
+
+        print 'Opening %d archive files' % (len(txts))
+        arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
+
+        messages = [item for sublist in arch for item in sublist]
+
+        if len(messages) == 0:
+            raise MissingDataException(
+                ("No messages in %s under %s. Did you run the "
+                 "collect_mail.py script?") %
+                (archive_dir, data))
+
+    return messages_to_dataframe(messages)
+
+
+def messages_to_dataframe(messages):
+    """
+    Turn a list of parsed messages into a dataframe of message data,
+    indexed by message-id, with column-names from headers.
+
+    """
+    # extract data into a list of tuples -- records -- with
+    # the Message-ID separated out as an index
+    pm = [(m.get('Message-ID'),
+           (m.get('From'),
+            m.get('Subject'),
+            get_date(m),
+            m.get('In-Reply-To'),
+            m.get('References'),
+            m.get_payload()))
+          for m in messages if m.get('Message-ID')]
+
+    ids, records = zip(*pm)
+
+    mdf = pd.DataFrame.from_records(list(records),
+                                    index=list(ids),
+                                    columns=['From',
+                                             'Subject',
+                                             'Date',
+                                             'In-Reply-To',
+                                             'References',
+                                             'Body'])
+    mdf.index.name = 'Message-ID'
+
+    return mdf

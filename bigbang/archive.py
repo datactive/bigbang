@@ -1,4 +1,3 @@
-from bigbang.parse import get_date
 import datetime
 import mailman
 import mailbox
@@ -10,15 +9,6 @@ import pytz
 def load(path):
     data = pd.read_csv(path)
     return Archive(data)
-
-
-class MissingDataException(Exception):
-
-    def __init__(self, value):
-        self.value = value
-
-    def __str__(self):
-        return repr(self.value)
 
 
 class Archive:
@@ -37,9 +27,6 @@ class Archive:
         The behavior of the constructor depends on the type
         of its first argument, data.
 
-        If data is a list, then it is treated as am iterator of messages,
-        as parsed by the mailman.mbox class in the Python standard library.
-
         If data is a Pandas DataFrame, it is treated as a representation of
         email messages with columns for Message-ID, From, Date, In-Reply-To,
         References, and Body. The created Archive becomes a wrapper around a
@@ -53,30 +40,15 @@ class Archive:
         Upon initialization, the Archive object drops duplicate entries
         and sorts its member variable *data* by Date.
         """
-        if isinstance(data, list):
-            self.data = self.messages_to_dataframe(data)
-        elif isinstance(data, pd.core.frame.DataFrame):
+
+        if isinstance(data, pd.core.frame.DataFrame):
             self.data = data.copy()
         elif isinstance(data, str):
-            messages = None
 
-            if single_file:
-                # treat string as the path to a file that is an mbox
-                box = mailbox.mbox(data, create=False)
-                messages = box.values()
-            else:
-                # assume string is the path to a directory with many
-                messages = mailman.open_list_archives(
+            self.data = mailman.open_list_archives(
                     data,
-                    base_arc_dir=archive_dir)
+                    base_arc_dir=archive_dir, single_file=single_file)
 
-                if len(messages) == 0:
-                    raise MissingDataException(
-                        ("No messages in %s under %s. Did you run the "
-                         "collect_mail.py script?") %
-                        (archive_dir, data))
-
-            self.data = self.messages_to_dataframe(messages)
             self.data.drop_duplicates(inplace=True)
 
             # Drops any entries with no Date field.
@@ -86,6 +58,7 @@ class Archive:
 
             self.data.sort(columns='Date', inplace=True)
 
+            """
     # turn a list of parsed messages into
     # a dataframe of message data, indexed
     # by message-id, with column-names from
@@ -115,6 +88,7 @@ class Archive:
         mdf.index.name = 'Message-ID'
 
         return mdf
+            """
 
     def get_activity(self):
         if self.activity is None:
