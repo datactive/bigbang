@@ -10,7 +10,7 @@ repo_urls = json.load(LOCALS);
 
 def get_repo(name):
 	if name in repo_urls:
-		repo = GitRepo(NBPATH + repo_urls[name])
+		repo = GitRepo("../" + repo_urls[name])
 		return repo
 	else:
 		return None;

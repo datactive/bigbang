@@ -17,10 +17,10 @@ def main(argv):
         sys.exit(2)
 
     for opt, arg in opts:
-        if opt == '-u':
+        if opt == '-f':
             loadByFile(arg);
             sys.exit()
-        elif opt == '-f':
+        elif opt == '-u':
             loadByURL(arg);
 
 def loadByFile(filePath):
