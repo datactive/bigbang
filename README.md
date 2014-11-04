@@ -82,6 +82,24 @@ python bin/collect_mail.py -f examples/urls.txt
 
 Once the data has been collected, BigBang has functions to support analysis.
 
+## Git Information
+
+A new branch of BigBang is collecting git commit information for projects. We can analyze a project using both its mail and gir information to answer new questions about development.
+
+### Collecting git information
+
+As of now, the git collection clones targeted repos into '<./git_data/sample_git_repos>' which can take some time. After cloning these repos, &Repo.py& will collect information from these them. It works very similarly to mail collection. While in the bigbang directory, run
+
+```bash
+python bin/collect_git.py -u https://github.com/scipy/scipy.git
+```
+
+You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
+
+```bash
+python bin/collect_mail.py -f examples/git_urls.txt
+```
+
 ## License
 
 GPLv2, see LICENSE for its text.
