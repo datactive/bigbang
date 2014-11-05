@@ -37,7 +37,7 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
-def load_data(name):
+def load_data(name,archive_dir="archives"):
     """
     Loads the data associated with an archive name, given
     as a string.
@@ -52,7 +52,7 @@ def load_data(name):
 
     # a first pass at detecting if the string is a URL...
     if not name.startswith("http://"):
-        path = os.path.join("archives",name + ".csv")
+        path = os.path.join(archive_dir,name + ".csv")
 
         if os.path.exists(path):
             data = pd.read_csv(path)
@@ -60,7 +60,7 @@ def load_data(name):
         else:
             print "No data available at %s" % (path)
     else:
-        path = os.path.join("archives",get_list_name(url) + ".csv")
+        path = os.path.join(archive_dir,get_list_name(name) + ".csv")
 
         if os.path.exists(path):
             data = pd.read_csv(path)
@@ -68,10 +68,10 @@ def load_data(name):
         else:
             print "No data found at %s. Attempting to collect data from URL."
             print "This could take a while."
-            return collect_from_url(url)
+            return collect_from_url(url,archives_dir=archives_dir)
             
 
-def collect_from_url(url):
+def collect_from_url(url,archive_dir="archives"):
     url = url.rstrip()
     collect_archive_from_url(url)
     unzip_archive(url)
@@ -79,7 +79,7 @@ def collect_from_url(url):
 
     # hard coding the archives directory in too many places
     # need to push this default to a configuration file
-    path = os.path.join("archives",get_list_name(url) + ".csv")
+    path = os.path.join(archives_dir,get_list_name(url) + ".csv")
     data.to_csv(path, ",")
 
     return data
