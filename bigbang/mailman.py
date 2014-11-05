@@ -82,6 +82,7 @@ def collect_from_url(url):
     path = os.path.join("archives",get_list_name(url) + ".csv")
     data.to_csv(path, ",")
 
+    return data
 
 
 def collect_from_file(urls_file):
