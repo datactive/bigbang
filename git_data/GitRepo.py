@@ -11,14 +11,12 @@ repo relative to this file. It returns the data in multiple useful forms.
 """
 class GitRepo:
 
-	
 	""" A pandas DataFrame object indexed by time that stores
 	the raw form of the repo's commit data as a table where 
 	each row is a commit and each col represents an attribute 
 	of that commit (time, message, commiter name, committer email,
 	commit hexsha)
 	"""
-	
 
 	def __init__(self, url):
 		self.repo = None;
