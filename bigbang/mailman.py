@@ -37,6 +37,40 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
+def load_data(name):
+    """
+    Loads the data associated with an archive name, given
+    as a string.
+
+    Attempts to open {archives-directory}/NAME.csv as data.
+
+    Failing that, if the the name is a URL, it will try to derive
+    the list name from that URL and load the .csv again.
+
+    Failing that, it will collect the data from the web and create the CSV archive.
+    """
+
+    # a first pass at detecting if the string is a URL...
+    if not name.startswith("http://"):
+        path = os.path.join("archives",name + ".csv")
+
+        if os.path.exists(path):
+            data = pd.read_csv(path)
+            return data
+        else:
+            print "No data available at %s" % (path)
+    else:
+        path = os.path.join("archives",get_list_name(url) + ".csv")
+
+        if os.path.exists(path):
+            data = pd.read_csv(path)
+            return data
+        else:
+            print "No data found at %s. Attempting to collect data from URL."
+            print "This could take a while."
+            return collect_from_url(url)
+            
+
 def collect_from_url(url):
     url = url.rstrip()
     collect_archive_from_url(url)
