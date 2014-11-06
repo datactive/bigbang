@@ -37,14 +37,13 @@ def test_split_references():
 def test_mailman_chain():
     url = "http://mail.scipy.org/pipermail/ipython-dev/"
 
-    mailman.collect_from_url(url)
-    mailman.unzip_archive(url)
-
     arx = archive.Archive(url)
 
     arx.save("test.csv")
 
     arx2 = archive.load("test.csv")
+
+    arx3 = archive.Archive("ipython-dev")
 
     assert arx.data.shape == arx.data.shape
 
