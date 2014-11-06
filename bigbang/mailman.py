@@ -66,9 +66,9 @@ def load_data(name,archive_dir="archives"):
             data = pd.read_csv(path)
             return data
         else:
-            print "No data found at %s. Attempting to collect data from URL."
+            print "No data found at %s. Attempting to collect data from URL." % (name)
             print "This could take a while."
-            return collect_from_url(url,archives_dir=archives_dir)
+            return collect_from_url(name,archive_dir=archive_dir)
             
 
 def collect_from_url(url,archive_dir="archives"):
