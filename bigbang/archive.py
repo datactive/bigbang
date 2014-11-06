@@ -47,7 +47,7 @@ class Archive:
 
             self.data = mailman.load_data(data,archive_dir=archive_dir)
 
-            self.data['Date'] = pd.to_datetime(self.data['Date'])
+            self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
 
             self.data.drop_duplicates(inplace=True)
 
