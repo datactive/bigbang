@@ -14,3 +14,4 @@ python-Levenshtein
 pytz
 pyzmq
 tornado
+scipy
