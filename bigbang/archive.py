@@ -58,37 +58,6 @@ class Archive:
 
             self.data.sort(columns='Date', inplace=True)
 
-            """
-    # turn a list of parsed messages into
-    # a dataframe of message data, indexed
-    # by message-id, with column-names from
-    # headers
-    def messages_to_dataframe(self, messages):
-        # extract data into a list of tuples -- records -- with
-        # the Message-ID separated out as an index
-        pm = [(m.get('Message-ID'),
-               (m.get('From'),
-                m.get('Subject'),
-                get_date(m),
-                m.get('In-Reply-To'),
-                m.get('References'),
-                m.get_payload()))
-              for m in messages if m.get('Message-ID')]
-
-        ids, records = zip(*pm)
-
-        mdf = pd.DataFrame.from_records(list(records),
-                                        index=list(ids),
-                                        columns=['From',
-                                                 'Subject',
-                                                 'Date',
-                                                 'In-Reply-To',
-                                                 'References',
-                                                 'Body'])
-        mdf.index.name = 'Message-ID'
-
-        return mdf
-            """
 
     def get_activity(self):
         if self.activity is None:
