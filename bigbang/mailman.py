@@ -51,7 +51,7 @@ def load_data(name,archive_dir="archives"):
     """
 
     # a first pass at detecting if the string is a URL...
-    if not name.startswith("http://"):
+    if not (name.startswith("http://") or name.startswith("https://")):
         path = os.path.join(archive_dir,name + ".csv")
 
         if os.path.exists(path):
