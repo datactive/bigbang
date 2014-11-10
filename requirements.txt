@@ -1,6 +1,6 @@
 -e .
 
-bs4
+beautifulsoup4
 coverage
 ipython
 jinja2
