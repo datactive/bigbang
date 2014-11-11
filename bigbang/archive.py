@@ -62,6 +62,9 @@ class Archive:
             #convert any null fields to None -- csv saves these as nan sometimes
             self.data = self.data.where(pd.notnull(self.data),None)
 
+            #set the index to be the Message-ID column
+            self.data.set_index('Message-ID',inplace=True)
+
             self.data.sort(columns='Date', inplace=True)
 
 
