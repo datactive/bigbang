@@ -73,6 +73,8 @@ class Node:
         self.prop = dict()
 
     def clean_message(self, mess):
+        if mess is None:
+            mess = ''
         mess.split('\n')
         message = list()
         for l in mess.split('\n'):
