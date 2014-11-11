@@ -51,7 +51,7 @@ def load_data(name,archive_dir="archives",mbox=False):
     """
 
     if mbox:
-        return open_list_archives(name, archive_dir="archives", mbox=True)
+        return open_list_archives(name, archive_dir=archive_dir, mbox=True)
 
     # a first pass at detecting if the string is a URL...
     if not (name.startswith("http://") or name.startswith("https://")):
@@ -193,7 +193,7 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
 
     if mbox:
         # treat string as the path to a file that is an mbox
-        box = mailbox.mbox(data, create=False)
+        box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
         messages = box.values()
     else:
         # assume string is the path to a directory with many

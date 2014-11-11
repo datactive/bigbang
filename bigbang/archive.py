@@ -50,22 +50,26 @@ class Archive:
 
             self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
 
-            self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
+        self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
 
-            self.data.drop_duplicates(inplace=True)
+        self.data.drop_duplicates(inplace=True)
 
-            # Drops any entries with no Date field.
-            # It may be wiser to optionally
-            # do interpolation here.
-            self.data.dropna(subset=['Date'], inplace=True)
+        # Drops any entries with no Date field.
+        # It may be wiser to optionally
+        # do interpolation here.
+        self.data.dropna(subset=['Date'], inplace=True)
 
-            #convert any null fields to None -- csv saves these as nan sometimes
-            self.data = self.data.where(pd.notnull(self.data),None)
+        #convert any null fields to None -- csv saves these as nan sometimes
+        self.data = self.data.where(pd.notnull(self.data),None)
 
+        try:
             #set the index to be the Message-ID column
             self.data.set_index('Message-ID',inplace=True)
+        except KeyError:
+            #will get KeyError if Message-ID is already index
+            pass
 
-            self.data.sort(columns='Date', inplace=True)
+        self.data.sort(columns='Date', inplace=True)
 
 
     def get_activity(self):
