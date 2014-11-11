@@ -37,7 +37,7 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
-def load_data(name,archive_dir="archives"):
+def load_data(name,archive_dir="archives",mbox=False):
     """
     Loads the data associated with an archive name, given
     as a string.
@@ -49,6 +49,9 @@ def load_data(name,archive_dir="archives"):
 
     Failing that, it will collect the data from the web and create the CSV archive.
     """
+
+    if mbox:
+        return open_list_archives(name, archive_dir="archives", mbox=True)
 
     # a first pass at detecting if the string is a URL...
     if not (name.startswith("http://") or name.startswith("https://")):
@@ -106,12 +109,12 @@ def archive_directory(base_dir, list_name):
     return arc_dir
 
 
-def collect_archive_from_url(url, base_arch_dir="archives"):
+def collect_archive_from_url(url, archive_dir="archives"):
     list_name = get_list_name(url)
     pp("Getting archive page for %s" % list_name)
 
     if w3c_archives_exp.search(url):
-        return w3crawl.collect_from_url(url, base_arch_dir)
+        return w3crawl.collect_from_url(url, archive_dir)
 
     response = urllib2.urlopen(url)
     html = response.read()
@@ -123,7 +126,7 @@ def collect_archive_from_url(url, base_arch_dir="archives"):
     pp(results)
 
     # directory for downloaded files
-    arc_dir = archive_directory(base_arch_dir, list_name)
+    arc_dir = archive_directory(archive_dir, list_name)
 
     # download monthly archives
     for res in results:
@@ -143,8 +146,8 @@ def collect_archive_from_url(url, base_arch_dir="archives"):
                       (str(resp.getcode(), gz_url)))
 
 
-def unzip_archive(url, base_arc_dir="archives"):
-    arc_dir = archive_directory(base_arc_dir, get_list_name(url))
+def unzip_archive(url, archive_dir="archives"):
+    arc_dir = archive_directory(archive_dir, get_list_name(url))
 
     gzs = [os.path.join(arc_dir, fn) for fn
            in os.listdir(arc_dir)
@@ -173,12 +176,12 @@ def unzip_archive(url, base_arc_dir="archives"):
 # datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
 
 
-def open_list_archives(url, base_arc_dir="archives", single_file=False):
+def open_list_archives(url, archive_dir="archives", mbox=False):
     """
     Returns a list of all email messages contained in the specified directory.
 
     The argument *url* here is taken to be the name of a subdirectory
-    of the directory specified in argument *base_arc_dir*.
+    of the directory specified in argument *archive_dir*.
 
     This directory is expected to contain files with extensions .txt,
     .mail, or .mbox. These files are all expected to be in mbox format--
@@ -188,7 +191,7 @@ def open_list_archives(url, base_arc_dir="archives", single_file=False):
 
     messages = None
 
-    if single_file:
+    if mbox:
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(data, create=False)
         messages = box.values()
@@ -196,7 +199,7 @@ def open_list_archives(url, base_arc_dir="archives", single_file=False):
         # assume string is the path to a directory with many
 
         list_name = get_list_name(url)
-        arc_dir = archive_directory(base_arc_dir, list_name)
+        arc_dir = archive_directory(archive_dir, list_name)
 
         file_extensions = [".txt", ".mail", ".mbox"]
 

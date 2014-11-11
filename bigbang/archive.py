@@ -23,7 +23,7 @@ class Archive:
     activity = None
     threads = None
 
-    def __init__(self, data, archive_dir="archives", single_file=False):
+    def __init__(self, data, archive_dir="archives", mbox=False):
         """
         Initializes an Archive object.
 
@@ -48,7 +48,7 @@ class Archive:
             self.data = data.copy()
         elif isinstance(data, str):
 
-            self.data = mailman.load_data(data,archive_dir=archive_dir)
+            self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
 
             self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
 
