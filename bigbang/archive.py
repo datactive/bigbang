@@ -2,6 +2,8 @@ import datetime
 import mailman
 import mailbox
 import numpy as np
+from bigbang.thread import Thread
+from bigbang.thread import Node
 import pandas as pd
 import pytz
 
@@ -19,6 +21,7 @@ class Archive:
 
     data = None
     activity = None
+    threads = None
 
     def __init__(self, data, archive_dir="archives", single_file=False):
         """
@@ -56,6 +59,12 @@ class Archive:
             # do interpolation here.
             self.data.dropna(subset=['Date'], inplace=True)
 
+            #convert any null fields to None -- csv saves these as nan sometimes
+            self.data = self.data.where(pd.notnull(self.data),None)
+
+            #set the index to be the Message-ID column
+            self.data.set_index('Message-ID',inplace=True)
+
             self.data.sort(columns='Date', inplace=True)
 
 
@@ -87,6 +96,47 @@ class Archive:
         activity = activity.reindex(new_date_range, fill_value=0)
 
         return activity
+
+    def get_threads(self, verbose=False):
+
+        if self.threads is not None:
+            return self.threads
+
+        df = self.data
+
+        threads = list()
+        visited = dict()
+
+        total = df.shape[0]
+        c = 0
+
+        for i in df.iterrows():
+
+            if verbose:
+                c += 1
+                if c % 1000 == 0:
+                    print "Processed %d of %d" %(c,total)
+
+            if(i[1]['In-Reply-To'] is None):
+                root = Node(i[0], i[1])
+                visited[i[0]] = root
+                threads.append(Thread(root))
+            elif(i[1]['In-Reply-To'] not in visited.keys()):
+                root = Node(i[1]['In-Reply-To'])
+                succ = Node(i[0],i[1], root)
+                root.add_successor(succ)
+                visited[i[1]['In-Reply-To']] = root
+                visited[i[0]] = succ
+                threads.append(Thread(root, known_root=False))
+            else:
+                parent = visited[i[1]['In-Reply-To']]
+                node = Node(i[0],i[1], parent)
+                parent.add_successor(node)
+                visited[i[0]] = node
+
+        self.threads = threads
+
+        return threads
 
     def save(self, path):
         self.data.to_csv(path, ",")
