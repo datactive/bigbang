@@ -55,12 +55,16 @@ class GitRepo:
 
 	def commits_per_day(self):
 		ans = self.commit_data.groupby(self.commit_data.index).size()
-		ans = ans.resample("D", how=np.sum, fill_method = "bfill")
+		ans = ans.resample("D", how=np.sum)
 		return ans;
 
 	def commits_per_week(self):
 		ans = self.commits_per_day();
-		ans = ans.resample("W", how=np.sum, fill_method = "bfill")
+		ans = ans.resample("W", how=np.sum)
+		return ans;
+
+	def commits_per_day_full(self):
+		ans = self.commit_data.groupby([self.commit_data.index, "Committer Name" ]).size()
 		return ans;
 
 	@property

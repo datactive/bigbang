@@ -11,3 +11,4 @@ pandas
 pydot
 python-dateutil
 pip
+scipy
