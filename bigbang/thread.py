@@ -35,6 +35,27 @@ class Thread:
         l_time = sorted([i.data["Date"] for i in l])
         return l_time[len(l) - 1] - r.data["Date"]
 
+    def get_leaves(self):
+        if(self.known_root):
+            r = self.root
+        else:
+            r = self.root.get_successors()[0]
+        return r.properties()[2]
+
+    def get_not_leaves(self):
+        if(self.known_root):
+            r = self.root
+        else:
+            r = self.root.get_successors()[0]
+        return r.properties()[4]
+            
+    def get_content(self):
+        if(self.known_root):
+            r = self.root
+        else:
+            r = self.root.get_successors()[0]
+        return r.properties()[3]
+
 
 class Node:
 
@@ -50,6 +71,20 @@ class Node:
         self.data = data
         self.processed = False
         self.prop = dict()
+
+    def clean_message(self, mess):
+        if mess is None:
+            mess = ''
+        mess.split('\n')
+        message = list()
+        for l in mess.split('\n'):
+            n = len(l)
+            if(len(l)!=0 and l[0] != '>' and l[n-6:n] != 'wrote:'):
+                message.append(l)
+        new = str()
+        for l in message:
+            new = new + l + '\n'
+        return new
 
     def add_successor(self, successor):
         """Add a node which has a message that is a reply to this node"""
@@ -71,41 +106,22 @@ class Node:
         """Return Information in the data set about this message"""
         return self.parent
 
-    def properties2(self):
-        """Return various properties about the tree with this node as root."""
-        visited = set()
-        seen_email = set()
-
-        def explore(node):
-            num = 1
-            duration = 0
-            seen_email.add(self.data['From'])
-            visited.add(node)
-            for s in node.get_successors():
-                if(s not in visited):
-                    seen_email.add(s.data['From'])
-                    num += explore(s)
-            return num
-        if(not self.processed):
-            num_nodes = explore(self)
-            self.prop['num_nodes'] = num_nodes
-            self.prop['email_adrress'] = seen_email
-            self.processed = True
-        return [self.prop['num_nodes'], self.prop['email_adrress']]
-
     def properties(self):
         """Return various properties about the tree with this node as root."""
         visited = set()
         seen_email = set()
         leaves = []
-
+        not_leaves = []
+        content = []
         def explore(node):
             num = 1
             duration = 0
             seen_email.add(node.data['From'])
             visited.add(node)
+            content.append(self.clean_message(node.data['Body']))
             if(len(node.get_successors()) == 0):
                 leaves.append(node)
+            else: not_leaves.append(node)
             for s in node.get_successors():
                 if(s not in visited):
                     seen_email.add(s.data['From'])
@@ -116,8 +132,7 @@ class Node:
             self.prop['num_nodes'] = num_nodes
             self.prop['email_adrress'] = seen_email
             self.prop['leaves'] = leaves
-            self.processed = True
-        return [
-            self.prop['num_nodes'],
-            self.prop['email_adrress'],
-            self.prop['leaves']]
+            self.prop['content'] = content
+            self.prop['not_leaves'] = not_leaves
+            self.processed =  True
+        return [self.prop['num_nodes'], self.prop['email_adrress'], self.prop['leaves'], self.prop['content'], self.prop['not_leaves']]

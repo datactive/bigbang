@@ -1,8 +1,9 @@
-from bigbang.parse import get_date
 import datetime
 import mailman
 import mailbox
 import numpy as np
+from bigbang.thread import Thread
+from bigbang.thread import Node
 import pandas as pd
 import pytz
 
@@ -10,15 +11,6 @@ import pytz
 def load(path):
     data = pd.read_csv(path)
     return Archive(data)
-
-
-class MissingDataException(Exception):
-
-    def __init__(self, value):
-        self.value = value
-
-    def __str__(self):
-        return repr(self.value)
 
 
 class Archive:
@@ -29,16 +21,14 @@ class Archive:
 
     data = None
     activity = None
+    threads = None
 
-    def __init__(self, data, archive_dir="archives", single_file=False):
+    def __init__(self, data, archive_dir="archives", mbox=False):
         """
         Initializes an Archive object.
 
         The behavior of the constructor depends on the type
         of its first argument, data.
-
-        If data is a list, then it is treated as am iterator of messages,
-        as parsed by the mailman.mbox class in the Python standard library.
 
         If data is a Pandas DataFrame, it is treated as a representation of
         email messages with columns for Message-ID, From, Date, In-Reply-To,
@@ -53,68 +43,34 @@ class Archive:
         Upon initialization, the Archive object drops duplicate entries
         and sorts its member variable *data* by Date.
         """
-        if isinstance(data, list):
-            self.data = self.messages_to_dataframe(data)
-        elif isinstance(data, pd.core.frame.DataFrame):
+
+        if isinstance(data, pd.core.frame.DataFrame):
             self.data = data.copy()
         elif isinstance(data, str):
-            messages = None
 
-            if single_file:
-                # treat string as the path to a file that is an mbox
-                box = mailbox.mbox(data, create=False)
-                messages = box.values()
-            else:
-                # assume string is the path to a directory with many
-                messages = mailman.open_list_archives(
-                    data,
-                    base_arc_dir=archive_dir)
+            self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
 
-                if len(messages) == 0:
-                    raise MissingDataException(
-                        ("No messages in %s under %s. Did you run the "
-                         "collect_mail.py script?") %
-                        (archive_dir, data))
+        self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
 
-            self.data = self.messages_to_dataframe(messages)
-            self.data.drop_duplicates(inplace=True)
+        self.data.drop_duplicates(inplace=True)
 
-            # Drops any entries with no Date field.
-            # It may be wiser to optionally
-            # do interpolation here.
-            self.data.dropna(subset=['Date'], inplace=True)
+        # Drops any entries with no Date field.
+        # It may be wiser to optionally
+        # do interpolation here.
+        self.data.dropna(subset=['Date'], inplace=True)
 
-            self.data.sort(columns='Date', inplace=True)
+        #convert any null fields to None -- csv saves these as nan sometimes
+        self.data = self.data.where(pd.notnull(self.data),None)
 
-    # turn a list of parsed messages into
-    # a dataframe of message data, indexed
-    # by message-id, with column-names from
-    # headers
-    def messages_to_dataframe(self, messages):
-        # extract data into a list of tuples -- records -- with
-        # the Message-ID separated out as an index
-        pm = [(m.get('Message-ID'),
-               (m.get('From'),
-                m.get('Subject'),
-                get_date(m),
-                m.get('In-Reply-To'),
-                m.get('References'),
-                m.get_payload()))
-              for m in messages if m.get('Message-ID')]
+        try:
+            #set the index to be the Message-ID column
+            self.data.set_index('Message-ID',inplace=True)
+        except KeyError:
+            #will get KeyError if Message-ID is already index
+            pass
 
-        ids, records = zip(*pm)
+        self.data.sort(columns='Date', inplace=True)
 
-        mdf = pd.DataFrame.from_records(list(records),
-                                        index=list(ids),
-                                        columns=['From',
-                                                 'Subject',
-                                                 'Date',
-                                                 'In-Reply-To',
-                                                 'References',
-                                                 'Body'])
-        mdf.index.name = 'Message-ID'
-
-        return mdf
 
     def get_activity(self):
         if self.activity is None:
@@ -144,6 +100,47 @@ class Archive:
         activity = activity.reindex(new_date_range, fill_value=0)
 
         return activity
+
+    def get_threads(self, verbose=False):
+
+        if self.threads is not None:
+            return self.threads
+
+        df = self.data
+
+        threads = list()
+        visited = dict()
+
+        total = df.shape[0]
+        c = 0
+
+        for i in df.iterrows():
+
+            if verbose:
+                c += 1
+                if c % 1000 == 0:
+                    print "Processed %d of %d" %(c,total)
+
+            if(i[1]['In-Reply-To'] is None):
+                root = Node(i[0], i[1])
+                visited[i[0]] = root
+                threads.append(Thread(root))
+            elif(i[1]['In-Reply-To'] not in visited.keys()):
+                root = Node(i[1]['In-Reply-To'])
+                succ = Node(i[0],i[1], root)
+                root.add_successor(succ)
+                visited[i[1]['In-Reply-To']] = root
+                visited[i[0]] = succ
+                threads.append(Thread(root, known_root=False))
+            else:
+                parent = visited[i[1]['In-Reply-To']]
+                node = Node(i[0],i[1], parent)
+                parent.add_successor(node)
+                visited[i[0]] = node
+
+        self.threads = threads
+
+        return threads
 
     def save(self, path):
         self.data.to_csv(path, ",")

@@ -1,6 +1,6 @@
 -e .
 
-bs4
+beautifulsoup4
 coverage
 ipython
 jinja2
@@ -14,4 +14,3 @@ python-Levenshtein
 pytz
 pyzmq
 tornado
-scipy
