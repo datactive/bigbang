@@ -71,3 +71,14 @@ class GitRepo:
 	def commit_data(self):
 		return self._commit_data;
 
+	def commits_for_committer(self, committer_name):
+		full_info = self.commit_data
+		time_index = pd.DatetimeIndex(self.commit_data["Time"], periods = 24, freq = "H");
+
+		df = full_info.loc[full_info["Committer Name"] == committer_name]
+		df = df.groupby([df.index]).size()
+		df = df.resample("D", how = np.sum, axis = 0)
+
+		return df
+
+
