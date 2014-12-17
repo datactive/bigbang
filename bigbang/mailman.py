@@ -222,6 +222,33 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
 
     return messages_to_dataframe(messages)
 
+def get_text(msg):
+    import chardet
+    text = ""
+    if msg.is_multipart():
+        html = None
+        for part in msg.get_payload():
+            if part.get_content_charset() is None:
+                charset = chardet.detect(str(part))['encoding']
+            else:
+                charset = part.get_content_charset()
+            if part.get_content_type() == 'text/plain':
+                text = unicode(part.get_payload(decode=True),str(charset),"ignore").encode('utf8','replace')
+            if part.get_content_type() == 'text/html':
+                html = unicode(part.get_payload(decode=True),str(charset),"ignore").encode('utf8','replace')
+        if html is None:
+            return text.strip()
+        else:
+            import html2text
+            h = html2text.HTML2Text()
+            h.encoding = 'utf-8'
+            return h.handle(html.strip().decode('utf8'))
+    else:
+        if msg.get_content_charset() is None:
+            text = msg.get_payload()
+        else:
+            text = unicode(msg.get_payload(decode=True),msg.get_content_charset(),'ignore').encode('utf8','replace')
+        return text.strip()
 
 def messages_to_dataframe(messages):
     """
@@ -232,19 +259,17 @@ def messages_to_dataframe(messages):
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
     pm = [(m.get('Message-ID'),
-           (m.get('From'),
+           m.get('From'),
             m.get('Subject'),
             get_date(m),
             m.get('In-Reply-To'),
             m.get('References'),
-            m.get_payload()))
+            get_text(m))
           for m in messages if m.get('Message-ID')]
 
-    ids, records = zip(*pm)
-
-    mdf = pd.DataFrame.from_records(list(records),
-                                    index=list(ids),
-                                    columns=['From',
+    mdf = pd.DataFrame.from_records(list(pm),
+                                    index='Message-ID',
+                                    columns=['Message-ID', 'From',
                                              'Subject',
                                              'Date',
                                              'In-Reply-To',
