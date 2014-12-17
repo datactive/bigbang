@@ -46,12 +46,11 @@ class Archive:
 
         if isinstance(data, pd.core.frame.DataFrame):
             self.data = data.copy()
-        elif isinstance(data, str):
 
+        elif isinstance(data, str):
             self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
 
         self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
-
         self.data.drop_duplicates(inplace=True)
 
         # Drops any entries with no Date field.

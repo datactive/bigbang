@@ -1,4 +1,3 @@
-import email
 from bigbang.parse import get_date
 import urllib2
 import urllib
@@ -10,6 +9,7 @@ import parse
 import pandas as pd
 from pprint import pprint as pp
 import w3crawl
+import warnings
 
 ml_exp = re.compile('/([\w-]*)/$')
 
@@ -73,13 +73,13 @@ def load_data(name,archive_dir="archives",mbox=False):
             print "No data found at %s. Attempting to collect data from URL." % (name)
             print "This could take a while."
             return collect_from_url(name,archive_dir=archive_dir)
-            
+
 
 def collect_from_url(url,archive_dir="archives"):
     url = url.rstrip()
-    collect_archive_from_url(url,archive_dir)
-    unzip_archive(url,archive_dir)
-    data = open_list_archives(url,archive_dir)
+    collect_archive_from_url(url)
+    unzip_archive(url)
+    data = open_list_archives(url)
 
     # hard coding the archives directory in too many places
     # need to push this default to a configuration file
@@ -97,12 +97,15 @@ def collect_from_file(urls_file):
 # does nothing if it's not this kind of url
 # it would be better to catch these non-url cases earlier
 def get_list_name(url):
-    url = url.rstrip()
+    try:
+        url = url.rstrip()
 
     if ml_exp.search(url) is not None:
         return ml_exp.search(url).groups()[0]
-    else:
+    except AttributeError:
+        warnings.warn("No mailing list name found at %s" % url)
         return url
+
 
 def archive_directory(base_dir, list_name):
     arc_dir = os.path.join(base_dir, list_name)
@@ -207,7 +210,7 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
 
     messages = None
 
-    if mbox:
+    if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
         messages = box.values()
@@ -251,7 +254,7 @@ def messages_to_dataframe(messages):
             get_date(m),
             m.get('In-Reply-To'),
             m.get('References'),
-            recursive_get_payload(m)))
+            m.get_payload()))
           for m in messages if m.get('Message-ID')]
 
     ids, records = zip(*pm)
