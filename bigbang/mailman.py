@@ -93,15 +93,16 @@ def collect_from_file(urls_file):
     for url in open(urls_file):
         collect_from_url(url)
 
-
+# gets the 'list name' from a canonical mailman archive url
+# does nothing if it's not this kind of url
+# it would be better to catch these non-url cases earlier
 def get_list_name(url):
-    try:
-        url = url.rstrip()
+    url = url.rstrip()
 
+    if ml_exp.search(url) is not None:
         return ml_exp.search(url).groups()[0]
-    except AttributeError:
-        raise InvalidURLException("No mailing list name found at %s" % url)
-
+    else:
+        return url
 
 def archive_directory(base_dir, list_name):
     arc_dir = os.path.join(base_dir, list_name)
