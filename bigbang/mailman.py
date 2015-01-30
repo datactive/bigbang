@@ -1,3 +1,4 @@
+import email
 from bigbang.parse import get_date
 import urllib2
 import urllib
@@ -175,6 +176,20 @@ def unzip_archive(url, archive_dir="archives"):
 # This doesn't yet work for parsing the dates. Because of %z Bullshit
 # datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
 
+# x is a String, a Message, or a list of Messages
+# The payload of a Message may be a String, a Message, or a list of Messages.
+# OR maybe it's never just a Message, but always a list of them.
+def recursive_get_payload(x):
+    if isinstance(x,str):
+        return x
+    elif isinstance(x,list):
+        #return [recursive_get_payload(y) for y in x]
+        return recursive_get_payload(x[0])
+    elif isinstance(x,email.message.Message):
+        return recursive_get_payload(x.get_payload())
+    else:
+        print x
+        return None
 
 def open_list_archives(url, archive_dir="archives", mbox=False):
     """
@@ -235,7 +250,7 @@ def messages_to_dataframe(messages):
             get_date(m),
             m.get('In-Reply-To'),
             m.get('References'),
-            m.get_payload()))
+            recursive_get_payload(m)))
           for m in messages if m.get('Message-ID')]
 
     ids, records = zip(*pm)
