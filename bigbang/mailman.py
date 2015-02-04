@@ -77,9 +77,9 @@ def load_data(name,archive_dir="archives",mbox=False):
 
 def collect_from_url(url,archive_dir="archives"):
     url = url.rstrip()
-    collect_archive_from_url(url)
-    unzip_archive(url)
-    data = open_list_archives(url)
+    collect_archive_from_url(url,archive_dir)
+    unzip_archive(url,archive_dir)
+    data = open_list_archives(url,archive_dir)
 
     # hard coding the archives directory in too many places
     # need to push this default to a configuration file
