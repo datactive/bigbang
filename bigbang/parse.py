@@ -3,6 +3,7 @@ import email
 import re
 import dateutil.parser as dp
 import pytz
+import warnings
 
 re_cache = {
     'top_exp': re.compile("From .*\d\d\d\d\n"),
@@ -25,10 +26,20 @@ def clean_mid(mid):
         print mid
         return mid
 
-
+# returns the human name of a person extracted from 'from' field
+# based on heuristics 
 def clean_from(m_from):
-    return m_from[m_from.index("(") + 1:m_from.rindex(")")]
-
+    try:
+        if "(" in m_from:
+            return m_from[m_from.index("(") + 1:m_from.rindex(")")]
+        elif "<" in m_from:
+            # if m_from.index("<") > -1:
+            return m_from[0:m_from.index("<") - 1]
+        else:
+            return m_from
+    except ValueError:
+        warnings.warn("%s is hard to clean" % (m_from))
+        return m_from
 
 def get_date(message):
     ds = message.get('Date')
