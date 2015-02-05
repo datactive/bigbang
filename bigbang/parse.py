@@ -29,17 +29,22 @@ def clean_mid(mid):
 # returns the human name of a person extracted from 'from' field
 # based on heuristics 
 def clean_from(m_from):
+
+    cleaned = m_from
+
     try:
         if "(" in m_from:
-            return m_from[m_from.index("(") + 1:m_from.rindex(")")]
+            cleaned = m_from[m_from.index("(") + 1:m_from.rindex(")")]
         elif "<" in m_from:
             # if m_from.index("<") > -1:
-            return m_from[0:m_from.index("<") - 1]
-        else:
-            return m_from
+            cleaned = m_from[0:m_from.index("<") - 1]
+
     except ValueError:
         warnings.warn("%s is hard to clean" % (m_from))
-        return m_from
+
+    cleaned = cleaned.strip("\"")
+
+    return cleaned
 
 def get_date(message):
     ds = message.get('Date')
