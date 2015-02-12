@@ -15,7 +15,7 @@ BigBang depends on several scientific computing packages that you must first ins
 * [graphviz](http://www.graphviz.org/)
 
 
-You can use the [Anaconda](http://tools.ietf.org/html/rfc4155) distribution to
+You can use the [Anaconda](http://continuum.io/downloads) distribution to
 install `numpy` and `matplotlib` on almost any platform. This will also install
 the `conda` package management system, which you can use to complete
 installation. **Note** that Anaconda does not include Graphviz, so you will
