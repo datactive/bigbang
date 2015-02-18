@@ -28,10 +28,12 @@ class GitRepo:
 
 	def populate_data(self):
 		raw = dict()
+		raw["HEXSHA"] = list()
 		raw["Committer Name"] = list()
 		raw["Committer Email"] = list()
 		raw["Commit Message"] = list()
 		raw["Time"] = list()
+		raw["Parent Commit"] = list()
 
 
 		repo = Repo(self.url)
@@ -44,6 +46,8 @@ class GitRepo:
 				raw["Committer Email"].append(commit.committer.email)
 				raw["Commit Message"].append(commit.message)
 				raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
+				raw["Parent Commit"].append([par.hexsha for par in commit.parents])
+				raw["HEXSHA"].append(commit.hexsha)
 			except LookupError:
 				print("failed to add a commit because of an encoding error")
 
