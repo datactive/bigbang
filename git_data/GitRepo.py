@@ -37,6 +37,13 @@ class GitRepo:
 		raw["Parent Commit"] = list()
 
 
+		# raw["Added Paths"] = list();
+		# raw["Modified Paths"] = list();
+		# raw["Deleted Paths"] = list();
+		# raw["Renamed Paths"] = list();
+
+		raw["Touched File"] = list();
+
 
 		repo = self.repo
 		first = repo.commit()
@@ -52,6 +59,21 @@ class GitRepo:
 				raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
 				raw["Parent Commit"].append([par.hexsha for par in commit.parents])
 				raw["HEXSHA"].append(commit.hexsha)
+
+				diff_list = list();
+
+				for diff in commit.diff("HEAD~"):
+					if diff.b_blob:
+						diff_list.append(diff.b_blob.path);
+					else:
+						diff_list.append(diff.a_blob.path);
+
+				raw["Touched File"].append(diff_list)
+				# raw["Added Paths"].append( [d.b_blob.path for d in commit.diff("HEAD~").iter_change_type("A")] )
+				# raw["Modified Paths"].append( [d.b_blob.path for d in commit.diff("HEAD~").iter_change_type("M")] )
+				# raw["Deleted Paths"].append( [d for d in commit.diff("HEAD").iter_change_type("D")] )
+				# raw["Renamed Paths"].append( [d for d in commit.diff("HEAD").iter_change_type("R")] )
+
 				
 			except LookupError:
 				print("failed to add a commit because of an encoding error")
