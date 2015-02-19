@@ -19,10 +19,11 @@ class GitRepo:
 	"""
 
 	def __init__(self, url):
-		self.repo = None;
 		self._commit_data = None;
 		self.url = url;
+		self.repo = Repo(url)
 		self.populate_data()
+
 
 
 
@@ -36,10 +37,13 @@ class GitRepo:
 		raw["Parent Commit"] = list()
 
 
-		repo = Repo(self.url)
-		first = repo.commit();
+
+		repo = self.repo
+		first = repo.commit()
+		commit = first
 		firstHexSha = first.hexsha;
 		generator = git.Commit.iter_items(repo, firstHexSha);
+		
 		for commit in generator:
 			try: 
 				raw["Committer Name"].append(commit.committer.name)
@@ -48,6 +52,7 @@ class GitRepo:
 				raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
 				raw["Parent Commit"].append([par.hexsha for par in commit.parents])
 				raw["HEXSHA"].append(commit.hexsha)
+				
 			except LookupError:
 				print("failed to add a commit because of an encoding error")
 
