@@ -97,12 +97,11 @@ def collect_from_file(urls_file):
 # does nothing if it's not this kind of url
 # it would be better to catch these non-url cases earlier
 def get_list_name(url):
-    try:
-        url = url.rstrip()
+    url = url.rstrip()
 
     if ml_exp.search(url) is not None:
         return ml_exp.search(url).groups()[0]
-    except AttributeError:
+    else:
         warnings.warn("No mailing list name found at %s" % url)
         return url
 
