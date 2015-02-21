@@ -97,7 +97,7 @@ python bin/collect_git.py -u https://github.com/scipy/scipy.git
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python bin/collect_mail.py -f examples/git_urls.txt
+python bin/collect_git.py -f examples/git_urls.txt
 ```
 
 ## Community
