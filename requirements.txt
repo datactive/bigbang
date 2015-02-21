@@ -1,7 +1,9 @@
 -e .
 
 beautifulsoup4
+chardet
 coverage
+html2text
 ipython
 jinja2
 matplotlib
