@@ -53,6 +53,15 @@ class GitRepo:
 		
 		for commit in generator:
 			try: 
+				diff_list = list();
+
+				for diff in commit.diff(commit.parents[0]):
+					if diff.b_blob:
+						diff_list.append(diff.b_blob.path);
+					else:
+						diff_list.append(diff.a_blob.path);
+
+				raw["Touched File"].append(diff_list)
 				raw["Committer Name"].append(commit.committer.name)
 				raw["Committer Email"].append(commit.committer.email)
 				raw["Commit Message"].append(commit.message)
@@ -60,15 +69,8 @@ class GitRepo:
 				raw["Parent Commit"].append([par.hexsha for par in commit.parents])
 				raw["HEXSHA"].append(commit.hexsha)
 
-				diff_list = list();
+				
 
-				for diff in commit.diff("HEAD~"):
-					if diff.b_blob:
-						diff_list.append(diff.b_blob.path);
-					else:
-						diff_list.append(diff.a_blob.path);
-
-				raw["Touched File"].append(diff_list)
 				# raw["Added Paths"].append( [d.b_blob.path for d in commit.diff("HEAD~").iter_change_type("A")] )
 				# raw["Modified Paths"].append( [d.b_blob.path for d in commit.diff("HEAD~").iter_change_type("M")] )
 				# raw["Deleted Paths"].append( [d for d in commit.diff("HEAD").iter_change_type("D")] )
