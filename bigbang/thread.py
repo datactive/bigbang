@@ -1,3 +1,5 @@
+from bigbang.utils import clean_message
+
 class Thread:
 
     def __init__(self, root, known_root=True):
@@ -72,20 +74,6 @@ class Node:
         self.processed = False
         self.prop = dict()
 
-    def clean_message(self, mess):
-        if mess is None:
-            mess = ''
-        mess.split('\n')
-        message = list()
-        for l in mess.split('\n'):
-            n = len(l)
-            if(len(l)!=0 and l[0] != '>' and l[n-6:n] != 'wrote:'):
-                message.append(l)
-        new = str()
-        for l in message:
-            new = new + l + '\n'
-        return new
-
     def add_successor(self, successor):
         """Add a node which has a message that is a reply to this node"""
         self.successors.append(successor)
@@ -118,7 +106,7 @@ class Node:
             duration = 0
             seen_email.add(node.data['From'])
             visited.add(node)
-            content.append(self.clean_message(node.data['Body']))
+            content.append(clean_message(node.data['Body']))
             if(len(node.get_successors()) == 0):
                 leaves.append(node)
             else: not_leaves.append(node)
