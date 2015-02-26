@@ -141,5 +141,5 @@ class Archive:
 
         return threads
 
-    def save(self, path):
-        self.data.to_csv(path, ",")
+    def save(self, path,encoding='utf-8'):
+        self.data.to_csv(path, ",",encoding=encoding)
