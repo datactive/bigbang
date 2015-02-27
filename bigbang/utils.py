@@ -1,7 +1,7 @@
 def get_common_head(str1,str2,delimiter=None):
     try:
         if str1 is None or str2 is None:
-            return [], 0
+            return '', 0
         else:
             #this is ugly control flow clean it
             if delimiter is not None:
@@ -19,10 +19,10 @@ def get_common_head(str1,str2,delimiter=None):
                         #print list1[:i], list2[:i]
                         return str1[:i-1],i-1
 
-        return [], 0
+        return '', 0
     except Exception as e:
         print e
-        return [], 0
+        return '', 0
 
 # turn these into automated tests
 #print get_common_head('abcdefghijklmnop','abcde12345')

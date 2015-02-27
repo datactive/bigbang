@@ -6,6 +6,7 @@ from bigbang.thread import Thread
 from bigbang.thread import Node
 import pandas as pd
 import pytz
+import utils
 
 
 def load(path):
@@ -143,3 +144,44 @@ class Archive:
 
     def save(self, path,encoding='utf-8'):
         self.data.to_csv(path, ",",encoding=encoding)
+
+
+def find_footer(df,number=1):
+    '''
+    Returns the footer of a DataFrame of emails.
+    A footer is a string occurring at the tail of 
+    '''
+    srb = df.apply(lambda x: None if x['Body'] is None else x['Body'][::-1],
+                  axis=1).order()
+    # begin walking down the series looking for maximal overlap
+    counts = {}
+
+    last = None
+    last_i = None
+    current = None
+    for b in srb:
+        if last is None:
+            last = b
+            continue
+        elif b is None:
+            continue
+        else:
+            head,i = utils.get_common_head(b,last,delimiter='\n')
+            head = head[::-1]
+            last = b
+
+            if i in counts:
+                if head in counts[i]:
+                    counts[i][head] = counts[i][head] + 1
+                else:
+                    counts[i][head] = 1
+            else:
+                counts[i] = {head : 1}
+
+        last = b
+
+    candidates = map(lambda x: (x[0],x[1].strip()),
+                     sorted([(v2,k2,k1) for k1,v1 in counts.items()
+                             for k2,v2 in v1.items()],reverse=True))
+
+    return candidates[0:number]
