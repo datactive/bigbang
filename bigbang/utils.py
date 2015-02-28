@@ -50,5 +50,7 @@ def clean_message(mess):
     
     mess = remove_quoted(mess)
 
+    mess = mess.strip()
+
     return mess
 
