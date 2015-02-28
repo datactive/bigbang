@@ -13,11 +13,13 @@ def get_common_head(str1,str2,delimiter=None):
                     if dstr1[:i] != dstr2[:i]:
                         #print list1[:i], list2[:i]
                         return delimiter.join(dstr1[:i-1]),i-1
+                return str1,i
             else:
                 for i in range(len(str1)):
                     if str1[:i] != str2[:i]:
                         #print list1[:i], list2[:i]
                         return str1[:i-1],i-1
+                return str1[:i],i
 
         return '', 0
     except Exception as e:
