@@ -26,9 +26,11 @@ def clean_mid(mid):
         print mid
         return mid
 
-# returns the human name of a person extracted from 'from' field
-# based on heuristics 
 def clean_from(m_from):
+    """
+    Return a person's name extracted from 'From' field
+    of email, based on heuristics.
+    """
 
     cleaned = m_from
 
