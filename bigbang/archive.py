@@ -146,13 +146,18 @@ class Archive:
         self.data.to_csv(path, ",",encoding=encoding)
 
 
-def find_footer(df,number=1):
+def find_footer(messages,number=1):
     '''
     Returns the footer of a DataFrame of emails.
-    A footer is a string occurring at the tail of 
+    A footer is a string occurring at the tail of most messages.
+    Messages can be a DataFrame or a Series
     '''
-    srb = df.apply(lambda x: None if x['Body'] is None else x['Body'][::-1],
-                  axis=1).order()
+    if isinstance(messages,pd.DataFrame):
+        messages = messages['Body']
+
+    srb = messages.apply(lambda x: None if x is None else x[::-1]).order()
+    #srb = df.apply(lambda x: None if x['Body'] is None else x['Body'][::-1],
+    #              axis=1).order()
     # begin walking down the series looking for maximal overlap
     counts = {}
 
