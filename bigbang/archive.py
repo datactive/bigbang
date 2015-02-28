@@ -186,6 +186,14 @@ def find_footer(messages,number=1):
 
         last = b
 
+    # reduce candidates that are strictly longer and less frequent
+    # than most promising footer candidates
+    for n,foot1 in sorted([(v,k) for k,v in counts.items()],reverse=True):
+        for foot2, m in counts.items():
+            if n > m and foot1 in foot2 and len(foot1) > 0:
+                counts[foot1] = counts[foot1] + counts[foot2]
+                del counts[foot2]
+
     candidates = sorted([(v,k) for k,v in counts.items()],reverse=True)
 
     return candidates[0:number]
