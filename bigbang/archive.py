@@ -164,6 +164,10 @@ def find_footer(messages,number=1):
     last = None
     last_i = None
     current = None
+
+    def clean_footer(foot):
+        return foot.strip()
+
     for b in srb:
         if last is None:
             last = b
@@ -172,21 +176,16 @@ def find_footer(messages,number=1):
             continue
         else:
             head,i = utils.get_common_head(b,last,delimiter='\n')
-            head = head[::-1]
+            head = clean_footer(head[::-1])
             last = b
 
-            if i in counts:
-                if head in counts[i]:
-                    counts[i][head] = counts[i][head] + 1
-                else:
-                    counts[i][head] = 1
+            if head in counts:
+                counts[head] = counts[head] + 1
             else:
-                counts[i] = {head : 1}
+                counts[head] = 1
 
         last = b
 
-    candidates = map(lambda x: (x[0],x[1].strip()),
-                     sorted([(v2,k2,k1) for k1,v1 in counts.items()
-                             for k2,v2 in v1.items()],reverse=True))
+    candidates = sorted([(v,k) for k,v in counts.items()],reverse=True)
 
     return candidates[0:number]
