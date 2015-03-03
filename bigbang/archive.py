@@ -155,6 +155,7 @@ def find_footer(messages,number=1):
     if isinstance(messages,pd.DataFrame):
         messages = messages['Body']
 
+    # sort in lexical order of reverse strings to maximize foot length
     srb = messages.apply(lambda x: None if x is None else x[::-1]).order()
     #srb = df.apply(lambda x: None if x['Body'] is None else x['Body'][::-1],
     #              axis=1).order()
