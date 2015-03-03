@@ -38,9 +38,7 @@ def remove_quoted(mess):
         n = len(l)
         if(len(l)!=0 and l[0] != '>' and l[n-6:n] != 'wrote:'):
             message.append(l)
-    new = str()
-    for l in message:
-        new = new + l + '\n'
+    new = '\n'.join(message)
     return new
 
 ## remove this when clean_message is added to generic libraries
