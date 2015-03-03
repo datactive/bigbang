@@ -26,6 +26,11 @@ def get_common_head(str1,str2,delimiter=None):
         print e
         return '', 0
 
+def get_common_foot(str1,str2,delimiter=None):
+    head, ln = get_common_head(str1[::-1],str2[::-1],delimiter=delimiter)
+
+    return head[::-1],ln
+
 # turn these into automated tests
 #print get_common_head('abcdefghijklmnop','abcde12345')
 #print get_common_head('abcdefghijklmnop',None)
