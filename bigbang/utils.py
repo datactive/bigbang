@@ -32,12 +32,8 @@ def get_common_head(str1,str2,delimiter=None):
 #print get_common_head('abcde\nfghijk\nlmnop\nqrst','abcde\nfghijk\nlmnopqr\nst',delimiter='\n')
 
 def remove_quoted(mess):
-    mess.split('\n')
-    message = list()
-    for l in mess.split('\n'):
-        n = len(l)
-        if(len(l)!=0 and l[0] != '>' and l[n-6:n] != 'wrote:'):
-            message.append(l)
+    message = [line for line in mess.split('\n')
+               if len(line)!=0 and line[0] != '>' and line[-6:] != 'wrote:']
     new = '\n'.join(message)
     return new
 
