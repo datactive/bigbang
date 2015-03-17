@@ -4,10 +4,21 @@ import json;
 import getopt
 import sys;
 import os;
+
 repoLocation = "./git_data/sample_git_repos";
 nameRegex = re.compile("([a-z]*)(\\.git$)")
 print(os.path.dirname(os.getcwd()))
 LOCALS = open("./git_data/git_locals.json", "w")
+
+
+def url_to_name(url):
+    url = url.replace("\n", "");
+    name = nameRegex.search(url).group(1);
+    return name;
+
+def name_to_filepath(name):
+    newLoc = repoLocation + name
+    return newLoc
 
 def main(argv):
     try:
@@ -33,9 +44,10 @@ def loadByFile(filePath):
     json.dump(repoInfos, LOCALS, indent=4)
 
 def loadRepoIntoDict(url, repoInfo):
-    url = url.replace("\n", "");
-    name = nameRegex.search(url).group(1);
-    newLoc = repoLocation + "/" + name
+
+    name = url_to_name(url);
+    newLoc = name_to_filepath(name);
+
     command = ["git " + "clone " +  url + " " + newLoc];
     subprocess.call(command, shell = True);
     repoInfo[name] = newLoc;
