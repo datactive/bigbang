@@ -35,13 +35,6 @@ class GitRepo:
 		raw["Commit Message"] = list()
 		raw["Time"] = list()
 		raw["Parent Commit"] = list()
-
-
-		# raw["Added Paths"] = list();
-		# raw["Modified Paths"] = list();
-		# raw["Deleted Paths"] = list();
-		# raw["Renamed Paths"] = list();
-
 		raw["Touched File"] = list();
 
 
@@ -68,13 +61,6 @@ class GitRepo:
 				raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
 				raw["Parent Commit"].append([par.hexsha for par in commit.parents])
 				raw["HEXSHA"].append(commit.hexsha)
-
-				
-
-				# raw["Added Paths"].append( [d.b_blob.path for d in commit.diff("HEAD~").iter_change_type("A")] )
-				# raw["Modified Paths"].append( [d.b_blob.path for d in commit.diff("HEAD~").iter_change_type("M")] )
-				# raw["Deleted Paths"].append( [d for d in commit.diff("HEAD").iter_change_type("D")] )
-				# raw["Renamed Paths"].append( [d for d in commit.diff("HEAD").iter_change_type("R")] )
 
 				
 			except LookupError:

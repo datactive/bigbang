@@ -4,6 +4,9 @@ import json;
 import getopt
 import sys;
 import os;
+print os.path.dirname(os.path.realpath(__file__))
+import git_data.RepoLoader
+
 
 repoLocation = "./git_data/sample_git_repos";
 nameRegex = re.compile("([a-z]*)(\\.git$)")
@@ -29,33 +32,31 @@ def main(argv):
 
     for opt, arg in opts:
         if opt == '-f':
-            loadByFile(arg);
+            load_by_file(arg);
             sys.exit()
         elif opt == '-u':
-            loadByURL(arg);
+            load_by_URL(arg);
 
-def loadByFile(filePath):
+def load_by_file(filePath):
     urls = open(filePath, "r");
     repoInfos = dict();
 
     for url in urls:
-        loadRepoIntoDict(url, repoInfos);
+        load_repo_into_dict(url, repoInfos);
 
     json.dump(repoInfos, LOCALS, indent=4)
 
-def loadRepoIntoDict(url, repoInfo):
-
+def load_repo_into_dict(url, repoInfo):
     name = url_to_name(url);
     newLoc = name_to_filepath(name);
-
     command = ["git " + "clone " +  url + " " + newLoc];
     subprocess.call(command, shell = True);
     repoInfo[name] = newLoc;
 
-def loadByURL(url):
+def load_by_URL(url):
     repoInfos = dict();
 
-    loadRepoIntoDict(url, repoInfos);
+    load_repo_into_dict(url, repoInfos);
 
     json.dump(repoInfos, LOCALS, indent=4)
 

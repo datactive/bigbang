@@ -1,12 +1,13 @@
 
 from GitRepo import GitRepo
+import collect_git
 import json;
-
 NBPATH = "../git_data/"
 LOCALS = open(NBPATH + "git_locals.json");
 
 
 repo_urls = json.load(LOCALS);
+
 
 def get_repo(name):
 	if name in repo_urls:
