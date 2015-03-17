@@ -88,7 +88,7 @@ A new branch of BigBang is collecting git commit information for projects. We ca
 
 ### Collecting Git Information
 
-As of now, the git collection clones targeted repos into `<./git_data/sample_git_repos>` which can take some time. After cloning these repos, &Repo.py& will collect information from these them. It works very similarly to mail collection. While in the bigbang directory, run
+As of now, the git collection clones targeted repos into `<./git_data/sample_git_repos>` which can take some time. This works similarly to mail collection. While in the bigbang directory, run
 
 ```bash
 python bin/collect_git.py -u https://github.com/scipy/scipy.git
@@ -102,7 +102,7 @@ python bin/collect_git.py -f examples/git_urls.txt
 
 ### Loading Git Information
 
-After the git repositories have been cloned locally, you will be able to start analyzing them. To do this, you will need a &GitRepo& object, which is a convenient wrapper which does the work of extracting and generating most of the git information and storing it internally in a pandas dataframe. You can then use this GitRepo object's methods to gain access to the large pandas dataframe.
+After the git repositories have been cloned locally, you will be able to start analyzing them. To do this, you will need a GitRepo object, which is a convenient wrapper which does the work of extracting and generating most of the git information and storing it internally in a pandas dataframe. You can then use this GitRepo object's methods to gain access to the large pandas dataframe.
 
 There are three main ways to generate a GitRepo object for a repository, using RepoLoader:
 
