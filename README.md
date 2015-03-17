@@ -110,6 +110,8 @@ There are three main ways to generate a GitRepo object for a repository, using R
 2. By absolute address `git_repo_obj = RepoLoader.get_repo("~/path/to/repo", "local")`. This is useful for when you already have the repo locally and don't want to copy it over into the `sample_git_repos` folder.
 3. By remote URL `git_repo_obj = RepoLoader.get_repo("https://github.com/sbenthall/bigbang.git", "remote")` This is when you don't want to unneccesarily re-run a git collection script and want to be able to analyze individual repos. This will first clone the repo and then load its data normally.
 
+Afterwards, you can directly access the generated pandas dataframe with `git_repo_obj.commit_data`
+
 ## Community
 
 If you are interested in participating in BigBang development, please subscribe to the [BigBang-dev mailing list](https://lists.sudoroom.org/listinfo/bigbang-dev).
