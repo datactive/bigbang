@@ -6,7 +6,10 @@ import re;
 import subprocess;
 import sys;
 
-
+repoLocation = os.path.dirname(os.path.realpath(__file__))
+print(repoLocation);
+last_index = repoLocation.rfind("/")
+repoLocation = repoLocation[0:last_index] + "/git_data/sample_git_repos/"
 repoLocation = "../git_data/sample_git_repos/";
 nameRegex = re.compile("([a-z]*)(\\.git$)")
 
