@@ -6,9 +6,8 @@ import re;
 import subprocess;
 import sys;
 
-print os.path.dirname(os.path.realpath(__file__))
 
-repoLocation = "./git_data/sample_git_repos";
+repoLocation = "../git_data/sample_git_repos/";
 nameRegex = re.compile("([a-z]*)(\\.git$)")
 
 
@@ -27,9 +26,9 @@ def name_to_filepath(name):
 
 """
 Takes three different options for type:
-    'remote' : basically a git url
-    'name'   : a name like 'scipy' which the method can expand to a url
-    'local'  : a filepath to a file on the local system (basically an existing git directory on this computer)
+    'remote'		: basically a git url
+    'name' (default): a name like 'scipy' which the method can expand to a url
+    'local'			: a filepath to a file on the local system (basically an existing git directory on this computer)
 """
 def get_repo(repo_in, in_type='name'):
     if in_type == 'name':
@@ -40,7 +39,7 @@ def get_repo(repo_in, in_type='name'):
          
     if in_type == 'local':
         if repo_already_exists(repo_in):
-            return GitRepo.GitRepo(repo_in);
+            return GitRepo(repo_in);
         else:
             print("Invalid filepath: " + repo_in);
             return False;
