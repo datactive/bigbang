@@ -7,9 +7,9 @@ import subprocess;
 import sys;
 
 repoLocation = os.path.dirname(os.path.realpath(__file__))
-print(repoLocation);
 last_index = repoLocation.rfind("/")
 repoLocation = repoLocation[0:last_index] + "/git_data/sample_git_repos/"
+
 nameRegex = re.compile("([a-z]*)(\\.git$)")
 
 
@@ -49,7 +49,8 @@ def get_repo(repo_in, in_type='name'):
     if in_type == 'remote':
 
         filepath = name_to_filepath(url_to_name(repo_in));
-        if not repo_already_exists:
+        if not repo_already_exists(filepath):
+            print("Gloning the repo from remote")
             fetch_repo(repo_in);
         return get_repo(filepath, 'local');
 
@@ -59,12 +60,8 @@ def get_repo(repo_in, in_type='name'):
 
 def fetch_repo(url):
     # TODO: We are repeatedly calculating name and filepath
+    url = url.replace("\n", "");
     name = url_to_name(url);
     newLoc = name_to_filepath(name);
     command = ["git " + "clone " +  url + " " + newLoc];
     subprocess.call(command, shell = True);
-    repoInfo[name] = newLoc;
-
-
-"""https://github.com/scipy/scipy.git
-https://github.com/npm/npm.git"""
