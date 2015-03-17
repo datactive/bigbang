@@ -234,7 +234,7 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
             raise MissingDataException(
                 ("No messages in %s under %s. Did you run the "
                  "collect_mail.py script?") %
-                (archive_dir, data))
+                (archive_dir, list_name))
 
     return messages_to_dataframe(messages)
 
