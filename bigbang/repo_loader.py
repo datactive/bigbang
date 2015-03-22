@@ -1,5 +1,4 @@
-
-from GitRepo import GitRepo
+from git_repo import GitRepo
 import json;
 import os;
 import re;
@@ -8,7 +7,7 @@ import sys;
 
 repoLocation = os.path.dirname(os.path.realpath(__file__))
 last_index = repoLocation.rfind("/")
-repoLocation = repoLocation[0:last_index] + "/git_data/sample_git_repos/"
+repoLocation = repoLocation[0:last_index] + "/archives/sample_git_repos/"
 
 nameRegex = re.compile("([a-z]*)(\\.git$)")
 

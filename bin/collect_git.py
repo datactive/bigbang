@@ -1,7 +1,7 @@
 import sys;
 import getopt
 
-import git_data.RepoLoader as loader
+import bigbang.repo_loader as loader
 
 def main(argv):
     try:
