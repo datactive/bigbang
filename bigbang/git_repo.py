@@ -5,6 +5,8 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 
+ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
+
 """
 Class that stores an instance of a git repository given the address to that
 repo relative to this file. It returns the data in multiple useful forms.
@@ -18,7 +20,7 @@ class GitRepo:
 	commit hexsha)
 	"""
 
-	def __init__(self, url):
+	def __init__(self, url, attribs = ALL_ATTRIBUTES):
 		self._commit_data = None;
 		self.url = url;
 		self.repo = Repo(url)
@@ -27,15 +29,10 @@ class GitRepo:
 
 
 
-	def populate_data(self):
+	def populate_data(self, attribs = ALL_ATTRIBUTES):
 		raw = dict()
-		raw["HEXSHA"] = list()
-		raw["Committer Name"] = list()
-		raw["Committer Email"] = list()
-		raw["Commit Message"] = list()
-		raw["Time"] = list()
-		raw["Parent Commit"] = list()
-		raw["Touched File"] = list();
+		for attrib in attribs:
+			raw[attrib] = list();
 
 
 		repo = self.repo
@@ -46,26 +43,39 @@ class GitRepo:
 		
 		for commit in generator:
 			try: 
-				diff_list = list();
 
-				for diff in commit.diff(commit.parents[0]):
-					if diff.b_blob:
-						diff_list.append(diff.b_blob.path);
-					else:
-						diff_list.append(diff.a_blob.path);
+				if "Touched File" in attribs:
+					diff_list = list();
+					for diff in commit.diff(commit.parents[0]):
+						if diff.b_blob:
+							diff_list.append(diff.b_blob.path);
+						else:
+							diff_list.append(diff.a_blob.path);
+					raw["Touched File"].append(diff_list)
 
-				raw["Touched File"].append(diff_list)
-				raw["Committer Name"].append(commit.committer.name)
-				raw["Committer Email"].append(commit.committer.email)
-				raw["Commit Message"].append(commit.message)
-				raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
-				raw["Parent Commit"].append([par.hexsha for par in commit.parents])
+				if "Committer Name" in attribs:
+					raw["Committer Name"].append(commit.committer.name)
+				
+				if "Committer Email" in attribs:
+					raw["Committer Email"].append(commit.committer.email)
+				
+				if "Commit Message" in attribs:
+					raw["Commit Message"].append(commit.message)
+				
+				if "Time" in attribs or True: # TODO: For now, we always ask for the time
+					raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
+				
+				if "Parent Commit" in attribs:
+					raw["Parent Commit"].append([par.hexsha for par in commit.parents])
+				
+				if "HEXSHA" in attribs:
 				raw["HEXSHA"].append(commit.hexsha)
 
 				
 			except LookupError:
 				print("failed to add a commit because of an encoding error")
 
+		# TODO: NEEDS TIME
 		time_index = pd.DatetimeIndex(raw["Time"], periods = 24, freq = "H")
 		self._commit_data = pd.DataFrame(raw, index = time_index);
 
