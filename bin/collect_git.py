@@ -21,10 +21,10 @@ def load_by_file(filePath):
     urls = open(filePath, "r");
 
     for url in urls:
-        loader.fetch_repo(url);
+        loader.get_repo(url, "remote");
 
 def load_by_URL(url):
-    loader.fetch_repo(url);
+    loader.get_repo(url, "remote");
 
 
 if __name__ == "__main__":

@@ -41,6 +41,8 @@ class GitRepo:
 		firstHexSha = first.hexsha;
 		generator = git.Commit.iter_items(repo, firstHexSha);
 		
+		if "Touched File" in attribs:
+			print("WARNING: Currently going through file diffs. This will take a very long time. We suggest using a small repository.")
 		for commit in generator:
 			try: 
 
@@ -69,7 +71,7 @@ class GitRepo:
 					raw["Parent Commit"].append([par.hexsha for par in commit.parents])
 				
 				if "HEXSHA" in attribs:
-				raw["HEXSHA"].append(commit.hexsha)
+					raw["HEXSHA"].append(commit.hexsha)
 
 				
 			except LookupError:

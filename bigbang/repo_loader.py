@@ -46,7 +46,7 @@ def get_repo(repo_in, in_type='name'):
         ans = get_repo(filepath, 'local');
         if ans:
             df = ans.commit_data
-            df.to_csv(cache_path(repo_in)) # We cache it hopefully???
+            df.to_csv(cache_path(repo_in), sep='\t', encoding='utf-8') # We cache it hopefully???
             return df
         else:
             return False;
@@ -61,11 +61,12 @@ def get_repo(repo_in, in_type='name'):
 
     if in_type == 'remote':
 
-        filepath = name_to_filepath(url_to_name(repo_in));
+        name = url_to_name(repo_in);
+        filepath = name_to_filepath(name);
         if not repo_already_exists(filepath):
             print("Gloning the repo from remote")
             fetch_repo(repo_in);
-        return get_repo(filepath, 'local');
+        return get_repo(name, 'name');
 
     else:
     	print("Invalid input") # TODO: Clarify this error
