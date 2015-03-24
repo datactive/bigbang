@@ -32,20 +32,19 @@ Takes three different options for type:
     'name' (default): a name like 'scipy' which the method can expand to a url
     'local'			: a filepath to a file on the local system (basically an existing git directory on this computer)
 """
-def get_repo(repo_in, in_type='name'):
+def get_repo(repo_in, in_type='name', update = False):
+    s_df = pd.DataFrame();
     if in_type == 'name':
         filepath = name_to_filepath(repo_in)
-
-        print("Checking if cached")
-
-        ans = get_cache(repo_in);
-        if ans:
-            print("It was cached!")
+        ans = False;
+        if not update:
+            print("Checking if cached")
+            ans = get_cache(repo_in);
+        if type(ans) == type(s_df):
             return ans;
         print("Checking for " + str(repo_in) + " at " + str(filepath));
-        ans = get_repo(filepath, 'local');
-        if ans:
-            df = ans.commit_data
+        ans = get_repo(filepath, 'local', update);
+        if type(ans) == type(s_df):
             df.to_csv(cache_path(repo_in), sep='\t', encoding='utf-8') # We cache it hopefully???
             return df
         else:
@@ -66,7 +65,7 @@ def get_repo(repo_in, in_type='name'):
         if not repo_already_exists(filepath):
             print("Gloning the repo from remote")
             fetch_repo(repo_in);
-        return get_repo(name, 'name');
+        return get_repo(name, 'name', update);
 
     else:
     	print("Invalid input") # TODO: Clarify this error
@@ -87,5 +86,5 @@ def cache_path(name):
 def get_cache(name):
     filepath = cache_path(name);
     if os.path.exists(filepath):
-        return pd.read_csv(filepath);
+        return pd.read_csv(filepath, sep='\t', encoding='utf-8');
     return False;

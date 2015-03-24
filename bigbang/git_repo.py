@@ -5,7 +5,7 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 
-ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
+ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit"]
 
 """
 Class that stores an instance of a git repository given the address to that
