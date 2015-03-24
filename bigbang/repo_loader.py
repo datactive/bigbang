@@ -4,6 +4,7 @@ import os;
 import re;
 import subprocess;
 import sys;
+import pandas as pd
 
 repoLocation = os.path.dirname(os.path.realpath(__file__))
 last_index = repoLocation.rfind("/")
