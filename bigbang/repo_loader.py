@@ -35,11 +35,24 @@ def get_repo(repo_in, in_type='name'):
     if in_type == 'name':
         filepath = name_to_filepath(repo_in)
 
+        print("Checking if cached")
+
+        ans = get_cache(repo_in);
+        if ans:
+            print("It was cached!")
+            return ans;
         print("Checking for " + str(repo_in) + " at " + str(filepath));
-        return get_repo(filepath, 'local');
+        ans = get_repo(filepath, 'local');
+        if ans:
+            df = ans.commit_data
+            df.to_csv(cache_path(repo_in)) # We cache it hopefully???
+            return df
+        else:
+            return False;
          
     if in_type == 'local':
         if repo_already_exists(repo_in):
+
             return GitRepo(repo_in);
         else:
             print("Invalid filepath: " + repo_in);
@@ -57,6 +70,7 @@ def get_repo(repo_in, in_type='name'):
     	print("Invalid input") # TODO: Clarify this error
     	return False
 
+
 def fetch_repo(url):
     # TODO: We are repeatedly calculating name and filepath
     url = url.replace("\n", "");
@@ -64,3 +78,12 @@ def fetch_repo(url):
     newLoc = name_to_filepath(name);
     command = ["git " + "clone " +  url + " " + newLoc];
     subprocess.call(command, shell = True);
+
+def cache_path(name):
+    return repoLocation + str(name) + "_backup.csv"
+
+def get_cache(name):
+    filepath = cache_path(name);
+    if os.path.exists(filepath):
+        return pd.read_csv(filepath);
+    return False;
