@@ -55,5 +55,6 @@ docs/_build/
 ./archives/*
 
 # Ignore the git repos for the git_data
-./git_data/sample_git_repos/*
-./git_data/sample_git_repos/
+git_data/sample_git_repos/*
+git_data/sample_git_repos/
+git_data/git_locals.json
