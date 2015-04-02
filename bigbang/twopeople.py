@@ -15,6 +15,10 @@ def duration(exchanges, A, B):
     AtoB = AtoB[AtoB['From_response'] == B]
     BtoA = exchanges[exchanges['From_original'] == B]
     BtoA = BtoA[BtoA['From_response']==A]
+    if len(AtoB) == 0:
+        return max(BtoA['Date']) - min(BtoA['Date'])
+    if len(BtoA) == 0:
+        return max(AtoB['Date']) - min(AtoB['Date'])
     return max(max(AtoB['Date']), max(BtoA['Date'])) - min(min(AtoB['Date']), min(BtoA['Date']))
     
 def num_replies(exchanges, A, B):
@@ -49,8 +53,5 @@ def panda_allpairs(exchanges, pairs):
     for pair in pairs:
         A = pair[0]
         B = pair[1] 
-        try:
-            data_list.append({'A': A, 'B': B, 'duration':duration(exchanges, A, B), 'num_replies': sum(num_replies(exchanges, A, B)), 'reciprocity':reciprocity(exchanges, A, B)})
-        except:
-            continue        
+        data_list.append({'A': A, 'B': B, 'duration':duration(exchanges, A, B), 'num_replies': sum(num_replies(exchanges, A, B)), 'reciprocity':reciprocity(exchanges, A, B)})     
     return pd.DataFrame(data_list)
