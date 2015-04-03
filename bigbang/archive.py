@@ -88,7 +88,7 @@ class Archive:
                 mdf['Date'] < datetime.datetime.now(
                     pytz.utc)]  # drop messages apparently in the future
 
-        mdf2 = mdf[['From', 'Date']]
+        mdf2 = mdf.reindex(columns = ['From', 'Date'])
         mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
 
         activity = mdf2.groupby(
