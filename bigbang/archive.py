@@ -6,6 +6,7 @@ from bigbang.thread import Thread
 from bigbang.thread import Node
 import pandas as pd
 import pytz
+import utils
 
 
 def load(path):
@@ -87,7 +88,7 @@ class Archive:
                 mdf['Date'] < datetime.datetime.now(
                     pytz.utc)]  # drop messages apparently in the future
 
-        mdf2 = mdf[['From', 'Date']]
+        mdf2 = mdf.reindex(columns = ['From', 'Date'])
         mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
 
         activity = mdf2.groupby(
@@ -141,5 +142,59 @@ class Archive:
 
         return threads
 
-    def save(self, path):
-        self.data.to_csv(path, ",")
+    def save(self, path,encoding='utf-8'):
+        self.data.to_csv(path, ",",encoding=encoding)
+
+
+def find_footer(messages,number=1):
+    '''
+    Returns the footer of a DataFrame of emails.
+    A footer is a string occurring at the tail of most messages.
+    Messages can be a DataFrame or a Series
+    '''
+    if isinstance(messages,pd.DataFrame):
+        messages = messages['Body']
+
+    # sort in lexical order of reverse strings to maximize foot length
+    srb = messages.apply(lambda x: None if x is None else x[::-1]).order()
+    #srb = df.apply(lambda x: None if x['Body'] is None else x['Body'][::-1],
+    #              axis=1).order()
+    # begin walking down the series looking for maximal overlap
+    counts = {}
+
+    last = None
+    last_i = None
+    current = None
+
+    def clean_footer(foot):
+        return foot.strip()
+
+    for b in srb:
+        if last is None:
+            last = b
+            continue
+        elif b is None:
+            continue
+        else:
+            head,i = utils.get_common_head(b,last,delimiter='\n')
+            head = clean_footer(head[::-1])
+            last = b
+
+            if head in counts:
+                counts[head] = counts[head] + 1
+            else:
+                counts[head] = 1
+
+        last = b
+
+    # reduce candidates that are strictly longer and less frequent
+    # than most promising footer candidates
+    for n,foot1 in sorted([(v,k) for k,v in counts.items()],reverse=True):
+        for foot2, m in counts.items():
+            if n > m and foot1 in foot2 and len(foot1) > 0:
+                counts[foot1] = counts[foot1] + counts[foot2]
+                del counts[foot2]
+
+    candidates = sorted([(v,k) for k,v in counts.items()],reverse=True)
+
+    return candidates[0:number]

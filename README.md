@@ -86,9 +86,9 @@ Once the data has been collected, BigBang has functions to support analysis.
 
 A new branch of BigBang is collecting git commit information for projects. We can analyze a project using both its mail and gir information to answer new questions about development.
 
-### Collecting git information
+### Collecting Git Information
 
-As of now, the git collection clones targeted repos into '<./git_data/sample_git_repos>' which can take some time. After cloning these repos, &Repo.py& will collect information from these them. It works very similarly to mail collection. While in the bigbang directory, run
+As of now, the git collection clones targeted repos into `<./git_data/sample_git_repos>` which can take some time. This works similarly to mail collection. While in the bigbang directory, run
 
 ```bash
 python bin/collect_git.py -u https://github.com/scipy/scipy.git
@@ -99,6 +99,18 @@ You can also give this command a file with several urls, one per line. One of th
 ```bash
 python bin/collect_git.py -f examples/git_urls.txt
 ```
+
+### Loading Git Information
+
+After the git repositories have been cloned locally, you will be able to start analyzing them. To do this, you will need a GitRepo object, which is a convenient wrapper which does the work of extracting and generating most of the git information and storing it internally in a pandas dataframe. You can then use this GitRepo object's methods to gain access to the large pandas dataframe.
+
+There are three main ways to generate a GitRepo object for a repository, using RepoLoader:
+
+1. By name: `git_repo_obj = RepoLoader.get_repo("bigbang", "name")`. The first term is the name of the folder we cloned that repo into.
+2. By absolute address `git_repo_obj = RepoLoader.get_repo("~/path/to/repo", "local")`. This is useful for when you already have the repo locally and don't want to copy it over into the `sample_git_repos` folder.
+3. By remote URL `git_repo_obj = RepoLoader.get_repo("https://github.com/sbenthall/bigbang.git", "remote")` This is when you don't want to unneccesarily re-run a git collection script and want to be able to analyze individual repos. This will first clone the repo and then load its data normally.
+
+Afterwards, you can directly access the generated pandas dataframe with `git_repo_obj.commit_data`
 
 ## Community
 

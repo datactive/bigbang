@@ -1,51 +1,37 @@
-import re;
-import subprocess;
-import json;
-import getopt
 import sys;
-import os;
-repoLocation = "./git_data/sample_git_repos";
-nameRegex = re.compile("([a-z]*)(\\.git$)")
-print(os.path.dirname(os.getcwd()))
-LOCALS = open("./git_data/git_locals.json", "w")
+import getopt
+
+import bigbang.repo_loader as loader
+
 
 def main(argv):
+    update = False
+
+    if "--update" in argv:
+        update = True
     try:
-        opts, args = getopt.getopt(argv, "u:f:")
+        opts, args = getopt.getopt(argv, "u:f:", ["update"])
     except getopt.GetoptError as e:
         print 'GetoptError: %s' % (e)
         sys.exit(2)
 
+    
     for opt, arg in opts:
         if opt == '-f':
-            loadByFile(arg);
+            load_by_file(arg, update);
             sys.exit()
         elif opt == '-u':
-            loadByURL(arg);
+            load_by_URL(arg, update);
 
-def loadByFile(filePath):
+def load_by_file(filePath, update = False):
     urls = open(filePath, "r");
-    repoInfos = dict();
 
     for url in urls:
-        loadRepoIntoDict(url, repoInfos);
+        loader.get_repo(url, "remote", update);
 
-    json.dump(repoInfos, LOCALS, indent=4)
+def load_by_URL(url, update = False):
+    loader.get_repo(url, "remote", update);
 
-def loadRepoIntoDict(url, repoInfo):
-    url = url.replace("\n", "");
-    name = nameRegex.search(url).group(1);
-    newLoc = repoLocation + "/" + name
-    command = ["git " + "clone " +  url + " " + newLoc];
-    subprocess.call(command, shell = True);
-    repoInfo[name] = newLoc;
-
-def loadByURL(url):
-    repoInfos = dict();
-
-    loadRepoIntoDict(url, repoInfos);
-
-    json.dump(repoInfos, LOCALS, indent=4)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

@@ -83,8 +83,8 @@ def collect_from_url(url,archive_dir="archives"):
 
     # hard coding the archives directory in too many places
     # need to push this default to a configuration file
-    path = os.path.join(archive_dir,get_list_name(url) + ".csv")
-    data.to_csv(path, ",")
+    path = os.path.join(archive_dir, get_list_name(url) + ".csv")
+    data.to_csv(path, ",", encoding="utf-8")
 
     return data
 
@@ -234,36 +234,34 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
             raise MissingDataException(
                 ("No messages in %s under %s. Did you run the "
                  "collect_mail.py script?") %
-                (archive_dir, data))
+                (archive_dir, list_name))
 
     return messages_to_dataframe(messages)
 
 def get_text(msg):
     import chardet
-    text = ""
+    text = u""
     if msg.is_multipart():
         html = None
-        for part in msg.get_payload():
+        for part in msg.walk():
             if part.get_content_charset() is None:
                 charset = chardet.detect(str(part))['encoding']
             else:
                 charset = part.get_content_charset()
             if part.get_content_type() == 'text/plain':
-                text = unicode(part.get_payload(decode=True),str(charset),"ignore").encode('utf8','replace')
+                text = unicode(part.get_payload(decode=True), str(charset), "ignore")
             if part.get_content_type() == 'text/html':
-                html = unicode(part.get_payload(decode=True),str(charset),"ignore").encode('utf8','replace')
-        if html is None:
+                html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+        if text is not None:
             return text.strip()
         else:
             import html2text
             h = html2text.HTML2Text()
             h.encoding = 'utf-8'
-            return h.handle(html.strip().decode('utf8'))
+            return unicode(h.handle(html))
     else:
-        if msg.get_content_charset() is None:
-            text = msg.get_payload()
-        else:
-            text = unicode(msg.get_payload(decode=True),msg.get_content_charset(),'ignore').encode('utf8','replace')
+        charset = msg.get_content_charset() or 'utf-8'
+        text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
         return text.strip()
 
 def messages_to_dataframe(messages):
@@ -272,15 +270,17 @@ def messages_to_dataframe(messages):
     indexed by message-id, with column-names from headers.
 
     """
+    def safe_unicode(t):
+        return t and unicode(t, 'utf-8', 'ignore')
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
     pm = [(m.get('Message-ID'),
-           m.get('From'),
-            m.get('Subject'),
-            get_date(m),
-            m.get('In-Reply-To'),
-            m.get('References'),
-            get_text(m))
+           safe_unicode(m.get('From')),
+           safe_unicode(m.get('Subject')),
+           get_date(m),
+           safe_unicode(m.get('In-Reply-To')),
+           safe_unicode(m.get('References')),
+           get_text(m))
           for m in messages if m.get('Message-ID')]
 
     mdf = pd.DataFrame.from_records(list(pm),
