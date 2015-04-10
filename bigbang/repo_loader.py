@@ -33,22 +33,26 @@ Takes three different options for type:
     'local'			: a filepath to a file on the local system (basically an existing git directory on this computer)
 """
 def get_repo(repo_in, in_type='name', update = False):
+    
     s_df = pd.DataFrame();
+    
     if in_type == 'name':
         filepath = name_to_filepath(repo_in)
-        ans = False;
+        ans = None;
         if not update:
             print("Checking if cached")
             ans = get_cache(repo_in);
-        if type(ans) == type(s_df):
+        if ans != None: #TODO: Do we know it's a dataframe?
             return ans;
         print("Checking for " + str(repo_in) + " at " + str(filepath));
         ans = get_repo(filepath, 'local', update);
-        if type(ans) == type(s_df):
-            df.to_csv(cache_path(repo_in), sep='\t', encoding='utf-8') # We cache it hopefully???
-            return df
+
+        if isinstance(ans, GitRepo):
+            ans.commit_data.to_csv(cache_path(repo_in), sep='\t', encoding='utf-8') # We cache it hopefully???
+            return ans
         else:
-            return False;
+            print("We failed to find a local copy of this repo")
+            return ans;
          
     if in_type == 'local':
         if repo_already_exists(repo_in):
@@ -56,7 +60,7 @@ def get_repo(repo_in, in_type='name', update = False):
             return GitRepo(repo_in);
         else:
             print("Invalid filepath: " + repo_in);
-            return False;
+            return None;
 
     if in_type == 'remote':
 
@@ -69,7 +73,7 @@ def get_repo(repo_in, in_type='name', update = False):
 
     else:
     	print("Invalid input") # TODO: Clarify this error
-    	return False
+    	return None
 
 
 def fetch_repo(url):
@@ -87,4 +91,4 @@ def get_cache(name):
     filepath = cache_path(name);
     if os.path.exists(filepath):
         return pd.read_csv(filepath, sep='\t', encoding='utf-8');
-    return False;
+    return None;

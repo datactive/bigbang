@@ -5,7 +5,7 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 
-ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit"]
+ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
 """
 Class that stores an instance of a git repository given the address to that
@@ -24,9 +24,7 @@ class GitRepo:
 		self._commit_data = None;
 		self.url = url;
 		self.repo = Repo(url)
-		self.populate_data()
-
-
+		self.populate_data(ALL_ATTRIBUTES)
 
 
 	def populate_data(self, attribs = ALL_ATTRIBUTES):
