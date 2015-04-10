@@ -16,4 +16,5 @@ python-dateutil
 python-Levenshtein
 pytz
 pyzmq
+snakefood
 tornado
