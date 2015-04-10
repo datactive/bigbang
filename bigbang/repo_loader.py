@@ -10,7 +10,7 @@ repoLocation = os.path.dirname(os.path.realpath(__file__))
 last_index = repoLocation.rfind("/")
 repoLocation = repoLocation[0:last_index] + "/archives/sample_git_repos/"
 
-nameRegex = re.compile("([a-z]*)(\\.git$)")
+nameRegex = re.compile("([^/]*)(\\.git$)")
 
 
 def repo_already_exists(filepath):
