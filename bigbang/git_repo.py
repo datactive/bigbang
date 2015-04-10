@@ -5,7 +5,7 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 
-ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit"]
+ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
 """
 Class that stores an instance of a git repository given the address to that
@@ -20,14 +20,16 @@ class GitRepo:
 	commit hexsha)
 	"""
 
-	def __init__(self, url, attribs = ALL_ATTRIBUTES):
+	def __init__(self, url=None, attribs = ALL_ATTRIBUTES, cache=None):
 		self._commit_data = None;
 		self.url = url;
-		self.repo = Repo(url)
-		self.populate_data()
+		self.repo = None
 
-
-
+		if cache is None:
+			self.repo = Repo(url)
+			self.populate_data(ALL_ATTRIBUTES)
+		else:
+			self._commit_data = cache;
 
 	def populate_data(self, attribs = ALL_ATTRIBUTES):
 		raw = dict()
@@ -42,7 +44,7 @@ class GitRepo:
 		generator = git.Commit.iter_items(repo, firstHexSha);
 		
 		if "Touched File" in attribs:
-			print("WARNING: Currently going through file diffs. This will take a very long time. We suggest using a small repository.")
+			print("WARNING: Currently going through file diffs. This will take a very long time (1 minute per 3000 commits.) We suggest using a small repository.")
 		for commit in generator:
 			try: 
 
