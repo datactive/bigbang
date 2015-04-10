@@ -44,7 +44,7 @@ class GitRepo:
 		generator = git.Commit.iter_items(repo, firstHexSha);
 		
 		if "Touched File" in attribs:
-			print("WARNING: Currently going through file diffs. This will take a very long time. We suggest using a small repository.")
+			print("WARNING: Currently going through file diffs. This will take a very long time (1 minute per 3000 commits.) We suggest using a small repository.")
 		for commit in generator:
 			try: 
 
