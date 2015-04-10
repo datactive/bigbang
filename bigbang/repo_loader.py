@@ -42,21 +42,19 @@ def get_repo(repo_in, in_type='name', update = False):
         if not update:
             print("Checking if cached")
             ans = get_cache(repo_in);
-        if ans != None: #TODO: Do we know it's a dataframe?
+        if ans != None:
             return ans;
         print("Checking for " + str(repo_in) + " at " + str(filepath));
         ans = get_repo(filepath, 'local', update);
 
         if isinstance(ans, GitRepo):
             ans.commit_data.to_csv(cache_path(repo_in), sep='\t', encoding='utf-8') # We cache it hopefully???
-            return ans
         else:
             print("We failed to find a local copy of this repo")
-            return ans;
-         
+        return ans;
+
     if in_type == 'local':
         if repo_already_exists(repo_in):
-
             return GitRepo(repo_in);
         else:
             print("Invalid filepath: " + repo_in);
@@ -90,5 +88,7 @@ def cache_path(name):
 def get_cache(name):
     filepath = cache_path(name);
     if os.path.exists(filepath):
-        return pd.read_csv(filepath, sep='\t', encoding='utf-8');
+        c = pd.read_csv(filepath, sep='\t', encoding='utf-8');
+        ans = GitRepo(cache=c);
+        return ans;
     return None;

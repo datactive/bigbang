@@ -20,12 +20,16 @@ class GitRepo:
 	commit hexsha)
 	"""
 
-	def __init__(self, url, attribs = ALL_ATTRIBUTES):
+	def __init__(self, url=None, attribs = ALL_ATTRIBUTES, cache=None):
 		self._commit_data = None;
 		self.url = url;
-		self.repo = Repo(url)
-		self.populate_data(ALL_ATTRIBUTES)
+		self.repo = None
 
+		if cache is None:
+			self.repo = Repo(url)
+			self.populate_data(ALL_ATTRIBUTES)
+		else:
+			self._commit_data = cache;
 
 	def populate_data(self, attribs = ALL_ATTRIBUTES):
 		raw = dict()
