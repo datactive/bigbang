@@ -11,7 +11,7 @@ last_index = repoLocation.rfind("/")
 repoLocation = repoLocation[0:last_index] + "/archives/sample_git_repos/"
 
 nameRegex = re.compile("([^/]*)(\\.git$)")
-
+fileRegex = re.compile(".*\/(.*)")
 
 def repo_already_exists(filepath):
     return os.path.exists(filepath);
@@ -24,6 +24,11 @@ def url_to_name(url):
 def name_to_filepath(name):
     newLoc = repoLocation + name
     return newLoc
+
+def filepath_to_name(filepath):
+    name = fileRegex.search(url).group(1);
+    print(name);
+    return name;
 
 
 """
@@ -42,7 +47,7 @@ def get_repo(repo_in, in_type='name', update = False):
         if not update:
             print("Checking if cached")
             ans = get_cache(repo_in);
-        if ans != None:
+        if ans is not None:
             return ans;
         print("Checking for " + str(repo_in) + " at " + str(filepath));
         ans = get_repo(filepath, 'local', update);
@@ -55,7 +60,8 @@ def get_repo(repo_in, in_type='name', update = False):
 
     if in_type == 'local':
         if repo_already_exists(repo_in):
-            return GitRepo(repo_in);
+            name = filepath_to_name(repo_in);
+            return GitRepo(url=repo_in, name=name);
         else:
             print("Invalid filepath: " + repo_in);
             return None;
@@ -89,6 +95,13 @@ def get_cache(name):
     filepath = cache_path(name);
     if os.path.exists(filepath):
         c = pd.read_csv(filepath, sep='\t', encoding='utf-8');
-        ans = GitRepo(cache=c);
+        fp = name_to_filepath(name);
+        ans = GitRepo(name=name, url=fp, cache=c);
         return ans;
     return None;
+
+"""
+As of now, this only accepts names, not local urls
+TODO: This could be optimized
+"""
+# def get_multi_repo(repo_names)
