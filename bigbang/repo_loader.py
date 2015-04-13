@@ -1,4 +1,4 @@
-from git_repo import GitRepo
+from git_repo import GitRepo, MultiGitRepo
 import json;
 import os;
 import re;
@@ -26,7 +26,7 @@ def name_to_filepath(name):
     return newLoc
 
 def filepath_to_name(filepath):
-    name = fileRegex.search(url).group(1);
+    name = fileRegex.search(filepath).group(1);
     print(name);
     return name;
 
@@ -104,4 +104,12 @@ def get_cache(name):
 As of now, this only accepts names, not local urls
 TODO: This could be optimized
 """
-# def get_multi_repo(repo_names)
+def get_multi_repo(repo_names):
+    repos = list()
+    for name in repo_names:
+        repo = get_repo(name, in_type = "name")
+        repo.commit_data["Repo Name"] = name;
+        repos.append(repo);
+
+    ans = MultiGitRepo(repos);
+    return ans

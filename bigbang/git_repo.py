@@ -5,13 +5,13 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 
-ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File", "Repo Name"]
+ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
 """
 Class that stores an instance of a git repository given the address to that
 repo relative to this file. It returns the data in multiple useful forms.
 """
-class GitRepo:
+class GitRepo(object):
 
     """ A pandas DataFrame object indexed by time that stores
     the raw form of the repo's commit data as a table where 
@@ -39,11 +39,10 @@ class GitRepo:
         firstHexSha = first.hexsha;
         generator = git.Commit.iter_items(repo, firstHexSha);
         
-        if "Touched File" in attribs:
+        if "Touched File" in raw:
             print("WARNING: Currently going through file diffs. This will take a very long time (1 minute per 3000 commits.) We suggest using a small repository.")
         for commit in generator:
             try: 
-
                 if "Touched File" in raw:
                     diff_list = list();
                     for diff in commit.diff(commit.parents[0]):
@@ -78,9 +77,9 @@ class GitRepo:
         raw = dict()
         for attrib in attribs:
             raw[attrib] = list();
-
         repo = self.repo
         self.gen_data(repo, raw);
+        print(type(raw["Time"]))
         
         # TODO: NEEDS TIME
         time_index = pd.DatetimeIndex(raw["Time"], periods = 24, freq = "H")
@@ -119,17 +118,14 @@ class GitRepo:
 
     def merge_with_repo(self, other):
         # TODO: What if commits have the same time?
-        self._commit_data.append(other.commit_data);
+        self._commit_data = self.commit_data.append(other.commit_data);
 
 class MultiGitRepo(GitRepo):
 
     """
-    caches must be of the form { Repo Name => pandas df}
-
+    Repos must have a "Repo Name" column
     """
-    def __init__(self, names=None, repo_urls=None, caches=None, attribs=ALL_ATTRIBUTES):
-
-        super(MultiGitRepo, self)._commit_data = repos[0].commit_data.copy(deep=True);
-
+    def __init__(self, repos, attribs=ALL_ATTRIBUTES):
+        self._commit_data = repos[0].commit_data.copy(deep=True);
         for i in range(1, len(repos)):
-            self.merge_with_repo(repos[i].commit_data);
+            self.merge_with_repo(repos[i]);
