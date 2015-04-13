@@ -1,0 +1,281 @@
+{
+    "directed": false, 
+    "graph": [], 
+    "nodes": [
+        {
+            "type": "file", 
+            "id": "members.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "feed.xml"
+        }, 
+        {
+            "type": "file", 
+            "id": "css/main.css"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2014-12-10-data-rights-data-wrongs.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "CNAME"
+        }, 
+        {
+            "type": "author", 
+            "id": "Dav Clark"
+        }, 
+        {
+            "type": "file", 
+            "id": "_includes/footer.html"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2014-10-09-data-on-the-mind.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "_config.yml"
+        }, 
+        {
+            "type": "file", 
+            "id": "images/gbl-logo.svg"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2014-11-01-ISCS-2014.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2015-03-26-new-logo.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2014-09-09-welcome-to-jekyll.markdown"
+        }, 
+        {
+            "type": "author", 
+            "id": "Sebastian Benthall"
+        }, 
+        {
+            "type": "author", 
+            "id": "Diane Wang"
+        }, 
+        {
+            "type": "file", 
+            "id": "calendar.html"
+        }, 
+        {
+            "type": "file", 
+            "id": "_includes/post_list.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "images/gbl-logo.png"
+        }, 
+        {
+            "type": "file", 
+            "id": "about.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2014-10-06-first-taiji-class.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "index.html"
+        }, 
+        {
+            "type": "file", 
+            "id": "_posts/2014-12-11-bitss-r-and-git.md"
+        }, 
+        {
+            "type": "author", 
+            "id": "Kishan Patel"
+        }, 
+        {
+            "type": "file", 
+            "id": "_includes/header.html"
+        }, 
+        {
+            "type": "author", 
+            "id": "jesscxu"
+        }, 
+        {
+            "type": "file", 
+            "id": "fake-data.csv"
+        }, 
+        {
+            "type": "author", 
+            "id": "sb"
+        }, 
+        {
+            "type": "file", 
+            "id": "_includes/logo.html"
+        }
+    ], 
+    "links": [
+        {
+            "source": 0, 
+            "target": 22, 
+            "weight": 1
+        }, 
+        {
+            "source": 0, 
+            "target": 26, 
+            "weight": 2
+        }, 
+        {
+            "source": 0, 
+            "target": 14, 
+            "weight": 1
+        }, 
+        {
+            "source": 0, 
+            "target": 24, 
+            "weight": 1
+        }, 
+        {
+            "source": 0, 
+            "target": 5, 
+            "weight": 6
+        }, 
+        {
+            "source": 1, 
+            "target": 5, 
+            "weight": 1
+        }, 
+        {
+            "source": 2, 
+            "target": 26, 
+            "weight": 2
+        }, 
+        {
+            "source": 3, 
+            "target": 5, 
+            "weight": 1
+        }, 
+        {
+            "source": 4, 
+            "target": 5, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 16, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 7, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 21, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 8, 
+            "weight": 2
+        }, 
+        {
+            "source": 5, 
+            "target": 18, 
+            "weight": 3
+        }, 
+        {
+            "source": 5, 
+            "target": 15, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 20, 
+            "weight": 2
+        }, 
+        {
+            "source": 5, 
+            "target": 23, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 10, 
+            "weight": 2
+        }, 
+        {
+            "source": 5, 
+            "target": 25, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 6, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 19, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 12, 
+            "weight": 1
+        }, 
+        {
+            "source": 8, 
+            "target": 26, 
+            "weight": 1
+        }, 
+        {
+            "source": 8, 
+            "target": 13, 
+            "weight": 1
+        }, 
+        {
+            "source": 9, 
+            "target": 26, 
+            "weight": 1
+        }, 
+        {
+            "source": 11, 
+            "target": 26, 
+            "weight": 2
+        }, 
+        {
+            "source": 11, 
+            "target": 13, 
+            "weight": 3
+        }, 
+        {
+            "source": 17, 
+            "target": 26, 
+            "weight": 1
+        }, 
+        {
+            "source": 18, 
+            "target": 26, 
+            "weight": 1
+        }, 
+        {
+            "source": 20, 
+            "target": 26, 
+            "weight": 5
+        }, 
+        {
+            "source": 23, 
+            "target": 26, 
+            "weight": 1
+        }, 
+        {
+            "source": 26, 
+            "target": 27, 
+            "weight": 5
+        }
+    ], 
+    "multigraph": false
+}
