@@ -1,0 +1,1411 @@
+{
+    "directed": false, 
+    "graph": [], 
+    "nodes": [
+        {
+            "type": "file", 
+            "id": "examples/Ulanwicz Ascendancy.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Git Interaction Graph.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Single Word Trend.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Threads-research-in-progress.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "LICENSE"
+        }, 
+        {
+            "type": "file", 
+            "id": "tests/data/bigbang-dev-test.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "bin/plot_activity.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/parse.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "tests/2001-November.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "tograph.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Threads.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "conda-requirements.txt"
+        }, 
+        {
+            "type": "author", 
+            "id": "Ki Deuk Kim"
+        }, 
+        {
+            "type": "file", 
+            "id": "bin/tograph.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Git Diffs.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Show Interaction Graph.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Cohort Visualization.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Walkers and Talkers.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "tests/__init__.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "get_archives.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "conda-setup.sh"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/__init__.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/GitRepo.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/RepoLoader.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "requirements.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/mailman.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "Raj Agrawal"
+        }, 
+        {
+            "type": "file", 
+            "id": ".gitignore"
+        }, 
+        {
+            "type": "file", 
+            "id": "public-privacy.html"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/git_repo.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Analyze Senders.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Auditing Fernando.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/thread.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/WordTypeClassifier.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "Git Interaction Graph.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Corr between centrality and community 0.1.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/graph.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/entity_resolution.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/repo_loader.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/archive.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "Aryan Falahatpisheh"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Analyzing Mail Senders.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/DEPRECATED Ulanwicz Ascendancy.ipynb"
+        }, 
+        {
+            "type": "author", 
+            "id": "Dave Lester"
+        }, 
+        {
+            "type": "file", 
+            "id": "bin/get_archives.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "Sebastian Benthall"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Special words analysis.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/collect_git.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/urls.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Git Collection.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/network.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "David Winslow"
+        }, 
+        {
+            "type": "file", 
+            "id": "bin/collect_mail.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "parse.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Plot Activity.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/twopeople.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/__init__.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "setup.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "README.md"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/git_locals.json"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Participants Over Time.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "tests/bigbang_tests.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Collaboration Robustness.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/w3crawl.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "Venkata Poreddy"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/utils.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "Spiros Eliopoulos"
+        }, 
+        {
+            "type": "author", 
+            "id": "teeranan"
+        }, 
+        {
+            "type": "file", 
+            "id": "bin/parse.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "tests/data/2001-November.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Committer Dominance.ipynb"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/Git Commit Network.ipynb"
+        }, 
+        {
+            "type": "author", 
+            "id": "Jack005"
+        }, 
+        {
+            "type": "file", 
+            "id": "bin/collect_git.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "bigbang/process.py"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/git_urls.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "examples/git_urls.txt"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_collector.py"
+        }, 
+        {
+            "type": "author", 
+            "id": "Nick Doty"
+        }, 
+        {
+            "type": "author", 
+            "id": "sb"
+        }, 
+        {
+            "type": "file", 
+            "id": ".travis.yml"
+        }, 
+        {
+            "type": "author", 
+            "id": "Shreyas"
+        }, 
+        {
+            "type": "file", 
+            "id": "git_data/Repos.py"
+        }
+    ], 
+    "links": [
+        {
+            "source": 0, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 1, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 1, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 1, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 2, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 2, 
+            "target": 45, 
+            "weight": 2
+        }, 
+        {
+            "source": 2, 
+            "target": 72, 
+            "weight": 2
+        }, 
+        {
+            "source": 3, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 3, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 4, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 5, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 6, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 6, 
+            "target": 79, 
+            "weight": 14
+        }, 
+        {
+            "source": 7, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 7, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 7, 
+            "target": 66, 
+            "weight": 2
+        }, 
+        {
+            "source": 7, 
+            "target": 72, 
+            "weight": 1
+        }, 
+        {
+            "source": 7, 
+            "target": 78, 
+            "weight": 4
+        }, 
+        {
+            "source": 7, 
+            "target": 79, 
+            "weight": 23
+        }, 
+        {
+            "source": 7, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 7, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 8, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 9, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 10, 
+            "target": 79, 
+            "weight": 6
+        }, 
+        {
+            "source": 10, 
+            "target": 67, 
+            "weight": 2
+        }, 
+        {
+            "source": 10, 
+            "target": 40, 
+            "weight": 2
+        }, 
+        {
+            "source": 11, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 11, 
+            "target": 79, 
+            "weight": 9
+        }, 
+        {
+            "source": 11, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 11, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 11, 
+            "target": 40, 
+            "weight": 2
+        }, 
+        {
+            "source": 12, 
+            "target": 62, 
+            "weight": 1
+        }, 
+        {
+            "source": 12, 
+            "target": 55, 
+            "weight": 1
+        }, 
+        {
+            "source": 13, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 13, 
+            "target": 79, 
+            "weight": 8
+        }, 
+        {
+            "source": 13, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 13, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 14, 
+            "target": 64, 
+            "weight": 1
+        }, 
+        {
+            "source": 14, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 14, 
+            "target": 45, 
+            "weight": 2
+        }, 
+        {
+            "source": 14, 
+            "target": 40, 
+            "weight": 3
+        }, 
+        {
+            "source": 15, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 15, 
+            "target": 79, 
+            "weight": 12
+        }, 
+        {
+            "source": 15, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 16, 
+            "target": 79, 
+            "weight": 4
+        }, 
+        {
+            "source": 16, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 16, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 16, 
+            "target": 40, 
+            "weight": 3
+        }, 
+        {
+            "source": 17, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 17, 
+            "target": 45, 
+            "weight": 2
+        }, 
+        {
+            "source": 17, 
+            "target": 40, 
+            "weight": 3
+        }, 
+        {
+            "source": 18, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 19, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 20, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 20, 
+            "target": 79, 
+            "weight": 7
+        }, 
+        {
+            "source": 20, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 20, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 21, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 22, 
+            "target": 79, 
+            "weight": 7
+        }, 
+        {
+            "source": 22, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 22, 
+            "target": 45, 
+            "weight": 6
+        }, 
+        {
+            "source": 22, 
+            "target": 40, 
+            "weight": 10
+        }, 
+        {
+            "source": 23, 
+            "target": 40, 
+            "weight": 6
+        }, 
+        {
+            "source": 24, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 24, 
+            "target": 45, 
+            "weight": 2
+        }, 
+        {
+            "source": 24, 
+            "target": 66, 
+            "weight": 1
+        }, 
+        {
+            "source": 24, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 24, 
+            "target": 79, 
+            "weight": 18
+        }, 
+        {
+            "source": 24, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 24, 
+            "target": 40, 
+            "weight": 4
+        }, 
+        {
+            "source": 25, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 25, 
+            "target": 51, 
+            "weight": 1
+        }, 
+        {
+            "source": 25, 
+            "target": 78, 
+            "weight": 3
+        }, 
+        {
+            "source": 25, 
+            "target": 79, 
+            "weight": 38
+        }, 
+        {
+            "source": 25, 
+            "target": 67, 
+            "weight": 2
+        }, 
+        {
+            "source": 25, 
+            "target": 40, 
+            "weight": 4
+        }, 
+        {
+            "source": 26, 
+            "target": 55, 
+            "weight": 2
+        }, 
+        {
+            "source": 27, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 27, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 27, 
+            "target": 40, 
+            "weight": 3
+        }, 
+        {
+            "source": 27, 
+            "target": 79, 
+            "weight": 4
+        }, 
+        {
+            "source": 28, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 28, 
+            "target": 79, 
+            "weight": 3
+        }, 
+        {
+            "source": 29, 
+            "target": 40, 
+            "weight": 3
+        }, 
+        {
+            "source": 30, 
+            "target": 78, 
+            "weight": 2
+        }, 
+        {
+            "source": 30, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 30, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 31, 
+            "target": 79, 
+            "weight": 9
+        }, 
+        {
+            "source": 31, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 31, 
+            "target": 40, 
+            "weight": 2
+        }, 
+        {
+            "source": 32, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 32, 
+            "target": 79, 
+            "weight": 7
+        }, 
+        {
+            "source": 32, 
+            "target": 67, 
+            "weight": 5
+        }, 
+        {
+            "source": 32, 
+            "target": 40, 
+            "weight": 2
+        }, 
+        {
+            "source": 33, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 33, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 33, 
+            "target": 72, 
+            "weight": 1
+        }, 
+        {
+            "source": 34, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 34, 
+            "target": 64, 
+            "weight": 1
+        }, 
+        {
+            "source": 35, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 35, 
+            "target": 72, 
+            "weight": 2
+        }, 
+        {
+            "source": 35, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 35, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 35, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 36, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 36, 
+            "target": 79, 
+            "weight": 9
+        }, 
+        {
+            "source": 36, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 36, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 36, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 37, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 37, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 37, 
+            "target": 40, 
+            "weight": 1
+        }, 
+        {
+            "source": 38, 
+            "target": 45, 
+            "weight": 1
+        }, 
+        {
+            "source": 38, 
+            "target": 40, 
+            "weight": 4
+        }, 
+        {
+            "source": 39, 
+            "target": 43, 
+            "weight": 1
+        }, 
+        {
+            "source": 39, 
+            "target": 79, 
+            "weight": 28
+        }, 
+        {
+            "source": 39, 
+            "target": 67, 
+            "weight": 2
+        }, 
+        {
+            "source": 39, 
+            "target": 40, 
+            "weight": 3
+        }, 
+        {
+            "source": 40, 
+            "target": 47, 
+            "weight": 2
+        }, 
+        {
+            "source": 40, 
+            "target": 82, 
+            "weight": 3
+        }, 
+        {
+            "source": 40, 
+            "target": 75, 
+            "weight": 2
+        }, 
+        {
+            "source": 40, 
+            "target": 76, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 42, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 49, 
+            "weight": 11
+        }, 
+        {
+            "source": 40, 
+            "target": 52, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 54, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 55, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 56, 
+            "weight": 2
+        }, 
+        {
+            "source": 40, 
+            "target": 58, 
+            "weight": 9
+        }, 
+        {
+            "source": 40, 
+            "target": 59, 
+            "weight": 3
+        }, 
+        {
+            "source": 40, 
+            "target": 61, 
+            "weight": 2
+        }, 
+        {
+            "source": 40, 
+            "target": 63, 
+            "weight": 2
+        }, 
+        {
+            "source": 40, 
+            "target": 57, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 70, 
+            "weight": 3
+        }, 
+        {
+            "source": 40, 
+            "target": 71, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 73, 
+            "weight": 8
+        }, 
+        {
+            "source": 40, 
+            "target": 74, 
+            "weight": 1
+        }, 
+        {
+            "source": 40, 
+            "target": 77, 
+            "weight": 2
+        }, 
+        {
+            "source": 40, 
+            "target": 80, 
+            "weight": 1
+        }, 
+        {
+            "source": 41, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 41, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 42, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 42, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 43, 
+            "target": 61, 
+            "weight": 1
+        }, 
+        {
+            "source": 43, 
+            "target": 63, 
+            "weight": 1
+        }, 
+        {
+            "source": 43, 
+            "target": 52, 
+            "weight": 1
+        }, 
+        {
+            "source": 43, 
+            "target": 74, 
+            "weight": 1
+        }, 
+        {
+            "source": 43, 
+            "target": 57, 
+            "weight": 1
+        }, 
+        {
+            "source": 43, 
+            "target": 58, 
+            "weight": 1
+        }, 
+        {
+            "source": 44, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 71, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 76, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 46, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 49, 
+            "weight": 4
+        }, 
+        {
+            "source": 45, 
+            "target": 56, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 58, 
+            "weight": 13
+        }, 
+        {
+            "source": 45, 
+            "target": 59, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 61, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 70, 
+            "weight": 2
+        }, 
+        {
+            "source": 45, 
+            "target": 73, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 80, 
+            "weight": 1
+        }, 
+        {
+            "source": 45, 
+            "target": 82, 
+            "weight": 1
+        }, 
+        {
+            "source": 46, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 46, 
+            "target": 72, 
+            "weight": 1
+        }, 
+        {
+            "source": 47, 
+            "target": 79, 
+            "weight": 5
+        }, 
+        {
+            "source": 48, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 49, 
+            "target": 79, 
+            "weight": 7
+        }, 
+        {
+            "source": 49, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 50, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 52, 
+            "target": 79, 
+            "weight": 8
+        }, 
+        {
+            "source": 52, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 52, 
+            "target": 78, 
+            "weight": 3
+        }, 
+        {
+            "source": 53, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 54, 
+            "target": 78, 
+            "weight": 7
+        }, 
+        {
+            "source": 54, 
+            "target": 79, 
+            "weight": 20
+        }, 
+        {
+            "source": 55, 
+            "target": 79, 
+            "weight": 3
+        }, 
+        {
+            "source": 56, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 56, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 57, 
+            "target": 79, 
+            "weight": 7
+        }, 
+        {
+            "source": 57, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 58, 
+            "target": 66, 
+            "weight": 2
+        }, 
+        {
+            "source": 58, 
+            "target": 81, 
+            "weight": 7
+        }, 
+        {
+            "source": 58, 
+            "target": 78, 
+            "weight": 1
+        }, 
+        {
+            "source": 58, 
+            "target": 79, 
+            "weight": 23
+        }, 
+        {
+            "source": 58, 
+            "target": 67, 
+            "weight": 2
+        }, 
+        {
+            "source": 59, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 59, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 60, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 61, 
+            "target": 66, 
+            "weight": 1
+        }, 
+        {
+            "source": 61, 
+            "target": 79, 
+            "weight": 14
+        }, 
+        {
+            "source": 61, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 62, 
+            "target": 79, 
+            "weight": 2
+        }, 
+        {
+            "source": 63, 
+            "target": 79, 
+            "weight": 5
+        }, 
+        {
+            "source": 63, 
+            "target": 67, 
+            "weight": 1
+        }, 
+        {
+            "source": 63, 
+            "target": 78, 
+            "weight": 7
+        }, 
+        {
+            "source": 64, 
+            "target": 71, 
+            "weight": 1
+        }, 
+        {
+            "source": 65, 
+            "target": 79, 
+            "weight": 9
+        }, 
+        {
+            "source": 66, 
+            "target": 80, 
+            "weight": 1
+        }, 
+        {
+            "source": 67, 
+            "target": 74, 
+            "weight": 1
+        }, 
+        {
+            "source": 67, 
+            "target": 82, 
+            "weight": 1
+        }, 
+        {
+            "source": 67, 
+            "target": 76, 
+            "weight": 1
+        }, 
+        {
+            "source": 67, 
+            "target": 73, 
+            "weight": 1
+        }, 
+        {
+            "source": 67, 
+            "target": 80, 
+            "weight": 1
+        }, 
+        {
+            "source": 68, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 69, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 70, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 71, 
+            "target": 79, 
+            "weight": 1
+        }, 
+        {
+            "source": 73, 
+            "target": 79, 
+            "weight": 3
+        }, 
+        {
+            "source": 74, 
+            "target": 79, 
+            "weight": 20
+        }, 
+        {
+            "source": 74, 
+            "target": 78, 
+            "weight": 8
+        }, 
+        {
+            "source": 75, 
+            "target": 79, 
+            "weight": 5
+        }, 
+        {
+            "source": 79, 
+            "target": 80, 
+            "weight": 2
+        }, 
+        {
+            "source": 79, 
+            "target": 82, 
+            "weight": 5
+        }
+    ], 
+    "multigraph": false
+}
