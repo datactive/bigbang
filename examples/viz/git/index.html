@@ -31,7 +31,7 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("glass.json", function(error, graph) {
+d3.json("graph.json", function(error, graph) {
   force
       .nodes(graph.nodes)
       .links(graph.links)
