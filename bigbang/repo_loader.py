@@ -17,15 +17,30 @@ fileRegex = re.compile(".*\/(.*)")
 def repo_already_exists(filepath):
     return os.path.exists(filepath);
 
+"""
+Converts a github url (e.g. https://github.com/sbenthall/bigbang.git) to 
+a human-readable name (bigbang) by looking at the word between the last "/" and ".git".
+"""
 def url_to_name(url):
     url = url.replace("\n", "");
     name = nameRegex.search(url).group(1);
     return name;
 
+"""
+Converts a name of a repo to its filepath.
+Currently, these go to ../archives/sample_git_repos/{name}/
+"""
 def name_to_filepath(name):
     newLoc = repoLocation + name
     return newLoc
 
+"""
+Converts a filepath (../archives/sample_git_repos/{name}) to a name.
+Note that this will fail if the filepath ends in a "/". It must end
+in the name of the folder.
+Thus, it should be ../archives/sample_git_repos/{name} not
+../archives/sample_git_repos/{name}/
+"""
 def filepath_to_name(filepath):
     name = fileRegex.search(filepath).group(1);
     print(name);
@@ -37,11 +52,12 @@ Takes three different options for type:
     'remote'		: basically a git url
     'name' (default): a name like 'scipy' which the method can expand to a url
     'local'			: a filepath to a file on the local system (basically an existing git directory on this computer)
+
+This returns an initialized GitRepo object with its data and name already loaded.
 """
 def get_repo(repo_in, in_type='name', update = False):
     
-    s_df = pd.DataFrame();
-    
+    # Input is name    
     if in_type == 'name':
         filepath = name_to_filepath(repo_in)
         ans = None;
@@ -59,6 +75,7 @@ def get_repo(repo_in, in_type='name', update = False):
             print("We failed to find a local copy of this repo")
         return ans;
 
+    # Input is a local file
     if in_type == 'local':
         if repo_already_exists(repo_in):
             name = filepath_to_name(repo_in);
@@ -68,7 +85,6 @@ def get_repo(repo_in, in_type='name', update = False):
             return None;
 
     if in_type == 'remote':
-
         name = url_to_name(repo_in);
         filepath = name_to_filepath(name);
         if not repo_already_exists(filepath):
@@ -80,7 +96,12 @@ def get_repo(repo_in, in_type='name', update = False):
     	print("Invalid input") # TODO: Clarify this error
     	return None
 
+"""
+Takes in a git url and uses shell commands
+to clone the git repo into sample_git_repos/
 
+TODO: We shouldn't use this with shell=True because of security concerns.
+"""
 def fetch_repo(url):
     # TODO: We are repeatedly calculating name and filepath
     url = url.replace("\n", "");
@@ -89,9 +110,18 @@ def fetch_repo(url):
     command = ["git " + "clone " +  url + " " + newLoc];
     subprocess.call(command, shell = True);
 
+"""
+Takes in a name (bigbang)
+Returns where its cached file should be (../sample_git_repos/bigbang_backup.csv)
+"""
 def cache_path(name):
     return repoLocation + str(name) + "_backup.csv"
 
+"""
+Takes in a name (bigbang)
+Returns a GitRepo object containing the cache data if the cache exists
+Returns None otherwise.
+"""
 def get_cache(name):
     filepath = cache_path(name);
     if os.path.exists(filepath):
@@ -102,7 +132,7 @@ def get_cache(name):
     return None;
 
 """
-As of now, this only accepts names, not local urls
+As of now, this only accepts names/repos, not local urls
 TODO: This could be optimized
 """
 def get_multi_repo(repo_names=None, repos=None):
@@ -144,7 +174,11 @@ def load_org_repos(org_name):
         print("Wrote git urls to " + addr)
         return urls
 
-
+"""
+Checks to see if we have the urls for a given org
+If we don't, it fetches them.
+Once we do, it returns a list of GitRepo objects from the urls.
+"""
 def get_org_repos(org_name):
     addr = examplesLocation + str(org_name) + "_urls.txt"
     urls = None
