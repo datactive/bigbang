@@ -47,6 +47,9 @@ class GitRepo(object):
 
     def gen_data(self, repo, raw):
 
+        if not repo.active_branch.is_valid():
+            print("Found an empty repo: " + str(self.name))
+            return;
         first = repo.commit()
         commit = first
         firstHexSha = first.hexsha;

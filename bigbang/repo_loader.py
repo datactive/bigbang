@@ -105,12 +105,15 @@ def get_cache(name):
 As of now, this only accepts names, not local urls
 TODO: This could be optimized
 """
-def get_multi_repo(repo_names):
-    repos = list()
-    for name in repo_names:
-        repo = get_repo(name, in_type = "name")
-        repo.commit_data["Repo Name"] = name;
-        repos.append(repo);
+def get_multi_repo(repo_names=None, repos=None):
+    if repos is None:
+        repos = list()
+        for name in repo_names:
+            repo = get_repo(name, in_type = "name")
+            repos.append(repo);
+
+    for repo in repos:
+        repo.commit_data["Repo Name"] = repo.name;
 
     ans = MultiGitRepo(repos);
     return ans
@@ -124,7 +127,7 @@ def load_org_repos(org_name):
     github_url = "https://api.github.com/orgs/" + org_name + "/repos"
     r = requests.get(github_url)
 
-    data = r.json
+    data = r.json()
 
     urls = []
     for repo in data:
@@ -133,8 +136,25 @@ def load_org_repos(org_name):
 
     if len(urls) == 0:
         print("Found no repos in group: " + str(org_name))
+        return None
     else:
         addr = examplesLocation + str(org_name) + "_urls.txt"
         f = open(addr, 'w')
         f.write("\n".join(urls))
         print("Wrote git urls to " + addr)
+        return urls
+
+
+def get_org_repos(org_name):
+    addr = examplesLocation + str(org_name) + "_urls.txt"
+    urls = None
+    if not os.path.isfile(addr):
+        urls = load_org_repos(org_name);
+    else:
+        urls = open(addr, "r")
+
+    ans = list()
+    for url in urls:
+        ans.append(get_repo(url, "remote"))
+
+    return ans;
