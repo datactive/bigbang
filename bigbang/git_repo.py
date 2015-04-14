@@ -7,6 +7,12 @@ from datetime import datetime
 
 ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
+
+def cache_fixer(r): # Adds info from row to graph
+    r["Touched File"] = [x.strip() for x in r["Touched File"][1:-1].split(",")]
+    r["Time"] = pd.to_datetime(r["Time"], unit = "s");
+    return r
+
 """
 Class that stores an instance of a git repository given the address to that
 repo relative to this file. It returns the data in multiple useful forms.
@@ -30,7 +36,10 @@ class GitRepo(object):
             self.repo = Repo(url)
             self.populate_data(ALL_ATTRIBUTES)
         else:
+            cache.apply(cache_fixer, axis=1)
+            cache.set_index(cache["Time"])
             self._commit_data = cache;
+
 
     def gen_data(self, repo, raw):
 
