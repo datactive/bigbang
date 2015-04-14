@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 from time import mktime
 from datetime import datetime
+from entity_resolution import entity_resolve
 
 ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
-
 
 def cache_fixer(r): # Adds info from row to graph
     r["Touched File"] = [x.strip() for x in r["Touched File"][1:-1].split(",")]
@@ -40,6 +40,10 @@ class GitRepo(object):
             cache.set_index(cache["Time"])
             self._commit_data = cache;
 
+        if ("Committer Name" in attribs and "Committer Email" in attribs):
+            print("Running Entity Resolution on " + str(self.name))
+            self._commit_data["Person-ID"] = None;
+            self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
 
     def gen_data(self, repo, raw):
 
