@@ -5,6 +5,8 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 from entity_resolution import entity_resolve
+import networkx as nx
+
 
 ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
@@ -25,7 +27,6 @@ class GitRepo(object):
     of that commit (time, message, commiter name, committer email,
     commit hexsha)
     """
-
     def __init__(self, name, url=None, attribs = ALL_ATTRIBUTES, cache=None):
         self._commit_data = None;
         self.url = url;
@@ -41,7 +42,6 @@ class GitRepo(object):
             self._commit_data = cache;
 
         if ("Committer Name" in attribs and "Committer Email" in attribs):
-            print("Running Entity Resolution on " + str(self.name))
             self._commit_data["Person-ID"] = None;
             self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
 
@@ -145,3 +145,4 @@ class MultiGitRepo(GitRepo):
         self._commit_data = repos[0].commit_data.copy(deep=True);
         for i in range(1, len(repos)):
             self.merge_with_repo(repos[i]);
+

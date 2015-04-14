@@ -43,7 +43,6 @@ Thus, it should be ../archives/sample_git_repos/{name} not
 """
 def filepath_to_name(filepath):
     name = fileRegex.search(filepath).group(1);
-    print(name);
     return name;
 
 
@@ -62,7 +61,6 @@ def get_repo(repo_in, in_type='name', update = False):
         filepath = name_to_filepath(repo_in)
         ans = None;
         if not update:
-            print("Checking if cached")
             ans = get_cache(repo_in);
         if ans is not None:
             return ans;
@@ -192,3 +190,8 @@ def get_org_repos(org_name):
         ans.append(get_repo(url, "remote"))
 
     return ans;
+
+def get_org_multirepo(org_name):
+    repos = get_org_repos(org_name)
+    ans = get_multi_repo(repos=repos)
+    return ans
