@@ -5,11 +5,12 @@ import re;
 import subprocess;
 import sys;
 import pandas as pd
+import requests
 
 repoLocation = os.path.dirname(os.path.realpath(__file__))
 last_index = repoLocation.rfind("/")
 repoLocation = repoLocation[0:last_index] + "/archives/sample_git_repos/"
-
+examplesLocation = repoLocation[0:last_index] + "/examples/"
 nameRegex = re.compile("([^/]*)(\\.git$)")
 fileRegex = re.compile(".*\/(.*)")
 
@@ -113,3 +114,27 @@ def get_multi_repo(repo_names):
 
     ans = MultiGitRepo(repos);
     return ans
+
+"""
+fetches a list of all repos in an organization from github
+and gathers their URL's (of the form *.git)
+It dumps these into ../examples/{org_name}_urls.txt
+"""
+def load_org_repos(org_name):
+    github_url = "https://api.github.com/orgs/" + org_name + "/repos"
+    r = requests.get(github_url)
+
+    data = r.json
+
+    urls = []
+    for repo in data:
+        if "git_url" in repo:
+            urls.append(repo["git_url"])
+
+    if len(urls) == 0:
+        print("Found no repos in group: " + str(org_name))
+    else:
+        addr = examplesLocation + str(org_name) + "_urls.txt"
+        f = open(addr, 'w')
+        f.write("\n".join(urls))
+        print("Wrote git urls to " + addr)
