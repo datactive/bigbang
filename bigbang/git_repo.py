@@ -37,13 +37,13 @@ class GitRepo(object):
             self.repo = Repo(url)
             self.populate_data(ALL_ATTRIBUTES)
         else:
-            cache.apply(cache_fixer, axis=1)
+            cache = cache.apply(cache_fixer, axis=1)
             cache.set_index(cache["Time"])
             self._commit_data = cache;
 
         if ("Committer Name" in attribs and "Committer Email" in attribs):
             self._commit_data["Person-ID"] = None;
-            self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
+            self._commit_data = self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
 
     def gen_data(self, repo, raw):
 
