@@ -41,6 +41,16 @@ class GitRepo(object):
             cache.set_index(cache["Time"])
             self._commit_data = cache;
 
+            missing = list();
+            cols = self.commit_data.columns
+            for attr in attribs:
+                if attr not in cols and unicode(attr) not in cols:
+                    missing.append(attr);
+
+            if len(missing) > 0:
+                print("There were " + str(len(missing)) + " missing attributes: ")
+                print(missing);
+
         if ("Committer Name" in attribs and "Committer Email" in attribs):
             self._commit_data["Person-ID"] = None;
             self._commit_data = self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
