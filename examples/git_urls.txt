@@ -1,0 +1,4 @@
+https://github.com/sbenthall/bigbang.git
+https://github.com/django/django.git
+https://github.com/scipy/scipy.git
+https://github.com/npm/npm.git

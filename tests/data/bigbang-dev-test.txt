@@ -1,0 +1,97 @@
+From sb at ischool.berkeley.edu  Sat Nov  8 11:37:32 2014
+From: sb at ischool.berkeley.edu (Sebastian Benthall)
+Date: Sat, 8 Nov 2014 11:37:32 -0800
+Subject: [Bigbang-dev] test
+Message-ID: <CAEYE9Ofmt3TJu2sFOUspRW4v5tx7aY6fbEVnFPvheEbf6iVekA@mail.gmail.com>
+
+this is a test
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.sudoroom.org/pipermail/bigbang-dev/attachments/20141108/71a54359/attachment.html>
+
+From sb at ischool.berkeley.edu  Sat Nov  8 11:39:35 2014
+From: sb at ischool.berkeley.edu (Sebastian Benthall)
+Date: Sat, 8 Nov 2014 11:39:35 -0800
+Subject: [Bigbang-dev] test
+In-Reply-To: <CAEYE9Ofmt3TJu2sFOUspRW4v5tx7aY6fbEVnFPvheEbf6iVekA@mail.gmail.com>
+References: <CAEYE9Ofmt3TJu2sFOUspRW4v5tx7aY6fbEVnFPvheEbf6iVekA@mail.gmail.com>
+Message-ID: <CAEYE9Ofr7xoECKDga8vL40fm02S7pH=Byj5P=NFhaEzbtQq6WQ@mail.gmail.com>
+
+this is a reply to the earlier test message
+
+On Sat, Nov 8, 2014 at 11:37 AM, Sebastian Benthall <sb at ischool.berkeley.edu
+> wrote:
+
+> this is a test
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.sudoroom.org/pipermail/bigbang-dev/attachments/20141108/1d2f80e4/attachment.html>
+
+From sb at ischool.berkeley.edu  Sat Nov  8 11:39:53 2014
+From: sb at ischool.berkeley.edu (Sebastian Benthall)
+Date: Sat, 8 Nov 2014 11:39:53 -0800
+Subject: [Bigbang-dev] test
+In-Reply-To: <CAEYE9Ofr7xoECKDga8vL40fm02S7pH=Byj5P=NFhaEzbtQq6WQ@mail.gmail.com>
+References: <CAEYE9Ofmt3TJu2sFOUspRW4v5tx7aY6fbEVnFPvheEbf6iVekA@mail.gmail.com>
+ <CAEYE9Ofr7xoECKDga8vL40fm02S7pH=Byj5P=NFhaEzbtQq6WQ@mail.gmail.com>
+Message-ID: <CAEYE9Oc5Q1kx9DwnCtgRttG+5HBP0SrNfuD+sTMb8LQoEmTufQ@mail.gmail.com>
+
+This is a third reply to the first thread of this list, 'test'
+
+On Sat, Nov 8, 2014 at 11:39 AM, Sebastian Benthall <sb at ischool.berkeley.edu
+> wrote:
+
+> this is a reply to the earlier test message
+>
+> On Sat, Nov 8, 2014 at 11:37 AM, Sebastian Benthall <
+> sb at ischool.berkeley.edu> wrote:
+>
+>> this is a test
+>>
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.sudoroom.org/pipermail/bigbang-dev/attachments/20141108/de2978bc/attachment.html>
+
+From sb at ischool.berkeley.edu  Sat Nov  8 11:41:04 2014
+From: sb at ischool.berkeley.edu (Sebastian Benthall)
+Date: Sat, 8 Nov 2014 11:41:04 -0800
+Subject: [Bigbang-dev] second thread
+Message-ID: <CAEYE9OfA+Vcr-x++JMt--iOZ3Nn4U9Vxz=ZiO=XXVeNXytc3+A@mail.gmail.com>
+
+a second thread for bigbang-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.sudoroom.org/pipermail/bigbang-dev/attachments/20141108/c669ab00/attachment.html>
+
+From sb at ischool.berkeley.edu  Sat Nov  8 11:41:21 2014
+From: sb at ischool.berkeley.edu (Sebastian Benthall)
+Date: Sat, 8 Nov 2014 11:41:21 -0800
+Subject: [Bigbang-dev] a third thread
+Message-ID: <CAEYE9OdDO4+kBYARvgXChwxqix0Jmw9Q_AMq-8mD8aTT3wwbCg@mail.gmail.com>
+
+a third thread for bigbang-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.sudoroom.org/pipermail/bigbang-dev/attachments/20141108/2dd67860/attachment.html>
+
+From sb at ischool.berkeley.edu  Sat Nov  8 11:41:29 2014
+From: sb at ischool.berkeley.edu (Sebastian Benthall)
+Date: Sat, 8 Nov 2014 11:41:29 -0800
+Subject: [Bigbang-dev] a third thread
+In-Reply-To: <CAEYE9OdDO4+kBYARvgXChwxqix0Jmw9Q_AMq-8mD8aTT3wwbCg@mail.gmail.com>
+References: <CAEYE9OdDO4+kBYARvgXChwxqix0Jmw9Q_AMq-8mD8aTT3wwbCg@mail.gmail.com>
+Message-ID: <CAEYE9OeJg=YkKs6WxArv4iOWTh30pe2FW9dRjc3bBtWYik8=7Q@mail.gmail.com>
+
+thanks!
+
+On Sat, Nov 8, 2014 at 11:41 AM, Sebastian Benthall <sb at ischool.berkeley.edu
+> wrote:
+
+> a third thread for bigbang-dev
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.sudoroom.org/pipermail/bigbang-dev/attachments/20141108/010346b9/attachment.html>

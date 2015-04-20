@@ -1,0 +1,15 @@
+beautiful-soup
+coverage
+matplotlib
+networkx
+nose
+pytz
+numpy
+ipython
+ipython-notebook
+pandas
+pydot
+python-dateutil
+pip
+scipy
+requests

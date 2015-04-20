@@ -1,0 +1,9 @@
+https://github.com/codeforamerica/codeforamerica.org.git
+https://github.com/codeforamerica/cfapi.git
+https://github.com/codeforamerica/abq-seatmap.git
+https://github.com/codeforamerica/contracts-api.git
+https://github.com/codeforamerica/rva.git
+https://github.com/codeforamerica/brigade.git
+https://github.com/codeforamerica/follow-all.git
+https://github.com/codeforamerica/adopt-a-hydrant.git
+https://github.com/codeforamerica/packing-light.git
