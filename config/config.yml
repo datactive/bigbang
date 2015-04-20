@@ -23,3 +23,8 @@ urls_path : "examples/"
 # TODO: They are not completely standardized or stable yet. They do not yet work
 git_url_to_name_rgx: '([^/]*)(\\.git$)'
 file_to_name_rgx : '.*\/(.*)'
+
+
+# ATTRIBUTES
+# These are the attributes collected
+all_attributes: ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
