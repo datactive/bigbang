@@ -94,6 +94,7 @@ There are many ways to generate a GitRepo object for a repository, using RepoLoa
 * Bash scripts (in the bigbang directory):
     * single url `python bin/collect_git.py -u https://github.com/scipy/scipy.git`
     * file of urls `python bin/collect_git.py -f examples/git_urls.txt`
+    * Github organization name `python bin/collect_git.py -g glass-bead-labs`
 * Single Repo:
     * remote `get_repo("https://github.com/sbenthall/bigbang.git", in_type = "remote" )`
     * local `get_repo("~/urap/bigbang/archives/sample_git_repos/bigbang",  in_type = "local" )`
@@ -121,6 +122,12 @@ You can also give this command a file with several urls, one per line. One of th
 
 ```bash
 python bin/collect_git.py -f examples/git_urls.txt
+```
+
+This command will load all of the repos of a github organization. Make sure that the name is exactly as it appears on Github.
+
+```bash
+python bin/collect_git.py -g glass-bead-labs
 ```
 
 ### Single Repos
