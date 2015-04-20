@@ -1,8 +1,0 @@
-# This configuration file assumes that it is in the bigbang
-# directory (the same folder as .gitignore, requirements.txt,
-# etc.) The given paths are to be appended to the filepath of 
-# this config.yml file. For example, if a path is 
-# "archives/sample-git-repos", and the filepath of this file is
-# "~/folder/other/bigbang/config.yml" the full interpretation of it
-# should be "~/folder/other/bigbang/archives/sample-git-repos"
-

@@ -6,7 +6,7 @@ from time import mktime
 from datetime import datetime
 from entity_resolution import entity_resolve
 import networkx as nx
-
+from config import config
 
 ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
