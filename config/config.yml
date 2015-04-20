@@ -9,6 +9,17 @@
 # Note that "config/config.yml" was taken out. This will be a
 # manual process.
 
+# PATHS. 
+# For Configuration to work properly, paths need to have "path"
+# in their keyword.
+# NOTE: BE CAFEFUL NOT TO PUT 'path' IN OTHER ATTRIBUTE NAMES
 repo_path : "archives/sample-git-repos/"
 mail_path : "archives/"
 urls_path : "examples/"
+
+
+# REGEX
+# These are certain important regular expressions
+# TODO: They are not completely standardized or stable yet. They do not yet work
+git_url_to_name_rgx: '([^/]*)(\\.git$)'
+file_to_name_rgx : '.*\/(.*)'
