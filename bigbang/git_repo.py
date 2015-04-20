@@ -5,6 +5,8 @@ import numpy as np
 from time import mktime
 from datetime import datetime
 from entity_resolution import entity_resolve
+import networkx as nx
+
 
 ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
@@ -25,7 +27,6 @@ class GitRepo(object):
     of that commit (time, message, commiter name, committer email,
     commit hexsha)
     """
-
     def __init__(self, name, url=None, attribs = ALL_ATTRIBUTES, cache=None):
         self._commit_data = None;
         self.url = url;
@@ -36,14 +37,23 @@ class GitRepo(object):
             self.repo = Repo(url)
             self.populate_data(ALL_ATTRIBUTES)
         else:
-            cache.apply(cache_fixer, axis=1)
+            cache = cache.apply(cache_fixer, axis=1)
             cache.set_index(cache["Time"])
             self._commit_data = cache;
 
+            missing = list();
+            cols = self.commit_data.columns
+            for attr in attribs:
+                if attr not in cols and unicode(attr) not in cols:
+                    missing.append(attr);
+
+            if len(missing) > 0:
+                print("There were " + str(len(missing)) + " missing attributes: ")
+                print(missing);
+
         if ("Committer Name" in attribs and "Committer Email" in attribs):
-            print("Running Entity Resolution on " + str(self.name))
             self._commit_data["Person-ID"] = None;
-            self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
+            self._commit_data = self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
 
     def gen_data(self, repo, raw):
 
@@ -145,3 +155,4 @@ class MultiGitRepo(GitRepo):
         self._commit_data = repos[0].commit_data.copy(deep=True);
         for i in range(1, len(repos)):
             self.merge_with_repo(repos[i]);
+
