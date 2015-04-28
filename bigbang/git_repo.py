@@ -6,9 +6,8 @@ from time import mktime
 from datetime import datetime
 from entity_resolution import entity_resolve
 import networkx as nx
-
-
-ALL_ATTRIBUTES = ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
+from config.config import CONFIG
+ALL_ATTRIBUTES = CONFIG.all_attributes #["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
 def cache_fixer(r): # Adds info from row to graph
     r["Touched File"] = [x.strip() for x in r["Touched File"][1:-1].split(",")]

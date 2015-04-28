@@ -13,3 +13,4 @@ python-dateutil
 pip
 scipy
 requests
+pyyaml

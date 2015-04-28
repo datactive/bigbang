@@ -6,13 +6,12 @@ import subprocess;
 import sys;
 import pandas as pd
 import requests
+from config.config import CONFIG
 
-repoLocation = os.path.dirname(os.path.realpath(__file__))
-last_index = repoLocation.rfind("/")
-repoLocation = repoLocation[0:last_index] + "/archives/sample_git_repos/"
-examplesLocation = repoLocation[0:last_index] + "/examples/"
-nameRegex = re.compile("([^/]*)(\\.git$)")
-fileRegex = re.compile(".*\/(.*)")
+repoLocation = CONFIG.repo_path
+examplesLocation = CONFIG.urls_path
+nameRegex = re.compile('([^/]*)(\\.git$)')
+fileRegex = re.compile('.*\/(.*)')
 
 def repo_already_exists(filepath):
     return os.path.exists(filepath);

@@ -1,0 +1,7 @@
+git://github.com/glass-bead-labs/bead.glass.git
+git://github.com/glass-bead-labs/sensor-group.git
+git://github.com/glass-bead-labs/taichi-videos.git
+git://github.com/glass-bead-labs/static-c3.git
+git://github.com/glass-bead-labs/data-connector.git
+git://github.com/glass-bead-labs/data-reflector.git
+git://github.com/glass-bead-labs/glass-bead-ansible.git

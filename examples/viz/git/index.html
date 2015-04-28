@@ -23,15 +23,15 @@ var width = 960,
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-400)
-    .linkDistance(110)
+    .charge(-100)
+    .linkDistance(300)
     .size([width, height]);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("graph.json", function(error, graph) {
+d3.json("dlab-berkeley_repo2repo.json", function(error, graph) {
   force
       .nodes(graph.nodes)
       .links(graph.links)
