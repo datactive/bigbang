@@ -36,6 +36,9 @@ def getID(name, email):
     if emailID != nameID:
         # print("ID MISMATCH! " + email + " " + name)
         store(nameID, name, email)
+    else:
+        if emailID not in allID:
+            store(emailID, name, email);
 
     return nameID;
 
@@ -49,8 +52,13 @@ def store(id, name, email) :
 	fullID["emails"].append(email);
 
 
+def name_for_id(id):
+    if id in allID:
+        if "names" in allID[id] and len(allID[id]["names"]) > 0:
+            return allID[id]["names"][0]
+    return "UNKNOWN " + str(id)
 
-def entityResolve(row, emailCol, nameCol):
+def entity_resolve(row, emailCol, nameCol):
     emailAddress = row[emailCol].upper();
     emailAddress = emailAddress.replace(" AT ", "@")
     
