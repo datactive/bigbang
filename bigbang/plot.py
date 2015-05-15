@@ -2,7 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def stack(df,partition=None,smooth=1,figsize=(12.5, 7.5),time=True):
+    """
+    Plots a stackplot based on a dataframe. Includes support for partitioning
+    and convolution.
 
+    df - a dataframe
+    partition - a list of lists of columns of df
+    smooth - an integer amount of convolution
+    """
     if partition is None:
         #every column stacked separately
         partition = [[c] for c in df.columns]
@@ -10,7 +17,7 @@ def stack(df,partition=None,smooth=1,figsize=(12.5, 7.5),time=True):
     convolve_array = np.array([1. / smooth] * smooth)
 
     part_d = [np.convolve(df.as_matrix(part).sum(1),convolve_array,mode='same')
-                 for part in partition.values()]
+                 for part in partition]
 
     d = np.row_stack(part_d)
 
