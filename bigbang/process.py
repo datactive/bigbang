@@ -65,9 +65,6 @@ def minimum_but_not_self(column, dataframe):
     return minimum
 
 
-simple_lev_distance = Levenshtein.distance
-
-
 def from_header_distance(a, b):
     """
     A distance measure specifically for the 'From' header of emails.
