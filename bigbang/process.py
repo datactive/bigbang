@@ -39,13 +39,14 @@ def smooth(a, factor):
 
     return k[factor:-factor]
 
-# create a matrix by applying func to pairwise combos of elements in a Series
-# returns a square matrix as a DataFrame
-# should return a symmetric matrix if func(a,b) == func(b,a)
-# should return the identity matrix if func == '=='
-
 
 def matricize(series, func):
+    """
+    create a matrix by applying func to pairwise combos of elements in a Series
+    returns a square matrix as a DataFrame
+    should return a symmetric matrix if func(a,b) == func(b,a)
+    should return the identity matrix if func == '=='
+    """
     matrix = pd.DataFrame(columns=series, index=series)
     for index, element in enumerate(series):
         for second_index, second_element in enumerate(series):
