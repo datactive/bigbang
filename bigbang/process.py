@@ -64,19 +64,26 @@ def minimum_but_not_self(column, dataframe):
             minimum = value
     return minimum
 
+
 simple_lev_distance = Levenshtein.distance
 
 
-def lev_distance_normalized(a, b):
-    stop_characters = unicode('"<>')
-    stop_characters_map = dict((ord(char), None) for char in stop_characters)
-    a_normal = a.lower().translate(stop_characters_map)
-    b_normal = b.lower().translate(stop_characters_map)
+def from_header_distance(a, b):
+    """
+    A distance measure specifically for the 'From' header of emails.
+    Normalizes based on common differences in client handling of email,
+    then computes Levenshtein distance.
+    """
+    stopchars = '"<>"'
+    a_normal = a.lower().translate(None,stopchars).replace(' at ','@')
+    b_normal = b.lower().translate(None,stopchars).replace(' at ','@')
     return Levenshtein.distance(a_normal, b_normal)
 
 
-def sorted_lev(from_dataframe):
-    distancedf = matricize(from_dataframe.columns, lev_distance_normalized)
+def sorted_lev(from_dataframe,limit=None):
+    if limit is None:
+        limit = len(from_dataframe.columns)
+    distancedf = matricize(from_dataframe.columns[:limit], from_header_distance)
     # specify that the values in the matrix are integers
     df = distancedf.astype(int)
     sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
