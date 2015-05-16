@@ -21,24 +21,6 @@ def consolidate_senders_activity(activity_df, to_consolidate):
             df.drop(column_b, inplace=True, axis=1)  # delete the second column
     return df
 
-# This is a touch hacky.
-# Better to use numpy convolve
-# http://stackoverflow.com/questions/11352047/finding-moving-average-from-data-points-in-python
-# or else pandas' built-in rolling_mean
-# http://pandas.pydata.org/pandas-docs/stable/computation.html#moving-rolling-statistics-moments
-
-
-def smooth(a, factor):
-    k = np.zeros(len(a))
-    for i in range(factor):
-        k += np.roll(a, i)
-
-    k = k / factor
-
-    # TODO: need to trim the outsides
-
-    return k[factor:-factor]
-
 
 def matricize(series, func):
     """
