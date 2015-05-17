@@ -53,9 +53,12 @@ def from_header_distance(a, b):
     Normalizes based on common differences in client handling of email,
     then computes Levenshtein distance.
     """
-    stopchars = '"<>"'
-    a_normal = a.lower().translate(None,stopchars).replace(' at ','@')
-    b_normal = b.lower().translate(None,stopchars).replace(' at ','@')
+    # this translate table is one way you are supposed to
+    # delete characters from a unicode string
+    stop_characters = unicode('"<>')
+    stop_characters_map = dict((ord(char), None) for char in stop_characters)
+    a_normal = unicode(a).lower().translate(stop_characters_map).replace(' at ','@')
+    b_normal = unicode(b).lower().translate(stop_characters_map).replace(' at ','@')
     return Levenshtein.distance(a_normal, b_normal)
 
 
