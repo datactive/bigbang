@@ -2,6 +2,7 @@ from nose.tools import *
 import bigbang.archive as archive
 import bigbang.mailman as mailman
 import bigbang.parse as parse
+import bigbang.process as process
 import bigbang.utils as utils
 import mailbox
 import os
@@ -67,3 +68,9 @@ def test_clean_message():
         "Quoted text is in cleaned message"
 
     
+def test_sorted_lev():
+    a = 'Fernando.Perez at colorado.edu (Fernando.Perez at colorado.edu)'
+    b = 'Fernando.Perez at colorado.edu (Fernando.Perez@colorado.edu)'
+
+    assert process.from_header_distance(a,b) == 0, \
+        "from_header_distance computing incorrect value"
