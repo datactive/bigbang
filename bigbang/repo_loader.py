@@ -6,6 +6,13 @@ import subprocess;
 import sys;
 import pandas as pd
 import requests
+import fnmatch
+from IPython.nbformat import current as nbformat
+from IPython.nbconvert import PythonExporter
+import networkx as nx
+import compiler
+from compiler.ast import From 
+from compiler.ast import Import 
 from config.config import CONFIG
 
 repoLocation = CONFIG.repo_path
@@ -44,6 +51,66 @@ def filepath_to_name(filepath):
     name = fileRegex.search(filepath).group(1);
     return name;
 
+"""
+Converts a dictionary of dependencies into a  NetworkX DiGraph.
+""""
+def create_graph(dic):
+    G = nx.DiGraph()
+    
+    for f in dic:
+        for dependency in dic[f]:
+            G.add_edge(f, dependency)
+    return G
+
+"""
+Returns a list of the Python files in a directory, and
+converts IPython notebooks into Python source code and
+includes them with the Python files.
+"""
+def get_files(filepath):
+	os.chdir(filepath)
+	files = []
+	for root, dirnames, filenames in os.walk("."):
+		for filename in fnmatch.filter(filenames, '*.py'):
+			files.append(os.path.join(root, filename))
+
+		for filename in fnmatch.filter(filenames, '*.ipynb'):
+			try:
+				with open(filename) as fh:
+	    			nb = nbformat.reads_json(fh.read())
+
+				export_path = filename.replace(".ipynb", ".py")
+				exporter = PythonExporter()
+				source, meta = exporter.from_notebook_node(nb)
+
+				with open(export_path, 'w+') as fh:
+					fh.writelines(source)
+				files.append()
+			except: #may have issues with JSON encoding
+				pass
+	return files
+
+"""
+Given a directory, collects all Python and IPython files and
+uses the Python AST to create a dictionary of dependencies from them.
+Returns the dependencies converted into a NetworkX graph.
+"""
+def get_dependency_network(filepath):
+	files = get_files(filepath)
+	dependencies = {}
+	for file in set(files):
+		ast = compiler.parseFile(file)
+		for node in ast.getChildren()[1].nodes:
+			if isinstance(node, Import):
+				if file in dependencies:
+					dependencies[file].append(node.names[0][0])
+				else:
+					dependencies[file] = [node.names[0][0]]
+
+			elif isinstance(node, From):
+				if file in dependencies:
+					dependencies[file].append(node.modname + "/" + node.names[0][0])
+	return create_graph(dependencies)
 
 """
 Takes three different options for type:
