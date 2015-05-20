@@ -1,3 +1,24 @@
+import pandas as pd
+
+def repartition_dataframe(df,partition):
+    """
+    Create a new dataframe with the same index as
+    argument dataframe *df*, where columns are
+    the keys of dictionary *partition*.
+    The data of the returned dataframe are the
+    combinations of columns listed in the keys of
+    *partition*
+    """
+    df2 = pd.DataFrame(index=df.index)
+
+    for k,v in partition.items():
+        df2[k] = df[v[0]]
+    
+        for i in range(len(v) - 1):
+            df2[k] = df2[k] + df2[v[i]]
+
+    return df2
+
 def get_common_head(str1,str2,delimiter=None):
     try:
         if str1 is None or str2 is None:
