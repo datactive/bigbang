@@ -9,12 +9,14 @@ import re
 import Levenshtein
 from functools import partial
 
-# takes a DataFrame in the format returned by activity
-# takes a list of tuples of format ('from 1', 'from 2') to consolidate
-# returns the consolidated DataFrame (a copy, not in place)
-
 
 def consolidate_senders_activity(activity_df, to_consolidate):
+    """
+    takes a DataFrame in the format returned by activity
+    takes a list of tuples of format ('from 1', 'from 2') to consolidate
+    returns the consolidated DataFrame (a copy, not in place)
+    """
+
     df = activity_df.copy(deep=True)
     for consolidate in to_consolidate:
         column_a, column_b = consolidate
