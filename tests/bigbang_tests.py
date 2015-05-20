@@ -80,7 +80,7 @@ def test_email_entity_resolution():
 
     arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
 
-    e = process.resolve_sender_entities(arx)
+    e = process.resolve_sender_entities(arx.get_activity(resolved=False))
 
     eact = utils.repartition_dataframe(arx.get_activity(),e)
 

@@ -4,6 +4,7 @@ import mailbox
 import numpy as np
 from bigbang.thread import Thread
 from bigbang.thread import Node
+import bigbang.process as process
 import pandas as pd
 import pytz
 import utils
@@ -72,9 +73,24 @@ class Archive:
         self.data.sort(columns='Date', inplace=True)
 
 
-    def get_activity(self):
+    def get_activity(self,resolved=False):
+        """
+        Get the activity matrix of an Archive.
+        Columns of the returned DataFrame are the Senders of emails.
+        Rows are indexed by ordinal date.
+        Cells are the number of emails sent by each sender on each data.
+
+        If *resolved* is true, then default entity resolution is run on the
+        activity matrix before it is returned.
+        """
         if self.activity is None:
             self.activity = self.compute_activity(self)
+
+        if resolved:
+            self.entities = process.resolve_sender_entities(self.activity)
+            eact = utils.repartition_dataframe(self.activity,self.entities)
+            
+            return eact
 
         return self.activity
 

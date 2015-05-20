@@ -55,28 +55,27 @@ def sorted_matrix(from_dataframe,limit=None,sort_key=None):
     if limit is None:
         limit = len(from_dataframe.columns)
 
-    distancedf = matricize(from_dataframe.columns[:limit], from_header_distance)
+    distancedf = matricize(from_dataframe.columns[:limit - 1], from_header_distance)
 
     # specify that the values in the matrix are integers
     df = distancedf.astype(int)
 
     if sort_key is not None:
         #sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
-        new_columns = sorted(df.columns, key=sort_key)
+        new_columns = sorted(df.columns[:limit - 1], key=sort_key)
 
     new_df = df.reindex(index=new_columns, columns=new_columns)
 
     return df
 
 
-def resolve_sender_entities(arx):
+def resolve_sender_entities(act):
     """
-    Given an Archive, return a list of lists, each containing
+    Given an Archive's activity matrix, return a list of lists, each containing
     message senders ('From' fields) that have been groups to be
     probably the same entity.
     """
-    act = arx.get_activity()
-
+    
     # senders orders by descending total activity
     senders = act.sum(0).order(ascending=False)
     senders_act = senders.index
