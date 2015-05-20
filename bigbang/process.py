@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 import numpy as np
 import email.utils
+import re
 
 import Levenshtein
 from functools import partial
@@ -47,6 +48,26 @@ def minimum_but_not_self(column, dataframe):
     return minimum
 
 
+def sorted_matrix(from_dataframe,limit=None,sort_key=None):
+    if limit is None:
+        limit = len(from_dataframe.columns)
+
+    distancedf = matricize(from_dataframe.columns[:limit], from_header_distance)
+
+    # specify that the values in the matrix are integers
+    df = distancedf.astype(int)
+
+    if sort_key is not None:
+        #sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
+        new_columns = sorted(df.columns, key=sort_key)
+
+    #new_df = df.reindex(index=new_columns, columns=new_columns)
+
+    return df #new_df
+
+
+
+ren = "([\w\+\.\-]+(\@| at )[\w+\.\-]*) \((.*)\)"
 def from_header_distance(a, b):
     """
     A distance measure specifically for the 'From' header of emails.
@@ -57,19 +78,25 @@ def from_header_distance(a, b):
     # delete characters from a unicode string
     stop_characters = unicode('"<>')
     stop_characters_map = dict((ord(char), None) for char in stop_characters)
+
     a_normal = unicode(a).lower().translate(stop_characters_map).replace(' at ','@')
     b_normal = unicode(b).lower().translate(stop_characters_map).replace(' at ','@')
-    return Levenshtein.distance(a_normal, b_normal)
 
+    ag = re.match(ren,a_normal)
+    bg = re.match(ren,b_normal)
+    
+    dist = float("inf")
 
-def sorted_lev(from_dataframe,limit=None):
-    if limit is None:
-        limit = len(from_dataframe.columns)
-    distancedf = matricize(from_dataframe.columns[:limit], from_header_distance)
-    # specify that the values in the matrix are integers
-    df = distancedf.astype(int)
-    sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
-    new_columns = sorted(df.columns, key=sort_for_this_df)
-    new_df = df.reindex(index=new_columns, columns=new_columns)
+    if ag is None or bg is None:
+        print "malformed pair:"
+        print ag
+        print bg
+        dist = Levenshtein.distance(a_normal, b_normal)
+    else:
+        dist = Levenshtein.distance(ag.groups()[0],bg.groups()[0]) \
+               + Levenshtein.distance(ag.groups()[1],bg.groups()[1])
 
-    return new_df
+        if len(ag.groups()[2]) > 5 and len(ag.groups()[2]) > 5:
+            dist = min(dist,Levenshtein.distance(ag.groups()[2],bg.groups()[2]))
+
+    return dist
