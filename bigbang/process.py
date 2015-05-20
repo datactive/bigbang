@@ -118,7 +118,7 @@ def from_header_distance(a, b):
     """
     A distance measure specifically for the 'From' header of emails.
     Normalizes based on common differences in client handling of email,
-    then computes Levenshtein distance.
+    then computes Levenshtein distance between components of the field.
     """
     # this translate table is one way you are supposed to
     # delete characters from a unicode string
