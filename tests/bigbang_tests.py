@@ -74,3 +74,14 @@ def test_sorted_lev():
 
     assert process.from_header_distance(a,b) == 0, \
         "from_header_distance computing incorrect value"
+
+def test_email_entity_resolution():
+    name = "2001-November.txt"
+
+    arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
+
+    e = process.resolve_sender_entities(arx)
+
+    eact = utils.repartition_dataframe(arx.get_activity(),e)
+
+    assert True, "email entity resolution crashed"
