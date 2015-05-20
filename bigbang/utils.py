@@ -15,7 +15,7 @@ def repartition_dataframe(df,partition):
         df2[k] = df[v[0]]
     
         for i in range(len(v) - 1):
-            df2[k] = df2[k] + df2[v[i]]
+            df2[k] = df2[k] + df[v[i]]
 
     return df2
 
