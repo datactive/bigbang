@@ -1,6 +1,7 @@
 from bigbang.parse import get_date
 import pandas as pd
 import datetime
+import networkx as nx
 import numpy as np
 import email.utils
 import re
@@ -61,10 +62,55 @@ def sorted_matrix(from_dataframe,limit=None,sort_key=None):
         #sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
         new_columns = sorted(df.columns, key=sort_key)
 
-    #new_df = df.reindex(index=new_columns, columns=new_columns)
+    new_df = df.reindex(index=new_columns, columns=new_columns)
 
-    return df #new_df
+    return df
 
+
+def resolve_sender_entities(arx):
+    """
+    Given an Archive, return a list of lists, each containing
+    message senders ('From' fields) that have been groups to be
+    probably the same entity.
+    """
+    act = arx.get_activity()
+
+    # senders orders by descending total activity
+    senders = act.sum(0).order(ascending=False)
+    senders_act = senders.index
+
+    # senders in lexical order
+    senders_lex = act.columns.order()
+    senders_lex_dict = dict([(p[1],p[0]) for p in enumerate(senders_lex)])
+
+    n = len(senders)
+    # binary matrix of similarity between entries
+    sim = np.zeros((n,n))
+
+    # find similarity 
+    for i in range(n):
+        name = senders_act[i]
+        i = senders_lex_dict[name]
+    
+        # checking only lexically close entries and
+        # in proportion to total activity
+        # is a performance hack.
+        for j in range(i - (n - i + 1) / 2, i + (n - i + 1) / 2):
+            d = from_header_distance(senders_lex[i],senders_lex[j])
+            sim[i,j] = (d == 0)
+
+    # An entity is a connected component of the resulting graph
+    G = nx.Graph(sim)
+    entities_list = [[senders_lex[j] for j in x] for x in nx.connected_components(G)]
+
+    # given each entity a label based on its most active 'member'
+    entities_dict = {}
+    for e in entities_list:
+        # TODO: tighten up this labeling function
+        label = sorted(e,key=lambda n:senders[n],reverse=True)[0]
+        entities_dict[label] = e
+
+    return entities_dict
 
 
 ren = "([\w\+\.\-]+(\@| at )[\w+\.\-]*) \((.*)\)"
