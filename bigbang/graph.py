@@ -40,15 +40,6 @@ def messages_to_interaction_graph(messages, verbose=False):
     sender_counts = {}
     reply_counts = {}
 
-    '''
-    for m in messages:
-        m_from = parse.clean_from(m.get('From'))
-        from_dict[m.get('Message-ID')] = m_from
-        sender_counts[m_from] = sender_counts.get(m_from,0) + 1
-        # the necessity of this initialization step may be dubious
-        reply_counts[m_from] = reply_counts.get(m_from,{})
-        IG.add_node(m_from)
-    '''
     if not isinstance(messages, pandas.core.frame.DataFrame):
         df = process.messages_to_dataframe(messages)
     else:
