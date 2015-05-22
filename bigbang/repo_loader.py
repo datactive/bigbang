@@ -53,7 +53,7 @@ def filepath_to_name(filepath):
 
 """
 Converts a dictionary of dependencies into a  NetworkX DiGraph.
-""""
+"""
 def create_graph(dic):
     G = nx.DiGraph()
     
@@ -77,11 +77,11 @@ def get_files(filepath):
 		for filename in fnmatch.filter(filenames, '*.ipynb'):
 			try:
 				with open(filename) as fh:
-	    			nb = nbformat.reads_json(fh.read())
+                                    nb = nbformat.reads_json(fh.read())
 
-				export_path = filename.replace(".ipynb", ".py")
-				exporter = PythonExporter()
-				source, meta = exporter.from_notebook_node(nb)
+                                    export_path = filename.replace(".ipynb", ".py")
+                                    exporter = PythonExporter()
+                                    source, meta = exporter.from_notebook_node(nb)
 
 				with open(export_path, 'w+') as fh:
 					fh.writelines(source)
