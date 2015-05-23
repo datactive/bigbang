@@ -1,4 +1,19 @@
+import networkx as nx
 import pandas as pd
+
+def labeled_blockmodel(g,partition):
+    """
+    Perform blockmodel transformation on graph *g*
+    and partition represented by dictionary *partition*.
+    Values of *partition* are used to partition the graph.
+    Keys of *partition* are used to label the nodes of the
+    new graph.
+    """
+    new_g = nx.blockmodel(g,partition.values())
+    labels = dict(enumerate(partition.keys()))
+    new_g = nx.relabel_nodes(new_g,labels)
+    
+    return new_g
 
 def repartition_dataframe(df,partition):
     """

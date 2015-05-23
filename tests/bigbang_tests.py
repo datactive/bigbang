@@ -6,6 +6,7 @@ import bigbang.process as process
 import bigbang.utils as utils
 import mailbox
 import os
+import networkx as nx
 
 test_txt = ""
 
@@ -85,3 +86,21 @@ def test_email_entity_resolution():
     eact = utils.repartition_dataframe(arx.get_activity(),e)
 
     assert True, "email entity resolution crashed"
+
+def test_labeled_blockmodel():
+    g = nx.DiGraph()
+
+    g.add_edge(0,1)
+    g.add_edge(0,2)
+    g.add_edge(0,3)
+    g.add_edge(0,4)
+
+    p = {'B': [1,2,3,4], 'A': [0]}
+
+    bg = utils.labeled_blockmodel(g,p)
+
+    assert bg.edges(data=True)[0][2]['weight'] == 4.0, \
+        "Incorrect edge weight in labeled blockmodel"
+
+    assert bg.edges() == [('A','B')], \
+        "Incorrected edges in labeled blockmodel"
