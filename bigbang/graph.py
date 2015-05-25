@@ -31,7 +31,7 @@ def messages_to_reply_graph(messages):
     return G
 
 
-def messages_to_interaction_graph(messages, verbose=False):
+def messages_to_interaction_graph(messages, verbose=False,clean=True):
 
     IG = nx.DiGraph()
 
@@ -46,7 +46,11 @@ def messages_to_interaction_graph(messages, verbose=False):
         df = messages
 
     for m in df.iterrows():
-        m_from = parse.clean_from(m[1]['From'])
+        m_from = m[1]['From']
+
+        if clean:
+            m_from = parse.clean_from()
+
         from_dict[m[0]] = m_from
         sender_counts[m_from] = sender_counts.get(m_from, 0) + 1
         # the necessity of this initialization step may be dubious
@@ -59,7 +63,11 @@ def messages_to_interaction_graph(messages, verbose=False):
     replies = [m for m in df.iterrows() if m[1]['In-Reply-To'] is not None]
 
     for m in replies:
-        m_from = parse.clean_from(m[1]['From'])
+        m_from = m[1]['From']
+
+        if clean:
+            m_from = parse.clean_from(m_from)
+
         reply_to_mid = m[1]['In-Reply-To']
 
         if reply_to_mid in from_dict:
