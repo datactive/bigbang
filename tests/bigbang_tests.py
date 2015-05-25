@@ -50,6 +50,9 @@ def test_mailman_chain():
     assert [t.get_num_messages() for t in arx2.get_threads()] == [3,1,2], \
         "Thread message count in restored archive is off"
 
+    # smoke test entity resolution
+    arx2.resolve_entities()
+
     os.remove("test.csv")
 
 def test_clean_message():
@@ -69,11 +72,17 @@ def test_clean_message():
         "Quoted text is in cleaned message"
 
     
-def test_sorted_lev():
+def test_from_header_distance():
     a = 'Fernando.Perez at colorado.edu (Fernando.Perez at colorado.edu)'
     b = 'Fernando.Perez at colorado.edu (Fernando.Perez@colorado.edu)'
 
     assert process.from_header_distance(a,b) == 0, \
+        "from_header_distance computing incorrect value"
+
+    a = ''
+    b = ''
+
+    assert True, \
         "from_header_distance computing incorrect value"
 
 def test_email_entity_resolution():

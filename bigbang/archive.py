@@ -24,6 +24,7 @@ class Archive:
     data = None
     activity = None
     threads = None
+    entities = None
 
     def __init__(self, data, archive_dir="archives", mbox=False):
         """
@@ -72,6 +73,25 @@ class Archive:
 
         self.data.sort(columns='Date', inplace=True)
 
+    def resolve_entities(self,inplace=True):
+        if self.entities is None:
+            if self.activity is None:
+                self.get_activity()
+
+            self.entities = process.resolve_sender_entities(self.activity)
+
+        to_replace = {'From':{}}
+
+        for e, names in self.entities.items():
+            for n in names:
+                to_replace['From'][n] = e
+
+        data = self.data.replace(to_replace=to_replace,inplace=inplace)
+
+        if inplace:
+            return self.data
+        else:
+            return data
 
     def get_activity(self,resolved=False):
         """
