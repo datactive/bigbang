@@ -115,7 +115,7 @@ def resolve_sender_entities(act):
 
 
 ren = "([\w\+\.\-]+(\@| at )[\w+\.\-]*) \((.*)\)"
-def from_header_distance(a, b):
+def from_header_distance(a, b,verbose=False):
     """
     A distance measure specifically for the 'From' header of emails.
     Normalizes based on common differences in client handling of email,
@@ -135,9 +135,10 @@ def from_header_distance(a, b):
     dist = float("inf")
 
     if ag is None or bg is None:
-        print "malformed pair:"
-        print ag
-        print bg
+        if verbose:
+            print "malformed pair:"
+            print a
+            print b
         dist = Levenshtein.distance(a_normal, b_normal)
     else:
         dist = Levenshtein.distance(ag.groups()[0],bg.groups()[0]) \
