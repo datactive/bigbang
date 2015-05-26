@@ -80,13 +80,19 @@ class Archive:
 
             self.entities = process.resolve_sender_entities(self.activity)
 
-        to_replace = {'From':{}}
+        to_replace = []
+        value = []
 
         for e, names in self.entities.items():
             for n in names:
-                to_replace['From'][n] = e
+                to_replace.append(n)
+                value.append(e)
 
-        data = self.data.replace(to_replace=to_replace,inplace=inplace)
+        data = self.data.replace(to_replace=to_replace,value=value,inplace=inplace)
+
+        # clear and replace activity with resolved activity
+        self.activity = None
+        self.get_activity()
 
         if inplace:
             return self.data
