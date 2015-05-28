@@ -78,7 +78,6 @@ def draw_adjacency_matrix(G, node_order=None, partitions=[], colors=[],cmap="Gre
     """
     adjacency_matrix = nx.to_numpy_matrix(G, dtype=np.bool, nodelist=node_order)
 
-    #Plot adjacency matrix in toned-down black and white
     fig = plt.figure(figsize=figsize) # in inches
     plt.imshow(adjacency_matrix,
                cmap=cmap,
