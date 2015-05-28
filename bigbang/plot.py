@@ -1,6 +1,7 @@
+import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
+import matplotlib.patches as patches
 
 
 def stack(df,partition=None,smooth=1,figsize=(12.5, 7.5),time=True,cm=plt.cm.Set1):
@@ -55,8 +56,45 @@ def stack(df,partition=None,smooth=1,figsize=(12.5, 7.5),time=True,cm=plt.cm.Set
 
     # legend
     # make proxy artists
-    proxy_rects = [Rectangle((0, 0), 1, 1, fc=pc.get_facecolor()[0]) for pc in stacks]
+    proxy_rects = [patches.Rectangle((0, 0), 1, 1, fc=pc.get_facecolor()[0]) for pc in stacks]
     # make the legend
     ax.legend(proxy_rects,[kv[0] for kv in partition])
 
     plt.show()
+
+
+# modified from http://sociograph.blogspot.com/2012/11/visualizing-adjacency-matrices-in-python.html
+def draw_adjacency_matrix(G, node_order=None, partitions=[], colors=[],cmap="Greys"):
+    """
+    - G is a networkx graph
+    - node_order (optional) is a list of nodes, where each node in G
+          appears exactly once
+    - partitions is a list of node lists, where each node in G appears
+          in exactly one node list
+    - colors is a list of strings indicating what color each
+          partition should be
+    If partitions is specified, the same number of colors needs to be
+    specified.
+    """
+    adjacency_matrix = nx.to_numpy_matrix(G, dtype=np.bool, nodelist=node_order)
+
+    #Plot adjacency matrix in toned-down black and white
+    fig = plt.figure(figsize=(5, 5)) # in inches
+    plt.imshow(adjacency_matrix,
+               cmap=cmap,
+               interpolation="none")
+    
+    # The rest is just if you have sorted nodes by a partition and want to
+    # highlight the module boundaries
+    assert len(partitions) == len(colors)
+    ax = plt.gca()
+    current_idx = 0
+    for partition, color in zip(partitions, colors):
+        #for module in partition:
+        ax.add_patch(patches.Rectangle((current_idx, current_idx),
+                                       len(partition), # Width
+                                       len(partition), # Height
+                                       facecolor="none",
+                                       edgecolor=color,
+                                       linewidth="1"))
+        current_idx += len(partition)
