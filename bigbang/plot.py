@@ -64,7 +64,7 @@ def stack(df,partition=None,smooth=1,figsize=(12.5, 7.5),time=True,cm=plt.cm.Set
 
 
 # modified from http://sociograph.blogspot.com/2012/11/visualizing-adjacency-matrices-in-python.html
-def draw_adjacency_matrix(G, node_order=None, partitions=[], colors=[],cmap="Greys"):
+def draw_adjacency_matrix(G, node_order=None, partitions=[], colors=[],cmap="Greys",figsize=(6,6)):
     """
     - G is a networkx graph
     - node_order (optional) is a list of nodes, where each node in G
@@ -79,7 +79,7 @@ def draw_adjacency_matrix(G, node_order=None, partitions=[], colors=[],cmap="Gre
     adjacency_matrix = nx.to_numpy_matrix(G, dtype=np.bool, nodelist=node_order)
 
     #Plot adjacency matrix in toned-down black and white
-    fig = plt.figure(figsize=(5, 5)) # in inches
+    fig = plt.figure(figsize=figsize) # in inches
     plt.imshow(adjacency_matrix,
                cmap=cmap,
                interpolation="none")
