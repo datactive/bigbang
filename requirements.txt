@@ -21,3 +21,4 @@ tornado
 requests
 pyyaml
 common
+powerlaw
