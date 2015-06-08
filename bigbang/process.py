@@ -148,3 +148,50 @@ def from_header_distance(a, b,verbose=False):
             dist = min(dist,Levenshtein.distance(ag.groups()[2],bg.groups()[2]))
 
     return dist
+
+
+def eij(m,parts,i,j):
+    total_edges = m.sum().sum()
+    
+    part_i = parts[i]
+    part_j = parts[j]
+    
+    edges_in_range = m[np.ix_(np.array(part_i),np.array(part_j))]
+    
+    return edges_in_range.sum().sum() / total_edges
+
+def ai(m,parts,i):
+    total = 0
+
+    for j in range(len(parts)):
+        total = total + eij(m,parts,i,j)
+
+    return total
+
+def bi(m,parts,i):
+    total = 0
+
+    for j in range(len(parts)):
+        total = total + eij(m,parts,j,i) # note switched i,j
+
+    return total
+
+def modularity(m,parts):
+    """
+    Compute modularity of an adjacency matrix.
+    Use metric from:
+        Zanetti, M. and Schweitzer, F. 2012.
+        "A Network Perspective on Software Modularity"
+        ARCS Workshops 2012, pp. 175-186.
+    """
+
+    expected = 0
+    actual = 0
+
+    for i in range(len(parts)):
+        expected = expected + ai(m,parts,i) * bi(m,parts,i)
+        actual = actual + eij(m,parts,i,i)
+
+    q = (actual - expected) / (1 - expected)
+
+    return q
