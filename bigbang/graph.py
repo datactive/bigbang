@@ -49,7 +49,7 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
         m_from = m[1]['From']
 
         if clean:
-            m_from = parse.clean_from()
+            m_from = parse.clean_from(m_from)
 
         from_dict[m[0]] = m_from
         sender_counts[m_from] = sender_counts.get(m_from, 0) + 1
