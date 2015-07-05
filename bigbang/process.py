@@ -126,8 +126,18 @@ def from_header_distance(a, b,verbose=False):
     stop_characters = unicode('"<>')
     stop_characters_map = dict((ord(char), None) for char in stop_characters)
 
-    a_normal = unicode(a).lower().translate(stop_characters_map).replace(' at ','@')
-    b_normal = unicode(b).lower().translate(stop_characters_map).replace(' at ','@')
+    a_normal = ""
+    b_normal = ""
+
+    try:
+        a_normal = unicode(a).lower().translate(stop_characters_map).replace(' at ','@')
+    except UnicodeDecodeError as e:
+        a_normal = a.decode("utf-8").lower().translate(stop_characters_map).replace(' at ','@')
+
+    try:
+        b_normal = unicode(b).lower().translate(stop_characters_map).replace(' at ','@')
+    except UnicodeDecodeError as e:
+        b_normal = b.decode("utf-8").lower().translate(stop_characters_map).replace(' at ','@')
 
     ag = re.match(ren,a_normal)
     bg = re.match(ren,b_normal)
