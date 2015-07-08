@@ -84,7 +84,7 @@ Once the data has been collected, BigBang has functions to support analysis.
 
 # Git Information
 
-A new branch of BigBang is collecting git commit information for projects. We can analyze a project using both its mail and gir information to answer new questions about development.
+A new branch of BigBang is collecting git commit information for projects. We can analyze a project using both its mail and git information to answer new questions about development.
 
 ## Collecting Git Information
 
