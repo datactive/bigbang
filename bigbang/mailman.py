@@ -13,11 +13,13 @@ import warnings
 
 ml_exp = re.compile('/([\w-]*)/$')
 
+txt_exp = re.compile('href="(\d\d\d\d-\w*\.txt)"')
+
 gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile('lists\.w3\.org')
 
-mailing_list_path_expressions = [gz_exp, ietf_ml_exp]
+mailing_list_path_expressions = [gz_exp, ietf_ml_exp,txt_exp]
 
 
 class InvalidURLException(Exception):
