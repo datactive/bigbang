@@ -22,3 +22,4 @@ requests
 pyyaml
 common
 powerlaw
+git+https://github.com/gitpython-developers/GitPython.git
