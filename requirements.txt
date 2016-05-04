@@ -6,6 +6,7 @@ coverage
 html2text
 ipython
 jinja2
+jupyter
 jsonschema
 matplotlib
 networkx
