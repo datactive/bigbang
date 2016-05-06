@@ -204,3 +204,8 @@ def modularity(m,parts):
     q = (actual - expected) / (1 - expected)
 
     return q
+
+def domain_name_from_email(name):
+    address = email.utils.parseaddr(name)[1]
+    domain = address.split('@')[1]
+    return domain.lower()
