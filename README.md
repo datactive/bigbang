@@ -189,9 +189,9 @@ The function will then use the list of git urls and the `get_repo` method to get
 
 ## Community
 
-If you are interested in participating in BigBang development, please subscribe to the [BigBang-dev mailing list](https://lists.sudoroom.org/listinfo/bigbang-dev).
+If you are interested in participating in BigBang development, please subscribe to the [BigBang-dev mailing list](https://sudoroom.org/lists/listinfo/bigbang-dev).
 
-If you are using BigBang and would like support from the core development team, please address your questions to the [BigBang-user mailing list](https://lists.sudoroom.org/listinfo/bigbang-user).
+If you are using BigBang and would like support from the core development team, please address your questions to the [BigBang-user mailing list](https://sudoroom.org/lists/listinfo/bigbang-user).
 
 ## License
 
