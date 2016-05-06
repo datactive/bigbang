@@ -59,15 +59,14 @@ def sorted_matrix(from_dataframe,limit=None,sort_key=None):
 
     # specify that the values in the matrix are integers
     df = distancedf.astype(int)
-
-    if sort_key is not None:
-        #sort_for_this_df = partial(minimum_but_not_self, dataframe=df)
-        new_columns = sorted(df.columns[:limit - 1], key=sort_key)
-
+    
+    # unless otherwise specified, sort to minimize the integer values with rows other than yourself
+    sort_key = sort_key if sort_key is not None else partial(minimum_but_not_self, dataframe=df)
+    
+    new_columns = sorted(df.columns[:limit - 1], key=sort_key)
     new_df = df.reindex(index=new_columns, columns=new_columns)
 
-    return df
-
+    return new_df
 
 def resolve_sender_entities(act):
     """
