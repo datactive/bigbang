@@ -21,13 +21,9 @@ the `conda` package management system, which you can use to complete
 installation. **Note** that Anaconda does not include Graphviz, so you will
 have to install that separately.
 
-If you choose not to use Anaconda, you will have to install each of the
-above-mentioned packages for your platform. If you're using OS X [these instructions][osx] may be helpful.
+If you choose not to use Anaconda, you will most probably run into issues with versioning in Python. 
 
-[osx]: http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/
-
-Once these dependencies are installed, you can install BigBang
-using either `conda` or `pip`.
+Once dependencies are installed, you can install BigBang using `conda`.
 
 ### conda installation
 
@@ -40,16 +36,7 @@ cd bigbang
 bash conda-setup.sh
 ```
 
-### pip installation
-
-Run the following commands:
-
-```bash
-git clone https://github.com/sbenthall/bigbang.git
-# optionally create a new virtualenv here
-pip install -r requirements.txt
-python setup.py develop
-```
+Ensure to add the Conda installation directory to your path. 
 
 ## Usage
 
@@ -189,9 +176,7 @@ The function will then use the list of git urls and the `get_repo` method to get
 
 ## Community
 
-If you are interested in participating in BigBang development, please subscribe to the [BigBang-dev mailing list](https://sudoroom.org/lists/listinfo/bigbang-dev).
-
-If you are using BigBang and would like support from the core development team, please address your questions to the [BigBang-user mailing list](https://sudoroom.org/lists/listinfo/bigbang-user).
+If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to [BigBang-user mailing list](https://sudoroom.org/lists/listinfo/bigbang-user) and let us know what your suggestions, questions, requests and comments are. 
 
 ## License
 
