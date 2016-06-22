@@ -16,12 +16,13 @@ BigBang depends on several scientific computing packages that you must first ins
 
 
 You can use the [Anaconda](http://continuum.io/downloads) distribution to
-install `numpy` and `matplotlib` on almost any platform. This will also install
+install `numpy` and `matplotlib` and `graphviz` on almost any platform. This will also install
 the `conda` package management system, which you can use to complete
-installation. **Note** that Anaconda does not include Graphviz, so you will
-have to install that separately.
+installation. 
 
 If you choose not to use Anaconda, you will most probably run into issues with versioning in Python. 
+
+Use Anaconda with Python version 2.7
 
 Once dependencies are installed, you can install BigBang using `conda`.
 
@@ -30,7 +31,7 @@ Once dependencies are installed, you can install BigBang using `conda`.
 Run the following commands:
 
 ```bash
-git clone https://github.com/sbenthall/bigbang.git
+git clone https://github.com/nllz/bigbang.git
 conda create -n bigbang python
 cd bigbang
 bash conda-setup.sh
