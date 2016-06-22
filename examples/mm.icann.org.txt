@@ -198,7 +198,6 @@ http://mm.icann.org/pipermail/mailman
 http://mm.icann.org/pipermail/mailman_rss_test
 http://mm.icann.org/pipermail/meswg
 http://mm.icann.org/pipermail/metrics.sc
-http://mm.icann.org/pipermail/mm.icann.org.txt
 http://mm.icann.org/pipermail/msipanel
 http://mm.icann.org/pipermail/mtgplan-wg
 http://mm.icann.org/pipermail/myanmargp
