@@ -77,16 +77,20 @@ def load_data(name,archive_dir="archives",mbox=False):
 
 def collect_from_url(url,archive_dir="archives"):
     url = url.rstrip()
-    collect_archive_from_url(url)
-    unzip_archive(url)
-    data = open_list_archives(url)
+    has_archives = collect_archive_from_url(url)
 
-    # hard coding the archives directory in too many places
-    # need to push this default to a configuration file
-    path = os.path.join(archive_dir, get_list_name(url) + ".csv")
-    data.to_csv(path, ",", encoding="utf-8")
+    if has_archives:
+        unzip_archive(url)
+        data = open_list_archives(url)
 
-    return data
+        # hard coding the archives directory in too many places
+        # need to push this default to a configuration file
+        path = os.path.join(archive_dir, get_list_name(url) + ".csv")
+        data.to_csv(path, ",", encoding="utf-8")
+
+        return data
+    else:
+        return None
 
 
 def collect_from_file(urls_file):
@@ -114,6 +118,13 @@ def archive_directory(base_dir, list_name):
 
 
 def collect_archive_from_url(url, archive_dir="archives"):
+    """
+    Collects archives (generally tar.gz) files from mailmain
+    archive page.
+
+    Returns True if archives were downloaded, False otherwise
+    (for example if the page lists no accessible archive files).
+    """
     list_name = get_list_name(url)
     pp("Getting archive page for %s" % list_name)
 
@@ -148,6 +159,9 @@ def collect_archive_from_url(url, archive_dir="archives"):
             else:
                 print("%s error code trying to retrieve %s" %
                       (str(resp.getcode(), gz_url)))
+
+    # return True if any archives collected, false otherwise
+    return len(results) > 0
 
 
 def unzip_archive(url, archive_dir="archives"):
