@@ -12,15 +12,11 @@ You can use the [Anaconda](http://continuum.io/downloads). This will also instal
 the `conda` package management system, which you can use to complete
 installation. 
 
-Install Anaconda from http://continuum.io/downloads
+Install Anaconda (with Python version 2.7) from http://continuum.io/downloads
 
 (If you choose not to use Anaconda, you will most probably run into issues with versioning in Python.)
 
-Use Anaconda with Python version 2.7
-
-Once dependencies are installed, you can install BigBang using `conda`.
-
-### conda installation
+Ensure to add the Conda installation directory to your path during installation. 
 
 Run the following commands:
 
@@ -31,7 +27,6 @@ cd bigbang
 bash conda-setup.sh
 ```
 
-Ensure to add the Conda installation directory to your path. 
 
 ## Usage
 
