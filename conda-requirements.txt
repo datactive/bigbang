@@ -1,4 +1,4 @@
-beautiful-soup
+beautifulsoup4
 coverage
 matplotlib
 graphviz
