@@ -249,7 +249,13 @@ def get_text(msg):
             else:
                 charset = part.get_content_charset()
             if part.get_content_type() == 'text/plain':
-                text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                try:
+                    text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                except LookupError as e:
+                    print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
+                    charset = "utf-8"
+                    text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+
             if part.get_content_type() == 'text/html':
                 html = unicode(part.get_payload(decode=True), str(charset), "ignore")
         if text is not None:
