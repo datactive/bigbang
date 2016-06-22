@@ -77,7 +77,11 @@ def load_data(name,archive_dir="archives",mbox=False):
 
 def collect_from_url(url,archive_dir="archives"):
     url = url.rstrip()
-    has_archives = collect_archive_from_url(url)
+    try:
+        has_archives = collect_archive_from_url(url)
+    except urllib2.HTTPError as e:
+        print "HTTP 404 Error: %s" % (url)
+        return None
 
     if has_archives:
         unzip_archive(url)
