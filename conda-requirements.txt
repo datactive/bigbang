@@ -1,6 +1,7 @@
 beautiful-soup
 coverage
 matplotlib
+graphviz
 networkx
 nose
 pytz
