@@ -8,15 +8,7 @@ Mailman, or [.mbox][mbox] files.
 
 ## Installation
 
-BigBang depends on several scientific computing packages that you must first install on your system, which include:
-
-* [numpy](http://docs.scipy.org/doc/numpy/user/install.html)
-* [matplotlib](http://matplotlib.org/users/installing.html)
-* [graphviz](http://www.graphviz.org/)
-
-
-You can use the [Anaconda](http://continuum.io/downloads) distribution to
-install `numpy` and `matplotlib` and `graphviz` on almost any platform. This will also install
+You can use the [Anaconda](http://continuum.io/downloads). This will also install
 the `conda` package management system, which you can use to complete
 installation. 
 
