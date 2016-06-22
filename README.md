@@ -12,9 +12,9 @@ You can use the [Anaconda](http://continuum.io/downloads). This will also instal
 the `conda` package management system, which you can use to complete
 installation. 
 
-## Install Anaconda from http://continuum.io/downloads
+Install Anaconda from http://continuum.io/downloads
 
-If you choose not to use Anaconda, you will most probably run into issues with versioning in Python. 
+(If you choose not to use Anaconda, you will most probably run into issues with versioning in Python.)
 
 Use Anaconda with Python version 2.7
 
