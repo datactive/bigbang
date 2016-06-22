@@ -137,7 +137,7 @@ def collect_archive_from_url(url, archive_dir="archives"):
         result_path = os.path.join(arc_dir, res)
         # this check is redundant with urlretrieve
         if not os.path.isfile(result_path):
-            gz_url = url + res
+            gz_url = "/".join([url.strip("/"),res])
             pp('retrieving %s' % gz_url)
             resp = urllib2.urlopen(gz_url)
             if resp.getcode() == 200:
