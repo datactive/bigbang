@@ -269,6 +269,8 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
     return messages_to_dataframe(messages)
 
 def get_text(msg):
+    ## This code for character detection and dealing with exceptions is terrible
+    ## It is in need of refactoring badly. - sb
     import chardet
     text = u""
     if msg.is_multipart():
@@ -287,7 +289,13 @@ def get_text(msg):
                     text = unicode(part.get_payload(decode=True), str(charset), "ignore")
 
             if part.get_content_type() == 'text/html':
-                html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                try:
+                    html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                except LookupError as e:
+                    print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
+                    charset = "utf-8"
+                    html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+
         if text is not None:
             return text.strip()
         else:
@@ -297,7 +305,12 @@ def get_text(msg):
             return unicode(h.handle(html))
     else:
         charset = msg.get_content_charset() or 'utf-8'
-        text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
+        try:
+            text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
+        except LookupError as e:
+            print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
+            charset = "utf-8"
+            text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
         return text.strip()
 
 def messages_to_dataframe(messages):
