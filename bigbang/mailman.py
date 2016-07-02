@@ -257,13 +257,14 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
         print 'Opening %d archive files' % (len(txts))
         arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
 
-        messages = [item for sublist in arch for item in sublist]
-
-        if len(messages) == 0:
+        if len(arch) == 0:
             raise MissingDataException(
                 ("No messages in %s under %s. Did you run the "
                  "collect_mail.py script?") %
                 (archive_dir, list_name))
+
+
+        messages = [item for sublist in arch for item in sublist]
 
     return messages_to_dataframe(messages)
 
