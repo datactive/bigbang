@@ -93,9 +93,15 @@ def collect_from_url(url,archive_dir="archives"):
 
         try:
             data.to_csv(path, ",", encoding="utf-8")
-        except:
+        except Exception as e:
+            print e
             # if encoding doesn't work...don't encode?
-            data.to_csv(path, ",")
+            try:
+                data.to_csv(path, ",")
+            except Exception as e:
+                print e
+                print "Can't export data. Aborting."
+                return None
 
         return data
     else:
