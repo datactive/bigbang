@@ -8,7 +8,7 @@ Mailman, or [.mbox][mbox] files.
 
 ## Installation
 
-You can use the [Anaconda](http://continuum.io/downloads). This will also install
+You can use [Anaconda](http://continuum.io/downloads). This will also install
 the `conda` package management system, which you can use to complete
 installation. 
 
