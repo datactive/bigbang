@@ -207,5 +207,6 @@ def modularity(m,parts):
 
 def domain_name_from_email(name):
     address = email.utils.parseaddr(name)[1]
-    domain = address.split('@')[1]
+    if '@' in address: domain = address.split('@')[1]
+    else: domain = address.split(' at ')[1]
     return domain.lower()
