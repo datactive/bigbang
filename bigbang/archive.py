@@ -125,7 +125,6 @@ class Archive:
     def compute_activity(self, clean=True):
         mdf = self.data
 
-        print self.data
 	if clean:
             # unnecessary?
             mdf = mdf.dropna(subset=['Date'])
