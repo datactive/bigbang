@@ -1,4 +1,5 @@
 from nose.tools import *
+from bigbang import repo_loader
 import bigbang.archive as archive
 import bigbang.mailman as mailman
 import bigbang.parse as parse
@@ -10,6 +11,8 @@ import networkx as nx
 
 test_txt = ""
 
+def test_git_dependancy():
+    repo = repo_loader.get_repo("https://github.com/sbenthall/bigbang.git", in_type = "remote")
 
 def setup():
     pass
