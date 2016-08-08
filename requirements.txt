@@ -10,6 +10,7 @@ jupyter
 jsonschema
 matplotlib
 networkx
+nltk
 nose
 numpy
 pandas
