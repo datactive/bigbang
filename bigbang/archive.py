@@ -59,7 +59,7 @@ class Archive(object):
         # Drops any entries with no Date field.
         # It may be wiser to optionally
         # do interpolation here.
-        if not self.data['Date'].isnull().any():
+        if self.data['Date'].isnull().any():
             self.data.dropna(subset=['Date'], inplace=True)
 
         #convert any null fields to None -- csv saves these as nan sometimes
