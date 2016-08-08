@@ -15,7 +15,7 @@ def load(path):
     return Archive(data)
 
 
-class Archive:
+class Archive(object):
 
     """
     A representation of a mailing list archive.
