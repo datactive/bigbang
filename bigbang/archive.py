@@ -126,7 +126,9 @@ class Archive(object):
 
         if clean:
             # unnecessary?
-            mdf = mdf.dropna(subset=['Date'])
+            if mdf['Date'].isnull().any():
+                mdf = mdf.dropna(subset=['Date'])
+
             mdf = mdf[
                 mdf['Date'] < datetime.datetime.now(
                     pytz.utc)]  # drop messages apparently in the future
