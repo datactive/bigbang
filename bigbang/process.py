@@ -6,7 +6,7 @@ import numpy as np
 import email.utils
 import re
 
-import Levenshtein
+#import Levenshtein
 from functools import partial
 
 
@@ -114,7 +114,7 @@ def resolve_sender_entities(act):
 
 
 ren = "([\w\+\.\-]+(\@| at )[\w+\.\-]*) \((.*)\)"
-def from_header_distance(a, b,verbose=False):
+'''def from_header_distance(a, b,verbose=False):
     """
     A distance measure specifically for the 'From' header of emails.
     Normalizes based on common differences in client handling of email,
@@ -156,7 +156,7 @@ def from_header_distance(a, b,verbose=False):
         if len(ag.groups()[2]) > 5 and len(ag.groups()[2]) > 5:
             dist = min(dist,Levenshtein.distance(ag.groups()[2],bg.groups()[2]))
 
-    return dist
+    return dist'''
 
 
 def eij(m,parts,i,j):
@@ -207,5 +207,6 @@ def modularity(m,parts):
 
 def domain_name_from_email(name):
     address = email.utils.parseaddr(name)[1]
-    domain = address.split('@')[1]
+    if '@' in address: domain = address.split('@')[1]
+    else: domain = address.split(' at ')[1]
     return domain.lower()
