@@ -8,35 +8,35 @@ Mailman, or [.mbox][mbox] files.
 
 ## Installation
 
-BigBang depends on several scientific computing packages that you must first install on your system, which include:
-
-* [numpy](http://docs.scipy.org/doc/numpy/user/install.html)
-* [matplotlib](http://matplotlib.org/users/installing.html)
-* [graphviz](http://www.graphviz.org/)
-
-
-You can use the [Anaconda](http://continuum.io/downloads) distribution to
-install `numpy` and `matplotlib` on almost any platform. This will also install
+You can use [Anaconda](http://continuum.io/downloads). This will also install
 the `conda` package management system, which you can use to complete
-installation. **Note** that Anaconda does not include Graphviz, so you will
-have to install that separately.
+installation. 
 
-If you choose not to use Anaconda, you will most probably run into issues with versioning in Python. 
+Install Anaconda (with Python version 2.7) from http://continuum.io/downloads
 
-Once dependencies are installed, you can install BigBang using `conda`.
+(If you choose not to use Anaconda, you will most probably run into issues with versioning in Python.)
 
-### conda installation
+Ensure to add the Conda installation directory to your path during installation. 
 
 Run the following commands:
 
 ```bash
-git clone https://github.com/sbenthall/bigbang.git
+git clone https://github.com/nllz/bigbang.git
 conda create -n bigbang python
 cd bigbang
 bash conda-setup.sh
 ```
 
-Ensure to add the Conda installation directory to your path. 
+### pip installation
+
+Run the following commands:
+
+```bash
+git clone https://github.com/sbenthall/bigbang.git
+# optionally create a new virtualenv here
+pip install -r requirements.txt
+python setup.py develop
+```
 
 ## Usage
 

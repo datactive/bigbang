@@ -46,13 +46,12 @@ class Archive(object):
         Upon initialization, the Archive object drops duplicate entries
         and sorts its member variable *data* by Date.
         """
-
+          
         if isinstance(data, pd.core.frame.DataFrame):
             self.data = data.copy()
-
         elif isinstance(data, str):
             self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
-
+         
         self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
         self.data.drop_duplicates(inplace=True)
 
@@ -74,6 +73,8 @@ class Archive(object):
 
         self.data.sort(columns='Date', inplace=True)
 
+        
+
     def resolve_entities(self,inplace=True):
         if self.entities is None:
             if self.activity is None:
@@ -82,6 +83,7 @@ class Archive(object):
             self.entities = process.resolve_sender_entities(self.activity)
 
         to_replace = []
+
         value = []
 
         for e, names in self.entities.items():
@@ -124,7 +126,7 @@ class Archive(object):
     def compute_activity(self, clean=True):
         mdf = self.data
 
-        if clean:
+	if clean:
             # unnecessary?
             if mdf['Date'].isnull().any():
                 mdf = mdf.dropna(subset=['Date'])
@@ -132,16 +134,14 @@ class Archive(object):
             mdf = mdf[
                 mdf['Date'] < datetime.datetime.now(
                     pytz.utc)]  # drop messages apparently in the future
-
+        
         mdf2 = mdf.reindex(columns = ['From', 'Date'])
         mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
 
         activity = mdf2.groupby(
             ['From', 'Date']).size().unstack('From').fillna(0)
-
         new_date_range = np.arange(mdf2['Date'].min(), mdf2['Date'].max())
         # activity.set_index('Date')
-
         activity = activity.reindex(new_date_range, fill_value=0)
 
         return activity
