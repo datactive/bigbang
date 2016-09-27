@@ -8,6 +8,7 @@ ipython
 jinja2
 jupyter
 jsonschema
+gitpython
 matplotlib
 networkx
 nltk
