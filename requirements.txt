@@ -11,6 +11,7 @@ jsonschema
 gitpython
 matplotlib
 networkx
+nltk
 nose
 numpy
 pandas
