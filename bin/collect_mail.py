@@ -1,41 +1,40 @@
 import sys
 import getopt
 import bigbang.mailman as mailman
-from pprint import pprint as pp
 import logging
+import argparse
+from argparse import RawTextHelpFormatter
+
+parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter, description=r"""
+Collects files from public Mailman archives.
+
+Please include either a url of a mailman web archive or the path to a file with
+a linebreak-separated list of such urls.
+
+For example:
+
+python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+
+or
+
+python bin/collect_mail.py -f examples/urls.txt
+
+""")
+parser.add_argument('-u', type=str, help='URL of mailman archive')
+
+parser.add_argument('-f', type=str, help='Path of a file with linebreak-seperated list of urls')
+
+args = parser.parse_args()
 
 logging.basicConfig(level=logging.DEBUG)
 
 
-def main(argv):
-    inputfile = ''
-    outputfile = ''
-    try:
-        opts, args = getopt.getopt(argv, "u:f:")
-    except getopt.GetoptError as e:
-        print 'GetoptError: %s' % (e)
-        sys.exit(2)
-
-    if len(opts) == 0:
-        print 'Please include either a url of a mailman web archive'
-        print 'or the path to a file with a linebreak-separated list'
-        print 'of such urls.'
-        print ''
-        print 'For example:'
-        print ''
-        print 'python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/'
-        print ''
-        print 'or'
-        print ''
-        print 'python bin/collect_mail.py -f examples/urls.txt'
-        print ''
-
-    for opt, arg in opts:
-        if opt == '-u':
-            mailman.collect_from_url(arg)
-            sys.exit()
-        elif opt == '-f':
-            mailman.collect_from_file(arg)
+def main(args):
+    if args.u:
+        mailman.collect_from_url(args.u)
+        sys.exit()
+    elif args.f:
+        mailman.collect_from_file(args.f)
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(args)

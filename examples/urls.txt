@@ -1,6 +1,3 @@
-http://mail.scipy.org/pipermail/ipython-dev/
-http://mail.scipy.org/pipermail/ipython-user/
-http://mail.scipy.org/pipermail/scipy-dev/
-http://mail.scipy.org/pipermail/scipy-user/
-http://mail.scipy.org/pipermail/numpy-discussion/
-http://www.ietf.org/mail-archive/text/ietf-privacy/
+http://lists.ncuc.org/cgi-bin/mailman/listinfo/ncuc-discuss/
+https://mm.icann.org/pipermail/cc-humanrights/
+https://mm.icann.org/mailman/listinfo/public-comment/

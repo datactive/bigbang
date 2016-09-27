@@ -11,7 +11,7 @@ ALL_ATTRIBUTES = CONFIG.all_attributes #["HEXSHA", "Committer Name", "Committer 
 
 def cache_fixer(r): # Adds info from row to graph
     r["Touched File"] = [x.strip() for x in r["Touched File"][1:-1].split(",")]
-    r["Time"] = pd.to_datetime(r["Time"], unit = "s");
+    r["Time"] = pd.to_datetime(r["Time"]);
     return r
 
 """
