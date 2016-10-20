@@ -180,4 +180,4 @@ If you are interested in participating in BigBang development or would like supp
 
 ## License
 
-GPLv2, see LICENSE for its text.
+AGPL-3.0, see LICENSE for its text. This license may be changed at any time according to the principles of the project [Governance](https://github.com/datactive/bigbang/wiki/Governance).
