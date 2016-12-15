@@ -52,7 +52,11 @@ class Archive(object):
         elif isinstance(data, str):
             self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
          
-        self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
+        try:
+            self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
+        except pd.tslib.OutOfBoundsDatetime:
+            # otherwise malformed dates will prevent archive initialization
+            self.data['Date'] = None
         self.data.drop_duplicates(inplace=True)
 
         # Drops any entries with no Date field.
