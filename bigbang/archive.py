@@ -56,7 +56,7 @@ class Archive(object):
             self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
         except pd.tslib.OutOfBoundsDatetime:
             # otherwise malformed dates will prevent archive initialization
-            self.data['Date'] = None
+            self.data['Date'] = pd.np.nan
         self.data.drop_duplicates(inplace=True)
 
         # Drops any entries with no Date field.
