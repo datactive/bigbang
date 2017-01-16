@@ -89,7 +89,7 @@ def collect_from_url(url,archive_dir="archives"):
 
         # hard coding the archives directory in too many places
         # need to push this default to a configuration file
-        path = os.path.join(archive_dir, get_list_name(url) + ".csv")
+        path = os.path.join(archive_dir, get_list_name(url) + ".csv").replace("\\","/")
 
         try:
             data.to_csv(path, ",", encoding="utf-8")
