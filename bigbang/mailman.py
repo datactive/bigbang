@@ -11,7 +11,7 @@ from pprint import pprint as pp
 import w3crawl
 import warnings
 
-ml_exp = re.compile('/([\w-]*)/$')
+ml_exp = re.compile('/([\w-]+)/?$')
 
 txt_exp = re.compile('href="(\d\d\d\d-\w*\.txt)"')
 

@@ -80,8 +80,14 @@ class W3cMailingListArchivesParser(email.parser.Parser):
 
         return unicode(result).encode('utf-8')
 
+def normalize_mailing_list_url(url):
+    if not url.endswith('/'):
+        return url + '/'
+    
+    return url
 
 def collect_from_url(url, base_arch_dir="archives"):
+    url = normalize_mailing_list_url(url)
     list_name = mailman.get_list_name(url)
     logging.info("Getting W3C list archive for %s" % list_name)
 
