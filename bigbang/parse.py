@@ -64,7 +64,7 @@ def guess_first_name(cleaned_from):
             return None
         first_part = parts[1].strip()
         
-        if ' ' in first_part:   # First Middle Last? Or something entirely different
+        if ' ' in first_part:   # Last, First Middle? Or something entirely different
             return None
         else:
             return first_part
@@ -72,6 +72,8 @@ def guess_first_name(cleaned_from):
     elif ' ' in cleaned_from:
         parts = cleaned_from.split(' ')
         if len(parts) == 2: # e.g. First Last
+            return parts[0]
+        if len(parts) == 3: # e.g. First Middle Last
             return parts[0]
         return None
     else:   # no spaces or commas? with a single name, more likely to be a handle than a given name
