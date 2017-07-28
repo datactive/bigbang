@@ -113,10 +113,12 @@ def collect_from_file(urls_file, archive_dir="../archives"):
     for url in open(urls_file):
         collect_from_url(url, archive_dir)
 
-# gets the 'list name' from a canonical mailman archive url
-# does nothing if it's not this kind of url
-# it would be better to catch these non-url cases earlier
 def get_list_name(url):
+    """
+    Returns the 'list name' from a canonical mailman archive url.
+    Otherwise returns the same URL.
+    """
+    # TODO: it would be better to catch these non-url cases earlier
     url = url.rstrip()
 
     if ml_exp.search(url) is not None:
@@ -124,6 +126,29 @@ def get_list_name(url):
     else:
         warnings.warn("No mailing list name found at %s" % url)
         return url
+
+def normalize_archives_url(url):
+    """
+    Given a URL, will try to infer, find or guess the most useful
+    archives URL.
+
+    Returns normalized URL, or the original URL if no improvement is found.
+    """
+    # change new IETF mailarchive URLs to older, still available text .mail archives
+    new_ietf_exp = re.compile('https://mailarchive\\.ietf\\.org/arch/search/'
+                              '\\?email_list=(?P<list_name>[\\w-]+)')
+    ietf_text_archives = r'https://www.ietf.org/mail-archive/text/\g<list_name>/'
+    new_ietf_browse_exp = re.compile(r'https://mailarchive.ietf.org/arch/browse/(?P<list_name>[\w-]+)/?')
+
+    match = new_ietf_exp.match(url)
+    if match:
+        return re.sub(new_ietf_exp, ietf_text_archives, url)
+    
+    match = new_ietf_browse_exp.match(url)
+    if match:
+        return re.sub(new_ietf_browse_exp, ietf_text_archives, url)
+
+    return url # if no other change found, return the original URL
 
 
 def archive_directory(base_dir, list_name):
