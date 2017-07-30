@@ -86,7 +86,11 @@ def collect_from_url(url,archive_dir="../archives"):
 
     if has_archives:
         unzip_archive(url)
-        data = open_list_archives(url)
+        try:
+            data = open_list_archives(url)
+        except MissingDataException as e:   # don't strictly need to open the archives during the collection process, so catch the Exception and return
+            print e
+            return None
 
         # hard coding the archives directory in too many places
         # need to push this default to a configuration file
