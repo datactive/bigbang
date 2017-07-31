@@ -81,6 +81,7 @@ def collect_from_url(url,archive_dir="../archives"):
     try:
         has_archives = collect_archive_from_url(url, archive_dir)
     except urllib2.HTTPError as e:
+        # BUG: this error code/message is misleading
         print "HTTP 404 Error: %s" % (url)
         return None
 

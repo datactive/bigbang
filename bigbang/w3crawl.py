@@ -87,20 +87,33 @@ def normalize_mailing_list_url(url):
     return url
 
 def collect_from_url(url, base_arch_dir="archives"):
+    """
+    Collects W3C mailing list archives from a particular mailing list URL.
+
+    Logs an error and returns False if no messages can be collected.
+    """
     url = normalize_mailing_list_url(url)
     list_name = mailman.get_list_name(url)
     logging.info("Getting W3C list archive for %s" % list_name)
 
-    response = urllib2.urlopen(url)
-    html = response.read()
-    soup = BeautifulSoup(html)
+    try:
+        response = urllib2.urlopen(url)
+        html = response.read()
+        soup = BeautifulSoup(html)
+    except urllib2.HTTPError as exception:
+        logging.error('Error in loading W3C list archive page for %s: %s' % (url, exception.message))
+        return False
 
-    time_period_indices = list()
-    rows = soup.select('tbody tr')
-    for row in rows:
-        link = row.select('td:nth-of-type(1) a')[0].get('href')
-        logging.info("Found time period archive page: %s" % link)
-        time_period_indices.append(link)
+    try:
+        time_period_indices = list()
+        rows = soup.select('tbody tr')
+        for row in rows:
+            link = row.select('td:nth-of-type(1) a')[0].get('href')
+            logging.info("Found time period archive page: %s" % link)
+            time_period_indices.append(link)
+    except Exception as exception:
+        logging.error('Error in parsing list archives for %s: %s' % (url, exception.message))
+        return False
 
     # directory for downloaded files
     arc_dir = mailman.archive_directory(base_arch_dir, list_name)
