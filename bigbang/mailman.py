@@ -10,6 +10,10 @@ import pandas as pd
 from pprint import pprint as pp
 import w3crawl
 import warnings
+import datetime
+import subprocess
+import yaml
+import logging
 
 ml_exp = re.compile('/([\w-]+)/?$')
 
@@ -21,6 +25,7 @@ w3c_archives_exp = re.compile('lists\.w3\.org')
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp,txt_exp]
 
+PROVENANCE_FILENAME = 'provenance.yaml'
 
 class InvalidURLException(Exception):
 
@@ -162,6 +167,52 @@ def archive_directory(base_dir, list_name):
         os.makedirs(arc_dir)
     return arc_dir
 
+def populate_provenance(directory, list_name, list_url):
+    """
+    Creates a provenance metadata file for current mailing list collection.
+    """
+    provenance = {
+                    'list': {
+                        'list_name': list_name,
+                        'list_url': list_url,
+                    },
+                    'date_collected': str(datetime.date.today()), # uses ISO-8601
+                    'notes': '',
+                    'complete': False,
+                    'code_version': {
+                        'long_hash': subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip(),
+                        'description': subprocess.check_output(['git', 'describe', '--long', '--always', '--all']).strip(),
+                        'version': '' #TODO: programmatically access BigBang version number
+                    }
+                }
+    file_path = os.path.join(directory, PROVENANCE_FILENAME)
+    if os.path.isfile(file_path):   # a provenance file already exists
+        pass    # skip for now
+    else:
+        file_handle = file(file_path, 'w')
+        yaml.dump(provenance, file_handle)
+        logging.info('Created provenance file for %s' % (list_name))
+        file_handle.close()
+
+def access_provenance(directory):
+    """
+    Returns an object with provenance information located in the given directory, or None if no provenance was found.
+    """
+    file_path = os.path.join(directory, PROVENANCE_FILENAME)
+    if os.path.isfile(file_path):   # a provenance file already exists
+        file_handle = file(file_path, 'r')
+        provenance = yaml.load(file_handle)
+        return provenance
+    return None
+
+def update_provenance(directory, provenance):
+    """
+    Updates provenance file with given object.
+    """
+    file_path = os.path.join(directory, PROVENANCE_FILENAME)
+    file_handle = file(file_path, 'w')
+    yaml.dump(provenance, file_handle)
+    logging.info('Updated provenance file in %s', directory)
 
 def collect_archive_from_url(url, archive_dir="../archives"):
     """
@@ -189,6 +240,9 @@ def collect_archive_from_url(url, archive_dir="../archives"):
     # directory for downloaded files
     arc_dir = archive_directory(archive_dir, list_name)
 
+    populate_provenance(directory=arc_dir, list_name=list_name, list_url=url)
+
+    encountered_error = False
     # download monthly archives
     for res in results:
         result_path = os.path.join(arc_dir, res)
@@ -205,6 +259,12 @@ def collect_archive_from_url(url, archive_dir="../archives"):
             else:
                 print("%s error code trying to retrieve %s" %
                       (str(resp.getcode(), gz_url)))
+                encountered_error = True
+
+    if not encountered_error:   # mark that all available archives were collected
+        provenance = access_provenance(arc_dir)
+        provenance['complete'] = True
+        update_provenance(arc_dir, provenance)
 
     # return True if any archives collected, false otherwise
     return len(results) > 0
