@@ -70,7 +70,7 @@ class Archive:
             #will get KeyError if Message-ID is already index
             pass
 
-        self.data.sort(columns='Date', inplace=True)
+        self.data.sort_values(columns='Date', inplace=True)
 
         
 
