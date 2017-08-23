@@ -68,9 +68,9 @@ def sorted_matrix(from_dataframe,limit=None,sort_key=None):
 
     return new_df
 
-def resolve_sender_entities(act):
+def resolve_sender_entities(act, lexical_distance=0):
     """
-    Given an Archive's activity matrix, return a list of lists, each containing
+    Given an Archive's activity matrix, return a dict of lists, each containing
     message senders ('From' fields) that have been groups to be
     probably the same entity.
     """
@@ -97,7 +97,7 @@ def resolve_sender_entities(act):
         # is a performance hack.
         for j in range(i - (n - i + 1) / 2, i + (n - i + 1) / 2):
             d = from_header_distance(senders_lex[i],senders_lex[j])
-            sim[i,j] = (d == 0)
+            sim[i,j] = (d <= lexical_distance)
 
     # An entity is a connected component of the resulting graph
     G = nx.Graph(sim)
