@@ -37,7 +37,6 @@ https://lists.w3.org/Archives/Public/www-international/
 https://lists.w3.org/Archives/Public/public-i18n-its-ig/
 https://lists.w3.org/Archives/Public/public-privacy/
 https://lists.w3.org/Archives/Public/public-semweb-lifesci/
-https://lists.w3.org/Archives/Public/public-semweb-lifesci
 https://lists.w3.org/Archives/Public/w3c-wai-ig/
 https://lists.w3.org/Archives/Public/public-web-and-tv
 https://lists.w3.org/Archives/Public/public-wot-ig
