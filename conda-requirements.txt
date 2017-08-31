@@ -6,7 +6,6 @@ networkx
 nose
 pytz
 numpy
-gender-detector
 ipython
 ipython-notebook
 pandas
