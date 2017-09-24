@@ -11,7 +11,7 @@ from pprint import pprint as pp
 import w3crawl
 import warnings
 
-ml_exp = re.compile('/([\w-]*)/$')
+ml_exp = re.compile('/([\w-]+)/?$')
 
 txt_exp = re.compile('href="(\d\d\d\d-\w*\.txt)"')
 
@@ -80,7 +80,7 @@ def load_data(name,archive_dir="archives",mbox=False):
 def collect_from_url(url,archive_dir="archives"):
     url = url.rstrip()
     try:
-        has_archives = collect_archive_from_url(url)
+        has_archives = collect_archive_from_url(url, archive_dir)
     except urllib2.HTTPError as e:
         print "HTTP 404 Error: %s" % (url)
         return None
@@ -110,9 +110,9 @@ def collect_from_url(url,archive_dir="archives"):
         return None
 
 
-def collect_from_file(urls_file):
+def collect_from_file(urls_file, archive_dir="archives"):
     for url in open(urls_file):
-        collect_from_url(url)
+        collect_from_url(url, archive_dir)
 
 # gets the 'list name' from a canonical mailman archive url
 # does nothing if it's not this kind of url
