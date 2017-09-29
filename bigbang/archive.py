@@ -71,7 +71,7 @@ class Archive(object):
             #will get KeyError if Message-ID is already index
             pass
 
-        self.data.sort(columns='Date', inplace=True)
+        self.data.sort_values(by='Date', inplace=True)
 
         
 
