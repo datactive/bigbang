@@ -40,7 +40,7 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
-def load_data(name,archive_dir="archives",mbox=False):
+def load_data(name,archive_dir="../archives",mbox=False):
     """
     Loads the data associated with an archive name, given
     as a string.
@@ -72,12 +72,11 @@ def load_data(name,archive_dir="archives",mbox=False):
             data = pd.read_csv(path)
             return data
         else:
-            print "No data found at %s. Attempting to collect data from URL." % (name)
-            print "This could take a while."
-            return collect_from_url(name,archive_dir=archive_dir)
+            print "No data found at %s. Check if directory name is correct and if you really collected archives!" % (name)
+            
 
 
-def collect_from_url(url,archive_dir="archives"):
+def collect_from_url(url,archive_dir="../archives"):
     url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(url, archive_dir)
@@ -110,7 +109,7 @@ def collect_from_url(url,archive_dir="archives"):
         return None
 
 
-def collect_from_file(urls_file, archive_dir="archives"):
+def collect_from_file(urls_file, archive_dir="../archives"):
     for url in open(urls_file):
         collect_from_url(url, archive_dir)
 
@@ -134,7 +133,7 @@ def archive_directory(base_dir, list_name):
     return arc_dir
 
 
-def collect_archive_from_url(url, archive_dir="archives"):
+def collect_archive_from_url(url, archive_dir="../archives"):
     """
     Collects archives (generally tar.gz) files from mailmain
     archive page.
@@ -181,7 +180,7 @@ def collect_archive_from_url(url, archive_dir="archives"):
     return len(results) > 0
 
 
-def unzip_archive(url, archive_dir="archives"):
+def unzip_archive(url, archive_dir="../archives"):
     arc_dir = archive_directory(archive_dir, get_list_name(url))
 
     gzs = [os.path.join(arc_dir, fn) for fn
@@ -225,7 +224,7 @@ def recursive_get_payload(x):
         print x
         return None
 
-def open_list_archives(url, archive_dir="archives", mbox=False):
+def open_list_archives(url, archive_dir="../archives", mbox=False):
     """
     Returns a list of all email messages contained in the specified directory.
 
