@@ -23,7 +23,7 @@ gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile('lists\.w3\.org')
 
-mailing_list_path_expressions = [gz_exp, ietf_ml_exp,txt_exp]
+mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
 PROVENANCE_FILENAME = 'provenance.yaml'
 
@@ -81,10 +81,10 @@ def load_data(name,archive_dir="../archives",mbox=False):
             
 
 
-def collect_from_url(url,archive_dir="../archives"):
+def collect_from_url(url, archive_dir="../archives", notes=None):
     url = url.rstrip()
     try:
-        has_archives = collect_archive_from_url(url, archive_dir)
+        has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
     except urllib2.HTTPError as e:
         # BUG: this error code/message is misleading
         print "HTTP 404 Error: %s" % (url)
@@ -119,9 +119,9 @@ def collect_from_url(url,archive_dir="../archives"):
         return None
 
 
-def collect_from_file(urls_file, archive_dir="../archives"):
-    for url in open(urls_file):
-        collect_from_url(url, archive_dir)
+def collect_from_file(urls_file, archive_dir="../archives", notes=None):
+    for url in open(urls_file): # TODO: parse and error handle the URLs file
+        collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
 def get_list_name(url):
     """
@@ -167,7 +167,7 @@ def archive_directory(base_dir, list_name):
         os.makedirs(arc_dir)
     return arc_dir
 
-def populate_provenance(directory, list_name, list_url):
+def populate_provenance(directory, list_name, list_url, notes=None):
     """
     Creates a provenance metadata file for current mailing list collection.
     """
@@ -177,14 +177,16 @@ def populate_provenance(directory, list_name, list_url):
                         'list_url': list_url,
                     },
                     'date_collected': str(datetime.date.today()), # uses ISO-8601
-                    'notes': '',
                     'complete': False,
                     'code_version': {
                         'long_hash': subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip(),
-                        'description': subprocess.check_output(['git', 'describe', '--long', '--always', '--all']).strip(),
-                        'version': '' #TODO: programmatically access BigBang version number
+                        'description': subprocess.check_output(['git', 'describe', '--long', '--always', '--all']).strip()
+                        #'version': '' #TODO: programmatically access BigBang version number, see #288
                     }
                 }
+    if notes:
+        provenance['notes'] = notes
+
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):   # a provenance file already exists
         pass    # skip for now
@@ -213,8 +215,9 @@ def update_provenance(directory, provenance):
     file_handle = file(file_path, 'w')
     yaml.dump(provenance, file_handle)
     logging.info('Updated provenance file in %s', directory)
+    file_handle.close()
 
-def collect_archive_from_url(url, archive_dir="../archives"):
+def collect_archive_from_url(url, archive_dir="../archives", notes=None):
     """
     Collects archives (generally tar.gz) files from mailmain
     archive page.
@@ -226,7 +229,7 @@ def collect_archive_from_url(url, archive_dir="../archives"):
     pp("Getting archive page for %s" % list_name)
 
     if w3c_archives_exp.search(url):
-        return w3crawl.collect_from_url(url, archive_dir)
+        return w3crawl.collect_from_url(url, archive_dir, notes=notes)
 
     response = urllib2.urlopen(url)
     html = response.read()
@@ -240,7 +243,7 @@ def collect_archive_from_url(url, archive_dir="../archives"):
     # directory for downloaded files
     arc_dir = archive_directory(archive_dir, list_name)
 
-    populate_provenance(directory=arc_dir, list_name=list_name, list_url=url)
+    populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
 
     encountered_error = False
     # download monthly archives

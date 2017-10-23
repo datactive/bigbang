@@ -85,7 +85,7 @@ def normalize_mailing_list_url(url):
     
     return url
 
-def collect_from_url(url, base_arch_dir="archives"):
+def collect_from_url(url, base_arch_dir="archives", notes=None):
     """
     Collects W3C mailing list archives from a particular mailing list URL.
 
@@ -116,7 +116,7 @@ def collect_from_url(url, base_arch_dir="archives"):
 
     # directory for downloaded files
     arc_dir = bigbang.mailman.archive_directory(base_arch_dir, list_name)
-    bigbang.mailman.populate_provenance(directory=arc_dir, list_name=list_name, list_url=url)
+    bigbang.mailman.populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
 
     for link in time_period_indices:
         link_url = urlparse.urljoin(url, link)
