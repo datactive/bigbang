@@ -5,6 +5,7 @@ graphviz
 networkx
 nose
 pytz
+nltk
 numpy
 ipython
 ipython-notebook
