@@ -22,7 +22,7 @@ Run the following commands:
 
 ```bash
 git clone https://github.com/nllz/bigbang.git
-conda create -n bigbang python
+conda create -n bigbang python=2.7
 cd bigbang
 bash conda-setup.sh
 ```
