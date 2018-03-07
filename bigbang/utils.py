@@ -9,7 +9,7 @@ def labeled_blockmodel(g,partition):
     Keys of *partition* are used to label the nodes of the
     new graph.
     """
-    new_g = nx.blockmodel(g,partition.values())
+    new_g = nx.quotient_graph(g,partition.values(),relabel=True)
     labels = dict(enumerate(partition.keys()))
     new_g = nx.relabel_nodes(new_g,labels)
     
