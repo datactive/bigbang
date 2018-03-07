@@ -8,7 +8,7 @@ Mailman, or [.mbox][mbox] files.
 
 ## Installation
 
-You can use [Anaconda](http://continuum.io/downloads). This will also install
+Use [Anaconda](http://continuum.io/downloads) for BigBang. This will also install
 the `conda` package management system, which you can use to complete
 installation. 
 
@@ -21,21 +21,10 @@ Ensure to add the Conda installation directory to your path during installation.
 Run the following commands:
 
 ```bash
-git clone https://github.com/nllz/bigbang.git
-conda create -n bigbang python=2.7
+git clone https://github.com/datactive/bigbang.git
 cd bigbang
-bash conda-setup.sh
-```
-
-### pip installation
-
-Run the following commands:
-
-```bash
-git clone https://github.com/sbenthall/bigbang.git
-# optionally create a new virtualenv here
-pip install -r requirements.txt
-python setup.py develop
+conda create -n bigbang -f environment.yaml
+source activate bigbang
 ```
 
 ## Usage
