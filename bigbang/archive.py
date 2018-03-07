@@ -59,7 +59,8 @@ class Archive(object):
         # It may be wiser to optionally
         # do interpolation here.
         if self.data['Date'].isnull().any():
-            self.data.dropna(subset=['Date'], inplace=True)
+            self.data = self.data[-self.data['Date'].isnull()]
+            #self.data.dropna(subset=['Date'], inplace=True)
 
         #convert any null fields to None -- csv saves these as nan sometimes
         self.data = self.data.where(pd.notnull(self.data),None)
