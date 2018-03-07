@@ -111,8 +111,8 @@ def test_labeled_blockmodel():
 
     bg = utils.labeled_blockmodel(g,p)
 
-    assert bg.edges(data=True)[0][2]['weight'] == 4.0, \
+    assert list(bg.edges(data=True))[0][2]['weight'] == 4.0, \
         "Incorrect edge weight in labeled blockmodel"
 
-    assert bg.edges() == [('A','B')], \
+    assert list(bg.edges()) == [('A','B')], \
         "Incorrected edges in labeled blockmodel"
