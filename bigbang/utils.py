@@ -89,3 +89,23 @@ def clean_message(mess):
 
     return mess
 
+
+# From here:
+# https://stackoverflow.com/questions/46217529/pandas-datetimeindex-frequency-is-none-and-cant-be-set
+def add_freq(idx, freq=None):
+    """Add a frequency attribute to idx, through inference or directly.
+
+    Returns a copy.  If `freq` is None, it is inferred.
+    """
+
+    idx = idx.copy()
+    if freq is None:
+        if idx.freq is None:
+            freq = pd.infer_freq(idx)
+        else:
+            return idx
+    idx.freq = pd.tseries.frequencies.to_offset(freq)
+    if idx.freq is None:
+        raise AttributeError('no discernible frequency found to `idx`.  Specify'
+                             ' a frequency string with `freq`.')
+    return idx

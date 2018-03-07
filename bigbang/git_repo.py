@@ -7,6 +7,8 @@ from datetime import datetime
 from entity_resolution import entity_resolve
 import networkx as nx
 from config.config import CONFIG
+import utils
+
 ALL_ATTRIBUTES = CONFIG.all_attributes #["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
 def cache_fixer(r): # Adds info from row to graph
@@ -107,7 +109,8 @@ class GitRepo(object):
         print(type(raw["Time"]))
         
         # TODO: NEEDS TIME
-        time_index = pd.DatetimeIndex(raw["Time"], periods = 24, freq = "H")
+        time_index = pd.DatetimeIndex(raw["Time"], periods = 24)
+        time_index = utils.add_freq(time_index, freq = "H")
         self._commit_data = pd.DataFrame(raw, index = time_index);
 
     def by_committer(self):
