@@ -21,10 +21,9 @@ Ensure to add the Conda installation directory to your path during installation.
 Run the following commands:
 
 ```bash
-git clone https://github.com/nllz/bigbang.git
-conda create -n bigbang python=2.7
+git clone https://github.com/datactive/bigbang.git
 cd bigbang
-conda create -f bigbang environment.yaml
+conda create -n bigbang -f environment.yaml
 source activate bigbang
 ```
 
