@@ -76,11 +76,11 @@ def resolve_sender_entities(act, lexical_distance=0):
     """
     
     # senders orders by descending total activity
-    senders = act.sum(0).order(ascending=False)
+    senders = act.sum(0).sort_values(ascending=False)
     senders_act = senders.index
 
     # senders in lexical order
-    senders_lex = act.columns.order()
+    senders_lex = act.columns.sort_values()
     senders_lex_dict = dict([(p[1],p[0]) for p in enumerate(senders_lex)])
 
     n = len(senders)
