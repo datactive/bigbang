@@ -6,7 +6,7 @@ import argparse
 from argparse import RawTextHelpFormatter
 
 parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter, description=r"""
-Collects files from public Mailman archives.
+Collects files from public mailing list archives.
 
 Please include either a url of a mailman web archive or the path to a file with
 a linebreak-separated list of such urls.
@@ -26,23 +26,29 @@ parser.add_argument('-f', type=str, help='Path of a file with linebreak-seperate
 
 parser.add_argument('--archives', type=str, help='Path to a specified directory for storing downloaded mail archives')
 
+parser.add_argument('--notes', type=str, help='Notes to record regarding provenance')
+
 args = parser.parse_args()
 
 logging.basicConfig(level=logging.DEBUG)
 
 
 def main(args):
+    notes = None
+    if args.notes:
+        notes = args.notes
+
     if args.u:
         if args.archives:
-            mailman.collect_from_url(args.u, archive_dir=args.archives)
+            mailman.collect_from_url(args.u, archive_dir=args.archives, notes=notes)
         else:
-            mailman.collect_from_url(args.u)
+            mailman.collect_from_url(args.u, notes=notes)
         sys.exit()
     elif args.f:
         if args.archives:
-            mailman.collect_from_file(args.f, archive_dir=args.archives)
+            mailman.collect_from_file(args.f, archive_dir=args.archives, notes=notes)
         else:
-            mailman.collect_from_file(args.f)
+            mailman.collect_from_file(args.f, notes=notes)
 
 if __name__ == "__main__":
     main(args)

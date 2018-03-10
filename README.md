@@ -64,7 +64,7 @@ python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python bin/collect_mail.py -f examples/urls.txt
+python2 bin/collect_mail.py -f examples/urls.txt
 ```
 
 Once the data has been collected, BigBang has functions to support analysis.

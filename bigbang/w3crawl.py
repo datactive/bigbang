@@ -3,7 +3,6 @@ import urllib
 import gzip
 import re
 import os
-from . import parse
 import urlparse
 import logging
 from bs4 import BeautifulSoup
@@ -12,9 +11,9 @@ import email
 import email.parser
 import mailbox
 import time
-import mailman
+import bigbang.mailman
 import dateutil
-
+from . import parse
 
 class W3cMailingListArchivesParser(email.parser.Parser):
     parse = None
@@ -86,24 +85,38 @@ def normalize_mailing_list_url(url):
     
     return url
 
-def collect_from_url(url, base_arch_dir="archives"):
+def collect_from_url(url, base_arch_dir="archives", notes=None):
+    """
+    Collects W3C mailing list archives from a particular mailing list URL.
+
+    Logs an error and returns False if no messages can be collected.
+    """
     url = normalize_mailing_list_url(url)
-    list_name = mailman.get_list_name(url)
-    logging.info("Getting W3C list archive for %s" % list_name)
+    list_name = bigbang.mailman.get_list_name(url)
+    logging.info("Getting W3C list archive for %s", list_name)
 
-    response = urllib2.urlopen(url)
-    html = response.read()
-    soup = BeautifulSoup(html)
+    try:
+        response = urllib2.urlopen(url)
+        html = response.read()
+        soup = BeautifulSoup(html)
+    except urllib2.HTTPError as exception:
+        logging.exception('Error in loading W3C list archive page for %s', url)
+        return False
 
-    time_period_indices = list()
-    rows = soup.select('tbody tr')
-    for row in rows:
-        link = row.select('td:nth-of-type(1) a')[0].get('href')
-        logging.info("Found time period archive page: %s" % link)
-        time_period_indices.append(link)
+    try:
+        time_period_indices = list()
+        rows = soup.select('tbody tr')
+        for row in rows:
+            link = row.select('td:nth-of-type(1) a')[0].get('href')
+            logging.info("Found time period archive page: %s", link)
+            time_period_indices.append(link)
+    except Exception as exception:
+        logging.exception('Error in parsing list archives for %s', url)
+        return False
 
     # directory for downloaded files
-    arc_dir = mailman.archive_directory(base_arch_dir, list_name)
+    arc_dir = bigbang.mailman.archive_directory(base_arch_dir, list_name)
+    bigbang.mailman.populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
 
     for link in time_period_indices:
         link_url = urlparse.urljoin(url, link)
@@ -120,10 +133,9 @@ def collect_from_url(url, base_arch_dir="archives"):
         # looks like we've already downloaded this timeperiod
         if os.path.isfile(mbox_path):
             logging.info(
-                'Looks like %s already exists, moving on.' %
-                mbox_path)
+                'Looks like %s already exists, moving on.', mbox_path)
             continue
-        logging.info('Downloading messages to archive to %s.' % mbox_path)
+        logging.info('Downloading messages to archive to %s.', mbox_path)
 
         message_links = list()
         messages = list()
@@ -152,4 +164,10 @@ def collect_from_url(url, base_arch_dir="archives"):
         finally:
             mbox.unlock()
 
-        logging.info('Saved ' + year_month_mbox)
+        logging.info('Saved %s', year_month_mbox)
+
+    # assumes all archives were downloaded if no exceptions have been thrown
+    provenance = bigbang.mailman.access_provenance(arc_dir)
+    provenance['complete'] = True
+    bigbang.mailman.update_provenance(arc_dir, provenance)
+
