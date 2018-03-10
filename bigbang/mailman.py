@@ -6,6 +6,9 @@ import gzip
 import logging
 import mailbox
 import os
+import fnmatch
+import mailbox
+import parse
 import pandas as pd
 import parse
 import re
@@ -362,6 +365,27 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
         messages = [item for sublist in arch for item in sublist]
 
     return messages_to_dataframe(messages)
+
+def open_activity_summary(url, archive_dir=CONFIG.mail_path):
+    """
+    Opens the message activity summary for a particular mailing list (as specified by url)
+    and returns the dataframe. Returns None if no activity summary export file is found.
+    """
+    list_name = get_list_name(url)
+    arc_dir = archive_directory(archive_dir, list_name)
+
+    activity_csvs = fnmatch.filter(os.listdir(arc_dir), '*-activity.csv')
+    if (len(activity_csvs) == 0):
+        logging.info('No activity summary found for %s.' % list_name)
+        return None
+    
+    if (len(activity_csvs) > 1):
+        logging.info('Multiple possible activity summary files found for %s, using the first one.' % list_name)
+    
+    activity_csv = activity_csvs[0]
+    path = os.path.join(arc_dir, activity_csv)
+    activity_frame = pd.read_csv(path, index_col=0, encoding='utf-8')
+    return activity_frame
 
 def get_text(msg):
     ## This code for character detection and dealing with exceptions is terrible
