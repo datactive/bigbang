@@ -8,7 +8,7 @@ import bigbang.process as process
 import pandas as pd
 import pytz
 import utils
-
+import logging
 
 def load(path):
     data = pd.read_csv(path)
@@ -51,15 +51,30 @@ class Archive(object):
             self.data = data.copy()
         elif isinstance(data, str):
             self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
-         
-        self.data['Date'] = pd.to_datetime(self.data['Date'], utc=True)
-        self.data.drop_duplicates(inplace=True)
+        
+        try:
+            self.data['Date'] = pd.to_datetime(self.data['Date'], errors='coerce', infer_datetime_format=True, utc=True)
+        except:
+            out_path = 'datetime-exception.csv'
+
+            with open(out_path, 'w') as f:
+                self.data.to_csv(f, encoding='utf-8')
+            
+            logging.error('Error while converting to datetime, despite coerce mode.')
+            raise
+
+        try:
+            self.data.drop_duplicates(inplace=True)
+        except:
+            logging.error('Error while removing duplicate messages, maybe timezone issues?', exc_info=True)
 
         # Drops any entries with no Date field.
         # It may be wiser to optionally
         # do interpolation here.
         if self.data['Date'].isnull().any():
-            self.data.dropna(subset=['Date'], inplace=True)
+            #self.data.dropna(subset=['Date'], inplace=True)
+            self.data = self.data[self.data['Date'].notnull()]
+            # workaround for https://github.com/pandas-dev/pandas/issues/13407
 
         #convert any null fields to None -- csv saves these as nan sometimes
         self.data = self.data.where(pd.notnull(self.data),None)
@@ -73,7 +88,6 @@ class Archive(object):
 
         self.data.sort_values(by='Date', inplace=True)
 
-        
 
     def resolve_entities(self,inplace=True):
         if self.entities is None:
@@ -126,7 +140,7 @@ class Archive(object):
     def compute_activity(self, clean=True):
         mdf = self.data
 
-	if clean:
+        if clean:
             # unnecessary?
             if mdf['Date'].isnull().any():
                 mdf = mdf.dropna(subset=['Date'])
@@ -208,8 +222,6 @@ def find_footer(messages,number=1):
     counts = {}
 
     last = None
-    last_i = None
-    current = None
 
     def clean_footer(foot):
         return foot.strip()
