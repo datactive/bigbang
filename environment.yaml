@@ -1,0 +1,149 @@
+name: bigbang
+channels:
+- https://conda.binstar.org/asmeurer
+- defaults
+dependencies:
+- asn1crypto=0.24.0=py27_0
+- backports=1.0=py27h63c9359_1
+- backports.functools_lru_cache=1.4=py27he8db605_1
+- backports.shutil_get_terminal_size=1.0.0=py27h5bc021e_2
+- backports_abc=0.5=py27h7b3c97b_0
+- beautifulsoup4=4.6.0=py27h3f86ba9_1
+- bleach=2.1.2=py27_0
+- ca-certificates=2017.08.26=h1d4fec5_0
+- cairo=1.14.12=h77bcde2_0
+- certifi=2018.1.18=py27_0
+- cffi=1.11.4=py27h9745a5d_0
+- chardet=3.0.4=py27hfa10054_1
+- configparser=3.5.0=py27h5117587_0
+- coverage=4.4.2=py27h86fff8b_0
+- cryptography=2.1.4=py27h6697b16_0
+- cycler=0.10.0=py27hc7354d3_0
+- dbus=1.12.2=hc3f9b76_1
+- decorator=4.2.1=py27_0
+- entrypoints=0.2.3=py27h502b47d_2
+- enum34=1.1.6=py27h99a27e9_1
+- expat=2.2.5=he0dffb1_0
+- fontconfig=2.12.4=h88586e7_1
+- freetype=2.8=hab7d2ae_1
+- functools32=3.2.3.2=py27h4ead58f_1
+- glib=2.53.6=h5d9569c_2
+- graphite2=1.3.10=hf63cedd_1
+- graphviz=2.40.1=h25d223c_0
+- gst-plugins-base=1.12.4=h33fb286_0
+- gstreamer=1.12.4=hb53b477_0
+- harfbuzz=1.7.4=hc5b324e_0
+- html5lib=1.0.1=py27h5233db4_0
+- icu=58.2=h9c2bf20_1
+- idna=2.6=py27h5722d68_1
+- intel-openmp=2018.0.0=hc7b2577_8
+- ipaddress=1.0.19=py27_0
+- ipykernel=4.8.0=py27_0
+- ipython=5.4.1=py27_2
+- ipython-notebook=4.0.4=py27_0
+- ipython_genutils=0.2.0=py27h89fb69b_0
+- jinja2=2.10=py27h4114e70_0
+- jpeg=9b=h024ee3a_2
+- jsonschema=2.6.0=py27h7ed5aa4_0
+- jupyter_client=5.2.2=py27_0
+- jupyter_core=4.4.0=py27h345911c_0
+- libedit=3.1=heed3624_0
+- libffi=3.2.1=hd88cf55_4
+- libgcc-ng=7.2.0=h7cc24e2_2
+- libgfortran-ng=7.2.0=h9f7466a_2
+- libpng=1.6.34=hb9fc6fc_0
+- libsodium=1.0.15=hf101ebd_0
+- libstdcxx-ng=7.2.0=h7a57d05_2
+- libtiff=4.0.9=h28f6b97_0
+- libxcb=1.12=hcd93eb1_4
+- libxml2=2.9.7=h26e45fe_0
+- markupsafe=1.0=py27h97b2822_1
+- matplotlib=2.1.2=py27h0e671d2_0
+- mistune=0.8.3=py27_0
+- mkl=2018.0.1=h19d6760_4
+- nbconvert=5.3.1=py27he041f76_0
+- nbformat=4.4.0=py27hed7f2b2_0
+- ncurses=6.0=h9df7e31_2
+- networkx=2.1=py27_0
+- nltk=3.2.5=py27hec5f4de_0
+- nose=1.3.7=py27heec2199_2
+- notebook=5.4.0=py27_0
+- numpy=1.14.0=py27h3dfced4_1
+- openssl=1.0.2n=hb7f436b_0
+- pandas=0.22.0=py27hf484d3e_0
+- pandocfilters=1.4.2=py27h428e1e5_1
+- pango=1.41.0=hd475d92_0
+- pathlib2=2.3.0=py27h6e9d198_0
+- patsy=0.5.0=py27_0
+- pcre=8.41=hc27e229_1
+- pexpect=4.3.1=py27_0
+- pickleshare=0.7.4=py27h09770e1_0
+- pip=9.0.1=py27ha730c48_4
+- pixman=0.34.0=hceecf20_3
+- prompt_toolkit=1.0.15=py27h1b593e1_0
+- ptyprocess=0.5.2=py27h4ccb14c_0
+- pycparser=2.18=py27hefa08c5_1
+- pydot=1.2.4=py27_0
+- pygments=2.2.0=py27h4a8b6f5_0
+- pyopenssl=17.5.0=py27hcee3be0_0
+- pyparsing=2.2.0=py27hf1513f8_1
+- pyqt=5.6.0=py27h4b1e83c_5
+- pysocks=1.6.7=py27he2db6d2_1
+- python=2.7.14=h1571d57_29
+- pytz=2017.3=py27h001bace_0
+- pyyaml=3.12=py27h2d70dd7_1
+- pyzmq=16.0.3=py27hc579512_0
+- qt=5.6.2=h974d657_12
+- readline=7.0=ha6073c6_4
+- requests=2.18.4=py27hc5b0589_1
+- scandir=1.6=py27hf7388dc_0
+- scipy=1.0.0=py27hf5f0f52_0
+- seaborn=0.8.1=py27h633ea1e_0
+- send2trash=1.4.2=py27_0
+- setuptools=38.4.0=py27_0
+- simplegeneric=0.8.1=py27_2
+- sip=4.18.1=py27he9ba0ab_2
+- six=1.11.0=py27h5f960f1_1
+- sqlite=3.22.0=h1bed415_0
+- ssl_match_hostname=3.5.0.1=py27h4ec10b9_2
+- statsmodels=0.8.0=py27hc87d62d_0
+- subprocess32=3.2.7=py27h373dbce_0
+- terminado=0.8.1=py27_1
+- testpath=0.3.1=py27hc38d2c4_0
+- tk=8.6.7=hc745277_3
+- tornado=4.5.3=py27_0
+- traitlets=4.3.2=py27hd6ce930_0
+- urllib3=1.22=py27ha55213b_0
+- wcwidth=0.1.7=py27h9e3e1ab_0
+- webencodings=0.5.1=py27hff10b21_1
+- wheel=0.30.0=py27h2bc6bb2_1
+- xz=5.2.3=h55aa19d_2
+- yaml=0.1.7=had09818_2
+- zeromq=4.2.2=hbedb6e5_2
+- zlib=1.2.11=ha838bed_2
+- gmp=5.1.2=2
+- libtool=2.4.2=0
+- pandoc=1.12.3=2
+- python-dateutil=2.2=py27_0
+- singledispatch=3.4.0.3=py27_1
+- pip:
+  - backports-abc==0.5
+  - backports.functools-lru-cache==1.4
+  - backports.shutil-get-terminal-size==1.0.0
+  - backports.ssl-match-hostname==3.5.0.1
+  - bigbang (/home/sb/projects/bigbang-multi/bigbang)==0.1
+  - common==0.1.2
+  - gender-detector==0.1.0
+  - gitdb2==2.0.3
+  - gitpython==2.1.8
+  - html2text==2018.1.9
+  - ipython-genutils==0.2.0
+  - jupyter-client==5.2.2
+  - jupyter-core==4.4.0
+  - powerlaw==1.4.3
+  - prompt-toolkit==1.0.15
+  - python-levenshtein==0.12.0
+  - smmap2==2.0.3
+  - snakefood==1.4
+prefix: /home/sb/anaconda3/envs/bigbang
+
