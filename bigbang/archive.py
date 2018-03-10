@@ -1,10 +1,11 @@
-import datetime
-import mailman
-import mailbox
-import numpy as np
-from bigbang.thread import Thread
 from bigbang.thread import Node
+from bigbang.thread import Thread
+from config.config import CONFIG
 import bigbang.process as process
+import datetime
+import mailbox
+import mailman
+import numpy as np
 import pandas as pd
 import pytz
 import utils
@@ -26,7 +27,7 @@ class Archive(object):
     threads = None
     entities = None
 
-    def __init__(self, data, archive_dir="archives", mbox=False):
+    def __init__(self, data, archive_dir=CONFIG.mail_path, mbox=False):
         """
         Initializes an Archive object.
 
