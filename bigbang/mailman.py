@@ -4,12 +4,17 @@ import urllib
 import gzip
 import re
 import os
+import fnmatch
 import mailbox
 import parse
 import pandas as pd
 from pprint import pprint as pp
 import w3crawl
 import warnings
+import datetime
+import subprocess
+import yaml
+import logging
 
 ml_exp = re.compile('/([\w-]+)/?$')
 
@@ -19,8 +24,9 @@ gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile('lists\.w3\.org')
 
-mailing_list_path_expressions = [gz_exp, ietf_ml_exp,txt_exp]
+mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
+PROVENANCE_FILENAME = 'provenance.yaml'
 
 class InvalidURLException(Exception):
 
@@ -76,17 +82,22 @@ def load_data(name,archive_dir="../archives",mbox=False):
             
 
 
-def collect_from_url(url,archive_dir="../archives"):
+def collect_from_url(url, archive_dir="../archives", notes=None):
     url = url.rstrip()
     try:
-        has_archives = collect_archive_from_url(url, archive_dir)
+        has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
     except urllib2.HTTPError as e:
+        # BUG: this error code/message is misleading
         print "HTTP 404 Error: %s" % (url)
         return None
 
     if has_archives:
         unzip_archive(url)
-        data = open_list_archives(url)
+        try:
+            data = open_list_archives(url)
+        except MissingDataException as e:   # don't strictly need to open the archives during the collection process, so catch the Exception and return
+            print e
+            return None
 
         # hard coding the archives directory in too many places
         # need to push this default to a configuration file
@@ -109,14 +120,16 @@ def collect_from_url(url,archive_dir="../archives"):
         return None
 
 
-def collect_from_file(urls_file, archive_dir="../archives"):
-    for url in open(urls_file):
-        collect_from_url(url, archive_dir)
+def collect_from_file(urls_file, archive_dir="../archives", notes=None):
+    for url in open(urls_file): # TODO: parse and error handle the URLs file
+        collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
-# gets the 'list name' from a canonical mailman archive url
-# does nothing if it's not this kind of url
-# it would be better to catch these non-url cases earlier
 def get_list_name(url):
+    """
+    Returns the 'list name' from a canonical mailman archive url.
+    Otherwise returns the same URL.
+    """
+    # TODO: it would be better to catch these non-url cases earlier
     url = url.rstrip()
 
     if ml_exp.search(url) is not None:
@@ -125,6 +138,29 @@ def get_list_name(url):
         warnings.warn("No mailing list name found at %s" % url)
         return url
 
+def normalize_archives_url(url):
+    """
+    Given a URL, will try to infer, find or guess the most useful
+    archives URL.
+
+    Returns normalized URL, or the original URL if no improvement is found.
+    """
+    # change new IETF mailarchive URLs to older, still available text .mail archives
+    new_ietf_exp = re.compile('https://mailarchive\\.ietf\\.org/arch/search/'
+                              '\\?email_list=(?P<list_name>[\\w-]+)')
+    ietf_text_archives = r'https://www.ietf.org/mail-archive/text/\g<list_name>/'
+    new_ietf_browse_exp = re.compile(r'https://mailarchive.ietf.org/arch/browse/(?P<list_name>[\w-]+)/?')
+
+    match = new_ietf_exp.match(url)
+    if match:
+        return re.sub(new_ietf_exp, ietf_text_archives, url)
+    
+    match = new_ietf_browse_exp.match(url)
+    if match:
+        return re.sub(new_ietf_browse_exp, ietf_text_archives, url)
+
+    return url # if no other change found, return the original URL
+
 
 def archive_directory(base_dir, list_name):
     arc_dir = os.path.join(base_dir, list_name)
@@ -132,8 +168,57 @@ def archive_directory(base_dir, list_name):
         os.makedirs(arc_dir)
     return arc_dir
 
+def populate_provenance(directory, list_name, list_url, notes=None):
+    """
+    Creates a provenance metadata file for current mailing list collection.
+    """
+    provenance = {
+                    'list': {
+                        'list_name': list_name,
+                        'list_url': list_url,
+                    },
+                    'date_collected': str(datetime.date.today()), # uses ISO-8601
+                    'complete': False,
+                    'code_version': {
+                        'long_hash': subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip(),
+                        'description': subprocess.check_output(['git', 'describe', '--long', '--always', '--all']).strip()
+                        #'version': '' #TODO: programmatically access BigBang version number, see #288
+                    }
+                }
+    if notes:
+        provenance['notes'] = notes
 
-def collect_archive_from_url(url, archive_dir="../archives"):
+    file_path = os.path.join(directory, PROVENANCE_FILENAME)
+    if os.path.isfile(file_path):   # a provenance file already exists
+        pass    # skip for now
+    else:
+        file_handle = file(file_path, 'w')
+        yaml.dump(provenance, file_handle)
+        logging.info('Created provenance file for %s' % (list_name))
+        file_handle.close()
+
+def access_provenance(directory):
+    """
+    Returns an object with provenance information located in the given directory, or None if no provenance was found.
+    """
+    file_path = os.path.join(directory, PROVENANCE_FILENAME)
+    if os.path.isfile(file_path):   # a provenance file already exists
+        file_handle = file(file_path, 'r')
+        provenance = yaml.load(file_handle)
+        return provenance
+    return None
+
+def update_provenance(directory, provenance):
+    """
+    Updates provenance file with given object.
+    """
+    file_path = os.path.join(directory, PROVENANCE_FILENAME)
+    file_handle = file(file_path, 'w')
+    yaml.dump(provenance, file_handle)
+    logging.info('Updated provenance file in %s', directory)
+    file_handle.close()
+
+def collect_archive_from_url(url, archive_dir="../archives", notes=None):
     """
     Collects archives (generally tar.gz) files from mailmain
     archive page.
@@ -145,7 +230,7 @@ def collect_archive_from_url(url, archive_dir="../archives"):
     pp("Getting archive page for %s" % list_name)
 
     if w3c_archives_exp.search(url):
-        return w3crawl.collect_from_url(url, archive_dir)
+        return w3crawl.collect_from_url(url, archive_dir, notes=notes)
 
     response = urllib2.urlopen(url)
     html = response.read()
@@ -159,6 +244,9 @@ def collect_archive_from_url(url, archive_dir="../archives"):
     # directory for downloaded files
     arc_dir = archive_directory(archive_dir, list_name)
 
+    populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
+
+    encountered_error = False
     # download monthly archives
     for res in results:
         result_path = os.path.join(arc_dir, res)
@@ -175,6 +263,12 @@ def collect_archive_from_url(url, archive_dir="../archives"):
             else:
                 print("%s error code trying to retrieve %s" %
                       (str(resp.getcode(), gz_url)))
+                encountered_error = True
+
+    if not encountered_error:   # mark that all available archives were collected
+        provenance = access_provenance(arc_dir)
+        provenance['complete'] = True
+        update_provenance(arc_dir, provenance)
 
     # return True if any archives collected, false otherwise
     return len(results) > 0
@@ -268,6 +362,27 @@ def open_list_archives(url, archive_dir="../archives", mbox=False):
         messages = [item for sublist in arch for item in sublist]
 
     return messages_to_dataframe(messages)
+
+def open_activity_summary(url, archive_dir="../archives"):
+    """
+    Opens the message activity summary for a particular mailing list (as specified by url)
+    and returns the dataframe. Returns None if no activity summary export file is found.
+    """
+    list_name = get_list_name(url)
+    arc_dir = archive_directory(archive_dir, list_name)
+
+    activity_csvs = fnmatch.filter(os.listdir(arc_dir), '*-activity.csv')
+    if (len(activity_csvs) == 0):
+        logging.info('No activity summary found for %s.' % list_name)
+        return None
+    
+    if (len(activity_csvs) > 1):
+        logging.info('Multiple possible activity summary files found for %s, using the first one.' % list_name)
+    
+    activity_csv = activity_csvs[0]
+    path = os.path.join(arc_dir, activity_csv)
+    activity_frame = pd.read_csv(path, index_col=0, encoding='utf-8')
+    return activity_frame
 
 def get_text(msg):
     ## This code for character detection and dealing with exceptions is terrible
