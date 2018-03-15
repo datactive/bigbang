@@ -21,6 +21,7 @@ If you choose not to use Anaconda, you may run into issues with versioning in Py
 Run the following commands:
 
 ```bash
+
 git clone https://github.com/datactive/bigbang.git
 conda create -n bigbang python
 cd bigbang
@@ -57,13 +58,13 @@ collect the archives of the scipy-dev mailing list, run the following command
 from the root directory of this repository:
 
 ```bash
-python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+python2 bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python bin/collect_mail.py -f examples/urls.txt
+python2 bin/collect_mail.py -f examples/urls.txt
 ```
 
 Once the data has been collected, BigBang has functions to support analysis.
