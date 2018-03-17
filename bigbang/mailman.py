@@ -46,7 +46,7 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
-def load_data(name,archive_dir="../archives",mbox=False):
+def load_data(name,archive_dir="archives",mbox=False):
     """
     Loads the data associated with an archive name, given
     as a string.
@@ -82,7 +82,7 @@ def load_data(name,archive_dir="../archives",mbox=False):
             
 
 
-def collect_from_url(url, archive_dir="../archives", notes=None):
+def collect_from_url(url, archive_dir="archives", notes=None):
     url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
@@ -107,20 +107,20 @@ def collect_from_url(url, archive_dir="../archives", notes=None):
             data.to_csv(path, ",", encoding="utf-8")
         except Exception as e:
             print e
-            # if encoding doesn't work...don't encode?
-            try:
-                data.to_csv(path, ",")
-            except Exception as e:
-                print e
-                print "Can't export data. Aborting."
-                return None
+            # if encoding doesn't work...don't encode? ----better not not encode !!
+            # try:
+            #     data.to_csv(path, ",")
+            # except Exception as e:
+            #     print e
+            #     print "Can't export data. Aborting."
+            #     return None
 
         return data
     else:
         return None
 
 
-def collect_from_file(urls_file, archive_dir="../archives", notes=None):
+def collect_from_file(urls_file, archive_dir="archives", notes=None):
     for url in open(urls_file): # TODO: parse and error handle the URLs file
         collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
@@ -218,7 +218,7 @@ def update_provenance(directory, provenance):
     logging.info('Updated provenance file in %s', directory)
     file_handle.close()
 
-def collect_archive_from_url(url, archive_dir="../archives", notes=None):
+def collect_archive_from_url(url, archive_dir="archives", notes=None):
     """
     Collects archives (generally tar.gz) files from mailmain
     archive page.
@@ -274,7 +274,7 @@ def collect_archive_from_url(url, archive_dir="../archives", notes=None):
     return len(results) > 0
 
 
-def unzip_archive(url, archive_dir="../archives"):
+def unzip_archive(url, archive_dir="archives"):
     arc_dir = archive_directory(archive_dir, get_list_name(url))
 
     gzs = [os.path.join(arc_dir, fn) for fn
@@ -318,7 +318,7 @@ def recursive_get_payload(x):
         print x
         return None
 
-def open_list_archives(url, archive_dir="../archives", mbox=False):
+def open_list_archives(url, archive_dir="archives", mbox=False):
     """
     Returns a list of all email messages contained in the specified directory.
 
@@ -341,16 +341,19 @@ def open_list_archives(url, archive_dir="../archives", mbox=False):
         # assume string is the path to a directory with many
 
         list_name = get_list_name(url)
+
         arc_dir = archive_directory(archive_dir, list_name)
+
 
         file_extensions = [".txt", ".mail", ".mbox"]
 
-        txts = [os.path.join(arc_dir, fn) for fn
-                in os.listdir(arc_dir)
-                if any([fn.endswith(extension) for extension in file_extensions])]
+        txts = [os.path.join(arc_dir, fn) for fn in os.listdir(arc_dir) if any([fn.endswith(extension) for extension in file_extensions])]
+
+        print len(txts)
 
         print 'Opening %d archive files' % (len(txts))
         arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
+
 
         if len(arch) == 0:
             raise MissingDataException(
@@ -413,7 +416,7 @@ def get_text(msg):
                     html = unicode(part.get_payload(decode=True), str(charset), "ignore")
 
         if text is not None:
-            return text.strip()
+            return text.strip().replace("\\", ' ')
         else:
             import html2text
             h = html2text.HTML2Text()
@@ -427,7 +430,7 @@ def get_text(msg):
             print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
             charset = "utf-8"
             text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
-        return text.strip()
+        return text.strip().replace("\\", ' ')
 
 def messages_to_dataframe(messages):
     """
