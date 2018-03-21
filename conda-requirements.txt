@@ -15,3 +15,5 @@ pip
 scipy
 requests
 pyyaml
+scikit-learn
+nltk
