@@ -36,9 +36,11 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
     IG = nx.DiGraph()
 
     from_dict = {}
-
+    
     sender_counts = {}
     reply_counts = {}
+
+ 
 
     if not isinstance(messages, pandas.core.frame.DataFrame):
         df = process.messages_to_dataframe(messages)
@@ -47,7 +49,6 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
 
     for m in df.iterrows():
         m_from = m[1]['From']
-
         if clean:
             m_from = parse.clean_from(m_from)
 

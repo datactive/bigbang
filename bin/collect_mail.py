@@ -30,7 +30,7 @@ parser.add_argument('--notes', type=str, help='Notes to record regarding provena
 
 args = parser.parse_args()
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 def main(args):

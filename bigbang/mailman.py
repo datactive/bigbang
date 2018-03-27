@@ -416,7 +416,7 @@ def get_text(msg):
                     html = unicode(part.get_payload(decode=True), str(charset), "ignore")
 
         if text is not None:
-            return text.strip().replace("\\", ' ')
+            return text.strip()
         else:
             import html2text
             h = html2text.HTML2Text()
@@ -430,7 +430,7 @@ def get_text(msg):
             print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
             charset = "utf-8"
             text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
-        return text.strip().replace("\\", ' ')
+        return text.strip()
 
 def messages_to_dataframe(messages):
     """
@@ -439,18 +439,22 @@ def messages_to_dataframe(messages):
 
     """
     def safe_unicode(t):
-        return t and unicode(t, 'utf-8', 'ignore')
+        return t and unicode(t, 'utf-8', 'replace')
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
+    #valid_messages = [m for m in messages if m.get() 
+
+    
     pm = [(m.get('Message-ID'),
-           safe_unicode(m.get('From')),
+           safe_unicode(m.get('From')).replace('\\', ' '),
            safe_unicode(m.get('Subject')),
            get_date(m),
            safe_unicode(m.get('In-Reply-To')),
            safe_unicode(m.get('References')),
            get_text(m))
-          for m in messages if m.get('Message-ID')]
+          for m in messages if m.get('From')]
 
+ 
     mdf = pd.DataFrame.from_records(list(pm),
                                     index='Message-ID',
                                     columns=['Message-ID', 'From',
