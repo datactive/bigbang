@@ -80,9 +80,11 @@ def guess_first_name(cleaned_from):
         return None
 
 def get_date(message):
-    ds = message.get('Date')
+    def safe_unicode(t):
+        return t and unicode(t, 'utf-8', 'ignore')
     try:
         # some mail clients add a parenthetical timezone
+        ds = safe_unicode(message.get('Date'))
         ds = re.sub("\(.*$", "", ds)
         ds = re.sub("--", "-", ds)
         ds = re.sub(" Hora.*$", "", ds)
