@@ -1,20 +1,23 @@
 from bigbang.parse import get_date
-import urllib2
-import urllib
+from config.config import CONFIG
+from pprint import pprint as pp
+import datetime
 import gzip
-import re
+import logging
+import mailbox
 import os
 import fnmatch
 import mailbox
 import parse
 import pandas as pd
-from pprint import pprint as pp
+import parse
+import re
+import subprocess
+import urllib
+import urllib2
 import w3crawl
 import warnings
-import datetime
-import subprocess
 import yaml
-import logging
 
 ml_exp = re.compile('/([\w-]+)/?$')
 
@@ -46,7 +49,7 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
-def load_data(name,archive_dir="archives",mbox=False):
+def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
     """
     Loads the data associated with an archive name, given
     as a string.
@@ -82,7 +85,7 @@ def load_data(name,archive_dir="archives",mbox=False):
             
 
 
-def collect_from_url(url, archive_dir="archives", notes=None):
+def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
@@ -120,7 +123,7 @@ def collect_from_url(url, archive_dir="archives", notes=None):
         return None
 
 
-def collect_from_file(urls_file, archive_dir="archives", notes=None):
+def collect_from_file(urls_file, archive_dir=CONFIG.mail_path, notes=None):
     for url in open(urls_file): # TODO: parse and error handle the URLs file
         collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
@@ -218,7 +221,7 @@ def update_provenance(directory, provenance):
     logging.info('Updated provenance file in %s', directory)
     file_handle.close()
 
-def collect_archive_from_url(url, archive_dir="archives", notes=None):
+def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     """
     Collects archives (generally tar.gz) files from mailmain
     archive page.
@@ -274,7 +277,7 @@ def collect_archive_from_url(url, archive_dir="archives", notes=None):
     return len(results) > 0
 
 
-def unzip_archive(url, archive_dir="archives"):
+def unzip_archive(url, archive_dir=CONFIG.mail_path):
     arc_dir = archive_directory(archive_dir, get_list_name(url))
 
     gzs = [os.path.join(arc_dir, fn) for fn
@@ -318,7 +321,7 @@ def recursive_get_payload(x):
         print x
         return None
 
-def open_list_archives(url, archive_dir="archives", mbox=False):
+def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
     """
     Returns a list of all email messages contained in the specified directory.
 
@@ -366,7 +369,7 @@ def open_list_archives(url, archive_dir="archives", mbox=False):
 
     return messages_to_dataframe(messages)
 
-def open_activity_summary(url, archive_dir="../archives"):
+def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     """
     Opens the message activity summary for a particular mailing list (as specified by url)
     and returns the dataframe. Returns None if no activity summary export file is found.
