@@ -87,7 +87,24 @@ class Archive(object):
             #will get KeyError if Message-ID is already index
             pass
 
-        self.data.sort_values(by='Date', inplace=True)
+        # let's do a pass to try to find bad tzinfo's
+        bad_indices = []
+        for i, row in self.data.iterrows():
+            try:
+                future_comparison = row['Date'] < datetime.datetime.now(pytz.utc)
+            except:
+                logging.error('Error timezone issues while detecting bad rows', exc_info=True)
+                bad_indices.append(i)
+                logging.info('Bad timezone on %s', row['Date'])
+        if len(bad_indices) > 0:
+            # drop those rows that threw an error
+            self.data = self.data.drop(bad_indices)
+            logging.info('Dropped %d rows', len(bad_indices))
+
+        try:
+            self.data.sort_values(by='Date', inplace=True)
+        except:
+            logging.error('Error while sorting, maybe timezone issues?', exc_info=True)
 
 
     def resolve_entities(self,inplace=True):
