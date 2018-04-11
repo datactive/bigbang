@@ -16,7 +16,7 @@ installation.
 
 Install Anaconda (with Python version 2.7) from http://continuum.io/downloads
 
-If you choose not to use Anaconda, you may run into issues with versioning in Python. Add the Conda installation directory to your path during installation. 
+If you choose not to use Anaconda, you may run into issues with versioning in Python. Add the Conda installation directory to your path during installation.
 
 Run the following commands:
 
@@ -71,7 +71,9 @@ Once the data has been collected, BigBang has functions to support analysis.
 
 ## Community
 
-If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to [BigBang-user mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know what your suggestions, questions, requests and comments are. 
+If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
+
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers [pledge to make participation in our project and our community a harassment-free experience for everyone](CODE_OF_CONDUCT.md).
 
 ## License
 
