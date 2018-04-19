@@ -297,7 +297,6 @@ https://ietf.org/mail-archive/text/dtn-security/
 https://ietf.org/mail-archive/text/dtn-users/
 https://ietf.org/mail-archive/text/e2md/
 https://ietf.org/mail-archive/text/eai/
-https://ietf.org/mail-archive/text/eap/
 https://ietf.org/mail-archive/text/eapext/
 https://ietf.org/mail-archive/text/early_warning/
 https://ietf.org/mail-archive/text/earlywarning/
@@ -481,7 +480,6 @@ https://ietf.org/mail-archive/text/ippm/
 https://ietf.org/mail-archive/text/ipr-announce/
 https://ietf.org/mail-archive/text/iprp/
 https://ietf.org/mail-archive/text/ipr-wg/
-https://ietf.org/mail-archive/text/ips/
 https://ietf.org/mail-archive/text/ipsec/
 https://ietf.org/mail-archive/text/ipseckey/
 https://ietf.org/mail-archive/text/ipsp/
@@ -531,7 +529,6 @@ https://ietf.org/mail-archive/text/l3vpn/
 https://ietf.org/mail-archive/text/lager/
 https://ietf.org/mail-archive/text/laminar/
 https://ietf.org/mail-archive/text/ldapbis/
-https://ietf.org/mail-archive/text/ldap-dir/
 https://ietf.org/mail-archive/text/ldapext/
 https://ietf.org/mail-archive/text/ldup/
 https://ietf.org/mail-archive/text/ledbat/
@@ -673,7 +670,6 @@ https://ietf.org/mail-archive/text/omcast/
 https://ietf.org/mail-archive/text/oncrpc/
 https://ietf.org/mail-archive/text/openpgp/
 https://ietf.org/mail-archive/text/openv6/
-https://ietf.org/mail-archive/text/opes/
 https://ietf.org/mail-archive/text/ops-area/
 https://ietf.org/mail-archive/text/opsarea-chairs/
 https://ietf.org/mail-archive/text/opsawg/
@@ -816,7 +812,6 @@ https://ietf.org/mail-archive/text/scap_interest/
 https://ietf.org/mail-archive/text/schema/
 https://ietf.org/mail-archive/text/scim/
 https://ietf.org/mail-archive/text/scsn/
-https://ietf.org/mail-archive/text/sctp-impl/
 https://ietf.org/mail-archive/text/sdn/
 https://ietf.org/mail-archive/text/seamoby/
 https://ietf.org/mail-archive/text/secauth/
@@ -856,7 +851,6 @@ https://ietf.org/mail-archive/text/smartobject-interest/
 https://ietf.org/mail-archive/text/smartpowerdir/
 https://ietf.org/mail-archive/text/smartpower-interest/
 https://ietf.org/mail-archive/text/smf-discussion/
-https://ietf.org/mail-archive/text/smime/
 https://ietf.org/mail-archive/text/sming/
 https://ietf.org/mail-archive/text/snadlc/
 https://ietf.org/mail-archive/text/snmpconf/
