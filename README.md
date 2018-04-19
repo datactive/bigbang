@@ -69,6 +69,12 @@ python2 bin/collect_mail.py -f examples/urls.txt
 
 Once the data has been collected, BigBang has functions to support analysis.
 
+## Git
+
+BigBang can also be used to analyze data from Git repositories.
+
+Documentation on this feature can be found [here](https://github.com/datactive/bigbang/blob/master/git-readme.md).
+
 ## Community
 
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
