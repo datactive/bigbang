@@ -1,4 +1,4 @@
-conda install -n bigbang -c https://conda.binstar.org/asmeurer --file conda-requirements.txt
+conda install -n bigbang --file conda-requirements.txt
 source activate bigbang
 pip install chardet
 pip install html2text
