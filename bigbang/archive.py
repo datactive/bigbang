@@ -56,8 +56,8 @@ class Archive(object):
         try:
             self.data['Date'] = pd.to_datetime(self.data['Date'], errors='coerce', infer_datetime_format=True, utc=True)
         except:
+            #TODO: writing a CSV file was for debugging purposes, should be removed
             out_path = 'datetime-exception.csv'
-
             with open(out_path, 'w') as f:
                 self.data.to_csv(f, encoding='utf-8')
             
@@ -105,7 +105,9 @@ class Archive(object):
             self.data.sort_values(by='Date', inplace=True)
         except:
             logging.error('Error while sorting, maybe timezone issues?', exc_info=True)
-
+        
+        if self.data.empty:
+            raise mailman.MissingDataException('Archive after initial processing is empty. Was data collected properly?')
 
     def resolve_entities(self,inplace=True):
         if self.entities is None:
