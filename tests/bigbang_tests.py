@@ -8,6 +8,8 @@ import bigbang.utils as utils
 import mailbox
 import os
 import networkx as nx
+import pandas as pd
+from config.config import CONFIG
 
 test_txt = ""
 
@@ -116,3 +118,10 @@ def test_labeled_blockmodel():
 
     assert list(bg.edges()) == [('A','B')], \
         "Incorrected edges in labeled blockmodel"
+
+def test_empty_list_compute_activity_issue_246():
+    test_df_csv_path = os.path.join(CONFIG.test_data_path, 'empty-archive-df.csv')
+    df = pd.DataFrame.from_csv(path=test_df_csv_path)
+    activity = archive.Archive(df).get_activity()
+
+    assert True, "activity computation crashed on empty df"
