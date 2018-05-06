@@ -1,0 +1,14 @@
+# first line is a comment and should be ignored
+# http://www.example.com/stillshouldbeignored
+#ignored
+http://www.example.com/1
+
+  
+   
+#ignored again
+ http://www.example.com/2/
+https://www.example.com/3/  
+
+invalid.com
+http:/invalid.com
+

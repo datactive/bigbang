@@ -1,4 +1,5 @@
 from nose.tools import *
+from testfixtures import LogCapture
 from bigbang import repo_loader
 import bigbang.archive as archive
 import bigbang.mailman as mailman
@@ -8,6 +9,7 @@ import bigbang.utils as utils
 import mailbox
 import os
 import networkx as nx
+from config.config import CONFIG
 
 test_txt = ""
 
@@ -116,3 +118,18 @@ def test_labeled_blockmodel():
 
     assert list(bg.edges()) == [('A','B')], \
         "Incorrected edges in labeled blockmodel"
+
+def test_valid_urls():
+    test_urls_path = os.path.join(CONFIG.test_data_path, 'urls-test-file.txt')
+    with LogCapture() as l:
+        urls = mailman.urls_to_collect(test_urls_path)
+        assert "#ignored" not in urls, "failed to ignore a comment line"
+        assert "http://www.example.com/1" in urls, "failed to find valid url"
+
+        assert "http://www.example.com/2/" in urls, "failed to find valid url, whitespace strip issue"
+        assert "https://www.example.com/3/" in urls, "failed to find valid url, whitespace strip issue"
+        assert "invalid.com" not in urls, "accepted invalid url"
+        assert len(l.actual()) == 2, "wrong number of log entries"
+        for (fromwhere, level, msg) in l.actual():
+            assert level == "WARNING", "logged something that wasn't a warning"
+        assert len(urls) == 3, "wrong number of urls parsed from file"

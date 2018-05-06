@@ -15,6 +15,7 @@ import re
 import subprocess
 import urllib
 import urllib2
+import validators
 import w3crawl
 import warnings
 import yaml
@@ -124,9 +125,23 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     else:
         return None
 
+def urls_to_collect(urls_file):
+    urls = []
+    for url in open(urls_file):
+        url = url.strip()
+        if url.startswith('#'): # comment lines should be ignored
+            continue
+        if len(url) == 0:   # ignore empty lines
+            continue
+        if validators.url(url) != True:
+            logging.warning('invalid url: %s', url)
+            continue
+        urls.append(url)
+    return urls
 
 def collect_from_file(urls_file, archive_dir=CONFIG.mail_path, notes=None):
-    for url in open(urls_file): # TODO: parse and error handle the URLs file
+    urls = urls_to_collect(urls_file)
+    for url in urls:
         collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
 def get_list_name(url):
