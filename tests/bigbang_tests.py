@@ -121,10 +121,8 @@ def test_labeled_blockmodel():
 
 def test_empty_list_compute_activity_issue_246():
     test_df_csv_path = os.path.join(CONFIG.test_data_path, 'empty-archive-df.csv')
-    df = pd.DataFrame.from_csv(path=test_df_csv_path)
+    df = pd.read_csv(test_df_csv_path)
 
     with assert_raises(mailman.MissingDataException):
         empty_archive = archive.Archive(df)
         activity = empty_archive.get_activity()
-
-    assert True, "activity computation on empty df without MissingDataException"
