@@ -13,6 +13,7 @@
 repo_path : "archives/sample-git-repos/"
 mail_path : "archives/"
 urls_path : "examples/"
+test_data_path: "tests/data/"
 
 
 # REGEX
