@@ -10,13 +10,15 @@ Mailman, or [.mbox][mbox] files.
 
 ## Installation
 
-You can use [Anaconda](http://continuum.io/downloads). This will also install
+You can use [Anaconda](https://www.anaconda.com/). This will also install
 the `conda` package management system, which you can use to complete
-installation. 
+installation.
 
-Install Anaconda (with Python version 2.7) from http://continuum.io/downloads
+[Install Anaconda](https://www.anaconda.com/download/), with Python version
+2.7.
 
-If you choose not to use Anaconda, you may run into issues with versioning in Python. Add the Conda installation directory to your path during installation.
+If you choose not to use Anaconda, you may run into issues with versioning in
+Python. Add the Conda installation directory to your path during installation.
 
 Run the following commands:
 
@@ -26,11 +28,15 @@ git clone https://github.com/datactive/bigbang.git
 conda create -n bigbang python
 cd bigbang
 bash conda-setup.sh
+source activate bigbang
 ```
+
+(If you use a different conda environment name, you'll need to modify
+`conda-setup.sh` to match.)
 
 ### pip installation
 
-Run the following commands:
+Alternatively you can use `pip` for installation. Run the following commands:
 
 ```bash
 git clone https://github.com/datactive/bigbang.git
