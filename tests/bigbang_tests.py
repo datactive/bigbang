@@ -9,6 +9,8 @@ import bigbang.utils as utils
 import mailbox
 import os
 import networkx as nx
+import pandas as pd
+
 from config.config import CONFIG
 
 test_txt = ""
@@ -133,3 +135,11 @@ def test_valid_urls():
         for (fromwhere, level, msg) in l.actual():
             assert level == "WARNING", "logged something that wasn't a warning"
         assert len(urls) == 3, "wrong number of urls parsed from file"
+
+def test_empty_list_compute_activity_issue_246():
+    test_df_csv_path = os.path.join(CONFIG.test_data_path, 'empty-archive-df.csv')
+    df = pd.read_csv(test_df_csv_path)
+
+    with assert_raises(mailman.MissingDataException):
+        empty_archive = archive.Archive(df)
+        activity = empty_archive.get_activity()

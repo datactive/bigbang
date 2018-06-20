@@ -15,6 +15,7 @@ mail_path : "archives/"
 urls_path : "examples/"
 test_data_path: "tests/data/"
 
+
 # REGEX
 # These are certain important regular expressions
 # TODO: They are not completely standardized or stable yet. They do not yet work
