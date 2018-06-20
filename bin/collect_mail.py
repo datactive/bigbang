@@ -13,7 +13,7 @@ a linebreak-separated list of such urls.
 
 For example:
 
-python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
+python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
 
 or
 
