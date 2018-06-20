@@ -26,4 +26,6 @@ requests
 pyyaml
 common
 powerlaw
+validators
+testfixtures
 git+https://github.com/gitpython-developers/GitPython.git

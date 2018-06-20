@@ -1,3 +1,5 @@
+# these are IETF mailing lists hosted at ietf.org 
+# may not include some IETF WG lists hosted elsewhere
 https://ietf.org/mail-archive/text/100all/
 https://ietf.org/mail-archive/text/100attendees/
 https://ietf.org/mail-archive/text/100companions/

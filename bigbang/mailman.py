@@ -15,6 +15,7 @@ import re
 import subprocess
 import urllib
 import urllib2
+import validators
 import w3crawl
 import warnings
 import yaml
@@ -60,6 +61,7 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
     the list name from that URL and load the .csv again.
 
     Failing that, it will collect the data from the web and create the CSV archive.
+    BUG: I don't think this method will trigger collection from the Web
     """
 
     if mbox:
@@ -81,6 +83,7 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
             data = pd.read_csv(path)
             return data
         else:
+            #BUG: proper warning/logging needed here, not just print
             print "No data found at %s. Check if directory name is correct and if you really collected archives!" % (name)
             
 
@@ -122,9 +125,23 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     else:
         return None
 
+def urls_to_collect(urls_file):
+    urls = []
+    for url in open(urls_file):
+        url = url.strip()
+        if url.startswith('#'): # comment lines should be ignored
+            continue
+        if len(url) == 0:   # ignore empty lines
+            continue
+        if validators.url(url) != True:
+            logging.warning('invalid url: %s', url)
+            continue
+        urls.append(url)
+    return urls
 
 def collect_from_file(urls_file, archive_dir=CONFIG.mail_path, notes=None):
-    for url in open(urls_file): # TODO: parse and error handle the URLs file
+    urls = urls_to_collect(urls_file)
+    for url in urls:
         collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
 def get_list_name(url):

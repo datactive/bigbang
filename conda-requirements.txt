@@ -17,3 +17,4 @@ requests
 pyyaml
 scikit-learn
 nltk
+testfixtures
