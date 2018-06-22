@@ -1,3 +1,4 @@
+cython
 beautifulsoup4
 coverage
 matplotlib
