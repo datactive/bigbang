@@ -1,5 +1,13 @@
 # these are IETF mailing lists hosted at ietf.org 
 # may not include some IETF WG lists hosted elsewhere
+# https://ietf.org/mail-archive/text/ips/
+https://ietf.org/mail-archive/text/eap/
+https://ietf.org/mail-archive/text/calsch/
+https://ietf.org/mail-archive/text/ldap-dir/
+https://ietf.org/mail-archive/text/opes/
+https://ietf.org/mail-archive/text/sctp-impl/
+https://ietf.org/mail-archive/text/smime/
+https://ietf.org/mail-archive/text/spirits/
 https://ietf.org/mail-archive/text/100all/
 https://ietf.org/mail-archive/text/100attendees/
 https://ietf.org/mail-archive/text/100companions/
