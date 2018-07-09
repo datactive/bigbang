@@ -6,6 +6,7 @@ import bigbang.mailman as mailman
 import bigbang.parse as parse
 import bigbang.process as process
 import bigbang.utils as utils
+import bigbang.w3crawl as w3crawl
 import mailbox
 import os
 import networkx as nx
@@ -143,3 +144,14 @@ def test_empty_list_compute_activity_issue_246():
     with assert_raises(mailman.MissingDataException):
         empty_archive = archive.Archive(df)
         activity = empty_archive.get_activity()
+
+def test_w3c_archive_message_parsing():
+    test_html_path = os.path.join(CONFIG.test_data_path, 'w3crawl-test-message.html')
+    f = open(test_html_path, 'r')
+    html = f.read()
+    message = w3crawl.W3cMailingListArchivesParser().parsestr(html)
+
+    assert str(message).startswith("From"), "message doesn't start with From"
+    assert "Subject:" in str(message), "message does not have Subject header"
+    assert "Message-ID:" in str(message), "message does not have message id"
+    assert "Date:" in str(message), "message does not have Date header"
