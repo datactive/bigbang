@@ -143,3 +143,30 @@ def test_empty_list_compute_activity_issue_246():
     with assert_raises(mailman.MissingDataException):
         empty_archive = archive.Archive(df)
         activity = empty_archive.get_activity()
+
+def test_mailman_normalizer():
+    browse_url = 'https://mailarchive.ietf.org/arch/browse/ietf/'
+    search_url = 'https://mailarchive.ietf.org/arch/search/?email_list=ietf'
+    random_url = 'http://example.com'
+
+    better_url = 'https://www.ietf.org/mail-archive/text/ietf/'
+
+    assert mailman.normalize_archives_url(browse_url) == better_url, "failed to normalize"
+    assert mailman.normalize_archives_url(search_url) == better_url, "failed to normalize"
+    assert mailman.normalize_archives_url(random_url) == random_url, "should not have changed other url"
+
+def test_mailman_list_name():
+    ietf_archive_url = 'https://www.ietf.org/mail-archive/text/ietf/'
+    w3c_archive_url = 'https://lists.w3.org/Archives/Public/public-privacy/'
+    random_url = 'http://example.com'
+
+    assert mailman.get_list_name(ietf_archive_url) == 'ietf', "failed to grab ietf list name"
+    assert mailman.get_list_name(w3c_archive_url) == 'public-privacy', "failed to grab w3c list name"
+    assert mailman.get_list_name(random_url) == random_url, "should not have changed other url"
+
+def test_activity_summary():
+    list_url = 'https://lists.w3.org/Archives/Public/test-activity-summary/'
+    activity_frame = mailman.open_activity_summary(list_url, archive_dir=CONFIG.test_data_path)
+
+    assert str(type(activity_frame)) == "<class 'pandas.core.frame.DataFrame'>", "not a DataFrame?"
+    assert len(activity_frame.columns) == 1, "activity summary should have one column"
