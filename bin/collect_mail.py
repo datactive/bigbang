@@ -1,5 +1,6 @@
 import sys
-import getopt
+sys.path.append('/home/teirdes/.config/spyder-py3/')
+#import getopt
 import bigbang.mailman as mailman
 import logging
 import argparse
@@ -13,7 +14,7 @@ a linebreak-separated list of such urls.
 
 For example:
 
-python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
+python bin/collect_mail.py -u http://mail.scipy.org/pipermail/scipy-dev/
 
 or
 
@@ -30,7 +31,7 @@ parser.add_argument('--notes', type=str, help='Notes to record regarding provena
 
 args = parser.parse_args()
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 
 def main(args):
