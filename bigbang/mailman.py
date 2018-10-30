@@ -52,10 +52,9 @@ class MissingDataException(Exception):
 
 def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
     """
-    Loads the data associated with an archive name, given
-    as a string.
+    Load the data associated with an archive name, given as a string.
 
-    Attempts to open {archives-directory}/NAME.csv as data.
+    Attempt to open {archives-directory}/NAME.csv as data.
 
     Failing that, if the the name is a URL, it will try to derive
     the list name from that URL and load the .csv again.
@@ -89,6 +88,8 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
 
 
 def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
+    """Collect data from a given url."""
+
     url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
@@ -126,6 +127,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         return None
 
 def urls_to_collect(urls_file):
+    """Collect urls given urls in a file."""
     urls = []
     for url in open(urls_file):
         url = url.strip()
@@ -140,14 +142,16 @@ def urls_to_collect(urls_file):
     return urls
 
 def collect_from_file(urls_file, archive_dir=CONFIG.mail_path, notes=None):
+    """Collect urls from a file."""
     urls = urls_to_collect(urls_file)
     for url in urls:
         collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
 def get_list_name(url):
     """
-    Returns the 'list name' from a canonical mailman archive url.
-    Otherwise returns the same URL.
+    Return the 'list name' from a canonical mailman archive url.
+
+    Otherwise return the same URL.
     """
     # TODO: it would be better to catch these non-url cases earlier
     url = url.rstrip()
@@ -160,10 +164,11 @@ def get_list_name(url):
 
 def normalize_archives_url(url):
     """
-    Given a URL, will try to infer, find or guess the most useful
-    archives URL.
+    Normalize url.
 
-    Returns normalized URL, or the original URL if no improvement is found.
+    will try to infer, find or guess the most useful archives URL, given a URL.
+
+    Return normalized URL, or the original URL if no improvement is found.
     """
     # change new IETF mailarchive URLs to older, still available text .mail archives
     new_ietf_exp = re.compile('https://mailarchive\\.ietf\\.org/arch/search/'
@@ -183,15 +188,14 @@ def normalize_archives_url(url):
 
 
 def archive_directory(base_dir, list_name):
+    """Archive a directory."""
     arc_dir = os.path.join(base_dir, list_name)
     if not os.path.exists(arc_dir):
         os.makedirs(arc_dir)
     return arc_dir
 
 def populate_provenance(directory, list_name, list_url, notes=None):
-    """
-    Creates a provenance metadata file for current mailing list collection.
-    """
+    """Create a provenance metadata file for current mailing list collection."""
     provenance = {
                     'list': {
                         'list_name': list_name,
@@ -218,9 +222,7 @@ def populate_provenance(directory, list_name, list_url, notes=None):
         file_handle.close()
 
 def access_provenance(directory):
-    """
-    Returns an object with provenance information located in the given directory, or None if no provenance was found.
-    """
+    """Return an object with provenance information located in the given directory, or None if no provenance was found."""
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):   # a provenance file already exists
         file_handle = file(file_path, 'r')
@@ -229,9 +231,7 @@ def access_provenance(directory):
     return None
 
 def update_provenance(directory, provenance):
-    """
-    Updates provenance file with given object.
-    """
+    """Update provenance file with given object."""
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     file_handle = file(file_path, 'w')
     yaml.dump(provenance, file_handle)
@@ -240,10 +240,9 @@ def update_provenance(directory, provenance):
 
 def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     """
-    Collects archives (generally tar.gz) files from mailmain
-    archive page.
+    Collect archives (generally tar.gz) files from mailmain archive page.
 
-    Returns True if archives were downloaded, False otherwise
+    Return True if archives were downloaded, False otherwise
     (for example if the page lists no accessible archive files).
     """
     list_name = get_list_name(url)
@@ -295,6 +294,7 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
 
 
 def unzip_archive(url, archive_dir=CONFIG.mail_path):
+    """Unzip archive files."""
     arc_dir = archive_directory(archive_dir, get_list_name(url))
 
     gzs = [os.path.join(arc_dir, fn) for fn
@@ -327,6 +327,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
 # The payload of a Message may be a String, a Message, or a list of Messages.
 # OR maybe it's never just a Message, but always a list of them.
 def recursive_get_payload(x):
+    """Get payloads recursively."""
     if isinstance(x,str):
         return x
     elif isinstance(x,list):
@@ -340,7 +341,7 @@ def recursive_get_payload(x):
 
 def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
     """
-    Returns a list of all email messages contained in the specified directory.
+    Return a list of all email messages contained in the specified directory.
 
     The argument *url* here is taken to be the name of a subdirectory
     of the directory specified in argument *archive_dir*.
@@ -388,8 +389,9 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
 def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     """
-    Opens the message activity summary for a particular mailing list (as specified by url)
-    and returns the dataframe. Returns None if no activity summary export file is found.
+    Open the message activity summary for a particular mailing list (as specified by url).
+
+    Return the dataframe, or return None if no activity summary export file is found.
     """
     list_name = get_list_name(url)
     arc_dir = archive_directory(archive_dir, list_name)
@@ -408,6 +410,7 @@ def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     return activity_frame
 
 def get_text(msg):
+    """Get texto given a message."""
     ## This code for character detection and dealing with exceptions is terrible
     ## It is in need of refactoring badly. - sb
     import chardet
@@ -456,7 +459,6 @@ def messages_to_dataframe(messages):
     """
     Turn a list of parsed messages into a dataframe of message data,
     indexed by message-id, with column-names from headers.
-
     """
     def safe_unicode(t):
         return t and unicode(t, 'utf-8', 'replace')
