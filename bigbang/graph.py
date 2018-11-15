@@ -10,6 +10,7 @@ import pandas
 
 
 def messages_to_reply_graph(messages):
+    """Return a graph given messages."""
 
     G = nx.DiGraph()
 
@@ -32,6 +33,7 @@ def messages_to_reply_graph(messages):
 
 
 def messages_to_interaction_graph(messages, verbose=False,clean=True):
+    """Return a interactable graph given messages."""
 
     IG = nx.DiGraph()
 
@@ -85,8 +87,8 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
     return IG
 
 
-# turn an interaction graph into a weighted edge matrix
 def interaction_graph_to_matrix(dg):
+   """Turn an interaction graph into a weighted edge matrix."""
     nodes = dg.nodes()
 
     n_nodes = len(nodes)
@@ -103,9 +105,12 @@ def interaction_graph_to_matrix(dg):
     return matrix
 
 
-# Ulanowicz ecosystem health measures
-# input is weighted adjacency matrix
 def ascendancy(am):
+    """
+    Ulanowicz ecosystem health measures
+    Input is weighted adjacency matrix.
+    """
+
     # total system throughput
     tst = np.sum(am)
 
@@ -124,6 +129,7 @@ def ascendancy(am):
 
 
 def capacity(am):
+    """Return the capacity given a adjacency matrix."""
     # total system throughput
     tst = np.sum(am)
 
@@ -133,6 +139,7 @@ def capacity(am):
 
 
 def overhead(am):
+    """Return overhead given a adjacency matrix."""
     # could be more efficient...
     return capacity(am) - ascendancy(am)
 
@@ -141,6 +148,8 @@ def overhead(am):
 
 
 def compute_ascendancy(messages, duration=50):
+    """Compute ascendancy given messages."""
+
     print('compute ascendancy')
     dated_messages = {}
 
