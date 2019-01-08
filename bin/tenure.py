@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import logging
 import argparse
+import enlighten
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description=r"""
 Calculates the tenure and total messages sent by each person.
@@ -93,6 +94,8 @@ def main(args):
             logging.info('Completed combined tenure frame output.')
             logging.info('Subdirectories included: %s' % ','.join(combined_lists))
     else:
+        manager = enlighten.get_manager()
+        progress = manager.counter(total=len(subdirectories), desc='Lists', unit='lists')
         for subdirectory in subdirectories:
             logging.info('Processing archives in %s' % subdirectory)
             
@@ -100,6 +103,7 @@ def main(args):
 
             if not args.force:
                 if os.path.isfile(out_path): # if file already exists, skip
+                    progress.update()
                     continue
             try:
                 archives = mailman.open_list_archives(subdirectory, args.archives)
@@ -118,6 +122,7 @@ def main(args):
                     logging.info('Completed tenure frame export for %s' % subdirectory)
             except Exception:
                 logging.warning(('Failed to produce tenure frame export for %s.' % subdirectory), exc_info=True)
+            progress.update()
 
 if __name__ == "__main__":
     main(args)
