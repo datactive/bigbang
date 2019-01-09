@@ -19,6 +19,7 @@ For example:
 
 python bin/tenure.py --archives ../archives
 
+With the `--combine` parameter, gathers and merges together the values in all subdirectory CSV files into a single combined tenure CSV file in the archives directory.
 """)
 
 parser.add_argument('--archives', type=str, help='Path to a specified directory of downloaded mail archives', required=True)
@@ -30,6 +31,11 @@ args = parser.parse_args()
 logging.basicConfig(level=logging.INFO)
 
 def earliest(s):
+    """
+    Finds the earliest date from the columns of an activity dataframe that show messages sent per date.
+
+    Takes a pandas.Series where the columns are the dates (and a couple of calculated columns which will be ignored for the purposes of the calculation) and the cells are the number of messages sent on each date.
+    """
     just_dates = s.drop(['Earliest Date', 'Latest Date', 'Total Messages', 'Tenure'], errors='ignore')
     
     earliest = None
@@ -46,6 +52,11 @@ def earliest(s):
     return earliest
 
 def latest(s):
+    """
+    Finds the latest date from the columns of an activity dataframe that show messages sent per date.
+
+    Takes a pandas.Series where the columns are the dates (and a couple of calculated columns which will be ignored for the purposes of the calculation) and the cells are the number of messages sent on each date.
+    """
     just_dates = s.drop(['Earliest Date', 'Latest Date', 'Total Messages', 'Tenure'], errors='ignore')
     
     latest = None
@@ -61,7 +72,12 @@ def latest(s):
     
     return latest
 
-def total_messages(s): # this is a cumulative sum
+def total_messages(s):
+    """
+    Finds the total number of messages sent from an activity dataframe that show messages sent per date.
+
+    Takes a pandas.Series where the columns are the dates (and a couple of calculated columns which will be ignored for the purposes of the calculation) and the cells are the number of messages sent on each date. This does not ignore but instead adds up an existing 'Total Messages' column.
+    """
     just_dates = s.drop(['Earliest Date', 'Latest Date', 'Tenure'], errors='ignore')
     return just_dates.sum()
 
