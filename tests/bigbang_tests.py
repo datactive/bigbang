@@ -14,17 +14,23 @@ import pandas as pd
 from config.config import CONFIG
 
 test_txt = ""
+TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")
 
 def test_git_dependancy():
     repo = repo_loader.get_repo("https://github.com/sbenthall/bigbang.git", in_type = "remote")
 
 def setup():
-    pass
+    try:
+        os.mkdir(TEMP_DIR)
+    except OSError: # Python 2.7-specific, alas; FileExistsError in py3
+        pass # temporary directory already exists, that's cool
 
 
 def teardown():
-    pass
-
+    # remove all files in the temporary files directory, as cleanup
+    temp_files = os.listdir(TEMP_DIR)
+    for f in temp_files:
+        os.remove(os.path.join(TEMP_DIR, f))
 
 def test_split_references():
     refs = " <ye1y9ljtxwk.fsf@orange30.ex.ac.uk>\n\t<055701c16727$b57fed90$8fd6afcf@pixi.com>"
@@ -143,3 +149,49 @@ def test_empty_list_compute_activity_issue_246():
     with assert_raises(mailman.MissingDataException):
         empty_archive = archive.Archive(df)
         activity = empty_archive.get_activity()
+
+def test_mailman_normalizer():
+    browse_url = 'https://mailarchive.ietf.org/arch/browse/ietf/'
+    search_url = 'https://mailarchive.ietf.org/arch/search/?email_list=ietf'
+    random_url = 'http://example.com'
+
+    better_url = 'https://www.ietf.org/mail-archive/text/ietf/'
+
+    assert mailman.normalize_archives_url(browse_url) == better_url, "failed to normalize"
+    assert mailman.normalize_archives_url(search_url) == better_url, "failed to normalize"
+    assert mailman.normalize_archives_url(random_url) == random_url, "should not have changed other url"
+
+def test_mailman_list_name():
+    ietf_archive_url = 'https://www.ietf.org/mail-archive/text/ietf/'
+    w3c_archive_url = 'https://lists.w3.org/Archives/Public/public-privacy/'
+    random_url = 'http://example.com'
+
+    assert mailman.get_list_name(ietf_archive_url) == 'ietf', "failed to grab ietf list name"
+    assert mailman.get_list_name(w3c_archive_url) == 'public-privacy', "failed to grab w3c list name"
+    assert mailman.get_list_name(random_url) == random_url, "should not have changed other url"
+
+def test_activity_summary():
+    list_url = 'https://lists.w3.org/Archives/Public/test-activity-summary/'
+    activity_frame = mailman.open_activity_summary(list_url, archive_dir=CONFIG.test_data_path)
+
+    assert str(type(activity_frame)) == "<class 'pandas.core.frame.DataFrame'>", "not a DataFrame?"
+    assert len(activity_frame.columns) == 1, "activity summary should have one column"
+
+def test_provenance():
+    test_list_name = 'test-list-name'
+    test_list_url = 'https://example.com/test-list-url/'
+    test_notes = 'Test notes.'
+    mailman.populate_provenance(TEMP_DIR, list_name=test_list_name, list_url=test_list_url, notes=test_notes)
+
+    assert os.path.exists(os.path.join(TEMP_DIR, mailman.PROVENANCE_FILENAME)), "provenance file should have been created"
+
+    provenance = mailman.access_provenance(TEMP_DIR)
+    assert provenance != None, "provenance should be something"
+    assert provenance['list']['list_name'] == test_list_name, "list name should be in the provenance"
+    assert provenance['list']['list_url'] == test_list_url, "list url should be in the provenance"
+    assert provenance['notes'] == test_notes, "notes should be in the provenance"
+
+    provenance['notes'] = 'modified provenance'
+    mailman.update_provenance(TEMP_DIR, provenance)
+    provenance_next = mailman.access_provenance(TEMP_DIR)
+    assert provenance_next['notes'] == 'modified provenance', "confirm modified provenance"
