@@ -1,4 +1,4 @@
-from . import parse
+import bigbang.parse as parse
 import math
 import numpy as np
 import networkx as nx
