@@ -1,4 +1,4 @@
-from . import parse
+import bigbang.parse as parse
 import math
 import numpy as np
 import networkx as nx
@@ -88,7 +88,7 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
 
 
 def interaction_graph_to_matrix(dg):
-   """Turn an interaction graph into a weighted edge matrix."""
+    """Turn an interaction graph into a weighted edge matrix."""
     nodes = dg.nodes()
 
     n_nodes = len(nodes)
@@ -103,7 +103,6 @@ def interaction_graph_to_matrix(dg):
         matrix[i, j] = data['weight']
 
     return matrix
-
 
 def ascendancy(am):
     """
