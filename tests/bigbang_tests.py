@@ -10,6 +10,8 @@ import mailbox
 import os
 import networkx as nx
 import pandas as pd
+import email
+import logging
 
 from config.config import CONFIG
 
@@ -195,3 +197,21 @@ def test_provenance():
     mailman.update_provenance(TEMP_DIR, provenance)
     provenance_next = mailman.access_provenance(TEMP_DIR)
     assert provenance_next['notes'] == 'modified provenance', "confirm modified provenance"
+
+def test_name_email_parsing():
+    from_header = 'John_Doe (?) <John.Doe@example.com>'
+    (raw_name, raw_email) = email.utils.parseaddr(from_header)
+    normalized_email = parse.normalize_email_address(raw_email)
+    assert normalized_email == 'john.doe@example.com', "normalized email case incorrect"
+
+    clean_name = parse.clean_name(raw_name)
+    assert clean_name == 'John Doe', "name not fully cleaned"
+
+    empty_name = parse.clean_name(' ')
+    assert empty_name is None, "empty name not cleaned to None"
+
+    tokenized_name = parse.tokenize_name(clean_name)
+    assert tokenized_name == 'doe john', "name not properly normalized and tokenized"
+
+    empty_tokenized_name = parse.tokenize_name(unicode('   '))
+    assert empty_name is None, "empty name not tokenized to None"
