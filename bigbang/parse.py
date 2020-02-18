@@ -4,6 +4,7 @@ import re
 import dateutil.parser as dp
 import pytz
 import warnings
+import logging
 
 re_cache = {
     'top_exp': re.compile("From .*\d\d\d\d\n"),
@@ -155,13 +156,6 @@ def get_date(message):
             date = pytz.utc.localize(date)
 
         return date
-    except TypeError:
-        print "Date parsing error on: "
-        print ds
-
-        return None
-    except ValueError:
-        print "Date parsing error on: "
-        print ds
-
+    except (TypeError, ValueError):
+        logging.debug('Date parsing error on: %s', ds)
         return None

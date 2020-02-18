@@ -1,6 +1,7 @@
 conda install -n bigbang --file conda-requirements.txt
 source activate bigbang
 pip install chardet
+pip install enlighten
 pip install html2text
 pip install gender_detector
 pip install python-Levenshtein
