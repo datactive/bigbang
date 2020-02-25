@@ -13,9 +13,9 @@ gitpython
 matplotlib
 networkx
 nltk
-nose
 numpy
 pandas
+pytest
 python-dateutil
 python-Levenshtein
 pytz
