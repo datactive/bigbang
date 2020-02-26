@@ -1,4 +1,4 @@
-from git_repo import GitRepo, MultiGitRepo
+from .git_repo import GitRepo, MultiGitRepo
 import json;
 import os;
 import re;
@@ -130,7 +130,7 @@ def get_repo(repo_in, in_type='name', update = False):
             ans = get_cache(repo_in);
         if ans is not None:
             return ans;
-        print("Checking for " + str(repo_in) + " at " + str(filepath));
+        print(("Checking for " + str(repo_in) + " at " + str(filepath)));
         ans = get_repo(filepath, 'local', update);
 
         if isinstance(ans, GitRepo):
@@ -145,7 +145,7 @@ def get_repo(repo_in, in_type='name', update = False):
             name = filepath_to_name(repo_in);
             return GitRepo(url=repo_in, name=name);
         else:
-            print("Invalid filepath: " + repo_in);
+            print(("Invalid filepath: " + repo_in));
             return None;
 
     if in_type == 'remote':
@@ -229,13 +229,13 @@ def load_org_repos(org_name):
             urls.append(repo["git_url"])
 
     if len(urls) == 0:
-        print("Found no repos in group: " + str(org_name))
+        print(("Found no repos in group: " + str(org_name)))
         return None
     else:
         addr = examplesLocation + str(org_name) + "_urls.txt"
         f = open(addr, 'w')
         f.write("\n".join(urls))
-        print("Wrote git urls to " + addr)
+        print(("Wrote git urls to " + addr))
         return urls
 
 """

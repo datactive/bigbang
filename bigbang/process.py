@@ -43,7 +43,7 @@ def matricize(series, func):
 
 def minimum_but_not_self(column, dataframe):
     minimum = 100
-    for index, value in dataframe[column].iteritems():
+    for index, value in dataframe[column].items():
         if index == column:
             continue
         if value < minimum:
@@ -122,19 +122,19 @@ def from_header_distance(a, b,verbose=False):
     """
     # this translate table is one way you are supposed to
     # delete characters from a unicode string
-    stop_characters = unicode('"<>')
+    stop_characters = str('"<>')
     stop_characters_map = dict((ord(char), None) for char in stop_characters)
 
     a_normal = ""
     b_normal = ""
 
     try:
-        a_normal = unicode(a).lower().translate(stop_characters_map).replace(' at ','@')
+        a_normal = str(a).lower().translate(stop_characters_map).replace(' at ','@')
     except UnicodeDecodeError as e:
         a_normal = a.decode("utf-8").lower().translate(stop_characters_map).replace(' at ','@')
 
     try:
-        b_normal = unicode(b).lower().translate(stop_characters_map).replace(' at ','@')
+        b_normal = str(b).lower().translate(stop_characters_map).replace(' at ','@')
     except UnicodeDecodeError as e:
         b_normal = b.decode("utf-8").lower().translate(stop_characters_map).replace(' at ','@')
 
@@ -145,9 +145,9 @@ def from_header_distance(a, b,verbose=False):
 
     if ag is None or bg is None:
         if verbose:
-            print "malformed pair:"
-            print a
-            print b
+            print("malformed pair:")
+            print(a)
+            print(b)
         dist = Levenshtein.distance(a_normal, b_normal)
     else:
         dist = Levenshtein.distance(ag.groups()[0],bg.groups()[0]) \

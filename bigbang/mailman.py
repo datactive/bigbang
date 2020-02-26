@@ -8,15 +8,15 @@ import mailbox
 import os
 import fnmatch
 import mailbox
-import parse
+from . import parse
 import pandas as pd
-import parse
+from . import parse
 import re
 import subprocess
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import validators
-import w3crawl
+from . import w3crawl
 import warnings
 import yaml
 
@@ -74,7 +74,7 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
             data = pd.read_csv(path)
             return data
         else:
-            print "No data available at %s" % (path)
+            print("No data available at %s" % (path))
     else:
         path = os.path.join(archive_dir,get_list_name(name) + ".csv")
 
@@ -83,7 +83,7 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
             return data
         else:
             #BUG: proper warning/logging needed here, not just print
-            print "No data found at %s. Check if directory name is correct and if you really collected archives!" % (name)
+            print("No data found at %s. Check if directory name is correct and if you really collected archives!" % (name))
             
 
 
@@ -93,9 +93,9 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
-    except urllib2.HTTPError as e:
+    except urllib.error.HTTPError as e:
         # BUG: this error code/message is misleading
-        print "HTTP 404 Error: %s" % (url)
+        print("HTTP 404 Error: %s" % (url))
         return None
 
     if has_archives:
@@ -103,7 +103,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         try:
             data = open_list_archives(url)
         except MissingDataException as e:   # don't strictly need to open the archives during the collection process, so catch the Exception and return
-            print e
+            print(e)
             return None
 
         # hard coding the archives directory in too many places
@@ -113,7 +113,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         try:
             data.to_csv(path, ",", encoding="utf-8")
         except Exception as e:
-            print e
+            print(e)
             # if encoding doesn't work...don't encode? ----better not not encode !!
             # try:
             #     data.to_csv(path, ",")
@@ -251,7 +251,7 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
 
-    response = urllib2.urlopen(url)
+    response = urllib.request.urlopen(url)
     html = response.read()
 
     results = []
@@ -273,15 +273,15 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         if not os.path.isfile(result_path):
             gz_url = "/".join([url.strip("/"),res])
             pp('retrieving %s' % gz_url)
-            resp = urllib2.urlopen(gz_url)
+            resp = urllib.request.urlopen(gz_url)
             if resp.getcode() == 200:
-                print("200 - writing file to %s" % (result_path))
+                print(("200 - writing file to %s" % (result_path)))
                 output = open(result_path, 'wb')
                 output.write(resp.read())
                 output.close()
             else:
-                print("%s error code trying to retrieve %s" %
-                      (str(resp.getcode(), gz_url)))
+                print(("%s error code trying to retrieve %s" %
+                      (str(resp.getcode(), gz_url))))
                 encountered_error = True
 
     if not encountered_error:   # mark that all available archives were collected
@@ -301,7 +301,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
            in os.listdir(arc_dir)
            if fn.endswith('.txt.gz')]
 
-    print 'unzipping %d archive files' % (len(gzs))
+    print('unzipping %d archive files' % (len(gzs)))
 
     for gz in gzs:
         try:
@@ -315,7 +315,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
             f2.write(content)
             f2.close()
         except Exception as e:
-            print e
+            print(e)
 
 # This works for the names of the files. Order them.
 # datetime.datetime.strptime('2000-November',"%Y-%B")
@@ -336,7 +336,7 @@ def recursive_get_payload(x):
     elif isinstance(x,email.message.Message):
         return recursive_get_payload(x.get_payload())
     else:
-        print x
+        print(x)
         return None
 
 def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
@@ -357,7 +357,7 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
     if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
-        messages = box.values()
+        messages = list(box.values())
     else:
         # assume string is the path to a directory with many
 
@@ -370,10 +370,10 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
         txts = [os.path.join(arc_dir, fn) for fn in os.listdir(arc_dir) if any([fn.endswith(extension) for extension in file_extensions])]
 
-        print len(txts)
+        print(len(txts))
 
-        print 'Opening %d archive files' % (len(txts))
-        arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
+        print('Opening %d archive files' % (len(txts)))
+        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
 
 
         if len(arch) == 0:
@@ -414,7 +414,7 @@ def get_text(msg):
     ## This code for character detection and dealing with exceptions is terrible
     ## It is in need of refactoring badly. - sb
     import chardet
-    text = u""
+    text = ""
     if msg.is_multipart():
         html = None
         for part in msg.walk():
@@ -424,19 +424,19 @@ def get_text(msg):
                 charset = part.get_content_charset()
             if part.get_content_type() == 'text/plain':
                 try:
-                    text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    text = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError as e:
-                    print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
+                    print("%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID']))
                     charset = "utf-8"
-                    text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    text = str(part.get_payload(decode=True), str(charset), "ignore")
 
             if part.get_content_type() == 'text/html':
                 try:
-                    html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    html = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError as e:
-                    print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
+                    print("%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID']))
                     charset = "utf-8"
-                    html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    html = str(part.get_payload(decode=True), str(charset), "ignore")
 
         if text is not None:
             return text.strip()
@@ -444,15 +444,15 @@ def get_text(msg):
             import html2text
             h = html2text.HTML2Text()
             h.encoding = 'utf-8'
-            return unicode(h.handle(html))
+            return str(h.handle(html))
     else:
         charset = msg.get_content_charset() or 'utf-8'
         try:
-            text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
+            text = str(msg.get_payload(), encoding=charset, errors='ignore')
         except LookupError as e:
-            print "%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID'])
+            print("%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID']))
             charset = "utf-8"
-            text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
+            text = str(msg.get_payload(), encoding=charset, errors='ignore')
         return text.strip()
 
 def messages_to_dataframe(messages):
@@ -461,7 +461,7 @@ def messages_to_dataframe(messages):
     indexed by message-id, with column-names from headers.
     """
     def safe_unicode(t):
-        return t and unicode(t, 'utf-8', 'replace')
+        return t and str(t, 'utf-8', 'replace')
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
     #valid_messages = [m for m in messages if m.get() 

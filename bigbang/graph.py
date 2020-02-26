@@ -60,7 +60,7 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
         reply_counts[m_from] = reply_counts.get(m_from, {})
         IG.add_node(m_from)
 
-    for sender, count in sender_counts.items():
+    for sender, count in list(sender_counts.items()):
         IG.node[sender]['sent'] = count
 
     replies = [m for m in df.iterrows() if m[1]['In-Reply-To'] is not None]
@@ -78,10 +78,10 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
             reply_counts[m_from][m_to] = reply_counts[m_from].get(m_to, 0) + 1
         else:
             if verbose:
-                print reply_to_mid + " not in archive"
+                print(reply_to_mid + " not in archive")
 
-    for m_from, edges in reply_counts.items():
-        for m_to, count in edges.items():
+    for m_from, edges in list(reply_counts.items()):
+        for m_to, count in list(edges.items()):
             IG.add_edge(m_from, m_to, weight=count)
 
     return IG
@@ -160,7 +160,7 @@ def compute_ascendancy(messages, duration=50):
             dated_messages[o] = dated_messages.get(o, [])
             dated_messages[o].append(m)
 
-    days = [k for k in dated_messages.keys()]
+    days = [k for k in list(dated_messages.keys())]
     day_offset = min(days)
     epoch = max(days) - min(days)
 

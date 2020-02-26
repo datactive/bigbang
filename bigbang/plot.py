@@ -24,7 +24,7 @@ def stack(df,partition=None,smooth=1,figsize=(12.5, 7.5),time=True,cm=plt.cm.Set
     if isinstance(partition,list):
         partition = enumerate(partition)
     else:
-        partition = partition.items()
+        partition = list(partition.items())
     
     # if an item in the portition is not in the dataframe,
     # clean it up

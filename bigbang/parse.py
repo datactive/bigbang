@@ -23,7 +23,7 @@ def clean_mid(mid):
     try:
         return get_refs(mid)[0]
     except IndexError:
-        print mid
+        print(mid)
         return mid
 
 def clean_from(m_from):
@@ -68,10 +68,10 @@ def clean_name(name):
     name = name.replace('_', ' ')
 
     # these are stop characters we can just delete
-    stop_characters = unicode('"<>\\()/:?%!+\'@')
+    stop_characters = str('"<>\\()/:?%!+\'@')
     stop_characters_map = dict((ord(char), None) for char in stop_characters)
 
-    name = unicode(name, 'utf-8', 'ignore').translate(stop_characters_map)
+    name = str(name, 'utf-8', 'ignore').translate(stop_characters_map)
 
     # do we need to also catch email archives that use anti-spam measures?
     # like: .replace(' at ','@')
@@ -94,7 +94,7 @@ def tokenize_name(clean_name):
 
     # make lower case, remove "." and ",", tokenize and lexicographically sort the tokens, join by spaces, return as a string
 
-    stop_characters = unicode('".,')
+    stop_characters = str('".,')
     stop_characters_map = dict((ord(char), None) for char in stop_characters)
     name = clean_name.translate(stop_characters_map)
 
@@ -140,7 +140,7 @@ def guess_first_name(cleaned_from):
 
 def get_date(message):
     def safe_unicode(t):
-        return t and unicode(t, 'utf-8', 'ignore')
+        return t and str(t, 'utf-8', 'ignore')
     try:
         # some mail clients add a parenthetical timezone
         ds = safe_unicode(message.get('Date'))
@@ -156,12 +156,12 @@ def get_date(message):
 
         return date
     except TypeError:
-        print "Date parsing error on: "
-        print ds
+        print("Date parsing error on: ")
+        print(ds)
 
         return None
     except ValueError:
-        print "Date parsing error on: "
-        print ds
+        print("Date parsing error on: ")
+        print(ds)
 
         return None

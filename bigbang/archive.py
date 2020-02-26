@@ -4,11 +4,11 @@ from config.config import CONFIG
 import bigbang.process as process
 import datetime
 import mailbox
-import mailman
+from . import mailman
 import numpy as np
 import pandas as pd
 import pytz
-import utils
+from . import utils
 import logging
 
 def load(path):
@@ -118,7 +118,7 @@ class Archive(object):
 
         value = []
 
-        for e, names in self.entities.items():
+        for e, names in list(self.entities.items()):
             for n in names:
                 to_replace.append(n)
                 value.append(e)
@@ -199,13 +199,13 @@ class Archive(object):
             if verbose:
                 c += 1
                 if c % 1000 == 0:
-                    print "Processed %d of %d" %(c,total)
+                    print("Processed %d of %d" %(c,total))
 
             if(i[1]['In-Reply-To'] is None):
                 root = Node(i[0], i[1])
                 visited[i[0]] = root
                 threads.append(Thread(root))
-            elif(i[1]['In-Reply-To'] not in visited.keys()):
+            elif(i[1]['In-Reply-To'] not in list(visited.keys())):
                 root = Node(i[1]['In-Reply-To'])
                 succ = Node(i[0],i[1], root)
                 root.add_successor(succ)
@@ -269,12 +269,12 @@ def find_footer(messages,number=1):
 
     # reduce candidates that are strictly longer and less frequent
     # than most promising footer candidates
-    for n,foot1 in sorted([(v,k) for k,v in counts.items()],reverse=True):
-        for foot2, m in counts.items():
+    for n,foot1 in sorted([(v,k) for k,v in list(counts.items())],reverse=True):
+        for foot2, m in list(counts.items()):
             if n > m and foot1 in foot2 and len(foot1) > 0:
                 counts[foot1] = counts[foot1] + counts[foot2]
                 del counts[foot2]
 
-    candidates = sorted([(v,k) for k,v in counts.items()],reverse=True)
+    candidates = sorted([(v,k) for k,v in list(counts.items())],reverse=True)
 
     return candidates[0:number]
