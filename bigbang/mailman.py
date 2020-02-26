@@ -58,9 +58,6 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
 
     Failing that, if the the name is a URL, it will try to derive
     the list name from that URL and load the .csv again.
-
-    Failing that, it will collect the data from the web and create the CSV archive.
-    BUG: I don't think this method will trigger collection from the Web
     """
 
     if mbox:
@@ -74,7 +71,7 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
             data = pd.read_csv(path)
             return data
         else:
-            print("No data available at %s" % (path))
+            logging.warning('No data available at %s', path)
     else:
         path = os.path.join(archive_dir,get_list_name(name) + ".csv")
 
@@ -82,10 +79,7 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
             data = pd.read_csv(path)
             return data
         else:
-            #BUG: proper warning/logging needed here, not just print
-            print("No data found at %s. Check if directory name is correct and if you really collected archives!" % (name))
-            
-
+            logging.warning('No data found for %s. Check directory name and whether archives have been collected.', name)
 
 def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     """Collect data from a given url."""
@@ -246,7 +240,7 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     (for example if the page lists no accessible archive files).
     """
     list_name = get_list_name(url)
-    pp("Getting archive page for %s" % list_name)
+    logging.info("Getting archive page for %s", list_name)
 
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
@@ -272,16 +266,16 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         # this check is redundant with urlretrieve
         if not os.path.isfile(result_path):
             gz_url = "/".join([url.strip("/"),res])
-            pp('retrieving %s' % gz_url)
-            resp = urllib.request.urlopen(gz_url)
+            logging.info('retrieving %s', gz_url)
+            resp = urllib2.urlopen(gz_url)
             if resp.getcode() == 200:
-                print(("200 - writing file to %s" % (result_path)))
+                logging.info("200 - writing file to %s", result_path)
                 output = open(result_path, 'wb')
                 output.write(resp.read())
                 output.close()
             else:
-                print(("%s error code trying to retrieve %s" %
-                      (str(resp.getcode(), gz_url))))
+                logging.warning("%s error code trying to retrieve %s" %
+                      (str(resp.getcode(), gz_url)))
                 encountered_error = True
 
     if not encountered_error:   # mark that all available archives were collected
@@ -301,7 +295,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
            in os.listdir(arc_dir)
            if fn.endswith('.txt.gz')]
 
-    print('unzipping %d archive files' % (len(gzs)))
+    logging.info('Unzipping %d archive files', len(gzs))
 
     for gz in gzs:
         try:
@@ -345,6 +339,7 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
     The argument *url* here is taken to be the name of a subdirectory
     of the directory specified in argument *archive_dir*.
+    BUG: this argument should be re-named. sometimes it's being called with actual URLs, other times with subdirectory names, leading to spurious warnings in various places.
 
     This directory is expected to contain files with extensions .txt,
     .mail, or .mbox. These files are all expected to be in mbox format--
@@ -370,18 +365,14 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
         txts = [os.path.join(arc_dir, fn) for fn in os.listdir(arc_dir) if any([fn.endswith(extension) for extension in file_extensions])]
 
-        print(len(txts))
-
-        print('Opening %d archive files' % (len(txts)))
-        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
-
+        logging.info('Opening %d archive files', len(txts))
+        arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
 
         if len(arch) == 0:
             raise MissingDataException(
                 ("No messages in %s under %s. Did you run the "
                  "collect_mail.py script?") %
                 (archive_dir, list_name))
-
 
         messages = [item for sublist in arch for item in sublist]
 
@@ -410,7 +401,7 @@ def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     return activity_frame
 
 def get_text(msg):
-    """Get texto given a message."""
+    """Get text from a message."""
     ## This code for character detection and dealing with exceptions is terrible
     ## It is in need of refactoring badly. - sb
     import chardet
@@ -426,15 +417,14 @@ def get_text(msg):
                 try:
                     text = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError as e:
-                    print("%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID']))
+                    logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
                     charset = "utf-8"
                     text = str(part.get_payload(decode=True), str(charset), "ignore")
-
             if part.get_content_type() == 'text/html':
                 try:
                     html = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError as e:
-                    print("%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID']))
+                    logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
                     charset = "utf-8"
                     html = str(part.get_payload(decode=True), str(charset), "ignore")
 
@@ -450,7 +440,7 @@ def get_text(msg):
         try:
             text = str(msg.get_payload(), encoding=charset, errors='ignore')
         except LookupError as e:
-            print("%s unknown encoding in message %s, using UTF-8 instead" % (charset,msg['Message-ID']))
+            logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
             charset = "utf-8"
             text = str(msg.get_payload(), encoding=charset, errors='ignore')
         return text.strip()
