@@ -3,6 +3,7 @@
 beautifulsoup4
 chardet
 coverage
+enlighten
 gender-detector
 html2text
 ipython
@@ -13,9 +14,9 @@ gitpython
 matplotlib
 networkx
 nltk
-nose
 numpy
 pandas
+pytest
 python-dateutil
 python-Levenshtein
 pytz

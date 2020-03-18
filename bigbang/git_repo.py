@@ -11,24 +11,32 @@ import utils
 
 ALL_ATTRIBUTES = CONFIG.all_attributes #["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
-def cache_fixer(r): # Adds info from row to graph
+def cache_fixer(r): 
+    """Adds info from row to graph."""
     r["Touched File"] = [x.strip() for x in r["Touched File"][1:-1].split(",")]
     r["Time"] = pd.to_datetime(r["Time"]);
     return r
 
-"""
-Class that stores an instance of a git repository given the address to that
-repo relative to this file. It returns the data in multiple useful forms.
-"""
-class GitRepo(object):
 
-    """ A pandas DataFrame object indexed by time that stores
-    the raw form of the repo's commit data as a table where 
-    each row is a commit and each col represents an attribute 
-    of that commit (time, message, commiter name, committer email,
-    commit hexsha)
+class GitRepo(object):
     """
+    Store a git repository given the address to that repo relative to this file.
+    
+    It returns the data in many forms.
+    """
+
     def __init__(self, name, url=None, attribs = ALL_ATTRIBUTES, cache=None):
+        """
+        Index a Pandas DataFrame object by time.
+        
+        That stores the raw form of the repo's commit data as a table.
+         
+        Each row in this table  is a commit.
+        
+        And each column represents an attribute of that commit:
+        (eg.: time, message, commiter name, committer email, commit hexsha).
+        """
+
         self._commit_data = None;
         self.url = url;
         self.repo = None
@@ -57,6 +65,7 @@ class GitRepo(object):
             self._commit_data = self._commit_data.apply(lambda row: entity_resolve(row, "Committer Email", "Committer Name"), axis=1)
 
     def gen_data(self, repo, raw):
+        """Generate data to repo."""
 
         if not repo.active_branch.is_valid():
             print("Found an empty repo: " + str(self.name))
@@ -101,6 +110,7 @@ class GitRepo(object):
 
 
     def populate_data(self, attribs = ALL_ATTRIBUTES):
+        """Populate data."""
         raw = dict()
         for attrib in attribs:
             raw[attrib] = list();
@@ -114,27 +124,33 @@ class GitRepo(object):
         self._commit_data = pd.DataFrame(raw, index = time_index);
 
     def by_committer(self):
+        """Return commit data grouped by commiter."""
         return self.commit_data.groupby('Committer Name').size().order()
 
     def commits_per_day(self):
+        """Return commits grouped by day."""
         ans = self.commit_data.groupby(self.commit_data.index).size()
         ans = ans.resample("D", how=np.sum)
         return ans;
 
     def commits_per_week(self):
+        """Return commits grouped by week."""
         ans = self.commits_per_day();
         ans = ans.resample("W", how=np.sum)
         return ans;
 
     def commits_per_day_full(self):
+        """Return commits grouped by day and by commiter."""
         ans = self.commit_data.groupby([self.commit_data.index, "Committer Name" ]).size()
         return ans;
 
     @property
     def commit_data(self):
+        """Return commit data."""
         return self._commit_data;
 
     def commits_for_committer(self, committer_name):
+        """Return commits for committer given the commiter name."""
         full_info = self.commit_data
         time_index = pd.DatetimeIndex(self.commit_data["Time"], periods = 24, freq = "H");
 
@@ -145,14 +161,13 @@ class GitRepo(object):
         return df
 
     def merge_with_repo(self, other):
+        """Append commit to a repo."""
         # TODO: What if commits have the same time?
         self._commit_data = self.commit_data.append(other.commit_data);
 
 class MultiGitRepo(GitRepo):
+    """Repos must have a "Repo Name" column."""
 
-    """
-    Repos must have a "Repo Name" column
-    """
     def __init__(self, repos, attribs=ALL_ATTRIBUTES):
         self._commit_data = repos[0].commit_data.copy(deep=True);
         for i in range(1, len(repos)):

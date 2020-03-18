@@ -25,7 +25,7 @@ Run the following commands:
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
-conda create -n bigbang python
+conda create -n bigbang python=2.7
 cd bigbang
 bash conda-setup.sh
 source activate bigbang
@@ -80,6 +80,12 @@ Once the data has been collected, BigBang has functions to support analysis.
 BigBang can also be used to analyze data from Git repositories.
 
 Documentation on this feature can be found [here](https://github.com/datactive/bigbang/blob/master/git-readme.md).
+
+## Unit tests
+
+We use `unittest` for automated tests.
+
+To run the tests from the command like, use the command `pytest`.
 
 ## Community
 
