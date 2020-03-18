@@ -81,6 +81,12 @@ BigBang can also be used to analyze data from Git repositories.
 
 Documentation on this feature can be found [here](https://github.com/datactive/bigbang/blob/master/git-readme.md).
 
+## Unit tests
+
+We use `unittest` for automated tests.
+
+To run the tests from the command like, use the command `pytest`.
+
 ## Community
 
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
