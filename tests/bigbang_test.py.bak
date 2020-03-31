@@ -121,8 +121,8 @@ class TestArchive(unittest.TestCase):
         #archive loaded from stored csv
         arx2 = archive.load("test.csv")
 
-        print(arx.data.dtypes)
-        print(arx.data.shape)
+        print arx.data.dtypes
+        print arx.data.shape
 
         self.assertTrue(arx.data.shape == arx2.data.shape, \
                         msg="Original and restored archives are different shapes")
@@ -191,7 +191,7 @@ class TestMailParsing(unittest.TestCase):
         tokenized_name = parse.tokenize_name(clean_name)
         self.assertTrue(tokenized_name == 'doe john', msg="name not properly normalized and tokenized")
 
-        empty_tokenized_name = parse.tokenize_name(str('   '))
+        empty_tokenized_name = parse.tokenize_name(unicode('   '))
         self.assertTrue(empty_name is None, msg="empty name not tokenized to None")
         
 class TestMailProcessing(unittest.TestCase):

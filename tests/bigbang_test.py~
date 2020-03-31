@@ -20,24 +20,26 @@ TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")
 
 class TestGit(unittest.TestCase):
     
-    def test_git_dependancy(self):
+    def test_git_dependancy():
         repo = repo_loader.get_repo("https://github.com/sbenthall/bigbang.git", in_type = "remote")
 
 
 class TestMailman(unittest.TestCase):
-    def setUp(self):
+    def setUp():
         try:
             os.mkdir(TEMP_DIR)
         except OSError: # Python 2.7-specific, alas; FileExistsError in py3
             pass # temporary directory already exists, that's cool
 
-    def tearDown(self):
+
+    def tearDown():
         # remove all files in the temporary files directory, as cleanup
         temp_files = os.listdir(TEMP_DIR)
         for f in temp_files:
             os.remove(os.path.join(TEMP_DIR, f))
 
-    def test_provenance(self):
+
+    def test_provenance():
         test_list_name = 'test-list-name'
         test_list_url = 'https://example.com/test-list-url/'
         test_notes = 'Test notes.'
@@ -57,7 +59,7 @@ class TestMailman(unittest.TestCase):
         self.assertTrue(provenance_next['notes'] == 'modified provenance', "confirm modified provenance")
 
         
-    def test_valid_urls(self):
+    def test_valid_urls():
         test_urls_path = os.path.join(CONFIG.test_data_path, 'urls-test-file.txt')
         with LogCapture() as l:
             urls = mailman.urls_to_collect(test_urls_path)
@@ -72,7 +74,7 @@ class TestMailman(unittest.TestCase):
                 self.assertTrue(level == "WARNING", msg="logged something that wasn't a warning")
                 self.assertTrue(len(urls) == 3, msg="wrong number of urls parsed from file")
 
-    def test_empty_list_compute_activity_issue_246(self):
+    def test_empty_list_compute_activity_issue_246():
         test_df_csv_path = os.path.join(CONFIG.test_data_path, 'empty-archive-df.csv')
         df = pd.read_csv(test_df_csv_path)
 
@@ -80,7 +82,7 @@ class TestMailman(unittest.TestCase):
             empty_archive = archive.Archive(df)
             activity = empty_archive.get_activity()
 
-    def test_mailman_normalizer(self):
+    def test_mailman_normalizer():
         browse_url = 'https://mailarchive.ietf.org/arch/browse/ietf/'
         search_url = 'https://mailarchive.ietf.org/arch/search/?email_list=ietf'
         random_url = 'http://example.com'
@@ -91,7 +93,7 @@ class TestMailman(unittest.TestCase):
         self.assertTrue(mailman.normalize_archives_url(search_url) == better_url, msg="failed to normalize")
         self.assertTrue(mailman.normalize_archives_url(random_url) == random_url, msg="should not have changed other url")
 
-    def test_mailman_list_name(self):
+    def test_mailman_list_name():
         ietf_archive_url = 'https://www.ietf.org/mail-archive/text/ietf/'
         w3c_archive_url = 'https://lists.w3.org/Archives/Public/public-privacy/'
         random_url = 'http://example.com'
@@ -100,7 +102,7 @@ class TestMailman(unittest.TestCase):
         self.assertTrue(mailman.get_list_name(w3c_archive_url) == 'public-privacy', msg="failed to grab w3c list name")
         self.assertTrue(mailman.get_list_name(random_url) == random_url, msg="should not have changed other url")
 
-    def test_activity_summary(self):
+    def test_activity_summary():
         list_url = 'https://lists.w3.org/Archives/Public/test-activity-summary/'
         activity_frame = mailman.open_activity_summary(list_url, archive_dir=CONFIG.test_data_path)
 
@@ -110,7 +112,7 @@ class TestMailman(unittest.TestCase):
 
 class TestArchive(unittest.TestCase):
     
-    def test_mailman_chain(self):
+    def test_mailman_chain():
         name = "bigbang-dev-test.txt"
 
         #archive loaded from mbox
@@ -121,13 +123,13 @@ class TestArchive(unittest.TestCase):
         #archive loaded from stored csv
         arx2 = archive.load("test.csv")
 
-        print(arx.data.dtypes)
-        print(arx.data.shape)
+        print arx.data.dtypes
+        print arx.data.shape
 
         self.assertTrue(arx.data.shape == arx2.data.shape, \
                         msg="Original and restored archives are different shapes")
 
-        self.assertTrue((arx2.data.index == arx.data.index).all(), \
+        self.assertTrue(arx2.data.index == arx.data.index).all(), \
             msg="Original and restored archives have nonidentical indices")
 
         self.assertTrue([t.get_num_messages() for t in arx.get_threads()] == [3,1,2], \
@@ -140,7 +142,7 @@ class TestArchive(unittest.TestCase):
 
         os.remove("test.csv")
 
-    def test_clean_message(self):
+    def test_clean_message():
         name = "2001-November.txt"
 
         arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
@@ -157,7 +159,7 @@ class TestArchive(unittest.TestCase):
             msg="Quoted text is in cleaned message")
 
 
-    def test_email_entity_resolution(self):
+    def test_email_entity_resolution():
         name = "2001-November.txt"
 
         arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
@@ -170,13 +172,13 @@ class TestArchive(unittest.TestCase):
 
 class TestMailParsing(unittest.TestCase):
 
-    def test_split_references(self):
+    def test_split_references():
         refs = " <ye1y9ljtxwk.fsf@orange30.ex.ac.uk>\n\t<055701c16727$b57fed90$8fd6afcf@pixi.com>"
         split = parse.split_references(refs)
         self.assertTrue(len(split) == 2, msg=split)
 
 
-    def test_name_email_parsing(self):
+    def test_name_email_parsing():
         from_header = 'John_Doe (?) <John.Doe@example.com>'
         (raw_name, raw_email) = email.utils.parseaddr(from_header)
         normalized_email = parse.normalize_email_address(raw_email)
@@ -191,11 +193,11 @@ class TestMailParsing(unittest.TestCase):
         tokenized_name = parse.tokenize_name(clean_name)
         self.assertTrue(tokenized_name == 'doe john', msg="name not properly normalized and tokenized")
 
-        empty_tokenized_name = parse.tokenize_name(str('   '))
+        empty_tokenized_name = parse.tokenize_name(unicode('   '))
         self.assertTrue(empty_name is None, msg="empty name not tokenized to None")
         
 class TestMailProcessing(unittest.TestCase):
-    def test_from_header_distance(self):
+    def test_from_header_distance():
         a = 'Fernando.Perez at colorado.edu (Fernando.Perez at colorado.edu)'
         b = 'Fernando.Perez at colorado.edu (Fernando.Perez@colorado.edu)'
 
@@ -206,8 +208,9 @@ class TestMailProcessing(unittest.TestCase):
         b = ''
 
 class TestUtils(unittest.TestCase):
+    
 
-    def test_labeled_blockmodel(self):
+    def test_labeled_blockmodel():
         g = nx.DiGraph()
 
         g.add_edge(0,1)
@@ -222,5 +225,5 @@ class TestUtils(unittest.TestCase):
         self.assertTrue(list(bg.edges(data=True))[0][2]['weight'] == 4.0, \
             msg="Incorrect edge weight in labeled blockmodel")
 
-        self.assertTrue(list(bg.edges()) == [('A','B')], \
+        self.assertTrue(assert list(bg.edges()) == [('A','B')], \
             msg="Incorrected edges in labeled blockmodel")
