@@ -99,15 +99,15 @@ def get_dependency_network(filepath):
 	files = get_files(filepath)
 	dependencies = {}
 	for file in set(files):
-		ast = compiler.parseFile(file)
+		ast = ast.parse(file)
 		for node in ast.getChildren()[1].nodes:
-			if isinstance(node, Import):
+			if isinstance(node, ast.Import):
 				if file in dependencies:
 					dependencies[file].append(node.names[0][0])
 				else:
 					dependencies[file] = [node.names[0][0]]
 
-			elif isinstance(node, From):
+			elif isinstance(node, ast.From):
 				if file in dependencies:
 					dependencies[file].append(node.modname + "/" + node.names[0][0])
 	return create_graph(dependencies)
