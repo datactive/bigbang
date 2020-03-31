@@ -10,9 +10,7 @@ import fnmatch
 from IPython.nbformat import current as nbformat
 from IPython.nbconvert import PythonExporter
 import networkx as nx
-import compiler
-from compiler.ast import From 
-from compiler.ast import Import 
+import ast
 from config.config import CONFIG
 
 repoLocation = CONFIG.repo_path
