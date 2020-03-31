@@ -67,7 +67,7 @@ class TestMailman(unittest.TestCase):
             self.assertTrue("http://www.example.com/2/" in urls, msg="failed to find valid url, whitespace strip issue")
             self.assertTrue("https://www.example.com/3/" in urls, msg="failed to find valid url, whitespace strip issue")
             self.assertTrue("invalid.com" not in urls, msg="accepted invalid url")
-            self.assertTrue(len(l.actual()) == 2, msg="wrong number of log entries")
+            self.assertTrue(len(list(l.actual())) == 2, msg="wrong number of log entries")
             for (fromwhere, level, msg) in l.actual():
                 self.assertTrue(level == "WARNING", msg="logged something that wasn't a warning")
                 self.assertTrue(len(urls) == 3, msg="wrong number of urls parsed from file")
