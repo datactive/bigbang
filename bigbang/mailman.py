@@ -89,7 +89,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
     except urllib.error.HTTPError as e:
         # BUG: this error code/message is misleading
-        print("HTTP 404 Error: %s" % (url))
+        print(("HTTP 404 Error: %s" % (url)))
         return None
 
     if has_archives:
@@ -210,7 +210,7 @@ def populate_provenance(directory, list_name, list_url, notes=None):
     if os.path.isfile(file_path):   # a provenance file already exists
         pass    # skip for now
     else:
-        file_handle = file(file_path, 'w')
+        file_handle = open(file_path, 'w')
         yaml.dump(provenance, file_handle)
         logging.info('Created provenance file for %s' % (list_name))
         file_handle.close()
@@ -219,7 +219,7 @@ def access_provenance(directory):
     """Return an object with provenance information located in the given directory, or None if no provenance was found."""
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):   # a provenance file already exists
-        file_handle = file(file_path, 'r')
+        file_handle = open(file_path, 'r')
         provenance = yaml.load(file_handle)
         return provenance
     return None
@@ -227,7 +227,7 @@ def access_provenance(directory):
 def update_provenance(directory, provenance):
     """Update provenance file with given object."""
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
-    file_handle = file(file_path, 'w')
+    file_handle = open(file_path, 'w')
     yaml.dump(provenance, file_handle)
     logging.info('Updated provenance file in %s', directory)
     file_handle.close()
@@ -267,7 +267,7 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         if not os.path.isfile(result_path):
             gz_url = "/".join([url.strip("/"),res])
             logging.info('retrieving %s', gz_url)
-            resp = urllib2.urlopen(gz_url)
+            resp = urllib.request.urlopen(gz_url)
             if resp.getcode() == 200:
                 logging.info("200 - writing file to %s", result_path)
                 output = open(result_path, 'wb')
@@ -366,7 +366,7 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
         txts = [os.path.join(arc_dir, fn) for fn in os.listdir(arc_dir) if any([fn.endswith(extension) for extension in file_extensions])]
 
         logging.info('Opening %d archive files', len(txts))
-        arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
+        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
 
         if len(arch) == 0:
             raise MissingDataException(
