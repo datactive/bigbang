@@ -72,7 +72,7 @@ def clean_name(name):
     stop_characters = str('"<>\\()/:?%!+\'@')
     stop_characters_map = dict((ord(char), None) for char in stop_characters)
 
-    name = str(name, 'utf-8', 'ignore').translate(stop_characters_map)
+    name = name.translate(stop_characters_map)
 
     # do we need to also catch email archives that use anti-spam measures?
     # like: .replace(' at ','@')
@@ -141,7 +141,7 @@ def guess_first_name(cleaned_from):
 
 def get_date(message):
     def safe_unicode(t):
-        return t and str(t, 'utf-8', 'ignore')
+        return t
     try:
         # some mail clients add a parenthetical timezone
         ds = safe_unicode(message.get('Date'))

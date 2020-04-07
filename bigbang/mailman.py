@@ -437,12 +437,9 @@ def get_text(msg):
             return str(h.handle(html))
     else:
         charset = msg.get_content_charset() or 'utf-8'
-        try:
-            text = str(msg.get_payload(), encoding=charset, errors='ignore')
-        except LookupError as e:
-            logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
-            charset = "utf-8"
-            text = str(msg.get_payload(), encoding=charset, errors='ignore')
+        if charset is not 'utf-8':
+            logging.debug('charset is %s' % (charset))
+        text = msg.get_payload()
         return text.strip()
 
 def messages_to_dataframe(messages):
@@ -451,7 +448,7 @@ def messages_to_dataframe(messages):
     indexed by message-id, with column-names from headers.
     """
     def safe_unicode(t):
-        return t and str(t, 'utf-8', 'replace')
+        return t
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
     #valid_messages = [m for m in messages if m.get() 
