@@ -95,7 +95,7 @@ def resolve_sender_entities(act, lexical_distance=0):
         # checking only lexically close entries and
         # in proportion to total activity
         # is a performance hack.
-        for j in range(i - (n - i + 1) / 2, i + (n - i + 1) / 2):
+        for j in range(i - (n - i + 1) // 2, i + (n - i + 1) // 2):
             d = from_header_distance(senders_lex[i],senders_lex[j])
             sim[i,j] = (d <= lexical_distance)
 
