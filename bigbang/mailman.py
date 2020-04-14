@@ -1,6 +1,7 @@
 from bigbang.parse import get_date
 from config.config import CONFIG
 from pprint import pprint as pp
+import codecs
 import datetime
 import gzip
 import logging
@@ -246,7 +247,7 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
 
     response = urllib.request.urlopen(url)
-    html = response.read()
+    html = codecs.decode(response.read())
 
     results = []
     for exp in mailing_list_path_expressions:
@@ -257,7 +258,9 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     # directory for downloaded files
     arc_dir = archive_directory(archive_dir, list_name)
 
-    populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
+    populate_provenance(directory=arc_dir,
+                        list_name=list_name,
+                        list_url=url, notes=notes)
 
     encountered_error = False
     # download monthly archives
@@ -300,7 +303,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
     for gz in gzs:
         try:
             f = gzip.open(gz, 'rb')
-            content = f.read()
+            content = codecs.decode(f.read())
             f.close()
 
             txt_fn = str(gz[:-3])
