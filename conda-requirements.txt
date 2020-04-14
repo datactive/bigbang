@@ -6,8 +6,8 @@ graphviz
 networkx
 pytz
 numpy
-ipython
-ipython-notebook
+jupyter
+notebook
 pandas
 pydot
 pytest
@@ -19,3 +19,4 @@ pyyaml
 scikit-learn
 nltk
 testfixtures
+nbconda
