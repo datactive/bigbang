@@ -366,10 +366,15 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
         file_extensions = [".txt", ".mail", ".mbox"]
 
-        txts = [os.path.join(arc_dir, fn) for fn in os.listdir(arc_dir) if any([fn.endswith(extension) for extension in file_extensions])]
+        txts = [os.path.join(arc_dir, fn)
+                for fn in os.listdir(arc_dir)
+                if any([fn.endswith(extension)
+                        for extension
+                        in file_extensions])]
 
         logging.info('Opening %d archive files', len(txts))
-        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
+        arch = [list(mailbox.mbox(txt, create=False).values())
+                for txt in txts]
 
         if len(arch) == 0:
             raise MissingDataException(
