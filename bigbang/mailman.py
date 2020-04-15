@@ -417,10 +417,7 @@ def get_text(msg):
     if msg.is_multipart():
         html = None
         for part in msg.walk():
-            if part.get_content_charset() is None:
-                charset = chardet.detect(str(part))['encoding']
-            else:
-                charset = part.get_content_charset()
+            charset = part.get_content_charset()
             if part.get_content_type() == 'text/plain':
                 try:
                     text = str(part.get_payload(decode=True), str(charset), "ignore")

@@ -29,30 +29,30 @@ class W3cMailingListArchivesParser(email.parser.Parser):
         body = self._text_for_selector(soup, '#body')
         msg = MIMEText(body, 'plain', 'utf-8')
 
-        from_text = self._parse_dfn_header(
+        from_text = str(self._parse_dfn_header(
             self._text_for_selector(
                 soup,
-                '#from'))
+                '#from')))
         from_name = from_text.split('<')[0].strip()
-        from_address = self._text_for_selector(soup, '#from a')
+        from_address = str(self._text_for_selector(soup, '#from a'))
 
         from_addr = email.utils.formataddr((from_name, from_address))
         msg['From'] = from_addr
 
         subject = self._text_for_selector(soup, 'h1')
-        msg['Subject'] = subject
+        msg['Subject'] =str(subject)
 
         message_id = self._parse_dfn_header(
             self._text_for_selector(
                 soup,
                 '#message-id'))
-        msg['Message-ID'] = message_id.strip()
+        msg['Message-ID'] = str(message_id.strip())
 
         message_date = self._parse_dfn_header(
             self._text_for_selector(
                 soup,
                 '#date'))
-        msg['Date'] = message_date.strip()
+        msg['Date'] = str(message_date.strip())
 
         mbox_message = mailbox.mboxMessage(msg)
         mbox_message.set_from(
@@ -62,7 +62,7 @@ class W3cMailingListArchivesParser(email.parser.Parser):
         return mbox_message
 
     def _parse_dfn_header(self, header_text):
-        header_texts = header_text.split(':', 1)
+        header_texts = str(header_text).split(':', 1)
         if len(header_texts) == 2:
             return header_texts[1]
         else:
