@@ -452,19 +452,17 @@ def messages_to_dataframe(messages):
     Turn a list of parsed messages into a dataframe of message data,
     indexed by message-id, with column-names from headers.
     """
-    def safe_unicode(t):
-        return t
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
     #valid_messages = [m for m in messages if m.get() 
 
     
     pm = [(m.get('Message-ID'),
-           safe_unicode(m.get('From')).replace('\\', ' '),
-           safe_unicode(m.get('Subject')),
+           str(m.get('From')).replace('\\', ' '),
+           str(m.get('Subject')),
            get_date(m),
-           safe_unicode(m.get('In-Reply-To')),
-           safe_unicode(m.get('References')),
+           str(m.get('In-Reply-To')),
+           str(m.get('References')),
            get_text(m))
           for m in messages if m.get('From')]
 
