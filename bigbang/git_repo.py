@@ -4,10 +4,10 @@ import pandas as pd
 import numpy as np
 from time import mktime
 from datetime import datetime
-from entity_resolution import entity_resolve
+from .entity_resolution import entity_resolve
 import networkx as nx
 from config.config import CONFIG
-import utils
+from . import utils
 
 ALL_ATTRIBUTES = CONFIG.all_attributes #["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
@@ -53,11 +53,11 @@ class GitRepo(object):
             missing = list();
             cols = self.commit_data.columns
             for attr in attribs:
-                if attr not in cols and unicode(attr) not in cols:
+                if attr not in cols and str(attr) not in cols:
                     missing.append(attr);
 
             if len(missing) > 0:
-                print("There were " + str(len(missing)) + " missing attributes: ")
+                print(("There were " + str(len(missing)) + " missing attributes: "))
                 print(missing);
 
         if ("Committer Name" in attribs and "Committer Email" in attribs):
@@ -68,7 +68,7 @@ class GitRepo(object):
         """Generate data to repo."""
 
         if not repo.active_branch.is_valid():
-            print("Found an empty repo: " + str(self.name))
+            print(("Found an empty repo: " + str(self.name)))
             return;
         first = repo.commit()
         commit = first
@@ -116,7 +116,7 @@ class GitRepo(object):
             raw[attrib] = list();
         repo = self.repo
         self.gen_data(repo, raw);
-        print(type(raw["Time"]))
+        print((type(raw["Time"])))
         
         # TODO: NEEDS TIME
         time_index = pd.DatetimeIndex(raw["Time"], periods = 24)

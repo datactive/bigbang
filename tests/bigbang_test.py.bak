@@ -67,7 +67,7 @@ class TestMailman(unittest.TestCase):
             self.assertTrue("http://www.example.com/2/" in urls, msg="failed to find valid url, whitespace strip issue")
             self.assertTrue("https://www.example.com/3/" in urls, msg="failed to find valid url, whitespace strip issue")
             self.assertTrue("invalid.com" not in urls, msg="accepted invalid url")
-            self.assertTrue(len(list(l.actual())) == 2, msg="wrong number of log entries")
+            self.assertTrue(len(l.actual()) == 2, msg="wrong number of log entries")
             for (fromwhere, level, msg) in l.actual():
                 self.assertTrue(level == "WARNING", msg="logged something that wasn't a warning")
                 self.assertTrue(len(urls) == 3, msg="wrong number of urls parsed from file")
@@ -121,8 +121,8 @@ class TestArchive(unittest.TestCase):
         #archive loaded from stored csv
         arx2 = archive.load("test.csv")
 
-        print(arx.data.dtypes)
-        print(arx.data.shape)
+        print arx.data.dtypes
+        print arx.data.shape
 
         self.assertTrue(arx.data.shape == arx2.data.shape, \
                         msg="Original and restored archives are different shapes")
@@ -191,7 +191,7 @@ class TestMailParsing(unittest.TestCase):
         tokenized_name = parse.tokenize_name(clean_name)
         self.assertTrue(tokenized_name == 'doe john', msg="name not properly normalized and tokenized")
 
-        empty_tokenized_name = parse.tokenize_name(str('   '))
+        empty_tokenized_name = parse.tokenize_name(unicode('   '))
         self.assertTrue(empty_name is None, msg="empty name not tokenized to None")
         
 class TestMailProcessing(unittest.TestCase):

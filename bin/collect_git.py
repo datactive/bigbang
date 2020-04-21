@@ -12,12 +12,12 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "u:f:g:", ["update"])
     except getopt.GetoptError as e:
-        print 'GetoptError: %s' % (e)
+        print('GetoptError: %s' % (e))
         sys.exit(2)
 
     
     for opt, arg in opts:
-        print(opt, arg)
+        print((opt, arg))
         if opt == '-f':
             load_by_file(arg, update);
             sys.exit()
