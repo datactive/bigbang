@@ -15,7 +15,7 @@ the `conda` package management system, which you can use to complete
 installation.
 
 [Install Anaconda](https://www.anaconda.com/download/), with Python version
-2.7.
+3.*.
 
 If you choose not to use Anaconda, you may run into issues with versioning in
 Python. Add the Conda installation directory to your path during installation.
@@ -25,7 +25,7 @@ Run the following commands:
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
-conda create -n bigbang python=2.7
+conda create -n bigbang
 cd bigbang
 bash conda-setup.sh
 source activate bigbang

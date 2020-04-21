@@ -46,9 +46,9 @@ def getID(name, email):
 
 def store(id, name, email):
     """Store name and email by ID."""
-
+    
     if id not in allID:
-	allID[id] = {"emails": list(), "names": list()}
+        allID[id] = {"emails": list(), "names": list()}
     fullID = allID[id];
     namesID[name] = id;
     emailsID[email] = id;

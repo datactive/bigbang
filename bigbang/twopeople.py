@@ -67,7 +67,7 @@ def panda_pair(exchanges, A, B):
     try:
         return pd.DataFrame([{'A': A, 'B': B, 'duration':duration(exchanges, A, B), 'num_replies': sum(num_replies(exchanges, A, B)), 'reciprocity':reciprocity(exchanges, A, B)}])
     except:
-        print 'No exchange between "%s" and "%s" exists.' % (A, B)
+        print('No exchange between "%s" and "%s" exists.' % (A, B))
 
 # With given pairs of communication, returns a Pandas DataFrame that contains
 # communication information between two people A and B in every pair

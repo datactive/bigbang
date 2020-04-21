@@ -1,4 +1,4 @@
-from git_repo import GitRepo, MultiGitRepo
+from .git_repo import GitRepo, MultiGitRepo
 import json;
 import os;
 import re;
@@ -10,9 +10,7 @@ import fnmatch
 from IPython.nbformat import current as nbformat
 from IPython.nbconvert import PythonExporter
 import networkx as nx
-import compiler
-from compiler.ast import From 
-from compiler.ast import Import 
+import ast
 from config.config import CONFIG
 
 repoLocation = CONFIG.repo_path
@@ -99,15 +97,15 @@ def get_dependency_network(filepath):
 	files = get_files(filepath)
 	dependencies = {}
 	for file in set(files):
-		ast = compiler.parseFile(file)
+		ast = ast.parse(file)
 		for node in ast.getChildren()[1].nodes:
-			if isinstance(node, Import):
+			if isinstance(node, ast.Import):
 				if file in dependencies:
 					dependencies[file].append(node.names[0][0])
 				else:
 					dependencies[file] = [node.names[0][0]]
 
-			elif isinstance(node, From):
+			elif isinstance(node, ast.From):
 				if file in dependencies:
 					dependencies[file].append(node.modname + "/" + node.names[0][0])
 	return create_graph(dependencies)
@@ -130,7 +128,7 @@ def get_repo(repo_in, in_type='name', update = False):
             ans = get_cache(repo_in);
         if ans is not None:
             return ans;
-        print("Checking for " + str(repo_in) + " at " + str(filepath));
+        print(("Checking for " + str(repo_in) + " at " + str(filepath)));
         ans = get_repo(filepath, 'local', update);
 
         if isinstance(ans, GitRepo):
@@ -145,7 +143,7 @@ def get_repo(repo_in, in_type='name', update = False):
             name = filepath_to_name(repo_in);
             return GitRepo(url=repo_in, name=name);
         else:
-            print("Invalid filepath: " + repo_in);
+            print(("Invalid filepath: " + repo_in));
             return None;
 
     if in_type == 'remote':
@@ -229,13 +227,13 @@ def load_org_repos(org_name):
             urls.append(repo["git_url"])
 
     if len(urls) == 0:
-        print("Found no repos in group: " + str(org_name))
+        print(("Found no repos in group: " + str(org_name)))
         return None
     else:
         addr = examplesLocation + str(org_name) + "_urls.txt"
         f = open(addr, 'w')
         f.write("\n".join(urls))
-        print("Wrote git urls to " + addr)
+        print(("Wrote git urls to " + addr))
         return urls
 
 """
