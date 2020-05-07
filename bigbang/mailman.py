@@ -1,6 +1,7 @@
 from bigbang.parse import get_date
 from config.config import CONFIG
 from pprint import pprint as pp
+import codecs
 import datetime
 import gzip
 import logging
@@ -8,15 +9,15 @@ import mailbox
 import os
 import fnmatch
 import mailbox
-import parse
+from . import parse
 import pandas as pd
-import parse
+from . import parse
 import re
 import subprocess
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import validators
-import w3crawl
+from . import w3crawl
 import warnings
 import yaml
 
@@ -87,9 +88,9 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
-    except urllib2.HTTPError as e:
+    except urllib.error.HTTPError as e:
         # BUG: this error code/message is misleading
-        print "HTTP 404 Error: %s" % (url)
+        print(("HTTP 404 Error: %s" % (url)))
         return None
 
     if has_archives:
@@ -97,7 +98,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         try:
             data = open_list_archives(url)
         except MissingDataException as e:   # don't strictly need to open the archives during the collection process, so catch the Exception and return
-            print e
+            print(e)
             return None
 
         # hard coding the archives directory in too many places
@@ -107,7 +108,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         try:
             data.to_csv(path, ",", encoding="utf-8")
         except Exception as e:
-            print e
+            print(e)
             # if encoding doesn't work...don't encode? ----better not not encode !!
             # try:
             #     data.to_csv(path, ",")
@@ -210,7 +211,7 @@ def populate_provenance(directory, list_name, list_url, notes=None):
     if os.path.isfile(file_path):   # a provenance file already exists
         pass    # skip for now
     else:
-        file_handle = file(file_path, 'w')
+        file_handle = open(file_path, 'w')
         yaml.dump(provenance, file_handle)
         logging.info('Created provenance file for %s' % (list_name))
         file_handle.close()
@@ -219,7 +220,7 @@ def access_provenance(directory):
     """Return an object with provenance information located in the given directory, or None if no provenance was found."""
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):   # a provenance file already exists
-        file_handle = file(file_path, 'r')
+        file_handle = open(file_path, 'r')
         provenance = yaml.load(file_handle)
         return provenance
     return None
@@ -227,7 +228,7 @@ def access_provenance(directory):
 def update_provenance(directory, provenance):
     """Update provenance file with given object."""
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
-    file_handle = file(file_path, 'w')
+    file_handle = open(file_path, 'w')
     yaml.dump(provenance, file_handle)
     logging.info('Updated provenance file in %s', directory)
     file_handle.close()
@@ -245,8 +246,8 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
 
-    response = urllib2.urlopen(url)
-    html = response.read()
+    response = urllib.request.urlopen(url)
+    html = codecs.decode(response.read())
 
     results = []
     for exp in mailing_list_path_expressions:
@@ -257,7 +258,9 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     # directory for downloaded files
     arc_dir = archive_directory(archive_dir, list_name)
 
-    populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
+    populate_provenance(directory=arc_dir,
+                        list_name=list_name,
+                        list_url=url, notes=notes)
 
     encountered_error = False
     # download monthly archives
@@ -267,7 +270,7 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
         if not os.path.isfile(result_path):
             gz_url = "/".join([url.strip("/"),res])
             logging.info('retrieving %s', gz_url)
-            resp = urllib2.urlopen(gz_url)
+            resp = urllib.request.urlopen(gz_url)
             if resp.getcode() == 200:
                 logging.info("200 - writing file to %s", result_path)
                 output = open(result_path, 'wb')
@@ -300,7 +303,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
     for gz in gzs:
         try:
             f = gzip.open(gz, 'rb')
-            content = f.read()
+            content = codecs.decode(f.read())
             f.close()
 
             txt_fn = str(gz[:-3])
@@ -309,7 +312,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
             f2.write(content)
             f2.close()
         except Exception as e:
-            print e
+            print(e)
 
 # This works for the names of the files. Order them.
 # datetime.datetime.strptime('2000-November',"%Y-%B")
@@ -330,7 +333,7 @@ def recursive_get_payload(x):
     elif isinstance(x,email.message.Message):
         return recursive_get_payload(x.get_payload())
     else:
-        print x
+        print(x)
         return None
 
 def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
@@ -352,7 +355,7 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
     if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
-        messages = box.values()
+        messages = list(box.values())
     else:
         # assume string is the path to a directory with many
 
@@ -363,10 +366,15 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
         file_extensions = [".txt", ".mail", ".mbox"]
 
-        txts = [os.path.join(arc_dir, fn) for fn in os.listdir(arc_dir) if any([fn.endswith(extension) for extension in file_extensions])]
+        txts = [os.path.join(arc_dir, fn)
+                for fn in os.listdir(arc_dir)
+                if any([fn.endswith(extension)
+                        for extension
+                        in file_extensions])]
 
         logging.info('Opening %d archive files', len(txts))
-        arch = [mailbox.mbox(txt, create=False).values() for txt in txts]
+        arch = [list(mailbox.mbox(txt, create=False).values())
+                for txt in txts]
 
         if len(arch) == 0:
             raise MissingDataException(
@@ -405,28 +413,25 @@ def get_text(msg):
     ## This code for character detection and dealing with exceptions is terrible
     ## It is in need of refactoring badly. - sb
     import chardet
-    text = u""
+    text = ""
     if msg.is_multipart():
         html = None
         for part in msg.walk():
-            if part.get_content_charset() is None:
-                charset = chardet.detect(str(part))['encoding']
-            else:
-                charset = part.get_content_charset()
+            charset = part.get_content_charset()
             if part.get_content_type() == 'text/plain':
                 try:
-                    text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    text = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError as e:
                     logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
                     charset = "utf-8"
-                    text = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    text = str(part.get_payload(decode=True), str(charset), "ignore")
             if part.get_content_type() == 'text/html':
                 try:
-                    html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    html = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError as e:
                     logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
                     charset = "utf-8"
-                    html = unicode(part.get_payload(decode=True), str(charset), "ignore")
+                    html = str(part.get_payload(decode=True), str(charset), "ignore")
 
         if text is not None:
             return text.strip()
@@ -434,15 +439,12 @@ def get_text(msg):
             import html2text
             h = html2text.HTML2Text()
             h.encoding = 'utf-8'
-            return unicode(h.handle(html))
+            return str(h.handle(html))
     else:
         charset = msg.get_content_charset() or 'utf-8'
-        try:
-            text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
-        except LookupError as e:
-            logging.debug('Unknown encoding %s in message %s. Will use UTF-8 instead.', charset, msg['Message-ID'])
-            charset = "utf-8"
-            text = unicode(msg.get_payload(), encoding=charset, errors='ignore')
+        if charset is not 'utf-8':
+            logging.debug('charset is %s' % (charset))
+        text = msg.get_payload()
         return text.strip()
 
 def messages_to_dataframe(messages):
@@ -450,19 +452,17 @@ def messages_to_dataframe(messages):
     Turn a list of parsed messages into a dataframe of message data,
     indexed by message-id, with column-names from headers.
     """
-    def safe_unicode(t):
-        return t and unicode(t, 'utf-8', 'replace')
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
     #valid_messages = [m for m in messages if m.get() 
 
     
     pm = [(m.get('Message-ID'),
-           safe_unicode(m.get('From')).replace('\\', ' '),
-           safe_unicode(m.get('Subject')),
+           str(m.get('From')).replace('\\', ' '),
+           str(m.get('Subject')),
            get_date(m),
-           safe_unicode(m.get('In-Reply-To')),
-           safe_unicode(m.get('References')),
+           str(m.get('In-Reply-To')),
+           str(m.get('References')),
            get_text(m))
           for m in messages if m.get('From')]
 

@@ -27,7 +27,6 @@ config = {
         'python-Levenshtein',
         'pytz',
         'pyzmq',
-        'snakefood',
         'tornado',
         'requests',
         'pyyaml',
