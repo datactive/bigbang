@@ -21,12 +21,10 @@ class W3cMailingListArchivesParser(email.parser.Parser):
     """
 
     parse = None
-    # doesn't yet implement the file version
+    # doesn't implement the file version
 
-    # TODO: parse To, CC (Archived-At?, others?) headers
-    # TODO: support headersonly option
     # TODO: ignore spam (has separate error message in w3c archives)
-    def parsestr(self, text, headersonly=None):
+    def parsestr(self, text, headersonly=False):
         """
         Takes the full HTML of a single message page; returns an email Message
         as an mboxMessage, with appropriate From separator line.
@@ -62,6 +60,25 @@ class W3cMailingListArchivesParser(email.parser.Parser):
                 '#date'))
         msg['Date'] = message_date.strip()
 
+        message_to = self._parse_dfn_header(
+            self._text_for_selector(
+                soup,
+                '#to'))
+        if message_to:
+            msg['To'] = message_to.strip()
+
+        message_cc = self._parse_dfn_header(
+            self._text_for_selector(
+                soup,
+                '#cc'))
+        if message_cc:
+            msg['Cc'] = message_cc.strip()
+        
+        in_reply_to_pattern = re.compile('<!-- inreplyto="(.+?)"')
+        match = in_reply_to_pattern.search(str(text))
+        if match:
+            msg['In-Reply-To'] = '<' + match.groups()[0] + '>'
+
         mbox_message = mailbox.mboxMessage(msg)
         mbox_message.set_from(
             from_address,
@@ -93,13 +110,14 @@ def normalize_mailing_list_url(url):
     
     return url
 
+# TODO: add Archived-At header
 def collect_from_url(url, base_arch_dir="archives", notes=None):
     """
     Collects W3C mailing list archives from a particular mailing list URL.
 
     Logs an error and returns False if no messages can be collected.
     """
-    url = normalize_mailing_list_url(url)
+    #url = normalize_mailing_list_url(url)
     list_name = bigbang.mailman.get_list_name(url)
     logging.info("Getting W3C list archive for %s", list_name)
 
