@@ -233,7 +233,8 @@ class TestW3crawl(unittest.TestCase):
         html = f.read()
         message = w3crawl.W3cMailingListArchivesParser().parsestr(html)
 
-        assert str(message).startswith("From"), "message doesn't start with From"
+        assert len(message.get_from()) > 0, "message doesn't have a From address"
+        assert message.get_from().startswith('npdoty@ischool.berkeley.edu'), "incorrect From address parsed"
         assert "Subject:" in str(message), "message does not have Subject header"
         assert "Message-ID:" in str(message), "message does not have message id"
         assert "Date:" in str(message), "message does not have Date header"
