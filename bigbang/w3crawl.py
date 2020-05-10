@@ -91,7 +91,7 @@ class W3cMailingListArchivesParser(email.parser.Parser):
         if len(header_texts) == 2:
             return header_texts[1]
         else:
-            logging.warning("Split failed on %s", header_text)
+            logging.debug("Split failed on %s", header_text)
             return ''
 
     def _text_for_selector(self, soup, selector):
@@ -100,7 +100,7 @@ class W3cMailingListArchivesParser(email.parser.Parser):
             result = results[0].get_text(strip=True)
         else:
             result = ''
-            logging.warning('No matching text for selector %s', selector)
+            logging.debug('No matching text for selector %s', selector)
 
         return str(result)
 
