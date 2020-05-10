@@ -104,20 +104,12 @@ class W3cMailingListArchivesParser(email.parser.Parser):
 
         return str(result)
 
-def normalize_mailing_list_url(url):
-    if not url.endswith('/'):
-        return url + '/'
-    
-    return url
-
-# TODO: add Archived-At header
 def collect_from_url(url, base_arch_dir="archives", notes=None):
     """
     Collects W3C mailing list archives from a particular mailing list URL.
 
     Logs an error and returns False if no messages can be collected.
     """
-    #url = normalize_mailing_list_url(url)
     list_name = bigbang.mailman.get_list_name(url)
     logging.info("Getting W3C list archive for %s", list_name)
 
@@ -177,6 +169,7 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
             html = response.read()
 
             message = W3cMailingListArchivesParser().parsestr(html)
+            message.add_header('Archived-At', '<' + message_link + '>')
             messages.append(message)
             time.sleep(1)  # wait between loading messages, for politeness
 

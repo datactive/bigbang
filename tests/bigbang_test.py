@@ -230,7 +230,8 @@ class TestW3crawl(unittest.TestCase):
         try:
             os.mkdir(TEMP_DIR)
         except FileExistsError:
-            pass # temporary directory already exists, that's cool
+            shutil.rmtree(TEMP_DIR)
+            os.mkdir(TEMP_DIR)
 
     def tearDown(self):
         shutil.rmtree(TEMP_DIR)
@@ -276,9 +277,7 @@ class TestW3crawl(unittest.TestCase):
         self.assertTrue(provenance['notes'] == 'w3crawl test', msg="provenance does not have correct notes")
         self.assertTrue(provenance['complete'], msg="provenance not marked as a complete crawl")
 
-
-
-
-
-
- 
+        mbox = mailbox.mbox(os.path.join(TEMP_DIR, 'index', '2020-05.mbox'))
+        for message in mbox:
+            self.assertIn('Archived-At', message, msg="a message does not have the Archived-At header")
+            self.assertRegex(message['Archived-At'], '<.+>', msg="Archived-At does not match expected format")
