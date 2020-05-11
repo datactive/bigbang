@@ -228,3 +228,35 @@ def domain_name_from_email(name):
     if '@' in address: domain = address.split('@')[1]
     else: domain = address.split(' at ')[1]
     return domain.lower()
+
+def containment_distance(a,b):
+    """
+    A case-insensitive distance measure on strings.
+    
+    Returns:
+     - 0 if strings are identical
+     - positive infinity if neither string contains
+       the other
+     - 1 / (minimum string length) if one string contains the other.
+
+    Good for Organizations.
+    I.e. "cisco" "Cisco" "Cisco Systems" are all 'close' (< .2)
+    """
+    a = a.lower()
+    b = b.lower()
+
+    base = 0
+    
+    if a == b:
+        base = 0
+    if a in b or b in a:
+        base = 1
+    else:
+        base = float('inf')
+
+    modifier = min(len(a),len(b))
+    
+    if modifier == 0:
+        return float('inf')
+    else:
+        return base / modifier
