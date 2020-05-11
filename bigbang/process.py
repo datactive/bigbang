@@ -52,6 +52,12 @@ def minimum_but_not_self(column, dataframe):
 
 
 def sorted_matrix(from_dataframe,limit=None,sort_key=None):
+    """
+    Takes a dataframe with 'from' fields for column headers
+.
+    Returns a sorted distance matrix for the column headers,
+    using from_header_distance (see method).
+    """
     if limit is None:
         limit = len(from_dataframe.columns)
 
@@ -77,37 +83,49 @@ def resolve_sender_entities(act, lexical_distance=0):
     
     # senders orders by descending total activity
     senders = act.sum(0).sort_values(ascending=False)
-    senders_act = senders.index
 
-    # senders in lexical order
-    senders_lex = act.columns.sort_values()
-    senders_lex_dict = dict([(p[1],p[0]) for p in enumerate(senders_lex)])
+    return resolve_entities(senders, from_header_distance, threshold = lexical_distance)
 
-    n = len(senders)
+def resolve_entities(significance, distance_function, threshold = 0):
+    """
+    Takes a Series mapping entities (index) to significance (values, numerical).
+
+    Resolves the entities based on a lexical distance function.
+
+    Returns a dictionary of labeled (keys) entity lists (values).
+    Key is the most significant member of the entity list.
+    """
+    entities = significance.index
+
+    # entities in lexical order
+    entities_lex = entities.sort_values()
+    entities_lex_dict = dict([(p[1],p[0]) for p in enumerate(entities_lex)])
+
+    n = len(entities)
     # binary matrix of similarity between entries
     sim = np.zeros((n,n))
 
     # find similarity 
     for i in range(n):
-        name = senders_act[i]
-        i = senders_lex_dict[name]
+        name = entities[i]
+        i = entities_lex_dict[name]
     
         # checking only lexically close entries and
         # in proportion to total activity
         # is a performance hack.
         for j in range(i - (n - i + 1) // 2, i + (n - i + 1) // 2):
-            d = from_header_distance(senders_lex[i],senders_lex[j])
-            sim[i,j] = (d <= lexical_distance)
+            d = distance_function(entities_lex[i],entities_lex[j])
+            sim[i,j] = (d <= threshold)
 
     # An entity is a connected component of the resulting graph
     G = nx.Graph(sim)
-    entities_list = [[senders_lex[j] for j in x] for x in nx.connected_components(G)]
+    entities_list = [[entities_lex[j] for j in x] for x in nx.connected_components(G)]
 
     # given each entity a label based on its most active 'member'
     entities_dict = {}
     for e in entities_list:
         # TODO: tighten up this labeling function
-        label = sorted(e,key=lambda n:senders[n],reverse=True)[0]
+        label = sorted(e,key=lambda n:significance[n],reverse=True)[0]
         entities_dict[label] = e
 
     return entities_dict
