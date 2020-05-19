@@ -6,6 +6,7 @@ coverage
 enlighten
 gender-detector
 html2text
+ietfdata
 ipython
 jinja2
 jupyter
