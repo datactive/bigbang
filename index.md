@@ -1,4 +1,4 @@
-### BigBang
+## BigBang
 
 BigBang is a tool for scientific analysis of Internet standards development and Internet governance communities.
 
@@ -8,11 +8,12 @@ You can use BigBang to research Internet governance communities, but it has also
 
 We have included quite some references for potential mailinglists for you to scrape (e.g. IETF, ICANN, RIPE, W3C), and a lot of Jupyter notebooks to analyze the mailinglists.
 
-If at any time you are having troubles using BigBang, have a look at the <a href="https://github.com/datactive/bigbang/README.md">readme file</a> or send an email to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-user">user list</a>.
+If at any time you are having troubles using BigBang, have a look at the <a href="https://github.com/datactive/bigbang/blob/master/README.md">readme file</a> or send an email to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-user">user list</a>.
 
 ### Community
+If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
 
-We welcome your contributions to the BigBang community. To get in touch with us, please <a href="https://github.com/datactive/bigbang/issues">file an issue</a> on GitHub or subscribe to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-dev">discussion list</a>.
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers [pledge to make participation in our project and our community a harassment-free experience for everyone](CODE_OF_CONDUCT.md).
 
 ### News
 BigBang version 1.0 is about to be released, some functionality you can now find in BigBang
@@ -36,5 +37,7 @@ These academic publications use BigBang as part of their methods:
 - ten Oever, Niels. Forthcoming. “‘This Is Not How We Imagined It’ -  Technological Affordances, Economic Drivers and the Internet Architecture Imaginary.” New Media & Society.
 - ten Oever, Niels. 2018. “Productive Contestation, Civil Society, and Global Governance: Human Rights as a Boundary Object in ICANN.” Policy & Internet, June. https://doi.org/10.1002/poi3.172.
 
+### License
+AGPL-3.0, see LICENSE for its text. This license may be changed at any time according to the principles of the project [Governance](https://github.com/datactive/bigbang/wiki/Governance).
 
 BigBang is maintained by <a href="https://github.com/sbenthall">sbenthall</a> <a href="https://github.com/nllz">Niels ten Oever</a> and <a href="https://github.com/npdoty">Nick Doty</a><br>
