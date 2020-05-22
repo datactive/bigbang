@@ -2,13 +2,13 @@
 
 BigBang is a tool for scientific analysis of Internet standards development and Internet governance communities.
 
-With BigBang you download mailinglist and analyze them using statistical, discursive, and network analysis. 
+With BigBang you can download mailinglist and analyze them using statistical, discursive, and network analysis. 
 
 You can use BigBang to research Internet governance communities, but it has also been used to analyze open source communities. You can even use BigBang in class or in a seminar to teach the basic of Jupyter notebooks.
 
-We have included quite some references for potential mailinglists for you to scrape (e.g. IETF, ICANN, RIPE, W3C), and a lot of Jupyter notebooks to analyze the mailinglists.
+We have included lists of potential mailinglists for you to scrape (e.g. IETF, ICANN, RIPE, W3C), and a lot of Jupyter notebooks to analyze the mailinglists.
 
-If at any time you are having troubles using BigBang, have a look at the <a href="https://github.com/datactive/bigbang/blob/master/README.md">readme file</a> or send an email to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-user">user list</a>.
+To start analyzing right away, have a look at the <a href="https://github.com/datactive/bigbang/blob/master/README.md">readme file</a>. If you get stuck, send an email to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-user">user list</a>.
 
 ### Community
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
