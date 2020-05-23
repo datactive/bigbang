@@ -115,6 +115,7 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
 
     try:
         response = urllib.request.urlopen(url)
+        response_url = response.geturl()
         html = response.read()
         soup = BeautifulSoup(html, "html.parser")
     except urllib.error.HTTPError as exception:
@@ -137,10 +138,15 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
     bigbang.mailman.populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
 
     for link in time_period_indices:
-        link_url = urllib.parse.urljoin(url, link)
-        response = urllib.request.urlopen(link_url)
-        html = response.read()
-        soup = BeautifulSoup(html, "html.parser")
+
+        try:
+            link_url = urllib.parse.urljoin(response_url, link)
+            response = urllib.request.urlopen(link_url)
+            html = response.read()
+            soup = BeautifulSoup(html, "html.parser")
+        except urllib.error.HTTPError as e:
+            logging.exception('Error in loading: %s', link_url)
+            return False
 
         end_date_string = soup.select(
             '#end')[0].parent.parent.select('em')[0].get_text()

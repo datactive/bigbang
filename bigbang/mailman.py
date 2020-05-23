@@ -89,8 +89,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     try:
         has_archives = collect_archive_from_url(url, archive_dir=archive_dir, notes=notes)
     except urllib.error.HTTPError as e:
-        # BUG: this error code/message is misleading
-        print(("HTTP 404 Error: %s" % (url)))
+        logging.exception('HTTP Error in collecting archive: %s', url)
         return None
 
     if has_archives:
