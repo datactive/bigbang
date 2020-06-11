@@ -14,6 +14,7 @@ import email
 import logging
 import unittest
 import pathlib
+import re
 import shutil
 
 from config.config import CONFIG
@@ -274,10 +275,10 @@ class TestW3crawl(unittest.TestCase):
         assert os.path.isfile(os.path.join(TEMP_DIR, 'index', mailman.PROVENANCE_FILENAME)), "provenance file was not created"
 
         provenance = mailman.access_provenance(os.path.join(TEMP_DIR, 'index'))
-        self.assertTrue(provenance['notes'] == 'w3crawl test', msg="provenance does not have correct notes")
-        self.assertTrue(provenance['complete'], msg="provenance not marked as a complete crawl")
+        assert provenance['notes'] == 'w3crawl test'
+        assert provenance['complete'] == True, "provenance not marked as a complete crawl"
 
         mbox = mailbox.mbox(os.path.join(TEMP_DIR, 'index', '2020-05.mbox'))
         for message in mbox:
-            self.assertIn('Archived-At', message, msg="a message does not have the Archived-At header")
-            self.assertRegex(message['Archived-At'], '<.+>', msg="Archived-At does not match expected format")
+            assert 'Archived-At' in message
+            assert re.match('<.+>', message['Archived-At']), "Archived-At header format not as expected"
