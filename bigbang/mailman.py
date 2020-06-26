@@ -130,7 +130,7 @@ def urls_to_collect(urls_file):
             continue
         if len(url) == 0:   # ignore empty lines
             continue
-        if checkers.url(url) != True:
+        if checkers.is_url(url) != True:
             logging.warning('invalid url: %s', url)
             continue
         urls.append(url)
