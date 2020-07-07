@@ -6,6 +6,7 @@ coverage
 enlighten
 gender-detector
 html2text
+ietfdata
 ipython
 jinja2
 jupyter
@@ -26,6 +27,6 @@ requests
 pyyaml
 common
 powerlaw
-validators
+validator-collection
 testfixtures
 git+https://github.com/gitpython-developers/GitPython.git

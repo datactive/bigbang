@@ -16,7 +16,7 @@ import re
 import subprocess
 import urllib.request, urllib.parse, urllib.error
 import urllib.request, urllib.error, urllib.parse
-import validators
+from validator_collection import checkers
 from . import w3crawl
 import warnings
 import yaml
@@ -130,7 +130,7 @@ def urls_to_collect(urls_file):
             continue
         if len(url) == 0:   # ignore empty lines
             continue
-        if validators.url(url) != True:
+        if checkers.is_url(url) != True:
             logging.warning('invalid url: %s', url)
             continue
         urls.append(url)
