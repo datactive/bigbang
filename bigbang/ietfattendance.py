@@ -1,4 +1,5 @@
 import bs4
+import logging
 import pandas as pd
 import requests
 
@@ -67,7 +68,7 @@ def attendance_tables(mn):
     else:
         data = data[0]
 
-    print(data.shape)
+    logging.debug(data.shape)
     
     return data
 
@@ -75,7 +76,7 @@ def all_attendance():
     all_attendance_tables = []
     
     for mn in meeting_number_range:
-        print("Collecting attendance data for meeting %s" % (mn))
+        logging.info("Collecting attendance data for meeting %s" % (mn))
         data = attendance_tables(mn)
         data['mn'] = mn
         all_attendance_tables.append(data)
