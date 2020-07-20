@@ -250,6 +250,15 @@ class TestW3crawl(unittest.TestCase):
         assert "Message-ID:" in str(message), "message does not have message id"
         assert "Date:" in str(message), "message does not have Date header"
         assert "In-Reply-To:" not in str(message), "this message shouldn't have an in-reply-to"
+    
+    def test_non_ascii_address_parsing(self):
+        test_html_path = os.path.join(CONFIG.test_data_path, 'w3crawl-nonascii.html')
+        f = open(test_html_path, 'r')
+        html = f.read()
+        f.close()
+        message = w3crawl.W3cMailingListArchivesParser().parsestr(html)
+
+        assert len(message.get_from()) > 0, "message doesn't have a From address"
 
     def test_w3c_archive_message_headers(self):
         test_html_path = os.path.join(CONFIG.test_data_path, 'w3crawl-test-message-to-cc.html')

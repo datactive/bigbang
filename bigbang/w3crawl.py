@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
 import email
 import email.parser
+import email.header
 import mailbox
 import time
 import bigbang.mailman
@@ -42,7 +43,7 @@ class W3cMailingListArchivesParser(email.parser.Parser):
         from_name = from_text.split('<')[0].strip()
         from_address = self._text_for_selector(soup, '#from a')
 
-        from_addr = email.utils.formataddr((from_name, from_address))
+        from_addr = email.utils.formataddr((from_name, email.header.Header(from_address).encode()))
         msg['From'] = from_addr
 
         subject = self._text_for_selector(soup, 'h1')
