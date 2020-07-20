@@ -260,6 +260,9 @@ class TestW3crawl(unittest.TestCase):
 
         assert len(message.get_from()) > 0, "message doesn't have a From address"
 
+        mbox = mailbox.mbox(os.path.join(TEMP_DIR, 'test.mbox'))
+        mbox.add(message)   # make sure it doesn't crash on adding to an mbox either
+
     def test_w3c_archive_message_headers(self):
         test_html_path = os.path.join(CONFIG.test_data_path, 'w3crawl-test-message-to-cc.html')
         f = open(test_html_path, 'r')

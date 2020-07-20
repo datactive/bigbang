@@ -82,7 +82,7 @@ class W3cMailingListArchivesParser(email.parser.Parser):
 
         mbox_message = mailbox.mboxMessage(msg)
         mbox_message.set_from(
-            from_address,
+            email.header.Header(from_address).encode(),
             email.utils.parsedate(message_date))
 
         return mbox_message
