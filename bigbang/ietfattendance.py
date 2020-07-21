@@ -1,4 +1,5 @@
 import bs4
+import logging
 import pandas as pd
 import requests
 
@@ -51,7 +52,7 @@ def table_to_df(table):
 def attendance_tables(mn):
     url = attendance_url(mn)
     r = requests.get(url)
-    soup = bs4.BeautifulSoup(r.text, "html5lib")
+    soup = bs4.BeautifulSoup(r.text, "html.parser")
     tables = soup.find_all('table')
     
     dfs = [table_to_df(table) for table in tables]
@@ -66,6 +67,8 @@ def attendance_tables(mn):
         data = pd.concat(data, axis = 0)
     else:
         data = data[0]
+
+    logging.debug(data.shape)
     
     return data
 
@@ -73,6 +76,7 @@ def all_attendance():
     all_attendance_tables = []
     
     for mn in meeting_number_range:
+        logging.info("Collecting attendance data for meeting %s" % (mn))
         data = attendance_tables(mn)
         data['mn'] = mn
         all_attendance_tables.append(data)
