@@ -12,6 +12,7 @@
 # NOTE: BE CAFEFUL NOT TO PUT 'path' IN OTHER ATTRIBUTE NAMES
 repo_path : "archives/sample-git-repos/"
 mail_path : "archives/"
+datatracker_path : "archives/datatracker"
 urls_path : "examples/"
 test_data_path: "tests/data/"
 
