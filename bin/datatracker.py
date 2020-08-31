@@ -4,7 +4,7 @@ import os
 import pandas as pd
 
 ## working group acronym -- should be a command line argument
-wg = "httpbisa"
+wg = "httpbis"
 
 ## set up directory for storing metadata files
 
@@ -22,6 +22,9 @@ if not os.path.exists(wg_path):
 dt = DataTracker()
 
 group = dt.group_from_acronym(wg)
+
+if group is None:
+    raise Exception(f"Group {wg} not found in datatracker")
 
 ## metadata extraction function
 
