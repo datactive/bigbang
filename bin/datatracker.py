@@ -22,7 +22,6 @@ def setup_path(wg):
 def extract_data(doc, dt):
     data = {}
     data['title'] = doc.title
-    data['time'] = doc.time
 
     ## TODO: do this in only one loop over authors
     data['person'] = [
@@ -39,7 +38,18 @@ def extract_data(doc, dt):
     data['group-acronym'] = dt.group(doc.group).acronym
     data['type'] = doc.type.uri
 
-    return data
+    # use submissions for dates
+    sub_data = [
+        {'date' :  dt.submission(sub_url).document_date}
+        for sub_url
+        in doc.submissions
+    ]
+
+    for sd in sub_data:
+        sd.update(data)
+
+    return sub_data
+
 
 def collect_drafts(wg):
     wg_path = setup_path(wg)
@@ -64,11 +74,10 @@ def collect_drafts(wg):
 
     fn = os.path.join(wg_path, "draft_metadata.csv")
 
-    collection = []
+    collection = [sub_data
+                  for draft in drafts
+                  for sub_data in extract_data(draft, dt)]
 
-    for draft in drafts:
-        ## consider additional submissions
-        collection.append(extract_data(draft, dt))
     draft_df = pd.DataFrame(collection)
     draft_df.to_csv(fn)
 
