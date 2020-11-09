@@ -38,6 +38,6 @@ These academic publications use BigBang as part of their methods:
 - ten Oever, Niels. 2018. “Productive Contestation, Civil Society, and Global Governance: Human Rights as a Boundary Object in ICANN.” Policy & Internet, June. https://doi.org/10.1002/poi3.172.
 
 ### License
-AGPL-3.0, see LICENSE for its text. This license may be changed at any time according to the principles of the project [Governance](https://github.com/datactive/bigbang/wiki/Governance).
+MIT, see LICENSE for its text. This license may be changed at any time according to the principles of the project [Governance](https://github.com/datactive/bigbang/wiki/Governance).
 
 BigBang is maintained by <a href="https://github.com/sbenthall">sbenthall</a> <a href="https://github.com/nllz">Niels ten Oever</a> and <a href="https://github.com/npdoty">Nick Doty</a><br>
