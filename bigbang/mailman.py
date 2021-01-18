@@ -33,6 +33,7 @@ mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
 PROVENANCE_FILENAME = 'provenance.yaml'
 
+
 class InvalidURLException(Exception):
 
     def __init__(self, value):
@@ -82,7 +83,10 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
         else:
             logging.warning('No data found for %s. Check directory name and whether archives have been collected.', name)
 
-def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
+
+def collect_from_url(
+    url: str, archive_dir: str=CONFIG.mail_path, notes=None
+):
     """Collect data from a given url."""
 
     url = url.rstrip()
@@ -121,6 +125,7 @@ def collect_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     else:
         return None
 
+
 def urls_to_collect(urls_file):
     """Collect urls given urls in a file."""
     urls = []
@@ -136,11 +141,13 @@ def urls_to_collect(urls_file):
         urls.append(url)
     return urls
 
+
 def collect_from_file(urls_file, archive_dir=CONFIG.mail_path, notes=None):
     """Collect urls from a file."""
     urls = urls_to_collect(urls_file)
     for url in urls:
         collect_from_url(url, archive_dir=archive_dir, notes=notes)
+
 
 def get_list_name(url):
     """
@@ -156,6 +163,7 @@ def get_list_name(url):
     else:
         warnings.warn("No mailing list name found at %s" % url)
         return url
+
 
 def normalize_archives_url(url):
     """
@@ -174,7 +182,7 @@ def normalize_archives_url(url):
     match = new_ietf_exp.match(url)
     if match:
         return re.sub(new_ietf_exp, ietf_text_archives, url)
-    
+
     match = new_ietf_browse_exp.match(url)
     if match:
         return re.sub(new_ietf_browse_exp, ietf_text_archives, url)
@@ -188,6 +196,7 @@ def archive_directory(base_dir, list_name):
     if not os.path.exists(arc_dir):
         os.makedirs(arc_dir)
     return arc_dir
+
 
 def populate_provenance(directory, list_name, list_url, notes=None):
     """Create a provenance metadata file for current mailing list collection."""
@@ -216,14 +225,19 @@ def populate_provenance(directory, list_name, list_url, notes=None):
         logging.info('Created provenance file for %s' % (list_name))
         file_handle.close()
 
+
 def access_provenance(directory):
-    """Return an object with provenance information located in the given directory, or None if no provenance was found."""
+    """
+    Return an object with provenance information located in the given directory,
+    or None if no provenance was found.
+    """
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):   # a provenance file already exists
         file_handle = open(file_path, 'r')
         provenance = yaml.load(file_handle)
         return provenance
     return None
+
 
 def update_provenance(directory, provenance):
     """Update provenance file with given object."""
@@ -232,6 +246,7 @@ def update_provenance(directory, provenance):
     yaml.dump(provenance, file_handle)
     logging.info('Updated provenance file in %s', directory)
     file_handle.close()
+
 
 def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     """
@@ -336,33 +351,50 @@ def recursive_get_payload(x):
         print(x)
         return None
 
-def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
+def open_list_archives(
+    url: str,
+    archive_dir: str=CONFIG.mail_path,
+    mbox: bool=False,
+) -> pd.DataFrame:
     """
     Return a list of all email messages contained in the specified directory.
 
-    The argument *url* here is taken to be the name of a subdirectory
-    of the directory specified in argument *archive_dir*.
-    BUG: this argument should be re-named. sometimes it's being called with actual URLs, other times with subdirectory names, leading to spurious warnings in various places.
+    TODO: this argument should be re-named. sometimes it's being called with
+        actual URLs, other times with subdirectory names, leading to spurious
+        warnings in various places.
 
-    This directory is expected to contain files with extensions .txt,
-    .mail, or .mbox. These files are all expected to be in mbox format--
-    i.e. a series of blocks of text starting with headers (colon-separated
-    key-value pairs) followed by an email body.
+    Args:
+        url: the name of a subdirectory of the directory specified
+            in argument *archive_dir*. This directory is expected to contain
+            files with extensions .txt, .mail, or .mbox. These files are all
+            expected to be in mbox format-- i.e. a series of blocks of text
+            starting with headers (colon-separated key-value pairs) followed by
+            an email body.
+        archive_dir: directory containing all messages.
+
+    Returns:
     """
+    if (url is None) and (archive_dir is None):
+        raise ValueError(
+            "Either `url` or `archive_dir` must be given."
+        )
 
     messages = None
+
+    if "http" in url:
+        collect_from_url(url, notes=None)
+        list_name = get_list_name(url)
+        archive_dir = archive_directory(CONFIG.mail_path, list_name)
 
     if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
         messages = list(box.values())
+
     else:
         # assume string is the path to a directory with many
-
         list_name = get_list_name(url)
-
         arc_dir = archive_directory(archive_dir, list_name)
-
 
         file_extensions = [".txt", ".mail", ".mbox"]
 
@@ -386,6 +418,7 @@ def open_list_archives(url, archive_dir=CONFIG.mail_path, mbox=False):
 
     return messages_to_dataframe(messages)
 
+
 def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     """
     Open the message activity summary for a particular mailing list (as specified by url).
@@ -399,10 +432,10 @@ def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     if (len(activity_csvs) == 0):
         logging.info('No activity summary found for %s.' % list_name)
         return None
-    
+
     if (len(activity_csvs) > 1):
         logging.info('Multiple possible activity summary files found for %s, using the first one.' % list_name)
-    
+
     activity_csv = activity_csvs[0]
     path = os.path.join(arc_dir, activity_csv)
     activity_frame = pd.read_csv(path, index_col=0, encoding='utf-8')
@@ -454,9 +487,9 @@ def messages_to_dataframe(messages):
     """
     # extract data into a list of tuples -- records -- with
     # the Message-ID separated out as an index
-    #valid_messages = [m for m in messages if m.get() 
+    #valid_messages = [m for m in messages if m.get()
 
-    
+
     pm = [(m.get('Message-ID'),
            str(m.get('From')).replace('\\', ' '),
            str(m.get('Subject')),
@@ -466,7 +499,7 @@ def messages_to_dataframe(messages):
            get_text(m))
           for m in messages if m.get('From')]
 
- 
+
     mdf = pd.DataFrame.from_records(list(pm),
                                     index='Message-ID',
                                     columns=['Message-ID', 'From',
