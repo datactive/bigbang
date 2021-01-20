@@ -52,7 +52,7 @@ class MissingDataException(Exception):
         return repr(self.value)
 
 
-def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
+def load_data(name: str, archive_dir: str=CONFIG.mail_path, mbox: bool=False):
     """
     Load the data associated with an archive name, given as a string.
 
@@ -60,6 +60,11 @@ def load_data(name,archive_dir=CONFIG.mail_path,mbox=False):
 
     Failing that, if the the name is a URL, it will try to derive
     the list name from that URL and load the .csv again.
+
+    Args:
+        name: archive name
+        archive_dir: archive directory path
+        mbox:
     """
 
     if mbox:
