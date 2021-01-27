@@ -30,36 +30,22 @@ class Archive(object):
 
     def __init__(
         self,
-        data: pd.DataFrame,
-        archive_dir: str = CONFIG.mail_path,
+        df: pd.DataFrame,
         mbox: bool = False,
     ):
         """
         Initialize an Archive object.
 
-        The behavior of the constructor depends on the type
-        of its first argument, data.
-
-        If data is a Pandas DataFrame, it is treated as a representation of
-        email messages with columns for Message-ID, From, Date, In-Reply-To,
-        References, and Body. The created Archive becomes a wrapper around a
-        copy of the input DataFrame.
-
-        If data is a string, then it is interpreted as a path to either a
-        single .mbox file (if the optional argument single_file is True) or
-        else to a directory of .mbox files (also in .mbox format). Note that
-        the file extensions need not be .mbox; frequently they will be .txt.
+        Args:
+            data: representation of email messages with columns for
+                Message-ID, From, Date, In-Reply-To, References, and Body.
+                The created Archive becomes a wrapper around a copy of
+                the input DataFrame.
 
         Upon initialization, the Archive object drops duplicate entries
         and sorts its member variable *data* by Date.
         """
-
-        if isinstance(data, pd.core.frame.DataFrame):
-            self.data = data.copy()
-        elif isinstance(data, str):
-            self.data = mailman.load_data(
-                data, archive_dir=archive_dir, mbox=mbox
-            )
+        self.data = df
 
         try:
             self.data["Date"] = pd.to_datetime(
@@ -140,6 +126,53 @@ class Archive(object):
             raise mailman.MissingDataException(
                 "Archive after initial processing is empty. Was data collected properly?"
             )
+
+    @classmethod
+    def from_url(cls, url: str) -> "Archive":
+        """
+        Initialize class from url link.
+        """
+        assert url.startswith("http://") or url.startswith("https://")
+        df = mailman.collect_from_url(url)
+        return cls.from_dataframe(df)
+
+    @classmethod
+    def from_file(cls, file_path: str) -> "Archive":
+        """
+        Initialize class from file.
+
+        Args:
+            file_path: String is interpreted as a path to either a:
+                - pd.DataFrame stored as .csv or .h5
+                - single .mbox file
+                - a directory of .mbox files (also in .mbox format).
+                Note that the last two cases file extensions need not be .mbox;
+                frequently they will be .txt.
+
+        """
+        file_extension = file_path.split(".")[-1]
+        if file_extension == "h5":
+            df = pd.read_hdf(file_path, key="df")
+        elif file_extension == "csv":
+            df = pd.read_csv(file_path)
+        else:
+            file_name = file_path.split("/")[-1]
+            dir_path = file_path.split("/")[:-1]
+            df = mailman.load_data(file_name, archive_dir=dir_path)
+        return cls.from_dataframe(df)
+
+    @classmethod
+    def from_dataframe(cls, df: pd.DataFrame) -> "Archive":
+        """
+        Initialize class from file.
+
+        Args:
+            df: representation of email messages with columns for
+                Message-ID, From, Date, In-Reply-To, References, and Body.
+                The created Archive becomes a wrapper around a copy of
+                the input DataFrame.
+        """
+        return cls(df)
 
     def resolve_entities(self, inplace: bool = True) -> pd.DataFrame:
         """Return data with resolved entities."""
