@@ -1,3 +1,4 @@
+from typing import Union
 from bigbang.thread import Node
 from bigbang.thread import Thread
 from config.config import CONFIG
@@ -24,7 +25,7 @@ class Archive(object):
     threads = None
     entities = None
 
-    def __init__(self, data, archive_dir=CONFIG.mail_path, mbox=False):
+    def __init__(self, data: pd.DataFrame, archive_dir: str=CONFIG.mail_path, mbox: bool=False):
         """
         Initialize an Archive object.
 
@@ -44,12 +45,12 @@ class Archive(object):
         Upon initialization, the Archive object drops duplicate entries
         and sorts its member variable *data* by Date.
         """
-          
+
         if isinstance(data, pd.core.frame.DataFrame):
             self.data = data.copy()
         elif isinstance(data, str):
             self.data = mailman.load_data(data,archive_dir=archive_dir,mbox=mbox)
-        
+
         try:
             self.data['Date'] = pd.to_datetime(self.data['Date'], errors='coerce', infer_datetime_format=True, utc=True)
         except:
@@ -57,7 +58,7 @@ class Archive(object):
             out_path = 'datetime-exception.csv'
             with open(out_path, 'w') as f:
                 self.data.to_csv(f, encoding='utf-8')
-            
+
             logging.error('Error while converting to datetime, despite coerce mode.')
             raise
 
@@ -102,11 +103,11 @@ class Archive(object):
             self.data.sort_values(by='Date', inplace=True)
         except:
             logging.error('Error while sorting, maybe timezone issues?', exc_info=True)
-        
+
         if self.data.empty:
             raise mailman.MissingDataException('Archive after initial processing is empty. Was data collected properly?')
 
-    def resolve_entities(self,inplace=True):
+    def resolve_entities(self, inplace: bool=True) -> pd.DataFrame:
         """Return data with resolved entities."""
         if self.entities is None:
             if self.activity is None:
@@ -134,7 +135,8 @@ class Archive(object):
         else:
             return data
 
-    def get_activity(self,resolved=False):
+
+    def get_activity(self, resolved: bool=False):
         """
         Get the activity matrix of an Archive.
 
@@ -151,12 +153,13 @@ class Archive(object):
         if resolved:
             self.entities = process.resolve_sender_entities(self.activity)
             eact = utils.repartition_dataframe(self.activity,self.entities)
-            
+
             return eact
 
         return self.activity
 
-    def compute_activity(self, clean=True):
+
+    def compute_activity(self, clean: bool=True) -> pd.DataFrame:
         """Return the computed activity."""
         mdf = self.data
 
@@ -168,7 +171,7 @@ class Archive(object):
             mdf = mdf[
                 mdf['Date'] < datetime.datetime.now(
                     pytz.utc)]  # drop messages apparently in the future
-        
+
         mdf2 = mdf.reindex(columns = ['From', 'Date'])
         mdf2['Date'] = mdf['Date'].apply(lambda x: x.toordinal())
 
@@ -180,7 +183,8 @@ class Archive(object):
 
         return activity
 
-    def get_threads(self, verbose=False):
+
+    def get_threads(self, verbose: bool=False) -> list:
         """Get threads."""
 
         if self.threads is not None:
@@ -222,19 +226,19 @@ class Archive(object):
 
         return threads
 
-    def save(self, path,encoding='utf-8'):
+    def save(self, path: str, encoding: str='utf-8') -> None:
         """Save data to csv file."""
         self.data.to_csv(path, ",",encoding=encoding)
 
 
-def find_footer(messages,number=1):
+def find_footer(messages: Union[np.ndarray, pd.DataFrame], number: int=1) -> np.ndarray:
     '''
     Returns the footer of a DataFrame of emails.
 
     A footer is a string occurring at the tail of most messages.
     Messages can be a DataFrame or a Series
     '''
-    if isinstance(messages,pd.DataFrame):
+    if isinstance(messages, pd.DataFrame):
         messages = messages['Body']
 
     # sort in lexical order of reverse strings to maximize foot length
