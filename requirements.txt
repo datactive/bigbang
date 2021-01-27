@@ -30,6 +30,8 @@ testfixtures
 git+https://github.com/gitpython-developers/GitPython.git
 
 # dev-dependencies
+pre-commit
+black
+isort
 pytest
 coverage
-pre-commit
