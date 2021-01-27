@@ -1,7 +1,7 @@
 import datetime
 import logging
 import mailbox
-from typing import Union
+from typing import List, Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -11,13 +11,18 @@ import bigbang.process as process
 from bigbang.thread import Node, Thread
 from config.config import CONFIG
 
-from . import mailman, utils
+from . import listserv, mailman, utils
 
 
 class ArchiveWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
     pass
+
+
+def load(path):
+    data = pd.read_csv(path)
+    return Archive(data)
 
 
 class Archive(object):
@@ -137,9 +142,14 @@ class Archive(object):
         return cls.from_dataframe(df)
 
     @classmethod
-    def from_file(cls, file_path: str) -> "Archive":
+    def from_files(
+        cls,
+        dir_paths: List[str],
+        file_names: List[str],
+        email_list_software: Optional[str] = None,
+    ) -> "Archive":
         """
-        Initialize class from file.
+        Initialize class from multiple files.
 
         Args:
             file_path: String is interpreted as a path to either a:
@@ -148,7 +158,37 @@ class Archive(object):
                 - a directory of .mbox files (also in .mbox format).
                 Note that the last two cases file extensions need not be .mbox;
                 frequently they will be .txt.
+            email_list_software: Can be one of the following strings:
+                - GNU-Mailman
+                - LISTSERV
+                to indicate whether the file(s) are in that format.
+        """
+        if email_list_software == "GNU-Mailman":
+            df = mailman.load_data(file_names, archive_dir=dir_paths)
+        elif email_list_software == "LISTSERV":
+            df = listserv.from_files(dir_paths, file_names)
+        return cls.from_dataframe(df)
 
+    @classmethod
+    def from_file(
+        cls,
+        file_path: str,
+        email_list_software: Optional[str] = None,
+    ) -> "Archive":
+        """
+        Initialize class from one file.
+
+        Args:
+            file_path: String is interpreted as a path to either a:
+                - pd.DataFrame stored as .csv or .h5
+                - single .mbox file
+                - a directory of .mbox files (also in .mbox format).
+                Note that the last two cases file extensions need not be .mbox;
+                frequently they will be .txt.
+            email_list_software: Can be one of the following strings:
+                - GNU-Mailman
+                - LISTSERV
+                to indicate whether the file(s) are in that format.
         """
         file_extension = file_path.split(".")[-1]
         if file_extension == "h5":
@@ -157,8 +197,11 @@ class Archive(object):
             df = pd.read_csv(file_path)
         else:
             file_name = file_path.split("/")[-1]
-            dir_path = file_path.split("/")[:-1]
-            df = mailman.load_data(file_name, archive_dir=dir_path)
+            dir_path = file_path.rstrip(file_name)
+            if email_list_software == "GNU-Mailman":
+                df = mailman.load_data(file_name, archive_dir=dir_path)
+            elif email_list_software == "LISTSERV":
+                df = listserv.from_file(dir_path, file_name)
         return cls.from_dataframe(df)
 
     @classmethod

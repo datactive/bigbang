@@ -1,28 +1,25 @@
-import re
-import os
-from pprint import pprint as pp
-import logging
-import warnings
-import datetime
-
-import yaml
-import pandas as pd
-
-import urllib.request
-import urllib.parse
-import urllib.error
-
-from config.config import CONFIG
 import codecs
-import gzip
-import mailbox
+import datetime
 import fnmatch
+import gzip
+import logging
+import mailbox
+import os
+import re
 import subprocess
+import urllib.error
+import urllib.parse
+import urllib.request
+import warnings
+from pprint import pprint as pp
+
+import pandas as pd
+import yaml
 from validator_collection import checkers
 
-from bigbang.parse import get_date
-from . import parse
-from . import w3crawl
+from config.config import CONFIG
+
+from . import parse, w3crawl
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
 
@@ -55,7 +52,7 @@ class MissingDataException(Exception):
 
 def load_data(
     name: str, archive_dir: str = CONFIG.mail_path, mbox: bool = False
-):
+) -> pd.DataFrame:
     """
     Load the data associated with an archive name, given as a string.
 
@@ -65,9 +62,11 @@ def load_data(
     the list name from that URL and load the .csv again.
 
     Args:
-        name: archive name
+        name: file name
         archive_dir: archive directory path
         mbox:
+
+    Returns:
     """
 
     if mbox:
@@ -97,7 +96,7 @@ def load_data(
 
 def collect_from_url(
     url: str, archive_dir: str = CONFIG.mail_path, notes=None
-):
+) -> pd.DataFrame:
     """Collect data from a given url."""
 
     url = url.rstrip()
@@ -483,64 +482,6 @@ def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     return activity_frame
 
 
-def get_text(msg):
-    """Get text from a message."""
-    ## This code for character detection and dealing with exceptions is terrible
-    ## It is in need of refactoring badly. - sb
-    import chardet
-
-    text = ""
-    if msg.is_multipart():
-        html = None
-        for part in msg.walk():
-            charset = part.get_content_charset()
-            if part.get_content_type() == "text/plain":
-                try:
-                    text = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-                except LookupError:
-                    logging.debug(
-                        "Unknown encoding %s in message %s. Will use UTF-8 instead.",
-                        charset,
-                        msg["Message-ID"],
-                    )
-                    charset = "utf-8"
-                    text = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-            if part.get_content_type() == "text/html":
-                try:
-                    html = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-                except LookupError:
-                    logging.debug(
-                        "Unknown encoding %s in message %s. Will use UTF-8 instead.",
-                        charset,
-                        msg["Message-ID"],
-                    )
-                    charset = "utf-8"
-                    html = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-
-        if text is not None:
-            return text.strip()
-        else:
-            import html2text
-
-            h = html2text.HTML2Text()
-            h.encoding = "utf-8"
-            return str(h.handle(html))
-    else:
-        charset = msg.get_content_charset() or "utf-8"
-        if charset != "utf-8":
-            logging.debug("charset is %s" % (charset))
-        text = msg.get_payload()
-        return text.strip()
-
-
 def messages_to_dataframe(messages):
     """
     Turn a list of parsed messages into a dataframe of message data,
@@ -555,10 +496,10 @@ def messages_to_dataframe(messages):
             m.get("Message-ID"),
             str(m.get("From")).replace("\\", " "),
             str(m.get("Subject")),
-            get_date(m),
+            parse.get_date(m),
             str(m.get("In-Reply-To")),
             str(m.get("References")),
-            get_text(m),
+            parse.get_text(m),
         )
         for m in messages
         if m.get("From")

@@ -168,3 +168,61 @@ def get_date(message):
     except (TypeError, ValueError):
         logging.debug(f"Date parsing error on: {ds}")
         return None
+
+
+def get_text(msg):
+    """Get text from a message."""
+    ## This code for character detection and dealing with exceptions is terrible
+    ## It is in need of refactoring badly. - sb
+    import chardet
+
+    text = ""
+    if msg.is_multipart():
+        html = None
+        for part in msg.walk():
+            charset = part.get_content_charset()
+            if part.get_content_type() == "text/plain":
+                try:
+                    text = str(
+                        part.get_payload(decode=True), str(charset), "ignore"
+                    )
+                except LookupError:
+                    logging.debug(
+                        "Unknown encoding %s in message %s. Will use UTF-8 instead.",
+                        charset,
+                        msg["Message-ID"],
+                    )
+                    charset = "utf-8"
+                    text = str(
+                        part.get_payload(decode=True), str(charset), "ignore"
+                    )
+            if part.get_content_type() == "text/html":
+                try:
+                    html = str(
+                        part.get_payload(decode=True), str(charset), "ignore"
+                    )
+                except LookupError:
+                    logging.debug(
+                        "Unknown encoding %s in message %s. Will use UTF-8 instead.",
+                        charset,
+                        msg["Message-ID"],
+                    )
+                    charset = "utf-8"
+                    html = str(
+                        part.get_payload(decode=True), str(charset), "ignore"
+                    )
+
+        if text is not None:
+            return text.strip()
+        else:
+            import html2text
+
+            h = html2text.HTML2Text()
+            h.encoding = "utf-8"
+            return str(h.handle(html))
+    else:
+        charset = msg.get_content_charset() or "utf-8"
+        if charset != "utf-8":
+            logging.debug("charset is %s" % (charset))
+        text = msg.get_payload()
+        return text.strip()
