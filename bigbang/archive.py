@@ -14,11 +14,6 @@ from config.config import CONFIG
 from . import mailman, utils
 
 
-def load(path):
-    data = pd.read_csv(path)
-    return Archive(data)
-
-
 class ArchiveWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
