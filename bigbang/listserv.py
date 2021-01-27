@@ -184,12 +184,15 @@ class ListServ:
             header_dict["Content-Type"] = None
         if "MIME-Version" not in list(header_dict.keys()):
             header_dict["MIME-Version"] = None
+        if "In-Reply-To" not in list(header_dict.keys()):
+            header_dict["In-Reply-To"] = None
 
         f = open(temp_path, "a")
         f.write("\n")
         f.write(f"From b'{_from}' {_date}\n")
         f.write(f"Content-Type: {header_dict['Content-Type']}\n")
         f.write(f"MIME-Version: {header_dict['MIME-Version']}\n")
+        f.write(f"In-Reply-To: {header_dict['In-Reply-To']}\n")
         f.write(f"From: {_name} <b'{_from}'>\n")
         f.write(f"Subject: b'{header_dict['Subject']}\n")
         f.write(f"Message-ID: <{_message_id}>'\n")

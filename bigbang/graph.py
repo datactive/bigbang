@@ -1,12 +1,15 @@
-import bigbang.parse as parse
+import datetime
 import math
-import numpy as np
-import networkx as nx
-import bigbang.process as process
-# import matplotlib.pyplot as plt
-from pprint import pprint as pp
 from collections import Counter
+from pprint import pprint as pp
+
+import networkx as nx
+import numpy as np
 import pandas
+import pytz
+
+import bigbang.parse as parse
+import bigbang.process as process
 
 
 def messages_to_reply_graph(messages):
@@ -15,10 +18,10 @@ def messages_to_reply_graph(messages):
     G = nx.DiGraph()
 
     for m in messages:
-        mid = parse.clean_mid(m.get('Message-ID'))
+        mid = parse.clean_mid(m.get("Message-ID"))
 
         G.add_node(mid)
-        G.node[mid]['From'] = m.get('From')
+        G.node[mid]["From"] = m.get("From")
         # G.node[mid]['Date'] = m.get('Date')
         # G.node[mid]['Message'] = m.get('Message')
 
@@ -26,23 +29,21 @@ def messages_to_reply_graph(messages):
         # if 'References' in d:
         #    G.add_edge(mid,d['References'])
 
-        if 'In-Reply-To' in m:
-            G.add_edge(mid, parse.clean_mid(m.get('In-Reply-To')))
+        if "In-Reply-To" in m:
+            G.add_edge(mid, parse.clean_mid(m.get("In-Reply-To")))
 
     return G
 
 
-def messages_to_interaction_graph(messages, verbose=False,clean=True):
+def messages_to_interaction_graph(messages, verbose=False, clean=True):
     """Return a interactable graph given messages."""
 
     IG = nx.DiGraph()
 
     from_dict = {}
-    
+
     sender_counts = {}
     reply_counts = {}
-
- 
 
     if not isinstance(messages, pandas.core.frame.DataFrame):
         df = process.messages_to_dataframe(messages)
@@ -50,7 +51,7 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
         df = messages
 
     for m in df.iterrows():
-        m_from = m[1]['From']
+        m_from = m[1]["From"]
         if clean:
             m_from = parse.clean_from(m_from)
 
@@ -61,17 +62,17 @@ def messages_to_interaction_graph(messages, verbose=False,clean=True):
         IG.add_node(m_from)
 
     for sender, count in list(sender_counts.items()):
-        IG.node[sender]['sent'] = count
+        IG.node[sender]["sent"] = count
 
-    replies = [m for m in df.iterrows() if m[1]['In-Reply-To'] is not None]
+    replies = [m for m in df.iterrows() if m[1]["In-Reply-To"] is not None]
 
     for m in replies:
-        m_from = m[1]['From']
+        m_from = m[1]["From"]
 
         if clean:
             m_from = parse.clean_from(m_from)
 
-        reply_to_mid = m[1]['In-Reply-To']
+        reply_to_mid = m[1]["In-Reply-To"]
 
         if reply_to_mid in from_dict:
             m_to = from_dict[reply_to_mid]
@@ -100,19 +101,16 @@ def interaction_graph_to_matrix(dg):
         i = nodes.index(m_from)
         j = nodes.index(m_to)
 
-        matrix[i, j] = data['weight']
+        matrix[i, j] = data["weight"]
 
     return matrix
+
 
 def ascendancy(am):
     """
     Ulanowicz ecosystem health measures
     Input is weighted adjacency matrix.
     """
-
-    # total system throughput
-    tst = np.sum(am)
-
     # should these be normalized?!?!
     # output rates
     s0 = np.tile(np.sum(am, 0).T, (am.shape[0], 1))
@@ -134,7 +132,7 @@ def capacity(am):
 
     logs = np.nan_to_num(np.log(am / tst))
 
-    return - np.sum(am * logs)
+    return -np.sum(am * logs)
 
 
 def overhead(am):
@@ -149,11 +147,11 @@ def overhead(am):
 def compute_ascendancy(messages, duration=50):
     """Compute ascendancy given messages."""
 
-    print('compute ascendancy')
+    print("compute ascendancy")
     dated_messages = {}
 
     for m in messages:
-        d = get_date(m)
+        d = parse.get_date(m)
 
         if d is not None and d < datetime.datetime.now(pytz.utc):
             o = d.toordinal()
@@ -176,10 +174,10 @@ def compute_ascendancy(messages, duration=50):
         for d in range(min_d, max_d):
             block_messages.extend(dated_messages.get(d, []))
 
-        b_IG = graph.messages_to_interaction_graph(block_messages)
-        b_matrix = graph.interaction_graph_to_matrix(b_IG)
+        b_IG = messages_to_interaction_graph(block_messages)
+        b_matrix = interaction_graph_to_matrix(b_IG)
 
-        ascendancy[min_d - day_offset] = graph.ascendancy(b_matrix)
-        capacity[min_d - day_offset] = graph.capacity(b_matrix)
+        ascendancy[min_d - day_offset] = ascendancy(b_matrix)
+        capacity[min_d - day_offset] = capacity(b_matrix)
 
     return ascendancy, capacity

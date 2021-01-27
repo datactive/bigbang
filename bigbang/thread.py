@@ -1,10 +1,10 @@
 from bigbang.utils import clean_message
 
-class Thread:
 
-    def __init__(self, root, known_root=True):
+class Thread:
+    def __init__(self, root, known_root: bool = True):
         """Form a thread object. root: the node of the message that start the thread
-           known_root: indicator whether the root node is in our data set
+        known_root: indicator whether the root node is in our data set
         """
         self.root = root
         self.known_root = known_root
@@ -15,44 +15,44 @@ class Thread:
 
     def get_num_messages(self):
         """Return the number of messages in the thread"""
-        if(self.known_root):
+        if self.known_root:
             return self.root.properties()[0]
         else:
             return 1 + self.root.get_successors()[0].properties()[0]
 
-    def get_num_people(self):
+    def get_num_people(self) -> int:
         """Return the number of people in the thread"""
-        if(self.known_root):
+        if self.known_root:
             return len(self.root.properties()[1])
         else:
             return len(self.root.get_successors()[0].properties()[1])
 
     def get_duration(self):
         """Return the time duration of the thread"""
-        if(self.known_root):
+        if self.known_root:
             r = self.root
         else:
             r = self.root.get_successors()[0]
-        l = r.properties()[2]
-        l_time = sorted([i.data["Date"] for i in l])
-        return l_time[len(l) - 1] - r.data["Date"]
+        _l = r.properties()[2]
+        l_time = sorted([i.data["Date"] for i in _l])
+        return l_time[len(_l) - 1] - r.data["Date"]
 
     def get_leaves(self):
-        if(self.known_root):
+        if self.known_root:
             r = self.root
         else:
             r = self.root.get_successors()[0]
         return r.properties()[2]
 
     def get_not_leaves(self):
-        if(self.known_root):
+        if self.known_root:
             r = self.root
         else:
             r = self.root.get_successors()[0]
         return r.properties()[4]
-            
+
     def get_content(self):
-        if(self.known_root):
+        if self.known_root:
             r = self.root
         else:
             r = self.root.get_successors()[0]
@@ -60,7 +60,6 @@ class Thread:
 
 
 class Node:
-
     def __init__(self, ID, data=None, parent=None):
         """
         Form a Node object.
@@ -101,26 +100,34 @@ class Node:
         leaves = []
         not_leaves = []
         content = []
+
         def explore(node):
             num = 1
-            duration = 0
-            seen_email.add(node.data['From'])
+            seen_email.add(node.data["From"])
             visited.add(node)
-            content.append(clean_message(node.data['Body']))
-            if(len(node.get_successors()) == 0):
+            content.append(clean_message(node.data["Body"]))
+            if len(node.get_successors()) == 0:
                 leaves.append(node)
-            else: not_leaves.append(node)
+            else:
+                not_leaves.append(node)
             for s in node.get_successors():
-                if(s not in visited):
-                    seen_email.add(s.data['From'])
+                if s not in visited:
+                    seen_email.add(s.data["From"])
                     num += explore(s)
             return num
-        if(not self.processed):
+
+        if not self.processed:
             num_nodes = explore(self)
-            self.prop['num_nodes'] = num_nodes
-            self.prop['email_adrress'] = seen_email
-            self.prop['leaves'] = leaves
-            self.prop['content'] = content
-            self.prop['not_leaves'] = not_leaves
-            self.processed =  True
-        return [self.prop['num_nodes'], self.prop['email_adrress'], self.prop['leaves'], self.prop['content'], self.prop['not_leaves']]
+            self.prop["num_nodes"] = num_nodes
+            self.prop["email_adrress"] = seen_email
+            self.prop["leaves"] = leaves
+            self.prop["content"] = content
+            self.prop["not_leaves"] = not_leaves
+            self.processed = True
+        return [
+            self.prop["num_nodes"],
+            self.prop["email_adrress"],
+            self.prop["leaves"],
+            self.prop["content"],
+            self.prop["not_leaves"],
+        ]

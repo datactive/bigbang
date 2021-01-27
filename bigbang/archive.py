@@ -225,7 +225,12 @@ class Archive(object):
         return activity
 
     def get_threads(self, verbose: bool = False) -> list:
-        """Get threads."""
+        """
+        Get threads.
+
+        Args:
+        Returns:
+        """
 
         if self.threads is not None:
             return self.threads
@@ -255,6 +260,7 @@ class Archive(object):
                 root.add_successor(succ)
                 visited[i[1]["In-Reply-To"]] = root
                 visited[i[0]] = succ
+                print("add new thread", i[1]["In-Reply-To"])
                 threads.append(Thread(root, known_root=False))
             else:
                 parent = visited[i[1]["In-Reply-To"]]
