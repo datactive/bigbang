@@ -44,6 +44,7 @@ def from_files(dir_paths: List[str], file_names: List[str]) -> pd.DataFrame:
         df = from_file(file_path)
         if first:
             df_tot = df
+            first = False
         else:
             df_tot = df_tot.append(df)
 
@@ -116,11 +117,11 @@ def _get_header(
         # get header keyword and value
         if re.match(r"\S+:\s+\S+", line):
             key = line.split(":")[0]
-            value = line.replace(key + ":", "").lstrip().rstrip("\n")
+            value = line.replace(key + ":", "").strip().rstrip("\n")
 
             # if header-keyword value is split over two lines
             if not re.match(r"\S+:\s+\S+", content[lnr + 1]):
-                value += " " + content[lnr + 1].lstrip().rstrip("\n")
+                value += " " + content[lnr + 1].strip().rstrip("\n")
 
             header_dict[key] = value
 
@@ -247,12 +248,8 @@ def messages_to_dataframe(messages: list) -> pd.DataFrame:
     return mdf
 
 
-def _get_all_file(
-    directory: str,
-    file_dsc: str,
-) -> List[str]:
+def _get_all_file(directory: str, file_dsc: str) -> List[str]:
     """ Get paths of all files matching file_dsc in directory """
-    print("_get_all_file ---->", directory, file_dsc)
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
