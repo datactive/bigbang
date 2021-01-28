@@ -68,7 +68,6 @@ def load_data(
 
     Returns:
     """
-
     if mbox:
         return open_list_archives(name, archive_dir=archive_dir, mbox=True)
 
@@ -83,6 +82,7 @@ def load_data(
             logging.warning("No data available at %s", path)
     else:
         path = os.path.join(archive_dir, get_list_name(name) + ".csv")
+        print("path -----> ", path)
 
         if os.path.exists(path):
             data = pd.read_csv(path)

@@ -164,7 +164,9 @@ class Archive(object):
                 to indicate whether the file(s) are in that format.
         """
         if email_list_software == "GNU-Mailman":
-            df = mailman.load_data(file_names, archive_dir=dir_paths)
+            df = mailman.open_list_archives(
+                file_names[0], archive_dir=dir_paths[0]
+            )
         elif email_list_software == "LISTSERV":
             df = listserv.from_files(dir_paths, file_names)
         return cls.from_dataframe(df)
@@ -173,6 +175,7 @@ class Archive(object):
     def from_file(
         cls,
         file_path: str,
+        mbox: bool = False,
         email_list_software: Optional[str] = None,
     ) -> "Archive":
         """
@@ -185,6 +188,7 @@ class Archive(object):
                 - a directory of .mbox files (also in .mbox format).
                 Note that the last two cases file extensions need not be .mbox;
                 frequently they will be .txt.
+            mbox:
             email_list_software: Can be one of the following strings:
                 - GNU-Mailman
                 - LISTSERV
@@ -199,7 +203,10 @@ class Archive(object):
             file_name = file_path.split("/")[-1]
             dir_path = file_path.rstrip(file_name)
             if email_list_software == "GNU-Mailman":
-                df = mailman.load_data(file_name, archive_dir=dir_path)
+                print(file_name, dir_path)
+                df = mailman.load_data(
+                    file_name, archive_dir=dir_path, mbox=mbox
+                )
             elif email_list_software == "LISTSERV":
                 df = listserv.from_file(dir_path, file_name)
         return cls.from_dataframe(df)

@@ -1,12 +1,12 @@
-# The given paths are to be appended to the filepath of 
+# The given paths are to be appended to the filepath of
 # the bigbang directory, which is calculated from the filepath
-# of the config.yml file. For example, if a path is 
+# of the config.yml file. For example, if a path is
 # "archives/sample-git-repos", and the filepath of this file is
-# "~/folder/other/bigbang/config/config.yml" the full interpretation 
+# "~/folder/other/bigbang/config/config.yml" the full interpretation
 # of it should be "~/folder/other/bigbang/archives/sample-git-repos".
-# Note that "config/config.yml" was taken out. 
+# Note that "config/config.yml" was taken out.
 
-# PATHS. 
+# PATHS.
 # For Configuration to work properly, paths need to have "path"
 # in their keyword.
 # NOTE: BE CAFEFUL NOT TO PUT 'path' IN OTHER ATTRIBUTE NAMES
@@ -24,6 +24,14 @@ git_url_to_name_rgx: '([^/]*)(\\.git$)'
 file_to_name_rgx : '.*\/(.*)'
 
 
-# ATTRIBUTES
+# Git ATTRIBUTES
 # These are the attributes collected
-all_attributes: ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
+all_attributes: [
+  "HEXSHA",
+  "Committer Name",
+  "Committer Email",
+  "Commit Message",
+  "Time",
+  "Parent Commit",
+  "Touched File",
+]
