@@ -61,5 +61,5 @@ git_data/sample_git_repos/
 git_data/git_locals.json
 
 # ignore ipython notebook checkpoints
-.ipynb  # temporarily for listserv development
+*.ipynb  # temporarily for listserv development
 .ipynb_checkpoints
