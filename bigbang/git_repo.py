@@ -11,7 +11,7 @@ from . import utils
 
 ALL_ATTRIBUTES = CONFIG.all_attributes #["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
-def cache_fixer(r): 
+def cache_fixer(r):
     """Adds info from row to graph."""
     r["Touched File"] = [x.strip() for x in r["Touched File"][1:-1].split(",")]
     r["Time"] = pd.to_datetime(r["Time"]);
@@ -21,18 +21,18 @@ def cache_fixer(r):
 class GitRepo(object):
     """
     Store a git repository given the address to that repo relative to this file.
-    
+
     It returns the data in many forms.
     """
 
     def __init__(self, name, url=None, attribs = ALL_ATTRIBUTES, cache=None):
         """
         Index a Pandas DataFrame object by time.
-        
+
         That stores the raw form of the repo's commit data as a table.
-         
+
         Each row in this table  is a commit.
-        
+
         And each column represents an attribute of that commit:
         (eg.: time, message, commiter name, committer email, commit hexsha).
         """
@@ -41,7 +41,7 @@ class GitRepo(object):
         self.url = url;
         self.repo = None
         self.name = name;
-        
+
         if cache is None:
             self.repo = Repo(url)
             self.populate_data(ALL_ATTRIBUTES)
@@ -74,11 +74,11 @@ class GitRepo(object):
         commit = first
         firstHexSha = first.hexsha;
         generator = git.Commit.iter_items(repo, firstHexSha);
-        
+
         if "Touched File" in raw:
             print("WARNING: Currently going through file diffs. This will take a very long time (1 minute per 3000 commits.) We suggest using a small repository.")
         for commit in generator:
-            try: 
+            try:
                 if "Touched File" in raw:
                     diff_list = list();
                     for diff in commit.diff(commit.parents[0]):
@@ -90,19 +90,19 @@ class GitRepo(object):
 
                 if "Committer Name" in raw:
                     raw["Committer Name"].append(commit.committer.name)
-                
+
                 if "Committer Email" in raw:
                     raw["Committer Email"].append(commit.committer.email)
-                
+
                 if "Commit Message" in raw:
                     raw["Commit Message"].append(commit.message)
-                
+
                 if "Time" in raw or True: # TODO: For now, we always ask for the time
                     raw["Time"].append(pd.to_datetime(commit.committed_date, unit = "s"));
-                
+
                 if "Parent Commit" in raw:
                     raw["Parent Commit"].append([par.hexsha for par in commit.parents])
-                
+
                 if "HEXSHA" in raw:
                     raw["HEXSHA"].append(commit.hexsha)
             except LookupError:
@@ -117,10 +117,9 @@ class GitRepo(object):
         repo = self.repo
         self.gen_data(repo, raw);
         print((type(raw["Time"])))
-        
-        # TODO: NEEDS TIME
-        time_index = pd.DatetimeIndex(raw["Time"], periods = 24)
-        time_index = utils.add_freq(time_index, freq = "H")
+
+        time_index = pd.DatetimeIndex(raw["Time"]).to_period("H")
+        time_index = utils.add_freq(time_index, freq=None)
         self._commit_data = pd.DataFrame(raw, index = time_index);
 
     def by_committer(self):
