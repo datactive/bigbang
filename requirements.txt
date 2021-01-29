@@ -2,6 +2,7 @@
 
 beautifulsoup4
 chardet
+coverage
 enlighten
 gender-detector
 html2text
@@ -16,6 +17,7 @@ networkx
 nltk
 numpy
 pandas
+pytest
 python-dateutil
 python-Levenshtein
 pytz
@@ -28,8 +30,3 @@ powerlaw
 validator-collection
 testfixtures
 git+https://github.com/gitpython-developers/GitPython.git
-
-# dev-dependencies
-pytest
-coverage
-pre-commit
