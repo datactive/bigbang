@@ -1,33 +1,29 @@
-import re
-import os
-from pprint import pprint as pp
-import logging
-import warnings
-import datetime
-
-import yaml
-import pandas as pd
-
-import urllib.request
-import urllib.parse
-import urllib.error
-
-from config.config import CONFIG
 import codecs
-import gzip
-import mailbox
+import datetime
 import fnmatch
+import gzip
+import logging
+import mailbox
+import os
+import re
 import subprocess
+import urllib.error
+import urllib.parse
+import urllib.request
+import warnings
+from pprint import pprint as pp
+
+import pandas as pd
+import yaml
 from validator_collection import checkers
 
 from bigbang.parse import get_date
-from . import parse
-from . import w3crawl
+from config.config import CONFIG
+
+from . import parse, w3crawl
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
-
 txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
-
 gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile(r"lists\.w3\.org")
