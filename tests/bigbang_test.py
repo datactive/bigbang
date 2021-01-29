@@ -13,13 +13,14 @@ import email
 import logging
 import unittest
 
+from config import paths
 from config.config import CONFIG
 
 test_txt = ""
 TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")
 
 class TestGit(unittest.TestCase):
-    
+
     def test_git_dependancy(self):
         repo = repo_loader.get_repo("https://github.com/sbenthall/bigbang.git", in_type = "remote")
 
@@ -56,7 +57,7 @@ class TestMailman(unittest.TestCase):
         provenance_next = mailman.access_provenance(TEMP_DIR)
         self.assertTrue(provenance_next['notes'] == 'modified provenance', "confirm modified provenance")
 
-        
+
     def test_valid_urls(self):
         test_urls_path = os.path.join(CONFIG.test_data_path, 'urls-test-file.txt')
         with LogCapture() as l:
@@ -109,12 +110,16 @@ class TestMailman(unittest.TestCase):
 
 
 class TestArchive(unittest.TestCase):
-    
+
     def test_mailman_chain(self):
         name = "bigbang-dev-test.txt"
 
         #archive loaded from mbox
-        arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
+        arx = archive.Archive(
+            name,
+            archive_dir=str(paths.project_directory/"tests/data"),
+            mbox=True,
+        )
 
         arx.save("test.csv")
 
@@ -143,7 +148,11 @@ class TestArchive(unittest.TestCase):
     def test_clean_message(self):
         name = "2001-November.txt"
 
-        arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
+        arx = archive.Archive(
+            name,
+            archive_dir=str(paths.project_directory/"tests/data"),
+            mbox=True,
+        )
 
         body = arx.data['Body'][ '<E165uMn-0002IJ-00@spock.physics.mcgill.ca>']
 
@@ -160,7 +169,11 @@ class TestArchive(unittest.TestCase):
     def test_email_entity_resolution(self):
         name = "2001-November.txt"
 
-        arx = archive.Archive(name,archive_dir="tests/data",mbox=True)
+        arx = archive.Archive(
+            name,
+            archive_dir=str(paths.project_directory/"tests/data"),
+            mbox=True,
+        )
 
         e = process.resolve_sender_entities(arx.get_activity(resolved=False))
 
@@ -193,7 +206,7 @@ class TestMailParsing(unittest.TestCase):
 
         empty_tokenized_name = parse.tokenize_name(str('   '))
         self.assertTrue(empty_name is None, msg="empty name not tokenized to None")
-        
+
 class TestMailProcessing(unittest.TestCase):
     def test_from_header_distance(self):
         a = 'Fernando.Perez at colorado.edu (Fernando.Perez at colorado.edu)'
