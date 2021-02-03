@@ -108,7 +108,7 @@ class Archive(object):
         bad_indices = []
         for i, row in self.data.iterrows():
             try:
-                assert row["Date"] < datetime.datetime.now(pytz.utc)
+                row["Date"] < datetime.datetime.now(pytz.utc)
             except Exception as e:
                 logging.error(
                     "Error timezone issues while detecting bad rows. "
