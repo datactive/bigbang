@@ -1,33 +1,32 @@
-from bigbang.parse import get_date
-from config.config import CONFIG
-from pprint import pprint as pp
 import codecs
 import datetime
+import fnmatch
 import gzip
 import logging
 import mailbox
 import os
-import fnmatch
-import mailbox
-from . import parse
-import pandas as pd
-from . import parse
 import re
 import subprocess
-import urllib.request, urllib.parse, urllib.error
-import urllib.request, urllib.error, urllib.parse
-from validator_collection import checkers
-from . import w3crawl
+import urllib.error
+import urllib.parse
+import urllib.request
 import warnings
+from pprint import pprint as pp
+
+import pandas as pd
 import yaml
+from validator_collection import checkers
 
-ml_exp = re.compile('/([\w-]+)/?$')
+from bigbang.parse import get_date
+from config.config import CONFIG
 
-txt_exp = re.compile('href="(\d\d\d\d-\w*\.txt)"')
+from . import parse, w3crawl
 
-gz_exp = re.compile('href="(\d\d\d\d-\w*\.txt\.gz)"')
-ietf_ml_exp = re.compile('href="([\d-]+.mail)"')
-w3c_archives_exp = re.compile('lists\.w3\.org')
+ml_exp = re.compile(r"/([\w-]+)/?$")
+txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
+gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
+ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
+w3c_archives_exp = re.compile(r"lists\.w3\.org")
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 

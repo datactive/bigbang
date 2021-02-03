@@ -30,3 +30,10 @@ powerlaw
 validator-collection
 testfixtures
 git+https://github.com/gitpython-developers/GitPython.git
+
+# dev-dependencies
+black
+isort
+pytest
+coverage
+pre-commit
