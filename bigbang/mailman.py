@@ -576,4 +576,3 @@ def messages_to_dataframe(messages):
     mdf.index.name = "Message-ID"
 
     return mdf
-
