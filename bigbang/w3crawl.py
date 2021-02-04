@@ -1,23 +1,26 @@
-import urllib.request, urllib.error, urllib.parse
-import urllib.request, urllib.parse, urllib.error
-import gzip
-import re
-import os
-import urllib.parse
-import logging
-from bs4 import BeautifulSoup
-from email.mime.text import MIMEText
 import email
 import email.parser
+import gzip
+import logging
 import mailbox
+import os
+import re
 import time
-import bigbang.mailman
+import urllib.error
+import urllib.parse
+import urllib.request
+from email.mime.text import MIMEText
+
 import dateutil
+from bs4 import BeautifulSoup
+
+import bigbang.mailman
+
 from . import parse
 
+
 class W3cMailingListArchivesParser(email.parser.Parser):
-    parse = None
-    # doesn't yet implement the file version
+    # parse = None <- doesn't yet implement the file version
 
     # takes the full HTML of a single message page; returns an email Message
     # currently returns an mboxMessage, with appropriate From separator line
@@ -26,64 +29,63 @@ class W3cMailingListArchivesParser(email.parser.Parser):
     # TODO: ignore spam (has separate error message in w3c archives)
     def parsestr(self, text, headersonly=None):
         soup = BeautifulSoup(text)
-        body = self._text_for_selector(soup, '#body')
-        msg = MIMEText(body, 'plain', 'utf-8')
+        body = self._text_for_selector(soup, "#body")
+        msg = MIMEText(body, "plain", "utf-8")
 
-        from_text = str(self._parse_dfn_header(
-            self._text_for_selector(
-                soup,
-                '#from')))
-        from_name = from_text.split('<')[0].strip()
-        from_address = str(self._text_for_selector(soup, '#from a'))
+        from_text = str(
+            self._parse_dfn_header(self._text_for_selector(soup, "#from"))
+        )
+        from_name = from_text.split("<")[0].strip()
+        from_address = str(self._text_for_selector(soup, "#from a"))
 
         from_addr = email.utils.formataddr((from_name, from_address))
-        msg['From'] = from_addr
+        msg["From"] = from_addr
 
-        subject = self._text_for_selector(soup, 'h1')
-        msg['Subject'] =str(subject)
+        subject = self._text_for_selector(soup, "h1")
+        msg["Subject"] = str(subject)
 
         message_id = self._parse_dfn_header(
-            self._text_for_selector(
-                soup,
-                '#message-id'))
-        msg['Message-ID'] = str(message_id.strip())
+            self._text_for_selector(soup, "#message-id")
+        )
+        msg["Message-ID"] = str(message_id.strip())
 
         message_date = self._parse_dfn_header(
-            self._text_for_selector(
-                soup,
-                '#date'))
-        msg['Date'] = str(message_date.strip())
+            self._text_for_selector(soup, "#date")
+        )
+        msg["Date"] = str(message_date.strip())
 
         mbox_message = mailbox.mboxMessage(msg)
         mbox_message.set_from(
-            from_address,
-            email.utils.parsedate(message_date))
+            from_address, email.utils.parsedate(message_date)
+        )
 
         return mbox_message
 
     def _parse_dfn_header(self, header_text):
-        header_texts = str(header_text).split(':', 1)
+        header_texts = str(header_text).split(":", 1)
         if len(header_texts) == 2:
             return header_texts[1]
         else:
             logging.warning("Split failed on %s", header_text)
-            return ''
+            return ""
 
     def _text_for_selector(self, soup, selector):
         results = soup.select(selector)
         if results:
             result = results[0].get_text()
         else:
-            result = ''
-            logging.warning('No matching text for selector %s', selector)
+            result = ""
+            logging.warning("No matching text for selector %s", selector)
 
-        return str(result).encode('utf-8')
+        return str(result).encode("utf-8")
+
 
 def normalize_mailing_list_url(url):
-    if not url.endswith('/'):
-        return url + '/'
-    
+    if not url.endswith("/"):
+        return url + "/"
+
     return url
+
 
 def collect_from_url(url, base_arch_dir="archives", notes=None):
     """
@@ -99,24 +101,29 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
         response = urllib.request.urlopen(url)
         html = response.read()
         soup = BeautifulSoup(html)
-    except urllib.error.HTTPError as exception:
-        logging.exception('Error in loading W3C list archive page for %s', url)
+    except urllib.error.HTTPError:
+        logging.exception("Error in loading W3C list archive page for %s", url)
         return False
 
     try:
         time_period_indices = list()
-        rows = soup.select('tbody tr')
+        rows = soup.select("tbody tr")
         for row in rows:
-            link = row.select('td:nth-of-type(1) a')[0].get('href')
+            link = row.select("td:nth-of-type(1) a")[0].get("href")
             logging.info("Found time period archive page: %s", link)
             time_period_indices.append(link)
-    except Exception as exception:
-        logging.exception('Error in parsing list archives for %s', url)
+    except Exception:
+        logging.exception("Error in parsing list archives for %s", url)
         return False
 
     # directory for downloaded files
     arc_dir = bigbang.mailman.archive_directory(base_arch_dir, list_name)
-    bigbang.mailman.populate_provenance(directory=arc_dir, list_name=list_name, list_url=url, notes=notes)
+    bigbang.mailman.populate_provenance(
+        directory=arc_dir,
+        list_name=list_name,
+        list_url=url,
+        notes=notes,
+    )
 
     for link in time_period_indices:
         link_url = urllib.parse.urljoin(url, link)
@@ -124,26 +131,28 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
         html = response.read()
         soup = BeautifulSoup(html)
 
-        end_date_string = soup.select(
-            '#end')[0].parent.parent.select('em')[0].get_text()
+        end_date_string = (
+            soup.select("#end")[0].parent.parent.select("em")[0].get_text()
+        )
         end_date = dateutil.parser.parse(end_date_string)
-        year_month_mbox = end_date.strftime('%Y-%m') + '.mbox'
+        year_month_mbox = end_date.strftime("%Y-%m") + ".mbox"
         mbox_path = os.path.join(arc_dir, year_month_mbox)
 
         # looks like we've already downloaded this timeperiod
         if os.path.isfile(mbox_path):
-            logging.info(
-                'Looks like %s already exists, moving on.', mbox_path)
+            logging.info("Looks like %s already exists, moving on.", mbox_path)
             continue
-        logging.info('Downloading messages to archive to %s.', mbox_path)
+        logging.info("Downloading messages to archive to %s.", mbox_path)
 
         message_links = list()
         messages = list()
 
-        anchors = soup.select('div.messages-list a')
+        anchors = soup.select("div.messages-list a")
         for anchor in anchors:
-            if anchor.get('href'):
-                message_url = urllib.parse.urljoin(link_url, anchor.get('href'))
+            if anchor.get("href"):
+                message_url = urllib.parse.urljoin(
+                    link_url, anchor.get("href")
+                )
                 message_links.append(message_url)
 
         for message_link in message_links:
@@ -164,10 +173,9 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
         finally:
             mbox.unlock()
 
-        logging.info('Saved %s', year_month_mbox)
+        logging.info("Saved %s", year_month_mbox)
 
     # assumes all archives were downloaded if no exceptions have been thrown
     provenance = bigbang.mailman.access_provenance(arc_dir)
-    provenance['complete'] = True
+    provenance["complete"] = True
     bigbang.mailman.update_provenance(arc_dir, provenance)
-
