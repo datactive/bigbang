@@ -75,6 +75,19 @@ python bin/collect_mail.py -f examples/urls.txt
 
 Once the data has been collected, BigBang has functions to support analysis.
 
+## Collecting IETF draft metadata
+
+BigBang can also be used to analyze data from IETF drafts.
+
+It does this using the Glasgow IPL group's `ietfdata` [tool](https://github.com/glasgow-ipl/ietfdata).
+
+The script takes an argument, the working group acronym
+
+```bash
+python bin/collect_draft_metadata.py -w httpbis
+```
+
+
 ## Git
 
 BigBang can also be used to analyze data from Git repositories.
