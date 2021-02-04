@@ -18,7 +18,7 @@ from .git_repo import GitRepo, MultiGitRepo
 
 repoLocation = CONFIG.repo_path
 examplesLocation = CONFIG.urls_path
-nameRegex = re.compile(r"([^/]*)(\\.git$)")
+nameRegex = re.compile("([^/]*)(\\.git$)")
 fileRegex = re.compile(r".*\/(.*)")
 
 
