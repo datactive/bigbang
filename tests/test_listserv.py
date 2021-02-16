@@ -1,15 +1,35 @@
+import os
+
 import pytest
+import yaml
 
 from bigbang.listserv import ListservArchive, ListservList, ListservMessage
 
 url_archive = "https://list.etsi.org/scripts/wa.exe?"
 url_list = url_archive + "A0=3GPP_TSG_CT_WG6"
 url_message = url_archive + "A2=ind2101A&L=3GPP_TSG_CT_WG6&O=D&P=1870"
+file_auth = "../config/authentication.yaml"
 
 
 class TestListservMessage:
+    @pytest.mark.skipif(
+        not os.path.isfile(file_auth),
+        reason="Key to log into LISTSERV could not be found",
+    )
+    def test__from_url_with_login(self):
+        with open(file_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
+        msg = ListservMessage.from_url(
+            list_name="3GPP_TSG_CT_WG6",
+            url=url_message,
+            fields="total",
+            login=auth_key,
+        )
+        assert msg.fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        assert msg.toaddr == "Kimmo.Kymalainen@ETSI.ORG"
+
     @pytest.fixture(name="msg", scope="module")
-    def test__from_url(self):
+    def test__from_url_without_login(self):
         msg = ListservMessage.from_url(
             list_name="3GPP_TSG_CT_WG6",
             url=url_message,
@@ -47,8 +67,29 @@ class TestListservMessage:
 
 
 class TestListservList:
+    @pytest.mark.skipif(
+        not os.path.isfile(file_auth),
+        reason="Key to log into LISTSERV could not be found",
+    )
+    def test__from_url_with_login(self):
+        with open(file_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
+        mlist = ListservList.from_url(
+            name="3GPP_TSG_CT_WG6",
+            url=url_list,
+            select={
+                "years": 2021,
+                "months": "January",
+                "weeks": 1,
+                "fields": "header",
+            },
+            login=auth_key,
+        )
+        assert mlist.messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        assert mlist.messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
+
     @pytest.fixture(name="mlist", scope="module")
-    def test__from_url(self):
+    def test__from_url_without_login(self):
         mlist = ListservList.from_url(
             name="3GPP_TSG_CT_WG6",
             url=url_list,
@@ -77,8 +118,30 @@ class TestListservList:
 
 
 class TestListservArchive:
+    @pytest.mark.skipif(
+        not os.path.isfile(file_auth),
+        reason="Key to log into LISTSERV could not be found",
+    )
+    def test__from_url_with_login(self):
+        with open(file_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
+        arch = ListservArchive.from_url(
+            name="3GPP",
+            url_root=url_archive,
+            url_home=url_archive + "HOME",
+            select={
+                "years": 2021,
+                "months": "January",
+                "weeks": 1,
+                "fields": "header",
+            },
+            login=auth_key,
+        )
+        assert arch.lists.messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        assert arch.lists.messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
+
     @pytest.fixture(name="arch", scope="session")
-    def test__from_url(self):
+    def test__from_url_wihout_login(self):
         arch = ListservArchive.from_url(
             name="3GPP",
             url_root=url_archive,

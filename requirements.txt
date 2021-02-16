@@ -23,6 +23,7 @@ pyzmq
 tornado
 requests
 pyyaml
+yaml
 common
 powerlaw
 validator-collection
