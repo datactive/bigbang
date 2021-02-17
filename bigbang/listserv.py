@@ -43,6 +43,15 @@ class ListservMessage:
     """
     Parameters
     ----------
+    body
+    subject
+    fromname
+    fromaddr
+    toname
+    toaddr
+    date
+    contenttype
+    messageid
 
     Methods
     -------
@@ -56,6 +65,7 @@ class ListservMessage:
     get_date
     remove_unwanted_header_content
     to_dict
+    to_mbox
 
     Example
     -------
@@ -309,6 +319,16 @@ class ListservMessage:
         )
         return date_time_obj.strftime("%c")
 
+    @staticmethod
+    def create_message_id(
+        date: str,
+        from_address: str,
+    ) -> str:
+        message_id = (".").join([date, from_address])
+        # remove special characters
+        message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
+        return message_id
+
     def to_dict(self) -> Dict[str, str]:
         dic = {
             "Body": self.body,
@@ -321,6 +341,33 @@ class ListservMessage:
             "ContentType": self.contenttype,
         }
         return dic
+
+    def to_mbox(self, filepath: str, mode: str = "w"):
+        """
+        Safe mail list to .mbox files.
+        """
+        message_id = ListservMessage.create_message_id(
+            self.date,
+            self.fromaddr,
+        )
+        f = open(filepath, mode, encoding="utf-8")
+        f.write("\n")
+        # check that header was selected
+        if self.subject is not None:
+            f.write(f"From b'{self.fromaddr}' {self.date}\n")
+            f.write(f"Content-Type: {self.contenttype}\n")
+            f.write(f"MIME-Version: 1.0\n")
+            f.write(f"In-Reply-To: {self.toname} <b'{self.toaddr}'>\n")
+            f.write(f"From: {self.fromname} <b'{self.fromaddr}'>\n")
+            f.write(f"Subject: b'{self.subject}\n")
+            f.write(f"Message-ID: <{message_id}>'\n")
+            f.write(f"Date: {self.date}'\n")
+            f.write("\n")
+        # check that body was selected
+        if self.body is not None:
+            f.write(self.body)
+            f.write("\n")
+        f.close()
 
 
 class ListservList:
@@ -708,14 +755,23 @@ class ListservList:
     def to_pandas_dataframe(self) -> pd.DataFrame:
         return pd.DataFrame.from_dict(self.to_dict())
 
-    # def to_mbox(self, dir_out: str):
-    #    """
-    #    Safe mail list to .mbox files.
+    def to_mbox(self, dir_out: str, filename: Optional[str] = None):
+        """
+        Safe mail list to .mbox files.
 
-    #    Args:
-    #        dir_out: Directory where to safe the files to.
-    #    """
-    #    for msg in self.messages:
+        Args:
+        """
+        if filename is None:
+            filepath = f"{dir_out}/{self.name}.mbox"
+        else:
+            filepath = f"{dir_out}/{filename}.mbox"
+        first = True
+        for msg in self.messages:
+            if first:
+                msg.to_mbox(filepath, mode="w")
+                first = False
+            else:
+                msg.to_mbox(filepath, mode="a")
 
 
 class ListservArchive(object):
@@ -932,7 +988,7 @@ class ListservArchive(object):
         """
         Save Archive content to .mbox files
         """
-        for llist in self.lists[1:2]:
+        for llist in self.lists:
             llist.to_mbox(dir_out)
 
 

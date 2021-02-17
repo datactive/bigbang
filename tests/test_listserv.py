@@ -1,4 +1,6 @@
 import os
+import tempfile
+from pathlib import Path
 
 import pytest
 import yaml
@@ -9,6 +11,8 @@ url_archive = "https://list.etsi.org/scripts/wa.exe?"
 url_list = url_archive + "A0=3GPP_TSG_CT_WG6"
 url_message = url_archive + "A2=ind2101A&L=3GPP_TSG_CT_WG6&O=D&P=1870"
 file_auth = "../config/authentication.yaml"
+dir_temp = tempfile.gettempdir()
+file_temp_mbox = dir_temp + "/listserv.mbox"
 
 
 class TestListservMessage:
@@ -65,6 +69,17 @@ class TestListservMessage:
         dic = msg.to_dict()
         assert len(list(dic.keys())) == 8
 
+    def test__to_mbox(self, msg):
+        msg.to_mbox(file_temp_mbox)
+        f = open(file_temp_mbox, "r")
+        lines = f.readlines()
+        assert len(lines) == 29
+        assert (
+            lines[1] == "From b'[log in to unmask]' Tue Jan  5 12:15:30 2021\n"
+        )
+        f.close()
+        Path(file_temp_mbox).unlink()
+
 
 class TestListservList:
     @pytest.mark.skipif(
@@ -115,6 +130,19 @@ class TestListservList:
         df = mlist.to_pandas_dataframe()
         assert len(df.columns.values) == 8
         assert len(df.index.values) == 3
+
+    def test__to_mbox(self, mlist):
+        mlist.to_mbox(dir_temp, filename=mlist.name)
+        file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
+        f = open(file_temp_mbox, "r")
+        lines = f.readlines()
+        assert len(lines) == 30
+        assert (
+            lines[21]
+            == "From b'[log in to unmask]' Tue Jan  5 09:28:25 2021\n"
+        )
+        f.close()
+        Path(file_temp_mbox).unlink()
 
 
 class TestListservArchive:
@@ -169,3 +197,19 @@ class TestListservArchive:
         df = arch.to_pandas_dataframe()
         assert len(df.columns.values) == 9
         assert len(df.index.values) == 40
+
+    def test__to_mbox(self, arch):
+        arch.to_mbox(dir_temp)
+        file_dic = {
+            f"{dir_temp}/3GPP_TSG_CT_WG6.mbox": 30,
+            f"{dir_temp}/3GPP_TSG_RAN_WG3.mbox": 40,
+            f"{dir_temp}/3GPP_TSG_RAN.mbox": 30,
+            f"{dir_temp}/3GPP_TSG_RAN_WG4.mbox": 300,
+        }
+        for filepath, line_nr in file_dic.items():
+            assert Path(filepath).is_file()
+            f = open(filepath, "r")
+            lines = f.readlines()
+            assert line_nr == len(lines)
+            f.close()
+            Path(filepath).unlink()
