@@ -1016,40 +1016,47 @@ def get_auth_session(
 
 
 def get_login_from_terminal(
-    username: str, password: str
+    username: Union[str, None],
+    password: Union[str, None],
+    file_auth: str = "../config/authentication.yaml",
 ) -> Tuple[Union[str, None]]:
     """
     Get login key from user during run time if 'username' and/or 'password' is 'None'.
     Return 'None' if no reply within 15 sec.
     """
-    timeout = 15
+    if username is None or password is None:
+        record = True
     if username is None:
-        end_time = time.time() + timeout
-        while time.time() < end_time:
-            username = input("Enter your Email: ")
-            try:
-                assert isinstance(username, str)
-                break
-            except Exception:
-                continue
+        username = ask_for_input("Enter your Email: ")
     if password is None:
-        end_time = time.time() + timeout
-        while time.time() < end_time:
-            password = input("Enter your Password: ")
-            try:
-                assert isinstance(password, str)
-                break
-            except Exception:
-                continue
-    if isinstance(username, str) and isinstance(password, str):
-        loginkey_to_file(username, password)
+        password = ask_for_input("Enter your Password: ")
+    if record and isinstance(username, str) and isinstance(password, str):
+        loginkey_to_file(username, password, file_auth)
     return username, password
 
 
-def loginkey_to_file(username: str, password: str) -> None:
+def ask_for_input(request: str) -> Union[str, None]:
+    timeout = 15
+    end_time = time.time() + timeout
+    while time.time() < end_time:
+        reply = input(request)
+        try:
+            assert isinstance(reply, str)
+            break
+        except Exception:
+            reply = None
+            continue
+    return reply
+
+
+def loginkey_to_file(
+    username: str,
+    password: str,
+    file_auth: str,
+) -> None:
     """ Safe login key to yaml """
-    file = open("../config/authentication.yaml", "w")
-    file.write(f"username: '{username}'")
+    file = open(file_auth, "w")
+    file.write(f"username: '{username}'\n")
     file.write(f"password: '{password}'")
     file.close()
 

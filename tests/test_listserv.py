@@ -1,10 +1,13 @@
 import os
 import tempfile
 from pathlib import Path
+from unittest import mock
 
 import pytest
 import yaml
 
+import bigbang
+from bigbang import listserv
 from bigbang.listserv import ListservArchive, ListservList, ListservMessage
 
 url_archive = "https://list.etsi.org/scripts/wa.exe?"
@@ -215,3 +218,17 @@ class TestListservArchive:
             assert line_nr == len(lines)
             f.close()
             Path(filepath).unlink()
+
+
+@mock.patch("bigbang.listserv.ask_for_input", return_value="check")
+def test__get_login_from_terminal(input):
+    """ test if login keys will be documented """
+    file_auth = dir_temp + "/authentication.yaml"
+    _, _ = listserv.get_login_from_terminal(
+        username=None, password=None, file_auth=file_auth
+    )
+    f = open(file_auth, "r")
+    lines = f.readlines()
+    assert lines[0].strip("\n") == "username: 'check'"
+    assert lines[1].strip("\n") == "password: 'check'"
+    os.remove(file_auth)
