@@ -996,7 +996,33 @@ def get_auth_session(
 ) -> requests.Session:
     """ Create AuthSession """
     # ask user for login keys
-    timeout = 10
+    username, password = get_login_from_terminal(username, password)
+    if username is None or password is None:
+        # continue without authentication
+        return None
+    else:
+        # Start the AuthSession
+        session = requests.Session()
+        # Create the payload
+        payload = {
+            "LOGIN1": "",
+            "Y": username,
+            "p": password,
+            "X": "",
+        }
+        # Post the payload to the site to log in
+        session.post(url_login, data=payload)
+        return session
+
+
+def get_login_from_terminal(
+    username: str, password: str
+) -> Tuple[Union[str, None]]:
+    """
+    Get login key from user during run time if 'username' and/or 'password' is 'None'.
+    Return 'None' if no reply within 15 sec.
+    """
+    timeout = 15
     if username is None:
         end_time = time.time() + timeout
         while time.time() < end_time:
@@ -1015,22 +1041,17 @@ def get_auth_session(
                 break
             except Exception:
                 continue
-    if username is None or password is None:
-        # continue without authentication
-        return None
-    else:
-        # Start the AuthSession
-        session = requests.Session()
-        # Create the payload
-        payload = {
-            "LOGIN1": "",
-            "Y": username,
-            "p": password,
-            "X": "",
-        }
-        # Post the payload to the site to log in
-        session.post(url_login, data=payload)
-        return session
+    if isinstance(username, str) and isinstance(password, str):
+        loginkey_to_file(username, password)
+    return username, password
+
+
+def loginkey_to_file(username: str, password: str) -> None:
+    """ Safe login key to yaml """
+    file = open("../config/authentication.yaml", "w")
+    file.write(f"username: '{username}'")
+    file.write(f"password: '{password}'")
+    file.close()
 
 
 def get_website_content(
