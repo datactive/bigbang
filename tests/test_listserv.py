@@ -165,8 +165,10 @@ class TestListservArchive:
             },
             login=auth_key,
         )
-        assert arch.lists.messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
-        assert arch.lists.messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        assert (
+            arch.lists[0].messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        )
+        assert arch.lists[0].messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
 
     @pytest.fixture(name="arch", scope="session")
     def test__from_url_wihout_login(self):

@@ -114,14 +114,14 @@ class ListservMessage:
         url: str,
         fields: str = "total",
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        login: Optional[Dict[str, str]] = None,
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservMessage":
         """
         Args:
         """
         # TODO implement field selection, e.g. return only header, body, etc.
-        if login is not None:
+        if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
         if fields in ["header", "total"]:
@@ -439,7 +439,7 @@ class ListservList:
         url: str,
         select: dict,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        login: Optional[Dict[str, str]] = None,
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservList":
         """
@@ -450,7 +450,7 @@ class ListservList:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
         """
-        if login is not None:
+        if session is None:
             session = get_auth_session(url_login, **login)
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
@@ -465,7 +465,7 @@ class ListservList:
         messages: List[Union[str, ListservMessage]],
         fields: str = "total",
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        login: Optional[Dict[str, str]] = None,
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservList":
         """
@@ -478,7 +478,7 @@ class ListservList:
             msgs = messages
         elif isinstance(messages[0], str):
             # create ListservList from message URLs
-            if login is not None:
+            if session is None:
                 session = get_auth_session(url_login, **login)
             msgs = []
             for idx, url in enumerate(messages):
@@ -836,7 +836,7 @@ class ListservArchive(object):
         url_home: str,
         select: dict,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        login: Optional[Dict[str, str]] = None,
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservArchive":
         """
@@ -848,8 +848,7 @@ class ListservArchive(object):
             url_home:
             select:
         """
-        if login is not None:
-            session = get_auth_session(url_login, **login)
+        session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(url_root, url_home, select, session)
         return cls.from_mailing_lists(name, url_root, lists, select)
 
@@ -861,7 +860,7 @@ class ListservArchive(object):
         url_mailing_lists: Union[List[str], List[ListservList]],
         select: dict,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        login: Optional[Dict[str, str]] = None,
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservArchive":
         """
@@ -874,7 +873,7 @@ class ListservArchive(object):
 
         """
         if isinstance(url_mailing_lists[0], str):
-            if login is not None:
+            if session is None:
                 session = get_auth_session(url_login, **login)
             lists = []
             for idx, url in enumerate(url_mailing_lists):
@@ -996,18 +995,42 @@ def get_auth_session(
     url_login: str, username: str, password: str
 ) -> requests.Session:
     """ Create AuthSession """
-    # Start the session
-    session = requests.Session()
-    # Create the payload
-    payload = {
-        "LOGIN1": "",
-        "Y": username,
-        "p": password,
-        "X": "",
-    }
-    # Post the payload to the site to log in
-    session.post(url_login, data=payload)
-    return session
+    # ask user for login keys
+    timeout = 10
+    if username is None:
+        end_time = time.time() + timeout
+        while time.time() < end_time:
+            username = input("Enter your Email: ")
+            try:
+                assert isinstance(username, str)
+                break
+            except Exception:
+                continue
+    if password is None:
+        end_time = time.time() + timeout
+        while time.time() < end_time:
+            password = input("Enter your Password: ")
+            try:
+                assert isinstance(password, str)
+                break
+            except Exception:
+                continue
+    if username is None or password is None:
+        # continue without authentication
+        return None
+    else:
+        # Start the AuthSession
+        session = requests.Session()
+        # Create the payload
+        payload = {
+            "LOGIN1": "",
+            "Y": username,
+            "p": password,
+            "X": "",
+        }
+        # Post the payload to the site to log in
+        session.post(url_login, data=payload)
+        return session
 
 
 def get_website_content(
