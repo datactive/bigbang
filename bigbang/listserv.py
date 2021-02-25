@@ -7,17 +7,17 @@ import os
 import re
 import subprocess
 import time
-import urllib.error
-import urllib.parse
-import urllib.request
+import urllib
 import warnings
 from email.header import Header
 from email.message import Message
 from email.mime.text import MIMEText
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
+import requests
+import yaml
 from bs4 import BeautifulSoup
 
 
@@ -43,6 +43,15 @@ class ListservMessage:
     """
     Parameters
     ----------
+    body
+    subject
+    fromname
+    fromaddr
+    toname
+    toaddr
+    date
+    contenttype
+    messageid
 
     Methods
     -------
@@ -56,6 +65,15 @@ class ListservMessage:
     get_date
     remove_unwanted_header_content
     to_dict
+    to_mbox
+
+    Example
+    -------
+    msg = ListservMessage.from_url(
+        list_name="3GPP_TSG_CT_WG6",
+        url=url_message,
+        fields="total",
+    )
     """
 
     empty_header = {
@@ -95,12 +113,17 @@ class ListservMessage:
         list_name: str,
         url: str,
         fields: str = "total",
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
     ) -> "ListservMessage":
         """
         Args:
         """
         # TODO implement field selection, e.g. return only header, body, etc.
-        soup = get_website_content(url)
+        if session is None:
+            session = get_auth_session(url_login, **login)
+        soup = get_website_content(url, session=session)
         if fields in ["header", "total"]:
             header = ListservMessage.get_header_from_html(soup)
         else:
@@ -296,6 +319,16 @@ class ListservMessage:
         )
         return date_time_obj.strftime("%c")
 
+    @staticmethod
+    def create_message_id(
+        date: str,
+        from_address: str,
+    ) -> str:
+        message_id = (".").join([date, from_address])
+        # remove special characters
+        message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
+        return message_id
+
     def to_dict(self) -> Dict[str, str]:
         dic = {
             "Body": self.body,
@@ -308,6 +341,33 @@ class ListservMessage:
             "ContentType": self.contenttype,
         }
         return dic
+
+    def to_mbox(self, filepath: str, mode: str = "w"):
+        """
+        Safe mail list to .mbox files.
+        """
+        message_id = ListservMessage.create_message_id(
+            self.date,
+            self.fromaddr,
+        )
+        f = open(filepath, mode, encoding="utf-8")
+        f.write("\n")
+        # check that header was selected
+        if self.subject is not None:
+            f.write(f"From b'{self.fromaddr}' {self.date}\n")
+            f.write(f"Content-Type: {self.contenttype}\n")
+            f.write(f"MIME-Version: 1.0\n")
+            f.write(f"In-Reply-To: {self.toname} <b'{self.toaddr}'>\n")
+            f.write(f"From: {self.fromname} <b'{self.fromaddr}'>\n")
+            f.write(f"Subject: b'{self.subject}\n")
+            f.write(f"Message-ID: <{message_id}>'\n")
+            f.write(f"Date: {self.date}'\n")
+            f.write("\n")
+        # check that body was selected
+        if self.body is not None:
+            f.write(self.body)
+            f.write("\n")
+        f.close()
 
 
 class ListservList:
@@ -337,6 +397,7 @@ class ListservList:
     get_index_of_elements_in_selection
     to_dict
     to_pandas_dataframe
+    to_mbox
 
     Example
     -------
@@ -377,6 +438,9 @@ class ListservList:
         name: str,
         url: str,
         select: dict,
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
     ) -> "ListservList":
         """
         Args:
@@ -386,9 +450,11 @@ class ListservList:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
         """
+        if session is None:
+            session = get_auth_session(url_login, **login)
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
-        msgs = cls.get_messages_from_url(name, url, select)
+        msgs = cls.get_messages_from_url(name, url, select, session)
         return cls.from_messages(name, url, msgs)
 
     @classmethod
@@ -398,6 +464,9 @@ class ListservList:
         url: str,
         messages: List[Union[str, ListservMessage]],
         fields: str = "total",
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
     ) -> "ListservList":
         """
         Args:
@@ -405,8 +474,12 @@ class ListservList:
                 or a list of `ListservMessage` objects.
         """
         if not messages:
+            # create empty ListservList for ListservArchive
             msgs = messages
         elif isinstance(messages[0], str):
+            # create ListservList from message URLs
+            if session is None:
+                session = get_auth_session(url_login, **login)
             msgs = []
             for idx, url in enumerate(messages):
                 msgs.append(
@@ -414,9 +487,11 @@ class ListservList:
                         list_name=name,
                         url=url,
                         fields=fields,
+                        session=session,
                     )
                 )
         else:
+            # create ListservList from list of ListservMessages
             msgs = messages
         return cls(name, url, msgs)
 
@@ -468,7 +543,6 @@ class ListservList:
             select = {"fields": "total"}
         msgs = []
         for filepath in filepaths:
-            print(filepath)
             # TODO: implement selection filter
             file = open(filepath, "r")
             fcontent = file.readlines()
@@ -495,21 +569,34 @@ class ListservList:
         name: str,
         url: str,
         select: Optional[dict] = None,
+        session: Optional[dict] = None,
     ) -> List[ListservMessage]:
         """
         Generator that yields all messages within a certain period
         (e.g. January 2021, Week 5).
+
+        Args:
+            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+            url: URL to the LISTSERV list.
+            select: Selection criteria that can filter messages by:
+                - content, i.e. header and/or body
+                - period, i.e. written in a certain year, month, week-of-month
+            session: AuthSession
         """
         if select is None:
             select = {"fields": "total"}
-
         msgs = []
         # run through periods
         for period_url in ListservList.get_period_urls(url, select):
             # run through messages within period
             for msg_url in ListservList.get_messages_urls(name, period_url):
                 msgs.append(
-                    ListservMessage.from_url(name, msg_url, select["fields"])
+                    ListservMessage.from_url(
+                        name,
+                        msg_url,
+                        select["fields"],
+                        session=session,
+                    )
                 )
                 # wait between loading messages, for politeness
                 time.sleep(1)
@@ -524,13 +611,10 @@ class ListservList:
         (e.g. January 2021, Week 5).
         """
         url_root = ("/").join(url.split("/")[:-2])
-        soup = get_website_content(url)
         # create dictionary with key indicating period and values the url
-        periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
-        urls_of_periods = [
-            urllib.parse.urljoin(url_root, list_tag.find("a").get("href"))
-            for list_tag in soup.find_all("li")
-        ]
+        periods, urls_of_periods = cls.get_all_periods_and_their_urls(
+            url_root, get_website_content(url)
+        )
 
         if any(
             period in list(select.keys())
@@ -557,6 +641,18 @@ class ListservList:
                 periods = [periods[idx] for idx in indices]
                 urls_of_periods = [urls_of_periods[idx] for idx in indices]
         return urls_of_periods
+
+    @staticmethod
+    def get_all_periods_and_their_urls(
+        url_root: str,
+        soup: BeautifulSoup,
+    ) -> Tuple[List[str], List[str]]:
+        periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
+        urls_of_periods = [
+            urllib.parse.urljoin(url_root, list_tag.find("a").get("href"))
+            for list_tag in soup.find_all("li")
+        ]
+        return periods, urls_of_periods
 
     @staticmethod
     def get_index_of_elements_in_selection(
@@ -659,6 +755,24 @@ class ListservList:
     def to_pandas_dataframe(self) -> pd.DataFrame:
         return pd.DataFrame.from_dict(self.to_dict())
 
+    def to_mbox(self, dir_out: str, filename: Optional[str] = None):
+        """
+        Safe mail list to .mbox files.
+
+        Args:
+        """
+        if filename is None:
+            filepath = f"{dir_out}/{self.name}.mbox"
+        else:
+            filepath = f"{dir_out}/{filename}.mbox"
+        first = True
+        for msg in self.messages:
+            if first:
+                msg.to_mbox(filepath, mode="w")
+                first = False
+            else:
+                msg.to_mbox(filepath, mode="a")
+
 
 class ListservArchive(object):
     """
@@ -721,6 +835,9 @@ class ListservArchive(object):
         url_root: str,
         url_home: str,
         select: dict,
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given URL.
@@ -731,7 +848,8 @@ class ListservArchive(object):
             url_home:
             select:
         """
-        lists = cls.get_lists_from_url(url_root, url_home, select)
+        session = get_auth_session(url_login, **login)
+        lists = cls.get_lists_from_url(url_root, url_home, select, session)
         return cls.from_mailing_lists(name, url_root, lists, select)
 
     @classmethod
@@ -741,6 +859,9 @@ class ListservArchive(object):
         url_root: str,
         url_mailing_lists: Union[List[str], List[ListservList]],
         select: dict,
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given list of 'ListservList'.
@@ -752,10 +873,17 @@ class ListservArchive(object):
 
         """
         if isinstance(url_mailing_lists[0], str):
+            if session is None:
+                session = get_auth_session(url_login, **login)
             lists = []
             for idx, url in enumerate(url_mailing_lists):
                 lists.append(
-                    ListservList.from_url(name=idx, url=url, select=select)
+                    ListservList.from_url(
+                        name=idx,
+                        url=url,
+                        select=select,
+                        session=session,
+                    )
                 )
         else:
             lists = url_mailing_lists
@@ -766,6 +894,7 @@ class ListservArchive(object):
         url_root: str,
         url_home: str,
         select: dict,
+        session: Optional[str] = None,
     ) -> List[ListservList]:
         """
         Created dictionary of all lists in the archive.
@@ -790,7 +919,10 @@ class ListservArchive(object):
                 value = urllib.parse.urljoin(url_root, a_tag.get("href"))
                 key = value.split("A0=")[-1]
                 mlist = ListservList.from_url(
-                    name=key, url=value, select=select
+                    name=key,
+                    url=value,
+                    select=select,
+                    session=session,
                 )
                 if len(mlist) != 0:
                     archive.append(mlist)
@@ -855,18 +987,94 @@ class ListservArchive(object):
         """
         Save Archive content to .mbox files
         """
-        for llist in self.lists[1:2]:
+        for llist in self.lists:
             llist.to_mbox(dir_out)
+
+
+def get_auth_session(
+    url_login: str, username: str, password: str
+) -> requests.Session:
+    """ Create AuthSession """
+    # ask user for login keys
+    username, password = get_login_from_terminal(username, password)
+    if username is None or password is None:
+        # continue without authentication
+        return None
+    else:
+        # Start the AuthSession
+        session = requests.Session()
+        # Create the payload
+        payload = {
+            "LOGIN1": "",
+            "Y": username,
+            "p": password,
+            "X": "",
+        }
+        # Post the payload to the site to log in
+        session.post(url_login, data=payload)
+        return session
+
+
+def get_login_from_terminal(
+    username: Union[str, None],
+    password: Union[str, None],
+    file_auth: str = "../config/authentication.yaml",
+) -> Tuple[Union[str, None]]:
+    """
+    Get login key from user during run time if 'username' and/or 'password' is 'None'.
+    Return 'None' if no reply within 15 sec.
+    """
+    if username is None or password is None:
+        record = True
+    if username is None:
+        username = ask_for_input("Enter your Email: ")
+    if password is None:
+        password = ask_for_input("Enter your Password: ")
+    if record and isinstance(username, str) and isinstance(password, str):
+        loginkey_to_file(username, password, file_auth)
+    return username, password
+
+
+def ask_for_input(request: str) -> Union[str, None]:
+    timeout = 15
+    end_time = time.time() + timeout
+    while time.time() < end_time:
+        reply = input(request)
+        try:
+            assert isinstance(reply, str)
+            break
+        except Exception:
+            reply = None
+            continue
+    return reply
+
+
+def loginkey_to_file(
+    username: str,
+    password: str,
+    file_auth: str,
+) -> None:
+    """ Safe login key to yaml """
+    file = open(file_auth, "w")
+    file.write(f"username: '{username}'\n")
+    file.write(f"password: '{password}'")
+    file.close()
 
 
 def get_website_content(
     url: str,
+    session: Optional[requests.Session] = None,
 ) -> BeautifulSoup:
-    """"""
-    resp = urllib.request.urlopen(url)
-    assert resp.getcode() == 200
+    """ Get HTML code from website """
     # TODO: include option to change BeautifulSoup args
-    return BeautifulSoup(resp.read(), features="lxml")
+    if session is None:
+        sauce = requests.get(url)
+        assert sauce.status_code == 200
+        soup = BeautifulSoup(sauce.content, "lxml")
+    else:
+        sauce = session.get(url)
+        soup = BeautifulSoup(sauce.text, "lxml")
+    return soup
 
 
 def get_all_file_from_directory(directory: str, file_dsc: str) -> List[str]:
@@ -874,20 +1082,3 @@ def get_all_file_from_directory(directory: str, file_dsc: str) -> List[str]:
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
-
-
-if __name__ == "__main__":
-    mlist = ListservList.from_listserv_directories(
-        "3GPP_TSG_SA_WG2_UPCON",
-        directorypaths=["../archives/3GPP_TSG_SA_WG2_UPCON/"],
-        filedsc="*.LOG?????"
-        # select={
-        #    "years": 2021,
-        #    "months": "January",
-        #    "weeks": 1,
-        #    "fields": "header",
-        # },
-    )
-    print(f"Lenght of mlist = {len(mlist)}")
-    print(mlist.messages[0].subject)
-    # test = arch.to_mbox("/home/christovis/02_AGE/datactive/")
