@@ -13,9 +13,10 @@ from bigbang.listserv import ListservArchive, ListservList, ListservMessage
 url_archive = "https://list.etsi.org/scripts/wa.exe?"
 url_list = url_archive + "A0=3GPP_TSG_CT_WG6"
 url_message = url_archive + "A2=ind2101A&L=3GPP_TSG_CT_WG6&O=D&P=1870"
-file_auth = "../config/authentication.yaml"
 dir_temp = tempfile.gettempdir()
 file_temp_mbox = dir_temp + "/listserv.mbox"
+file_auth = "../config/authentication.yaml"
+auth_key_mock = {"username": "bla", "password": "bla"}
 
 
 class TestListservMessage:
@@ -41,6 +42,7 @@ class TestListservMessage:
             list_name="3GPP_TSG_CT_WG6",
             url=url_message,
             fields="total",
+            login=auth_key_mock,
         )
         assert msg.body.split(",")[0] == "Dear 3GPP CT people"
         assert msg.subject == "Happy New Year 2021"
@@ -57,6 +59,7 @@ class TestListservMessage:
             list_name="3GPP_TSG_CT_WG6",
             url=url_message,
             fields="header",
+            login=auth_key_mock,
         )
         assert msg.body is None
 
@@ -65,6 +68,7 @@ class TestListservMessage:
             list_name="3GPP_TSG_CT_WG6",
             url=url_message,
             fields="body",
+            login=auth_key_mock,
         )
         assert msg.subject is None
 
@@ -117,6 +121,7 @@ class TestListservList:
                 "weeks": 1,
                 "fields": "header",
             },
+            login=auth_key_mock,
         )
         assert mlist.name == "3GPP_TSG_CT_WG6"
         assert mlist.source == url_list
@@ -185,6 +190,7 @@ class TestListservArchive:
                 "weeks": 1,
                 "fields": "header",
             },
+            login=auth_key_mock,
         )
         assert arch.name == "3GPP"
         assert arch.url == url_archive
