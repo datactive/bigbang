@@ -1072,10 +1072,10 @@ def get_website_content(
     if session is None:
         sauce = requests.get(url)
         assert sauce.status_code == 200
-        soup = BeautifulSoup(sauce.content, "lxml")
+        soup = BeautifulSoup(sauce.content, "html.parser")
     else:
         sauce = session.get(url)
-        soup = BeautifulSoup(sauce.text, "lxml")
+        soup = BeautifulSoup(sauce.text, "html.parser")
     return soup
 
 
