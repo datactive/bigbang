@@ -34,5 +34,6 @@ git+https://github.com/gitpython-developers/GitPython.git
 black>=20.8b1
 isort>=5.7.0
 pytest>=6.2.1
+pytest-cov>=2.8.1
 coverage>=5.3.1
 pre-commit
