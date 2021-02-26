@@ -4,8 +4,9 @@ beautifulsoup4>=4.9.3
 chardet>=3.0.4
 enlighten>=1.7.2
 gender-detector>=0.1.0
-ipython
 html2text>=2020.1.16
+ietfdata
+ipython>=7.16
 jinja2>=2.11.2
 jupyter>=1.0.0
 jsonschema>=3.2.0
@@ -14,7 +15,7 @@ matplotlib>=3.3.3
 networkx>=2.5
 nltk>=3.5
 numpy>=1.19.5
-pandas>=1.2.1
+pandas
 python-dateutil
 python-Levenshtein
 pytz>=2020.5
@@ -36,5 +37,3 @@ pytest>=6.2.1
 pytest-cov>=2.8.1
 coverage>=5.3.1
 pre-commit>=2.10.1
-
-ietfdata>=0.3
