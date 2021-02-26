@@ -22,8 +22,7 @@ pytz>=2020.5
 pyzmq>=22.0.3
 tornado>=6.1
 requests>=2.25.1
-pyyaml
-yaml
+pyyaml>=5
 common>=0.1.2
 powerlaw>=1.4.6
 validator-collection>=1.5.0
