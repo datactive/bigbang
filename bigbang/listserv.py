@@ -1026,6 +1026,8 @@ def get_login_from_terminal(
     """
     if username is None or password is None:
         record = True
+    else:
+        record = False
     if username is None:
         username = ask_for_input("Enter your Email: ")
     if password is None:
