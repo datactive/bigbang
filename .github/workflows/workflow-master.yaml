@@ -6,14 +6,21 @@ on:
 jobs:
   codecov:
     name: Codecov Workflow
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6]
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@master
         with:
-          python-version: 3.8
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - name: Generate coverage report
         run: |
           pip install pytest
@@ -22,6 +29,5 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
+          env_vars: OS,PYTHON
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
-          flags: unittests
