@@ -145,7 +145,7 @@ class GitRepo(object):
 
         time_index = pd.DatetimeIndex(raw["Time"]).to_period("H")
         time_index = utils.add_freq(time_index, freq=None)
-        self._commit_data = pd.DataFrame(raw, index=time_index)
+        self._commit_data = pd.DataFrame(raw, index = time_index);
 
     def by_committer(self):
         """Return commit data grouped by commiter."""
