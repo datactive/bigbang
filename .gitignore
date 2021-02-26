@@ -64,3 +64,6 @@ git_data/git_locals.json
 examples/.ipynb_checkpoints/
 examples/.ipynb_checkpoints/*
 .ipynb_checkpoints
+
+# Sensitive Information
+config/authentication.yaml
