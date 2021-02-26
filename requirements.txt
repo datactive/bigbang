@@ -20,7 +20,7 @@ python-dateutil
 python-Levenshtein
 pytz>=2020.5
 pyzmq
-tornado
+tornado>=6.1
 requests>=2.25.1
 pyyaml
 yaml
