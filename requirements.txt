@@ -15,14 +15,14 @@ matplotlib>=3.3.3
 networkx>=2.5
 nltk>=3.5
 numpy>=1.19.5
-pandas
+pandas>=1.1.5
 python-dateutil
 python-Levenshtein
 pytz>=2020.5
 pyzmq>=22.0.3
 tornado>=6.1
 requests>=2.25.1
-pyyaml>=5.4.1
+pyyaml
 yaml
 common>=0.1.2
 powerlaw>=1.4.6
