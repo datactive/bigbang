@@ -5,7 +5,6 @@ chardet>=3.0.4
 enlighten>=1.7.2
 gender-detector>=0.1.0
 html2text>=2020.1.16
-ietfdata>=0.3.3
 ipython>=7.20.0
 jinja2>=2.11.2
 jupyter>=1.0.0
@@ -37,3 +36,5 @@ pytest>=6.2.1
 pytest-cov>=2.8.1
 coverage>=5.3.1
 pre-commit>=2.10.1
+
+ietfdata>=0.3.3
