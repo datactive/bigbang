@@ -25,10 +25,7 @@ Run the following commands:
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
-conda create -n bigbang
-cd bigbang
 bash conda-setup.sh
-source activate bigbang
 ```
 
 (If you use a different conda environment name, you'll need to modify
