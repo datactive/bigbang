@@ -413,11 +413,6 @@ def open_list_archives(
 
     messages = None
 
-    if "http" in url:
-        collect_from_url(url, notes=None)
-        list_name = get_list_name(url)
-        archive_dir = archive_directory(CONFIG.mail_path, list_name)
-
     if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
