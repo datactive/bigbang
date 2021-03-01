@@ -8,7 +8,7 @@ Mailman, or [.mbox][mbox] files.
 
 [![Gitter](https://badges.gitter.im/datactive/bigbang.svg)](https://gitter.im/datactive/bigbang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-## Installation
+## Installation*
 
 You can use [Anaconda](https://www.anaconda.com/). This will also install
 the `conda` package management system, which you can use to complete
@@ -25,22 +25,11 @@ Run the following commands:
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
-bash conda-setup.sh
+sudo bash conda-setup.sh
 ```
 
 (If you use a different conda environment name, you'll need to modify
 `conda-setup.sh` to match.)
-
-### pip installation
-
-Alternatively you can use `pip` for installation. Run the following commands:
-
-```bash
-git clone https://github.com/datactive/bigbang.git
-# optionally create a new virtualenv here
-pip install -r requirements.txt
-python setup.py develop
-```
 
 ## Usage
 
@@ -102,6 +91,17 @@ To run the tests from the command like, use the command `pytest`.
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers [pledge to make participation in our project and our community a harassment-free experience for everyone](CODE_OF_CONDUCT.md).
+
+## Troubleshooting 
+
+If the installation described above does not work, you try to run the installation with Pip:
+
+```bash
+git clone https://github.com/datactive/bigbang.git
+# optionally create a new virtualenv here
+pip install -r requirements.txt
+python setup.py develop
+```
 
 ## License
 
