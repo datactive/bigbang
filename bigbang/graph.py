@@ -61,7 +61,7 @@ def messages_to_interaction_graph(messages, verbose=False, clean=True):
         IG.add_node(m_from)
 
     for sender, count in list(sender_counts.items()):
-        IG.node[sender]["sent"] = count
+        IG.nodes[sender]["sent"] = count
 
     replies = [m for m in df.iterrows() if m[1]["In-Reply-To"] is not None]
 
