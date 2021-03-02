@@ -102,7 +102,7 @@ If the installation described above does not work, you can try to run the instal
 git clone https://github.com/datactive/bigbang.git
 # optionally create a new virtualenv here
 pip3 install -r requirements.txt
-python setup.py develop
+python3 setup.py develop
 ```
 
 ## License
