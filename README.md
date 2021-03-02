@@ -20,6 +20,8 @@ installation.
 If you choose not to use Anaconda, you may run into issues with versioning in
 Python. Add the Conda installation directory to your path during installation.
 
+You also need need to have Git and Pip (for Python3) installed.
+
 Run the following commands:
 
 ```bash
