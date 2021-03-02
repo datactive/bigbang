@@ -29,6 +29,7 @@ Run the following commands:
 git clone https://github.com/datactive/bigbang.git
 cd bigbang
 bash conda-setup.sh
+python3 setup.py develop --user
 ```
 
 ## Usage
@@ -100,7 +101,7 @@ If the installation described above does not work, you can try to run the instal
 git clone https://github.com/datactive/bigbang.git
 # optionally create a new virtualenv here
 pip3 install -r requirements.txt
-python3 setup.py develop
+python3 setup.py develop --user
 ```
 
 ## License
