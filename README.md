@@ -25,7 +25,7 @@ Run the following commands:
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
-sudo bash conda-setup.sh
+bash conda-setup.sh
 ```
 
 (If you use a different conda environment name, you'll need to modify
@@ -50,13 +50,13 @@ collect the archives of the scipy-dev mailing list, run the following command
 from the root directory of this repository:
 
 ```bash
-python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
+python3 bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python bin/collect_mail.py -f examples/urls.txt
+python3 bin/collect_mail.py -f examples/urls.txt
 ```
 
 Once the data has been collected, BigBang has functions to support analysis.
@@ -70,7 +70,7 @@ It does this using the Glasgow IPL group's `ietfdata` [tool](https://github.com/
 The script takes an argument, the working group acronym
 
 ```bash
-python bin/collect_draft_metadata.py -w httpbis
+python3 bin/collect_draft_metadata.py -w httpbis
 ```
 
 
@@ -99,7 +99,7 @@ If the installation described above does not work, you try to run the installati
 ```bash
 git clone https://github.com/datactive/bigbang.git
 # optionally create a new virtualenv here
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 python setup.py develop
 ```
 
