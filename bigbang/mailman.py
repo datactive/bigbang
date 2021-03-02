@@ -432,7 +432,18 @@ def open_list_archives(
         ]
 
         logging.info("Opening %d archive files", len(txts))
-        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
+
+        def mbox_reader(stream):
+            """Read a non-ascii message from mailbox"""
+            data = stream.read()
+            text = data.decode(encoding="utf-8", errors="replace")
+            return mailbox.mboxMessage(text)
+
+        arch = [mailbox.mbox(
+                    txt, factory=mbox_reader, create=False
+                    ).values() 
+                for txt
+                in txts]
 
         if len(arch) == 0:
             raise MissingDataException(
