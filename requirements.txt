@@ -25,7 +25,7 @@ requests>=2.25.1
 pyyaml
 common
 powerlaw
-validator-collection
+validator_collection
 testfixtures
 git+https://github.com/gitpython-developers/GitPython.git
 
