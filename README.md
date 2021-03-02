@@ -27,11 +27,9 @@ Run the following commands:
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
+cd bigbang
 bash conda-setup.sh
 ```
-
-(If you use a different conda environment name, you'll need to modify
-`conda-setup.sh` to match.)
 
 ## Usage
 
