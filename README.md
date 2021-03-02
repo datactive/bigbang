@@ -94,7 +94,7 @@ In the interest of fostering an open and welcoming environment, we as contributo
 
 ## Troubleshooting 
 
-If the installation described above does not work, you try to run the installation with Pip:
+If the installation described above does not work, you can try to run the installation with Pip:
 
 ```bash
 git clone https://github.com/datactive/bigbang.git
