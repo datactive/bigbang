@@ -9,7 +9,7 @@ Mailman, or [.mbox][mbox] files.
 [![Gitter](https://badges.gitter.im/datactive/bigbang.svg)](https://gitter.im/datactive/bigbang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![codecov](https://codecov.io/gh/Christovis/bigbang/branch/master/graph/badge.svg?token=B5L4F2VEWZ)](https://codecov.io/gh/Christovis/bigbang)
 
-## Installation
+## Installation*
 
 You can use [Anaconda](https://www.anaconda.com/). This will also install
 the `conda` package management system, which you can use to complete
@@ -21,29 +21,16 @@ installation.
 If you choose not to use Anaconda, you may run into issues with versioning in
 Python. Add the Conda installation directory to your path during installation.
 
+You also need need to have Git and Pip (for Python3) installed.
+
 Run the following commands:
 
 ```bash
 
 git clone https://github.com/datactive/bigbang.git
-conda create -n bigbang
 cd bigbang
 bash conda-setup.sh
-source activate bigbang
-```
-
-(If you use a different conda environment name, you'll need to modify
-`conda-setup.sh` to match.)
-
-### pip installation
-
-Alternatively you can use `pip` for installation. Run the following commands:
-
-```bash
-git clone https://github.com/datactive/bigbang.git
-# optionally create a new virtualenv here
-pip install -r requirements.txt
-python setup.py develop
+python3 setup.py develop --user
 ```
 
 ## Usage
@@ -65,13 +52,13 @@ collect the archives of the scipy-dev mailing list, run the following command
 from the root directory of this repository:
 
 ```bash
-python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
+python3 bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python bin/collect_mail.py -f examples/urls.txt
+python3 bin/collect_mail.py -f examples/urls.txt
 ```
 
 Once the data has been collected, BigBang has functions to support analysis.
@@ -85,7 +72,7 @@ It does this using the Glasgow IPL group's `ietfdata` [tool](https://github.com/
 The script takes an argument, the working group acronym
 
 ```bash
-python bin/collect_draft_metadata.py -w httpbis
+python3 bin/collect_draft_metadata.py -w httpbis
 ```
 
 
@@ -106,6 +93,17 @@ To run the tests from the command like, use the command `pytest`.
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers [pledge to make participation in our project and our community a harassment-free experience for everyone](CODE_OF_CONDUCT.md).
+
+## Troubleshooting 
+
+If the installation described above does not work, you can try to run the installation with Pip:
+
+```bash
+git clone https://github.com/datactive/bigbang.git
+# optionally create a new virtualenv here
+pip3 install -r requirements.txt
+python3 setup.py develop --user
+```
 
 ## License
 
