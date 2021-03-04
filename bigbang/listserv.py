@@ -2,6 +2,7 @@ import datetime
 import email
 import email.parser
 import glob
+import logging
 import mailbox
 import os
 import re
@@ -9,6 +10,7 @@ import subprocess
 import time
 import urllib
 import warnings
+from pathlib import Path
 from email.header import Header
 from email.message import Message
 from email.mime.text import MIMEText
@@ -20,6 +22,9 @@ import requests
 import yaml
 from bs4 import BeautifulSoup
 
+from config.config import CONFIG
+
+project_directory = Path(os.path.abspath(__file__)).parent.parent
 
 class ListservMessageWarning(BaseException):
     """Base class for Archive class specific exceptions"""
@@ -75,7 +80,6 @@ class ListservMessage:
         fields="total",
     )
     """
-
     empty_header = {
         "subject": None,
         "fromname": None,
@@ -121,6 +125,7 @@ class ListservMessage:
         Args:
         """
         # TODO implement field selection, e.g. return only header, body, etc.
+        print("ListserveList = ", list_name, url)
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
@@ -258,15 +263,22 @@ class ListservMessage:
         list_name: str, url: str, soup: BeautifulSoup
     ) -> str:
         """"""
-        url_root = ("/").join(url.split("/")[:-2])
-        a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
-        href_plain_text = [
-            tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
-        ][0]
-        body_soup = get_website_content(
-            urllib.parse.urljoin(url_root, href_plain_text)
-        )
-        return body_soup.find("pre").text
+        try:
+            url_root = ("/").join(url.split("/")[:-2])
+            a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
+            href_plain_text = [
+                tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
+            ][0]
+            body_soup = get_website_content(
+                urllib.parse.urljoin(url_root, href_plain_text)
+            )
+            return body_soup.find("pre").text
+        except Exception:
+            logging.exception(
+                f"The message body of url={url} which is part of the "
+                "ListservList={list_name} could not be loaded."
+            )
+            return None
 
     @classmethod
     def format_header_content(cls, header: Dict[str, str]) -> Dict[str, str]:
@@ -437,7 +449,7 @@ class ListservList:
         cls,
         name: str,
         url: str,
-        select: dict,
+        select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
@@ -452,7 +464,9 @@ class ListservList:
         """
         if session is None:
             session = get_auth_session(url_login, **login)
-        if "fields" not in list(select.keys()):
+        if select is None:
+            select = {"fields": "total"}
+        elif "fields" not in list(select.keys()):
             select["fields"] = "total"
         msgs = cls.get_messages_from_url(name, url, select, session)
         return cls.from_messages(name, url, msgs)
@@ -834,10 +848,11 @@ class ListservArchive(object):
         name: str,
         url_root: str,
         url_home: str,
-        select: dict,
+        select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
+        instant_dump: bool = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given URL.
@@ -849,7 +864,9 @@ class ListservArchive(object):
             select:
         """
         session = get_auth_session(url_login, **login)
-        lists = cls.get_lists_from_url(url_root, url_home, select, session)
+        lists = cls.get_lists_from_url(
+            url_root, url_home, select, session, instant_dump,
+        )
         return cls.from_mailing_lists(name, url_root, lists, select)
 
     @classmethod
@@ -858,7 +875,7 @@ class ListservArchive(object):
         name: str,
         url_root: str,
         url_mailing_lists: Union[List[str], List[ListservList]],
-        select: dict,
+        select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
@@ -895,6 +912,7 @@ class ListservArchive(object):
         url_home: str,
         select: dict,
         session: Optional[str] = None,
+        instant_dump: bool = True,
     ) -> List[ListservList]:
         """
         Created dictionary of all lists in the archive.
@@ -925,7 +943,12 @@ class ListservArchive(object):
                     session=session,
                 )
                 if len(mlist) != 0:
-                    archive.append(mlist)
+                    if instant_dump:
+                        print("instant dumping")
+                        mlist.to_mbox(dir_out=CONFIG.mail_path)
+                        archive.append(mlist.name)
+                    else:
+                        archive.append(mlist)
         return archive
 
     def get_sections(url_root: str, url_home: str) -> int:
@@ -1018,7 +1041,7 @@ def get_auth_session(
 def get_login_from_terminal(
     username: Union[str, None],
     password: Union[str, None],
-    file_auth: str = "../config/authentication.yaml",
+    file_auth: str = str(project_directory) + "/config/authentication.yaml",
 ) -> Tuple[Union[str, None]]:
     """
     Get login key from user during run time if 'username' and/or 'password' is 'None'.

@@ -21,12 +21,14 @@ from bigbang.parse import get_date
 from config.config import CONFIG
 
 from . import parse, w3crawl
+from . import listserv
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
 txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
 gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile(r"lists\.w3\.org")
+listserv_archives_exp = re.compile(r"list\.etsi\.org")
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
@@ -285,6 +287,14 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
 
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
+    elif listserv_archives_exp.search(url):
+        print("archive_dir  ", archive_dir)
+        lsarc = listserv.ListservArchive.from_url(
+            name="3GPP",
+            url_root=url,
+            url_home=url + "HOME",
+        )
+        lsarc.to_mbox(archive_dir)
 
     response = urllib.request.urlopen(url)
     html = codecs.decode(response.read())

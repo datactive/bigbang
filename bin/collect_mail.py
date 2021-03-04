@@ -5,21 +5,24 @@ import logging
 import argparse
 from argparse import RawTextHelpFormatter
 
-parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter, description=r"""
-Collects files from public mailing list archives.
+parser = argparse.ArgumentParser(
+    formatter_class=RawTextHelpFormatter,
+    description=r"""
+    Collects files from public mailing list archives.
 
-Please include either a url of a mailman web archive or the path to a file with
-a linebreak-separated list of such urls.
+    Please include either a url of a mailman web archive or the path to a file with
+    a linebreak-separated list of such urls.
 
-For example:
+    For example:
 
-python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
+    python bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
 
-or
+    or
 
-python bin/collect_mail.py -f examples/urls.txt
+    python bin/collect_mail.py -f examples/urls.txt
 
-""")
+    """,
+)
 parser.add_argument('-u', type=str, help='URL of mailman archive')
 
 parser.add_argument('-f', type=str, help='Path of a file with linebreak-seperated list of URLs')
