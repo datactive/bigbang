@@ -20,8 +20,7 @@ from validator_collection import checkers
 from bigbang.parse import get_date
 from config.config import CONFIG
 
-from . import parse, w3crawl
-from . import listserv
+from . import listserv, parse, w3crawl
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
 txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
@@ -288,13 +287,12 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
     elif listserv_archives_exp.search(url):
-        print("archive_dir  ", archive_dir)
-        lsarc = listserv.ListservArchive.from_url(
+        listserv.ListservArchive.from_url(
             name="3GPP",
             url_root=url,
             url_home=url + "HOME",
+            instant_dump=True,
         )
-        lsarc.to_mbox(archive_dir)
 
     response = urllib.request.urlopen(url)
     html = codecs.decode(response.read())
