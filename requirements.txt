@@ -10,7 +10,7 @@ ietfdata
 jinja2>=2.11.2
 jupyter
 jsonschema
-gitpython
+GitPython
 matplotlib>=3.3.3
 networkx>=2.5
 nltk
