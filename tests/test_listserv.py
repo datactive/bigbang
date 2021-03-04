@@ -172,6 +172,7 @@ class TestListservArchive:
                 "fields": "header",
             },
             login=auth_key,
+            instant_dump=False,
         )
         assert (
             arch.lists[0].messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
@@ -191,6 +192,7 @@ class TestListservArchive:
                 "fields": "header",
             },
             login=auth_key_mock,
+            instant_dump=False,
         )
         assert arch.name == "3GPP"
         assert arch.url == url_archive
