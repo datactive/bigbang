@@ -27,6 +27,7 @@ yaml
 common
 powerlaw
 testfixtures
+validator-collection
 git+https://github.com/gitpython-developers/GitPython.git
 
 # dev-dependencies
