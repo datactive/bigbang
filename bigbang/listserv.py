@@ -24,7 +24,13 @@ from bs4 import BeautifulSoup
 
 from config.config import CONFIG
 
-project_directory = Path(os.path.abspath(__file__)).parent.parent
+project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
+logging.basicConfig(
+    filename=project_directory+'/listserv.log',
+    level=logging.INFO,
+    format='%(asctime)s %(message)s',
+)
+logger = logging.getLogger(__name__)
 
 class ListservMessageWarning(BaseException):
     """Base class for Archive class specific exceptions"""
@@ -125,7 +131,6 @@ class ListservMessage:
         Args:
         """
         # TODO implement field selection, e.g. return only header, body, etc.
-        print("ListserveList = ", list_name, url)
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
@@ -274,9 +279,9 @@ class ListservMessage:
             )
             return body_soup.find("pre").text
         except Exception:
-            logging.exception(
-                f"The message body of url={url} which is part of the "
-                "ListservList={list_name} could not be loaded."
+            logger.info(
+                f"The message body of {url} which is part of the "
+                f"list {list_name} could not be loaded."
             )
             return None
 
@@ -612,6 +617,7 @@ class ListservList:
                         session=session,
                     )
                 )
+                logger.info(f"Recorded the message {msg_url}.")
                 # wait between loading messages, for politeness
                 time.sleep(1)
         return msgs
@@ -944,10 +950,11 @@ class ListservArchive(object):
                 )
                 if len(mlist) != 0:
                     if instant_dump:
-                        print("instant dumping")
+                        logger.info(f"The list {mlist.name} is save to a .mbox file.")
                         mlist.to_mbox(dir_out=CONFIG.mail_path)
                         archive.append(mlist.name)
                     else:
+                        logger.info(f"Recorded the list {mlist.name}.")
                         archive.append(mlist)
         return archive
 
@@ -1041,7 +1048,7 @@ def get_auth_session(
 def get_login_from_terminal(
     username: Union[str, None],
     password: Union[str, None],
-    file_auth: str = str(project_directory) + "/config/authentication.yaml",
+    file_auth: str = project_directory + "/config/authentication.yaml",
 ) -> Tuple[Union[str, None]]:
     """
     Get login key from user during run time if 'username' and/or 'password' is 'None'.
