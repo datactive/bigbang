@@ -9,6 +9,7 @@ import yaml
 import bigbang
 from bigbang import listserv
 from bigbang.listserv import ListservArchive, ListservList, ListservMessage
+from config.config import CONFIG
 
 url_archive = "https://list.etsi.org/scripts/wa.exe?"
 url_list = url_archive + "A0=3GPP_TSG_CT_WG6"
@@ -17,6 +18,7 @@ dir_temp = tempfile.gettempdir()
 file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = "../config/authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
+project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
 
 
 class TestListservMessage:
@@ -154,68 +156,36 @@ class TestListservList:
 
 
 class TestListservArchive:
-    @pytest.mark.skipif(
-        not os.path.isfile(file_auth),
-        reason="Key to log into LISTSERV could not be found",
-    )
-    def test__from_url_with_login(self):
-        with open(file_auth, "r") as stream:
-            auth_key = yaml.safe_load(stream)
-        arch = ListservArchive.from_url(
-            name="3GPP",
-            url_root=url_archive,
-            url_home=url_archive + "HOME",
-            select={
-                "years": 2021,
-                "months": "January",
-                "weeks": 1,
-                "fields": "header",
-            },
-            login=auth_key,
-        )
-        assert (
-            arch.lists[0].messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
-        )
-        assert arch.lists[0].messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
-
     @pytest.fixture(name="arch", scope="session")
-    def test__from_url_wihout_login(self):
-        arch = ListservArchive.from_url(
+    def test__from_listserv_directory(self):
+        arch = ListservArchive.from_listserv_directory(
             name="3GPP",
-            url_root=url_archive,
-            url_home=url_archive + "HOME",
-            select={
-                "years": 2021,
-                "months": "January",
-                "weeks": 1,
-                "fields": "header",
-            },
-            login=auth_key_mock,
+            directorypath=project_directory + "/tests/data/3GPP/",
         )
         assert arch.name == "3GPP"
-        assert arch.url == url_archive
-        assert len(arch) == 4
-        assert len(arch.lists[0]) == 3
-        assert arch.lists[0].messages[0].subject == "Happy New Year 2021"
+        assert len(arch) == 2
+        assert len(arch.lists[0]) == 325
+        assert (
+            arch.lists[0].messages[0].subject
+            == "MTCe drafting - UEPCOP tdoc list"
+        )
         return arch
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
         assert len(list(dic.keys())) == 9
-        assert len(dic[list(dic.keys())[0]]) == 40
+        assert len(dic[list(dic.keys())[0]]) == 354
 
     def test__to_pandas_dataframe(self, arch):
         df = arch.to_pandas_dataframe()
         assert len(df.columns.values) == 9
-        assert len(df.index.values) == 40
+        assert len(df.index.values) == 354
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_CT_WG6.mbox": 30,
-            f"{dir_temp}/3GPP_TSG_RAN_WG3.mbox": 40,
-            f"{dir_temp}/3GPP_TSG_RAN.mbox": 30,
-            f"{dir_temp}/3GPP_TSG_RAN_WG4.mbox": 300,
+            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 84889,
+            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 856826,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
