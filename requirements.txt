@@ -26,8 +26,8 @@ pyyaml
 yaml
 common
 powerlaw
-testfixtures
 validator-collection
+testfixtures
 git+https://github.com/gitpython-developers/GitPython.git
 
 # dev-dependencies
