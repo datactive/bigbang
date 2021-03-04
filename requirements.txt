@@ -6,7 +6,7 @@ enlighten>=1.7.2
 gender-detector
 html2text>=2020.1.16
 ietfdata
-# ipython
+ipython
 jinja2>=2.11.2
 jupyter
 jsonschema
@@ -23,9 +23,9 @@ pyzmq
 tornado
 requests>=2.25.1
 pyyaml
+yaml
 common
 powerlaw
-validator_collection
 testfixtures
 git+https://github.com/gitpython-developers/GitPython.git
 
