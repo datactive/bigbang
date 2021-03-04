@@ -10,10 +10,10 @@ import subprocess
 import time
 import urllib
 import warnings
-from pathlib import Path
 from email.header import Header
 from email.message import Message
 from email.mime.text import MIMEText
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
 import numpy as np
@@ -25,12 +25,14 @@ from bs4 import BeautifulSoup
 from config.config import CONFIG
 
 project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
+
 logging.basicConfig(
-    filename=project_directory+'/listserv.log',
+    filename=project_directory + "/listserv.log",
     level=logging.INFO,
-    format='%(asctime)s %(message)s',
+    format="%(asctime)s %(message)s",
 )
 logger = logging.getLogger(__name__)
+
 
 class ListservMessageWarning(BaseException):
     """Base class for Archive class specific exceptions"""
@@ -86,6 +88,7 @@ class ListservMessage:
         fields="total",
     )
     """
+
     empty_header = {
         "subject": None,
         "fromname": None,
@@ -272,7 +275,9 @@ class ListservMessage:
             url_root = ("/").join(url.split("/")[:-2])
             a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
             href_plain_text = [
-                tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
+                tag.get("href")
+                for tag in a_tags
+                if "Fplain" in tag.get("href")
             ][0]
             body_soup = get_website_content(
                 urllib.parse.urljoin(url_root, href_plain_text)
@@ -871,7 +876,11 @@ class ListservArchive(object):
         """
         session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(
-            url_root, url_home, select, session, instant_dump,
+            url_root,
+            url_home,
+            select,
+            session,
+            instant_dump,
         )
         return cls.from_mailing_lists(name, url_root, lists, select)
 
@@ -950,7 +959,9 @@ class ListservArchive(object):
                 )
                 if len(mlist) != 0:
                     if instant_dump:
-                        logger.info(f"The list {mlist.name} is save to a .mbox file.")
+                        logger.info(
+                            f"The list {mlist.name} is save to a .mbox file."
+                        )
                         mlist.to_mbox(dir_out=CONFIG.mail_path)
                         archive.append(mlist.name)
                     else:
