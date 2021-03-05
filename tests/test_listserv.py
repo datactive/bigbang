@@ -164,28 +164,27 @@ class TestListservArchive:
         )
         assert arch.name == "3GPP"
         assert len(arch) == 2
-        assert len(arch.lists[0]) == 325
+        assert len(arch.lists[0]) == 57
         assert (
-            arch.lists[0].messages[0].subject
-            == "MTCe drafting - UEPCOP tdoc list"
+            arch.lists[0].messages[0].subject == "test email - please ignore"
         )
         return arch
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
         assert len(list(dic.keys())) == 9
-        assert len(dic[list(dic.keys())[0]]) == 354
+        assert len(dic[list(dic.keys())[0]]) == 82
 
     def test__to_pandas_dataframe(self, arch):
         df = arch.to_pandas_dataframe()
         assert len(df.columns.values) == 9
-        assert len(df.index.values) == 354
+        assert len(df.index.values) == 82
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 84889,
-            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 856826,
+            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 41623,
+            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 61211,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
