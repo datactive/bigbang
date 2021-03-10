@@ -103,6 +103,7 @@ git clone https://github.com/datactive/bigbang.git
 pip3 install -r requirements.txt
 python3 setup.py develop --user
 ```
+If you have problems installing, you might want to have a look at the [![BigBang Video Tutorial](http://img.youtube.com/vi/JWimku8JVqE/0.jpg)](http://www.youtube.com/watch?v=JWimku8JVqE "BigBang Tutorial")
 
 ## License
 
