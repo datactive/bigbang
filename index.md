@@ -8,7 +8,11 @@ You can use BigBang to research Internet governance communities, but it has also
 
 We have included lists of potential mailinglists for you to scrape (e.g. IETF, ICANN, RIPE, W3C), and a lot of Jupyter notebooks to analyze the mailinglists.
 
-To start analyzing right away, have a look at the <a href="https://github.com/datactive/bigbang/blob/master/README.md">readme file</a>. If you get stuck, send an email to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-user">user list</a>.
+To start analyzing right away, have a look at the <a href="https://github.com/datactive/bigbang/blob/master/README.md">readme file</a>. If you get stuck, send an email to our <a href="https://lists.ghserv.net/mailman/listinfo/bigbang-user">user list</a> and/or have a look at the tutorial:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JWimku8JVqE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Community
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
