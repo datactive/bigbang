@@ -883,7 +883,7 @@ class ListservArchive(object):
             session,
             instant_dump,
         )
-        return cls.from_mailing_lists(name, url_root, lists, select)
+        return cls.from_mailing_lists(name, url_root, lists, select, session)
 
     @classmethod
     def from_mailing_lists(
