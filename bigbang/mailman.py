@@ -421,11 +421,6 @@ def open_list_archives(
 
     messages = None
 
-    if "http" in url:
-        collect_from_url(url, notes=None)
-        list_name = get_list_name(url)
-        archive_dir = archive_directory(CONFIG.mail_path, list_name)
-
     if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
@@ -445,7 +440,18 @@ def open_list_archives(
         ]
 
         logging.info("Opening %d archive files", len(txts))
-        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
+
+        def mbox_reader(stream):
+            """Read a non-ascii message from mailbox"""
+            data = stream.read()
+            text = data.decode(encoding="utf-8", errors="replace")
+            return mailbox.mboxMessage(text)
+
+        arch = [mailbox.mbox(
+                    txt, factory=mbox_reader, create=False
+                    ).values() 
+                for txt
+                in txts]
 
         if len(arch) == 0:
             raise MissingDataException(
