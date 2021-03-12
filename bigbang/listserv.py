@@ -524,7 +524,7 @@ class ListservList:
         cls,
         name: str,
         directorypaths: List[str],
-        filedsc: str,
+        filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
@@ -755,6 +755,31 @@ class ListservList:
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
+    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
+        """
+        Place all message in all lists into a dictionary of the form:
+            dic = {
+                "message_ID1": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+                "message_ID2": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+            }
+        """
+        # initialize dictionary
+        dic = {}
+        msg_nr = 0
+        # run through messages
+        for msg in self.messages:
+            dic[f"ID{msg_nr}"] = msg.to_dict()
+            msg_nr += 1
+        return dic
+
     def to_dict(self) -> Dict[str, List[str]]:
         """
         Place all message into a dictionary of the form:
@@ -883,7 +908,7 @@ class ListservArchive(object):
             session,
             instant_dump,
         )
-        return cls.from_mailing_lists(name, url_root, lists, select)
+        return cls.from_mailing_lists(name, url_root, lists, select, session)
 
     @classmethod
     def from_mailing_lists(
@@ -1030,6 +1055,33 @@ class ListservArchive(object):
             archive_sections_dict[url_home] = "Home"
         return archive_sections_dict
 
+    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
+        """
+        Place all message in all lists into a dictionary of the form:
+            dic = {
+                "message_ID1": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+                "message_ID2": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+            }
+        """
+        # initialize dictionary
+        dic = {}
+        msg_nr = 0
+        # run through lists
+        for mlist in self.lists:
+            # run through messages
+            for msg in mlist.messages:
+                dic[f"ID{msg_nr}"] = msg.to_dict()
+                msg_nr += 1
+        return dic
+
     def to_dict(self) -> Dict[str, List[str]]:
         """
         Place all message in all lists into a dictionary of the form:
@@ -1039,6 +1091,16 @@ class ListservArchive(object):
                 .
                 .
                 "ListName": [messages[0], ... , messages[n]]
+            }
+            {
+                "message_ID1":
+                    "body": ...,
+                    "subject": ...,
+                }
+                "message_ID2":
+                    "body": ...,
+                    "subject": ...,
+                }
             }
         """
         # initialize dictionary
