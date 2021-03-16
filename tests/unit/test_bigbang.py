@@ -3,7 +3,6 @@ import logging
 import mailbox
 import os
 import unittest
-from pathlib import Path
 
 import networkx as nx
 import pandas as pd
@@ -19,7 +18,6 @@ from config.config import CONFIG
 
 test_txt = ""
 TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")
-project_directory = str(Path(os.path.abspath(__file__)).parent.parent.parent)
 
 
 class TestGit(unittest.TestCase):
@@ -197,10 +195,11 @@ class TestMailman(unittest.TestCase):
 class TestArchive(unittest.TestCase):
     def test_mailman_chain(self):
         name = "bigbang-dev-test.txt"
-        dir = project_directory + "/tests/data"
 
         # archive loaded from mbox
-        arx = archive.Archive(name, archive_dir=dir, mbox=True)
+        arx = archive.Archive(
+            name, archive_dir=CONFIG.test_data_path, mbox=True
+        )
 
         arx.save("test.csv")
 
@@ -236,9 +235,10 @@ class TestArchive(unittest.TestCase):
 
     def test_clean_message(self):
         name = "2001-November.txt"
-        dir = project_directory + "/tests/data"
 
-        arx = archive.Archive(name, archive_dir=dir, mbox=True)
+        arx = archive.Archive(
+            name, archive_dir=CONFIG.test_data_path, mbox=True
+        )
 
         body = arx.data["Body"]["<E165uMn-0002IJ-00@spock.physics.mcgill.ca>"]
 
@@ -260,9 +260,10 @@ class TestArchive(unittest.TestCase):
 
     def test_email_entity_resolution(self):
         name = "2001-November.txt"
-        dir = project_directory + "/tests/data"
 
-        arx = archive.Archive(name, archive_dir=dir, mbox=True)
+        arx = archive.Archive(
+            name, archive_dir=CONFIG.test_data_path, mbox=True
+        )
 
         e = process.resolve_sender_entities(arx.get_activity(resolved=False))
 
