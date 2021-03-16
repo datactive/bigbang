@@ -19,16 +19,17 @@ auth_key_mock = {"username": "bla", "password": "bla"}
 
 class TestListservList:
     @pytest.fixture(name="mlist", scope="module")
-    def test__from_url_without_login(self):
+    def get_mailinglist(self):
         mlist = ListservList.from_listserv_directories(
             name="3GPP_TSG_SA_ITUT_AHG",
             directorypaths=[
                 CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"
             ],
         )
-        assert mlist.name == "3GPP_TSG_SA_ITUT_AHG"
-        assert len(mlist) == 25
         return mlist
+
+    def test__number_of_messages(self, mlist):
+        assert len(mlist) == 25
 
     def test__first_message_header(self, mlist):
         msg = mlist.messages[0]
@@ -70,11 +71,14 @@ class TestListservList:
 
 class TestListservArchive:
     @pytest.fixture(name="arch", scope="session")
-    def test__from_listserv_directory(self):
+    def get_mailarchive(self):
         arch = ListservArchive.from_listserv_directory(
             name="3GPP",
             directorypath=CONFIG.test_data_path + "3GPP/",
         )
+        return arch
+
+    def test__archive_content(self, arch):
         assert arch.name == "3GPP"
         mlist_names = [mlist.name for mlist in arch.lists]
         assert "3GPP_TSG_SA_ITUT_AHG" in mlist_names
@@ -87,7 +91,6 @@ class TestListservArchive:
             arch.lists[mtce_index].messages[0].subject
             == "test email - please ignore"
         )
-        return arch
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
