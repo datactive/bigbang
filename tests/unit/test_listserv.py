@@ -12,21 +12,18 @@ from bigbang.listserv import ListservArchive, ListservList, ListservMessage
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
-project_directory = str(Path(os.path.abspath(__file__)).parent.parent.parent)
 file_temp_mbox = dir_temp + "/listserv.mbox"
-file_auth = project_directory + "/config/authentication.yaml"
+file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
 
 
 class TestListservList:
     @pytest.fixture(name="mlist", scope="module")
     def test__from_url_without_login(self):
-        print("-------------")
-        print(project_directory + "/tests/data/3GPP/3GPP_TSG_SA_ITUT_AHG/")
         mlist = ListservList.from_listserv_directories(
             name="3GPP_TSG_SA_ITUT_AHG",
             directorypaths=[
-                project_directory + "/tests/data/3GPP/3GPP_TSG_SA_ITUT_AHG/"
+                CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"
             ],
         )
         assert mlist.name == "3GPP_TSG_SA_ITUT_AHG"
@@ -76,7 +73,7 @@ class TestListservArchive:
     def test__from_listserv_directory(self):
         arch = ListservArchive.from_listserv_directory(
             name="3GPP",
-            directorypath=project_directory + "/tests/data/3GPP/",
+            directorypath=CONFIG.test_data_path + "3GPP/",
         )
         assert arch.name == "3GPP"
         mlist_names = [mlist.name for mlist in arch.lists]
