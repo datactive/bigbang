@@ -28,23 +28,27 @@ class TestListservList:
         )
         return mlist
 
+    @pytest.fixture(name="msg", scope="module")
+    def get_message(self, mlist):
+        msg = [
+            msg
+            for msg in mlist.messages
+            if msg.subject
+            == "Re: Update on ITU-T related activities needing attention"
+        ][0]
+        return msg
+
     def test__number_of_messages(self, mlist):
         assert len(mlist) == 25
 
-    def test__first_message_header(self, mlist):
-        msg = mlist.messages[0]
-        assert (
-            msg.subject
-            == "Re: Update on ITU-T related activities needing attention"
-        )
+    def test__first_message_header(self, msg):
         assert msg.fromname == "Stephen Hayes"
         assert msg.fromaddr == "stephen.hayes@ERICSSON.COM"
         assert msg.toname == "Stephen Hayes"
         assert msg.toaddr == "stephen.hayes@ERICSSON.COM"
         assert msg.date == "Mon May  8 10:47:41 2017"
 
-    def test__first_message_body(self, mlist):
-        msg = mlist.messages[0]
+    def test__first_message_body(self, msg):
         assert msg.body.split("\n")[3] == "Hi,"
         assert len(msg.body) == 24129
 
@@ -78,7 +82,7 @@ class TestListservArchive:
         )
         return arch
 
-    def test__archive_content(self, arch):
+    def test__mailinglist_in_archive(self, arch):
         assert arch.name == "3GPP"
         mlist_names = [mlist.name for mlist in arch.lists]
         assert "3GPP_TSG_SA_ITUT_AHG" in mlist_names
@@ -87,10 +91,20 @@ class TestListservArchive:
         mtce_index = mlist_names.index("3GPP_TSG_SA_WG2_MTCE")
         assert len(arch.lists[ahg_index]) == 25
         assert len(arch.lists[mtce_index]) == 57
-        assert (
-            arch.lists[mtce_index].messages[0].subject
-            == "test email - please ignore"
-        )
+
+    def test__message_in_mailinglist_in_archive(self, arch):
+        mlist_names = [mlist.name for mlist in arch.lists]
+        mtce_index = mlist_names.index("3GPP_TSG_SA_WG2_MTCE")
+        msg = [
+            msg
+            for msg in arch.lists[mtce_index].messages
+            if msg.subject == "test email - please ignore"
+        ][0]
+        assert msg.fromname == "Jain Puneet"
+        assert msg.fromaddr == "puneet.jain@INTEL.COM"
+        assert msg.toname == "Jain Puneet"
+        assert msg.toaddr == "puneet.jain@INTEL.COM"
+        assert msg.date == "Thu Feb 28 18:58:18 2013"
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
