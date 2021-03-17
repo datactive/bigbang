@@ -2,6 +2,9 @@ import email
 import logging
 import mailbox
 import os
+import pathlib
+import re
+import shutil
 import unittest
 
 import networkx as nx
@@ -13,6 +16,7 @@ import bigbang.mailman as mailman
 import bigbang.parse as parse
 import bigbang.process as process
 import bigbang.utils as utils
+import bigbang.w3crawl as w3crawl
 from bigbang import repo_loader
 from config.config import CONFIG
 
@@ -32,14 +36,11 @@ class TestMailman(unittest.TestCase):
     def setUp(self):
         try:
             os.mkdir(TEMP_DIR)
-        except OSError:  # Python 2.7-specific, alas; FileExistsError in py3
+        except FileExistsError:
             pass  # temporary directory already exists, that's cool
 
     def tearDown(self):
-        # remove all files in the temporary files directory, as cleanup
-        temp_files = os.listdir(TEMP_DIR)
-        for f in temp_files:
-            os.remove(os.path.join(TEMP_DIR, f))
+        shutil.rmtree(TEMP_DIR)
 
     def test_provenance(self):
         test_list_name = "test-list-name"
@@ -343,3 +344,120 @@ class TestUtils(unittest.TestCase):
             list(bg.edges()) == [("A", "B")],
             msg="Incorrected edges in labeled blockmodel",
         )
+
+
+class TestW3crawl(unittest.TestCase):
+    def setUp(self):
+        try:
+            os.mkdir(TEMP_DIR)
+        except FileExistsError:
+            shutil.rmtree(TEMP_DIR)
+            os.mkdir(TEMP_DIR)
+
+    def tearDown(self):
+        shutil.rmtree(TEMP_DIR)
+
+    def test_w3c_archive_message_parsing(self):
+        test_html_path = os.path.join(
+            CONFIG.test_data_path, "w3crawl-test-message.html"
+        )
+        f = open(test_html_path, "r")
+        html = f.read()
+        f.close()
+        message = w3crawl.W3cMailingListArchivesParser().parsestr(html)
+
+        assert (
+            len(message.get_from()) > 0
+        ), "message doesn't have a From address"
+        assert message.get_from().startswith(
+            "npdoty@ischool.berkeley.edu"
+        ), "incorrect From address parsed"
+        assert "Subject:" in str(
+            message
+        ), "message does not have Subject header"
+        assert "Message-ID:" in str(
+            message
+        ), "message does not have message id"
+        assert "Date:" in str(message), "message does not have Date header"
+        assert "In-Reply-To:" not in str(
+            message
+        ), "this message shouldn't have an in-reply-to"
+
+    def test_non_ascii_address_parsing(self):
+        test_html_path = os.path.join(
+            CONFIG.test_data_path, "w3crawl-nonascii.html"
+        )
+        f = open(test_html_path, "r")
+        html = f.read()
+        f.close()
+        message = w3crawl.W3cMailingListArchivesParser().parsestr(html)
+
+        assert (
+            len(message.get_from()) > 0
+        ), "message doesn't have a From address"
+
+        mbox = mailbox.mbox(os.path.join(TEMP_DIR, "test.mbox"))
+        mbox.add(
+            message
+        )  # make sure it doesn't crash on adding to an mbox either
+
+    def test_w3c_archive_message_headers(self):
+        test_html_path = os.path.join(
+            CONFIG.test_data_path, "w3crawl-test-message-to-cc.html"
+        )
+        f = open(test_html_path, "r")
+        html = f.read()
+        f.close()
+        message = w3crawl.W3cMailingListArchivesParser().parsestr(html)
+
+        assert "Subject:" in str(
+            message
+        ), "message does not have Subject header"
+        assert "Message-ID:" in str(
+            message
+        ), "message does not have message id"
+        assert "Cc" in message, "message does not have expected CC header"
+        assert (
+            "," in message["To"]
+        ), "message does not have a To header with multiple addresses"
+        assert (
+            "In-Reply-To" in message
+        ), "this message should have an in-reply-to header"
+        assert (
+            message["In-Reply-To"]
+            == "<CABQTWrn2fqvee6qg2VTcDA5rR8QihQy7qjycDGBM2xafwGyRmQ&#64;mail.gmail.com>"
+        )
+
+    def test_w3c_collect_from_url(self):
+        test_archive_homepage_path = os.path.join(
+            CONFIG.test_data_path, "w3c-archive-dir", "index"
+        )
+        test_archive_homepage_url = pathlib.Path(
+            test_archive_homepage_path
+        ).as_uri()
+
+        w3crawl.collect_from_url(
+            test_archive_homepage_url,
+            base_arch_dir=TEMP_DIR,
+            notes="w3crawl test",
+        )
+
+        assert os.path.isfile(
+            os.path.join(TEMP_DIR, "index", "2020-05.mbox")
+        ), "mbox file was not created"
+        assert os.path.isfile(
+            os.path.join(TEMP_DIR, "index", mailman.PROVENANCE_FILENAME)
+        ), "provenance file was not created"
+
+        provenance = mailman.access_provenance(os.path.join(TEMP_DIR, "index"))
+        assert provenance["notes"] == "w3crawl test"
+        assert (
+            provenance["complete"] is True
+        ), "provenance not marked as a complete crawl"
+
+        mbox = mailbox.mbox(os.path.join(TEMP_DIR, "index", "2020-05.mbox"))
+        for message in mbox:
+            assert "Archived-At" in message
+            assert re.match(
+                "<.+>", message["Archived-At"]
+            ), "Archived-At header format not as expected"

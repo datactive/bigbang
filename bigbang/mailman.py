@@ -102,9 +102,8 @@ def collect_from_url(
         has_archives = collect_archive_from_url(
             url, archive_dir=archive_dir, notes=notes
         )
-    except urllib.error.HTTPError as err:
-        # BUG: this error code/message is misleading
-        print("HTTP 404 Error by url=%s causes error: %s" % (url, err))
+    except urllib.error.HTTPError:
+        logging.exception("HTTP Error in collecting archive: %s", url)
         return None
 
     if has_archives:
@@ -447,11 +446,10 @@ def open_list_archives(
             text = data.decode(encoding="utf-8", errors="replace")
             return mailbox.mboxMessage(text)
 
-        arch = [mailbox.mbox(
-                    txt, factory=mbox_reader, create=False
-                    ).values() 
-                for txt
-                in txts]
+        arch = [
+            mailbox.mbox(txt, factory=mbox_reader, create=False).values()
+            for txt in txts
+        ]
 
         if len(arch) == 0:
             raise MissingDataException(
