@@ -2,6 +2,7 @@ import datetime
 import email
 import email.parser
 import glob
+import logging
 import mailbox
 import os
 import re
@@ -12,6 +13,7 @@ import warnings
 from email.header import Header
 from email.message import Message
 from email.mime.text import MIMEText
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
 import numpy as np
@@ -19,6 +21,17 @@ import pandas as pd
 import requests
 import yaml
 from bs4 import BeautifulSoup
+
+from config.config import CONFIG
+
+project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
+
+logging.basicConfig(
+    filename=project_directory + "/listserv.log",
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 
 class ListservMessageWarning(BaseException):
@@ -258,15 +271,24 @@ class ListservMessage:
         list_name: str, url: str, soup: BeautifulSoup
     ) -> str:
         """"""
-        url_root = ("/").join(url.split("/")[:-2])
-        a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
-        href_plain_text = [
-            tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
-        ][0]
-        body_soup = get_website_content(
-            urllib.parse.urljoin(url_root, href_plain_text)
-        )
-        return body_soup.find("pre").text
+        try:
+            url_root = ("/").join(url.split("/")[:-2])
+            a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
+            href_plain_text = [
+                tag.get("href")
+                for tag in a_tags
+                if "Fplain" in tag.get("href")
+            ][0]
+            body_soup = get_website_content(
+                urllib.parse.urljoin(url_root, href_plain_text)
+            )
+            return body_soup.find("pre").text
+        except Exception:
+            logger.info(
+                f"The message body of {url} which is part of the "
+                f"list {list_name} could not be loaded."
+            )
+            return None
 
     @classmethod
     def format_header_content(cls, header: Dict[str, str]) -> Dict[str, str]:
@@ -437,7 +459,7 @@ class ListservList:
         cls,
         name: str,
         url: str,
-        select: dict,
+        select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
@@ -452,7 +474,9 @@ class ListservList:
         """
         if session is None:
             session = get_auth_session(url_login, **login)
-        if "fields" not in list(select.keys()):
+        if select is None:
+            select = {"fields": "total"}
+        elif "fields" not in list(select.keys()):
             select["fields"] = "total"
         msgs = cls.get_messages_from_url(name, url, select, session)
         return cls.from_messages(name, url, msgs)
@@ -598,6 +622,7 @@ class ListservList:
                         session=session,
                     )
                 )
+                logger.info(f"Recorded the message {msg_url}.")
                 # wait between loading messages, for politeness
                 time.sleep(1)
         return msgs
@@ -834,10 +859,11 @@ class ListservArchive(object):
         name: str,
         url_root: str,
         url_home: str,
-        select: dict,
+        select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
+        instant_dump: bool = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given URL.
@@ -849,8 +875,14 @@ class ListservArchive(object):
             select:
         """
         session = get_auth_session(url_login, **login)
-        lists = cls.get_lists_from_url(url_root, url_home, select, session)
-        return cls.from_mailing_lists(name, url_root, lists, select)
+        lists = cls.get_lists_from_url(
+            url_root,
+            url_home,
+            select,
+            session,
+            instant_dump,
+        )
+        return cls.from_mailing_lists(name, url_root, lists, select, session)
 
     @classmethod
     def from_mailing_lists(
@@ -858,7 +890,7 @@ class ListservArchive(object):
         name: str,
         url_root: str,
         url_mailing_lists: Union[List[str], List[ListservList]],
-        select: dict,
+        select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
@@ -895,6 +927,7 @@ class ListservArchive(object):
         url_home: str,
         select: dict,
         session: Optional[str] = None,
+        instant_dump: bool = True,
     ) -> List[ListservList]:
         """
         Created dictionary of all lists in the archive.
@@ -925,7 +958,15 @@ class ListservArchive(object):
                     session=session,
                 )
                 if len(mlist) != 0:
-                    archive.append(mlist)
+                    if instant_dump:
+                        logger.info(
+                            f"The list {mlist.name} is save to a .mbox file."
+                        )
+                        mlist.to_mbox(dir_out=CONFIG.mail_path)
+                        archive.append(mlist.name)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        archive.append(mlist)
         return archive
 
     def get_sections(url_root: str, url_home: str) -> int:
@@ -1018,7 +1059,7 @@ def get_auth_session(
 def get_login_from_terminal(
     username: Union[str, None],
     password: Union[str, None],
-    file_auth: str = "../config/authentication.yaml",
+    file_auth: str = project_directory + "/config/authentication.yaml",
 ) -> Tuple[Union[str, None]]:
     """
     Get login key from user during run time if 'username' and/or 'password' is 'None'.

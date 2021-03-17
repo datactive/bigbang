@@ -20,13 +20,14 @@ from validator_collection import checkers
 from bigbang.parse import get_date
 from config.config import CONFIG
 
-from . import parse, w3crawl
+from . import listserv, parse, w3crawl
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
 txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
 gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile(r"lists\.w3\.org")
+listserv_archives_exp = re.compile(r"list\.etsi\.org")
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
@@ -101,9 +102,8 @@ def collect_from_url(
         has_archives = collect_archive_from_url(
             url, archive_dir=archive_dir, notes=notes
         )
-    except urllib.error.HTTPError as err:
-        # BUG: this error code/message is misleading
-        print("HTTP 404 Error by url=%s causes error: %s" % (url, err))
+    except urllib.error.HTTPError:
+        logging.exception("HTTP Error in collecting archive: %s", url)
         return None
 
     if has_archives:
@@ -285,6 +285,13 @@ def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
 
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
+    elif listserv_archives_exp.search(url):
+        listserv.ListservArchive.from_url(
+            name="3GPP",
+            url_root=url,
+            url_home=url + "HOME",
+            instant_dump=True,
+        )
 
     response = urllib.request.urlopen(url)
     html = codecs.decode(response.read())
@@ -413,11 +420,6 @@ def open_list_archives(
 
     messages = None
 
-    if "http" in url:
-        collect_from_url(url, notes=None)
-        list_name = get_list_name(url)
-        archive_dir = archive_directory(CONFIG.mail_path, list_name)
-
     if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
         # treat string as the path to a file that is an mbox
         box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
@@ -437,7 +439,17 @@ def open_list_archives(
         ]
 
         logging.info("Opening %d archive files", len(txts))
-        arch = [list(mailbox.mbox(txt, create=False).values()) for txt in txts]
+
+        def mbox_reader(stream):
+            """Read a non-ascii message from mailbox"""
+            data = stream.read()
+            text = data.decode(encoding="utf-8", errors="replace")
+            return mailbox.mboxMessage(text)
+
+        arch = [
+            mailbox.mbox(txt, factory=mbox_reader, create=False).values()
+            for txt in txts
+        ]
 
         if len(arch) == 0:
             raise MissingDataException(

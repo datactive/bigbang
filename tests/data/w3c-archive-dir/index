@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>public-privacy@w3.org Mail Archives</title>
+<link rel="help" href="/Help/" />
+<link rel="contents" title="List of public mailing lists" href="../" />
+<link rel="stylesheet" href="//www.w3.org/StyleSheets/Mail/public-mainindex" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="feed.rss" />
+</head>
+<body>
+    <div class="head">
+      <map title="Navigation bar to upper levels" id="upper"
+      name="upper">
+        <p><a href="//www.w3.org/" title="W3C home" tabindex=
+        "2">W3C home</a> &gt; <a href=
+        "/" title=
+        "Mailing list archives">Mailing lists</a> &gt; <a href=
+        "../" title=
+        "Public Mailing lists">Public</a></p>
+      </map> 
+
+<h1>public-privacy@w3.org Mail Archives</h1>
+<div class="header">
+Privacy at W3C.
+</div><!--class=header-->
+      <map title="Navigation bar" id="navbar" name="navbar">
+        <ul>
+          <li><dfn>About this list</dfn>: [ <a href="#latest"
+          title="Shortcut to the list of messages indices grouped by calendar periods"
+           tabindex="1">Indices by calendar periods</a> ] [ <a
+          href="latest" title=
+          "Latest messages sent to this list">Latest
+          messages</a> ]
+          [ <a href="mboxes/"
+          title="Messages in mailbox format (access restricted)"
+          >Mailbox format</a> ]
+	  [ <a href="feed.rss">RSS</a> ]
+	  </li>
+
+          <li><dfn>Mail actions</dfn>: [ <a href=
+          "mailto:public-privacy@w3.org" accesskey="n">mail a new
+          topic</a> ]
+[ <a class="sub" title="subscribe to public-privacy&#64;w3.org" href="mailto:public-privacy-request&#64;w3.org?subject=subscribe">subscribe to this list</a> ][ <a class="unsub" title="unsubscribe from public-privacy&#64;w3.org" href="mailto:public-privacy-request&#64;w3.org?subject=unsubscribe">unsubscribe from this list</a> ]</li>
+          <li><dfn>Help</dfn>: [ <a href=
+          "/Help/" accesskey="h" rel="help">How to use the
+          archives</a> ] [ <a href=
+          "//www.w3.org/Search/Mail/Public/search?type-index=public-privacy&amp;index-type=t">Search the
+          archives</a> ]</li>
+        </ul>
+      </map>
+    </div>
+  <form method="get" action="//www.w3.org/Search/Mail/Public/search">
+  <div class="search">
+  <input name="type-index" type="hidden" value="public-privacy" />
+  <input name="index-type" type="hidden" value="t" /> 
+  <label for="keywords"><a href=
+    "//www.w3.org/Search/Mail/Public/">Search</a>
+    this list for <input name="keywords" id="keywords" type="text"
+    size="42" maxlength="100" value="" accesskey="f" /></label>
+   <input type="submit" name="search" value="Search" /> 
+  </div>
+  </form>
+<table border="0" cellspacing="3" cellpadding="2">
+
+ <thead>
+   <tr>
+     <th>period</th>
+      <th colspan="3">re-sorted</th>
+      <th align="right">messages</th>
+   </tr>
+</thead>
+<tbody title="Messages in year 2020">
+<tr class="first">
+<td align="right"><a name="latest" href="2020AprJun/index.html" title="April to June 2020 messages listed by date">April to June 2020</a></td><td><a href="2020AprJun/thread.html" title="Discussion threads from April to June 2020 by thread">by thread</a></td><td><a href="2020AprJun/author.html" title="April to June 2020 listed by author" >by author</a></td><td><a href="2020AprJun/subject.html" title="April to June 2020 messages by subject">by subject</a></td><td align="center">12</td></tr>
+</tbody>
+</table>
+<div class="footer">
+
+</div><!--class=footer-->
+<hr />
+<address>
+<a href="//www.w3.org/Help/Webmaster">Webmaster</a> <span
+title='Edit this page (requires authentication)' style='float: right'><a
+href="https://lists.w3.org/admin/customize?list=public-privacy">Edit this page</a></span><br />
+Last update on: Tue May  5 19:13:08 2020
+</address>
+</body></html>

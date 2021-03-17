@@ -3,7 +3,6 @@ import math
 from collections import Counter
 from pprint import pprint as pp
 
-import graph
 import networkx as nx
 import numpy as np
 import pandas
@@ -62,7 +61,7 @@ def messages_to_interaction_graph(messages, verbose=False, clean=True):
         IG.add_node(m_from)
 
     for sender, count in list(sender_counts.items()):
-        IG.node[sender]["sent"] = count
+        IG.nodes[sender]["sent"] = count
 
     replies = [m for m in df.iterrows() if m[1]["In-Reply-To"] is not None]
 
