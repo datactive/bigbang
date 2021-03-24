@@ -68,7 +68,7 @@ class TestListservList:
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
         assert len(lines) == 41623
-        assert lines[21] == "d activities:\n"
+        assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
 
