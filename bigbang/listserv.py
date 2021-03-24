@@ -1125,3 +1125,4 @@ def get_all_file_from_directory(directory: str, file_dsc: str) -> List[str]:
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
+
