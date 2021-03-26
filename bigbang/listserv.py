@@ -155,7 +155,7 @@ class ListservMessage:
         header_start_line_nr: int,
         fields: str = "total",
     ) -> "ListservMessage":
-        file = open(file_path, "r")
+        file = open(file_path, "r", errors="replace")
         fcontent = file.readlines()
         file.close()
         header_end_line_nr = cls.get_header_end_line_nr(
@@ -524,7 +524,7 @@ class ListservList:
         cls,
         name: str,
         directorypaths: List[str],
-        filedsc: str,
+        filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
@@ -541,7 +541,7 @@ class ListservList:
         # run through directories and collect all filepaths
         for directorypath in directorypaths:
             _filepaths.append(
-                get_all_file_from_directory(directorypath, filedsc)
+                get_paths_to_files_in_directory(directorypath, filedsc)
             )
         # flatten list of lists
         filepaths = [fp for li in _filepaths for fp in li]
@@ -568,7 +568,7 @@ class ListservList:
         msgs = []
         for filepath in filepaths:
             # TODO: implement selection filter
-            file = open(filepath, "r")
+            file = open(filepath, "r", errors="replace")
             fcontent = file.readlines()
             # get positions of all Emails in file
             header_start_line_nrs = cls.get_line_numbers_of_header_starts(
@@ -755,6 +755,31 @@ class ListservList:
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
+    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
+        """
+        Place all message in all lists into a dictionary of the form:
+            dic = {
+                "message_ID1": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+                "message_ID2": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+            }
+        """
+        # initialize dictionary
+        dic = {}
+        msg_nr = 0
+        # run through messages
+        for msg in self.messages:
+            dic[f"ID{msg_nr}"] = msg.to_dict()
+            msg_nr += 1
+        return dic
+
     def to_dict(self) -> Dict[str, List[str]]:
         """
         Place all message into a dictionary of the form:
@@ -818,6 +843,7 @@ class ListservArchive(object):
     -------
     from_url
     from_mailing_lists
+    from_listserv_directory
     get_lists
     get_sections
     to_dict
@@ -921,6 +947,40 @@ class ListservArchive(object):
             lists = url_mailing_lists
         return cls(name, url_root, lists)
 
+    @classmethod
+    def from_listserv_directory(
+        cls,
+        name: str,
+        directorypath: str,
+        folderdsc: str = "*",
+        filedsc: str = "*.LOG?????",
+        select: Optional[dict] = None,
+    ) -> "ListservList":
+        """
+        Args:
+            name: Name of the archive, e.g. '3GPP'.
+            directorypath: Where the ListservArchive can be initialised.
+            folderdsc: A description of the relevant folders
+            filedsc: A description of the relevant files, e.g. *.LOG?????
+            select: Selection criteria that can filter messages by:
+                - content, i.e. header and/or body
+                - period, i.e. written in a certain year, month, week-of-month
+        """
+        lists = []
+        _dirpaths_to_lists = get_paths_to_dirs_in_directory(
+            directorypath, folderdsc
+        )
+        # run through directories and collect all filepaths
+        for dirpath in _dirpaths_to_lists:
+            _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
+            mlist = ListservList.from_listserv_files(
+                dirpath.split("/")[-2],
+                _filepaths,
+                select,
+            )
+            lists.append(mlist)
+        return cls(name, directorypath, lists)
+
     @staticmethod
     def get_lists_from_url(
         url_root: str,
@@ -995,6 +1055,33 @@ class ListservArchive(object):
             archive_sections_dict[url_home] = "Home"
         return archive_sections_dict
 
+    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
+        """
+        Place all message in all lists into a dictionary of the form:
+            dic = {
+                "message_ID1": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+                "message_ID2": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+            }
+        """
+        # initialize dictionary
+        dic = {}
+        msg_nr = 0
+        # run through lists
+        for mlist in self.lists:
+            # run through messages
+            for msg in mlist.messages:
+                dic[f"ID{msg_nr}"] = msg.to_dict()
+                msg_nr += 1
+        return dic
+
     def to_dict(self) -> Dict[str, List[str]]:
         """
         Place all message in all lists into a dictionary of the form:
@@ -1004,6 +1091,16 @@ class ListservArchive(object):
                 .
                 .
                 "ListName": [messages[0], ... , messages[n]]
+            }
+            {
+                "message_ID1":
+                    "body": ...,
+                    "subject": ...,
+                }
+                "message_ID2":
+                    "body": ...,
+                    "subject": ...,
+                }
             }
         """
         # initialize dictionary
@@ -1120,8 +1217,21 @@ def get_website_content(
     return soup
 
 
-def get_all_file_from_directory(directory: str, file_dsc: str) -> List[str]:
+def get_paths_to_files_in_directory(
+    directory: str, file_dsc: str = "*"
+) -> List[str]:
     """ Get paths of all files matching file_dsc in directory """
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
+
+
+def get_paths_to_dirs_in_directory(
+    directory: str, folder_dsc: str = "*"
+) -> List[str]:
+    """ Get paths of all directories matching file_dsc in directory """
+    template = f"{directory}{folder_dsc}"
+    dir_paths = glob.glob(template)
+    # normalize directory paths
+    dir_paths = [dir_path + "/" for dir_path in dir_paths]
+    return dir_paths

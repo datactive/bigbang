@@ -1,0 +1,3460 @@
+=========================================================================
+Date:         Tue, 18 Jun 2013 06:40:03 +0000
+Reply-To:     Peter Hedman <peter.hedman@ERICSSON.COM>
+From:         Peter Hedman <peter.hedman@ERICSSON.COM>
+Subject:      Re: [S2-132184/2185]RE: urgent - several CRs have problems,
+              solutions needed immediately or CRs will be rejected
+Comments: To: "Wuxiaobo (Xiaobo)" <wuxiaobo@huawei.com>,
+          Erik Guttman <erik.guttman@GMAIL.COM>
+Comments: cc: Tony saboorian <tony.saboorian@huawei.com>,
+          "DREVON, NICOLAS (NICOLAS)" <nicolas.drevon@alcatel-lucent.com>
+In-Reply-To:  <9A8EAA8C59DC4B4A9E5FA8B451969AA371381649@szxeml528-mbx.china.huawei.com>
+Content-Type: multipart/alternative;
+              boundary="_000_F65AAE794DB7A74B87E74101B13AA5E118943DESESSMB207ericsso_"
+MIME-Version: 1.0
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E118943DESESSMB207ericsso_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Checked again and we still didn't address Erik's concerns.
+
+For the statement:
+"Dependent on configuration, indicating to the SGSN that the UE whose conte=
+xt is retrieved from the MME has been subjected to CSFB or that the PS HO p=
+rocedure is due to CSFB by adding an indication in Forward Relocation Reque=
+st as specified in TS 29.274 [y".
+Would something like:
+"Dependent on configuration, indicating to the SGSN that the mobility proce=
+dure is due to CSFB by adding an indication in Forward Relocation Request a=
+s specified in TS 29.274 [y]"
+Be ok?
+
+Also, the note:
+"NOTE x:  The MSC/VLR finds out the CS service is due to CSFB via CSMO Flag=
+ or the indication from the MME for MO CS service and CSMT Flag for MT CS s=
+ervice."
+Maybe rephrase to:
+"NOTE x:  The MSC/VLR finds out that the CS service is due to CSFB via CSMO=
+ or CSMT Flag from the UE or via the CSFB indication from the MME."
+
+
+The statement:
+"Dependent on configuration and the received LTE PLMN ID, the BSS may take =
+the last used LTE PLMN ID into account when selecting the target cell in a =
+PS handover to E-UTRAN or the dedicated target frequency list for idle mode=
+ mobility to E-UTRAN in RR Connection Release procedure."
+May be enhanced to:
+"Dependent on configuration and the received LTE PLMN ID, the BSS may take =
+the last used LTE PLMN ID into account when selecting the target cell in a =
+PS handover to E-UTRAN, or when selecting the dedicated target frequency li=
+st for idle mode mobility to E-UTRAN in the RR Connection Release procedure=
+."
+
+Similar for :
+"Dependent on configuration and the received LTE PLMN ID, the RNS may take =
+the last used LTE PLMN ID into account when selecting the target cell in a =
+PS handover to E-UTRAN or the dedicated target frequency list for idle mode=
+ mobility to E-UTRAN in RR Connection Release procedure."
+To
+"Dependent on configuration and the received LTE PLMN ID, the RNS may take =
+the last used LTE PLMN ID into account when selecting the target cell in a =
+PS handover to E-UTRAN, or when selecting the dedicated target frequency li=
+st for idle mode mobility to E-UTRAN in RR Connection Release procedure."
+
+BR,
+Peter
+
+From: Wuxiaobo (Xiaobo) [mailto:wuxiaobo@huawei.com]
+Sent: den 18 juni 2013 02:51
+To: Erik Guttman; 3GPP_TSG_SA_WG2@LIST.ETSI.ORG
+Cc: Tony saboorian; Peter Hedman; DREVON, NICOLAS (NICOLAS)
+Subject: [S2-132184/2185]RE: urgent - several CRs have problems, solutions =
+needed immediately or CRs will be rejected
+
+Dear Erik and all,
+
+Peter already triggered the similar discussion in SA2 list yesterday(thanks=
+ to Peter) and fortunately we converged on the most problems now. Therefore=
+ I updated the CR accordingly.
+
+Also,  S2-132185 is also updated as it is the complementary CR to S2-132184=
+. I leave it to Nicolas for the details.
+
+Br,
+Xiaobo
+From: Erik Guttman [mailto:erik.guttman@GMAIL.COM]
+Sent: Tuesday, June 18, 2013 2:58 AM
+To: 3GPP_TSG_SA_WG2@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2@LIST.ETSI.ORG>
+Subject: urgent - several CRs have problems, solutions needed immediately o=
+r CRs will be rejected
+
+
+Dear esteemed colleagues,
+
+I attach a number of comments that have arisen at SA 60.
+For those comments in cyan, editorial or MCC correction is not possible
+If there are satisfactory answers available to the concerns raised, I will =
+create revised CRs.
+Otherwise, the CRs will be rejected at plenary and sent to SA2 for correcti=
+on.
+
+Action is needed therefore for the following CRs
+
+TS
+
+
+CR
+
+
+Rv
+
+
+Rel
+
+
+Title
+
+
+Cat
+
+
+Vsn
+
+
+S2 mtg
+
+
+SA2 TD#
+
+
+Source to WG
+
+
+Work Item
+
+
+Clauses affected
+
+
+23.060
+
+
+1778
+
+
+3
+
+
+Rel-11
+
+
+Introduction of Operator Group GGSN
+
+
+F
+
+
+11.5.0
+
+
+S2#96
+
+
+S2-131529
+
+
+Alcatel-Lucent
+
+
+SIRIG
+
+
+5.3.5.3
+
+
+23.060
+
+
+1779
+
+
+3
+
+
+Rel-12
+
+
+Introduction of Operator Group GGSN
+
+
+A
+
+
+12.0.0
+
+
+S2#96
+
+
+S2-131530
+
+
+Alcatel-Lucent
+
+
+SIRIG
+
+
+5.3.5.3
+
+
+from pack 0224:
+
+23.272
+
+
+0874
+
+
+2
+
+
+Rel-11
+
+
+How CSFB UE return back to the former LTE PLMN
+
+
+F
+
+
+11.4.0
+
+
+S2#97
+
+
+S2-132184
+
+
+Huawei, Hisilicon, Yota, Alcatel-Lucent, China Mobile, NEC, CATT, ZTE
+
+
+TEI11,SAES-CSFB
+
+
+2, 4.3.2, 4.3.3, 4.3.5, 4.3.6, 4.3.7, 6.2, 6.3, 6.5, 7.6, 8.3.4, 8.4.3
+
+
+TS 29.118, TS 24.008, TS 25.413, TS 48.008, TS 29.274
+
+
+
+
+23.272
+
+
+0875
+
+
+2
+
+
+Rel-11
+
+
+Clarification for MME selection during NW-initiated CS Service procedure wh=
+ile UE is in IMS VoIP session
+
+
+F
+
+
+11.4.0
+
+
+S2#97
+
+
+S2-132186
+
+
+Huawei, Hisilicon, NTT DoCoMo
+
+
+TEI11, SAES-CSFB
+
+
+4.3.2
+
+
+from pack 0216:
+
+23.204
+
+
+0100
+
+
+1
+
+
+Rel-11
+
+
+Adding the interface between IP-SM-GW and MME
+
+
+F
+
+
+11.3.0
+
+
+S2#97
+
+
+S2-132089
+
+
+HTC
+
+
+SIMTC
+
+
+5.2, 5.3, 6.4, 6.5a, 6.5b, 6.9, 6.10, 6.13, 6.14, 6.15.2, 6.16.2, 6.17.2, 6=
+.18
+
+
+23.204
+
+
+0101
+
+
+1
+
+
+Rel-12
+
+
+Adding the interface between IP-SM-GW and MME
+
+
+A
+
+
+12.1.0
+
+
+S2#97
+
+
+S2-132248
+
+
+HTC
+
+
+SIMTC
+
+
+5.2, 5.2.4, 5.3, 6.4, 6.5a, 6.5b, 6.9, 6.10, 6.13, 6.14, 6.15.2, 6.16.2, 6.=
+17.2, 6.18
+
+
+from pack 0218:
+
+23.203
+
+
+0803
+
+
+2
+
+
+Rel-11
+
+
+Correction of PCC based location reporting procedures
+
+
+F
+
+
+11.9.0
+
+
+S2#96
+
+
+S2-131506
+
+
+Nokia Siemens Networks, Ericsson, Alcatel-Lucent
+
+
+NWK-PL2IMS
+
+
+6.2.3
+
+
+23.203
+
+
+0804
+
+
+2
+
+
+Rel-12
+
+
+Correction of PCC based location reporting procedures
+
+
+A
+
+
+12.0.0
+
+
+S2#96
+
+
+S2-131507
+
+
+Nokia Siemens Networks, Ericsson, Alcatel-Lucent
+
+
+NWK-PL2IMS
+
+
+6.2.3
+
+
+Please send comments by 17:00 CEST Tue 18.06.13 if possible.
+
+best regards,
+
+Erik
+
+ps. There are quite a few CRs with problems we should catch during our work=
+.
+
+________________________________
+Concerns that require an answer before we can correct them in plenary (I be=
+lieve):
+11.16
+
+SP-130220<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130220.zip>
+
+2 CRs to 23.060 (SIRIG - Rel-11, Rel-12)
+
+SA WG2
+
+23.060 CR1778R3; 23.060 CR1779R3
+
+CR Pack
+
+Approval
+
+Should it be multiple APN-NI or only one ?
+
+Y
+
+
+
+
+11.8
+
+SP-130218<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130218.zip>
+
+6 CRs to 23.203, 23.228 (NWK-PL2IMS - Rel-11, Rel-12)
+
+SA WG2
+
+23.203 CR0803R2; 23.203 CR0804R2; 23.203 CR0818R2; 23.203 CR0819R2; 23.228 =
+CR1038R1; 23.228 CR1040R2
+
+CR Pack
+
+Approval
+
+S2-131506, no box ticked for impacted on cover sheet, same for mirror
+
+Y
+
+
+11.4
+
+SP-130216<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130216.zip>
+
+10 CRs to 23.204, 23.002, 23.401, 23.272, 23.682 (SIMTC, SIMTC-Reach - Rel-=
+11, Rel-12)
+
+SA WG2
+
+23.204 CR0100R1; 23.204 CR0101R1; 23.002 CR0261R2; 23.002 CR0262R2; 23.401 =
+CR2539R1; 23.401 CR2540R1; 23.272 CR0847R3; 23.682 CR0069R4; 23.682 CR0072R=
+3; 23.682 CR0073R1
+
+CR Pack
+
+Approval
+
+CR Rel-11 to 23.204 in S2-132089
+-section 5.2 is not compltely affected
+- section 6.5.a stcp 10) changes to changes (already highlighted)
+- section 6.5.a step 12) typo "erro" instead of error
+Mirror CR for Rel-11 does not add the additional steps under 6.5.a. Is this=
+ intentional ?
+
+Y
+
+
+11.35
+
+SP-130224<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130224.zip>
+
+12 CRs to 23.167, 23.216, 23.272, 23.060 (TEI11, Earlier Rel WIs - Rel-11, =
+Rel-12)
+
+SA WG2
+
+23.167 CR0223R1; 23.167 CR0226R2; 23.216 CR0315R1; 23.216 CR0318R1; 23.272 =
+CR0868R2; 23.272 CR0873R2; 23.272 CR0875R2; 23.272 CR0877R2; 23.272 CR0874R=
+2; 23.060 CR1738R2; 23.060 CR1777R1
+
+CR Pack
+
+Approval
+
+S2-131301 on cover sheet boxes for other affectec specs not ticked. Also 2 =
+work item codes ? Same for Rel-12 mirror
+S2-132264 / S2-131212 also 2 work item codes ?
+S2-131369 section 8.4.2.y, step 4 typo: procedures continues ?
+S2-132184, section 4.3.2 second change has a typo "Relocation". Also the se=
+ntence reads strange. Subjected to ? is "due to CSFB a correct wording ? al=
+so in section 4.3.3. Also Note X in 4.3.3 reads strange. Section 4.3.6 a"th=
+e" too much, also text strange. Same in 4.3.7. many more strange text passa=
+ges. Actually the whole CR needs to be re-worded
+S2-132186 last paragraph the text is not clear. Duplication  with the last =
+part ?
+
+(To older Release WIs, but accepted for Rel-11 onwards). For 23.216 CR0318,=
+ CT WG4 dependent CR in CP-130286: 29.280 CR0060R3
+
+Y
+
+
+
+Concerns that can be corrected in plenary without comment (I believe):
+11.4
+
+SP-130216<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130216.zip>
+
+10 CRs to 23.204, 23.002, 23.401, 23.272, 23.682 (SIMTC, SIMTC-Reach - Rel-=
+11, Rel-12)
+
+SA WG2
+
+23.204 CR0100R1; 23.204 CR0101R1; 23.002 CR0261R2; 23.002 CR0262R2; 23.401 =
+CR2539R1; 23.401 CR2540R1; 23.272 CR0847R3; 23.682 CR0069R4; 23.682 CR0072R=
+3; 23.682 CR0073R1
+
+CR Pack
+
+Approval
+
+CR Rel-11 to 23.204 in S2-132089
+-section 5.2 is not compltely affected
+- section 6.5.a stcp 10) changes to changes (already highlighted)
+- section 6.5.a step 12) typo "erro" instead of error
+Mirror CR for Rel-11 does not add the additional steps under 6.5.a. Is this=
+ intentional ?
+
+Y
+
+
+11.8
+
+SP-130218<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130218.zip>
+
+6 CRs to 23.203, 23.228 (NWK-PL2IMS - Rel-11, Rel-12)
+
+SA WG2
+
+23.203 CR0803R2; 23.203 CR0804R2; 23.203 CR0818R2; 23.203 CR0819R2; 23.228 =
+CR1038R1; 23.228 CR1040R2
+
+CR Pack
+
+Approval
+
+S2-131506, no box ticked for impacted on cover sheet, same for mirror
+
+Y
+
+
+11.10
+
+SP-130219<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130219.zip>
+
+3 CRs to 23.002, 23.203 (SAPP - Rel-11, Rel-12)
+
+SA WG2
+
+23.002 CR0265; 23.203 CR0809R2; 23.203 CR0810R2
+
+CR Pack
+
+Approval
+
+S2-132204
+-Throughout CR "application ID" is used in various forms and only applicati=
+on identifier is defined (e.g. 6.2.2.2, 6.2.2.5)
+-e.g. in Table 6.3 Application Identifier used, should be application ident=
+ifier
+-align writing of application identifier throughout the doc
+-section 6.3.2 changes to changes, also the wording "the start or the stop =
+of the application..." sounds strange
+-6.5.1 should be BBERF instead of BEERF
+- order of claused, i.e. putting 6.5.1 at the end is confusing.
+-same changes for mirror
+
+Y
+
+
+11.35
+
+SP-130223<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130223.zip>
+
+12 CRs to 23.221, 23.272, 23.203, 23.237, 23.292 (TEI11 - Rel-11, Rel-12)
+
+SA WG2
+
+23.221 CR0148R6; 23.272 CR0872R3; 23.203 CR0783R3; 23.203 CR0798R2; 23.203 =
+CR0805R1; 23.203 CR0806R1; 23.237 CR0462R1; 23.237 CR0463R1; 23.292 CR0199;=
+ 23.292 CR0200; 23.292 CR0197R3; 23.292 CR0198R3
+
+CR Pack
+
+Approval
+
+S2-131531 in step 7 there is one "to" too much in he last sentence. Same fo=
+r Rel-12 mirror in S2-131532
+
+
+For 23.292 CRs 0197 and 0198, CT WG4 dependent CRs in CP-130374: 29.329 CR0=
+207R2; 29.329 CR0211R1; 29.230 CR0345R1; 29.328 CR0460R3; 29.328 CR0463R2; =
+29.230 CR0335R3
+
+Y
+
+
+12.19
+
+SP-130226<file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gpp%=
+5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130226.zip>
+
+8 CRs to 23,002, 23.401, 23.060 (LIMONET - Rel-12)
+
+SA WG2
+
+23.002 CR0263R2; 23.401 CR2521R2; 23.401 CR2538R2; 23.060 CR1775R1; 23.401 =
+CR2546R5; 23.060 CR1791R1; 23.401 CR2561; 23.060 CR1795
+
+CR Pack
+
+Approval
+
+S2-131269 on cover sheet box for other specs affected is not ticked even th=
+ough CR is listed.
+S2-132098 clauses affected not correct, 5.3.12, 5.3.12.1, 5.3.12.2 in CR bu=
+t not affected and order of chapters in CR mixed between 6.9.2.1 and 6.12.1
+S2-131515 clause affected incorrect, not 4.5.3.4 but 4.5.3.3, and J6 is mis=
+sing
+S2-131518 in 5.4.3.1, note 2 SIPTO correlation ID should be SIPTO Correlati=
+on ID.
+
+Y
+
+
+
+
+
+-->
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E118943DESESSMB207ericsso_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	margin-bottom:5.95pt;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.EmailStyle18
+	{mso-style-type:personal;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.EmailStyle21
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Hi,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Checked again and we stil=
+l didn&#8217;t address Erik&#8217;s concerns.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">For the statement:<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">Dependent on configuration, indicating to t=
+he SGSN that the UE whose context is retrieved from the MME has
+ been <b><i><u>subjected </u></i></b>to CSFB or that the PS HO procedure is=
+ due to CSFB by adding an indication in Forward Relocation Request</span><s=
+pan style=3D"font-size:11.0pt;mso-fareast-language:ZH-CN">
+</span><span style=3D"mso-fareast-language:ZH-CN">as specified i</span><spa=
+n style=3D"font-size:11.0pt;mso-fareast-language:ZH-CN">n</span><span style=
+=3D"mso-fareast-language:ZH-CN">
+<span style=3D"color:black">TS 29.274</span> [</span><span style=3D"font-si=
+ze:11.0pt;mso-fareast-language:ZH-CN">y</span><span style=3D"font-size:11.0=
+pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#=
+8221;.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Would something like:<o:p=
+></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">Dependent on configuration, indicating to t=
+he SGSN that the mobility procedure is due to CSFB by adding an
+ indication in Forward Relocation Request</span><span style=3D"font-size:11=
+.0pt;mso-fareast-language:ZH-CN">
+</span><span style=3D"mso-fareast-language:ZH-CN">as specified i</span><spa=
+n style=3D"font-size:11.0pt;mso-fareast-language:ZH-CN">n</span><span style=
+=3D"mso-fareast-language:ZH-CN">
+<span style=3D"color:black">TS 29.274</span> [</span><span style=3D"font-si=
+ze:11.0pt;mso-fareast-language:ZH-CN">y]</span><span style=3D"font-size:11.=
+0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">&=
+#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Be ok?<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Also, the note:<o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">NOTE x:&nbsp;
+</span>The MSC/VLR<span style=3D"mso-fareast-language:JA"> </span><span sty=
+le=3D"mso-fareast-language:ZH-CN">finds out the CS service is due to CSFB v=
+ia CSMO Flag or the indication from the MME for MO CS service and CSMT Flag=
+ for MT CS service.</span><span style=3D"font-size:11.0pt;font-family:&quot=
+;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8221;<o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Maybe rephrase to:<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">NOTE x:&nbsp;
+</span>The MSC/VLR<span style=3D"mso-fareast-language:JA"> </span><span sty=
+le=3D"mso-fareast-language:ZH-CN">finds out that the CS service is due to C=
+SFB via CSMO or CSMT Flag from the UE or via the CSFB indication from the M=
+ME.</span><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&=
+quot;sans-serif&quot;;color:#1F497D">&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">The statement:<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">Dependent on configuration
+</span>and <span style=3D"mso-fareast-language:ZH-CN">the </span>receive<sp=
+an style=3D"mso-fareast-language:ZH-CN">d</span>
+<span style=3D"mso-fareast-language:ZH-CN">LTE PLMN ID, </span><span style=
+=3D"mso-fareast-language:JA">the</span><span style=3D"mso-fareast-language:=
+ZH-CN"> BSS may</span><span style=3D"mso-fareast-language:JA">
+</span><span style=3D"mso-fareast-language:ZH-CN">take the last used LTE PL=
+MN ID into account when selecting the target cell in a PS handover to E-UTR=
+AN or the dedicated target frequency list for idle mode mobility to E-UTRAN=
+ in
+</span>RR Connection Release<span style=3D"mso-fareast-language:ZH-CN"> pro=
+cedure.</span><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quo=
+t;,&quot;sans-serif&quot;;color:#1F497D">&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">May be enhanced to:<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">Dependent on configuration
+</span>and <span style=3D"mso-fareast-language:ZH-CN">the </span>receive<sp=
+an style=3D"mso-fareast-language:ZH-CN">d</span>
+<span style=3D"mso-fareast-language:ZH-CN">LTE PLMN ID, </span><span style=
+=3D"mso-fareast-language:JA">the</span><span style=3D"mso-fareast-language:=
+ZH-CN"> BSS may</span><span style=3D"mso-fareast-language:JA">
+</span><span style=3D"mso-fareast-language:ZH-CN">take the last used LTE PL=
+MN ID into account when selecting the target cell in a PS handover to E-UTR=
+AN<b><i><u>,</u></i></b> or
+<b><i><u>when selecting</u></i></b> the dedicated target frequency list for=
+ idle mode mobility to E-UTRAN in the
+</span>RR Connection Release<span style=3D"mso-fareast-language:ZH-CN"> pro=
+cedure.</span><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quo=
+t;,&quot;sans-serif&quot;;color:#1F497D">&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Similar for :<o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">Dependent on configuration and the
+</span>receive<span style=3D"mso-fareast-language:ZH-CN">d</span> <span sty=
+le=3D"mso-fareast-language:ZH-CN">
+LTE PLMN ID, </span><span style=3D"mso-fareast-language:JA">the</span><span=
+ style=3D"mso-fareast-language:ZH-CN"> RNS may</span><span style=3D"mso-far=
+east-language:JA">
+</span><span style=3D"mso-fareast-language:ZH-CN">take </span><span style=
+=3D"mso-fareast-language:JA">the last
+</span><span style=3D"mso-fareast-language:ZH-CN">used </span><span style=
+=3D"mso-fareast-language:JA">LTE PLMN ID</span><span style=3D"mso-fareast-l=
+anguage:ZH-CN"> into account when selecting the target cell in a PS handove=
+r to E-UTRAN or the dedicated target frequency
+ list for idle mode mobility to E-UTRAN in </span>RR Connection Release<spa=
+n style=3D"mso-fareast-language:ZH-CN"> procedure.</span><span style=3D"fon=
+t-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:=
+#1F497D">&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">To<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;</span><span style=
+=3D"mso-fareast-language:ZH-CN">Dependent on configuration and the
+</span>receive<span style=3D"mso-fareast-language:ZH-CN">d</span> <span sty=
+le=3D"mso-fareast-language:ZH-CN">
+LTE PLMN ID, </span><span style=3D"mso-fareast-language:JA">the</span><span=
+ style=3D"mso-fareast-language:ZH-CN"> RNS may</span><span style=3D"mso-far=
+east-language:JA">
+</span><span style=3D"mso-fareast-language:ZH-CN">take </span><span style=
+=3D"mso-fareast-language:JA">the last
+</span><span style=3D"mso-fareast-language:ZH-CN">used </span><span style=
+=3D"mso-fareast-language:JA">LTE PLMN ID</span><span style=3D"mso-fareast-l=
+anguage:ZH-CN"> into account when selecting the target cell in a PS handove=
+r to E-UTRAN<b><i><u>,</u></i></b> or<b><i><u>
+ when selecting </u></i></b>the dedicated target frequency list for idle mo=
+de mobility to E-UTRAN in
+</span>RR Connection Release<span style=3D"mso-fareast-language:ZH-CN"> pro=
+cedure.</span><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quo=
+t;,&quot;sans-serif&quot;;color:#1F497D">&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">BR,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Peter<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Wuxiaobo=
+ (Xiaobo) [mailto:wuxiaobo@huawei.com]
+<br>
+<b>Sent:</b> den 18 juni 2013 02:51<br>
+<b>To:</b> Erik Guttman; 3GPP_TSG_SA_WG2@LIST.ETSI.ORG<br>
+<b>Cc:</b> Tony saboorian; Peter Hedman; DREVON, NICOLAS (NICOLAS)<br>
+<b>Subject:</b> [S2-132184/2185]RE: urgent - several CRs have problems, sol=
+utions needed immediately or CRs will be rejected<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+">Dear Erik and all,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+">Peter already triggered the similar discussion in SA2 list yesterday(than=
+ks to Peter) and fortunately we converged on the most problems
+ now. Therefore I updated the CR accordingly.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+">Also,&nbsp; S2-132185 is also updated as it is the complementary CR to S2=
+-132184. I leave it to Nicolas for the details.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+">Br,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D;mso-fareast-language:ZH-CN=
+">Xiaobo<o:p></o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;;mso-fareast-language:ZH-CN">From:</spa=
+n></b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;=
+sans-serif&quot;;mso-fareast-language:ZH-CN"> Erik Guttman [<a href=3D"mail=
+to:erik.guttman@GMAIL.COM">mailto:erik.guttman@GMAIL.COM</a>]
+<br>
+<b>Sent:</b> Tuesday, June 18, 2013 2:58 AM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2@LIST.ETSI.ORG">3GPP_TSG_SA_WG2=
+@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> urgent - several CRs have problems, solutions needed immedi=
+ately or CRs will be rejected<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN"><o:p>&nbs=
+p;</o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">Dear esteemed coll=
+eagues,<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">I attach a number =
+of comments that have arisen at SA 60.<br>
+For those comments in <span style=3D"background:aqua">cyan</span>, editoria=
+l or MCC correction is not possible<br>
+If there are satisfactory answers available to the concerns raised, I will =
+create revised CRs.<br>
+<b>Otherwise, the CRs will be rejected at plenary and sent to SA2 for corre=
+ction.</b><o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">Action is needed t=
+herefore for the following CRs<o:p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"981" style=3D"width:735.75pt;border:outset black 1.0pt">
+<thead>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">TS</span></b><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">CR</span></b><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Rv</span></b><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Rel</span></b><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Title</span></b><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Cat</span></b><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Vsn</span></b><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">S2 mtg</span></b><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">SA2 TD#</span></b><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Source to WG</span></b><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Work Item</span></b><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;background:#F3F3F3;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p align=3D"center" style=3D"text-align:center"><b><span style=3D"font-size=
+:8.0pt">Clauses affected</span></b><o:p></o:p></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.060</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">1778</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">3</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-11</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Introduction of Operator Group GGSN</spa=
+n><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">F</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">11.5.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#96</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-131529</span><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Alcatel-Lucent</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">SIRIG</span><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">5.3.5.3</span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.060</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">1779</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">3</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-12</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Introduction of Operator Group GGSN</spa=
+n><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">A</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">12.0.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#96</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-131530</span><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Alcatel-Lucent</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">SIRIG</span><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">5.3.5.3</span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">from pack 0224:
+<o:p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"1000" style=3D"width:750.0pt;border:outset black 1.0pt">
+<thead>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.272</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">0874</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">2</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-11</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">How CSFB UE return back to the former LT=
+E PLMN</span><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">F</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">11.4.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#97</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-132184</span><o:p></o:p></p>
+</td>
+<td width=3D"99" valign=3D"top" style=3D"width:74.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Huawei, Hisilicon, Yota, Alcatel-Lucent,=
+ China Mobile, NEC, CATT, ZTE</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">TEI11,SAES-CSFB</span><o:p></o:p></p>
+</td>
+<td width=3D"80" valign=3D"top" style=3D"width:60.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">2, 4.3.2, 4.3.3, 4.3.5, 4.3.6, 4.3.7, 6.=
+2, 6.3, 6.5, 7.6, 8.3.4, 8.4.3</span><o:p></o:p></p>
+</td>
+<td width=3D"61" valign=3D"top" style=3D"width:45.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p style=3D"margin-bottom:0cm;margin-bottom:.0001pt"><span style=3D"font-si=
+ze:8.0pt">TS 29.118, TS 24.008, TS 25.413, TS 48.008, TS 29.274</span><o:p>=
+</o:p></p>
+</td>
+</tr>
+</thead>
+</table>
+<p style=3D"margin:0cm;margin-bottom:.0001pt"><span style=3D"font-size:10.0=
+pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#220011;dis=
+play:none;mso-fareast-language:ZH-CN"><o:p>&nbsp;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"1000" style=3D"width:750.0pt;border:outset black 1.0pt">
+<thead>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.272</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">0875</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">2</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-11</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Clarification for MME selection during N=
+W-initiated CS Service procedure while UE is in IMS VoIP session</span><o:p=
+></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">F</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">11.4.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#97</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-132186</span><o:p></o:p></p>
+</td>
+<td width=3D"99" valign=3D"top" style=3D"width:74.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Huawei, Hisilicon, NTT DoCoMo</span><o:p=
+></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">TEI11, SAES-CSFB</span><o:p></o:p></p>
+</td>
+<td width=3D"80" valign=3D"top" style=3D"width:60.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">4.3.2</span><o:p></o:p></p>
+</td>
+<td width=3D"61" valign=3D"top" style=3D"width:45.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+</td>
+</tr>
+</thead>
+</table>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">from pack 0216:<o:=
+p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"981" style=3D"width:735.75pt;border:outset black 1.0pt">
+<thead>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.204</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">0100</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">1</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-11</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Adding the interface between IP-SM-GW an=
+d MME</span><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">F</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">11.3.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#97</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-132089</span><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">HTC</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">SIMTC</span><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">5.2, 5.3, 6.4, 6.5a, 6.5b, 6.9, 6.10, 6.=
+13, 6.14, 6.15.2, 6.16.2, 6.17.2, 6.18</span><o:p></o:p></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.204</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">0101</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">1</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-12</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Adding the interface between IP-SM-GW an=
+d MME</span><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">A</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">12.1.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#97</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-132248</span><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">HTC</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">SIMTC</span><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">5.2, 5.2.4, 5.3, 6.4, 6.5a, 6.5b, 6.9, 6=
+.10, 6.13, 6.14, 6.15.2, 6.16.2, 6.17.2, 6.18</span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN"><br>
+from pack 0218:<o:p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"981" style=3D"width:735.75pt;border:outset black 1.0pt">
+<thead>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.203</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">0803</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">2</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-11</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Correction of PCC based location reporti=
+ng procedures</span><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">F</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">11.9.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#96</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-131506</span><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Nokia Siemens Networks, Ericsson, Alcate=
+l-Lucent</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">NWK-PL2IMS</span><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">6.2.3</span><o:p></o:p></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td width=3D"32" valign=3D"top" style=3D"width:24.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">23.203</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">0804</span><o:p></o:p></p>
+</td>
+<td width=3D"14" valign=3D"top" style=3D"width:10.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">2</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Rel-12</span><o:p></o:p></p>
+</td>
+<td width=3D"230" valign=3D"top" style=3D"width:172.5pt;border:inset black =
+1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Correction of PCC based location reporti=
+ng procedures</span><o:p></o:p></p>
+</td>
+<td width=3D"24" valign=3D"top" style=3D"width:18.0pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">A</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">12.0.0</span><o:p></o:p></p>
+</td>
+<td width=3D"33" valign=3D"top" style=3D"width:24.75pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2#96</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">S2-131507</span><o:p></o:p></p>
+</td>
+<td width=3D"147" valign=3D"top" style=3D"width:110.25pt;border:inset black=
+ 1.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">Nokia Siemens Networks, Ericsson, Alcate=
+l-Lucent</span><o:p></o:p></p>
+</td>
+<td width=3D"71" valign=3D"top" style=3D"width:53.25pt;border:inset black 1=
+.0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">NWK-PL2IMS</span><o:p></o:p></p>
+</td>
+<td width=3D"90" valign=3D"top" style=3D"width:67.5pt;border:inset black 1.=
+0pt;padding:5.25pt 5.25pt 5.25pt 5.25pt">
+<p><span style=3D"font-size:8.0pt">6.2.3</span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">Please send commen=
+ts by 17:00 CEST Tue 18.06.13 if possible.<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">best regards,<br>
+<br>
+Erik<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011;mso-fareast-language:ZH-CN">ps. There are quit=
+e a few CRs with problems we should catch during our work.<o:p></o:p></span=
+></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"mso-fareast-language:ZH-CN">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"mso-fa=
+reast-language:ZH-CN">Concerns that require an answer before we can correct=
+ them in plenary (I believe):<o:p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">11.16<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><a name=3D"SP-130220"></a><a href=3D"file:///D:%5Csicherung%5Csich=
+erung%20D%5CStandardisierung%5C3gpp%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-1302=
+20.zip" target=3D"_blank">SP-130220</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">2 CRs to 23.060 (SIRIG - Rel-11, Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">23.060 CR1778R3; 23.060 CR1779R3<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"background:aqua">Should it be multiple APN-NI or on=
+ly one ?</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">Y
+<o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"mso-fa=
+reast-language:ZH-CN"><br>
+<br>
+<br>
+<o:p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.8<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a name=3D"SP-130218"></a=
+><a href=3D"file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gp=
+p%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130218.zip" target=3D"_blank">SP-13021=
+8</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">6 CRs to 23.203, 23.228 (=
+NWK-PL2IMS - Rel-11, Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.203 CR0803R2; 23.203 C=
+R0804R2; 23.203 CR0818R2; 23.203 CR0819R2; 23.228 CR1038R1; 23.228 CR1040R2=
+<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><span style=3D"font-size:=
+10.0pt;line-height:115%;font-family:&quot;Verdana&quot;,&quot;sans-serif&qu=
+ot;;background:aqua">S2-131506, no box ticked for impacted on cover sheet, =
+same for mirror</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN"><o:p>&nbs=
+p;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.4<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a name=3D"SP-130216"></a=
+><a href=3D"file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gp=
+p%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130216.zip" target=3D"_blank">SP-13021=
+6</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">10 CRs to 23.204, 23.002,=
+ 23.401, 23.272, 23.682 (SIMTC, SIMTC-Reach - Rel-11, Rel-12)<o:p></o:p></p=
+>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.204 CR0100R1; 23.204 C=
+R0101R1; 23.002 CR0261R2; 23.002 CR0262R2; 23.401 CR2539R1; 23.401 CR2540R1=
+; 23.272 CR0847R3; 23.682 CR0069R4; 23.682 CR0072R3; 23.682 CR0073R1<o:p></=
+o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Rel-11 to 23.204 in S2=
+-132089<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-section 5.2 is not compl=
+tely affected<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">- section 6.5.a stcp 10) =
+changes to changes (already highlighted)<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">- section 6.5.a step 12) =
+typo &#8220;erro&#8221; instead of error<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%"><span style=3D"background=
+:aqua">Mirror CR for Rel-11 does not add the additional steps under 6.5.a. =
+Is this intentional ?</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN"><o:p>&nbs=
+p;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.35<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a name=3D"SP-130224"></a=
+><a href=3D"file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gp=
+p%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130224.zip" target=3D"_blank">SP-13022=
+4</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">12 CRs to 23.167, 23.216,=
+ 23.272, 23.060 (TEI11, Earlier Rel WIs - Rel-11, Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.167 CR0223R1; 23.167 C=
+R0226R2; 23.216 CR0315R1; 23.216 CR0318R1; 23.272 CR0868R2; 23.272 CR0873R2=
+; 23.272 CR0875R2; 23.272 CR0877R2; 23.272 CR0874R2; 23.060 CR1738R2; 23.06=
+0 CR1777R1<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131301 on cover sheet =
+boxes for other affectec specs not ticked. Also 2 work item codes ? Same fo=
+r Rel-12 mirror<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-132264 / S2-131212 als=
+o 2 work item codes ?<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131369 section 8.4.2.y=
+, step 4 typo: procedures continues ?<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-132184, section 4.3.2 =
+second change has a typo &#8220;Relocation&#8221;.
+<span style=3D"background:aqua">Also the sentence reads strange. Subjected =
+to ? is &#8220;due to CSFB a correct wording ? also in section 4.3.3. Also =
+Note X in 4.3.3 reads strange. Section 4.3.6 a&#8221;the&#8221; too much, a=
+lso text strange. Same in 4.3.7. many more strange text
+ passages. Actually the whole CR needs to be re-worded</span><o:p></o:p></p=
+>
+<p class=3D"MsoNormal" style=3D"line-height:115%"><span style=3D"background=
+:aqua">S2-132186 last paragraph the text is not clear. Duplication&nbsp; wi=
+th the last part ?</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">(To older Release WIs, bu=
+t accepted for Rel-11 onwards). For 23.216 CR0318, CT WG4 dependent CR in C=
+P-130286: 29.280 CR0060R3<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"mso-fa=
+reast-language:ZH-CN"><br>
+<br>
+Concerns that can be corrected in plenary without comment (I believe):<o:p>=
+</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.4<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a href=3D"file:///D:%5Cs=
+icherung%5Csicherung%20D%5CStandardisierung%5C3gpp%5CSA%5CSA%2360%20Aruba%5=
+CDocs%5CSP-130216.zip" target=3D"_blank">SP-130216</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">10 CRs to 23.204, 23.002,=
+ 23.401, 23.272, 23.682 (SIMTC, SIMTC-Reach - Rel-11, Rel-12)<o:p></o:p></p=
+>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.204 CR0100R1; 23.204 C=
+R0101R1; 23.002 CR0261R2; 23.002 CR0262R2; 23.401 CR2539R1; 23.401 CR2540R1=
+; 23.272 CR0847R3; 23.682 CR0069R4; 23.682 CR0072R3; 23.682 CR0073R1<o:p></=
+o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Rel-11 to 23.204 in S2=
+-132089<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-section 5.2 is not compl=
+tely affected<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">- section 6.5.a stcp 10) =
+changes to changes (already highlighted)<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">- section 6.5.a step 12) =
+typo &#8220;erro&#8221; instead of error<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">Mirror CR for Rel-11 does=
+ not add the additional steps under 6.5.a. Is this intentional ?<o:p></o:p>=
+</p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN"><o:p>&nbs=
+p;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.8<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a href=3D"file:///D:%5Cs=
+icherung%5Csicherung%20D%5CStandardisierung%5C3gpp%5CSA%5CSA%2360%20Aruba%5=
+CDocs%5CSP-130218.zip" target=3D"_blank">SP-130218</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">6 CRs to 23.203, 23.228 (=
+NWK-PL2IMS - Rel-11, Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.203 CR0803R2; 23.203 C=
+R0804R2; 23.203 CR0818R2; 23.203 CR0819R2; 23.228 CR1038R1; 23.228 CR1040R2=
+<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131506, no box ticked =
+for impacted on cover sheet, same for mirror<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN"><o:p>&nbs=
+p;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.10<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a name=3D"SP-130219"></a=
+><a href=3D"file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gp=
+p%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130219.zip" target=3D"_blank">SP-13021=
+9</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">3 CRs to 23.002, 23.203 (=
+SAPP - Rel-11, Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.002 CR0265; 23.203 CR0=
+809R2; 23.203 CR0810R2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-132204<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-Throughout CR &#8222;app=
+lication ID&quot; is used in various forms and only application identifier =
+is defined (e.g. 6.2.2.2, 6.2.2.5)<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-e.g. in Table 6.3 Applic=
+ation Identifier used, should be application identifier
+<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-align writing of applica=
+tion identifier throughout the doc<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-section 6.3.2 changes to=
+ changes, also the wording &#8220;the start or the stop of the application&=
+#8230;&#8221; sounds strange<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-6.5.1 should be BBERF in=
+stead of BEERF<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">- order of claused, i.e. =
+putting 6.5.1 at the end is confusing.<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">-same changes for mirror =
+<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN"><o:p>&nbs=
+p;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">11.35<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a name=3D"SP-130223"></a=
+><a href=3D"file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gp=
+p%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130223.zip" target=3D"_blank">SP-13022=
+3</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">12 CRs to 23.221, 23.272,=
+ 23.203, 23.237, 23.292 (TEI11 - Rel-11, Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.221 CR0148R6; 23.272 C=
+R0872R3; 23.203 CR0783R3; 23.203 CR0798R2; 23.203 CR0805R1; 23.203 CR0806R1=
+; 23.237 CR0462R1; 23.237 CR0463R1; 23.292 CR0199; 23.292 CR0200; 23.292 CR=
+0197R3; 23.292 CR0198R3<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131531 in step 7 there=
+ is one &#8222;to&#8220; too much in he last sentence. Same for Rel-12 mirr=
+or in S2-131532<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">&nbsp;<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">For 23.292 CRs 0197 and 0=
+198, CT WG4 dependent CRs in CP-130374: 29.329 CR0207R2; 29.329 CR0211R1; 2=
+9.230 CR0345R1; 29.328 CR0460R3; 29.328 CR0463R2; 29.230 CR0335R3<o:p></o:p=
+></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"mso-fa=
+reast-language:ZH-CN"><o:p>&nbsp;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:white">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">12.19<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%"><a name=3D"SP-130226"></a=
+><a href=3D"file:///D:%5Csicherung%5Csicherung%20D%5CStandardisierung%5C3gp=
+p%5CSA%5CSA%2360%20Aruba%5CDocs%5CSP-130226.zip" target=3D"_blank">SP-13022=
+6</a><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">8 CRs to 23,002, 23.401, =
+23.060 (LIMONET - Rel-12)<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">SA WG2<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">23.002 CR0263R2; 23.401 C=
+R2521R2; 23.401 CR2538R2; 23.060 CR1775R1; 23.401 CR2546R5; 23.060 CR1791R1=
+; 23.401 CR2561; 23.060 CR1795<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">CR Pack<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Approval<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131269 on cover sheet =
+box for other specs affected is not ticked even though CR is listed.<o:p></=
+o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-132098 clauses affecte=
+d not correct, 5.3.12, 5.3.12.1, 5.3.12.2 in CR but not affected and order =
+of chapters in CR mixed between 6.9.2.1 and 6.12.1<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131515 clause affected=
+ incorrect, not 4.5.3.4 but 4.5.3.3, and J6 is missing<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:115%">S2-131518 in 5.4.3.1, not=
+e 2 SIPTO correlation ID should be SIPTO Correlation ID.<o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;padding:.75pt .75pt .7=
+5pt .75pt">
+</td>
+<td valign=3D"top" style=3D"border:inset black 1.0pt;background:#CCFFCC;pad=
+ding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"line-height:115%">Y <o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"mso-fa=
+reast-language:ZH-CN"><br>
+<br>
+<br>
+<br>
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:ZH-CN">--&gt;<o:=
+p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E118943DESESSMB207ericsso_--
+=========================================================================
+Date:         Thu, 20 Jun 2013 04:20:53 +0000
+Reply-To:     "Jain, Puneet" <puneet.jain@INTEL.COM>
+From:         "Jain, Puneet" <puneet.jain@INTEL.COM>
+Subject:      [MTCe-SDDTE] Planning for SA2#98
+Content-Type: multipart/alternative;
+              boundary="_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE682B8FMSMSX109amrcor_"
+MIME-Version: 1.0
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE682B8FMSMSX109amrcor_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Dear All,
+
+At SA2#98 we should attempt to progress on following items for MTCe-SDDTE -
+
+Small Data Transmission (SDT):
+
+For Small data transmission, papers on following areas are needed to progre=
+ss towards normative work -
+
+
+1.     Overall solution evaluation for all Key issue in 5.1.1. Since extens=
+ive individual solution evaluation was performed at SA2#97 for this key iss=
+ue I don't expect more papers on individual solution evaluation.
+
+2.     Individual and overall solution evaluation for Key issue 5.1.2
+
+3.     Interim/partial conclusion for key issue 5.1.1 and 5.1.2
+
+Device Triggering (DT):
+
+For device triggering papers on overall evaluation and interim conclusion f=
+or key issue 5.2.1, 5.2.2, and 5.2.3 are needed to progress towards normati=
+ve work.
+
+Question -
+
+
+1.     Can we conclude on T4 aspects for key issue 5.2.1 (overload control =
+for device triggering) and key issue 5.2.3 (Device Trigger replace & recall=
+)?
+
+2.     Can we conclude on any T5 device triggering issue independent of T5 =
+small data service?
+
+We can use MTCE email reflector for discussion and share the contributions.=
+ I don't see any suitable time to hold SDDTE CC given US holiday around Jul=
+y 4th. Only feasibility is July 3rd morning 6 - 8AM PST. Please let me know=
+ if there interest to have SDDTE CC at that time.
+
+Best regards,
+Puneet
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE682B8FMSMSX109amrcor_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Arial","sans-serif";
+	color:windowtext;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri","sans-serif";}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:1670013588;
+	mso-list-type:hybrid;
+	mso-list-template-ids:491395400 67698703 67698713 67698715 67698703 676987=
+13 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1988779612;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1597919474 67698703 67698713 67698715 67698703 67698=
+713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Dear All,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">At SA2#98 we should attempt to progress o=
+n following items for MTCe-SDDTE -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Small Data Transmission (SDT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For Small data transmission, papers on fo=
+llowing areas are needed to progress towards normative work &#8211;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo1"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Overall solution evaluation for a=
+ll Key issue in 5.1.1. Since extensive individual solution evaluation was p=
+erformed at SA2#97 for this key issue I don&#8217;t expect more
+ papers on individual solution evaluation. <o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo1"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Individual and overall solution e=
+valuation for Key issue 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo1"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">3.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for ke=
+y issue 5.1.1 and 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Device Triggering (DT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For device triggering papers on overall e=
+valuation and interim conclusion for key issue 5.2.1, 5.2.2, and 5.2.3 are =
+needed to progress towards normative work.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Question -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on T4 aspects for=
+ key issue 5.2.1 (overload control for device triggering) and key issue 5.2=
+.3 (Device Trigger replace &amp; recall)?<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on any T5 device =
+triggering issue independent of T5 small data service?<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">We can use MTCE email reflector for discu=
+ssion and share the contributions. I don&#8217;t see any suitable time to h=
+old SDDTE CC given US holiday around July 4<sup>th</sup>. Only
+ feasibility is July 3<sup>rd</sup> morning 6 &#8211; 8AM PST. Please let m=
+e know if there interest to have SDDTE CC at that time.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Best regards,<br>
+Puneet<o:p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE682B8FMSMSX109amrcor_--
+=========================================================================
+Date:         Thu, 20 Jun 2013 16:14:32 +0000
+Reply-To:     "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+From:         "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+Subject:      Re: [MTCe-SDDTE] Planning for SA2#98
+In-Reply-To:  <DB5AA196870CB047BBCDFA52F9D10CBC6DE682B8@FMSMSX109.amr.corp.intel.com>
+Content-Type: multipart/alternative;
+              boundary="_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD2373US70TWXCHMBA10z_"
+MIME-Version: 1.0
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD2373US70TWXCHMBA10z_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Puneet,
+
+For SDT #1 "Overall solution evaluation for all Key issue in 5.1.1. Since e=
+xtensive individual solution evaluation was performed at SA2#97 for this ke=
+y issue I don't expect more papers on individual solution evaluation."
+
+How should the drawbacks and ed notes added at the last mtg (some added abo=
+ut 3:15pm on Friday of SA2 97) be addressed for the individual solutions?  =
+Should they be combined with #3 "Interim/partial conclusion for key issue 5=
+.1.1 and 5.1.2"?
+
+Thanks,
+Deb
+
+From: Jain, Puneet [mailto:puneet.jain@INTEL.COM]
+Sent: Wednesday, June 19, 2013 11:21 PM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98
+
+Dear All,
+
+At SA2#98 we should attempt to progress on following items for MTCe-SDDTE -
+
+Small Data Transmission (SDT):
+
+For Small data transmission, papers on following areas are needed to progre=
+ss towards normative work -
+
+
+1.     Overall solution evaluation for all Key issue in 5.1.1. Since extens=
+ive individual solution evaluation was performed at SA2#97 for this key iss=
+ue I don't expect more papers on individual solution evaluation.
+
+2.     Individual and overall solution evaluation for Key issue 5.1.2
+
+3.     Interim/partial conclusion for key issue 5.1.1 and 5.1.2
+
+Device Triggering (DT):
+
+For device triggering papers on overall evaluation and interim conclusion f=
+or key issue 5.2.1, 5.2.2, and 5.2.3 are needed to progress towards normati=
+ve work.
+
+Question -
+
+
+1.     Can we conclude on T4 aspects for key issue 5.2.1 (overload control =
+for device triggering) and key issue 5.2.3 (Device Trigger replace & recall=
+)?
+
+2.     Can we conclude on any T5 device triggering issue independent of T5 =
+small data service?
+
+We can use MTCE email reflector for discussion and share the contributions.=
+ I don't see any suitable time to hold SDDTE CC given US holiday around Jul=
+y 4th. Only feasibility is July 3rd morning 6 - 8AM PST. Please let me know=
+ if there interest to have SDDTE CC at that time.
+
+Best regards,
+Puneet
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD2373US70TWXCHMBA10z_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 12 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.EmailStyle18
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:windowtext;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+span.EmailStyle19
+	{mso-style-type:personal-reply;
+	font-family:"Trebuchet MS","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:1670013588;
+	mso-list-type:hybrid;
+	mso-list-template-ids:491395400 67698703 67698713 67698715 67698703 676987=
+13 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1988779612;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1597919474 67698703 67698713 67698715 67698703 67698=
+713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Hi Puneet,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">For SDT #1 &#8220;</span><span style=
+=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">=
+Overall solution evaluation for all Key issue in 5.1.1. Since extensive ind=
+ividual solution
+ evaluation was performed at SA2#97 for this key issue I don&#8217;t expect=
+ more papers on individual solution evaluation.</span><span style=3D"font-f=
+amily:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8221=
+;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">How should the drawbacks and ed notes=
+ added at the last mtg (some added about 3:15pm on Friday of SA2 97) be add=
+ressed for the individual solutions?&nbsp; Should they be combined
+ with #3 &#8220;</span><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for key issue =
+5.1.1 and 5.1.2</span><span style=3D"font-family:&quot;Trebuchet MS&quot;,&=
+quot;sans-serif&quot;;color:#1F497D">&#8221;?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Thanks,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Deb<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Jain, Pu=
+neet [mailto:puneet.jain@INTEL.COM]
+<br>
+<b>Sent:</b> Wednesday, June 19, 2013 11:21 PM<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98<o:p=
+></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Dear All,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">At SA2#98 we should attempt to progress o=
+n following items for MTCe-SDDTE -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Small Data Transmission (SDT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For Small data transmission, papers on fo=
+llowing areas are needed to progress towards normative work &#8211;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Overall solution evaluation for a=
+ll Key issue in 5.1.1. Since extensive individual solution evaluation was p=
+erformed at SA2#97 for this key issue I don&#8217;t expect more
+ papers on individual solution evaluation. <o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Individual and overall solution e=
+valuation for Key issue 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">3.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for ke=
+y issue 5.1.1 and 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Device Triggering (DT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For device triggering papers on overall e=
+valuation and interim conclusion for key issue 5.2.1, 5.2.2, and 5.2.3 are =
+needed to progress towards normative work.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Question -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo4"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on T4 aspects for=
+ key issue 5.2.1 (overload control for device triggering) and key issue 5.2=
+.3 (Device Trigger replace &amp; recall)?<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo4"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on any T5 device =
+triggering issue independent of T5 small data service?<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">We can use MTCE email reflector for discu=
+ssion and share the contributions. I don&#8217;t see any suitable time to h=
+old SDDTE CC given US holiday around July 4<sup>th</sup>. Only
+ feasibility is July 3<sup>rd</sup> morning 6 &#8211; 8AM PST. Please let m=
+e know if there interest to have SDDTE CC at that time.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Best regards,<br>
+Puneet<o:p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD2373US70TWXCHMBA10z_--
+=========================================================================
+Date:         Thu, 20 Jun 2013 18:07:45 +0000
+Reply-To:     "Jain, Puneet" <puneet.jain@INTEL.COM>
+From:         "Jain, Puneet" <puneet.jain@INTEL.COM>
+Subject:      Re: [MTCe-SDDTE] Planning for SA2#98
+Comments: To: "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+In-Reply-To:  <4B1B79DE10E7E54C8ABB5302F25C6FB11DFD2373@US70TWXCHMBA10.zam.alcatel-lucent.com>
+Content-Type: multipart/alternative;
+              boundary="_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE6A31CFMSMSX109amrcor_"
+MIME-Version: 1.0
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE6A31CFMSMSX109amrcor_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Deb,
+
+There are 2 slots for SDDTE at SA2#98 and as indicated by SA2 Chairman repo=
+rt to SA#60 Plenary, partial/Interim conclusion should be reached by SA2#98=
+. We will not have much time to update/refine the solutions. Editing or wor=
+dsmithing benefits/drawback may not be useful exercise at this point. For r=
+esolving editor's notes based contributions I propose proponents to share t=
+he paper with others offline (or over MTCE reflector) as soon as possible s=
+o that they are in almost agreeable shape.
+
+Best regards,
+Puneet
+
+
+From: Barclay, Deborah L (Deb) [mailto:deb.barclay@ALCATEL-LUCENT.COM]
+Sent: Thursday, June 20, 2013 9:15 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: Re: [MTCe-SDDTE] Planning for SA2#98
+
+Hi Puneet,
+
+For SDT #1 "Overall solution evaluation for all Key issue in 5.1.1. Since e=
+xtensive individual solution evaluation was performed at SA2#97 for this ke=
+y issue I don't expect more papers on individual solution evaluation."
+
+How should the drawbacks and ed notes added at the last mtg (some added abo=
+ut 3:15pm on Friday of SA2 97) be addressed for the individual solutions?  =
+Should they be combined with #3 "Interim/partial conclusion for key issue 5=
+.1.1 and 5.1.2"?
+
+Thanks,
+Deb
+
+From: Jain, Puneet [mailto:puneet.jain@INTEL.COM]
+Sent: Wednesday, June 19, 2013 11:21 PM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98
+
+Dear All,
+
+At SA2#98 we should attempt to progress on following items for MTCe-SDDTE -
+
+Small Data Transmission (SDT):
+
+For Small data transmission, papers on following areas are needed to progre=
+ss towards normative work -
+
+
+1.     Overall solution evaluation for all Key issue in 5.1.1. Since extens=
+ive individual solution evaluation was performed at SA2#97 for this key iss=
+ue I don't expect more papers on individual solution evaluation.
+
+2.     Individual and overall solution evaluation for Key issue 5.1.2
+
+3.     Interim/partial conclusion for key issue 5.1.1 and 5.1.2
+
+Device Triggering (DT):
+
+For device triggering papers on overall evaluation and interim conclusion f=
+or key issue 5.2.1, 5.2.2, and 5.2.3 are needed to progress towards normati=
+ve work.
+
+Question -
+
+
+1.     Can we conclude on T4 aspects for key issue 5.2.1 (overload control =
+for device triggering) and key issue 5.2.3 (Device Trigger replace & recall=
+)?
+
+2.     Can we conclude on any T5 device triggering issue independent of T5 =
+small data service?
+
+We can use MTCE email reflector for discussion and share the contributions.=
+ I don't see any suitable time to hold SDDTE CC given US holiday around Jul=
+y 4th. Only feasibility is July 3rd morning 6 - 8AM PST. Please let me know=
+ if there interest to have SDDTE CC at that time.
+
+Best regards,
+Puneet
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE6A31CFMSMSX109amrcor_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.EmailStyle18
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:windowtext;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+span.EmailStyle19
+	{mso-style-type:personal;
+	font-family:"Trebuchet MS","sans-serif";
+	color:#1F497D;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.EmailStyle22
+	{mso-style-type:personal-reply;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:1670013588;
+	mso-list-type:hybrid;
+	mso-list-template-ids:491395400 67698703 67698713 67698715 67698703 676987=
+13 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1988779612;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1597919474 67698703 67698713 67698715 67698703 67698=
+713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue">Hi Deb,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue">There are 2 slots for SDDTE at=
+ SA2#98 and as indicated by SA2 Chairman report to SA#60 Plenary, partial/I=
+nterim conclusion should be reached by SA2#98. We will not
+ have much time to update/refine the solutions. Editing or wordsmithing ben=
+efits/drawback may not be useful exercise at this point. For resolving edit=
+or&#8217;s notes based contributions I propose proponents to share the pape=
+r with others offline (or over MTCE reflector)
+ as soon as possible so that they are in almost agreeable shape. <o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue">Best regards,<br>
+Puneet<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Barclay,=
+ Deborah L (Deb) [mailto:deb.barclay@ALCATEL-LUCENT.COM]
+<br>
+<b>Sent:</b> Thursday, June 20, 2013 9:15 AM<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> Re: [MTCe-SDDTE] Planning for SA2#98<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Hi Puneet,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">For SDT #1 &#8220;</span><span style=
+=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">=
+Overall solution evaluation for all Key issue in 5.1.1. Since extensive ind=
+ividual solution
+ evaluation was performed at SA2#97 for this key issue I don&#8217;t expect=
+ more papers on individual solution evaluation.</span><span style=3D"font-f=
+amily:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8221=
+;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">How should the drawbacks and ed notes=
+ added at the last mtg (some added about 3:15pm on Friday of SA2 97) be add=
+ressed for the individual solutions?&nbsp; Should they be combined
+ with #3 &#8220;</span><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for key issue =
+5.1.1 and 5.1.2</span><span style=3D"font-family:&quot;Trebuchet MS&quot;,&=
+quot;sans-serif&quot;;color:#1F497D">&#8221;?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Thanks,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Deb<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Jain, Pu=
+neet [<a href=3D"mailto:puneet.jain@INTEL.COM">mailto:puneet.jain@INTEL.COM=
+</a>]
+<br>
+<b>Sent:</b> Wednesday, June 19, 2013 11:21 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98<o:p=
+></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Dear All,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">At SA2#98 we should attempt to progress o=
+n following items for MTCe-SDDTE -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Small Data Transmission (SDT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For Small data transmission, papers on fo=
+llowing areas are needed to progress towards normative work &#8211;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Overall solution evaluation for a=
+ll Key issue in 5.1.1. Since extensive individual solution evaluation was p=
+erformed at SA2#97 for this key issue I don&#8217;t expect more
+ papers on individual solution evaluation. <o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Individual and overall solution e=
+valuation for Key issue 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">3.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for ke=
+y issue 5.1.1 and 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Device Triggering (DT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For device triggering papers on overall e=
+valuation and interim conclusion for key issue 5.2.1, 5.2.2, and 5.2.3 are =
+needed to progress towards normative work.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Question -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo4"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on T4 aspects for=
+ key issue 5.2.1 (overload control for device triggering) and key issue 5.2=
+.3 (Device Trigger replace &amp; recall)?<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo4"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on any T5 device =
+triggering issue independent of T5 small data service?<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">We can use MTCE email reflector for discu=
+ssion and share the contributions. I don&#8217;t see any suitable time to h=
+old SDDTE CC given US holiday around July 4<sup>th</sup>. Only
+ feasibility is July 3<sup>rd</sup> morning 6 &#8211; 8AM PST. Please let m=
+e know if there interest to have SDDTE CC at that time.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Best regards,<br>
+Puneet<o:p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC6DE6A31CFMSMSX109amrcor_--

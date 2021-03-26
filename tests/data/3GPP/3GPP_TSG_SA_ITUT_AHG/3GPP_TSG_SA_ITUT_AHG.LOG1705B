@@ -1,0 +1,3554 @@
+=========================================================================
+Date:         Mon, 8 May 2017 10:47:41 +0000
+Reply-To:     Stephen Hayes <stephen.hayes@ERICSSON.COM>
+From:         Stephen Hayes <stephen.hayes@ERICSSON.COM>
+Subject:      Re: Update on ITU-T related activities needing attention
+Comments: To: "Schumacher, Gregory [CTO]" <Gregory.Schumacher@SPRINT.COM>
+In-Reply-To:  <3d326663df91466eaa406d2ac87bd662@PREWE13M05.ad.sprint.com>
+Content-Type: multipart/alternative;
+              boundary="_000_BE1C08E6C34F2D459C7121BF0CFA4BBC3E2D408Beusaamb103erics_"
+MIME-Version: 1.0
+Message-ID:  <BE1C08E6C34F2D459C7121BF0CFA4BBC3E2D408B@eusaamb103.ericsson.se>
+
+--_000_BE1C08E6C34F2D459C7121BF0CFA4BBC3E2D408Beusaamb103erics_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+See my comments below.
+
+Regards, Stephen
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM]
+Sent: Thursday, May 04, 2017 9:19 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG
+Subject: Update on ITU-T related activities needing attention
+
+For those on this email reflector, here is an update on 3GPP's ITU-T relate=
+d activities:
+
+PCG has decided that it is OK for TSG-SA to send ITU-T working groups LS di=
+rectly: PCG agreed to the principle that SA will respond to ITU-T directly =
+unless 'sensitive' (which means, involves some kind of governance, like Q.1=
+741) (From Erik). So this means that this ad hoc group should take on recom=
+mending to plenary whether PCG should review and approve any ITU-T reply co=
+rrespondence.  Not sure if this includes 3GPP initiated correspondence or w=
+hether there has ever been any 3GPP initiated correspondence to any ITU-T w=
+orking group.
+
+We have 3 LS which came in at the last TSG-SA 75 needing a response.  I pro=
+pose how to prepare the each response as well:
+
+*         SP-170010
+LS from ITU-T Study Group 12: LS on KPIs for mobile services
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.
+GS -> While the LS would seem to imply input from SA 4 on codecs since the =
+LS asks about voice QoS, the attached document as well as the refenced E.80=
+7 seem to focus heavily on RAN aspects.  So the question is should we pass =
+this off to TSG-RAN to answer alone, or do we need to get input from TSG-RA=
+N as well as CT and/or other SA groups?
+                                SH-> I think it should go to SA4 (codecs) a=
+nd SA5 (KPIs).  I don't think RAN needs to be involved.  SA4 or SA5 can que=
+ry RAN groups if needed.
+*         SP-170146
+LS from ITU-T SG11: LS on ITU-T SG11 work on the combat of counterfeit ICT =
+devices and mobile device theft
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft
+GS -> This appears to be primarily an SA 3 security topic, so I will be at =
+the next SA 3 meeting and solicit input on a 3GPP response which I will sha=
+re on this reflector near or at the end of SA 3.  An additional question is=
+ are there other SA or CT groups that should be consulted as well?
+                                SH->SA3 alone.
+
+     *   SP-170174
+LS from ITU-T SG13: LS on the activities in ITU-T SG13 and start of normati=
+ve work in ITU-T Study Group 13
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.
+GS ->  It appears that the proper response is to highlight any 5G work rela=
+ted to FMC that has been established and reiterate any conclusions from the=
+ referenced joint meeting that will reflect 3GPP's 5G FMC work. Lastly the =
+response should indicate whether we are agreeable to include SG 13 in the c=
+ollaboration between BBF and SA 2 and whether we have any proposal or prefe=
+rence as to how this collaboration should operator and/or next steps.  Sinc=
+e Marco Spini is the rapporteur of the SA 2 work, should we ask him to prov=
+ide input or frame the reply?
+                                SH-> I think we should point to the WID or =
+SID that covers the FMC work being done and planned.  The goal would be to =
+show that FMC between BBF and 3GPP is active and ongoing.  I don't think we=
+ need to invite them to the work.  We can indicate that member companies ar=
+e invited to participate in the effort and if somebody is excluded, there i=
+s the possibility for them to participate as an invited expert.  But we sho=
+uldn't encourage making it a 3 way party.
+
+
+Finally as a longer term effort it has been brought to our attention that Q=
+.1741 needs to be updated to Release 12 (Q.1741.9 covers release 11) and we=
+ probably should consider the Release 13 version to follow as well.  Can an=
+ybody on this list shed any light on how it was handled in the past at leas=
+t to start the planning?
+
+________________________________
+
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link=
+:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+--_000_BE1C08E6C34F2D459C7121BF0CFA4BBC3E2D408Beusaamb103erics_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.EmailStyle19
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle21
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:401146523;
+	mso-list-type:hybrid;
+	mso-list-template-ids:590273672 134807575 134807553 134807579 134807567 13=
+4807577 134807579 134807567 134807577 134807579;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:743113108;
+	mso-list-template-ids:1445350734;}
+@list l1:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1:level3
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level4
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level7
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:1005671484;
+	mso-list-template-ids:-1935652950;}
+@list l2:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1709528119;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-152279272 134807567 134807577 1801122914 134807567 =
+134807577 134807579 134807567 134807577 134807579;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0F0;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:117.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+@list l3:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l3:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l4
+	{mso-list-id:1877038405;
+	mso-list-template-ids:330495010;}
+@list l4:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level3
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Hi,<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">See my comments below.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Regards, Stephen<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b>From:</b> Schumacher, Gregory [CTO] [mailto:Grego=
+ry.Schumacher@SPRINT.COM]
+<br>
+<b>Sent:</b> Thursday, May 04, 2017 9:19 PM<br>
+<b>To:</b> 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<br>
+<b>Subject:</b> Update on ITU-T related activities needing attention<o:p></=
+o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">For those on this email reflector, here is an update=
+ on 3GPP&#8217;s ITU-T related activities:<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">PCG has decided that it is OK for TSG-SA to send ITU=
+-T working groups LS directly:
+<i><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-ser=
+if">PCG agreed to the principle that SA will respond to ITU-T directly unle=
+ss &#8216;sensitive&#8217; (which means, involves some kind of governance, =
+like Q.1741) (From Erik).</span></i><span style=3D"font-size:10.0pt;font-fa=
+mily:&quot;Verdana&quot;,sans-serif">
+ So this means that this ad hoc group should take on recommending to plenar=
+y whether PCG should review and approve any ITU-T reply correspondence.&nbs=
+p; Not sure if this includes 3GPP initiated correspondence or whether there=
+ has ever been any 3GPP initiated correspondence
+ to any ITU-T working group.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ve=
+rdana&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ve=
+rdana&quot;,sans-serif">We have 3 LS which came in at the last TSG-SA 75 ne=
+eding a response.&nbsp; I propose how to prepare the each response as well:=
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in;text-indent:-.25in;mso-li=
+st:l0 level2 lfo3">
+<![if !supportLists]><span lang=3D"EN-GB" style=3D"font-family:Symbol"><spa=
+n style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times N=
+ew Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Verdana&quot;,sans-serif;color:red">SP-170010</span><span style=3D"fo=
+nt-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black">LS from ITU-T Study Group 12: LS on KPIs=
+ for mobile services
+</span></b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;=
+Arial&quot;,sans-serif;color:black"><br>
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.</span><span lang=3D"EN-GB">
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0">GS -&gt; While the LS would seem to imply input from SA 4 on codecs s=
+ince the LS asks about voice QoS, the attached document as well as the refe=
+nced E.807 seem to focus heavily on RAN aspects.&nbsp;
+ So the question is should we pass this off to TSG-RAN to answer alone, or =
+do we need to get input from TSG-RAN as well as CT and/or other SA groups?<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think=
+ it should go to SA4 (codecs) and SA5 (KPIs).&nbsp; I don&#8217;t think RAN=
+ needs to be involved.&nbsp; SA4 or SA5 can query RAN groups if needed.<o:p=
+></o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in;text-indent:-.25in;mso-li=
+st:l0 level2 lfo3">
+<![if !supportLists]><span lang=3D"EN-GB" style=3D"font-family:Symbol"><spa=
+n style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times N=
+ew Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Verdana&quot;,sans-serif;color:red">SP-170146</span><span style=3D"fo=
+nt-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black">LS from ITU-T SG11: LS on ITU-T SG11 wor=
+k on the combat of counterfeit ICT devices and mobile device theft</span></=
+b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;Arial&quo=
+t;,sans-serif;color:black"><br>
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft</span><span lang=3D"EN-GB"><o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0">GS -&gt; This appears to be primarily an SA 3 security topic, so I wi=
+ll be at the next SA 3 meeting and solicit input on a 3GPP response which I=
+ will share on this reflector near or at
+ the end of SA 3.&nbsp; An additional question is are there other SA or CT =
+groups that should be consulted as well?<o:p></o:p></span></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt;SA3 alon=
+e.<o:p></o:p></p>
+<ol style=3D"margin-top:0in" start=3D"1" type=3D"1">
+<ol style=3D"margin-top:0in" start=3D"1" type=3D"a">
+<li class=3D"MsoNormal" style=3D"mso-list:l3 level2 lfo7"><span style=3D"fo=
+nt-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:red">SP-170=
+174</span><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,s=
+ans-serif"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black">LS from ITU-T SG13: LS on the activities=
+ in ITU-T SG13 and start of normative work in ITU-T Study Group 13</span></=
+b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;Arial&quo=
+t;,sans-serif;color:black"><br>
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.</span><span lang=3D"EN-GB"><o:p></o:p></span></l=
+i></ol>
+</ol>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0">GS -&gt;&nbsp; It appears that the proper response is to highlight an=
+y 5G work related to FMC that has been established and reiterate any conclu=
+sions from the referenced joint meeting that will
+ reflect 3GPP&#8217;s 5G FMC work. Lastly the response should indicate whet=
+her we are agreeable to include SG 13 in the collaboration between BBF and =
+SA 2 and whether we have any proposal or preference as to how this collabor=
+ation should operator and/or next steps.&nbsp;
+ Since Marco Spini is the rapporteur of the SA 2 work, should we ask him to=
+ provide input or frame the reply?<o:p></o:p></span></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think=
+ we should point to the WID or SID that covers the FMC work being done and =
+planned.&nbsp; The goal would be to show that FMC between BBF and 3GPP is a=
+ctive and ongoing.&nbsp; I don&#8217;t think we need to invite
+ them to the work.&nbsp; We can indicate that member companies are invited =
+to participate in the effort and if somebody is excluded, there is the poss=
+ibility for them to participate as an invited expert.&nbsp; But we shouldn&=
+#8217;t encourage making it a 3 way party.<o:p></o:p></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in">Finally as a longer term=
+ effort it has been brought to our attention that Q.1741 needs to be update=
+d to Release 12 (Q.1741.9 covers release 11) and we probably should conside=
+r the Release 13 version to follow as
+ well. &nbsp;Can anybody on this list shed any light on how it was handled =
+in the past at least to start the planning?<o:p></o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p class=3D"MsoNormal"><span style=3D"font-size:7.5pt;font-family:&quot;Ari=
+al&quot;,sans-serif;color:gray"><br>
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.</span><span style=3D"font-size:12.0pt;font-family:&quot;Times =
+New Roman&quot;,serif"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p align=3D"center" style=3D"text-align:center">To unsubscribe from the 3GP=
+P_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AH=
+G&amp;A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=
+=3D3GPP_TSG_SA_ITUT_AHG&amp;A=3D1</a>
+<o:p></o:p></p>
+</div>
+</body>
+</html>
+<br>
+<hr>
+<p align=3D"center">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1</a>
+</p>
+
+--_000_BE1C08E6C34F2D459C7121BF0CFA4BBC3E2D408Beusaamb103erics_--
+=========================================================================
+Date:         Tue, 9 May 2017 10:43:05 +0000
+Reply-To:     "Schumacher, Gregory [CTO]" <Gregory.Schumacher@SPRINT.COM>
+From:         "Schumacher, Gregory [CTO]" <Gregory.Schumacher@SPRINT.COM>
+Subject:      Re: Update on ITU-T related activities needing attention
+In-Reply-To:  <BE1C08E6C34F2D459C7121BF0CFA4BBC3E2D408B@eusaamb103.ericsson.se>
+Content-Type: multipart/alternative;
+              boundary="_000_eaae315dec0c4ec6ae3fbc8b03a0aba4PREWE13M05adsprintcom_"
+MIME-Version: 1.0
+Message-ID:  <eaae315dec0c4ec6ae3fbc8b03a0aba4@PREWE13M05.ad.sprint.com>
+
+--_000_eaae315dec0c4ec6ae3fbc8b03a0aba4PREWE13M05adsprintcom_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Based on Stephen's recommendation and without any other recommendations, is=
+ there anybody on this list who participates in SA 4 or SA 5 who can social=
+ize and collect input on SP-170010.  We can decide later on merging the fee=
+dback.
+
+I will handle SP-170146 in SA 3.
+
+Frank, are you willing to handle SP-170174, or is there somebody else cover=
+ing SA 2 who would volunteer socializing this in SA 2 and share a proposed =
+reply LS with this group?
+
+From: Stephen Hayes [mailto:stephen.hayes@ericsson.com]
+Sent: Monday, May 8, 2017 6:48 AM
+To: Schumacher, Gregory [CTO] <Gregory.Schumacher@sprint.com>; 3GPP_TSG_SA_=
+ITUT_AHG@LIST.ETSI.ORG
+Subject: RE: Update on ITU-T related activities needing attention
+
+Hi,
+
+See my comments below.
+
+Regards, Stephen
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM]
+Sent: Thursday, May 04, 2017 9:19 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETS=
+I.ORG>
+Subject: Update on ITU-T related activities needing attention
+
+For those on this email reflector, here is an update on 3GPP's ITU-T relate=
+d activities:
+
+PCG has decided that it is OK for TSG-SA to send ITU-T working groups LS di=
+rectly: PCG agreed to the principle that SA will respond to ITU-T directly =
+unless 'sensitive' (which means, involves some kind of governance, like Q.1=
+741) (From Erik). So this means that this ad hoc group should take on recom=
+mending to plenary whether PCG should review and approve any ITU-T reply co=
+rrespondence.  Not sure if this includes 3GPP initiated correspondence or w=
+hether there has ever been any 3GPP initiated correspondence to any ITU-T w=
+orking group.
+
+We have 3 LS which came in at the last TSG-SA 75 needing a response.  I pro=
+pose how to prepare the each response as well:
+
+
+     *   SP-170010
+LS from ITU-T Study Group 12: LS on KPIs for mobile services
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.
+GS -> While the LS would seem to imply input from SA 4 on codecs since the =
+LS asks about voice QoS, the attached document as well as the refenced E.80=
+7 seem to focus heavily on RAN aspects.  So the question is should we pass =
+this off to TSG-RAN to answer alone, or do we need to get input from TSG-RA=
+N as well as CT and/or other SA groups?
+                                SH-> I think it should go to SA4 (codecs) a=
+nd SA5 (KPIs).  I don't think RAN needs to be involved.  SA4 or SA5 can que=
+ry RAN groups if needed.
+
+     *   SP-170146
+LS from ITU-T SG11: LS on ITU-T SG11 work on the combat of counterfeit ICT =
+devices and mobile device theft
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft
+GS -> This appears to be primarily an SA 3 security topic, so I will be at =
+the next SA 3 meeting and solicit input on a 3GPP response which I will sha=
+re on this reflector near or at the end of SA 3.  An additional question is=
+ are there other SA or CT groups that should be consulted as well?
+                                SH->SA3 alone.
+
+     *   SP-170174
+LS from ITU-T SG13: LS on the activities in ITU-T SG13 and start of normati=
+ve work in ITU-T Study Group 13
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.
+GS ->  It appears that the proper response is to highlight any 5G work rela=
+ted to FMC that has been established and reiterate any conclusions from the=
+ referenced joint meeting that will reflect 3GPP's 5G FMC work. Lastly the =
+response should indicate whether we are agreeable to include SG 13 in the c=
+ollaboration between BBF and SA 2 and whether we have any proposal or prefe=
+rence as to how this collaboration should operator and/or next steps.  Sinc=
+e Marco Spini is the rapporteur of the SA 2 work, should we ask him to prov=
+ide input or frame the reply?
+                                SH-> I think we should point to the WID or =
+SID that covers the FMC work being done and planned.  The goal would be to =
+show that FMC between BBF and 3GPP is active and ongoing.  I don't think we=
+ need to invite them to the work.  We can indicate that member companies ar=
+e invited to participate in the effort and if somebody is excluded, there i=
+s the possibility for them to participate as an invited expert.  But we sho=
+uldn't encourage making it a 3 way party.
+
+
+Finally as a longer term effort it has been brought to our attention that Q=
+.1741 needs to be updated to Release 12 (Q.1741.9 covers release 11) and we=
+ probably should consider the Release 13 version to follow as well.  Can an=
+ybody on this list shed any light on how it was handled in the past at leas=
+t to start the planning?
+
+________________________________
+
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link=
+:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1<htt=
+ps://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.or=
+g%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&data=3D02%7C01=
+%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a64708d495ffad41%7C4f8=
+bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C636298372739049668&sdata=3D7LF85y94=
+PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&reserved=3D0>
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+--_000_eaae315dec0c4ec6ae3fbc8b03a0aba4PREWE13M05adsprintcom_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.EmailStyle20
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle23
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:401146523;
+	mso-list-type:hybrid;
+	mso-list-template-ids:590273672 134807575 134807553 134807579 134807567 13=
+4807577 134807579 134807567 134807577 134807579;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1709528119;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-152279272 134807567 134807577 1801122914 134807567 =
+134807577 134807579 134807567 134807577 134807579;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0F0;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:117.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l2
+	{mso-list-id:1905603399;
+	mso-list-template-ids:-1255343676;}
+@list l2:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Based on Stephen&#8217;s recommendation and without =
+any other recommendations, is there anybody on this list who participates i=
+n SA 4 or SA 5 who can socialize and collect input on SP-170010.&nbsp; We c=
+an decide later on merging the feedback.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">I will handle SP-170146 in SA 3.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Frank, are you willing to handle SP-170174, or is th=
+ere somebody else covering SA 2 who would volunteer socializing this in SA =
+2 and share a proposed reply LS with this group?<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b>From:</b> Stephen Hayes [mailto:stephen.hayes@eri=
+csson.com]
+<br>
+<b>Sent:</b> Monday, May 8, 2017 6:48 AM<br>
+<b>To:</b> Schumacher, Gregory [CTO] &lt;Gregory.Schumacher@sprint.com&gt;;=
+ 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<br>
+<b>Subject:</b> RE: Update on ITU-T related activities needing attention<o:=
+p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Hi,<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">See my comments below.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Regards, Stephen<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b>From:</b> Schumacher, Gregory [CTO] [<a href=3D"m=
+ailto:Gregory.Schumacher@SPRINT.COM">mailto:Gregory.Schumacher@SPRINT.COM</=
+a>]
+<br>
+<b>Sent:</b> Thursday, May 04, 2017 9:19 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_S=
+A_ITUT_AHG@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Update on ITU-T related activities needing attention<o:p></=
+o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">For those on this email reflector, here is an update=
+ on 3GPP&#8217;s ITU-T related activities:<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">PCG has decided that it is OK for TSG-SA to send ITU=
+-T working groups LS directly:
+<i><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-ser=
+if">PCG agreed to the principle that SA will respond to ITU-T directly unle=
+ss &#8216;sensitive&#8217; (which means, involves some kind of governance, =
+like Q.1741) (From Erik).</span></i><span style=3D"font-size:10.0pt;font-fa=
+mily:&quot;Verdana&quot;,sans-serif">
+ So this means that this ad hoc group should take on recommending to plenar=
+y whether PCG should review and approve any ITU-T reply correspondence.&nbs=
+p; Not sure if this includes 3GPP initiated correspondence or whether there=
+ has ever been any 3GPP initiated correspondence
+ to any ITU-T working group.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ve=
+rdana&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ve=
+rdana&quot;,sans-serif">We have 3 LS which came in at the last TSG-SA 75 ne=
+eding a response.&nbsp; I propose how to prepare the each response as well:=
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<ol style=3D"margin-top:0in" start=3D"1" type=3D"a">
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"margin-left:0in;mso-list:l0 level2 lfo2"><=
+span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;c=
+olor:red">SP-170010</span><span style=3D"font-size:10.0pt;font-family:&quot=
+;Verdana&quot;,sans-serif"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black">LS from ITU-T Study Group 12: LS on KPIs=
+ for mobile services
+</span></b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;=
+Arial&quot;,sans-serif;color:black"><br>
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.</span><span lang=3D"EN-GB">
+<o:p></o:p></span></li></ul>
+</ol>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0">GS -&gt; While the LS would seem to imply input from SA 4 on codecs s=
+ince the LS asks about voice QoS, the attached document as well as the refe=
+nced E.807 seem to focus heavily on RAN aspects.&nbsp;
+ So the question is should we pass this off to TSG-RAN to answer alone, or =
+do we need to get input from TSG-RAN as well as CT and/or other SA groups?<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think=
+ it should go to SA4 (codecs) and SA5 (KPIs).&nbsp; I don&#8217;t think RAN=
+ needs to be involved.&nbsp; SA4 or SA5 can query RAN groups if needed.<o:p=
+></o:p></p>
+<ol style=3D"margin-top:0in" start=3D"1" type=3D"a">
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"margin-left:0in;mso-list:l0 level2 lfo2"><=
+span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;c=
+olor:red">SP-170146</span><span style=3D"font-size:10.0pt;font-family:&quot=
+;Verdana&quot;,sans-serif"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black">LS from ITU-T SG11: LS on ITU-T SG11 wor=
+k on the combat of counterfeit ICT devices and mobile device theft</span></=
+b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;Arial&quo=
+t;,sans-serif;color:black"><br>
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft</span><span lang=3D"EN-GB"><o:p></o:p></span></=
+li></ul>
+</ol>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0">GS -&gt; This appears to be primarily an SA 3 security topic, so I wi=
+ll be at the next SA 3 meeting and solicit input on a 3GPP response which I=
+ will share on this reflector near or at
+ the end of SA 3.&nbsp; An additional question is are there other SA or CT =
+groups that should be consulted as well?<o:p></o:p></span></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt;SA3 alon=
+e.<o:p></o:p></p>
+<ol style=3D"margin-top:0in" start=3D"1" type=3D"1">
+<ol style=3D"margin-top:0in" start=3D"1" type=3D"a">
+<li class=3D"MsoNormal" style=3D"margin-left:0in;mso-list:l1 level2 lfo5"><=
+span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;c=
+olor:red">SP-170174</span><span style=3D"font-size:10.0pt;font-family:&quot=
+;Verdana&quot;,sans-serif"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black">LS from ITU-T SG13: LS on the activities=
+ in ITU-T SG13 and start of normative work in ITU-T Study Group 13</span></=
+b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;Arial&quo=
+t;,sans-serif;color:black"><br>
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.</span><span lang=3D"EN-GB"><o:p></o:p></span></l=
+i></ol>
+</ol>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0">GS -&gt;&nbsp; It appears that the proper response is to highlight an=
+y 5G work related to FMC that has been established and reiterate any conclu=
+sions from the referenced joint meeting that will
+ reflect 3GPP&#8217;s 5G FMC work. Lastly the response should indicate whet=
+her we are agreeable to include SG 13 in the collaboration between BBF and =
+SA 2 and whether we have any proposal or preference as to how this collabor=
+ation should operator and/or next steps.&nbsp;
+ Since Marco Spini is the rapporteur of the SA 2 work, should we ask him to=
+ provide input or frame the reply?<o:p></o:p></span></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think=
+ we should point to the WID or SID that covers the FMC work being done and =
+planned.&nbsp; The goal would be to show that FMC between BBF and 3GPP is a=
+ctive and ongoing.&nbsp; I don&#8217;t think we need to invite
+ them to the work.&nbsp; We can indicate that member companies are invited =
+to participate in the effort and if somebody is excluded, there is the poss=
+ibility for them to participate as an invited expert.&nbsp; But we shouldn&=
+#8217;t encourage making it a 3 way party.<o:p></o:p></p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in"><span style=3D"color:#70=
+30A0"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:1.0in">Finally as a longer term=
+ effort it has been brought to our attention that Q.1741 needs to be update=
+d to Release 12 (Q.1741.9 covers release 11) and we probably should conside=
+r the Release 13 version to follow as
+ well. &nbsp;Can anybody on this list shed any light on how it was handled =
+in the past at least to start the planning?<o:p></o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p class=3D"MsoNormal"><span style=3D"font-size:7.5pt;font-family:&quot;Ari=
+al&quot;,sans-serif;color:gray"><br>
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.</span><span style=3D"font-size:12.0pt;font-family:&quot;Times =
+New Roman&quot;,serif"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p align=3D"center" style=3D"text-align:center">To unsubscribe from the 3GP=
+P_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"https://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%=
+2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&=
+amp;data=3D02%7C01%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a647=
+08d495ffad41%7C4f8bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C63629837273904966=
+8&amp;sdata=3D7LF85y94PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&amp;reserved=
+=3D0" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_T=
+SG_SA_ITUT_AHG&amp;A=3D1</a>
+<o:p></o:p></p>
+</div>
+</body>
+</html>
+<br>
+<hr>
+<p align=3D"center">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1</a>
+</p>
+
+--_000_eaae315dec0c4ec6ae3fbc8b03a0aba4PREWE13M05adsprintcom_--
+=========================================================================
+Date:         Tue, 9 May 2017 10:52:10 +0000
+Reply-To:     Christiantoche <christian.toche@HUAWEI.COM>
+From:         Christiantoche <christian.toche@HUAWEI.COM>
+Subject:      Re: Update on ITU-T related activities needing attention
+Comments: To: "Schumacher, Gregory [CTO]" <Gregory.Schumacher@SPRINT.COM>
+In-Reply-To:  <eaae315dec0c4ec6ae3fbc8b03a0aba4@PREWE13M05.ad.sprint.com>
+Content-Type: multipart/alternative;
+              boundary="_000_7B02743B20C37A4F9ED8D2FD209107CD3A47C3B0lhreml505mbschi_"
+MIME-Version: 1.0
+Message-ID:  <7B02743B20C37A4F9ED8D2FD209107CD3A47C3B0@lhreml505-mbs.china.huawei.com>
+
+--_000_7B02743B20C37A4F9ED8D2FD209107CD3A47C3B0lhreml505mbschi_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+I can check for SA5.
+
+Best Regards
+
+Christian
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM]
+Sent: 09 May 2017 06:43
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG
+Subject: Re: Update on ITU-T related activities needing attention
+
+Based on Stephen's recommendation and without any other recommendations, is=
+ there anybody on this list who participates in SA 4 or SA 5 who can social=
+ize and collect input on SP-170010.  We can decide later on merging the fee=
+dback.
+
+I will handle SP-170146 in SA 3.
+
+Frank, are you willing to handle SP-170174, or is there somebody else cover=
+ing SA 2 who would volunteer socializing this in SA 2 and share a proposed =
+reply LS with this group?
+
+From: Stephen Hayes [mailto:stephen.hayes@ericsson.com]
+Sent: Monday, May 8, 2017 6:48 AM
+To: Schumacher, Gregory [CTO] <Gregory.Schumacher@sprint.com<mailto:Gregory=
+.Schumacher@sprint.com>>; 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<mailto:3GPP_TS=
+G_SA_ITUT_AHG@LIST.ETSI.ORG>
+Subject: RE: Update on ITU-T related activities needing attention
+
+Hi,
+
+See my comments below.
+
+Regards, Stephen
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM]
+Sent: Thursday, May 04, 2017 9:19 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETS=
+I.ORG>
+Subject: Update on ITU-T related activities needing attention
+
+For those on this email reflector, here is an update on 3GPP's ITU-T relate=
+d activities:
+
+PCG has decided that it is OK for TSG-SA to send ITU-T working groups LS di=
+rectly: PCG agreed to the principle that SA will respond to ITU-T directly =
+unless 'sensitive' (which means, involves some kind of governance, like Q.1=
+741) (From Erik). So this means that this ad hoc group should take on recom=
+mending to plenary whether PCG should review and approve any ITU-T reply co=
+rrespondence.  Not sure if this includes 3GPP initiated correspondence or w=
+hether there has ever been any 3GPP initiated correspondence to any ITU-T w=
+orking group.
+
+We have 3 LS which came in at the last TSG-SA 75 needing a response.  I pro=
+pose how to prepare the each response as well:
+
+*         SP-170010
+LS from ITU-T Study Group 12: LS on KPIs for mobile services
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.
+GS -> While the LS would seem to imply input from SA 4 on codecs since the =
+LS asks about voice QoS, the attached document as well as the refenced E.80=
+7 seem to focus heavily on RAN aspects.  So the question is should we pass =
+this off to TSG-RAN to answer alone, or do we need to get input from TSG-RA=
+N as well as CT and/or other SA groups?
+                                SH-> I think it should go to SA4 (codecs) a=
+nd SA5 (KPIs).  I don't think RAN needs to be involved.  SA4 or SA5 can que=
+ry RAN groups if needed.
+*         SP-170146
+LS from ITU-T SG11: LS on ITU-T SG11 work on the combat of counterfeit ICT =
+devices and mobile device theft
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft
+GS -> This appears to be primarily an SA 3 security topic, so I will be at =
+the next SA 3 meeting and solicit input on a 3GPP response which I will sha=
+re on this reflector near or at the end of SA 3.  An additional question is=
+ are there other SA or CT groups that should be consulted as well?
+                                SH->SA3 alone.
+
+     *   SP-170174
+LS from ITU-T SG13: LS on the activities in ITU-T SG13 and start of normati=
+ve work in ITU-T Study Group 13
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.
+GS ->  It appears that the proper response is to highlight any 5G work rela=
+ted to FMC that has been established and reiterate any conclusions from the=
+ referenced joint meeting that will reflect 3GPP's 5G FMC work. Lastly the =
+response should indicate whether we are agreeable to include SG 13 in the c=
+ollaboration between BBF and SA 2 and whether we have any proposal or prefe=
+rence as to how this collaboration should operator and/or next steps.  Sinc=
+e Marco Spini is the rapporteur of the SA 2 work, should we ask him to prov=
+ide input or frame the reply?
+                                SH-> I think we should point to the WID or =
+SID that covers the FMC work being done and planned.  The goal would be to =
+show that FMC between BBF and 3GPP is active and ongoing.  I don't think we=
+ need to invite them to the work.  We can indicate that member companies ar=
+e invited to participate in the effort and if somebody is excluded, there i=
+s the possibility for them to participate as an invited expert.  But we sho=
+uldn't encourage making it a 3 way party.
+
+
+Finally as a longer term effort it has been brought to our attention that Q=
+.1741 needs to be updated to Release 12 (Q.1741.9 covers release 11) and we=
+ probably should consider the Release 13 version to follow as well.  Can an=
+ybody on this list shed any light on how it was handled in the past at leas=
+t to start the planning?
+
+________________________________
+
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link=
+:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1<htt=
+ps://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.or=
+g%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&data=3D02%7C01=
+%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a64708d495ffad41%7C4f8=
+bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C636298372739049668&sdata=3D7LF85y94=
+PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link=
+:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+--_000_7B02743B20C37A4F9ED8D2FD209107CD3A47C3B0lhreml505mbschi_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.EmailStyle19
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle20
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle23
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	font-variant:normal !important;
+	color:#222A35;
+	text-transform:none;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;
+	vertical-align:baseline;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:401146523;
+	mso-list-type:hybrid;
+	mso-list-template-ids:590273672 134807575 134807553 134807579 134807567 13=
+4807577 134807579 134807567 134807577 134807579;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1148088173;
+	mso-list-template-ids:318791576;}
+@list l1:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1:level3
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level4
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level6
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level7
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level9
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2
+	{mso-list-id:1535339126;
+	mso-list-template-ids:-320568264;}
+@list l2:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level3
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level4
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level6
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level7
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level9
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3
+	{mso-list-id:1709528119;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-152279272 134807567 134807577 1801122914 134807567 =
+134807577 134807579 134807567 134807577 134807579;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0F0;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:117.0pt;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+@list l3:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l3:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l4
+	{mso-list-id:1796561065;
+	mso-list-template-ids:671090818;}
+@list l4:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-GB" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#222A35;mso-fareast-language:EN=
+-US">I can check for SA5.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#222A35;mso-fareast-language:EN=
+-US"><o:p>&nbsp;</o:p></span></p>
+<div>
+<p class=3D"MsoNormal"><span style=3D"color:#222A35;mso-fareast-language:EN=
+-US">Best Regards<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#222A35;mso-fareast-language:EN=
+-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#222A35;mso-fareast-language:EN=
+-US">Christian</span><span style=3D"color:#222A35;mso-fareast-language:EN-U=
+S"><o:p></o:p></span></p>
+</div>
+<p class=3D"MsoNormal"><span style=3D"color:#222A35;mso-fareast-language:EN=
+-US"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US">From:</span></b><span lang=
+=3D"EN-US"> Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM=
+]
+<br>
+<b>Sent:</b> 09 May 2017 06:43<br>
+<b>To:</b> 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<br>
+<b>Subject:</b> Re: Update on ITU-T related activities needing attention<o:=
+p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Based on Stephen&#8217;s recomm=
+endation and without any other recommendations, is there anybody on this li=
+st who participates in SA 4 or SA 5 who can socialize and collect input on =
+SP-170010.&nbsp; We can decide later on merging
+ the feedback.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">I will handle SP-170146 in SA 3=
+.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Frank, are you willing to handl=
+e SP-170174, or is there somebody else covering SA 2 who would volunteer so=
+cializing this in SA 2 and share a proposed reply LS with this group?<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US">From:</span></b><span lang=
+=3D"EN-US"> Stephen Hayes [<a href=3D"mailto:stephen.hayes@ericsson.com">ma=
+ilto:stephen.hayes@ericsson.com</a>]
+<br>
+<b>Sent:</b> Monday, May 8, 2017 6:48 AM<br>
+<b>To:</b> Schumacher, Gregory [CTO] &lt;<a href=3D"mailto:Gregory.Schumach=
+er@sprint.com">Gregory.Schumacher@sprint.com</a>&gt;;
+<a href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_SA_ITUT_AHG@=
+LIST.ETSI.ORG</a><br>
+<b>Subject:</b> RE: Update on ITU-T related activities needing attention<o:=
+p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Hi,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">See my comments below.<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Regards, Stephen<o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US">From:</span></b><span lang=
+=3D"EN-US"> Schumacher, Gregory [CTO] [<a href=3D"mailto:Gregory.Schumacher=
+@SPRINT.COM">mailto:Gregory.Schumacher@SPRINT.COM</a>]
+<br>
+<b>Sent:</b> Thursday, May 04, 2017 9:19 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_S=
+A_ITUT_AHG@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Update on ITU-T related activities needing attention<o:p></=
+o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">For those on this email reflect=
+or, here is an update on 3GPP&#8217;s ITU-T related activities:<o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">PCG has decided that it is OK f=
+or TSG-SA to send ITU-T working groups LS directly:
+</span><i><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;=
+Verdana&quot;,sans-serif">PCG agreed to the principle that SA will respond =
+to ITU-T directly unless &#8216;sensitive&#8217; (which means, involves som=
+e kind of governance, like Q.1741) (From Erik).</span></i><span lang=3D"EN-=
+US" style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">
+ So this means that this ad hoc group should take on recommending to plenar=
+y whether PCG should review and approve any ITU-T reply correspondence.&nbs=
+p; Not sure if this includes 3GPP initiated correspondence or whether there=
+ has ever been any 3GPP initiated correspondence
+ to any ITU-T working group.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
+family:&quot;Verdana&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
+family:&quot;Verdana&quot;,sans-serif">We have 3 LS which came in at the la=
+st TSG-SA 75 needing a response.&nbsp; I propose how to prepare the each re=
+sponse as well:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt;text-indent:-18.0pt;mso-=
+list:l0 level2 lfo3">
+<![if !supportLists]><span style=3D"font-family:Symbol"><span style=3D"mso-=
+list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times New Roman&quot;"=
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=3D"EN-US" style=3D"font-size:10.0=
+pt;font-family:&quot;Verdana&quot;,sans-serif;color:red">SP-170010</span><s=
+pan lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot=
+;,sans-serif"><br>
+</span><b><span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans=
+-serif;color:black">LS from ITU-T Study Group 12: LS on KPIs for mobile ser=
+vices
+</span></b><span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,san=
+s-serif;color:black"><br>
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.</span>
+<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0">GS -&gt; While the LS would seem to imply input from =
+SA 4 on codecs since the LS asks about voice QoS, the attached document as =
+well as the refenced E.807 seem to focus heavily
+ on RAN aspects.&nbsp; So the question is should we pass this off to TSG-RA=
+N to answer alone, or do we need to get input from TSG-RAN as well as CT an=
+d/or other SA groups?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; SH-&gt; I think it should go to SA4 (codecs) and SA5 (KPIs).&nbsp; I =
+don&#8217;t think RAN needs to be involved.&nbsp; SA4 or SA5 can query RAN =
+groups if needed.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt;text-indent:-18.0pt;mso-=
+list:l0 level2 lfo3">
+<![if !supportLists]><span style=3D"font-family:Symbol"><span style=3D"mso-=
+list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times New Roman&quot;"=
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=3D"EN-US" style=3D"font-size:10.0=
+pt;font-family:&quot;Verdana&quot;,sans-serif;color:red">SP-170146</span><s=
+pan lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot=
+;,sans-serif"><br>
+</span><b><span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans=
+-serif;color:black">LS from ITU-T SG11: LS on ITU-T SG11 work on the combat=
+ of counterfeit ICT devices and mobile device theft</span></b><span style=
+=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans-serif;color:black"><=
+br>
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0">GS -&gt; This appears to be primarily an SA 3 securit=
+y topic, so I will be at the next SA 3 meeting and solicit input on a 3GPP =
+response which I will share on this reflector
+ near or at the end of SA 3.&nbsp; An additional question is are there othe=
+r SA or CT groups that should be consulted as well?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; SH-&gt;SA3 alone.<o:p></o:p></span></p>
+<ol style=3D"margin-top:0cm" start=3D"1" type=3D"1">
+<ol style=3D"margin-top:0cm" start=3D"1" type=3D"a">
+<li class=3D"MsoNormal" style=3D"mso-list:l3 level2 lfo7"><span lang=3D"EN-=
+US" style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;co=
+lor:red">SP-170174</span><span lang=3D"EN-US" style=3D"font-size:10.0pt;fon=
+t-family:&quot;Verdana&quot;,sans-serif"><br>
+</span><b><span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans=
+-serif;color:black">LS from ITU-T SG13: LS on the activities in ITU-T SG13 =
+and start of normative work in ITU-T Study Group 13</span></b><span style=
+=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans-serif;color:black"><=
+br>
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.</span><o:p></o:p></li></ol>
+</ol>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0">GS -&gt;&nbsp; It appears that the proper response is=
+ to highlight any 5G work related to FMC that has been established and reit=
+erate any conclusions from the referenced joint
+ meeting that will reflect 3GPP&#8217;s 5G FMC work. Lastly the response sh=
+ould indicate whether we are agreeable to include SG 13 in the collaboratio=
+n between BBF and SA 2 and whether we have any proposal or preference as to=
+ how this collaboration should operator
+ and/or next steps.&nbsp; Since Marco Spini is the rapporteur of the SA 2 w=
+ork, should we ask him to provide input or frame the reply?<o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; SH-&gt; I think we should point to the WID or SID that covers the FMC=
+ work being done and planned.&nbsp; The goal would be to show that FMC betw=
+een BBF and 3GPP is active and ongoing.&nbsp; I don&#8217;t
+ think we need to invite them to the work.&nbsp; We can indicate that membe=
+r companies are invited to participate in the effort and if somebody is exc=
+luded, there is the possibility for them to participate as an invited exper=
+t.&nbsp; But we shouldn&#8217;t encourage making
+ it a 3 way party.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; <o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US">Fi=
+nally as a longer term effort it has been brought to our attention that Q.1=
+741 needs to be updated to Release 12 (Q.1741.9 covers release 11) and we p=
+robably should consider the Release 13
+ version to follow as well. &nbsp;Can anybody on this list shed any light o=
+n how it was handled in the past at least to start the planning?<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-=
+family:&quot;Times New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ lang=3D"EN-US" style=3D"font-size:12.0pt;font-family:&quot;Times New Roman=
+&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:7.5pt;font-f=
+amily:&quot;Arial&quot;,sans-serif;color:gray"><br>
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.</span><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-fami=
+ly:&quot;Times New Roman&quot;,serif"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-=
+family:&quot;Times New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ lang=3D"EN-US" style=3D"font-size:12.0pt;font-family:&quot;Times New Roman=
+&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p align=3D"center" style=3D"text-align:center"><span lang=3D"EN-US">To uns=
+ubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"https://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%=
+2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&=
+amp;data=3D02%7C01%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a647=
+08d495ffad41%7C4f8bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C63629837273904966=
+8&amp;sdata=3D7LF85y94PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&amp;reserved=
+=3D0" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_T=
+SG_SA_ITUT_AHG&amp;A=3D1</a>
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p align=3D"center" style=3D"text-align:center">To unsubscribe from the 3GP=
+P_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AH=
+G&amp;A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=
+=3D3GPP_TSG_SA_ITUT_AHG&amp;A=3D1</a>
+<o:p></o:p></p>
+</div>
+</body>
+</html>
+<br>
+<hr>
+<p align=3D"center">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1</a>
+</p>
+
+--_000_7B02743B20C37A4F9ED8D2FD209107CD3A47C3B0lhreml505mbschi_--
+=========================================================================
+Date:         Tue, 9 May 2017 20:57:17 +0900
+Reply-To:     LaeYoung Kim <laeyoung.kim@LGE.COM>
+From:         LaeYoung Kim <laeyoung.kim@LGE.COM>
+Subject:      Re: Update on ITU-T related activities needing attention
+Comments: To: "Schumacher, Gregory [CTO]" <Gregory.Schumacher@SPRINT.COM>
+Comments: cc: Frank Mademann <frank.mademann@huawei.com>,
+          Marco Spini <m.spini@huawei.com>
+In-Reply-To:  <eaae315dec0c4ec6ae3fbc8b03a0aba4@PREWE13M05.ad.sprint.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+              boundary="----=_NextPart_000_0153_01D2C906.D7CDEF30"
+Message-ID:  <015201d2c8bb$67e3d630$37ab8290$@lge.com>
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_0153_01D2C906.D7CDEF30
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Hi Greg,
+
+ 
+
+Thanks for your efforts on this.
+
+Regarding SP-170174, as Stephen pointed out, I think we can send ITU-T SG13
+a reply LS to inform them of a new SA2 study item "Study on the Wireless and
+Wireline Convergence for the 5G system architecture (FS_5WWC)" in the
+upcoming SA plenary.
+
+Not sure Frank is in this mailing, so I add him as well as Marco, rapporteur
+of the study item. :)
+
+ 
+
+Thank you.
+
+Best regards,
+
+LaeYoung
+
+ 
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM] 
+Sent: Tuesday, May 09, 2017 7:43 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG
+Subject: Re: Update on ITU-T related activities needing attention
+
+ 
+
+Based on Stephen's recommendation and without any other recommendations, is
+there anybody on this list who participates in SA 4 or SA 5 who can
+socialize and collect input on SP-170010.  We can decide later on merging
+the feedback.
+
+ 
+
+I will handle SP-170146 in SA 3.
+
+ 
+
+Frank, are you willing to handle SP-170174, or is there somebody else
+covering SA 2 who would volunteer socializing this in SA 2 and share a
+proposed reply LS with this group?
+
+ 
+
+From: Stephen Hayes [mailto:stephen.hayes@ericsson.com] 
+Sent: Monday, May 8, 2017 6:48 AM
+To: Schumacher, Gregory [CTO] <Gregory.Schumacher@sprint.com
+<mailto:Gregory.Schumacher@sprint.com> >; 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG
+<mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG> 
+Subject: RE: Update on ITU-T related activities needing attention
+
+ 
+
+Hi,
+
+ 
+
+See my comments below.
+
+ 
+
+Regards, Stephen
+
+ 
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM] 
+Sent: Thursday, May 04, 2017 9:19 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG
+<mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG> 
+Subject: Update on ITU-T related activities needing attention
+
+ 
+
+For those on this email reflector, here is an update on 3GPP's ITU-T related
+activities:
+
+ 
+
+PCG has decided that it is OK for TSG-SA to send ITU-T working groups LS
+directly: PCG agreed to the principle that SA will respond to ITU-T directly
+unless 'sensitive' (which means, involves some kind of governance, like
+Q.1741) (From Erik). So this means that this ad hoc group should take on
+recommending to plenary whether PCG should review and approve any ITU-T
+reply correspondence.  Not sure if this includes 3GPP initiated
+correspondence or whether there has ever been any 3GPP initiated
+correspondence to any ITU-T working group.
+
+ 
+
+We have 3 LS which came in at the last TSG-SA 75 needing a response.  I
+propose how to prepare the each response as well:
+
+ 
+
+*         SP-170010
+LS from ITU-T Study Group 12: LS on KPIs for mobile services 
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T
+SG12. 
+
+GS -> While the LS would seem to imply input from SA 4 on codecs since the
+LS asks about voice QoS, the attached document as well as the refenced E.807
+seem to focus heavily on RAN aspects.  So the question is should we pass
+this off to TSG-RAN to answer alone, or do we need to get input from TSG-RAN
+as well as CT and/or other SA groups?
+
+                                SH-> I think it should go to SA4 (codecs)
+and SA5 (KPIs).  I don't think RAN needs to be involved.  SA4 or SA5 can
+query RAN groups if needed.
+
+*         SP-170146
+LS from ITU-T SG11: LS on ITU-T SG11 work on the combat of counterfeit ICT
+devices and mobile device theft
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to
+preventing mobile device theft
+
+GS -> This appears to be primarily an SA 3 security topic, so I will be at
+the next SA 3 meeting and solicit input on a 3GPP response which I will
+share on this reflector near or at the end of SA 3.  An additional question
+is are there other SA or CT groups that should be consulted as well?
+
+                                SH->SA3 alone.
+
+a.	SP-170174
+LS from ITU-T SG13: LS on the activities in ITU-T SG13 and start of
+normative work in ITU-T Study Group 13
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work after
+the SA WG2-BBF workshop.
+
+GS ->  It appears that the proper response is to highlight any 5G work
+related to FMC that has been established and reiterate any conclusions from
+the referenced joint meeting that will reflect 3GPP's 5G FMC work. Lastly
+the response should indicate whether we are agreeable to include SG 13 in
+the collaboration between BBF and SA 2 and whether we have any proposal or
+preference as to how this collaboration should operator and/or next steps.
+Since Marco Spini is the rapporteur of the SA 2 work, should we ask him to
+provide input or frame the reply?
+
+                                SH-> I think we should point to the WID or
+SID that covers the FMC work being done and planned.  The goal would be to
+show that FMC between BBF and 3GPP is active and ongoing.  I don't think we
+need to invite them to the work.  We can indicate that member companies are
+invited to participate in the effort and if somebody is excluded, there is
+the possibility for them to participate as an invited expert.  But we
+shouldn't encourage making it a 3 way party.
+
+                                
+
+ 
+
+Finally as a longer term effort it has been brought to our attention that
+Q.1741 needs to be updated to Release 12 (Q.1741.9 covers release 11) and we
+probably should consider the Release 13 version to follow as well.  Can
+anybody on this list shed any light on how it was handled in the past at
+least to start the planning?
+
+ 
+
+  _____  
+
+
+This e-mail may contain Sprint proprietary information intended for the sole
+use of the recipient(s). Any use by others is prohibited. If you are not the
+intended recipient, please contact the sender and delete all copies of the
+message.
+
+ 
+
+  _____  
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_ITUT_AHG
+<https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Flist.etsi.o
+rg%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&data=02%7C01%7
+CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a64708d495ffad41%7C4f8bc0
+acbd784bf5b55f1b31301d9adf%7C0%7C1%7C636298372739049668&sdata=7LF85y94PQ10ET
+%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&reserved=0> &A=1 
+
+ 
+
+  _____  
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_ITUT_AHG
+<http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_ITUT_AHG&A=1> &A=1 
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_ITUT_AHG&A=1
+
+------=_NextPart_000_0153_01D2C906.D7CDEF30
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
+xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta =
+http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dus-ascii"><meta name=3DGenerator content=3D"Microsoft Word 15 =
+(filtered medium)"><!--[if !mso]><style>v\:* =
+{behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Malgun Gothic";
+	panose-1:2 11 5 3 2 0 0 2 0 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Malgun Gothic";
+	panose-1:2 11 5 3 2 0 0 2 0 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.EmailStyle19
+	{mso-style-type:personal;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+span.EmailStyle20
+	{mso-style-type:personal;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+span.EmailStyle23
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:180897033;
+	mso-list-template-ids:1064223896;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level3
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level4
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level7
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1
+	{mso-list-id:401146523;
+	mso-list-type:hybrid;
+	mso-list-template-ids:590273672 134807575 134807553 134807579 134807567 =
+134807577 134807579 134807567 134807577 134807579;}
+@list l1:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l2
+	{mso-list-id:539174266;
+	mso-list-template-ids:-274703882;}
+@list l2:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3
+	{mso-list-id:1537502833;
+	mso-list-template-ids:1540025224;}
+@list l3:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level3
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level4
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level6
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level7
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level9
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4
+	{mso-list-id:1709528119;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-152279272 134807567 134807577 1801122914 =
+134807567 134807577 134807579 134807567 134807577 134807579;}
+@list l4:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0F0;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:117.0pt;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+@list l4:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l4:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]--></head><body lang=3DKO =
+link=3D"#0563C1" vlink=3D"#954F72"><div class=3DWordSection1><p =
+class=3DMsoNormal style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>Hi Greg,<o:p></o:p></span></p><p =
+class=3DMsoNormal style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>Thanks for your efforts on =
+this.<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>Regarding </span><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:red'>S=
+P-170174</span><span lang=3DEN-US style=3D'color:#1F497D'>, as Stephen =
+pointed out, I think we can send ITU-T SG13 a reply LS to inform them of =
+a new SA2 study item &quot;Study on the Wireless and Wireline =
+Convergence for the 5G system architecture (FS_5WWC)&quot; in the =
+upcoming SA plenary.<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>Not sure Frank is in this mailing, so I add him =
+as well as Marco, rapporteur of the study item. </span><span =
+lang=3DEN-US style=3D'font-family:Wingdings;color:#1F497D'>J</span><span =
+lang=3DEN-US style=3D'color:#1F497D'><o:p></o:p></span></p><p =
+class=3DMsoNormal style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>Thank you.<o:p></o:p></span></p><p =
+class=3DMsoNormal style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>Best regards,<o:p></o:p></span></p><p =
+class=3DMsoNormal style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'>LaeYoung<o:p></o:p></span></p><p =
+class=3DMsoNormal style=3D'word-break:break-hangul'><span lang=3DEN-US =
+style=3D'color:#1F497D'><o:p>&nbsp;</o:p></span></p><div><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm'><p class=3DMsoNormal><b><span =
+lang=3DEN-US>From:</span></b><span lang=3DEN-US> Schumacher, Gregory =
+[CTO] [mailto:Gregory.Schumacher@SPRINT.COM] <br><b>Sent:</b> Tuesday, =
+May 09, 2017 7:43 PM<br><b>To:</b> =
+3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<br><b>Subject:</b> Re: Update on =
+ITU-T related activities needing =
+attention<o:p></o:p></span></p></div></div><p class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>Based on Stephen&#8217;s recommendation and without any =
+other recommendations, is there anybody on this list who participates in =
+SA 4 or SA 5 who can socialize and collect input on SP-170010.&nbsp; We =
+can decide later on merging the feedback.<o:p></o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US>I will handle SP-170146 in SA =
+3.<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>Frank, are you willing to handle SP-170174, or is there =
+somebody else covering SA 2 who would volunteer socializing this in SA 2 =
+and share a proposed reply LS with this group?<o:p></o:p></span></p><p =
+class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><div><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm'><p class=3DMsoNormal><b><span =
+lang=3DEN-US>From:</span></b><span lang=3DEN-US> Stephen Hayes [<a =
+href=3D"mailto:stephen.hayes@ericsson.com">mailto:stephen.hayes@ericsson.=
+com</a>] <br><b>Sent:</b> Monday, May 8, 2017 6:48 AM<br><b>To:</b> =
+Schumacher, Gregory [CTO] &lt;<a =
+href=3D"mailto:Gregory.Schumacher@sprint.com">Gregory.Schumacher@sprint.c=
+om</a>&gt;; <a =
+href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_SA_ITUT_AHG@L=
+IST.ETSI.ORG</a><br><b>Subject:</b> RE: Update on ITU-T related =
+activities needing attention<o:p></o:p></span></p></div></div><p =
+class=3DMsoNormal><span lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US>Hi,<o:p></o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US>See my comments =
+below.<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>Regards, Stephen<o:p></o:p></span></p><p =
+class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><div><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm'><p class=3DMsoNormal><b><span =
+lang=3DEN-US>From:</span></b><span lang=3DEN-US> Schumacher, Gregory =
+[CTO] [<a =
+href=3D"mailto:Gregory.Schumacher@SPRINT.COM">mailto:Gregory.Schumacher@S=
+PRINT.COM</a>] <br><b>Sent:</b> Thursday, May 04, 2017 9:19 =
+PM<br><b>To:</b> <a =
+href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_SA_ITUT_AHG@L=
+IST.ETSI.ORG</a><br><b>Subject:</b> Update on ITU-T related activities =
+needing attention<o:p></o:p></span></p></div></div><p =
+class=3DMsoNormal><span lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US>For those on this email reflector, =
+here is an update on 3GPP&#8217;s ITU-T related =
+activities:<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>PCG has decided that it is OK for TSG-SA to send ITU-T =
+working groups LS directly: </span><i><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'>PCG agreed =
+to the principle that SA will respond to ITU-T directly unless =
+&#8216;sensitive&#8217; (which means, involves some kind of governance, =
+like Q.1741) (From Erik).</span></i><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'> So this =
+means that this ad hoc group should take on recommending to plenary =
+whether PCG should review and approve any ITU-T reply =
+correspondence.&nbsp; Not sure if this includes 3GPP initiated =
+correspondence or whether there has ever been any 3GPP initiated =
+correspondence to any ITU-T working group.<o:p></o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'><o:p>&nbsp;=
+</o:p></span></p><p class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'>We have 3 =
+LS which came in at the last TSG-SA 75 needing a response.&nbsp; I =
+propose how to prepare the each response as =
+well:<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt;text-indent:-18.0pt;mso-list:l1 level2 =
+lfo3'><![if !supportLists]><span lang=3DEN-GB =
+style=3D'font-family:Symbol'><span =
+style=3D'mso-list:Ignore'>&middot;<span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+</span></span></span><![endif]><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:red'>S=
+P-170010</span><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'><br></span>=
+<b><span lang=3DEN-GB =
+style=3D'font-size:9.0pt;font-family:"Arial","sans-serif";color:black'>LS=
+ from ITU-T Study Group 12: LS on KPIs for mobile services =
+</span></b><span lang=3DEN-GB =
+style=3D'font-size:9.0pt;font-family:"Arial","sans-serif";color:black'><b=
+r>Postponed to meeting #76 Action: Please send updated KQI for 3GPP =
+accesses (seems LTE Advanced Pro is missing). Mostly RAN aspects =
+requested by ITU-T SG12.</span><span lang=3DEN-GB> =
+<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt'><span lang=3DEN-US =
+style=3D'color:#7030A0'>GS -&gt; While the LS would seem to imply input =
+from SA 4 on codecs since the LS asks about voice QoS, the attached =
+document as well as the refenced E.807 seem to focus heavily on RAN =
+aspects.&nbsp; So the question is should we pass this off to TSG-RAN to =
+answer alone, or do we need to get input from TSG-RAN as well as CT =
+and/or other SA groups?<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think it =
+should go to SA4 (codecs) and SA5 (KPIs).&nbsp; I don&#8217;t think RAN =
+needs to be involved.&nbsp; SA4 or SA5 can query RAN groups if =
+needed.<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt;text-indent:-18.0pt;mso-list:l1 level2 =
+lfo3'><![if !supportLists]><span lang=3DEN-GB =
+style=3D'font-family:Symbol'><span =
+style=3D'mso-list:Ignore'>&middot;<span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+</span></span></span><![endif]><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:red'>S=
+P-170146</span><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'><br></span>=
+<b><span lang=3DEN-GB =
+style=3D'font-size:9.0pt;font-family:"Arial","sans-serif";color:black'>LS=
+ from ITU-T SG11: LS on ITU-T SG11 work on the combat of counterfeit ICT =
+devices and mobile device theft</span></b><span lang=3DEN-GB =
+style=3D'font-size:9.0pt;font-family:"Arial","sans-serif";color:black'><b=
+r>Postponed to meeting #76 ITU-T SG11 requests a reply on related work =
+to preventing mobile device theft</span><span =
+lang=3DEN-GB><o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt'><span lang=3DEN-US =
+style=3D'color:#7030A0'>GS -&gt; This appears to be primarily an SA 3 =
+security topic, so I will be at the next SA 3 meeting and solicit input =
+on a 3GPP response which I will share on this reflector near or at the =
+end of SA 3.&nbsp; An additional question is are there other SA or CT =
+groups that should be consulted as well?<o:p></o:p></span></p><p =
+class=3DMsoNormal><span =
+lang=3DEN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt;SA3 =
+alone.<o:p></o:p></span></p><ol style=3D'margin-top:0cm' start=3D1 =
+type=3D1><ol style=3D'margin-top:0cm' start=3D1 type=3Da><li =
+class=3DMsoNormal style=3D'mso-list:l4 level2 lfo7'><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:red'>S=
+P-170174</span><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif"'><br></span>=
+<b><span lang=3DEN-GB =
+style=3D'font-size:9.0pt;font-family:"Arial","sans-serif";color:black'>LS=
+ from ITU-T SG13: LS on the activities in ITU-T SG13 and start of =
+normative work in ITU-T Study Group 13</span></b><span lang=3DEN-GB =
+style=3D'font-size:9.0pt;font-family:"Arial","sans-serif";color:black'><b=
+r>Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work =
+after the SA WG2-BBF workshop.</span><span =
+lang=3DEN-GB><o:p></o:p></span></li></ol></ol><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt'><span lang=3DEN-US =
+style=3D'color:#7030A0'>GS -&gt;&nbsp; It appears that the proper =
+response is to highlight any 5G work related to FMC that has been =
+established and reiterate any conclusions from the referenced joint =
+meeting that will reflect 3GPP&#8217;s 5G FMC work. Lastly the response =
+should indicate whether we are agreeable to include SG 13 in the =
+collaboration between BBF and SA 2 and whether we have any proposal or =
+preference as to how this collaboration should operator and/or next =
+steps.&nbsp; Since Marco Spini is the rapporteur of the SA 2 work, =
+should we ask him to provide input or frame the =
+reply?<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think we =
+should point to the WID or SID that covers the FMC work being done and =
+planned.&nbsp; The goal would be to show that FMC between BBF and 3GPP =
+is active and ongoing.&nbsp; I don&#8217;t think we need to invite them =
+to the work.&nbsp; We can indicate that member companies are invited to =
+participate in the effort and if somebody is excluded, there is the =
+possibility for them to participate as an invited expert.&nbsp; But we =
+shouldn&#8217;t encourage making it a 3 way =
+party.<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt'><span lang=3DEN-US =
+style=3D'color:#7030A0'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'margin-left:72.0pt'><span lang=3DEN-US>Finally as a longer term =
+effort it has been brought to our attention that Q.1741 needs to be =
+updated to Release 12 (Q.1741.9 covers release 11) and we probably =
+should consider the Release 13 version to follow as well. &nbsp;Can =
+anybody on this list shed any light on how it was handled in the past at =
+least to start the planning?<o:p></o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:12.0pt;font-family:"Times New =
+Roman","serif"'><o:p>&nbsp;</o:p></span></p><div class=3DMsoNormal =
+align=3Dcenter style=3D'text-align:center'><span lang=3DEN-US =
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif"'><hr =
+size=3D2 width=3D"100%" align=3Dcenter></span></div><p =
+class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:7.5pt;font-family:"Arial","sans-serif";color:gray'><br=
+>This e-mail may contain Sprint proprietary information intended for the =
+sole use of the recipient(s). Any use by others is prohibited. If you =
+are not the intended recipient, please contact the sender and delete all =
+copies of the message.</span><span lang=3DEN-US =
+style=3D'font-size:12.0pt;font-family:"Times New =
+Roman","serif"'><o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-US style=3D'font-size:12.0pt;font-family:"Times New =
+Roman","serif"'><o:p>&nbsp;</o:p></span></p><div class=3DMsoNormal =
+align=3Dcenter style=3D'text-align:center'><span lang=3DEN-US =
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif"'><hr =
+size=3D2 width=3D"100%" align=3Dcenter></span></div><p align=3Dcenter =
+style=3D'text-align:center'><span lang=3DEN-US>To unsubscribe from the =
+3GPP_TSG_SA_ITUT_AHG list, click the following link:<br><a =
+href=3D"https://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2=
+Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1=
+&amp;data=3D02%7C01%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a=
+64708d495ffad41%7C4f8bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C636298372739=
+049668&amp;sdata=3D7LF85y94PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&amp;r=
+eserved=3D0" =
+target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_S=
+A_ITUT_AHG&amp;A=3D1</a> <o:p></o:p></span></p><p =
+class=3DMsoNormal><span lang=3DEN-US =
+style=3D'font-size:12.0pt;font-family:"Times New =
+Roman","serif"'><o:p>&nbsp;</o:p></span></p><div class=3DMsoNormal =
+align=3Dcenter style=3D'text-align:center'><span lang=3DEN-US =
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif"'><hr =
+size=3D2 width=3D"100%" align=3Dcenter></span></div><p align=3Dcenter =
+style=3D'text-align:center'><span lang=3DEN-US>To unsubscribe from the =
+3GPP_TSG_SA_ITUT_AHG list, click the following link:<br><a =
+href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG=
+&amp;A=3D1" =
+target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_S=
+A_ITUT_AHG&amp;A=3D1</a> <o:p></o:p></span></p></div></body></html>
+<br>
+<hr>
+<p align=3D"center">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1</a>
+</p>
+------=_NextPart_000_0153_01D2C906.D7CDEF30--
+=========================================================================
+Date:         Tue, 9 May 2017 12:32:46 +0000
+Reply-To:     Frank Mademann <frank.mademann@HUAWEI.COM>
+From:         Frank Mademann <frank.mademann@HUAWEI.COM>
+Subject:      Re: Update on ITU-T related activities needing attention
+Comments: To: LaeYoung Kim <laeyoung.kim@lge.com>,
+          "Schumacher, Gregory [CTO]" <Gregory.Schumacher@SPRINT.COM>
+Comments: cc: Marco Spini <m.spini@huawei.com>
+In-Reply-To:  <015201d2c8bb$67e3d630$37ab8290$@lge.com>
+Content-Type: multipart/alternative;
+              boundary="_000_064F894F3855F4438A5F6D82C297CF7A75AF3C30lhreml501mbs_"
+MIME-Version: 1.0
+Message-ID:  <064F894F3855F4438A5F6D82C297CF7A75AF3C30@lhreml501-mbs>
+
+--_000_064F894F3855F4438A5F6D82C297CF7A75AF3C30lhreml501mbs_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Greg, Stephen, LaeYoung, all,
+
+SA2 opened that LS 174 during its last meeting. There were no comments or v=
+iews and it got noted.
+The problem with that LS seems that it contains no actionable proposal, if =
+you look into that LS.
+SG13 wants to write an FMC requirement specification and an FMC architectur=
+e specification.
+With BBF we have a clear work split: they define an access system and SA2 s=
+ome common, "access-agnostic" system.
+
+So I would basically proceed as Stephen suggest. Just that we may not say t=
+oo much about specific organization of the work, like that "participate as =
+an invited expert".
+Such a concept doesn't exist.
+That BBF - 3GPP(SA2) work is organized by rapporteurs or "liaison officers"=
+ from BBF and SA2 and difficult enough to find dates for people from two SD=
+Os.
+Those conf calls are "3GPP offline work", i.e. have no mandate to take deci=
+sions.
+From that everybody may participate without being invited.
+I'm then only concerned that the joint activity becomes incapable of action=
+, if they cannot find any acceptable dates anymore.
+So the organization of that joint work I would want to leave for the 3GPP r=
+apporteurs/ BBF liaison officers.
+
+At the  moment Marco prepares an SA2 LS to BBF to report our status/activit=
+ies.
+BBF sent a similar one to SA2 with SG12 in CC. So we may take this as a rep=
+ly and have SG12 in CC, i.e. thereby providing the status/situation.
+
+Or, TSG SA drafts a reply to that SG12 LS. Taking into account the outcome =
+of next week's SA2.
+E.g. there is no work plan yet agreed for the new SA2 FMC SID, i.e. there i=
+s no meeting time yet allocated. Possibly SA2 starts first in Aug with it.
+
+Best regards
+Frank
+
+
+From: LaeYoung Kim [mailto:laeyoung.kim@lge.com]
+Sent: Dienstag, 9. Mai 2017 13:57
+To: 'Schumacher, Gregory [CTO]' <Gregory.Schumacher@SPRINT.COM>; 3GPP_TSG_S=
+A_ITUT_AHG@LIST.ETSI.ORG
+Cc: Frank Mademann <frank.mademann@huawei.com>; Marco Spini <m.spini@huawei=
+.com>
+Subject: RE: Update on ITU-T related activities needing attention
+
+Hi Greg,
+
+Thanks for your efforts on this.
+Regarding SP-170174, as Stephen pointed out, I think we can send ITU-T SG13=
+ a reply LS to inform them of a new SA2 study item "Study on the Wireless a=
+nd Wireline Convergence for the 5G system architecture (FS_5WWC)" in the up=
+coming SA plenary.
+Not sure Frank is in this mailing, so I add him as well as Marco, rapporteu=
+r of the study item. :)
+
+Thank you.
+Best regards,
+LaeYoung
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM]
+Sent: Tuesday, May 09, 2017 7:43 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETS=
+I.ORG>
+Subject: Re: Update on ITU-T related activities needing attention
+
+Based on Stephen's recommendation and without any other recommendations, is=
+ there anybody on this list who participates in SA 4 or SA 5 who can social=
+ize and collect input on SP-170010.  We can decide later on merging the fee=
+dback.
+
+I will handle SP-170146 in SA 3.
+
+Frank, are you willing to handle SP-170174, or is there somebody else cover=
+ing SA 2 who would volunteer socializing this in SA 2 and share a proposed =
+reply LS with this group?
+
+From: Stephen Hayes [mailto:stephen.hayes@ericsson.com]
+Sent: Monday, May 8, 2017 6:48 AM
+To: Schumacher, Gregory [CTO] <Gregory.Schumacher@sprint.com<mailto:Gregory=
+.Schumacher@sprint.com>>; 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<mailto:3GPP_TS=
+G_SA_ITUT_AHG@LIST.ETSI.ORG>
+Subject: RE: Update on ITU-T related activities needing attention
+
+Hi,
+
+See my comments below.
+
+Regards, Stephen
+
+From: Schumacher, Gregory [CTO] [mailto:Gregory.Schumacher@SPRINT.COM]
+Sent: Thursday, May 04, 2017 9:19 PM
+To: 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETS=
+I.ORG>
+Subject: Update on ITU-T related activities needing attention
+
+For those on this email reflector, here is an update on 3GPP's ITU-T relate=
+d activities:
+
+PCG has decided that it is OK for TSG-SA to send ITU-T working groups LS di=
+rectly: PCG agreed to the principle that SA will respond to ITU-T directly =
+unless 'sensitive' (which means, involves some kind of governance, like Q.1=
+741) (From Erik). So this means that this ad hoc group should take on recom=
+mending to plenary whether PCG should review and approve any ITU-T reply co=
+rrespondence.  Not sure if this includes 3GPP initiated correspondence or w=
+hether there has ever been any 3GPP initiated correspondence to any ITU-T w=
+orking group.
+
+We have 3 LS which came in at the last TSG-SA 75 needing a response.  I pro=
+pose how to prepare the each response as well:
+
+*        SP-170010
+LS from ITU-T Study Group 12: LS on KPIs for mobile services
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.
+GS -> While the LS would seem to imply input from SA 4 on codecs since the =
+LS asks about voice QoS, the attached document as well as the refenced E.80=
+7 seem to focus heavily on RAN aspects.  So the question is should we pass =
+this off to TSG-RAN to answer alone, or do we need to get input from TSG-RA=
+N as well as CT and/or other SA groups?
+                                SH-> I think it should go to SA4 (codecs) a=
+nd SA5 (KPIs).  I don't think RAN needs to be involved.  SA4 or SA5 can que=
+ry RAN groups if needed.
+*        SP-170146
+LS from ITU-T SG11: LS on ITU-T SG11 work on the combat of counterfeit ICT =
+devices and mobile device theft
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft
+GS -> This appears to be primarily an SA 3 security topic, so I will be at =
+the next SA 3 meeting and solicit input on a 3GPP response which I will sha=
+re on this reflector near or at the end of SA 3.  An additional question is=
+ are there other SA or CT groups that should be consulted as well?
+                                SH->SA3 alone.
+
+     *   SP-170174
+LS from ITU-T SG13: LS on the activities in ITU-T SG13 and start of normati=
+ve work in ITU-T Study Group 13
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.
+GS ->  It appears that the proper response is to highlight any 5G work rela=
+ted to FMC that has been established and reiterate any conclusions from the=
+ referenced joint meeting that will reflect 3GPP's 5G FMC work. Lastly the =
+response should indicate whether we are agreeable to include SG 13 in the c=
+ollaboration between BBF and SA 2 and whether we have any proposal or prefe=
+rence as to how this collaboration should operator and/or next steps.  Sinc=
+e Marco Spini is the rapporteur of the SA 2 work, should we ask him to prov=
+ide input or frame the reply?
+                                SH-> I think we should point to the WID or =
+SID that covers the FMC work being done and planned.  The goal would be to =
+show that FMC between BBF and 3GPP is active and ongoing.  I don't think we=
+ need to invite them to the work.  We can indicate that member companies ar=
+e invited to participate in the effort and if somebody is excluded, there i=
+s the possibility for them to participate as an invited expert.  But we sho=
+uldn't encourage making it a 3 way party.
+
+
+Finally as a longer term effort it has been brought to our attention that Q=
+.1741 needs to be updated to Release 12 (Q.1741.9 covers release 11) and we=
+ probably should consider the Release 13 version to follow as well.  Can an=
+ybody on this list shed any light on how it was handled in the past at leas=
+t to start the planning?
+
+________________________________
+
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link=
+:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1<htt=
+ps://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.or=
+g%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&data=3D02%7C01=
+%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a64708d495ffad41%7C4f8=
+bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C636298372739049668&sdata=3D7LF85y94=
+PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link=
+:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1
+
+--_000_064F894F3855F4438A5F6D82C297CF7A75AF3C30lhreml501mbs_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.EmailStyle20
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle22
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle23
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:#1F497D;}
+span.EmailStyle24
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:401146523;
+	mso-list-type:hybrid;
+	mso-list-template-ids:590273672 134807575 134807553 134807579 134807567 13=
+4807577 134807579 134807567 134807577 134807579;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1087188431;
+	mso-list-template-ids:536400528;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2
+	{mso-list-id:1709528119;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-152279272 134807567 134807577 1801122914 134807567 =
+134807577 134807579 134807567 134807577 134807579;}
+@list l2:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0F0;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:117.0pt;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+@list l2:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l2:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"DE" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">Dear Greg, Stephen, LaeYoung, all,<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">SA2 opened that LS 174 during its last meeting. There w=
+ere no comments or views and it got noted.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">The problem with that LS seems that it contains no acti=
+onable proposal, if you look into that LS.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">SG13 wants to write an FMC requirement specification an=
+d an FMC architecture specification.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">With BBF we have a clear work split: they define an acc=
+ess system and SA2 some common, &#8220;access-agnostic&#8221; system.<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">So I would basically proceed as Stephen suggest. Just t=
+hat we may not say too much about specific organization of the work, like t=
+hat &#8220;participate as an invited expert&#8221;.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">Such a concept doesn&#8217;t exist.<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">That BBF &#8211; 3GPP(SA2) work is organized by rapport=
+eurs or &#8220;liaison officers&#8221; from BBF and SA2 and difficult enoug=
+h to find dates for people from two SDOs.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">Those conf calls are &#8220;3GPP offline work&#8221;, i=
+.e. have no mandate to take decisions.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">From that everybody may participate without being invit=
+ed.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">I&#8217;m then only concerned that the joint activity b=
+ecomes incapable of action, if they cannot find any acceptable dates anymor=
+e.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">So the organization of that joint work I would want to =
+leave for the 3GPP rapporteurs/ BBF liaison officers.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">At the&nbsp; moment Marco prepares an SA2 LS to BBF to =
+report our status/activities.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">BBF sent a similar one to SA2 with SG12 in CC. So we ma=
+y take this as a reply and have SG12 in CC, i.e. thereby providing the stat=
+us/situation.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">Or, TSG SA drafts a reply to that SG12 LS. Taking into =
+account the outcome of next week&#8217;s SA2.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">E.g. there is no work plan yet agreed for the new SA2 F=
+MC SID, i.e. there is no meeting time yet allocated. Possibly SA2 starts fi=
+rst in Aug with it.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">Best regards<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US">Frank<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D;mso-fare=
+ast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US">From:</span></b><span lang=
+=3D"EN-US"> LaeYoung Kim [mailto:laeyoung.kim@lge.com]
+<br>
+<b>Sent:</b> Dienstag, 9. Mai 2017 13:57<br>
+<b>To:</b> 'Schumacher, Gregory [CTO]' &lt;Gregory.Schumacher@SPRINT.COM&gt=
+;; 3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG<br>
+<b>Cc:</b> Frank Mademann &lt;frank.mademann@huawei.com&gt;; Marco Spini &l=
+t;m.spini@huawei.com&gt;<br>
+<b>Subject:</b> RE: Update on ITU-T related activities needing attention<o:=
+p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">Hi Greg,<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO"><o:p>&nbsp;</o:p></span></p=
+>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">Thanks for your efforts on =
+this.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">Regarding
+</span><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;Ver=
+dana&quot;,sans-serif;color:red;mso-fareast-language:KO">SP-170174</span><s=
+pan lang=3D"EN-US" style=3D"color:#1F497D;mso-fareast-language:KO">, as Ste=
+phen pointed out, I think we can send ITU-T SG13 a
+ reply LS to inform them of a new SA2 study item &quot;Study on the Wireles=
+s and Wireline Convergence for the 5G system architecture (FS_5WWC)&quot; i=
+n the upcoming SA plenary.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">Not sure Frank is in this m=
+ailing, so I add him as well as Marco, rapporteur of the study item.
+</span><span lang=3D"EN-US" style=3D"font-family:Wingdings;color:#1F497D;ms=
+o-fareast-language:KO">J</span><span lang=3D"EN-US" style=3D"color:#1F497D;=
+mso-fareast-language:KO"><o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO"><o:p>&nbsp;</o:p></span></p=
+>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">Thank you.<o:p></o:p></span=
+></p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">Best regards,<o:p></o:p></s=
+pan></p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO">LaeYoung<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal" style=3D"word-break:break-all"><span lang=3D"EN-US" =
+style=3D"color:#1F497D;mso-fareast-language:KO"><o:p>&nbsp;</o:p></span></p=
+>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"mso-fareast-languag=
+e:KO">From:</span></b><span lang=3D"EN-US" style=3D"mso-fareast-language:KO=
+"> Schumacher, Gregory [CTO] [<a href=3D"mailto:Gregory.Schumacher@SPRINT.C=
+OM">mailto:Gregory.Schumacher@SPRINT.COM</a>]
+<br>
+<b>Sent:</b> Tuesday, May 09, 2017 7:43 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_S=
+A_ITUT_AHG@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Re: Update on ITU-T related activities needing attention<o:=
+p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">Based on Stephen&#8217;s recommendation and without any other recommenda=
+tions, is there anybody on this list who participates in SA 4 or SA 5 who c=
+an socialize and collect input on SP-170010.&nbsp;
+ We can decide later on merging the feedback.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">I will handle SP-170146 in SA 3.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">Frank, are you willing to handle SP-170174, or is there somebody else co=
+vering SA 2 who would volunteer socializing this in SA 2 and share a propos=
+ed reply LS with this group?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"mso-fareast-languag=
+e:KO">From:</span></b><span lang=3D"EN-US" style=3D"mso-fareast-language:KO=
+"> Stephen Hayes [<a href=3D"mailto:stephen.hayes@ericsson.com">mailto:step=
+hen.hayes@ericsson.com</a>]
+<br>
+<b>Sent:</b> Monday, May 8, 2017 6:48 AM<br>
+<b>To:</b> Schumacher, Gregory [CTO] &lt;<a href=3D"mailto:Gregory.Schumach=
+er@sprint.com">Gregory.Schumacher@sprint.com</a>&gt;;
+<a href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_SA_ITUT_AHG@=
+LIST.ETSI.ORG</a><br>
+<b>Subject:</b> RE: Update on ITU-T related activities needing attention<o:=
+p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">Hi,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">See my comments below.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">Regards, Stephen<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"mso-fareast-languag=
+e:KO">From:</span></b><span lang=3D"EN-US" style=3D"mso-fareast-language:KO=
+"> Schumacher, Gregory [CTO] [<a href=3D"mailto:Gregory.Schumacher@SPRINT.C=
+OM">mailto:Gregory.Schumacher@SPRINT.COM</a>]
+<br>
+<b>Sent:</b> Thursday, May 04, 2017 9:19 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_ITUT_AHG@LIST.ETSI.ORG">3GPP_TSG_S=
+A_ITUT_AHG@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Update on ITU-T related activities needing attention<o:p></=
+o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">For those on this email reflector, here is an update on 3GPP&#8217;s ITU=
+-T related activities:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">PCG has decided that it is OK for TSG-SA to send ITU-T working groups LS=
+ directly:
+</span><i><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;=
+Verdana&quot;,sans-serif;mso-fareast-language:KO">PCG agreed to the princip=
+le that SA will respond to ITU-T directly unless &#8216;sensitive&#8217; (w=
+hich means, involves some kind of governance, like Q.1741)
+ (From Erik).</span></i><span lang=3D"EN-US" style=3D"font-size:10.0pt;font=
+-family:&quot;Verdana&quot;,sans-serif;mso-fareast-language:KO"> So this me=
+ans that this ad hoc group should take on recommending to plenary whether P=
+CG should review and approve any ITU-T reply correspondence.&nbsp;
+ Not sure if this includes 3GPP initiated correspondence or whether there h=
+as ever been any 3GPP initiated correspondence to any ITU-T working group.<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
+family:&quot;Verdana&quot;,sans-serif;mso-fareast-language:KO"><o:p>&nbsp;<=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
+family:&quot;Verdana&quot;,sans-serif;mso-fareast-language:KO">We have 3 LS=
+ which came in at the last TSG-SA 75 needing a response.&nbsp; I propose ho=
+w to prepare the each response as well:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt;text-indent:-18.0pt;mso-=
+list:l0 level2 lfo2">
+<![if !supportLists]><span lang=3D"EN-GB" style=3D"font-family:Symbol;mso-f=
+areast-language:KO"><span style=3D"mso-list:Ignore">&middot;<span style=3D"=
+font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;
+</span></span></span><![endif]><span lang=3D"EN-US" style=3D"font-size:10.0=
+pt;font-family:&quot;Verdana&quot;,sans-serif;color:red;mso-fareast-languag=
+e:KO">SP-170010</span><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-f=
+amily:&quot;Verdana&quot;,sans-serif;mso-fareast-language:KO"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black;mso-fareast-language:KO">LS from ITU-T St=
+udy Group 12: LS on KPIs for mobile services
+</span></b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;=
+Arial&quot;,sans-serif;color:black;mso-fareast-language:KO"><br>
+Postponed to meeting #76 Action: Please send updated KQI for 3GPP accesses =
+(seems LTE Advanced Pro is missing). Mostly RAN aspects requested by ITU-T =
+SG12.</span><span lang=3D"EN-GB" style=3D"mso-fareast-language:KO">
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0;mso-fareast-language:KO">GS -&gt; While the LS would s=
+eem to imply input from SA 4 on codecs since the LS asks about voice QoS, t=
+he attached document as well as the refenced
+ E.807 seem to focus heavily on RAN aspects.&nbsp; So the question is shoul=
+d we pass this off to TSG-RAN to answer alone, or do we need to get input f=
+rom TSG-RAN as well as CT and/or other SA groups?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think it should go to SA4=
+ (codecs) and SA5 (KPIs).&nbsp; I don&#8217;t think RAN needs to be involve=
+d.&nbsp; SA4 or SA5 can query RAN groups if needed.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt;text-indent:-18.0pt;mso-=
+list:l0 level2 lfo2">
+<![if !supportLists]><span lang=3D"EN-GB" style=3D"font-family:Symbol;mso-f=
+areast-language:KO"><span style=3D"mso-list:Ignore">&middot;<span style=3D"=
+font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;
+</span></span></span><![endif]><span lang=3D"EN-US" style=3D"font-size:10.0=
+pt;font-family:&quot;Verdana&quot;,sans-serif;color:red;mso-fareast-languag=
+e:KO">SP-170146</span><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-f=
+amily:&quot;Verdana&quot;,sans-serif;mso-fareast-language:KO"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black;mso-fareast-language:KO">LS from ITU-T SG=
+11: LS on ITU-T SG11 work on the combat of counterfeit ICT devices and mobi=
+le device theft</span></b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;fon=
+t-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:KO">=
+<br>
+Postponed to meeting #76 ITU-T SG11 requests a reply on related work to pre=
+venting mobile device theft</span><span lang=3D"EN-GB" style=3D"mso-fareast=
+-language:KO"><o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0;mso-fareast-language:KO">GS -&gt; This appears to be p=
+rimarily an SA 3 security topic, so I will be at the next SA 3 meeting and =
+solicit input on a 3GPP response which I will
+ share on this reflector near or at the end of SA 3.&nbsp; An additional qu=
+estion is are there other SA or CT groups that should be consulted as well?=
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt;SA3 alone.<o:p></o:p></span>=
+</p>
+<ol style=3D"margin-top:0cm" start=3D"1" type=3D"1">
+<ol style=3D"margin-top:0cm" start=3D"1" type=3D"a">
+<li class=3D"MsoNormal" style=3D"mso-list:l2 level2 lfo5"><span lang=3D"EN-=
+US" style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;co=
+lor:red;mso-fareast-language:KO">SP-170174</span><span lang=3D"EN-US" style=
+=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-fareast=
+-language:KO"><br>
+</span><b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;font-family:&quot;A=
+rial&quot;,sans-serif;color:black;mso-fareast-language:KO">LS from ITU-T SG=
+13: LS on the activities in ITU-T SG13 and start of normative work in ITU-T=
+ Study Group 13</span></b><span lang=3D"EN-GB" style=3D"font-size:9.0pt;fon=
+t-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:KO">=
+<br>
+Postponed to meeting #76 ITU-T SG13 seems to request an LS on FMC work afte=
+r the SA WG2-BBF workshop.</span><span lang=3D"EN-GB" style=3D"mso-fareast-=
+language:KO"><o:p></o:p></span></li></ol>
+</ol>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0;mso-fareast-language:KO">GS -&gt;&nbsp; It appears tha=
+t the proper response is to highlight any 5G work related to FMC that has b=
+een established and reiterate any conclusions from
+ the referenced joint meeting that will reflect 3GPP&#8217;s 5G FMC work. L=
+astly the response should indicate whether we are agreeable to include SG 1=
+3 in the collaboration between BBF and SA 2 and whether we have any proposa=
+l or preference as to how this collaboration
+ should operator and/or next steps.&nbsp; Since Marco Spini is the rapporte=
+ur of the SA 2 work, should we ask him to provide input or frame the reply?=
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SH-&gt; I think we should point to =
+the WID or SID that covers the FMC work being done and planned.&nbsp; The g=
+oal would be to show that FMC between BBF and 3GPP
+ is active and ongoing.&nbsp; I don&#8217;t think we need to invite them to=
+ the work.&nbsp; We can indicate that member companies are invited to parti=
+cipate in the effort and if somebody is excluded, there is the possibility =
+for them to participate as an invited expert.&nbsp; But
+ we shouldn&#8217;t encourage making it a 3 way party.<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"mso-fareast-language:K=
+O">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"color:#7030A0;mso-fareast-language:KO"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:72.0pt"><span lang=3D"EN-US" st=
+yle=3D"mso-fareast-language:KO">Finally as a longer term effort it has been=
+ brought to our attention that Q.1741 needs to be updated to Release 12 (Q.=
+1741.9 covers release 11) and we probably
+ should consider the Release 13 version to follow as well. &nbsp;Can anybod=
+y on this list shed any light on how it was handled in the past at least to=
+ start the planning?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-=
+family:&quot;Times New Roman&quot;,serif;mso-fareast-language:KO"><o:p>&nbs=
+p;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ lang=3D"EN-US" style=3D"font-size:12.0pt;font-family:&quot;Times New Roman=
+&quot;,serif;mso-fareast-language:KO">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:7.5pt;font-f=
+amily:&quot;Arial&quot;,sans-serif;color:gray;mso-fareast-language:KO"><br>
+This e-mail may contain Sprint proprietary information intended for the sol=
+e use of the recipient(s). Any use by others is prohibited. If you are not =
+the intended recipient, please contact the sender and delete all copies of =
+the message.</span><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-fami=
+ly:&quot;Times New Roman&quot;,serif;mso-fareast-language:KO"><o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-=
+family:&quot;Times New Roman&quot;,serif;mso-fareast-language:KO"><o:p>&nbs=
+p;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ lang=3D"EN-US" style=3D"font-size:12.0pt;font-family:&quot;Times New Roman=
+&quot;,serif;mso-fareast-language:KO">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p align=3D"center" style=3D"text-align:center"><span lang=3D"EN-US" style=
+=3D"mso-fareast-language:KO">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG l=
+ist, click the following link:<br>
+<a href=3D"https://na01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%=
+2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_ITUT_AHG%26A%3D1&=
+amp;data=3D02%7C01%7CGregory.Schumacher%40SPRINT.COM%7C35c00886e4be4408a647=
+08d495ffad41%7C4f8bc0acbd784bf5b55f1b31301d9adf%7C0%7C1%7C63629837273904966=
+8&amp;sdata=3D7LF85y94PQ10ET%2BpJIvaJJmKVC62Rk8ZA4XESIDri7M%3D&amp;reserved=
+=3D0" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_T=
+SG_SA_ITUT_AHG&amp;A=3D1</a>
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;font-=
+family:&quot;Times New Roman&quot;,serif;mso-fareast-language:KO"><o:p>&nbs=
+p;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ lang=3D"EN-US" style=3D"font-size:12.0pt;font-family:&quot;Times New Roman=
+&quot;,serif;mso-fareast-language:KO">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p align=3D"center" style=3D"text-align:center"><span lang=3D"EN-US" style=
+=3D"mso-fareast-language:KO">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG l=
+ist, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AH=
+G&amp;A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=
+=3D3GPP_TSG_SA_ITUT_AHG&amp;A=3D1</a>
+<o:p></o:p></span></p>
+</div>
+</body>
+</html>
+<br>
+<hr>
+<p align=3D"center">To unsubscribe from the 3GPP_TSG_SA_ITUT_AHG list, click the following link:<br>
+<a href=3D"http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1" target=3D"_blank">http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_ITUT_AHG&A=3D1</a>
+</p>
+
+--_000_064F894F3855F4438A5F6D82C297CF7A75AF3C30lhreml501mbs_--

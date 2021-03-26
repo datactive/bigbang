@@ -1,0 +1,2725 @@
+=========================================================================
+Date:         Wed, 22 May 2013 11:08:33 +0000
+Reply-To:     Peter Hedman <peter.hedman@ERICSSON.COM>
+From:         Peter Hedman <peter.hedman@ERICSSON.COM>
+Subject:      [MTCe-UEPCOP] Input papers that potentially could be merged
+Content-Type: multipart/alternative;
+              boundary="_000_F65AAE794DB7A74B87E74101B13AA5E115B0F4ESESSMB207ericsso_"
+MIME-Version: 1.0
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E115B0F4ESESSMB207ericsso_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+After a quick look it seems like these papers could potentially be merged:
+
+
+6.2.2
+
+
+S2-131685<Docs/S2-131685.zip>
+
+
+P-CR
+
+
+Update and Evaluation of Power Saving State Approach
+
+
+Huawei, Hisilicon
+
+
+6.2.2
+
+
+S2-131731<Docs/S2-131731.zip>
+
+
+P-CR
+
+
+Considerations for power saving state
+
+
+Alcatel-Lucent Shanghai Bell, Alcatel-Lucent
+
+
+
+
+6.2.2
+
+
+S2-131736<Docs/S2-131736.zip>
+
+
+P-CR
+
+
+FFS statement resolution in 'Keep UEs in detached state when not communicat=
+ing' solution.
+
+
+NEC
+
+
+6.2.2
+
+
+S2-131787<Docs/S2-131787.zip>
+
+
+P-CR
+
+
+Resolve FFS for Attach/Detach solution
+
+
+HTC
+
+
+
+
+6.2.2
+
+
+S2-131913<Docs/S2-131913.zip>
+
+
+P-CR
+
+
+NAS retransmission timers for long DRX cycle
+
+
+Qualcomm Incorporated
+
+
+6.2.2
+
+
+S2-131958<Docs/S2-131958.zip>
+
+
+P-CR
+
+
+Re-transmission aspects when using long DRX cycle in idle mode
+
+
+Ericsson, ST-Ericsson
+
+
+
+Could the authors discuss with each other to see whether it is possible to =
+do a merged paper?
+
+Any other papers that I missed?
+
+BR,
+Peter
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E115B0F4ESESSMB207ericsso_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+p.TAL, li.TAL, div.TAL
+	{mso-style-name:TAL;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	punctuation-wrap:simple;
+	text-autospace:ideograph-numeric;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;
+	mso-fareast-language:AR-SA;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri","sans-serif";}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"SV">Hi,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"SV"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal">After a quick look it seems like these papers could =
+potentially be merged:<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"915" style=3D"border-collapse:collapse;border:none">
+<tbody>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">6.2.2<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131685.zip">S2-131=
+685</a><o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">P-CR<o:p></o:p></span></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border:solid windowte=
+xt 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Update and Evaluation of Power Saving=
+ State Approach<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Huawei, Hisilicon<o:p></o:p></span></=
+p>
+</td>
+</tr>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">6.2.2<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131731.zip">S2-131=
+731</a><o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">P-CR<o:p></o:p></span></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border-top:none;borde=
+r-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowt=
+ext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Considerations for power saving state=
+<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Alcatel-Lucent Shanghai Bell, Alcatel=
+-Lucent<o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"915" style=3D"border-collapse:collapse;border:none">
+<tbody>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">6.2.2<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131736.zip">S2-131=
+736</a><o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">P-CR<o:p></o:p></span></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border:solid windowte=
+xt 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">FFS statement resolution in 'Keep UEs=
+ in detached state when not communicating' solution.<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">NEC<o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">6.2.2<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131787.zip">S2-131=
+787</a><o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">P-CR<o:p></o:p></span></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border-top:none;borde=
+r-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowt=
+ext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Resolve FFS for Attach/Detach solutio=
+n<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">HTC<o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"915" style=3D"border-collapse:collapse;border:none">
+<tbody>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">6.2.2<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131913.zip">S2-131=
+913</a><o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">P-CR<o:p></o:p></span></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border:solid windowte=
+xt 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">NAS retransmission timers for long DR=
+X cycle<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Qualcomm Incorporated<o:p></o:p></spa=
+n></p>
+</td>
+</tr>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">6.2.2<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131958.zip">S2-131=
+958</a><o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">P-CR<o:p></o:p></span></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border-top:none;borde=
+r-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowt=
+ext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Re-transmission aspects when using lo=
+ng DRX cycle in idle mode<o:p></o:p></span></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"TAL"><span lang=3D"EN-GB">Ericsson, ST-Ericsson<o:p></o:p></spa=
+n></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Could the authors discuss with each other to see whe=
+ther it is possible to do a merged paper?<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Any other papers that I missed?<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">BR,<o:p></o:p></p>
+<p class=3D"MsoNormal">Peter<o:p></o:p></p>
+</div>
+</body>
+</html>
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E115B0F4ESESSMB207ericsso_--
+=========================================================================
+Date:         Wed, 22 May 2013 16:16:50 +0200
+Reply-To:     Erik Guttman <erik.guttman@GMAIL.COM>
+From:         Erik Guttman <erik.guttman@GMAIL.COM>
+Subject:      Re: [MTCe-UEPCOP] Input papers that potentially could be merged
+Comments: To: Peter Hedman <peter.hedman@ERICSSON.COM>
+In-Reply-To:  <F65AAE794DB7A74B87E74101B13AA5E115B0F4@ESESSMB207.ericsson.se>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+              boundary="------------080405040402070605080607"
+
+This is a multi-part message in MIME format.
+--------------080405040402070605080607
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi Peter, all,
+
+I am perhaps more optimistic than you.
+
+I independently came up with the following (*additions* to your list of 
+merge opportunities):
+
+   - *1709 +* 1736 + 1787
+
+   - DRX max ~10 seconds in *1686 + 1822* + 1913 *+ 1924* [+ 1958 
+(/looks like //less than/ 10 seconds/for upper layers is best/)
+
+
+best regards,
+
+Erik
+
+On 22.05.2013 13:08, Peter Hedman wrote:
+>
+> Hi,
+>
+> After a quick look it seems like these papers could potentially be merged:
+>
+> 6.2.2
+>
+> 	
+>
+> S2-131685 <Docs/S2-131685.zip>
+>
+> 	
+>
+> P-CR
+>
+> 	
+>
+> Update and Evaluation of Power Saving State Approach
+>
+> 	
+>
+> Huawei, Hisilicon
+>
+> 6.2.2
+>
+> 	
+>
+> S2-131731 <Docs/S2-131731.zip>
+>
+> 	
+>
+> P-CR
+>
+> 	
+>
+> Considerations for power saving state
+>
+> 	
+>
+> Alcatel-Lucent Shanghai Bell, Alcatel-Lucent
+>
+> 6.2.2
+>
+> 	
+>
+> S2-131736 <Docs/S2-131736.zip>
+>
+> 	
+>
+> P-CR
+>
+> 	
+>
+> FFS statement resolution in 'Keep UEs in detached state when not 
+> communicating' solution.
+>
+> 	
+>
+> NEC
+>
+> 6.2.2
+>
+> 	
+>
+> S2-131787 <Docs/S2-131787.zip>
+>
+> 	
+>
+> P-CR
+>
+> 	
+>
+> Resolve FFS for Attach/Detach solution
+>
+> 	
+>
+> HTC
+>
+> 6.2.2
+>
+> 	
+>
+> S2-131913 <Docs/S2-131913.zip>
+>
+> 	
+>
+> P-CR
+>
+> 	
+>
+> NAS retransmission timers for long DRX cycle
+>
+> 	
+>
+> Qualcomm Incorporated
+>
+> 6.2.2
+>
+> 	
+>
+> S2-131958 <Docs/S2-131958.zip>
+>
+> 	
+>
+> P-CR
+>
+> 	
+>
+> Re-transmission aspects when using long DRX cycle in idle mode
+>
+> 	
+>
+> Ericsson, ST-Ericsson
+>
+> Could the authors discuss with each other to see whether it is 
+> possible to do a merged paper?
+>
+> Any other papers that I missed?
+>
+> BR,
+>
+> Peter
+>
+
+
+--------------080405040402070605080607
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  </head>
+  <body>
+    <p style="font-family: verdana; font-size: 10pt; color: #201;
+      padding-left: 4pt"> Hi Peter, all, <br>
+    </p>
+    <p style="font-family: verdana; font-size: 10pt; color: #201;
+      padding-left: 4pt">I am perhaps more optimistic than you.&nbsp;</p>
+    <p style="font-family: verdana; font-size: 10pt; color: #201;
+      padding-left: 4pt">I independently came up with the following (<b>additions</b>
+      to your list of merge opportunities):&nbsp; <br>
+    </p>
+    <p style="font-family: verdana; font-size: 10pt; color: #201;
+      padding-left: 4pt">&nbsp; - <b>1709 +</b> 1736 + 1787</p>
+    <p style="font-family: verdana; font-size: 10pt; color: #201;
+      padding-left: 4pt">&nbsp; - DRX max ~10 seconds in <b>1686 + 1822</b>
+      + 1913 <b>+ 1924</b> [+ 1958 (<i>looks like </i><i>less than</i>
+      10 seconds<i> for upper layers is best</i>)<br>
+        <br>
+        <br>
+    </p>
+    <p style="font-family: verdana; font-size: 10pt; color: #201;
+      padding-left: 4pt">best regards,<br>
+      <br>
+      Erik</p>
+    <div class="moz-cite-prefix">On 22.05.2013 13:08, Peter Hedman
+      wrote:<br>
+    </div>
+    <blockquote class=" cite"
+      id="mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se"
+cite="mid:F65AAE794DB7A74B87E74101B13AA5E115B0F4@ESESSMB207.ericsson.se"
+      type="cite">
+      <meta http-equiv="Content-Type" content="text/html;
+        charset=ISO-8859-1">
+      <meta name="Generator" content="Microsoft Word 14 (filtered
+        medium)">
+      <style>#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se p.MsoNormal,
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se li.MsoNormal,
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se div.MsoNormal { margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: "Calibri","sans-serif"; }
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se a:link,
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se span.MsoHyperlink { color: blue; text-decoration: underline; }
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se a:visited,
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se span.MsoHyperlinkFollowed { color: purple; text-decoration: underline; }
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se span.EmailStyle17 { font-family: "Calibri","sans-serif"; color: windowtext; }
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se p.TAL,
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se li.TAL,
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se div.TAL { margin: 0cm 0cm 0.0001pt; page-break-after: avoid; font-size: 9pt; font-family: "Arial","sans-serif"; color: black; }
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se .MsoChpDefault { font-family: "Calibri","sans-serif"; }
+#mid_F65AAE794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se div.WordSection1 { page: WordSection1; }
+</style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext="edit" spidmax="1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext="edit">
+<o:idmap v:ext="edit" data="1" />
+</o:shapelayout></xml><![endif]-->
+      <div class="WordSection1">
+        <p class="MsoNormal"><span lang="SV">Hi,<o:p></o:p></span></p>
+        <p class="MsoNormal"><span lang="SV"><o:p>&nbsp;</o:p></span></p>
+        <p class="MsoNormal">After a quick look it seems like these
+          papers could potentially be merged:<o:p></o:p></p>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <table class="MsoNormalTable"
+          style="border-collapse:collapse;border:none" width="915"
+          border="1" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td style="width:34.0pt;border:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="45">
+                <p class="TAL"><span lang="EN-GB">6.2.2<o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB"><a
+                      moz-do-not-send="true" href="Docs/S2-131685.zip">S2-131685</a><o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB">P-CR<o:p></o:p></span></p>
+              </td>
+              <td style="width:6.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="227">
+                <p class="TAL"><span lang="EN-GB">Update and Evaluation
+                    of Power Saving State Approach<o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB">Huawei, Hisilicon<o:p></o:p></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width:34.0pt;border:solid windowtext
+                1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="45">
+                <p class="TAL"><span lang="EN-GB">6.2.2<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB"><a
+                      moz-do-not-send="true" href="Docs/S2-131731.zip">S2-131731</a><o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB">P-CR<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:6.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="227">
+                <p class="TAL"><span lang="EN-GB">Considerations for
+                    power saving state<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB">Alcatel-Lucent
+                    Shanghai Bell, Alcatel-Lucent<o:p></o:p></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <table class="MsoNormalTable"
+          style="border-collapse:collapse;border:none" width="915"
+          border="1" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td style="width:34.0pt;border:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="45">
+                <p class="TAL"><span lang="EN-GB">6.2.2<o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB"><a
+                      moz-do-not-send="true" href="Docs/S2-131736.zip">S2-131736</a><o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB">P-CR<o:p></o:p></span></p>
+              </td>
+              <td style="width:6.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="227">
+                <p class="TAL"><span lang="EN-GB">FFS statement
+                    resolution in 'Keep UEs in detached state when not
+                    communicating' solution.<o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB">NEC<o:p></o:p></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width:34.0pt;border:solid windowtext
+                1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="45">
+                <p class="TAL"><span lang="EN-GB">6.2.2<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB"><a
+                      moz-do-not-send="true" href="Docs/S2-131787.zip">S2-131787</a><o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB">P-CR<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:6.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="227">
+                <p class="TAL"><span lang="EN-GB">Resolve FFS for
+                    Attach/Detach solution<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB">HTC<o:p></o:p></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <table class="MsoNormalTable"
+          style="border-collapse:collapse;border:none" width="915"
+          border="1" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td style="width:34.0pt;border:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="45">
+                <p class="TAL"><span lang="EN-GB">6.2.2<o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB"><a
+                      moz-do-not-send="true" href="Docs/S2-131913.zip">S2-131913</a><o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB">P-CR<o:p></o:p></span></p>
+              </td>
+              <td style="width:6.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="227">
+                <p class="TAL"><span lang="EN-GB">NAS retransmission
+                    timers for long DRX cycle<o:p></o:p></span></p>
+              </td>
+              <td style="width:2.0cm;border:solid windowtext
+                1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="76">
+                <p class="TAL"><span lang="EN-GB">Qualcomm Incorporated<o:p></o:p></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width:34.0pt;border:solid windowtext
+                1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt"
+                valign="top" width="45">
+                <p class="TAL"><span lang="EN-GB">6.2.2<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB"><a
+                      moz-do-not-send="true" href="Docs/S2-131958.zip">S2-131958</a><o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB">P-CR<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:6.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="227">
+                <p class="TAL"><span lang="EN-GB">Re-transmission
+                    aspects when using long DRX cycle in idle mode<o:p></o:p></span></p>
+              </td>
+              <td
+                style="width:2.0cm;border-top:none;border-left:none;border-bottom:solid
+                windowtext 1.0pt;border-right:solid windowtext
+                1.0pt;padding:0cm 5.4pt 0cm 5.4pt" valign="top"
+                width="76">
+                <p class="TAL"><span lang="EN-GB">Ericsson, ST-Ericsson<o:p></o:p></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <p class="MsoNormal">Could the authors discuss with each other
+          to see whether it is possible to do a merged paper?<o:p></o:p></p>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <p class="MsoNormal">Any other papers that I missed?<o:p></o:p></p>
+        <p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+        <p class="MsoNormal">BR,<o:p></o:p></p>
+        <p class="MsoNormal">Peter<o:p></o:p></p>
+      </div>
+    </blockquote>
+    <br>
+  </body>
+</html>
+
+--------------080405040402070605080607--
+=========================================================================
+Date:         Wed, 22 May 2013 17:13:48 +0000
+Reply-To:     Peter Hedman <peter.hedman@ERICSSON.COM>
+From:         Peter Hedman <peter.hedman@ERICSSON.COM>
+Subject:      Re: [MTCe-UEPCOP] Input papers that potentially could be merged
+Comments: To: Erik Guttman <erik.guttman@GMAIL.COM>
+In-Reply-To:  <519CD352.8090604@gmail.com>
+Content-Type: multipart/alternative;
+              boundary="_000_F65AAE794DB7A74B87E74101B13AA5E115B4EDESESSMB207ericsso_"
+MIME-Version: 1.0
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E115B4EDESESSMB207ericsso_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Erik and all,
+
+Agree, that there are more merging possibilities.
+At least 1709 changes same solution, but from a different angle (PGW). Thou=
+gh possibly they could be merged to speed up the handling.
+
+On the second group, the "DRX max" papers, a merge of all will be hard.
+Though 1686, 1822 and 1924 seems to be common in advocating max 10s for DRX=
+. Maybe these could be merged in some way.
+However, 1913 and 1958 proposes measures to avoid issues in case longer DRX=
+ is set.
+
+BR,
+Peter
+
+
+From: Erik Guttman [mailto:erik.guttman@GMAIL.COM]
+Sent: den 22 maj 2013 16:17
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: Re: [MTCe-UEPCOP] Input papers that potentially could be merged
+
+
+Hi Peter, all,
+
+I am perhaps more optimistic than you.
+
+I independently came up with the following (additions to your list of merge=
+ opportunities):
+
+  - 1709 + 1736 + 1787
+
+  - DRX max ~10 seconds in 1686 + 1822 + 1913 + 1924 [+ 1958 (looks like le=
+ss than 10 seconds for upper layers is best)
+
+
+best regards,
+
+Erik
+On 22.05.2013 13:08, Peter Hedman wrote:
+Hi,
+
+After a quick look it seems like these papers could potentially be merged:
+
+
+6.2.2
+
+
+S2-131685<Docs/S2-131685.zip>
+
+
+P-CR
+
+
+Update and Evaluation of Power Saving State Approach
+
+
+Huawei, Hisilicon
+
+
+6.2.2
+
+
+S2-131731<Docs/S2-131731.zip>
+
+
+P-CR
+
+
+Considerations for power saving state
+
+
+Alcatel-Lucent Shanghai Bell, Alcatel-Lucent
+
+
+
+
+6.2.2
+
+
+S2-131736<Docs/S2-131736.zip>
+
+
+P-CR
+
+
+FFS statement resolution in 'Keep UEs in detached state when not communicat=
+ing' solution.
+
+
+NEC
+
+
+6.2.2
+
+
+S2-131787<Docs/S2-131787.zip>
+
+
+P-CR
+
+
+Resolve FFS for Attach/Detach solution
+
+
+HTC
+
+
+
+
+6.2.2
+
+
+S2-131913<Docs/S2-131913.zip>
+
+
+P-CR
+
+
+NAS retransmission timers for long DRX cycle
+
+
+Qualcomm Incorporated
+
+
+6.2.2
+
+
+S2-131958<Docs/S2-131958.zip>
+
+
+P-CR
+
+
+Re-transmission aspects when using long DRX cycle in idle mode
+
+
+Ericsson, ST-Ericsson
+
+
+
+Could the authors discuss with each other to see whether it is possible to =
+do a merged paper?
+
+Any other papers that I missed?
+
+BR,
+Peter
+
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E115B4EDESESSMB207ericsso_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.tal, li.tal, div.tal
+	{mso-style-name:tal;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.emailstyle17
+	{mso-style-name:emailstyle17;}
+span.emailstyle171
+	{mso-style-name:emailstyle171;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+p.tal1, li.tal1, div.tal1
+	{mso-style-name:tal1;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;}
+p.msochpdefault1, li.msochpdefault1, div.msochpdefault1
+	{mso-style-name:msochpdefault1;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";}
+span.EmailStyle24
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#000000" vlink=3D"#000000">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Hi Erik and all,<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Agree, that there are mor=
+e merging possibilities.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">At least 1709 changes sam=
+e solution, but from a different angle (PGW). Though possibly they could be=
+ merged to speed up the handling.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">On the second group, the =
+&#8220;DRX max&#8221; papers, a merge of all will be hard.<o:p></o:p></span=
+></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Though 1686, 1822 and 192=
+4 seems to be common in advocating max 10s for DRX. Maybe these could be me=
+rged in some way.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">However, 1913 and 1958 pr=
+oposes measures to avoid issues in case longer DRX is set.<o:p></o:p></span=
+></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">BR,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">Peter<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span><=
+/p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Erik Gut=
+tman [mailto:erik.guttman@GMAIL.COM]
+<br>
+<b>Sent:</b> den 22 maj 2013 16:17<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> Re: [MTCe-UEPCOP] Input papers that potentially could be me=
+rged<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">Hi Peter, all,
+<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">I am perhaps more optimistic than you.&nbsp;<=
+o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">I independently came up with the following (<=
+b>additions</b> to your list of merge opportunities):&nbsp;
+<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">&nbsp; -
+<b>1709 &#43;</b> 1736 &#43; 1787<o:p></o:p></span></p>
+<p style=3D"margin-bottom:12.0pt"><span style=3D"font-size:10.0pt;font-fami=
+ly:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#220011">&nbsp; - DRX m=
+ax ~10 seconds in
+<b>1686 &#43; 1822</b> &#43; 1913 <b>&#43; 1924</b> [&#43; 1958 (<i>looks l=
+ike less than</i> 10 seconds<i> for upper layers is best</i>)<br>
+<br>
+<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">best regards,<br>
+<br>
+Erik<o:p></o:p></span></p>
+<div>
+<p class=3D"MsoNormal">On 22.05.2013 13:08, Peter Hedman wrote:<o:p></o:p><=
+/p>
+</div>
+<blockquote style=3D"margin-top:5.0pt;margin-bottom:5.0pt" id=3D"mid_F65AAE=
+794DB7A74B87E74101B13AA5E115B0F4_ESESSMB207_ericsson_se">
+<div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span lang=3D"SV">Hi,</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span lang=3D"SV">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">After a quick look it seems like these papers could potentially be=
+ merged:<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"915" style=3D"width:686.25pt;border-collapse:collapse">
+<tbody>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">6.2.2</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131685.zip"><u><sp=
+an style=3D"color:blue">S2-131685</span></u></a></span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">P-CR</span><o:p></o:p></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border:solid windowte=
+xt 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Update and Evaluation of Power Saving=
+ State Approach</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Huawei, Hisilicon</span><o:p></o:p></=
+p>
+</td>
+</tr>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">6.2.2</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131731.zip"><u><sp=
+an style=3D"color:blue">S2-131731</span></u></a></span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">P-CR</span><o:p></o:p></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border-top:none;borde=
+r-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowt=
+ext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Considerations for power saving state=
+</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Alcatel-Lucent Shanghai Bell, Alcatel=
+-Lucent</span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"915" style=3D"width:686.25pt;border-collapse:collapse">
+<tbody>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">6.2.2</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131736.zip"><u><sp=
+an style=3D"color:blue">S2-131736</span></u></a></span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">P-CR</span><o:p></o:p></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border:solid windowte=
+xt 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">FFS statement resolution in 'Keep UEs=
+ in detached state when not communicating' solution.</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">NEC</span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">6.2.2</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131787.zip"><u><sp=
+an style=3D"color:blue">S2-131787</span></u></a></span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">P-CR</span><o:p></o:p></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border-top:none;borde=
+r-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowt=
+ext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Resolve FFS for Attach/Detach solutio=
+n</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">HTC</span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"915" style=3D"width:686.25pt;border-collapse:collapse">
+<tbody>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">6.2.2</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131913.zip"><u><sp=
+an style=3D"color:blue">S2-131913</span></u></a></span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">P-CR</span><o:p></o:p></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border:solid windowte=
+xt 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">NAS retransmission timers for long DR=
+X cycle</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border:solid windowtex=
+t 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Qualcomm Incorporated</span><o:p></o:=
+p></p>
+</td>
+</tr>
+<tr>
+<td width=3D"45" valign=3D"top" style=3D"width:34.0pt;border:solid windowte=
+xt 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">6.2.2</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB"><a href=3D"Docs/S2-131958.zip"><u><sp=
+an style=3D"color:blue">S2-131958</span></u></a></span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">P-CR</span><o:p></o:p></p>
+</td>
+<td width=3D"227" valign=3D"top" style=3D"width:6.0cm;border-top:none;borde=
+r-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowt=
+ext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Re-transmission aspects when using lo=
+ng DRX cycle in idle mode</span><o:p></o:p></p>
+</td>
+<td width=3D"76" valign=3D"top" style=3D"width:2.0cm;border-top:none;border=
+-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowte=
+xt 1.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+<p class=3D"tal"><span lang=3D"EN-GB">Ericsson, ST-Ericsson</span><o:p></o:=
+p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">Could the authors discuss with each other to see whether it is pos=
+sible to do a merged paper?<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">Any other papers that I missed?<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">BR,<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">Peter<o:p></o:p></p>
+</div>
+</blockquote>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+</body>
+</html>
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E115B4EDESESSMB207ericsso_--
+=========================================================================
+Date:         Wed, 22 May 2013 20:07:18 +0000
+Reply-To:     "Jain, Puneet" <puneet.jain@INTEL.COM>
+From:         "Jain, Puneet" <puneet.jain@INTEL.COM>
+Subject:      [MTCe-SDDTE] Input papers that potentially could be merged
+Content-Type: multipart/alternative;
+              boundary="_000_DB5AA196870CB047BBCDFA52F9D10CBC634D81D4FMSMSX109amrcor_"
+MIME-Version: 1.0
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC634D81D4FMSMSX109amrcor_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Dear All,
+
+Following papers could potentially be merged. Though solutions are addressi=
+ng different aspects of the solutions but merging may speed the presentatio=
+n and discussion
+
+
+6.2.1   S2-131648<Docs/S2-131648.zip>   P-CR    MTC-IWF selection for Uplin=
+k small data CATT
+6.2.1   S2-131684<Docs/S2-131684.zip>   P-CR    Capability handling for T5 =
+small data service   Huawei, Hisilicon
+6.2.1   S2-131797<Docs/S2-131797.zip>   P-CR    Resolution to open issues w=
+ith T5 Messaging Service     Ericsson, ST-Ericsson
+6.2.1   S2-131947<Docs/S2-131947.zip>   P-CR    T5 message integrity protec=
+tion clarification   NEC
+
+
+
+6.2.1   S2-131773<Docs/S2-131773.zip>   P-CR    Additional Aspects for Fast=
+ Path Solution       ZTE
+6.2.1   S2-131774<Docs/S2-131774.zip>   P-CR    Clarification on Generating=
+ Default DRB for Fast Path Solution  ZTE
+
+
+6.2.1   S2-131649<Docs/S2-131649.zip>   P-CR    Update to solution Downlink=
+ small data transfer using RRC message       CATT
+6.2.1   S2-131870<Docs/S2-131870.zip>   P-CR    Solution Improvement on dow=
+nlink small data transfer using RRC message  LG Electronics
+
+
+6.2.1   S2-131629<Docs/S2-131629.zip>   P-CR    Updates to Small Data Trans=
+mission from RRC Idle Mode solution  NEC
+6.2.1   S2-131735<Docs/S2-131735.zip>   P-CR    Updates to Small Data conne=
+ction release in clause 5.1.1.3.1 (solution 1).      NEC
+
+
+Evaluation papers may be hard to merge. May be common aspects can be identi=
+fied and merged. Controversial aspects can documented and left for discussi=
+on.
+
+6.2.1   S2-131647<Docs/S2-131647.zip>   P-CR    Update to Evaluations of so=
+me solutions CATT
+6.2.1   S2-131683<Docs/S2-131683.zip>   P-CR    Evaluation of small data so=
+lutions      Huawei, Hisilicon
+6.2.1   S2-131710<Docs/S2-131710.zip>   P-CR    Analysis of the Small Data =
+Fast Path solution
+(Evaluation part only)  Nokia Siemens Networks
+6.2.1   S2-131711<Docs/S2-131711.zip>   P-CR    Analysis of the Connectionl=
+ess Data Transmission, Stateless GW and Optimized SR solutions
+(Evaluation part only)  Nokia Siemens Networks
+6.2.1   S2-131730<Docs/S2-131730.zip>   P-CR    Updates for Small Data Solu=
+tions (resubmission of S2-130078/SA2#95 and S2-130786/SA2#96)        Alcate=
+l-Lucent, Alcatel-Lucent Shanghai Bell
+
+Could the authors discuss with each other to see whether it is possible to =
+do a merged paper?
+
+Best Regards,
+Puneet
+
+
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC634D81D4FMSMSX109amrcor_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from rtf -->
+<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left:=
+ #800000 2px solid; } --></style>
+</head>
+<body>
+<font face=3D"Arial" size=3D"2"><span style=3D"font-size:10pt;">
+<div>Dear All,</div>
+<div>&nbsp;</div>
+<div>Following papers could potentially be merged. Though solutions are add=
+ressing different aspects of the solutions but merging may speed the presen=
+tation and discussion </div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<table width=3D"623" style=3D"width:374.3pt;">
+<col width=3D"56" style=3D"width:34.5pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"283" style=3D"width:170.15pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1316=
+48.zip"><font color=3D"blue"><u>S2-131648</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">MTC-IWF selection for U=
+plink small data</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">CATT</span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1316=
+84.zip"><font color=3D"blue"><u>S2-131684</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Capability handling for=
+ T5 small data service</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Huawei, Hisilicon</span=
+></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+97.zip"><font color=3D"blue"><u>S2-131797</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Resolution to open issu=
+es with T5 Messaging Service</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Ericsson, ST-Ericsson</=
+span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1319=
+47.zip"><font color=3D"blue"><u>S2-131947</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">T5 message integrity pr=
+otection clarification</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">NEC</span></font></td>
+</tr>
+</table>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<table width=3D"623" style=3D"width:374.3pt;">
+<col width=3D"56" style=3D"width:34.5pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"283" style=3D"width:170.15pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+73.zip"><font color=3D"blue"><u>S2-131773</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Additional Aspects for =
+Fast Path Solution</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">ZTE</span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+74.zip"><font color=3D"blue"><u>S2-131774</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Clarification on Genera=
+ting Default DRB for Fast Path Solution</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">ZTE</span></font></td>
+</tr>
+</table>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<table width=3D"622" style=3D"width:373.65pt;">
+<col width=3D"56" style=3D"width:34pt;">
+<col width=3D"94" style=3D"width:56.6pt;">
+<col width=3D"94" style=3D"width:56.55pt;">
+<col width=3D"282" style=3D"width:169.6pt;">
+<col width=3D"94" style=3D"width:56.9pt;">
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1316=
+49.zip"><font color=3D"blue"><u>S2-131649</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Update to solution Down=
+link small data transfer using RRC message</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">CATT</span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1318=
+70.zip"><font color=3D"blue"><u>S2-131870</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Solution Improvement on=
+ downlink small data transfer using RRC message</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">LG Electronics</span></=
+font></td>
+</tr>
+</table>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<table width=3D"623" style=3D"width:374.3pt;">
+<col width=3D"56" style=3D"width:34.5pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"283" style=3D"width:170.15pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1316=
+29.zip"><font color=3D"blue"><u>S2-131629</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Updates to Small Data T=
+ransmission from RRC Idle Mode solution</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">NEC</span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+35.zip"><font color=3D"blue"><u>S2-131735</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Updates to Small Data c=
+onnection release in clause 5.1.1.3.1 (solution 1).</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">NEC</span></font></td>
+</tr>
+</table>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font color=3D"red">Evaluation papers may be hard to merge. May be com=
+mon aspects can be identified and merged. Controversial aspects can documen=
+ted and left for discussion. </font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<table width=3D"623" style=3D"width:374.3pt;">
+<col width=3D"56" style=3D"width:34.5pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<col width=3D"283" style=3D"width:170.15pt;">
+<col width=3D"94" style=3D"width:56.7pt;">
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1316=
+47.zip"><font color=3D"blue"><u>S2-131647</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Update to Evaluations o=
+f some solutions</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">CATT</span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1316=
+83.zip"><font color=3D"blue"><u>S2-131683</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Evaluation of small dat=
+a solutions</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Huawei, Hisilicon</span=
+></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+10.zip"><font color=3D"blue"><u>S2-131710</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Analysis of the Small D=
+ata Fast Path solution
+<div><font color=3D"red">(Evaluation part only)</font></div>
+</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Nokia Siemens Networks<=
+/span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+11.zip"><font color=3D"blue"><u>S2-131711</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Analysis of the Connect=
+ionless Data Transmission, Stateless GW and Optimized SR solutions
+<div><font color=3D"red">(Evaluation part only)</font></div>
+</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Nokia Siemens Networks<=
+/span></font></td>
+</tr>
+<tr>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">6.2.1</span></font></td=
+>
+<td><font size=3D"2"><span style=3D"font-size:9pt;"><a href=3D"Docs/S2-1317=
+30.zip"><font color=3D"blue"><u>S2-131730</u></font></a></span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">P-CR</span></font></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Updates for Small Data =
+Solutions (resubmission of S2-130078/SA2#95 and S2-130786/SA2#96)</span></f=
+ont></td>
+<td><font size=3D"2"><span style=3D"font-size:9pt;">Alcatel-Lucent, Alcatel=
+-Lucent Shanghai Bell</span></font></td>
+</tr>
+</table>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div>Could the authors discuss with each other to see whether it is possibl=
+e to do a merged paper?</div>
+<div>&nbsp;</div>
+<div>Best Regards,</div>
+<div>Puneet</div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nbs=
+p;</span></font></div>
+</span></font>
+</body>
+</html>
+
+--_000_DB5AA196870CB047BBCDFA52F9D10CBC634D81D4FMSMSX109amrcor_--
+=========================================================================
+Date:         Tue, 28 May 2013 10:26:05 +0000
+Reply-To:     Genadi Velev <Genadi.Velev@NECLAB.EU>
+From:         Genadi Velev <Genadi.Velev@NECLAB.EU>
+Subject:      [MTCe] [oneM2M] draft LS reply to oneM2M (S2-132101)
+Content-Type: multipart/mixed;
+              boundary="_002_9A00EA13ECA2B64AA689600004348612F51F49DAPHNISofficehd_"
+MIME-Version: 1.0
+
+--_002_9A00EA13ECA2B64AA689600004348612F51F49DAPHNISofficehd_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Dear all,
+
+Please find attached an update of the LS reply to oneM2M.=20
+
+Apart from alignments and editorials, we tried to capture the following com=
+ments from the presentation on Monday (essential changes highlighted in yel=
+low):
+ - (Peter) include stage 3 spec for Tsp interface (TS29.368).
+ - (Erik) in rel-10 we specified UE configuration capabilities.
+ - (Frank) clarify the 2nd paragraph in the answer to Q1.=20
+ - (Rainer) SA2 will update 1M2M only for related work.
+
+Any comments or suggestions are appreciated.
+
+Thanks,
+Genadi
+
+_______________________________
+NEC Europe Ltd | Registered Office: Athene, Odyssey Business Park,
+West End Road, London, HA4 6QE, GB | Registered in England 2832014
+
+
+--_002_9A00EA13ECA2B64AA689600004348612F51F49DAPHNISofficehd_
+Content-Type: application/msword;
+	name="draftS2-132101_was2002_1813+1733_ LS-reply-1M2M-r1-HZ.doc"
+Content-Description: draftS2-132101_was2002_1813+1733_
+ LS-reply-1M2M-r1-HZ.doc
+Content-Disposition: attachment;
+	filename="draftS2-132101_was2002_1813+1733_ LS-reply-1M2M-r1-HZ.doc";
+	size=50176; creation-date="Tue, 28 May 2013 09:25:28 GMT";
+	modification-date="Tue, 28 May 2013 10:26:03 GMT"
+Content-Transfer-Encoding: base64
+
+0M8R4KGxGuEAAAAAAAAAAAAAAAAAAAAAPgADAP7/CQAGAAAAAAAAAAAAAAABAAAAWwAAAAAAAAAA
+EAAAXQAAAAEAAAD+////AAAAAFwAAAD/////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////s
+pcEAe8AJBAAA8BK/AAAAAAAAEAAAAAAACAAAfhcAAA4AYmpianrkeuQAAAAAAAAAAAAAAAAAAAAA
+AAAJBBYAOEQAABiOAQAYjgEAMw8AAAAAAAANAAAAAAAAAD0AAAAAAAAAAAAAAAAAAAD//w8AAAAA
+AAAAAAD//w8AAAAAAAAAAAD//w8AAAAAAAAAAAAAAAAAAAAAALcAAAAAABQOAAAAAAAAFA4AAG4b
+AAAAAAAAbhsAAAAAAACEGwAASAAAAPAbAAAQAAAAABwAABQAAAAAAAAAAAAAAP////8AAAAAFBwA
+AAAAAAAUHAAAAAAAABQcAAA4AAAATBwAAJQAAADgHAAAJAAAABQcAAAAAAAA8i0AADICAAAEHQAA
+AAAAAAQdAAAAAAAABB0AAAAAAAAEHQAAAAAAAAQdAAAAAAAA/x0AAAAAAAD/HQAAAAAAAP8dAAAA
+AAAArSwAAAIAAACvLAAAAAAAAK8sAAAAAAAArywAAAAAAACvLAAAAAAAAK8sAAAAAAAArywAACQA
+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
+eWluZyBOZXR3b3Jrcw1SZXNwb25zZSB0bzoJTFMgKFMyLTEzMTcxMykgb24gaW50ZXJhY3Rpb24g
+b2Ygb25lTTJNIHdpdGggVW5kZXJseWluZyBOZXR3b3Jrcw1SZWxlYXNlOgkNV29yayBJdGVtOgkN
+DVNvdXJjZToJM0dQUCBUU0ctU0EyDVRvOglvbmVNMk0gVGVjaG5pY2FsIFBsZW5hcnkNQ2M6CTNH
+UFAgU0ExLCBTQTMsIENUMw0NQ29udGFjdCBQZXJzb246CQ1OYW1lOglHZW5hZGkgVmVsZXYNVGVs
+LiBOdW1iZXI6CSs0OSAxNTIwIDE1NDY2MzMNRS1tYWlsIEFkZHJlc3M6CWdlbmFkaS52ZWxldkBu
+ZWNsYWIuZXUNDUF0dGFjaG1lbnRzOglOb25lDQ0NMS4gT3ZlcmFsbCBEZXNjcmlwdGlvbjoNU0Ey
+IHRoYW5rcyBvbmVNMk0gVFAgZm9yIHRoZSBMUyBTMi0xMzE3MTMvb25lTTJNLVRQLTIwMTMtMDI1
+MVIwMS4NDVNBMiBoYXMgc3RhbmRhcmRpemVkIGEgbnVtYmVyIG9mIGdlbmVyaWMgZmVhdHVyZXMg
+c2luY2UgUmVsZWFzZSAxMCB0aGF0IGNhbiBiZSBhcHBsaWNhYmxlIHRvIE1UQyB0eXBlTTJNIHNl
+cnZpY2UgbGF5ZXIuIFRoZXNlIGZlYXR1cmVzIGFyZSBjYXB0dXJlZCBmb3IgZXhhbXBsZSBpbiBU
+UyAyMy42ODIsIFRTIDI0LjM2OCwgVFMgMjMuMDYwIGFuZCBUUyAyMy40MDEuIA0NU0EyIHdvdWxk
+IGxpa2UgdG8gYW5zd2VyIG9uZU0yTSBxdWVzdGlvbnMgYXMgZm9sbG93cy4NDVExOiBXaGF0IGlu
+Zm9ybWF0aW9uIG1heSB0aGUgc2VydmljZSBsYXllciBwcm92aWRlIGZvciBzdXBwb3J0aW5nIG9y
+IG9wdGltaXppbmcgdGhlIHVuZGVybHlpbmcgbmV0d29yayBwcm92aWRlZCBzZXJ2aWNlcyBvciBp
+dHMgcmVzb3VyY2UgdXNhZ2U/ICh3aGF0IGluZm9ybWF0aW9uLCBhdCB3aGljaCBncmFudWxhcml0
+eSCFKSANV2hhdCBhcmUgdGhlIHJlZmVyZW5jZSBwb2ludHMgZm9yIHByb3ZpZGluZyBzdWNoIGlu
+Zm9ybWF0aW9uPw0NRm9yIHRoZSBwdXJwb3NlIG9mIDNHUFAgbmV0d29yayBvcHRpbWl6YXRpb24g
+Zm9yIG1hY2hpbmUgdHlwZSBjb21tdW5pY2F0aW9uIChNVEMpLCBhbiBNVENlIFdvcmsgSXRlbSBp
+cyBvbmdvaW5nIHdoaWNoIGluY2x1ZGVzIGJ1aWxkaW5nIGJsb2NrcyBmb3Igc21hbGwgZGF0YSBh
+bmQgZGV2aWNlIHRyaWdnZXJpbmcgZW5oYW5jZW1lbnRzIChTRERURSkgYW5kIFVFIHBvd2VyIGNv
+bnN1bXB0aW9uIG9wdGltaXphdGlvbnMgKFVFUENPUCkuICBUaGlzIHdvcmsgaXMgYXBwcm9hY2hp
+bmcgY29tcGxldGlvbiBhbmQgaXMgYXQgdGhlIGV2YWx1YXRpb24gcGhhc2Ugb2YgdGhlIHNvbHV0
+aW9ucyB0aGF0IGFyZSBhbHJlYWR5IGNhcHR1cmVkIGluIFRSIDIzLjg4Ny4NDU5vbmUgb2YgdGhl
+IGJ1aWxkaW5nIGJsb2NrcyBmb3IgTVRDZSBpbiBSZWxlYXNlIDEyIGNvbnNpZGVyaW5jbHVkZSBy
+ZXF1aXJlbWVudHMgZm9yIGludGVyd29ya2luZyB3aXRoIGEgc2VydmljZSBsYXllciBhbmQgdGhl
+cmUgYXJlIG5vIGV4cGxpY2l0IHBsYW5zIGZvciBhbnkgc3VjaCB3b3JrIHRvIGJlIGNvbnNpZGVy
+ZWQsIGFzIFJlbGVhc2UgMTIgcmVxdWlyZW1lbnRzIGFyZSBmcm96ZW4gKHBsZWFzZSByZWZlciB0
+byAzR1BQIE1UQyBzZXJ2aWNlIHJlcXVpcmVtZW50cyBmcm9tIHN0YWdlIDEgaW4gVFMgMjIuMzY4
+KS4NDVNvbWUgYWx0ZXJuYXRpdmUgc29sdXRpb25zIGNhcHR1cmVkIGluIFRSIDIzLjg4NyBmb3Ig
+U0REVEUgb3IgVUVQQ09QIGluIFJlbGVhc2UgMTIgbWF5IHJlcXVpcmUgb3IgbWF5IGJlbmVmaXQg
+ZnJvbSBvYnRhaW5pbmcgaW5mb3JtYXRpb24gaW50ZXJ3b3JraW5nIHdpdGggdGhlZnJvbSB0aGUg
+TTJNIHNlcnZpY2UgbGF5ZXIsIGhvd2V2ZXIgdGhlIHdvcmsgaXNoYXMgbm90IGNvbmNsdWRlZCB5
+ZXQuIA0NM0dQUCBTQTIgd2lsbCBrZWVwIG9uZU0yTSBpbmZvcm1lZCBvbiBwcm9ncmVzcyBvZiBS
+ZWxlYXNlLTEyIHdvcmsgcmVsYXRlZCB0byBpbnRlcndvcmtpbmcgd2l0aCBNMk0gc2VydmljZSBs
+YXllci4NDVEyOiBXaGF0IGZ1bmN0aW9ucyBvciBmZWF0dXJlcyBhcmUgb2ZmZXJlZCBieSB0aGUg
+dW5kZXJseWluZyBuZXR3b3JrIGZvciBlbmFibGluZyB0aGUgc2VydmljZSBsYXllcj8gV2hhdCBh
+cmUgdGhlIHJlbGF0ZWQgcmVmZXJlbmNlIHBvaW50cz8NDUluIFJlbGVhc2UtMTAgM0dQUCBzcGVj
+aWZpZWQgaW4gVFMgMjQuMzY4IGEgcG9zc2liaWxpdHkgdG8gbWFuYWdlIHNwZWNpZmljIGNvbmZp
+Z3VyYXRpb24gcGFyYW1ldGVycyBpbiB0aGUgVUUgKGUuZy4gbG93IHByaW9yaXR5LCBsb25nZXIg
+VHJhY2tpbmcgQXJlYSBVcGRhdGUgdGltZXIpIHRoYXQgbWF5IGJlIHJlbGF0ZWQgdG8gTTJNIGFw
+cGxpY2F0aW9ucy4gVGhlc2UgY29uZmlndXJhdGlvbiBwYXJhbWV0ZXJzIGFuZCBtYW5hZ2VkIGJ5
+IHRoZSAzR1BQIG5ldHdvcmsgb3BlcmF0b3IgYW5kIHRoZXJlIGlzIG5vIGludGVyZmFjZSBwcm92
+aWRlZCB0byB0aGUgTTJNIHNlcnZpY2UgY2FwYWJpbGl0eSBsYXllci4gDQ1JbiBSZWxlYXNlLTEx
+IDNHUFAgU0EyIGRpZCBub3JtYXRpdmUgd29yayByZWxhdGVkIHRvIHRoZSBpbnRlcmZhY2UgYmV0
+d2VlbiAzR1BQIG5ldHdvcmsgYW5kIHRvIFNlcnZpY2UgQ2FwYWJpbGl0eSBTZXJ2ZXIgKGJlbG9u
+Z2luZyB0byB0aGUgInNlcnZpY2UgbGF5ZXIiIGZyb20geW91ciBxdWVzdGlvbikuIFRoaXMgaW50
+ZXJmYWNlIGlzIGNhbGxlZCBUc3AuICBUaGUgb25seSBzZXJ2aWNlIG9mZmVyZWQgY3VycmVudGx5
+IG92ZXIgdGhlIFRzcCBpbnRlcmZhY2UgaXMgRGV2aWNlIFRyaWdnZXJpbmcuICBUaGlzIHNlcnZp
+Y2UgaXMgdXNlZCB0byBzZW5kIHBheWxvYWQgZnJvbSB0aGUgU2VydmljZSBDYXBhYmlsaXR5IFNl
+cnZlciB0byB0aGUgTTJNIHNlcnZpY2UgZW5hYmxlbWVudCBsYXllciBpbiB0aGUgZGV2aWNlLiBD
+dXJyZW50bHkgdGhlIEFwcGxpY2F0aW9uIFBvcnQgSUQgYWxvbmcgd2l0aCBwcmlvcml0eSwgdmFs
+aWRpdHkgdGltZSBhbmQgcGF5bG9hZCBjYW4gYmUgc2VudCBieSBhIFNlcnZpY2UgQ2FwYWJpbGl0
+eSBTZXJ2ZXIgb3ZlciBUc3AgaW4gZWFjaCBEZXZpY2UgVHJpZ2dlciBtZXNzYWdlLiALVGhlIG1l
+c3NhZ2UgZXhjaGFuZ2UgZmxvdyBhbmQgdGhlIHByb3RvY29sIGRldGFpbHNlZCBpbmZvcm1hdGlv
+biBlbGVtZW50cyBvdmVyIHRoZSBUc3AgaW50ZXJmYWNlIGFyZSBzcGVjaWZpZWQgaW4gc3RhZ2Ug
+MiBpbiAzR1BQIFRTIDIzLjY4Miwgc3ViY2xhdXNlIDUuMi4xLCBvciBpbiBzdGFnZSAzIGluIDNH
+UFAgVFMgMjkuMzY4LiANDTIuIEFjdGlvbnM6DVRvIG9uZU0yTSBUZWNobmljYWwgUGxlbmFyeQ1B
+Q1RJT05zOiAJDVBsZWFzZSB0YWtlIG5vdGUgb2YgdGhlIGFib3ZlIGluZm9ybWF0aW9uIGFuZCBr
+ZWVwIDNHUFAgdXBkYXRlZCB3aXRoIHdvcmsgcHJvZ3Jlc3MgaW4gb25lTTJNLg0zR1BQIFNBMiBy
+ZWxpZXMgb24gM0dQUCBTQTEgdG8gY3JlYXRlIG5ldyByZXF1aXJlbWVudHMgKGUuZy4gaW4gc2Vy
+dmljZSBsYXllciBpbnRlcndvcmtpbmcpIGZvciBSZWxlYXNlIDEzLCBpZiBuZWVkZWQsIGFuZCB3
+b3VsZCBhbHNvIGtpbmRseSBhc2sgb25lTTJNIHRvIGFkZHJlc3MgM0dQUCBTQTEgb24gcXVlc3Rp
+b25zIHJlZ2FyZGluZyBuZXcgM0dQUCBzZXJ2aWNlIHJlcXVpcmVtZW50cy4NDTMuIERhdGUgb2Yg
+TmV4dCBTQTIgTWVldGluZ3M6DVRTRy1TQTIgbWVldGluZyAjOTgJMTUtMTkgSnVseSAyMDEzCVZh
+bGVuY2lhLCBTcGFpbg1UU0ctU0EyIG1lZXRpbmcgIzk5CTIzLTI3IFNlcHRlbWJlciAyMDEzCVRC
+RCwgQ2hpbmENDQMNDQQNDQMNDQQNDQ0FVG8gYmUgZGVsZXRlZCB1cG9uIGFwcHJvdmFsLg0FVG8g
+YmUgZGVsZXRlZCB1cG9uIGFwcHJvdmFsLg0NDQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAIQgAACMIAAAn
+CAAAKAgAAC0IAABNCAAATggAAFgIAABfCAAAZggAAG8IAABwCAAAcQgAAHIIAABzCAAAeggAAOzS
+u+yi7IlzWolaiUnsOzAAAAAAAAAAAAAAAAAVFmhaDCAANQiBT0oCAFFKAgBeSgIAGhVoTxn0ABZo
+WgwgADUIgUNKGABcCIFeSgIAACABCIEDagAAAAAESAEABWjruxWHFmh+ZSwAMEoRAFUIAQAwAQiB
+BEgBAAVo6rsVhxVofmUsABZofmUsAENKFgBPSgIAUUoCAFwIgV5KAgBhShYAACoBCIEESAIABWgT
+3BUnFmh3I4wAQ0oWAE9KAgBRSgIAXAiBXkoCAGFKFgAAMAEIgQRIAQAFaOm7FYcVaH5lLAAWaH5l
+LABDShYAT0oCAFFKAgBcCIFeSgIAYUoWAAAxFWjFW+sAFmhaDCAANQiBQ0oWAE9KAgBRSgIAXAiB
+XkoCAGFKFgBtSAAEbkgABHUIAS0BCIEESAIABWgU3BUnFmh3I4wANQiBQ0oWAE9KAgBRSgIAXAiB
+XkoCAGFKFgAzAQiBBEgBAAVo6bsVhxVoxVvrABZofmUsADUIgUNKFgBPSgIAUUoCAFwIgV5KAgBh
+ShYAJhVoxVvrABZoWgwgADUIgUNKFgBPSgIAUUoCAFwIgV5KAgBhShYAEAAIAAAoCAAAcggAAHMI
+AAC+CAAADAkAABYJAAAiCQAAIwkAADgJAABVCQAAbAkAAG0JAAB+CQAAkQkAAK8JAADWCQAA1wkA
+APYAAAAAAAAAAAAAAADlAAAAAAAAAAAAAAAA1wAAAAAAAAAAAAAAAMgAAAAAAAAAAAAAAADIAAAA
+AAAAAAAAAAAAyAAAAAAAAAAAAAAAAMgAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAAAyAAAAAAAAAAA
+AAAAAMgAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAAL8AAAAAAAAAAAAAAACy
+AAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAAJcAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAwHAA3GBQAB3AgAD4Q3Al6ENwJnZFoMIAAOAAANxggAAtwIhgoAAA+ENwJehDcCZ2RaDCAA
+AAwEAA3GBQAB3AgAD4Q3Al6ENwJnZFoMIAAACAAADcYFAAHcCABnZFoMIAAADgAAD4TBBxGEP/gU
+pDwAXoTBB2CEP/hnZFoMIAAADQ8AAyQADcYJAtMSbyMBpiWCYSQAZ2RaDCAAEQAADcYFAAGmJQIm
+ZAYBAABQxggAAAD/BgEAAGdkWgwgAAAIAAANxgUAAaYlAmdkWgwgAAAReggAAIEIAACCCAAAgwgA
+AIkIAAC9CAAAvggAAMoIAADLCAAA0AgAANEIAADUCAAA2AgAANwIAAALCQAADAkAABQJAAAVCQAA
+FgkAACAJAAAhCQAAIgkAACMJAAAqCQAA7t7UybvJsMmikaKCoruidKJgsMlSQbAAAAAAAAAAAAAA
+ACAWaFoMIAA1CIFPSgIAUUoCAF5KAgBuSBEEbygBdEgRBAAbFWg+dfMAFmhaDCAAT0oCAFFKAgBc
+CIFeSgIAJhVodFLmABZoWgwgAE9KAgBRSgIAXAiBXkoCAG5IEQRvKAF0SBEEABsVaHRS5gAWaFoM
+IAA1CIFPSgIAUUoCAF5KAgAdFmiyIN0AT0oCAFFKAgBcCIFeSgIAbkgRBHRIEQQgFmhaDCAAT0oC
+AFFKAgBcCIFeSgIAbkgRBG8oAXRIEQQAGxVodFLmABZoWgwgAE9KAgBRSgIAXAiBXkoCABUWaFoM
+IAA1CIFPSgIAUUoCAF5KAgAbFWg9GZoAFmhaDCAAT0oCAFFKAgBcCIFeSgIAFRZoWgwgAE9KAgBR
+SgIAXAiBXkoCABMDagAAAAAWaH5lLAAwShEAVQgBHhVoPRmaABZoWgwgAE9KAgBRSgIAXAiBXkoC
+AG8oAQAhDCoHFWjFW+sAFmhaDCAAT0oCAFFKAgBcCIFeSgIAbygBABcqCQAAKwkAADcJAAA4CQAA
+OwkAADwJAABUCQAAVQkAAFgJAABZCQAAXgkAAGsJAABsCQAAbQkAAHwJAAB+CQAAgwkAAIQJAACK
+CQAAkAkAAJEJAACdCQAAngkAAJ8JAADw3tDCtKa0m5CFpniQm5ByaVtOaZuQPQAAACAWaFoMIABP
+SgIAUUoCAFwIgV5KAgBuSBEEbygBdEgRBAAYFmhaDCAANQiBXAiBXkoCAG5IEQR0SBEEABsWaFoM
+IAA1CIFcCIFeSgIAbkgRBG8oAXRIEQQQFmhaDCAANQiBXAiBXkoCAAAKFmhaDCAAXkoCAAAYFmha
+DCAAT0oCAFFKAgBcCIFeSgIAbygBABUWaAtkvABPSgIAUUoCAFwIgV5KAgAVFmhaDCAAT0oCAFFK
+AgBcCIFeSgIAFRZoWgwgADUIgU9KAgBRSgIAXkoCABsVaD0ZmgAWaFoMIABPSgIAUUoCAFwIgV5K
+AgAbFWj2Va8AFmhaDCAAT0oCAFFKAgBcCIFeSgIAGxVo9lWvABZoWgwgADUIgU9KAgBRSgIAXkoC
+ABsVaMVb6wAWaFoMIABPSgIAUUoCAFwIgV5KAgAjFWjFW+sAFmhaDCAAQ0oWAE9KAgBRSgIAXAiB
+XkoCAGFKFgAeFmhaDCAAQioGT0oCAFFKAgBcCIFeSgIAcGj/AAAAF58JAAChCQAAogkAAKYJAACn
+CQAArgkAAK8JAAC+CQAAvwkAAMsJAADPCQAA0gkAANMJAADVCQAA1gkAANcJAADjCQAA5AkAAOgJ
+AADpCQAA6wkAAAMKAAAoCgAALAoAAC0KAADw3/Df8N/Swq6Zrpmuwod8cd9xZ1xQRFAAAAAAAAAA
+AAAAAAAXAQiBBEgBAAVomroVhxZoJEI0AF5KAgAXAQiBBEgDAAVowrIVZxZoyifVAF5KAgAVFmhD
+TmMANQiBT0oCAFFKAgBeSgIAEhZoQ05jAE9KAgBRSgIAXkoCAAAVFmhaDCAAT0oCAFFKAgBcCIFe
+SgIAFRZoWgwgADUIgU9KAgBRSgIAXkoCACMVaMVb6wAWaFoMIAA1CIFPSgIAUUoCAF5KAgBtSAcE
+c0gHBCkVaMVb6wAWaFoMIAA1CIFcCIFeSgIAbUgHBG5IEQRvKAFzSAcEdEgRBCYVaMVb6wAWaFoM
+IAA1CIFcCIFeSgIAbUgHBG5IEQRzSAcEdEgRBAAeFWjFW+sAFmhaDCAANQiBXAiBXkoCAG1IBwRz
+SAcEABgVaMVb6wAWaFoMIABeSgIAbUgHBHNIBwQAIBZoWgwgAE9KAgBRSgIAXAiBXkoCAG5IEQRv
+KAF0SBEEAB0WaFoMIABPSgIAUUoCAFwIgV5KAgBuSBEEdEgRBAAY1wkAAOkJAADqCQAA6wkAAAMK
+AABFCgAARgoAABkLAAAaCwAAUAsAAFELAAANDAAASwwAAEwMAADDDQAAxA0AAO8OAADwDgAA1Q8A
+ANYPAABIEAAASRAAANUQAADWEAAA8AAAAAAAAAAAAAAAAOYAAAAAAAAAAAAAAADkAAAAAAAAAAAA
+AAAA4AAAAAAAAAAAAAAAANsAAAAAAAAAAAAAAADbAAAAAAAAAAAAAAAA2wAAAAAAAAAAAAAAAOQA
+AAAAAAAAAAAAAADkAAAAAAAAAAAAAAAA5AAAAAAAAAAAAAAAANIAAAAAAAAAAAAAAADSAAAAAAAA
+AAAAAAAAzQAAAAAAAAAAAAAAAM0AAAAAAAAAAAAAAADNAAAAAAAAAAAAAAAAzQAAAAAAAAAAAAAA
+AM0AAAAAAAAAAAAAAADNAAAAAAAAAAAAAAAAzQAAAAAAAAAAAAAAAMgAAAAAAAAAAAAAAADNAAAA
+AAAAAAAAAAAA0gAAAAAAAAAAAAAAAM0AAAAAAAAAAAAAAAAAAAAAAAAEAABnZNxLrAAABAAAZ2R5
+C9kAAAgAAA+E0AJehNACZ2RMQ2MAAAQPAGdkyifVAAADAAAUpHgAAAEAAAoAACZkBAEAAVDGCAAA
+AP8EAQEAAA4AAA+EwQcRhD/4FKQ8AF6EwQdghD/4Z2RaDCAAABctCgAAQwoAAEYKAAB+CgAAhgoA
+AKMKAACrCgAArgoAANkKAADlCgAA8goAAPMKAAD0CgAA/QoAAP8KAAAYCwAAGQsAABoLAAAcCwAA
+HQsAAB4LAAAzCwAA8OTw2PC3oPCU8OTwfZTw5G1jVEc9AAAAAAAAAAAAAAAAABIWaBcegQBPSgIA
+UUoCAF5KAgAAGBVop3iDABZodyatAE9KAgBRSgIAXkoCAAAdFmg9GZoAT0oCAFFKAgBeSgIAbkgR
+BG8oAXRIEQQSFmjaUUAAT0oCAFFKAgBeSgIAAB8BCIEESAMABWjCshVnFmjKJ9UAT0oCAFFKAgBe
+SgIALQEIAQRIAgAFaMzhFUcVaBIUogAWaCQYEABeSgIAicoHAQIA8+EVR4MqAQwqBxcBCIEESAIA
+BWjM4RVHFmgkGBAAXkoCAC0BCAEESAIABWgL4hVHFWh5NqYAFmh5NqYAXkoCAInKBwECAAziFUeD
+KgEMKgdAAAgBAQgBBEgDAAVowrIVZxVoeTamABZoyifVABdoeTamAF5KAgBjSAIAZGgL4hVHicoH
+AQIADOIVR4MqAQwqBwAXAQiBBEgBAAVomroVhxZoJEI0AF5KAgAXAQiBBEgDAAVowrIVZxZoyifV
+AF5KAgAdAQiBBEgDAAVowrIVZxVor2PGABZoyifVAF5KAgAAFTMLAAA2CwAANwsAADoLAABOCwAA
+TwsAAFALAABRCwAAVQsAAJgLAAC3CwAA3wsAAOALAAAqDAAASgwAAEsMAABMDAAAUAwAAFMMAACK
+DAAAlwwAAJ0MAACfDAAAogwAAO/f79XHua+ll4yXjJeMl39wYnBiTnA+AAAAAAAfAQiBBEgEAAVo
+7bEVZxZo+hqwAE9KAgBRSgIAXkoCACcBCIEESAIABWgW3BUnFmh3I4wAT0oCAFFKAgBeSgIAbkgR
+BHRIEQQaFmhMQ2MAT0oCAFFKAgBeSgIAbkgRBHRIEQQAHRZoTENjAE9KAgBRSgIAXkoCAG5IEQRv
+KAF0SBEEGBVoeQvZABZoeQvZAE9KAgBRSgIAXkoCAAAVFmh3I4wANgiBT0oCAFFKAgBeSgIAGxVo
+TENjABZovyqiADYIgU9KAgBRSgIAXkoCABIWaL8qogBPSgIAUUoCAF5KAgAAEhZo+RsOAE9KAgBR
+SgIAXkoCAAAbFWineIMAFmhDTmMAT0oCAFFKAgBeSgIAbygBGxVo1iW/ABZoPRmaAE9KAgBRSgIA
+XkoCAG8oARIWaBcegQBPSgIAUUoCAF5KAgAAHwEIgQRIAQAFaJy6FYcWaCRCNABPSgIAUUoCAF5K
+AgAfAQiBBEgBAAVom7oVhxZoJEI0AE9KAgBRSgIAXkoCAAAXogwAAKYMAACoDAAAsAwAALEMAAC8
+DAAADg0AABMNAAAUDQAAGQ0AAD0NAABDDQAARg0AAEcNAABIDQAAbw0AAHQNAADBDQAAwg0AAMQN
+AADnDQAA6A0AAOwNAAD0DQAA9w0AAP8NAADs3MzsvNzs3Ozc7Nzs3Ozc7KzcnIycfJxXAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAIAQEIAQRIAwAFaMWyFWcV
+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
+ADUIgU9KAgBRSgIAXkoCABUWaENOYwA1CIFPSgIAUUoCAF5KAgAVFmhaDCAANQiBT0oCAFFKAgBe
+SgIAEhZoeQvZAE9KAgBRSgIAXkoCAAA1AQgBBEgCAAVo7+EVRxVoEDlHABZoO1QOAE9KAgBRSgIA
+XkoCAInKBwECAPHhFUeDKgEMKgc9AQgBBEgCAAVo7+EVRxVoEDlHABZoO1QOAE9KAgBRSgIAXkoC
+AG1ICQRzSAkEicoHAQIA8eEVR4MqAQwqByAVaEI38AAWaL8qogBPSgIAUUoCAF5KAgBtSAkEc0gJ
+BAASFmhMQ2MAT0oCAFFKAgBeSgIAABIWaC8c+gBPSgIAUUoCAF5KAgAAEhZovyqiAE9KAgBRSgIA
+XkoCAAAlAAiBFmi/KqIAF2g7VA4AT0oCAFFKAgBeSgIAY0gCAGRo7+EVRyUACIEWaFRJzgAXaDtU
+DgBPSgIAUUoCAF5KAgBjSAIAZGjv4RVHABJmFQAAZxUAAGkVAABqFQAAaxUAAHcVAACUFQAAlRUA
+AJkVAACdFQAAoxUAAKcVAACoFQAAqxUAALAVAAC1FQAAvhUAAMEVAADHFQAAyBUAAMkVAADOFQAA
+7uPY7sW1pZWFdYVlhXVVhVV1VUU4AAAAGBVolXMmABZo6Vt9AE9KAgBRSgIAXkoCAAAfAQiBBEgB
+AAVoxroVhxZoMjfCAE9KAgBRSgIAXkoCAB8BCIEESAQABWj1sRVnFmj6GrAAT0oCAFFKAgBeSgIA
+HwEIgQRIAwAFaPqzFWcWaAtODgBPSgIAUUoCAF5KAgAfAQiBBEgEAAVo9LEVZxZo+hqwAE9KAgBR
+SgIAXkoCAB8BCIEESAQABWj3sRVnFmh3Ph4AT0oCAFFKAgBeSgIAHwEIgQRIAwAFaG+7FYcWaH5E
+QQBPSgIAUUoCAF5KAgAfAQiBBEgBAAVo6bsVhxZokEwpAE9KAgBRSgIAXkoCAB8BCIEESAMABWjI
+shVnFmgSR0wAT0oCAFFKAgBeSgIAJQEIgQRIAwAFaMiyFWcVaK5iqwAWaBJHTABPSgIAUUoCAF5K
+AgAVFmhYQKMANQiBT0oCAFFKAgBeSgIAFRZoQ05jADUIgU9KAgBRSgIAXkoCACIBCIEESAEABWjF
+uhWHFmgyN8IANQiBT0oCAFFKAgBeSgIAFc4VAADSFQAA3BUAAOEVAAAzFgAANBYAAD4WAAA/FgAA
+RBYAAEkWAACVFgAAnRYAAKkWAACqFgAAqxYAAKwWAAC+FgAAvxYAAMoWAADbFgAA3RYAAN4WAADg
+FgAA79jB2KrYqtjvnI6cjn9yZ1ZnSzpLOgAAIBZoWgwgAE9KAgBRSgIAXAiBXkoCAG5IEQRvKAF0
+SBEEABUWaFoMIABPSgIAUUoCAFwIgV5KAgAgFmhaDCAANQiBT0oCAFFKAgBeSgIAbkgRBG8oAXRI
+EQQAFRZoWgwgADUIgU9KAgBRSgIAXkoCABgVaO5bHQAWaENOYwBPSgIAUUoCAF5KAgAAHRZo7lsd
+AE9KAgBRSgIAXkoCAG5IEQRvKAF0SBEEGhZonXF9AE9KAgBRSgIAXkoCAG5IEQR0SBEEABoWaD0k
+2wBPSgIAUUoCAF5KAgBuSBEEdEgRBAAtAQiBBEgBAAVoobsVhxVolXMmABZoyWGTAE9KAgBRSgIA
+XkoCAG5IEQR0SBEELQEIgQRIAwAFaG67FYcVaJVzJgAWaNxLrABPSgIAUUoCAF5KAgBuSBEEdEgR
+BC0BCIEESAEABWiYuxWHFWiVcyYAFmjVdmMAT0oCAFFKAgBeSgIAbkgRBHRIEQQgFWiVcyYAFmg9
+JNsAT0oCAFFKAgBeSgIAbkgRBHRIEQQW4BYAAOEWAADjFgAA5BYAAOkWAADuFgAA/RYAABAXAAAR
+FwAAEhcAABQXAAAVFwAAFxcAABgXAAAhFwAAIhcAACcXAAAsFwAAMRcAADIXAAAzFwAANBcAADYX
+AAA3FwAAORcAADoXAAA8FwAAPRcAAEAXAABBFwAAXhcAAF8XAAB8FwAAfRcAAH4XAAD04/Tj9OP0
+4/Tj9OP01OP049T0ycG9wb3BvcG9s6+zr73JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGFmh+ZSwAABMDagAAAAAWaH5lLAAwShEA
+VQgBBhZo9zSZAAAPA2oAAAAAFmj3NJkAVQgBFRZoQ05jAE9KAgBRSgIAXAiBXkoCAB0WaFoMIABP
+SgIAUUoCAFwIgV5KAgBuSBEEdEgRBCAWaFoMIABPSgIAUUoCAFwIgV5KAgBuSBEEbygBdEgRBAAV
+FmhaDCAAT0oCAFFKAgBcCIFeSgIAACI5FwAAOxcAADwXAAA+FwAAPxcAAEAXAABeFwAAfBcAAH0X
+AAB+FwAA/QAAAAAAAAAAAAAAAP0AAAAAAAAAAAAAAAD9AAAAAAAAAAAAAAAA/QAAAAAAAAAAAAAA
+AP0AAAAAAAAAAAAAAAD7AAAAAAAAAAAAAAAA+wAAAAAAAAAAAAAAAP0AAAAAAAAAAAAAAADqAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAANxgUAAe8TAA+E3AgRhCT3FKR4
+ADEkAV6E3AhghCT3AAESAAABAAAACTYAHFABAEJQAAAfsIMuILDIQSGwbgQisG4EI5BuBCSQbgQl
+sAAAF7AAABiwAAAMkNACRHABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAtbkYRRJxVUi2Ty7A3Sgx5qMAk9v9ubRLgw1Tz9m+xbYAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAGIEIgASAAEACwEPAAcAAAADAAAAAAAEAAgAAAAIAAAADgAAAA4AAAAIAAAA
+DgAAAA4AAAAIAAAADgAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIGAAAYAAAAwAMAANADAADgAwAA8AMA
+AAAEAAAQBAAAIAQAADAEAABABAAAUAQAAGAEAABwBAAAgAQAAJAEAADAAwAA0AMAAOADAADwAwAA
+AAQAABAEAAAyBgAAKAIAANgBAADoAQAAIAQAADAEAABABAAAUAQAAGAEAABwBAAAgAQAAJAEAADA
+AwAA0AMAAOADAADwAwAAAAQAABAEAAAgBAAAMAQAAEAEAABQBAAAYAQAAHAEAACABAAAkAQAAMAD
+AADQAwAA4AMAAPADAAAABAAAEAQAACAEAAAwBAAAQAQAAFAEAABgBAAAcAQAAIAEAACQBAAAwAMA
+ANADAADgAwAA8AMAAAAEAAAQBAAAIAQAADAEAABABAAAUAQAAGAEAABwBAAAgAQAAJAEAADAAwAA
+0AMAAOADAADwAwAAAAQAABAEAAAgBAAAMAQAAEAEAABQBAAAYAQAAHAEAACABAAAkAQAAMADAADQ
+AwAA4AMAAPADAAAABAAAEAQAACAEAAAwBAAAQAQAAFAEAABgBAAAcAQAAIAEAACQBAAAOAEAAFgB
+AAD4AQAACAIAABgCAABWAgAAfgIAABgAAABQSgMAX0gBBG1ICQRuSAkEc0gJBHRICQQAAAAAPAAA
+YPH/AgA8AAwQAAAAAAAAAAAGAE4AbwByAG0AYQBsAAAABQAAADEkAAAQAF9IAQRtSAkIc0gJCHRI
+CQRCAAFAAQACAEIADBAAAAAAAAAAAA8ASABlAGEAZABpAG4AZwAgADEALABIADEALABoADEAAAAF
+AAEABiQBAAQAQ0oYAAAAAABaAARAAQACAFoADBAAAAAAAAAAAAwASABlAGEAZABpAG4AZwAgADQA
+LABoADQAAAAbAAQABiQBDcYFAAGGCgAPhMQCMSQBQCYDXoTEAgALADUIgU9KAgBRSgIAAAAAAABc
+AAdAAQACAFwADBAAAAAAAAAAAAkASABlAGEAZABpAG4AZwAgADcAAAAbAAcABiQBDcYFAAGGCgAP
+hMQCMSQBQCYGXoTEAgAUADUIgUIqAk9KAgBRSgIAcGgAAP8AAAAAAEQAQSDy/6EARAAMAQAAAAAA
+AAAAFgBEAGUAZgBhAHUAbAB0ACAAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0AAAAAABWAGlA
+8/+zAFYADAUAAAAAAAAAAAwAVABhAGIAbABlACAATgBvAHIAbQBhAGwAAAAgADpWCwAX9gMAADTW
+BgABBQMAADTWBgABCgNsAGH2AwAAAgALAAAAKABrIPT/wQAoAAAFAAAAAAAAAAAHAE4AbwAgAEwA
+aQBzAHQAAAACAAwAAAAAAEgAH0ABAPIASAAMAAAAAAAAAAAABgBIAGUAYQBkAGUAcgAAABYADwAD
+JAMNxggAAtMSbyMBAjEkAWEkAwwAT0oCAFFKAgBrSOQESgD+b/H/AgFKAAwAAAAAAAAAAAALAEYA
+cgBvAG4AdABfAGMAbwB2AGUAcgAAAAIAEAAYAE9KAgBRSgIAX0gBBG1ICQhzSAkIdEgJBD4AJ2Dy
+/xEBPgAMAQAAAAAAAAAAEQBDAG8AbQBtAGUAbgB0ACAAUgBlAGYAZQByAGUAbgBjAGUAAAAEAENK
+EABMAB5AAQAiAUwADAEgAAAAAAAAAAwAQwBvAG0AbQBlAG4AdAAgAFQAZQB4AHQAAAAZABIAFKS0
+ADEkATUkADckADgkADlEAgBIJAAAAABUACBAAQAyAVQADAAAAAAAAAAAAAYARgBvAG8AdABlAHIA
+AAAmABMAAyQDDcYIAALTEm8jAQIxJAE1JAA3JAA4JAA5RAIASCQAYSQDCABPSgIAUUoCAFoA/k8B
+AEIBWgAMAAAAAAAAAAAACABEAEUAQwBJAFMASQBPAE4AAAAXABQAAyQDCiYAC0YBABOkeAAUpHgA
+YSQDABcANQiBPioBQioCT0oCAFFKAgBwaAAA/wAAtgD+TwEAUgG2AAwAAAAAAAAAAAAGAEEAQwBU
+AEkATwBOAAAAewAVAAMkAwUkAQYkAQomAAtGAwANxgcBaAEBMwfAD4QzBxGEIPwTpDwAFKQ8ACRk
+BgEGASVkBgEGBCZkBgEGASdkBgEGBE7GCP8AAAAGAQEAT8YI/wAAAAYBBABQxgj/AAAABgEBAFHG
+CP8AAAAGAQQAXoQzB2CEIPxhJAMAFAA1CIFCKgZPSgIAUUoCAHBo/wAAAJIA/k9RAWIBkgAMAAAA
+AAAAAAAABABkAG8AbgBlAAAAZQAWAAomAAtGAgANxgUAAWgBBg+EVAERhKz+JGQGAQsBJWQGAQsE
+JmQGAQsBJ2QGAQsETsYIAIAAAAYBAQBPxggAgAAABgEEAFDGCACAAAAGAQEAUcYIAIAAAAYBBABe
+hFQBYISs/gAJAEIqC3BoAIAAAAA+AP5PYQFyAT4ADAAAAAAAAAAAAAgATgBvAHQAIABEAG8AbgBl
+AAAACQAXAAomAAtGBAAACQBCKgZwaP8AAAAASABCQAEAggFIAAwAAAAAAAAAAAAJAEIAbwBkAHkA
+IABUAGUAeAB0AAAABQAYADEkAQAVAEIqBk9KAgBRSgIAXkoCAHBo/wAAAAA2AFVg8v+RATYADAAA
+AAAAAAAAAAkASAB5AHAAZQByAGwAaQBuAGsAAAAMAD4qAUIqAnBoRGKOAEgAmUABAKIBSAAMBQAA
+AAAAAAAADABCAGEAbABsAG8AbwBuACAAVABlAHgAdAAAAAIAGgAUAENKEABPSgQAUUoEAF5KBABh
+ShAAUgD+b/H/sgFSAAwAAAAAAAAAAAANAEMAUgAgAEMAbwB2AGUAcgAgAFAAYQBnAGUAAAAGABsA
+FKR4ABgAT0oCAFFKAgBfSAEEbUgJCHNICQh0SAkEOAD+TwEAwgE4AAwAAAAAAAAAAAADAFQAQQBM
+AAAACwAcAAUkAQYkATEkAQAMAENKEgBPSgIAUUoCACQBhUCzANMBJAEMAAAAAAAAAAAADABUAGEA
+YgBsAGUAIABHAHIAaQBkACAAOAAAAKIAOlYdABPWMAAAgAAGAQAAAACAAAYBAAAAAIAABgEAAAAA
+gAAGAQAAAACAAAYBAAAAAIAABgEAAGrWGAgAhdYIAAAA/wAAAACG1ggAAAD/AAAAAGrWGAIAhdYI
+AAAA/wAAAACG1ggAAAD/AAAAAGrWJQEAhdYIAAAA/wAAAACG1ggAAAD/AAAAAIfWCgAAgAD///8A
+AQCH1goAAAD/AAAA/wAABQAdADEkAABIAIXKFQgANQgBQioAXAgBYEoAAHBoAAAA/4XKFQIANQgB
+QioAXAgBYEoAAHBoAAAA/4XKFQEANQgBQioIXAgBYEoIAHBo////AMoAk0CzAOMBygAMAAAAAAAA
+AAAAEgBUAGEAYgBsAGUAIABQAHIAbwBmAGUAcwBzAGkAbwBuAGEAbAAAAGwAOlYeABPWMAAAAAAG
+AQAAAAAAAAYBAAAAAAAABgEAAAAAAAAGAQAAAAAAAAYBAAAAAAAABgEAAGrWJQEAhdYIAAAA/wAA
+AACG1ggAAAD/AAAAAIfWCgAAAAD///8AAQCH1goAAAD/AAAA/wAABQAeADEkAAAYAIXKFQEANQgB
+QioAXAgBYEoAAHBoAAAA/1gAakAhASIBWAAMBCEAfmUsAAAADwBDAG8AbQBtAGUAbgB0ACAAUwB1
+AGIAagBlAGMAdAAAABkAHwAUpAAAMSQANSQBNyQBOCQBOUQEAEgkAQAGADUIgVwIgUIA/m/y/wEC
+QgAMARIAfmUsAAAAEQBDAG8AbQBtAGUAbgB0ACAAVABlAHgAdAAgAEMAaABhAHIAAAAIAG1ICQhz
+SAkITgD+b/L/EQJOAAwAHwB+ZSwAAAAUAEMAbwBtAG0AZQBuAHQAIABTAHUAYgBqAGUAYwB0ACAA
+QwBoAGEAcgAAAA4ANQiBXAiBbUgJCHNICQhQSwMEFAAGAAgAAAAhAOneD7//AAAAHAIAABMAAABb
+Q29udGVudF9UeXBlc10ueG1srJHLTsMwEEX3SPyD5S1KnLJACCXpgseOx6J8wMiZJBbJ2LKnVfv3
+TNJUQqggFmws2TP3njvjcr0fB7XDmJynSq/yQisk6xtHXaXfN0/ZrVaJgRoYPGGlD5j0ur68KDeH
+gEmJmlKle+ZwZ0yyPY6Qch+QpNL6OALLNXYmgP2ADs11UdwY64mROOPJQ9flA7awHVg97uX5mCTi
+kLS6PzZOrEpDCIOzwJLU7Kj5RskWQi7KuSf1LqQriaHNWcJU+Rmw6F5lNdE1qN4g8guMEsOwDIlf
+z2cgGS3mvzueiezb1llsvN2Oso58Nl7MTsH/FGD1P+gT08x/W38CAAD//wMAUEsDBBQABgAIAAAA
+IQCl1qfnwAAAADYBAAALAAAAX3JlbHMvLnJlbHOEj89qwzAMh++FvYPRfVHSwxgldi+lkEMvo30A
+4Sh/aCIb2xvr20/HBgq7CISk7/epPf6ui/nhlOcgFpqqBsPiQz/LaOF2Pb9/gsmFpKclCFt4cIaj
+e9u1X7xQ0aM8zTEbpUi2MJUSD4jZT7xSrkJk0ckQ0kpF2zRiJH+nkXFf1x+YnhngNkzT9RZS1zdg
+ro+oyf+zwzDMnk/Bf68s5UUEbjeUTGnkYqGoL+NTvZCoZarUHtC1uPnW/QEAAP//AwBQSwMEFAAG
+AAgAAAAhAGt5lhaDAAAAigAAABwAAAB0aGVtZS90aGVtZS90aGVtZU1hbmFnZXIueG1sDMxNCsMg
+EEDhfaF3kNk3Y7soRWKyy6679gBDnBpBx6DSn9vX5eODN87fFNWbSw1ZLJwHDYplzS6It/B8LKcb
+qNpIHMUsbOHHFebpeBjJtI0T30nIc1F9I9WQha213SDWtSvVIe8s3V65JGo9i0dX6NP3KeJF6ysm
+CgI4/QEAAP//AwBQSwMEFAAGAAgAAAAhADDdQymoBgAApBsAABYAAAB0aGVtZS90aGVtZS90aGVt
+ZTEueG1s7FlPb9s2FL8P2HcgdG9jJ3YaB3WK2LGbLU0bxG6HHmmJlthQokDSSX0b2uOAAcO6YYcV
+2G2HYVuBFtil+zTZOmwd0K+wR1KSxVhekjbYiq0+JBL54/v/Hh+pq9fuxwwdEiEpT9pe/XLNQyTx
+eUCTsO3dHvYvrXlIKpwEmPGEtL0pkd61jfffu4rXVURigmB9Itdx24uUSteXlqQPw1he5ilJYG7M
+RYwVvIpwKRD4COjGbGm5VltdijFNPJTgGMjeGo+pT9BQk/Q2cuI9Bq+JknrAZ2KgSRNnhcEGB3WN
+kFPZZQIdYtb2gE/Aj4bkvvIQw1LBRNurmZ+3tHF1Ca9ni5hasLa0rm9+2bpsQXCwbHiKcFQwrfcb
+rStbBX0DYGoe1+v1ur16Qc8AsO+DplaWMs1Gf63eyWmWQPZxnna31qw1XHyJ/sqczK1Op9NsZbJY
+ogZkHxtz+LXaamNz2cEbkMU35/CNzma3u+rgDcjiV+fw/Sut1YaLN6CI0eRgDq0d2u9n1AvImLPt
+SvgawNdqGXyGgmgookuzGPNELYq1GN/jog8ADWRY0QSpaUrG2Ico7uJ4JCjWDPA6waUZO+TLuSHN
+C0lf0FS1vQ9TDBkxo/fq+fevnj9Fxw+eHT/46fjhw+MHP1pCzqptnITlVS+//ezPxx+jP55+8/LR
+F9V4Wcb/+sMnv/z8eTUQ0mcmzosvn/z27MmLrz79/btHFfBNgUdl+JDGRKKb5Ajt8xgUM1ZxJScj
+cb4VwwjT8orNJJQ4wZpLBf2eihz0zSlmmXccOTrEteAdAeWjCnh9cs8ReBCJiaIVnHei2AHucs46
+XFRaYUfzKpl5OEnCauZiUsbtY3xYxbuLE8e/vUkKdTMPS0fxbkQcMfcYThQOSUIU0nP8gJAK7e5S
+6th1l/qCSz5W6C5FHUwrTTKkIyeaZou2aQx+mVbpDP52bLN7B3U4q9J6ixy6SMgKzCqEHxLmmPE6
+nigcV5Ec4piVDX4Dq6hKyMFU+GVcTyrwdEgYR72ASFm15pYAfUtO38FQsSrdvsumsYsUih5U0byB
+OS8jt/hBN8JxWoUd0CQqYz+QBxCiGO1xVQXf5W6G6HfwA04WuvsOJY67T68Gt2noiDQLED0zERW+
+vE64E7+DKRtjYkoNFHWnVsc0+bvCzShUbsvh4go3lMoXXz+ukPttLdmbsHtV5cz2iUK9CHeyPHe5
+COjbX5238CTZI5AQ81vUu+L8rjh7//nivCifL74kz6owFGjdi9hG27Td8cKue0wZG6gpIzekabwl
+7D1BHwb1OnPiJMUpLI3gUWcyMHBwocBmDRJcfURVNIhwCk173dNEQpmRDiVKuYTDohmupK3x0Pgr
+e9Rs6kOIrRwSq10e2OEVPZyfNQoyRqrQHGhzRiuawFmZrVzJiIJur8OsroU6M7e6Ec0URYdbobI2
+sTmUg8kL1WCwsCY0NQhaIbDyKpz5NWs47GBGAm1366PcLcYLF+kiGeGAZD7Ses/7qG6clMfKnCJa
+DxsM+uB4itVK3Fqa7BtwO4uTyuwaC9jl3nsTL+URPPMSUDuZjiwpJydL0FHbazWXmx7ycdr2xnBO
+hsc4Ba9L3UdiFsJlk6+EDftTk9lk+cybrVwxNwnqcPVh7T6nsFMHUiHVFpaRDQ0zlYUASzQnK/9y
+E8x6UQpUVKOzSbGyBsHwr0kBdnRdS8Zj4quys0sj2nb2NSulfKKIGETBERqxidjH4H4dqqBPQCVc
+d5iKoF/gbk5b20y5xTlLuvKNmMHZcczSCGflVqdonskWbgpSIYN5K4kHulXKbpQ7vyom5S9IlXIY
+/89U0fsJ3D6sBNoDPlwNC4x0prQ9LlTEoQqlEfX7AhoHUzsgWuB+F6YhqOCC2vwX5FD/tzlnaZi0
+hkOk2qchEhT2IxUJQvagLJnoO4VYPdu7LEmWETIRVRJXplbsETkkbKhr4Kre2z0UQaibapKVAYM7
+GX/ue5ZBo1A3OeV8cypZsffaHPinOx+bzKCUW4dNQ5PbvxCxaA9mu6pdb5bne29ZET0xa7MaeVYA
+s9JW0MrS/jVFOOdWayvWnMbLzVw48OK8xjBYNEQp3CEh/Qf2Pyp8Zr926A11yPehtiL4eKGJQdhA
+VF+yjQfSBdIOjqBxsoM2mDQpa9qsddJWyzfrC+50C74njK0lO4u/z2nsojlz2Tm5eJHGzizs2NqO
+LTQ1ePZkisLQOD/IGMeYz2TlL1l8dA8cvQXfDCZMSRNM8J1KYOihByYPIPktR7N04y8AAAD//wMA
+UEsDBBQABgAIAAAAIQAN0ZCftgAAABsBAAAnAAAAdGhlbWUvdGhlbWUvX3JlbHMvdGhlbWVNYW5h
+Z2VyLnhtbC5yZWxzhI9NCsIwFIT3gncIb2/TuhCRJt2I0K3UA4TkNQ02PyRR7O0NriwILodhvplp
+u5edyRNjMt4xaKoaCDrplXGawW247I5AUhZOidk7ZLBggo5vN+0VZ5FLKE0mJFIoLjGYcg4nSpOc
+0IpU+YCuOKOPVuQio6ZByLvQSPd1faDxmwF8xSS9YhB71QAZllCa/7P9OBqJZy8fFl3+UUFz2YUF
+KKLGzOAjm6pMBMpburrE3wAAAP//AwBQSwECLQAUAAYACAAAACEA6d4Pv/8AAAAcAgAAEwAAAAAA
+AAAAAAAAAAAAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQItABQABgAIAAAAIQCl1qfnwAAAADYB
+AAALAAAAAAAAAAAAAAAAADABAABfcmVscy8ucmVsc1BLAQItABQABgAIAAAAIQBreZYWgwAAAIoA
+AAAcAAAAAAAAAAAAAAAAABkCAAB0aGVtZS90aGVtZS90aGVtZU1hbmFnZXIueG1sUEsBAi0AFAAG
+AAgAAAAhADDdQymoBgAApBsAABYAAAAAAAAAAAAAAAAA1gIAAHRoZW1lL3RoZW1lL3RoZW1lMS54
+bWxQSwECLQAUAAYACAAAACEADdGQn7YAAAAbAQAAJwAAAAAAAAAAAAAAAACyCQAAdGhlbWUvdGhl
+bWUvX3JlbHMvdGhlbWVNYW5hZ2VyLnhtbC5yZWxzUEsFBgAAAAAFAAUAXQEAAK0KAAAAADw/eG1s
+IHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04IiBzdGFuZGFsb25lPSJ5ZXMiPz4NCjxhOmNs
+ck1hcCB4bWxuczphPSJodHRwOi8vc2NoZW1hcy5vcGVueG1sZm9ybWF0cy5vcmcvZHJhd2luZ21s
+LzIwMDYvbWFpbiIgYmcxPSJsdDEiIHR4MT0iZGsxIiBiZzI9Imx0MiIgdHgyPSJkazIiIGFjY2Vu
+dDE9ImFjY2VudDEiIGFjY2VudDI9ImFjY2VudDIiIGFjY2VudDM9ImFjY2VudDMiIGFjY2VudDQ9
+ImFjY2VudDQiIGFjY2VudDU9ImFjY2VudDUiIGFjY2VudDY9ImFjY2VudDYiIGhsaW5rPSJobGlu
+ayIgZm9sSGxpbms9ImZvbEhsaW5rIi8+CgBOAEUAQwBfAEcAZQBuAGEAZABpAHAAAACCAAAAfg8A
+AAIARwBWAAAAAAAAAAAAAAAAAAAAAAAAAAAArbdIFQIARwBWAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+m7dIFeu7FYcAAAAAAAAAAAAAAAAAAOu7FYcAAAAAAAAAAAAAAAAAAAAAAAAeAAAAPAAAAD8AAAAA
+AAAAfg8AABwAAEQAAAAA/////wAAAAADAAAABgAAAAYAAAAJAAAADAAAAAwAAAAMAAAADAAAAAwA
+AAAMAAAADAAAAAwAAAAPAAAAAAgAAHoIAAAqCQAAnwkAAC0KAAAzCwAAogwAAP8NAADwDgAAeQ8A
+ANIPAAA5EAAAGhEAAK4SAACpFAAAZhUAAM4VAADgFgAAfhcAAAwAAAAOAAAADwAAABAAAAASAAAA
+EwAAABQAAAAVAAAAFgAAABcAAAAYAAAAGQAAABoAAAAcAAAAHQAAAB4AAAAfAAAAIAAAAAAIAADX
+CQAA1hAAADkXAAB+FwAADQAAABEAAAAbAAAAIQAAAA8AAPBYAAAAAAAG8BgAAAACBAAAAgAAAAEA
+AAABAAAAAQAAAAIAAABDAAvwGAAAAIEANyIBAIIAuiIAAIMANyIBAIQAuiIAAEAAHvEQAAAA//8A
+AAAA/wCAgIAA9wAAEAAPAALwkgAAABAACPAIAAAAAQAAAAEEAAAPAAPwMAAAAA8ABPAoAAAAAQAJ
+8BAAAAAAAAAAAAAAAAAAAAAAAAAAAgAK8AgAAAAABAAABQAAAA8ABPBCAAAAEgAK8AgAAAABBAAA
+AA4AAFMAC/AeAAAAvwEAABAAywEAAAAA/wEAAAgABAMJAAAAPwMBAAEAAAAR8AQAAAABAAAA//8C
+AAoAAAAAAa23SBX/////AAAAAZu3SBX/////TQAAAHoAAAA1DwAAAAAAAAEAAABwAAAAggAAADUP
+AAAAAAAAGQAAAB0AAACvAQAAvgEAAL8BAADLAQAAtAQAALsEAAAxCwAANAsAAFIMAABVDAAAygwA
+AM0MAAAEDQAADQ0AADMPAAA1DwAANg8AADgPAAA5DwAAOw8AADwPAAA+DwAAQA8AAH8PAAAHABwA
+BwAFAAcABQAHABwABwAcAAcAHAAHABwABwAcAAcABwACAAcAAgAHAAIABwACAAcAAAAAAK8BAADV
+AQAA4gMAAOYDAAAzDwAANQ8AADYPAAA4DwAAOQ8AADsPAAA8DwAAPg8AAEAPAAB/DwAABwAFAAcA
+MwAHAAcAAgAHAAIABwACAAcAAgAHAAAAAADXAQAA6wEAADgNAABEDQAAMw8AADUPAAA2DwAAOA8A
+ADkPAAA7DwAAPA8AAD4PAABADwAAfw8AAAcABQAHAAUABwAHAAIABwACAAcAAgAHAAIABwAAAAAA
+IwAAACcAAABOAAAAbwAAAHAAAABxAAAAggAAAIMAAACjAgAArgIAANkCAADlAgAA9AIAAP8CAAC3
+AwAAtwMAAN8DAADgAwAASQQAAEoEAACXBAAAnQQAAPcFAAAXBgAASwYAAFQGAABrBgAAfAYAAPAG
+AADwBgAA9QYAAAEHAAALBwAAIQcAAFIHAABWBwAAYwcAAJYHAACXBwAAmwcAALEHAACyBwAAuwcA
+AMAHAADSBwAA0gcAAAsIAAAPCAAAFwgAAEcIAACsCAAArQgAANMIAADUCAAA1ggAADYKAAB4CgAA
+kQoAAJIKAACVCgAAewsAAJ4LAABVDAAAdAwAAHUMAAB2DAAAmQwAAKIMAACoDAAAwAwAABMNAAA0
+DQAAMg8AADMPAAAzDwAANQ8AADYPAAA2DwAAOA8AADkPAAA7DwAAPA8AAD4PAAB/DwAAAwAEAAMA
+BAADAAQAAwAEAAMABAADAAQAAwAEAAMABAADAAQAAwAEAAMABAADAAQAAwAEAAMABAADAAQAAwAE
+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
+AIoquwALZLwAqCO9AI9PvQDWJb8A1Du/AHVkwAAyN8IAGFDEAHMPxQCxPsgAZHzNAFRJzgC5F88A
+ul/RACIr0gDjEdMAAwHUAMon1QBUXdcA8DjYAHkL2QC2B9sAPSTbALIg3QAKOd0ANnXdAHAs3wAX
+J+AA5UHhAGpQ4wAcUOUAdFLmAPlV5gAnKOsAABjuACtA7gDzZu4AN0DvAEI38AArR/AAZCfzAE8Z
+9AAJHfcA00r4APh0+AAHIPkALxz6ALYf+gCMBvsAAAAAADMPAAA1DwAAAAAAAAEAAAD/QAOAAQDV
+BwAA1QcAAAAAAAABAAEA1QcAAAAAAADVBwAAAAAAAAIQAAAAAAAAAH4PAADgAAAQAEAAAP//BgAA
+AAcAVQBuAGsAbgBvAHcAbgAKAE4ARQBDAF8ARwBlAG4AYQBkAGkADABOAEUAQwBfAEcAZQBuAGEA
+ZABpAF8AMQAOAEgAYQByAGkAcwAtAGUAZABpAHQAcwAtAHIANAAMAE0AaQBnAHUAZQBsACAARwBy
+AGkAbwB0AA8ASABhAHIAaQBzAC0AZQBkAGkAdABzAC0AcgAxADAA//8GAAgAAAAAAAAAAAAAAAAA
+AAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAAADAAAAAAAAAAAABAAAAAAAAAAAAAUA//8GAAAAAAAA
+AAAAAAAAAAAA//8AAAIA//8AAAAA//8AAAIA//8AAAAACQAAAEcekAEAAAICBgMFBAUCAwSHKgAg
+AAAAAAAAAAAAAAAA/wEAAAAAAABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgAAADUekAEC
+AAUFAQIBBwYCBQcAAAAAAAAAEAAAAAAAAAAAAAAAgAAAAABTAHkAbQBiAG8AbAAAADMukAEAAAIL
+BgQCAgICAgSHKgAgAAAAAAAAAAAAAAAA/wEAAAAAAABBAHIAaQBhAGwAAABHPZABgAoCAgYJBAIF
+CAME/wIA4Pv9x2oSAAAAAAAAAJ8AAgAAAAAATQBTACAATQBpAG4AYwBoAG8AAAAt/zP/IAAOZh1n
+AAA1LpABAAACCwYEAwUEBAIE/y4A4VtgAMApAAAAAAAAAP8BAQAAAAAAVABhAGgAbwBtAGEAAABF
+BpABAgABAQYBAQEBAQEBAAAAAAAAABAAAAAAAAAAAAAAAIAAAAAATQBvAG4AbwB0AHkAcABlACAA
+UwBvAHIAdABzAAAAOR6QAQIABQMBAgEFCQYHAwAAAAAAAAAQAAAAAAAAAAAAAACAAAAAAFcAZQBi
+AGQAaQBuAGcAcwAAADsOkAECAAUAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAgAAAAABXAGkA
+bgBnAGQAaQBuAGcAcwAAAEEekAEAAAIEBQMFBAYDAgT/AgDg/yQAQgAAAAAAAAAAnwEAAAAAAABD
+AGEAbQBiAHIAaQBhACAATQBhAHQAaAAAACIABABBgIwYEvDQAgAAaAEAAAAAleIVRxHjFUfnokxm
+AwAEAAAARAIAAO8MAAACAAcAAAAEAAMAGwAAAEQCAADvDAAAAgAHAAAAGwAAAAAAAABRBBLwEIQA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAClBsAHtAC0AIAAMjQAAAAAAAAAAAAAAAAAACwPAAAs
+DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAA0zg3ES8BCE39///QEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAISFgA
+AAAACPD/DwEIAT8AAOQEAAAhAAAA////fwAAAAAAAAAA////f////3////9/FyfgAAAEAAAyAAAA
+AAAAAAAAAAAAAAEABAAAAAAAIQQAAAAAAAAAAAAAAAAAAAAAAAAQHAAACAAAAAAAAAAAAHgAAAB4
+AAAAAAAAAAAAAACgBQAAAAAAAAsAAAAAAAAA3AAAAP//EgAAAAAANwBDADoAXABQAHIAbwBnAHIA
+YQBtACAARgBpAGwAZQBzAFwATQBpAGMAcgBvAHMAbwBmAHQAIABPAGYAZgBpAGMAZQBcAFQAZQBt
+AHAAbABhAHQAZQBzAFwAMwBnAHAAcABfADcAMAAuAGQAbwB0ABEAUwBBADUAIABUAGQAbwBjACAA
+VABlAG0AcABsAGEAdABlAAAAAAAAAAMATQBDAEMADABOAEUAQwBfAEcAZQBuAGEAZABpAF8AMQAA
+AAAAAAAAAAAAAAAAAAAAAAAAAOMBAACdBAAAfw8AAAAAAQAAAAAABAAAABAAAAADAAAAAAABABAA
+AAACAAAAEAAAAAMAAAACAAAAINXi8WkJ0xGN8AAQWieZtWC8pLZJB9MRje8AEFonmbUgAAAABgAA
+AAUAAAAAAAwAAQAMAAIADAADAAwABAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7/AAAGAQIAAAAAAAAA
+AAAAAAAAAAAAAAEAAADghZ/y+U9oEKuRCAArJ7PZMAAAAIABAAARAAAAAQAAAJAAAAACAAAAmAAA
+AAMAAAC0AAAABAAAAMAAAAAFAAAAzAAAAAcAAADYAAAACAAAAOwAAAAJAAAABAEAABIAAAAQAQAA
+CgAAADABAAALAAAAPAEAAAwAAABIAQAADQAAAFQBAAAOAAAAYAEAAA8AAABoAQAAEAAAAHABAAAT
+AAAAeAEAAAIAAADkBAAAHgAAABQAAABTQTUgVGRvYyBUZW1wbGF0ZQAAAB4AAAAEAAAAAAAAAB4A
+AAAEAAAATUNDAB4AAAAEAAAAAAAAAB4AAAAMAAAAM2dwcF83MC5kb3QAHgAAABAAAABORUNfR2Vu
+YWRpXzEAAAAAHgAAAAQAAAAzAAAAHgAAABgAAABNaWNyb3NvZnQgT2ZmaWNlIFdvcmQAAABAAAAA
+ABgNjwAAAABAAAAAABJQrmhqwAFAAAAAAD4NSXxbzgFAAAAAAPaIfYxbzgEDAAAAAgAAAAMAAABE
+AgAAAwAAAO8MAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/wAABgECAAAAAAAAAAAAAAAAAAAA
+AAACAAAAAtXN1ZwuGxCTlwgAKyz5rkQAAAAF1c3VnC4bEJOXCAArLPmuhAEAAEABAAAMAAAAAQAA
+AGgAAAAPAAAAcAAAAAUAAACQAAAABgAAAJgAAAARAAAAoAAAABcAAACoAAAACwAAALAAAAAQAAAA
+uAAAABMAAADAAAAAFgAAAMgAAAANAAAA0AAAAAwAAAAEAQAAAgAAAOn9AAAeAAAAGAAAAE5va2lh
+IFNpZW1lbnMgTmV0d29ya3MAAAMAAAAbAAAAAwAAAAcAAAADAAAALA8AAAMAAAAAAA4ACwAAAAAA
+AAALAAAAAAAAAAsAAAAAAAAACwAAAAAAAAAeEAAAAgAAABIAAABTQTUgVGRvYyBUZW1wbGF0ZQAS
+AAAAU0E1IFRkb2MgVGVtcGxhdGUADBAAAAQAAAAeAAAABgAAAFRpdGxlAAMAAAABAAAAHgAAAA0A
+AADjgr/jgqTjg4jjg6sAAwAAAAEAAAAAbAEAAAgAAAAAAAAASAAAAAEAAADsAAAAAgAAAPQAAAAD
+AAAAAAEAAAQAAAAIAQAABQAAACQBAAAGAAAARAEAAAcAAABgAQAABgAAAAIAAAAQAAAAX05ld1Jl
+dmlld0N5Y2xlAAMAAAAUAAAAX0FkSG9jUmV2aWV3Q3ljbGVJRAAEAAAADgAAAF9FbWFpbFN1Ympl
+Y3QABQAAAA0AAABfQXV0aG9yRW1haWwABgAAABgAAABfQXV0aG9yRW1haWxEaXNwbGF5TmFtZQAH
+AAAAGQAAAF9SZXZpZXdpbmdUb29sc1Nob3duT25jZQACAAAA6f0AAB4AAAAEAAAAAAAAAAMAAACz
+sQtcHgAAABQAAABMUyByZXBseSB0byAxTTJNAAAAAB4AAAAYAAAAaGFyaXN6QHF0aS5xdWFsY29t
+bS5jb20AHgAAABQAAABaaXNpbW9wb3Vsb3MsIEhhcmlzAB4AAAAEAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgA
+AAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAA
+ABcAAAAYAAAAGQAAABoAAAAbAAAAHAAAAB0AAAAeAAAAHwAAACAAAAAhAAAAIgAAAP7///8kAAAA
+JQAAACYAAAAnAAAAKAAAACkAAAAqAAAA/v///ywAAAAtAAAALgAAAC8AAAAwAAAAMQAAADIAAAAz
+AAAANAAAADUAAAA2AAAANwAAADgAAAA5AAAAOgAAADsAAAA8AAAAPQAAAD4AAAA/AAAAQAAAAEEA
+AABCAAAAQwAAAEQAAABFAAAA/v///0cAAABIAAAASQAAAEoAAABLAAAATAAAAE0AAAD+////TwAA
+AFAAAABRAAAAUgAAAFMAAABUAAAAVQAAAP7////9////WAAAAP7////+/////v//////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////9SAG8AbwB0ACAARQBuAHQAcgB5AAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAFAf//////////AwAAAAYJAgAAAAAA
+wAAAAAAAAEYAAAAAAAAAAAAAAABQlTuLjFvOAVoAAACAAAAAAAAAAEQAYQB0AGEAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAIB////////
+////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwAAAAAQAAAAAAAAMQBU
+AGEAYgBsAGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAA4AAgEBAAAABgAAAP////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAr
+AAAAJjQAAAAAAABXAG8AcgBkAEQAbwBjAHUAbQBlAG4AdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAGgACAQIAAAAFAAAA/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAA4RAAAAAAAAAUAUwB1AG0AbQBhAHIAeQBJAG4AZgBvAHIAbQBhAHQA
+aQBvAG4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAIB////////////////AAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARgAAAAAQAAAAAAAABQBEAG8AYwB1AG0AZQBuAHQA
+UwB1AG0AbQBhAHIAeQBJAG4AZgBvAHIAbQBhAHQAaQBvAG4AAAAAAAAAAAAAADgAAgEEAAAA////
+//////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOAAAAABAAAAAAAAABAEMA
+bwBtAHAATwBiAGoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAEgACAP///////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAByAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP7/////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////////8BAP7/AwoAAP////8GCQIAAAAAAMAAAAAAAABGIAAAAE1p
+Y3Jvc29mdCBXb3JkIDk3LTIwMDMgRG9jdW1lbnQACgAAAE1TV29yZERvYwAQAAAAV29yZC5Eb2N1
+bWVudC44APQ5snEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFIAbwBvAHQAIABFAG4AdAByAHkAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAUB//////////8DAAAABgkCAAAAAADAAAAA
+AAAARgAAAAAAAAAAAAAAABAJccGNW84BYAAAAAADAAAAAAAARABhAHQAYQAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAgH/////////////
+//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjAAAAABAAAAAAAAAxAFQAYQBi
+AGwAZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+DgACAQEAAAAGAAAA/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACsAAAAm
+NAAAAAAAAFcAbwByAGQARABvAGMAdQBtAGUAbgB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAaAAIBAgAAAAUAAAD/////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAADhEAAAAAAAAAQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAA
+CgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAY
+AAAAGQAAABoAAAAbAAAAHAAAAB0AAAAeAAAAHwAAACAAAAAhAAAAIgAAAP7///8kAAAAJQAAACYA
+AAAnAAAAKAAAACkAAAAqAAAA/v///ywAAAAtAAAALgAAAC8AAAAwAAAAMQAAADIAAAAzAAAANAAA
+ADUAAAA2AAAANwAAADgAAAA5AAAAOgAAADsAAAA8AAAAPQAAAD4AAAA/AAAAQAAAAEEAAABCAAAA
+QwAAAEQAAABFAAAA/v///0cAAABIAAAASQAAAEoAAABLAAAATAAAAE0AAAD+////////////////
+/////////////////////////////////////////////////////////18AAAD9/////v////7/
+///+////XgAAAP//////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////8BAAAA/v///wMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAK
+AAAACwAAAP7/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////wAAAADYAAAAAwAAAAAAAAAgAAAAAQAAAMQAAAACAAAAzAAAAAYA
+AAACAAAAEAAAAF9OZXdSZXZpZXdDeWNsZQADAAAAFAAAAF9BZEhvY1Jldmlld0N5Y2xlSUQABAAA
+AA4AAABfRW1haWxTdWJqZWN0AAUAAAANAAAAX0F1dGhvckVtYWlsAAYAAAAYAAAAX0F1dGhvckVt
+YWlsRGlzcGxheU5hbWUABwAAABkAAABfUmV2aWV3aW5nVG9vbHNTaG93bk9uY2UAAgAAAOn9AAAe
+AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAABQBTAHUAbQBtAGEAcgB5AEkAbgBmAG8AcgBtAGEAdABpAG8AbgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAgH///////////////8AAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAABGAAAAABAAAAAAAAAFAEQAbwBjAHUAbQBlAG4AdABTAHUAbQBt
+AGEAcgB5AEkAbgBmAG8AcgBtAGEAdABpAG8AbgAAAAAAAAAAAAAAOAACAQQAAAD//////////wAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAABcAgAAAAAAAAEAQwBvAG0AcABP
+AGIAagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAIA
+////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAD///////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAABAP7/AwoAAP////8GCQIAAAAAAMAAAAAAAABGIAAAAE1pY3Jvc29m
+dCBXb3JkIDk3LTIwMDMgRG9jdW1lbnQACgAAAE1TV29yZERvYwAQAAAAV29yZC5Eb2N1bWVudC44
+APQ5snEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7/AAAGAQIAAAAAAAAAAAAAAAAAAAAAAAIA
+AAAC1c3VnC4bEJOXCAArLPmuRAAAAAXVzdWcLhsQk5cIACss+a6EAQAAQAEAAAwAAAABAAAAaAAA
+AA8AAABwAAAABQAAAJAAAAAGAAAAmAAAABEAAACgAAAAFwAAAKgAAAALAAAAsAAAABAAAAC4AAAA
+EwAAAMAAAAAWAAAAyAAAAA0AAADQAAAADAAAAAQBAAACAAAA6f0AAB4AAAAYAAAATm9raWEgU2ll
+bWVucyBOZXR3b3JrcwAAAwAAABsAAAADAAAABwAAAAMAAAAsDwAAAwAAAAAADgALAAAAAAAAAAsA
+AAAAAAAACwAAAAAAAAALAAAAAAAAAB4QAAACAAAAEgAAAFNBNSBUZG9jIFRlbXBsYXRlABIAAABT
+QTUgVGRvYyBUZW1wbGF0ZQAMEAAABAAAAB4AAAAGAAAAVGl0bGUAAwAAAAEAAAAeAAAADQAAAOOC
+v+OCpOODiOODqwADAAAAAQ==
+
+--_002_9A00EA13ECA2B64AA689600004348612F51F49DAPHNISofficehd_--
+=========================================================================
+Date:         Tue, 28 May 2013 20:36:10 +0000
+Reply-To:     "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+From:         "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+Subject:      Re: [MTCe] [oneM2M] draft LS reply to oneM2M (S2-132101)
+In-Reply-To:  <9A00EA13ECA2B64AA689600004348612F51F49@DAPHNIS.office.hd>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Thanks Genadi.
+
+Looks good - except one area of concern.  Is there a need to make the promi=
+se to keep one M2M up to date?  SA2 doesn't have a way to track these promi=
+ses as an open task (unless the LS is kept open) - and SA2 has plenty of wo=
+rk for MTCe without having to make time to consider a draft LSout during th=
+e rel-12 budgeted time for MTCe.  Could that be stricken?=20
+
+Thanks,
+Deb
+
+-----Original Message-----
+From: Genadi Velev [mailto:Genadi.Velev@NECLAB.EU]=20
+Sent: Tuesday, May 28, 2013 5:26 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: [3GPP_TSG_SA_WG2_MTCE] [MTCe] [oneM2M] draft LS reply to oneM2M (S=
+2-132101)
+
+Dear all,
+
+Please find attached an update of the LS reply to oneM2M.=20
+
+Apart from alignments and editorials, we tried to capture the following com=
+ments from the presentation on Monday (essential changes highlighted in yel=
+low):
+ - (Peter) include stage 3 spec for Tsp interface (TS29.368).
+ - (Erik) in rel-10 we specified UE configuration capabilities.
+ - (Frank) clarify the 2nd paragraph in the answer to Q1.=20
+ - (Rainer) SA2 will update 1M2M only for related work.
+
+Any comments or suggestions are appreciated.
+
+Thanks,
+Genadi
+
+_______________________________
+NEC Europe Ltd | Registered Office: Athene, Odyssey Business Park, West End=
+ Road, London, HA4 6QE, GB | Registered in England 2832014

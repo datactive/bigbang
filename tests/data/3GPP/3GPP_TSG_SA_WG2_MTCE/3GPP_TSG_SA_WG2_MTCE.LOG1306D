@@ -1,0 +1,1326 @@
+=========================================================================
+Date:         Wed, 26 Jun 2013 16:16:14 +0000
+Reply-To:     "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+From:         "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+Subject:      Re: [MTCe-SDDTE] Planning for SA2#98
+In-Reply-To:  <DB5AA196870CB047BBCDFA52F9D10CBC6DE6A31C@FMSMSX109.amr.corp.intel.com>
+Content-Type: multipart/alternative;
+              boundary="_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD4407US70TWXCHMBA10z_"
+MIME-Version: 1.0
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD4407US70TWXCHMBA10z_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+MTCe participants,
+
+For triggering #1 "Can we conclude on T4 aspects for key issue 5.2.1 (overl=
+oad control for device triggering)", does anyone envision anything that sho=
+uld be done for triggering overload different than the objectives of CNO?
+
+Looking at the CNO TR 23.843, SMS is mentioned as an example under MT event=
+s that could cause oload, but SMS interfaces are not listed in Annex A "Cor=
+e network interfaces and services using Diameter as well as overload impact=
+" (Although it says the table is still under development)   I assume SMS wi=
+ll be included (and T4 device triggering uses SMS).
+
+"M2M" and "MTC" also can be found scattered in the CNO TR (although nothing=
+ explicit on device triggering).
+
+This seems to me, that the Diameter conclusion is a general conclusion that=
+ should also apply to the MTC device triggering diameter interfaces. "...It=
+ is therefore proposed to find a standardized means to convey necessary con=
+gestion information between functional entities that use a Diameter-based p=
+rotocol interface. IETF dime working group has recognized the limitation of=
+ the protocol and has started work to define suitable mechanisms to address=
+ this at the protocol layer. CT3, CT4 and SA5 should take into account the =
+work done in IETF at Diameter protocol level and consider investigating Dia=
+meter protocol end points behaviour and any other changes needed in 3GPP St=
+age 3 specifications to support overload control mechanisms on Diameter int=
+erface for 3GPP applications. ..."
+
+It seems therefore that triggering is an example of one case that will be c=
+overed by CNO and MTCe shouldn't deviate from this solution.
+
+Do others share that view?
+
+Thanks,
+Deb
+
+From: Jain, Puneet [mailto:puneet.jain@intel.com]
+Sent: Thursday, June 20, 2013 1:08 PM
+To: Barclay, Deborah L (Deb); 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: RE: [MTCe-SDDTE] Planning for SA2#98
+
+Hi Deb,
+
+There are 2 slots for SDDTE at SA2#98 and as indicated by SA2 Chairman repo=
+rt to SA#60 Plenary, partial/Interim conclusion should be reached by SA2#98=
+. We will not have much time to update/refine the solutions. Editing or wor=
+dsmithing benefits/drawback may not be useful exercise at this point. For r=
+esolving editor's notes based contributions I propose proponents to share t=
+he paper with others offline (or over MTCE reflector) as soon as possible s=
+o that they are in almost agreeable shape.
+
+Best regards,
+Puneet
+
+
+From: Barclay, Deborah L (Deb) [mailto:deb.barclay@ALCATEL-LUCENT.COM]
+Sent: Thursday, June 20, 2013 9:15 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: Re: [MTCe-SDDTE] Planning for SA2#98
+
+Hi Puneet,
+
+For SDT #1 "Overall solution evaluation for all Key issue in 5.1.1. Since e=
+xtensive individual solution evaluation was performed at SA2#97 for this ke=
+y issue I don't expect more papers on individual solution evaluation."
+
+How should the drawbacks and ed notes added at the last mtg (some added abo=
+ut 3:15pm on Friday of SA2 97) be addressed for the individual solutions?  =
+Should they be combined with #3 "Interim/partial conclusion for key issue 5=
+.1.1 and 5.1.2"?
+
+Thanks,
+Deb
+
+From: Jain, Puneet [mailto:puneet.jain@INTEL.COM]
+Sent: Wednesday, June 19, 2013 11:21 PM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98
+
+Dear All,
+
+At SA2#98 we should attempt to progress on following items for MTCe-SDDTE -
+
+Small Data Transmission (SDT):
+
+For Small data transmission, papers on following areas are needed to progre=
+ss towards normative work -
+
+
+1.     Overall solution evaluation for all Key issue in 5.1.1. Since extens=
+ive individual solution evaluation was performed at SA2#97 for this key iss=
+ue I don't expect more papers on individual solution evaluation.
+
+2.     Individual and overall solution evaluation for Key issue 5.1.2
+
+3.     Interim/partial conclusion for key issue 5.1.1 and 5.1.2
+
+Device Triggering (DT):
+
+For device triggering papers on overall evaluation and interim conclusion f=
+or key issue 5.2.1, 5.2.2, and 5.2.3 are needed to progress towards normati=
+ve work.
+
+Question -
+
+
+1.     Can we conclude on T4 aspects for key issue 5.2.1 (overload control =
+for device triggering) and key issue 5.2.3 (Device Trigger replace & recall=
+)?
+
+2.     Can we conclude on any T5 device triggering issue independent of T5 =
+small data service?
+
+We can use MTCE email reflector for discussion and share the contributions.=
+ I don't see any suitable time to hold SDDTE CC given US holiday around Jul=
+y 4th. Only feasibility is July 3rd morning 6 - 8AM PST. Please let me know=
+ if there interest to have SDDTE CC at that time.
+
+Best regards,
+Puneet
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD4407US70TWXCHMBA10z_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 12 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.EmailStyle20
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:windowtext;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Trebuchet MS","sans-serif";
+	color:#1F497D;}
+span.EmailStyle22
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+span.EmailStyle23
+	{mso-style-type:personal-reply;
+	font-family:"Trebuchet MS","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:1670013588;
+	mso-list-type:hybrid;
+	mso-list-template-ids:491395400 67698703 67698713 67698715 67698703 676987=
+13 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1988779612;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1597919474 67698703 67698713 67698715 67698703 67698=
+713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">MTCe participants,<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">For triggering #1 &#8220;</span><span=
+ style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&q=
+uot;">Can we conclude on T4 aspects for key issue 5.2.1 (overload control f=
+or device
+ triggering)</span><span style=3D"font-family:&quot;Trebuchet MS&quot;,&quo=
+t;sans-serif&quot;;color:#1F497D">&#8221;, does anyone envision anything th=
+at should be done for triggering overload different than the objectives of =
+CNO?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Looking at the CNO TR 23.843, SMS is =
+mentioned as an example under MT events that could cause oload, but SMS int=
+erfaces are not listed in Annex A &#8220;Core network interfaces
+ and services using Diameter as well as overload impact&#8221; (Although it=
+ says the table is still under development)&nbsp;&nbsp; I assume SMS will b=
+e included (and T4 device triggering uses SMS).<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">&#8220;M2M&#8221; and &#8220;MTC&#822=
+1; also can be found scattered in the CNO TR (although nothing explicit on =
+device triggering).<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">This seems to me, that the Diameter c=
+onclusion is a general conclusion that should also apply to the MTC device =
+triggering diameter interfaces. &#8220;...</span>It is therefore
+ proposed to find a standardized means to convey necessary congestion infor=
+mation between functional entities that use a Diameter-based protocol inter=
+face. IETF dime working group has recognized the limitation of the protocol=
+ and has started work to define
+ suitable mechanisms to address this at the protocol layer. CT3, CT4 and SA=
+5 should take into account the work done in IETF at Diameter protocol level=
+ and consider investigating Diameter protocol end points behaviour and any =
+other changes needed in 3GPP Stage
+ 3 specifications to support overload control mechanisms on Diameter interf=
+ace for 3GPP applications.
+<span style=3D"font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;=
+color:#1F497D">...&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">It seems therefore that triggering is=
+ an example of one case that will be covered by CNO and MTCe shouldn&#8217;=
+t deviate from this solution.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Do others share that view?<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Thanks,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Deb<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Jain, Pu=
+neet [mailto:puneet.jain@intel.com]
+<br>
+<b>Sent:</b> Thursday, June 20, 2013 1:08 PM<br>
+<b>To:</b> Barclay, Deborah L (Deb); 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> RE: [MTCe-SDDTE] Planning for SA2#98<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue">Hi Deb,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue">There are 2 slots for SDDTE at=
+ SA2#98 and as indicated by SA2 Chairman report to SA#60 Plenary, partial/I=
+nterim conclusion should be reached by SA2#98. We will not
+ have much time to update/refine the solutions. Editing or wordsmithing ben=
+efits/drawback may not be useful exercise at this point. For resolving edit=
+or&#8217;s notes based contributions I propose proponents to share the pape=
+r with others offline (or over MTCE reflector)
+ as soon as possible so that they are in almost agreeable shape. <o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue">Best regards,<br>
+Puneet<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Barclay,=
+ Deborah L (Deb) [<a href=3D"mailto:deb.barclay@ALCATEL-LUCENT.COM">mailto:=
+deb.barclay@ALCATEL-LUCENT.COM</a>]
+<br>
+<b>Sent:</b> Thursday, June 20, 2013 9:15 AM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Re: [MTCe-SDDTE] Planning for SA2#98<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Hi Puneet,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">For SDT #1 &#8220;</span><span style=
+=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">=
+Overall solution evaluation for all Key issue in 5.1.1. Since extensive ind=
+ividual solution
+ evaluation was performed at SA2#97 for this key issue I don&#8217;t expect=
+ more papers on individual solution evaluation.</span><span style=3D"font-f=
+amily:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8221=
+;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">How should the drawbacks and ed notes=
+ added at the last mtg (some added about 3:15pm on Friday of SA2 97) be add=
+ressed for the individual solutions?&nbsp; Should they be combined
+ with #3 &#8220;</span><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for key issue =
+5.1.1 and 5.1.2</span><span style=3D"font-family:&quot;Trebuchet MS&quot;,&=
+quot;sans-serif&quot;;color:#1F497D">&#8221;?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Thanks,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D">Deb<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Trebuchet MS&quot;,=
+&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Jain, Pu=
+neet [<a href=3D"mailto:puneet.jain@INTEL.COM">mailto:puneet.jain@INTEL.COM=
+</a>]
+<br>
+<b>Sent:</b> Wednesday, June 19, 2013 11:21 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98<o:p=
+></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Dear All,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">At SA2#98 we should attempt to progress o=
+n following items for MTCe-SDDTE -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Small Data Transmission (SDT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For Small data transmission, papers on fo=
+llowing areas are needed to progress towards normative work &#8211;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Overall solution evaluation for a=
+ll Key issue in 5.1.1. Since extensive individual solution evaluation was p=
+erformed at SA2#97 for this key issue I don&#8217;t expect more
+ papers on individual solution evaluation. <o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Individual and overall solution e=
+valuation for Key issue 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l1 level=
+1 lfo2"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">3.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for ke=
+y issue 5.1.1 and 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;">Device Triggering (DT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">For device triggering papers on overall e=
+valuation and interim conclusion for key issue 5.2.1, 5.2.2, and 5.2.3 are =
+needed to progress towards normative work.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Question -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo4"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on T4 aspects for=
+ key issue 5.2.1 (overload control for device triggering) and key issue 5.2=
+.3 (Device Trigger replace &amp; recall)?<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"text-indent:-.25in;mso-list:l0 level=
+1 lfo4"><![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<=
+span style=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nb=
+sp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on any T5 device =
+triggering issue independent of T5 small data service?<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">We can use MTCE email reflector for discu=
+ssion and share the contributions. I don&#8217;t see any suitable time to h=
+old SDDTE CC given US holiday around July 4<sup>th</sup>. Only
+ feasibility is July 3<sup>rd</sup> morning 6 &#8211; 8AM PST. Please let m=
+e know if there interest to have SDDTE CC at that time.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,&quot;sans-serif&quot;">Best regards,<br>
+Puneet<o:p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11DFD4407US70TWXCHMBA10z_--
+=========================================================================
+Date:         Wed, 26 Jun 2013 21:37:39 +0000
+Reply-To:     "Maulik Vaidya (mauvaidy)" <mauvaidy@CISCO.COM>
+From:         "Maulik Vaidya (mauvaidy)" <mauvaidy@CISCO.COM>
+Subject:      Re: [MTCe-SDDTE] Planning for SA2#98
+Comments: To: "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+In-Reply-To:  <4B1B79DE10E7E54C8ABB5302F25C6FB11DFD4407@US70TWXCHMBA10.zam.alcatel-lucent.com>
+Content-Type: multipart/alternative;
+              boundary="_000_C46BB8945051894A80403717FF7A07A228E716BDxmbalnx06ciscoc_"
+MIME-Version: 1.0
+
+--_000_C46BB8945051894A80403717FF7A07A228E716BDxmbalnx06ciscoc_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Deb,
+You do bring up a very good point.
+From our perspective, FS_DOCME (CT4 work on Diameter overload) applies to e=
+xisting and future DIAMETER-based interfaces. The base DIAMETER overload co=
+ntrol aspects studied by IETF would apply to existing and future DIAMETER-b=
+ased 3GPP interfaces. Additional 3GPP-specific mitigation actions for exist=
+ing (meaning upto Rel-12) would be studied by Stage 3 as part of this work.=
+ Additional 3GPP-specific mitigation actions for future DIAMETER-based 3GPP=
+ interfaces (beyond Rel-12) may be studied by Stage 2 or 3 as part of day-t=
+o-day business activities.
+
+
+Best Regards,
+Maulik Vaidya
+
+From: Barclay, Deborah L (Deb) [mailto:deb.barclay@ALCATEL-LUCENT.COM]
+Sent: Wednesday, June 26, 2013 11:16 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: Re: [MTCe-SDDTE] Planning for SA2#98
+
+MTCe participants,
+
+For triggering #1 "Can we conclude on T4 aspects for key issue 5.2.1 (overl=
+oad control for device triggering)", does anyone envision anything that sho=
+uld be done for triggering overload different than the objectives of CNO?
+
+Looking at the CNO TR 23.843, SMS is mentioned as an example under MT event=
+s that could cause oload, but SMS interfaces are not listed in Annex A "Cor=
+e network interfaces and services using Diameter as well as overload impact=
+" (Although it says the table is still under development)   I assume SMS wi=
+ll be included (and T4 device triggering uses SMS).
+
+"M2M" and "MTC" also can be found scattered in the CNO TR (although nothing=
+ explicit on device triggering).
+
+This seems to me, that the Diameter conclusion is a general conclusion that=
+ should also apply to the MTC device triggering diameter interfaces. "...It=
+ is therefore proposed to find a standardized means to convey necessary con=
+gestion information between functional entities that use a Diameter-based p=
+rotocol interface. IETF dime working group has recognized the limitation of=
+ the protocol and has started work to define suitable mechanisms to address=
+ this at the protocol layer. CT3, CT4 and SA5 should take into account the =
+work done in IETF at Diameter protocol level and consider investigating Dia=
+meter protocol end points behaviour and any other changes needed in 3GPP St=
+age 3 specifications to support overload control mechanisms on Diameter int=
+erface for 3GPP applications. ..."
+
+It seems therefore that triggering is an example of one case that will be c=
+overed by CNO and MTCe shouldn't deviate from this solution.
+
+Do others share that view?
+
+Thanks,
+Deb
+
+From: Jain, Puneet [mailto:puneet.jain@intel.com]
+Sent: Thursday, June 20, 2013 1:08 PM
+To: Barclay, Deborah L (Deb); 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GP=
+P_TSG_SA_WG2_MTCE@LIST.ETSI.ORG>
+Subject: RE: [MTCe-SDDTE] Planning for SA2#98
+
+Hi Deb,
+
+There are 2 slots for SDDTE at SA2#98 and as indicated by SA2 Chairman repo=
+rt to SA#60 Plenary, partial/Interim conclusion should be reached by SA2#98=
+. We will not have much time to update/refine the solutions. Editing or wor=
+dsmithing benefits/drawback may not be useful exercise at this point. For r=
+esolving editor's notes based contributions I propose proponents to share t=
+he paper with others offline (or over MTCE reflector) as soon as possible s=
+o that they are in almost agreeable shape.
+
+Best regards,
+Puneet
+
+
+From: Barclay, Deborah L (Deb) [mailto:deb.barclay@ALCATEL-LUCENT.COM]
+Sent: Thursday, June 20, 2013 9:15 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: Re: [MTCe-SDDTE] Planning for SA2#98
+
+Hi Puneet,
+
+For SDT #1 "Overall solution evaluation for all Key issue in 5.1.1. Since e=
+xtensive individual solution evaluation was performed at SA2#97 for this ke=
+y issue I don't expect more papers on individual solution evaluation."
+
+How should the drawbacks and ed notes added at the last mtg (some added abo=
+ut 3:15pm on Friday of SA2 97) be addressed for the individual solutions?  =
+Should they be combined with #3 "Interim/partial conclusion for key issue 5=
+.1.1 and 5.1.2"?
+
+Thanks,
+Deb
+
+From: Jain, Puneet [mailto:puneet.jain@INTEL.COM]
+Sent: Wednesday, June 19, 2013 11:21 PM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98
+
+Dear All,
+
+At SA2#98 we should attempt to progress on following items for MTCe-SDDTE -
+
+Small Data Transmission (SDT):
+
+For Small data transmission, papers on following areas are needed to progre=
+ss towards normative work -
+
+
+1.     Overall solution evaluation for all Key issue in 5.1.1. Since extens=
+ive individual solution evaluation was performed at SA2#97 for this key iss=
+ue I don't expect more papers on individual solution evaluation.
+
+2.     Individual and overall solution evaluation for Key issue 5.1.2
+
+3.     Interim/partial conclusion for key issue 5.1.1 and 5.1.2
+
+Device Triggering (DT):
+
+For device triggering papers on overall evaluation and interim conclusion f=
+or key issue 5.2.1, 5.2.2, and 5.2.3 are needed to progress towards normati=
+ve work.
+
+Question -
+
+
+1.     Can we conclude on T4 aspects for key issue 5.2.1 (overload control =
+for device triggering) and key issue 5.2.3 (Device Trigger replace & recall=
+)?
+
+2.     Can we conclude on any T5 device triggering issue independent of T5 =
+small data service?
+
+We can use MTCE email reflector for discussion and share the contributions.=
+ I don't see any suitable time to hold SDDTE CC given US holiday around Jul=
+y 4th. Only feasibility is July 3rd morning 6 - 8AM PST. Please let me know=
+ if there interest to have SDDTE CC at that time.
+
+Best regards,
+Puneet
+
+--_000_C46BB8945051894A80403717FF7A07A228E716BDxmbalnx06ciscoc_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:x=3D"urn:schemas-microsoft-com:office:excel" xmlns:m=3D"http://schema=
+s.microsoft.com/office/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html=
+40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.EmailStyle20
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:windowtext;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Trebuchet MS","sans-serif";
+	color:#1F497D;}
+span.EmailStyle22
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none none;}
+span.EmailStyle23
+	{mso-style-type:personal;
+	font-family:"Trebuchet MS","sans-serif";
+	color:#1F497D;}
+span.EmailStyle24
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:1670013588;
+	mso-list-type:hybrid;
+	mso-list-template-ids:491395400 67698703 67698713 67698715 67698703 676987=
+13 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:1988779612;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1597919474 67698703 67698713 67698715 67698703 67698=
+713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Deb,<o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">You do bring up a very=
+ good point.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">From our perspective, =
+FS_DOCME (CT4 work on Diameter overload) applies to existing and future DIA=
+METER-based interfaces. The base DIAMETER overload control aspects studied =
+by IETF would apply to existing and
+ future DIAMETER-based 3GPP interfaces. Additional 3GPP-specific mitigation=
+ actions for existing (meaning upto Rel-12) would be studied by Stage 3 as =
+part of this work. Additional 3GPP-specific mitigation actions for future D=
+IAMETER-based 3GPP interfaces (beyond
+ Rel-12) may be studied by Stage 2 or 3 as part of day-to-day business acti=
+vities.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<div>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Best Regards,<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Maulik Vaidya<o:p></o:=
+p></span></p>
+</div>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><b><span style=3D"font-si=
+ze:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</spa=
+n></b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;=
+sans-serif&quot;"> Barclay, Deborah L (Deb) [mailto:deb.barclay@ALCATEL-LUC=
+ENT.COM]
+<br>
+<b>Sent:</b> Wednesday, June 26, 2013 11:16 AM<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> Re: [MTCe-SDDTE] Planning for SA2#98<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">MTCe parti=
+cipants,<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">For trigge=
+ring #1 &#8220;</span><span style=3D"font-size:10.0pt;font-family:&quot;Ari=
+al&quot;,&quot;sans-serif&quot;">Can we conclude on T4 aspects for key issu=
+e 5.2.1 (overload
+ control for device triggering)</span><span style=3D"font-family:&quot;Treb=
+uchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8221;, does anyone e=
+nvision anything that should be done for triggering overload different than=
+ the objectives of CNO?<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Looking at=
+ the CNO TR 23.843, SMS is mentioned as an example under MT events that cou=
+ld cause oload, but SMS interfaces are not listed in Annex
+ A &#8220;Core network interfaces and services using Diameter as well as ov=
+erload impact&#8221; (Although it says the table is still under development=
+)&nbsp;&nbsp; I assume SMS will be included (and T4 device triggering uses =
+SMS).<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8220;M2M=
+&#8221; and &#8220;MTC&#8221; also can be found scattered in the CNO TR (al=
+though nothing explicit on device triggering).<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">This seems=
+ to me, that the Diameter conclusion is a general conclusion that should al=
+so apply to the MTC device triggering diameter interfaces.
+ &#8220;...</span>It is therefore proposed to find a standardized means to =
+convey necessary congestion information between functional entities that us=
+e a Diameter-based protocol interface. IETF dime working group has recogniz=
+ed the limitation of the protocol and
+ has started work to define suitable mechanisms to address this at the prot=
+ocol layer. CT3, CT4 and SA5 should take into account the work done in IETF=
+ at Diameter protocol level and consider investigating Diameter protocol en=
+d points behaviour and any other
+ changes needed in 3GPP Stage 3 specifications to support overload control =
+mechanisms on Diameter interface for 3GPP applications.
+<span style=3D"font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;=
+color:#1F497D">...&#8221;<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">It seems t=
+herefore that triggering is an example of one case that will be covered by =
+CNO and MTCe shouldn&#8217;t deviate from this solution.<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Do others =
+share that view?<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Thanks,<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Deb<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><b><span style=3D"font-si=
+ze:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</spa=
+n></b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;=
+sans-serif&quot;"> Jain, Puneet [<a href=3D"mailto:puneet.jain@intel.com">m=
+ailto:puneet.jain@intel.com</a>]
+<br>
+<b>Sent:</b> Thursday, June 20, 2013 1:08 PM<br>
+<b>To:</b> Barclay, Deborah L (Deb); <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE=
+@LIST.ETSI.ORG">
+3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> RE: [MTCe-SDDTE] Planning for SA2#98<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Hi =
+Deb,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:=
+p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">The=
+re are 2 slots for SDDTE at SA2#98 and as indicated by SA2 Chairman report =
+to SA#60 Plenary, partial/Interim conclusion should be reached
+ by SA2#98. We will not have much time to update/refine the solutions. Edit=
+ing or wordsmithing benefits/drawback may not be useful exercise at this po=
+int. For resolving editor&#8217;s notes based contributions I propose propo=
+nents to share the paper with others offline
+ (or over MTCE reflector) as soon as possible so that they are in almost ag=
+reeable shape.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:=
+p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Bes=
+t regards,<br>
+Puneet<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:=
+p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:=
+p>&nbsp;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><b><span style=3D"font-si=
+ze:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</spa=
+n></b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;=
+sans-serif&quot;"> Barclay, Deborah L (Deb) [<a href=3D"mailto:deb.barclay@=
+ALCATEL-LUCENT.COM">mailto:deb.barclay@ALCATEL-LUCENT.COM</a>]
+<br>
+<b>Sent:</b> Thursday, June 20, 2013 9:15 AM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Re: [MTCe-SDDTE] Planning for SA2#98<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Hi Puneet,=
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">For SDT #1=
+ &#8220;</span><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;">Overall solution evaluation for all Key issue in =
+5.1.1. Since
+ extensive individual solution evaluation was performed at SA2#97 for this =
+key issue I don&#8217;t expect more papers on individual solution evaluatio=
+n.</span><span style=3D"font-family:&quot;Trebuchet MS&quot;,&quot;sans-ser=
+if&quot;;color:#1F497D">&#8221;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">How should=
+ the drawbacks and ed notes added at the last mtg (some added about 3:15pm =
+on Friday of SA2 97) be addressed for the individual solutions?&nbsp;
+ Should they be combined with #3 &#8220;</span><span style=3D"font-size:10.=
+0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Interim/partial c=
+onclusion for key issue 5.1.1 and 5.1.2</span><span style=3D"font-family:&q=
+uot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">&#8221;?<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Thanks,<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D">Deb<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-famil=
+y:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><b><span style=3D"font-si=
+ze:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</spa=
+n></b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;=
+sans-serif&quot;"> Jain, Puneet [<a href=3D"mailto:puneet.jain@INTEL.COM">m=
+ailto:puneet.jain@INTEL.COM</a>]
+<br>
+<b>Sent:</b> Wednesday, June 19, 2013 11:21 PM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> [3GPP_TSG_SA_WG2_MTCE] [MTCe-SDDTE] Planning for SA2#98<o:p=
+></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Dear All,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">At SA2#98 we s=
+hould attempt to progress on following items for MTCe-SDDTE -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><b><span style=3D"font-si=
+ze:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Small Data =
+Transmission (SDT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">For Small data=
+ transmission, papers on following areas are needed to progress towards nor=
+mative work &#8211;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:1.0in;text-indent:-.25in=
+;mso-list:l1 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&quot;Aria=
+l&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<span sty=
+le=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Overall solution evaluation for a=
+ll Key issue in 5.1.1. Since extensive individual solution evaluation was p=
+erformed at SA2#97 for this key issue I don&#8217;t expect more
+ papers on individual solution evaluation. <o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:1.0in;text-indent:-.25in=
+;mso-list:l1 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&quot;Aria=
+l&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<span sty=
+le=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Individual and overall solution e=
+valuation for Key issue 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:1.0in;text-indent:-.25in=
+;mso-list:l1 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&quot;Aria=
+l&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">3.<span sty=
+le=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Interim/partial conclusion for ke=
+y issue 5.1.1 and 5.1.2<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><b><span style=3D"font-si=
+ze:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Device Trig=
+gering (DT):
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">For device tri=
+ggering papers on overall evaluation and interim conclusion for key issue 5=
+.2.1, 5.2.2, and 5.2.3 are needed to progress towards normative
+ work. <o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Question -
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:1.0in;text-indent:-.25in=
+;mso-list:l0 level1 lfo4">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&quot;Aria=
+l&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">1.<span sty=
+le=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on T4 aspects for=
+ key issue 5.2.1 (overload control for device triggering) and key issue 5.2=
+.3 (Device Trigger replace &amp; recall)?<o:p></o:p></span></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:1.0in;text-indent:-.25in=
+;mso-list:l0 level1 lfo4">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:&quot;Aria=
+l&quot;,&quot;sans-serif&quot;"><span style=3D"mso-list:Ignore">2.<span sty=
+le=3D"font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style=3D"font-size:10.0pt;font-family:=
+&quot;Arial&quot;,&quot;sans-serif&quot;">Can we conclude on any T5 device =
+triggering issue independent of T5 small data service?<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">We can use MTC=
+E email reflector for discussion and share the contributions. I don&#8217;t=
+ see any suitable time to hold SDDTE CC given US holiday around
+ July 4<sup>th</sup>. Only feasibility is July 3<sup>rd</sup> morning 6 &#8=
+211; 8AM PST. Please let me know if there interest to have SDDTE CC at that=
+ time.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p>&nbsp;</o=
+:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:.5in"><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Best regards,<=
+br>
+Puneet<o:p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_C46BB8945051894A80403717FF7A07A228E716BDxmbalnx06ciscoc_--

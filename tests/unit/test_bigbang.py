@@ -198,7 +198,9 @@ class TestArchive(unittest.TestCase):
         name = "bigbang-dev-test.txt"
 
         # archive loaded from mbox
-        arx = archive.Archive(name, archive_dir="tests/data", mbox=True)
+        arx = archive.Archive(
+            name, archive_dir=CONFIG.test_data_path, mbox=True
+        )
 
         arx.save("test.csv")
 
@@ -235,7 +237,9 @@ class TestArchive(unittest.TestCase):
     def test_clean_message(self):
         name = "2001-November.txt"
 
-        arx = archive.Archive(name, archive_dir="tests/data", mbox=True)
+        arx = archive.Archive(
+            name, archive_dir=CONFIG.test_data_path, mbox=True
+        )
 
         body = arx.data["Body"]["<E165uMn-0002IJ-00@spock.physics.mcgill.ca>"]
 
@@ -258,7 +262,9 @@ class TestArchive(unittest.TestCase):
     def test_email_entity_resolution(self):
         name = "2001-November.txt"
 
-        arx = archive.Archive(name, archive_dir="tests/data", mbox=True)
+        arx = archive.Archive(
+            name, archive_dir=CONFIG.test_data_path, mbox=True
+        )
 
         e = process.resolve_sender_entities(arx.get_activity(resolved=False))
 
@@ -446,7 +452,7 @@ class TestW3crawl(unittest.TestCase):
         provenance = mailman.access_provenance(os.path.join(TEMP_DIR, "index"))
         assert provenance["notes"] == "w3crawl test"
         assert (
-            provenance["complete"] == True
+            provenance["complete"] is True
         ), "provenance not marked as a complete crawl"
 
         mbox = mailbox.mbox(os.path.join(TEMP_DIR, "index", "2020-05.mbox"))

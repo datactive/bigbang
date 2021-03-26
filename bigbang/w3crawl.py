@@ -154,7 +154,7 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
             response = urllib.request.urlopen(link_url)
             html = response.read()
             soup = BeautifulSoup(html, "html.parser")
-        except urllib.error.HTTPError as e:
+        except urllib.error.HTTPError:
             logging.exception("Error in loading: %s", link_url)
             return False
 
