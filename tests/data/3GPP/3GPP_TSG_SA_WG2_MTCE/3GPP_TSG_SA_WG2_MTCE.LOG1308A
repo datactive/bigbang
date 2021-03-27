@@ -1,0 +1,1268 @@
+=========================================================================
+Date:         Wed, 7 Aug 2013 13:18:30 +0000
+Reply-To:     "Norp, A.H.J. (Toon)" <toon.norp@TNO.NL>
+From:         "Norp, A.H.J. (Toon)" <toon.norp@TNO.NL>
+Subject:      Re: Time Budget paper trail for MTCe topics
+Comments: To: Erik Guttman <erik.guttman@GMAIL.COM>
+In-Reply-To:  <51EFDFF4.4000900@gmail.com>
+Content-Type: multipart/related;
+              boundary="_004_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_";
+              type="multipart/alternative"
+MIME-Version: 1.0
+
+--_004_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_
+Content-Type: multipart/alternative;
+	boundary="_000_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_"
+
+--_000_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+Hi all,
+
+There seems to be a disconnect between prioritization of work items (as e.g=
+. done in SA end of 2012 for MTCe-SDDTE) and the willingness to come to an =
+agreement on solutions to fulfill the objectives in the work item. SA prior=
+ity only seems to imply priority to have SA2 work on a work item, it is not=
+ seen as a priority to achieve to a solution.
+
+Is there any way how we can take a kind of "probability of success" into th=
+e prioritization discussions at SA 61 meeting. It will be a waste of SA2 re=
+sources if SA 61 prioritizes a work item or objectives within a work item a=
+nd at the end of the Release 12 timeframe in an SA2 show of hands, we end u=
+p with no agreement on any of the solutions for those objectives. Either SA=
+ also gives priority to actually agreeing on a solution, or we should only =
+prioritize work where we have a good indication that SA2 will be able to ac=
+hieve consensus.
+
+Best regards,
+
+Toon Norp
+
+
+From: Erik Guttman [mailto:erik.guttman@GMAIL.COM]
+Sent: woensdag 24 juli 2013 16:09
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: Re: Time Budget paper trail for MTCe topics
+
+
+Hi Miguel, Alessio, Puneet, all,
+
+I have been thinking about this more.
+
+I agree with Miguel in general:
+stealing time from TS work to add more TR time is not a good idea in my vie=
+w. It can only make sense if there is strong indication that this time will=
+ be used productively.
+
+The 2 main principles I use for time budget discipline are:
+
+ - 'once time budget is exhausted for an Agenda Item (AI) and this has been=
+ reported as such to SA, don't schedule more time for the AI on the agenda';
+ - 'whatever happens between plenaries for AIs on the agenda is the SA2 cha=
+irman's discretion (though he has to report what was done at SA.)'
+
+In this particular case there is no time left for study phase work for MTCe=
+-SDDTE and I will report that.
+According to the first principle, I won't schedule MTCe-SDDTE TR phase work=
+ on the agenda.
+
+The second principle takes care of the 'strong indication that this time wi=
+ll be used productively.' (It is the chairman's judgment call.)
+
+I suggest we ask for a single phase more for MTCe-SDDTE TR phase at SA 61 (=
+we need this in any case to finally conclude the TR based on RAN input.)
+
+A separate question is: what should the MTCe-SDDTE normative work time budg=
+et be now?
+I would say, given the modest conclusions achieved at SA2 98, we need at mo=
+st 3.
+We would only need more sessions if we could conclude on more (e.g. at SA2 =
+99.)
+
+The result of reporting this to SA is that this 'freed up available time' b=
+ecomes available for anything (as Alessio and Miguel wrote.)
+
+I will include this change in the draft prioritization input I will send to=
+ the SA2 reflector presently.
+
+best regards,
+
+Erik
+On 23.07.2013 19:07, Griot, Miguel wrote:
+Hi Puneet, Erik,
+
+In general, stealing time from TS work to add more TR time is not a good id=
+ea in my view. It can only make sense if there is strong indication that th=
+is time will be used productively.
+Moreover, there are other WIDs that could benefit from the extra time slot =
+if it's actually true that MTCe needs less time than originally expected at=
+ TS stage. So I think the discussion is not within MTCe, but rather, once a=
+ slot can be freed from MTCe TS stage, which WID will benefit the most if a=
+nother slot was allocated to it pondering also general interest in the WID,=
+ e.g., MTCe TR stage? UPCON? ProSe? GCSE? etc.
+
+Thanks,
+Miguel.
+
+From: CASATI, Alessio (Alessio) [mailto:alessio.casati@alcatel-lucent.com]
+Sent: Tuesday, July 23, 2013 2:01 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: Re: Time Budget paper trail for MTCe topics
+
+Let me offer a perspective.
+
+Here we seem to be handling a budget as if it was earmarked to MTCand could=
+ not be redistributed to other topics even if not good use of it could be f=
+ound for MTC.
+
+I can however see that any surplus time could be donated to other topics ra=
+ther than used on developing a TR which will not bring to any different con=
+clusions than what we had in SA#98. Moreover if any different conclusion wa=
+s reached (which will not) at that point a WID needs to be created and budg=
+et allocated... so SA#61 will not know really what the real budget figures =
+will look like after this happened and also it makes the whole project look=
+ unstable till SA#62 and also it does not allow SA#61 to pronounce a commit=
+ted feature list.
+
+It is much better in my view to use this suggestion by Puneet to seize the =
+time he is offering and donate it to other topics which badly need time.
+
+
+Regards.
+Alessio
+
+[cid:image001.png@01CE937F.A09E6D70]
+
+Alessio Casati
+Wireless Systems and Core Network Standards
+ALCATEL LUCENT
+Wireless Networks
+Swindon, UK
+
+Mobile: +447881811223
+
+
+This message is confidential and may contain privileged information. If you=
+ are not the addressee indicated in this message (or responsible for delive=
+ry of the message to them) you may not copy or deliver this message to anyo=
+ne or take any action in reliance on it. If you have received this e-mail i=
+n error, please delete it and notify the sender as soon as possible. Alcate=
+l-Lucent does not accept any liability for any harm that may be caused to t=
+he recipient's system or data by this message. Please carry out virus and o=
+ther such checks as you may consider appropriate.
+Alcatel-Lucent Telecom Limited.
+Registered Office: Christchurch Way, Greenwich, London SE10 0AG.
+Registered in England & Wales number 02650571
+
+
+
+
+From: Erik Guttman [mailto:erik.guttman@GMAIL.COM]
+Sent: 22 July 2013 20:52
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: Re: Time Budget paper trail for MTCe topics
+
+
+Hi Puneet,
+
+We can exchange one normative for a study unit of budget as you say, but I =
+believe we need to explicitly request approval for this from SA. The purpos=
+e of time budgeting is to put SA in the position to decide what to do when =
+certain work items/etc need more time.
+
+Since the net difference is zero, I believe that we have little reason to w=
+orry that SA won't accept the change. It is not excluded that more than one=
+ conclusion could be discussed further in advance of SA2 99 however, and if=
+ sufficient support is found. If problems that gave rise to objections are =
+solved or ameliorated - there may be an opportunity for more conclusions. A=
+lso, we must consider the input coming from RAN.
+
+best regards,
+
+Erik
+On 22.07.2013 20:56, Jain, Puneet wrote:
+Hi Erik,
+
+For SDDTE only item remaining is conclusions for key issue 5.1.1. As there =
+were 4 objections to the proposed way forward we need one slot at SA2#99 to=
+ process the RAN2 input and adjust solutions to find a compromise.
+
+We can take away one slot from the TS work and allocate it for TR work. Rat=
+ionale for this proposal is below -
+
+
+1.      As per conclusion on Key issue 5.2.1 (overload handling) it was agr=
+eed to move the normative work to CT WGs. SA2 only needs to do alignment of=
+ their specs after stage-3 is complete. This frees up 1 TS slot.
+
+2.      For key issue 5.2.3 (trigger recall/replace) we need .5 TS slot con=
+sidering T5 dependencies are handled as part of Key issue 5.1.1.
+
+3.      For conclusion on Key issue 5.1.2 (frequent small data) there is de=
+pendency on RAN2. Depending on RAN2 feedback it may take .5 to 1.5 TS slot.
+
+4.      Remaining 4 TS slot should be enough for handing key issue 5.1.1 (d=
+epending on the outcome).
+
+Given this if we adjust one TS slot for TR work do we still need to ask for=
+ more time budget at SA2#61?
+
+Best regards,
+Puneet
+
+
+From: Erik Guttman [mailto:erik.guttman@GMAIL.COM]
+Sent: Monday, July 22, 2013 6:21 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: Time Budget paper trail for MTCe topics
+
+
+FYI,
+
+Here is the time budget paper trail for MTCe topics.
+WI
+
+SA 59
+approved
+time budget
+
+SA2
+#96
+
+SA2
+#97
+
+SA2
+#98
+
+Balance
+
+MTCe-SDDTE TR
+
+7
+
+3
+
+2,5
+
+2
+
+-0,5
+
+MTCe-SDDTE TS
+
+7
+
+0
+
+0
+
+0
+
+7
+
+MTCe-UEPCOP TR
+
+3
+
+0
+
+1
+
+1
+
+1
+
+MTCe-UEPCOP TS
+
+1,5
+
+0
+
+0
+
+0
+
+1,5
+
+
+If we want to 'study' MTCe-SDDTE further (e.g. to react to input from RAN s=
+ignificantly or to adjust solutions to be acceptable to those who would obj=
+ect to them in their current state), we will have to ask for more time budg=
+et for MTCe-SDDTE at SA 61.
+
+best regards,
+
+Erik
+
+
+This e-mail and its contents are subject to the DISCLAIMER at http://www.tn=
+o.nl/emaildisclaimer
+
+--_000_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii">
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msochpdefault1, li.msochpdefault1, div.msochpdefault1
+	{mso-style-name:msochpdefault1;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.balloontextchar0
+	{mso-style-name:balloontextchar;}
+span.emailstyle181
+	{mso-style-name:emailstyle181;}
+span.emailstyle25
+	{mso-style-name:emailstyle25;}
+span.emailstyle26
+	{mso-style-name:emailstyle26;}
+span.balloontextchar1
+	{mso-style-name:balloontextchar1;
+	font-family:"Tahoma","sans-serif";}
+p.msochpdefault2, li.msochpdefault2, div.msochpdefault2
+	{mso-style-name:msochpdefault2;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msochpdefault11, li.msochpdefault11, div.msochpdefault11
+	{mso-style-name:msochpdefault11;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.emailstyle1811
+	{mso-style-name:emailstyle1811;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.emailstyle251
+	{mso-style-name:emailstyle251;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+span.emailstyle261
+	{mso-style-name:emailstyle261;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+span.EmailStyle33
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:996034522;
+	mso-list-template-ids:-1881373032;}
+@list l0:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"NL" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">Hi all,<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">There seem=
+s to be a disconnect between prioritization of work items (as e.g. done in =
+SA end of 2012 for MTCe-SDDTE) and the willingness to come
+ to an agreement on solutions to fulfill the objectives in the work item. S=
+A priority only seems to imply priority to have SA2 work on a work item, it=
+ is not seen as a priority to achieve to a solution.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">Is there a=
+ny way how we can take a kind of &#8220;probability of success&#8221; into =
+the prioritization discussions at SA 61 meeting. It will be a waste of
+ SA2 resources if SA 61 prioritizes a work item or objectives within a work=
+ item and at the end of the Release 12 timeframe in an SA2 show of hands, w=
+e end up with no agreement on any of the solutions for those objectives. Ei=
+ther SA also gives priority to actually
+ agreeing on a solution, or we should only prioritize work where we have a =
+good indication that SA2 will be able to achieve consensus.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">Best regar=
+ds,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">Toon Norp<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt;font-=
+family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D"><o:p>&nbsp=
+;</o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span =
+lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,&qu=
+ot;sans-serif&quot;"> Erik Guttman [mailto:erik.guttman@GMAIL.COM]
+<br>
+<b>Sent:</b> woensdag 24 juli 2013 16:09<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> Re: Time Budget paper trail for MTCe topics<o:p></o:p></spa=
+n></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">Hi Miguel, Alessio, Puneet, all,<o:p></o:p></=
+span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">I have been thinking about this more.<o:p></o=
+:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">I agree with Miguel in general:<o:p></o:p></s=
+pan></p>
+<blockquote style=3D"margin-top:5.0pt;margin-bottom:5.0pt">
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,&quot;sans-serif&quot;;color:#1F497D">stealing time from TS wor=
+k to add more TR time is not a good idea in my view. It can only make sense=
+ if there is strong indication that this time will be used
+ productively.</span><o:p></o:p></p>
+</blockquote>
+<p class=3D"MsoNormal"><br>
+The 2 main principles I use for time budget discipline are:<o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">&nbsp;- 'once time budget is exhausted for an=
+ Agenda Item (AI) and this has been reported as such to SA, don't schedule =
+more time for the AI on the agenda';<br>
+&nbsp;- 'whatever happens <i>between plenaries</i> for AIs on the agenda is=
+ the SA2 chairman's discretion (though he has to report what was done at SA=
+.)'<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">In this
+<i>particular case</i> there is no time left for study phase work for MTCe-=
+SDDTE and I will report that.<br>
+According to the first principle, I won't schedule MTCe-SDDTE TR phase work=
+ on the agenda.<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">The second principle takes care of the 'stron=
+g indication that this time will be used productively.' (It is the chairman=
+'s judgment call.)<o:p></o:p></span></p>
+<p><b><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot=
+;sans-serif&quot;;color:#220011">I suggest we ask for a single phase more f=
+or MTCe-SDDTE TR phase at SA 61 (we need this in any case to finally conclu=
+de the TR based on RAN input.)</span></b><span style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#220011"><o:p></=
+o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">A separate question is: what should the MTCe-=
+SDDTE normative work time budget be now?<br>
+I would say, given the modest conclusions achieved at SA2 98, we need at mo=
+st 3.&nbsp;
+<br>
+We would only need more sessions if we could conclude on more (e.g. at SA2 =
+99.)<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">The
+<i>result</i> of reporting this to SA is that this 'freed up available time=
+' becomes available for
+<i>anything</i> (as Alessio and Miguel wrote.)<o:p></o:p></span></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">I will include this change in the draft prior=
+itization input I will send to the SA2 reflector presently.<o:p></o:p></spa=
+n></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">best regards,<br>
+<br>
+Erik<o:p></o:p></span></p>
+<div>
+<p class=3D"MsoNormal">On 23.07.2013 19:07, Griot, Miguel wrote:<o:p></o:p>=
+</p>
+</div>
+<blockquote style=3D"margin-top:5.0pt;margin-bottom:5.0pt" id=3D"mid_C5FECE=
+822871CD43A414F440DB667BBC05802914_NASANEXD01G_na_qualcomm_com">
+<div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Hi Puneet, Erik,</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">In general, stealing time from TS work =
+to add more TR time is not a good idea in my view. It can
+ only make sense if there is strong indication that this time will be used =
+productively.</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Moreover, there are other WIDs that cou=
+ld benefit from the extra time slot if it&#8217;s actually true
+ that MTCe needs less time than originally expected at TS stage. So I think=
+ the discussion is not within MTCe, but rather, once a slot can be freed fr=
+om MTCe TS stage, which WID will benefit the most if another slot was alloc=
+ated to it pondering also general
+ interest in the WID, e.g., MTCe TR stage? UPCON? ProSe? GCSE? etc.</span><=
+o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Thanks,</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Miguel.</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,=
+&quot;sans-serif&quot;">From:</span></b><span style=3D"font-size:10.0pt;fon=
+t-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> CASATI, Alessio (Aless=
+io) [<a href=3D"mailto:alessio.casati@alcatel-lucent.com">mailto:alessio.ca=
+sati@alcatel-lucent.com</a>]
+<br>
+<b>Sent:</b> Tuesday, July 23, 2013 2:01 AM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Re: Time Budget paper trail for MTCe topics</span><o:p></o:=
+p></p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Let me offer a perspective.</span><o:p>=
+</o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Here we seem to be handling a budget as=
+ if it was earmarked to MTCand could not be redistributed
+ to other topics even if not good use of it could be found for MTC.</span><=
+o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">I can however see that any surplus time=
+ could be donated to other topics rather than used on developing
+ a TR which will not bring to any different conclusions than what we had in=
+ SA#98. Moreover if any different conclusion was reached (which will not) a=
+t that point a WID needs to be created and budget allocated&#8230; so SA#61=
+ will not know really what the real budget
+ figures will look like after this happened and also it makes the whole pro=
+ject look unstable till SA#62 and also it does not allow SA#61 to pronounce=
+ a committed feature list.</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">It is much better in my view to use thi=
+s suggestion by Puneet to seize the time he is offering and
+ donate it to other topics which badly need time. </span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Regards.</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">Alessio</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-se=
+rif&quot;;color:#1F497D"><img border=3D"0" width=3D"276" height=3D"26" id=
+=3D"Picture_x0020_1" src=3D"cid:image001.png@01CE937F.A09E6D70"></span><o:p=
+></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">Alessio Casati</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">Wireless Systems and Core Network S=
+tandards</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">ALCATEL LUCENT
+</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">Wireless Networks</span><o:p></o:p>=
+</p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">Swindon, UK</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">Mobile: &#43;447881811223</span><o:=
+p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:5.0pt;margin-right:0cm;m=
+argin-bottom:5.0pt;margin-left:0cm;text-autospace:none">
+<b><span lang=3D"EN-GB" style=3D"font-size:8.0pt;font-family:&quot;Arial&qu=
+ot;,&quot;sans-serif&quot;;color:#1F497D">This message is confidential and =
+may contain privileged information. If you are not the addressee indicated =
+in this message (or responsible for delivery of the message
+ to them) you may not copy or deliver this message to anyone or take any ac=
+tion in reliance on it. If you have received this e-mail in error, please d=
+elete it and notify the sender as soon as possible. Alcatel-Lucent does not=
+ accept any liability for any harm
+ that may be caused to the recipient's system or data by this message. Plea=
+se carry out virus and other such checks as you may consider appropriate.</=
+span></b><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:5.0pt;margin-right:0cm;m=
+argin-bottom:5.0pt;margin-left:0cm;text-autospace:none">
+<b><span lang=3D"EN-GB" style=3D"font-size:8.0pt;font-family:&quot;Arial&qu=
+ot;,&quot;sans-serif&quot;;color:#1F497D">Alcatel-Lucent Telecom Limited.
+<br>
+Registered Office: Christchurch Way, Greenwich, London SE10 0AG. <br>
+Registered in England &amp; Wales number 02650571 </span></b><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;text-autospace:none">
+<span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt">&nbsp;</span><o:p></o:p></p>
+</div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,&q=
+uot;sans-serif&quot;;color:#1F497D">&nbsp;</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,=
+&quot;sans-serif&quot;">From:</span></b><span style=3D"font-size:10.0pt;fon=
+t-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Erik Guttman [<a href=
+=3D"mailto:erik.guttman@GMAIL.COM">mailto:erik.guttman@GMAIL.COM</a>]
+<br>
+<b>Sent:</b> 22 July 2013 20:52<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Re: Time Budget paper trail for MTCe topics</span><o:p></o:=
+p></p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">Hi Puneet,</span><o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">We can exchange one normative for a study uni=
+t of budget as you say, but I believe we need to explicitly request approva=
+l for this from SA. The purpose of time budgeting is to
+ put SA in the position to decide what to do when certain work items/etc ne=
+ed more time.</span><o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">Since the net difference is zero, I believe t=
+hat we have little reason to worry that SA won't accept the change. It is n=
+ot excluded that more than one conclusion could be discussed
+ further in advance of SA2 99 however, and if sufficient support is found. =
+If problems that gave rise to objections are solved or ameliorated - there =
+may be an opportunity for more conclusions. Also, we must consider the inpu=
+t coming from RAN.</span><o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">best regards,<br>
+<br>
+Erik</span><o:p></o:p></p>
+<div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">On 22.07.2013 20:56, Jain, Puneet wrote:<o:p></o:p></p>
+</div>
+<blockquote style=3D"margin-top:5.0pt;margin-bottom:5.0pt" id=3D"mid_DB5AA1=
+96870CB047BBCDFA52F9D10CBC71B53B67_FMSMSX109_amr_corp_intel_com">
+<div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">Hi Erik,
+</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">For SDDTE only item remaining is conclusions=
+ for key issue 5.1.1. As there were 4 objections to the proposed
+ way forward we need one slot at SA2#99 to process the RAN2 input and adjus=
+t solutions to find a compromise.
+</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">We can take away one slot from the TS work a=
+nd allocate it for TR work. Rationale for this proposal is
+ below &#8211; </span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:36.0pt;text-indent:-18.0=
+pt;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"mso-list:Ignore">1.<span style=3D"font:=
+7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style=3D"font-size:10.0pt;font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;;color:blue">As per conclusion on Key issu=
+e 5.2.1 (overload handling) it was agreed to move the normative work to CT =
+WGs. SA2 only needs to do alignment of their specs after
+ stage-3 is complete. This frees up 1 TS slot. </span><o:p></o:p></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:36.0pt;text-indent:-18.0=
+pt;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"mso-list:Ignore">2.<span style=3D"font:=
+7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style=3D"font-size:10.0pt;font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;;color:blue">For key issue 5.2.3 (trigger =
+recall/replace) we need .5 TS slot considering T5 dependencies are handled =
+as part of Key issue 5.1.1.</span><o:p></o:p></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:36.0pt;text-indent:-18.0=
+pt;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"mso-list:Ignore">3.<span style=3D"font:=
+7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style=3D"font-size:10.0pt;font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;;color:blue">For conclusion on Key issue 5=
+.1.2 (frequent small data) there is dependency on RAN2. Depending on RAN2 f=
+eedback it may take .5 to 1.5 TS slot.
+</span><o:p></o:p></p>
+<p class=3D"MsoListParagraph" style=3D"margin-left:36.0pt;text-indent:-18.0=
+pt;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"mso-list:Ignore">4.<span style=3D"font:=
+7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style=3D"font-size:10.0pt;font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;;color:blue">Remaining 4 TS slot should be=
+ enough for handing key issue 5.1.1 (depending on the outcome).</span><o:p>=
+</o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">Given this if we adjust one TS slot for TR w=
+ork do we still need to ask for more time budget at SA2#61?</span><o:p></o:=
+p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">Best regards,</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">Puneet</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quo=
+t;sans-serif&quot;;color:blue">&nbsp;</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><b><span style=3D"font-size:10.0pt;font-family:&quot;Tahoma&quot;,=
+&quot;sans-serif&quot;">From:</span></b><span style=3D"font-size:10.0pt;fon=
+t-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Erik Guttman [<a href=
+=3D"mailto:erik.guttman@GMAIL.COM">mailto:erik.guttman@GMAIL.COM</a>]
+<br>
+<b>Sent:</b> Monday, July 22, 2013 6:21 AM<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Time Budget paper trail for MTCe topics</span><o:p></o:p></=
+p>
+</div>
+</div>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">FYI,</span><o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">Here is the time budget paper trail for MTCe =
+topics.</span><o:p></o:p></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellpadding=3D"0" width=3D"500=
+" style=3D"width:375.0pt">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">WI</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">SA 59<br>
+approved<br>
+time budget</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">SA2<br>
+#96</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">SA2<br>
+#97</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">SA2<br>
+#98</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">Balance</span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">MTCe-SDDTE TR</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">7</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">3</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">2,5</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">2</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">-0,5</span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">MTCe-SDDTE TS</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">7</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">7</span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">MTCe-UEPCOP TR</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">3</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">1</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">1</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">1</span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">MTCe-UEPCOP TS</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">1,5</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">0</span><o:p></o:p></p>
+</td>
+<td valign=3D"top" style=3D"padding:1.5pt 1.5pt 1.5pt 1.5pt">
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto"><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&q=
+uot;sans-serif&quot;">1,5</span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">If we want to 'study' MTCe-SDDTE further (e.g=
+. to react to input from RAN significantly or to adjust solutions to be acc=
+eptable to those who would object to them in their current
+ state), we will have to ask for more time budget for MTCe-SDDTE at SA 61.<=
+/span><o:p></o:p></p>
+<p><span style=3D"font-size:10.0pt;font-family:&quot;Verdana&quot;,&quot;sa=
+ns-serif&quot;;color:#220011">best regards,<br>
+<br>
+Erik</span><o:p></o:p></p>
+</div>
+</blockquote>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto">&nbsp;<o:p></o:p></p>
+</div>
+</blockquote>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+<p>This e-mail and its contents are subject to the DISCLAIMER at http://www=
+.tno.nl/emaildisclaimer</p></body>
+</html>
+
+--_000_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_--
+
+--_004_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_
+Content-Type: image/png; name="image001.png"
+Content-Description: image001.png
+Content-Disposition: inline; filename="image001.png"; size=5507;
+	creation-date="Wed, 07 Aug 2013 13:18:30 GMT";
+	modification-date="Wed, 07 Aug 2013 13:18:30 GMT"
+Content-ID: <image001.png@01CE937F.A09E6D70>
+Content-Transfer-Encoding: base64
+
+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
+
+--_004_740D52870D6B364C9AE67D0A9002752A1F25F677EXCMBX03tsntnon_--

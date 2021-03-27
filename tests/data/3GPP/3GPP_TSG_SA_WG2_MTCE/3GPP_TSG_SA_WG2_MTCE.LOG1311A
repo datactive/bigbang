@@ -1,0 +1,2527 @@
+=========================================================================
+Date:         Wed, 6 Nov 2013 11:34:11 +0000
+Reply-To:     Peter Hedman <peter.hedman@ERICSSON.COM>
+From:         Peter Hedman <peter.hedman@ERICSSON.COM>
+Subject:      [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged document
+              deadlines)
+Content-Type: multipart/alternative;
+              boundary="_000_F65AAE794DB7A74B87E74101B13AA5E1287058ESESSMB207ericsso_"
+MIME-Version: 1.0
+Message-ID:  <F65AAE794DB7A74B87E74101B13AA5E1287058@ESESSMB207.ericsson.se>
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E1287058ESESSMB207ericsso_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+It would be good to get a quick understanding if it is possible to merge th=
+e UEPCOP CRs.
+
+A quick analysis:
+23.682 CR 0077: Introducing UE Power Saving Mode
+S2-134086: Adds new functionality i.e. IDM
+S2-134108: Attempts to correct UE logic wrt requesting Active Time and Peri=
+odic Update timer
+S2-134181: Proposes UE may apply PSM without network support, and then sepa=
+rately request Periodic Update timer
+
+Same text changed in 4108 and 4181.
+Papers all have different basic proposals, i.e. should be possible to merge=
+ though it seems like some discussions are required on each point.
+
+23.401 CR2603: Introducing UE Power Saving Mode
+S2-134087: Adds new functionality i.e. IDM
+S2-134109: CN support is added to limit impacts of increased failure of GTP=
+ procedures
+S2-134149: "Clarifications"
+S2-134182: Alternative way to describe Active timer impact to PPF flag
+
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4087 and 4109).
+Possible merge of 4149 and 4182.
+
+23.060 CR1814: Introducing UE Power Saving Mode
+S2-134088, S2-134110, S2-134150 and S2-134183
+
+Similar comments as for 23.401 CRs, i.e.
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4088 and 4110).
+Possible merge of 4150 and 4183.
+
+Comments?
+
+BR,
+Peter
+
+From: Maurice Pope [mailto:Maurice.Pope@ETSI.ORG]
+Sent: den 6 november 2013 08:23
+To: 3GPP_TSG_SA_WG2@LIST.ETSI.ORG
+Subject: Merged document deadlines
+
+Dear SA WG2 Members,
+
+This is a reminder that the MERGED document Request and Submission deadline=
+s are as follows:
+
+                MERGED Req:            MERGED Sub:
+
+Thursday 7 November 2013 12:00 (CET)          Thursday 7 November 2013 16:0=
+0 (CET)
+
+
+I have identified some candidate CRs for merging discussions, which are the=
+ CRs which many companies requested revisions for:
+
+S2-133947 and S2-134112:
+23.401 CR2623: Reporting ULI and TimeZone at Network-initiated bearer relea=
+se related procedures
+
+S2-134006 and S2-134178:
+23.401 CR2594: Core Network assisted eNodeB parameters tuning
+
+S2-134086, S2-134108 and S2-134181:
+23.682 CR 0077: Introducing UE Power Saving Mode
+
+S2-134087, 134109, S2-134149 and S2-134182:
+23.401 CR2603: Introducing UE Power Saving Mode
+
+S2-134088, S2-134110, S2-134150 and S2-134183:
+23.060 CR1814: Introducing UE Power Saving Mode
+
+and response LSs:
+
+S2-133943 and S2-134155:
+Responses to S2-133899: LS from CT WG1: Reply LS on CSFB priority call hand=
+ling in a network supporting Multimedia Priority Service
+
+S2-133925, S2-133962, S2-134028, S2-134127, S2-134145 and S2-1304147:
+Responses to S2-133917: LS from RAN WG2: LS on CN impacts in RAN WG2 soluti=
+ons for WLAN/3GPP radio interworking
+
+Best regards,
+
+Maurice Pope
+
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E1287058ESESSMB207ericsso_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.EmailStyle18
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.EmailStyle19
+	{mso-style-type:personal;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.EmailStyle20
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Hi,<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">It would be good to ge=
+t a quick understanding if it is possible to merge the UEPCOP CRs.<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">A quick analysis:<o:p>=
+</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.682 CR 0077:=
+ Introducing UE Power Saving Mode
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134086: A=
+dds new functionality i.e. IDM<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134108: A=
+ttempts to correct UE logic wrt requesting Active Time and Periodic Update =
+timer<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134181: P=
+roposes UE may apply PSM without network support, and then separately reque=
+st Periodic Update timer<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D"><o:p>&n=
+bsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Same te=
+xt changed in 4108 and 4181.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Papers =
+all have different basic proposals, i.e. should be possible to merge though=
+ it seems like some discussions are required on each point.<o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D"><o:p>&n=
+bsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2603: =
+Introducing UE Power Saving Mode
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134087: A=
+dds new functionality i.e. IDM<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134109:
+</span></b><span style=3D"mso-fareast-language:ZH-CN">CN support is added t=
+o limit impacts of increased failure of GTP procedures</span><b><span lang=
+=3D"EN-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sa=
+ns-serif&quot;;color:blue"><o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134149: &=
+#8220;Clarifications&#8221;<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134182: A=
+lternative way to describe Active timer impact to PPF flag<o:p></o:p></span=
+></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D"><o:p>&n=
+bsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">New fun=
+ctionality CRs likely should be discussed before any merging attempt (i.e. =
+4087 and 4109).<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Possibl=
+e merge of 4149 and 4182.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D"><o:p>&n=
+bsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.060 CR1814: =
+Introducing UE Power Saving Mode<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134088, S=
+2-134110, S2-134150 and S2-134183</span></b><span lang=3D"EN-GB" style=3D"c=
+olor:#1F497D"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Similar comments as fo=
+r 23.401 CRs, i.e.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">New fun=
+ctionality CRs likely should be discussed before any merging attempt (i.e. =
+4088 and 4110).<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Possibl=
+e merge of 4150 and 4183.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Comments?<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">BR,<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Peter<o:p></o:p></span=
+></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0cm =
+0cm 0cm">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Maurice =
+Pope [mailto:Maurice.Pope@ETSI.ORG]
+<br>
+<b>Sent:</b> den 6 november 2013 08:23<br>
+<b>To:</b> 3GPP_TSG_SA_WG2@LIST.ETSI.ORG<br>
+<b>Subject:</b> Merged document deadlines<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Dear SA WG2 Mem=
+bers,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">This is a remin=
+der that the MERGED document Request and Submission deadlines are as follow=
+s:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"515" style=3D"width:386.0pt;margin-left:-.65pt;border-colla=
+pse:collapse">
+<tbody>
+<tr style=3D"height:25.5pt">
+<td width=3D"191" valign=3D"top" style=3D"width:143.0pt;border:solid window=
+text 1.0pt;background:#E3E3E3;padding:0cm 5.4pt 0cm 5.4pt;height:25.5pt">
+<p class=3D"MsoNormal" align=3D"right" style=3D"text-align:right"><b><span =
+style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&qu=
+ot;;color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;
+</span></b><b><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;=
+,&quot;sans-serif&quot;;color:green">&nbsp;&nbsp;&nbsp;</span></b><b><span =
+style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&qu=
+ot;;color:blue">&nbsp;MERGED Req:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; MERGED Sub:</span></b><b><span style=3D"font-size:=
+10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:red"><o:p=
+></o:p></span></b></p>
+</td>
+<td width=3D"324" valign=3D"top" style=3D"width:243.0pt;border:solid window=
+text 1.0pt;border-left:none;background:#E3E3E3;padding:0cm 5.4pt 0cm 5.4pt;=
+height:25.5pt">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;;color:blue">Thursday 7 November 2013 12=
+:00 (CET)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thursday 7 =
+November 2013 16:00 (CET)<o:p></o:p></span></b></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">I have ident=
+ified some candidate CRs for merging discussions</span></b><span lang=3D"EN=
+-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-ser=
+if&quot;;color:blue">,
+ which are the CRs which many companies requested revisions for:<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-133947 an=
+d S2-134112</span></b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-f=
+amily:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">:<o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2623: =
+Reporting ULI and TimeZone at Network-initiated bearer release related proc=
+edures<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134006 an=
+d S2-134178:<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2594: =
+Core Network assisted eNodeB parameters tuning<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134086, S=
+2-134108 and S2-134181:<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.682 CR 0077:=
+ Introducing UE Power Saving Mode
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134087, 1=
+34109, S2-134149 and S2-134182:<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2603: =
+Introducing UE Power Saving Mode
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134088, S=
+2-134110, S2-134150 and S2-134183:<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.060 CR1814: =
+Introducing UE Power Saving Mode<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">and response=
+ LSs:<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-133943 an=
+d S2-134155: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Responses to S2=
+-133899: LS from CT WG1: Reply LS on CSFB priority call handling in a netwo=
+rk supporting Multimedia Priority Service<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-133925, S=
+2-133962, S2-134028, S2-134127, S2-134145 and S2-1304147:
+<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Responses to S2=
+-133917: LS from RAN WG2: LS on CN impacts in RAN WG2 solutions for WLAN/3G=
+PP radio interworking<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Best regards,<o=
+:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Maurice Pope<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue"><o:p>&nbsp;</o:=
+p></span></p>
+</div>
+</body>
+</html>
+
+--_000_F65AAE794DB7A74B87E74101B13AA5E1287058ESESSMB207ericsso_--
+=========================================================================
+Date:         Wed, 6 Nov 2013 11:44:54 +0000
+Reply-To:     Iskren Ianev <Iskren.Ianev@NECTECH.CO.UK>
+From:         Iskren Ianev <Iskren.Ianev@NECTECH.CO.UK>
+Subject:      Re: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged
+              document deadlines)
+Comments: To: Peter Hedman <peter.hedman@ERICSSON.COM>
+In-Reply-To:  <F65AAE794DB7A74B87E74101B13AA5E1287058@ESESSMB207.ericsson.se>
+Content-Type: multipart/alternative;
+              boundary="_000_C828C072B7196041850613963E5F2ECB0B58B235EX10MBX02EUNECC_"
+MIME-Version: 1.0
+Message-ID:  <C828C072B7196041850613963E5F2ECB0B58B235@EX10MBX02.EU.NEC.COM>
+
+--_000_C828C072B7196041850613963E5F2ECB0B58B235EX10MBX02EUNECC_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Peter and All,
+Thanks for the e-mail and  the summary.
+I went quickly through the bellow tdocs. I am OK if we merge them. The NEC,=
+ Ericsson and Qualcomm ones do not overlap I believe. If we are OK with the=
+ context, merging should be easy. The ZTE and Ericsson ones are overlapping=
+ in my understanding. Not sure what we can do there.
+Best regards,
+Iskren
+
+
+From: Peter Hedman [mailto:peter.hedman@ERICSSON.COM]
+Sent: 06 November 2013 11:34
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged document =
+deadlines)
+
+Hi,
+
+It would be good to get a quick understanding if it is possible to merge th=
+e UEPCOP CRs.
+
+A quick analysis:
+23.682 CR 0077: Introducing UE Power Saving Mode
+S2-134086: Adds new functionality i.e. IDM
+S2-134108: Attempts to correct UE logic wrt requesting Active Time and Peri=
+odic Update timer
+S2-134181: Proposes UE may apply PSM without network support, and then sepa=
+rately request Periodic Update timer
+
+Same text changed in 4108 and 4181.
+Papers all have different basic proposals, i.e. should be possible to merge=
+ though it seems like some discussions are required on each point.
+
+23.401 CR2603: Introducing UE Power Saving Mode
+S2-134087: Adds new functionality i.e. IDM
+S2-134109: CN support is added to limit impacts of increased failure of GTP=
+ procedures
+S2-134149: "Clarifications"
+S2-134182: Alternative way to describe Active timer impact to PPF flag
+
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4087 and 4109).
+Possible merge of 4149 and 4182.
+
+23.060 CR1814: Introducing UE Power Saving Mode
+S2-134088, S2-134110, S2-134150 and S2-134183
+
+Similar comments as for 23.401 CRs, i.e.
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4088 and 4110).
+Possible merge of 4150 and 4183.
+
+Comments?
+
+BR,
+Peter
+
+From: Maurice Pope [mailto:Maurice.Pope@ETSI.ORG]
+Sent: den 6 november 2013 08:23
+To: 3GPP_TSG_SA_WG2@LIST.ETSI.ORG
+Subject: Merged document deadlines
+
+Dear SA WG2 Members,
+
+This is a reminder that the MERGED document Request and Submission deadline=
+s are as follows:
+
+                MERGED Req:            MERGED Sub:
+
+Thursday 7 November 2013 12:00 (CET)          Thursday 7 November 2013 16:0=
+0 (CET)
+
+
+I have identified some candidate CRs for merging discussions, which are the=
+ CRs which many companies requested revisions for:
+
+S2-133947 and S2-134112:
+23.401 CR2623: Reporting ULI and TimeZone at Network-initiated bearer relea=
+se related procedures
+
+S2-134006 and S2-134178:
+23.401 CR2594: Core Network assisted eNodeB parameters tuning
+
+S2-134086, S2-134108 and S2-134181:
+23.682 CR 0077: Introducing UE Power Saving Mode
+
+S2-134087, 134109, S2-134149 and S2-134182:
+23.401 CR2603: Introducing UE Power Saving Mode
+
+S2-134088, S2-134110, S2-134150 and S2-134183:
+23.060 CR1814: Introducing UE Power Saving Mode
+
+and response LSs:
+
+S2-133943 and S2-134155:
+Responses to S2-133899: LS from CT WG1: Reply LS on CSFB priority call hand=
+ling in a network supporting Multimedia Priority Service
+
+S2-133925, S2-133962, S2-134028, S2-134127, S2-134145 and S2-1304147:
+Responses to S2-133917: LS from RAN WG2: LS on CN impacts in RAN WG2 soluti=
+ons for WLAN/3GPP radio interworking
+
+Best regards,
+
+Maurice Pope
+
+
+
+Click here<https://www.mailcontrol.com/sr/Wfz0TQ+Pb+HGX2PQPOmvUkjDae7bB5IgM=
+F5g1LjBwKCsiRhm1izAs6EkawiSK+0A5o+DwGNVtWaURD1dro2FIg=3D=3D> to report this=
+ email as spam.
+
+________________________________
+
+NEC Technologies (UK) Ltd.,
+Company Registered Office: Imperium, Reading, Berkshire, RG2 0TD
+Registered Number: 4072718
+Attention:
+The information contained in this message and or attachments is intended on=
+ly for the person or entity to which it is addressed and may contain confid=
+ential and/or privileged material. Any review, retransmission, disseminatio=
+n or other use of, or taking of any action in reliance upon, this informati=
+on by persons or entities other than the intended recipient is prohibited. =
+If you received this in error, please contact the sender and delete the mat=
+erial from any system and destroy any copies.
+
+--_000_C828C072B7196041850613963E5F2ECB0B58B235EX10MBX02EUNECC_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<style>
+<!--
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Tahoma}
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif"}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif"}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif"}
+span.EmailStyle17
+	{font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal}
+span.EmailStyle18
+	{font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal}
+span.EmailStyle19
+	{font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal}
+span.EmailStyle20
+	{font-family:"Calibri","sans-serif";
+	color:#1F497D}
+span.BalloonTextChar
+	{font-family:"Tahoma","sans-serif"}
+span.EmailStyle24
+	{font-family:"Calibri","sans-serif";
+	color:#1F497D}
+.MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.WordSection1
+	{}
+-->
+</style>
+</head>
+<body lang=3D"EN-GB" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Dear Peter and All,</s=
+pan></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Thanks for the e-mail =
+and&nbsp; the summary.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">I went quickly through=
+ the bellow tdocs. I am OK if we merge them. The NEC, Ericsson and Qualcomm=
+ ones do not overlap I believe. If we are OK with the context, merging shou=
+ld be easy. The ZTE and Ericsson ones
+ are overlapping in my understanding. Not sure what we can do there.</span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Best regards,</span></=
+p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Iskren </span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<div>
+<div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0c=
+m 0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:10.0pt; f=
+ont-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span=
+ lang=3D"EN-US" style=3D"font-size:10.0pt; font-family:&quot;Tahoma&quot;,&=
+quot;sans-serif&quot;"> Peter Hedman [mailto:peter.hedman@ERICSSON.COM]
+<br>
+<b>Sent:</b> 06 November 2013 11:34<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged do=
+cument deadlines)</span></p>
+</div>
+</div>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Hi,</sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">It woul=
+d be good to get a quick understanding if it is possible to merge the UEPCO=
+P CRs.</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">A quick=
+ analysis:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.682 CR 0077: Introducing =
+UE Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134086: Adds new funct=
+ionality i.e. IDM</span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134108: Attempts to co=
+rrect UE logic wrt requesting Active Time and Periodic Update timer</span><=
+/b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134181: Proposes UE ma=
+y apply PSM without network support, and then separately request Periodic U=
+pdate timer</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Same text changed in 4=
+108 and 4181.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Papers all have differ=
+ent basic proposals, i.e. should be possible to merge though it seems like =
+some discussions are required on each point.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2603: Introducing U=
+E Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134087: Adds new funct=
+ionality i.e. IDM</span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134109:
+</span></b><span lang=3D"EN-US" style=3D"">CN support is added to limit imp=
+acts of increased failure of GTP procedures</span><b><span style=3D"font-si=
+ze:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif&quot;; color:blue=
+"></span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134149: &#8220;Clarifi=
+cations&#8221;</span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134182: Alternative wa=
+y to describe Active timer impact to PPF flag</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">New functionality CRs =
+likely should be discussed before any merging attempt (i.e. 4087 and 4109).=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Possible merge of 4149=
+ and 4182.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.060 CR1814: Introducing U=
+E Power Saving Mode</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134088, S2-134110, S2-=
+134150 and S2-134183</span></b><span style=3D"color:#1F497D"></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Similar=
+ comments as for 23.401 CRs, i.e.
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">New functionality CRs =
+likely should be discussed before any merging attempt (i.e. 4088 and 4110).=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Possible merge of 4150=
+ and 4183.</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Comment=
+s?</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">BR,</sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Peter</=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<div>
+<div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0c=
+m 0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:10.0pt; f=
+ont-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span=
+ lang=3D"EN-US" style=3D"font-size:10.0pt; font-family:&quot;Tahoma&quot;,&=
+quot;sans-serif&quot;"> Maurice Pope [mailto:Maurice.Pope@ETSI.ORG]
+<br>
+<b>Sent:</b> den 6 november 2013 08:23<br>
+<b>To:</b> 3GPP_TSG_SA_WG2@LIST.ETSI.ORG<br>
+<b>Subject:</b> Merged document deadlines</span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Dear SA WG2 Members,</span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">This is a reminder that the =
+MERGED document Request and Submission deadlines are as follows:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"515" style=3D"width:386.0pt; margin-left:-.65pt; border-col=
+lapse:collapse">
+<tbody>
+<tr style=3D"height:25.5pt">
+<td width=3D"191" valign=3D"top" style=3D"width:143.0pt; border:solid windo=
+wtext 1.0pt; background:#E3E3E3; padding:0cm 5.4pt 0cm 5.4pt; height:25.5pt=
+">
+<p class=3D"MsoNormal" align=3D"right" style=3D"text-align:right"><b><span =
+style=3D"font-size:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif&q=
+uot;; color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;
+</span></b><b><span style=3D"font-size:10.0pt; font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;; color:green">&nbsp;&nbsp;&nbsp;</span></b><b><spa=
+n style=3D"font-size:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif=
+&quot;; color:blue">&nbsp;MERGED Req:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp; MERGED Sub:</span></b><b><span style=3D"font-s=
+ize:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif&quot;; color:red=
+"></span></b></p>
+</td>
+<td width=3D"324" valign=3D"top" style=3D"width:243.0pt; border:solid windo=
+wtext 1.0pt; border-left:none; background:#E3E3E3; padding:0cm 5.4pt 0cm 5.=
+4pt; height:25.5pt">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">Thursday 7 November 2013 =
+12:00 (CET)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thursday =
+7 November 2013 16:00 (CET)</span></b></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">I have identified some ca=
+ndidate CRs for merging discussions</span></b><span style=3D"font-size:10.0=
+pt; font-family:&quot;Arial&quot;,&quot;sans-serif&quot;; color:blue">, whi=
+ch
+ are the CRs which many companies requested revisions for:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-133947 and S2-134112</=
+span></b><span style=3D"font-size:10.0pt; font-family:&quot;Arial&quot;,&qu=
+ot;sans-serif&quot;; color:blue">:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2623: Reporting ULI=
+ and TimeZone at Network-initiated bearer release related procedures</span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134006 and S2-134178:<=
+/span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2594: Core Network =
+assisted eNodeB parameters tuning</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134086, S2-134108 and =
+S2-134181:</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.682 CR 0077: Introducing =
+UE Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134087, 134109, S2-134=
+149 and S2-134182:</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2603: Introducing U=
+E Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134088, S2-134110, S2-=
+134150 and S2-134183:</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.060 CR1814: Introducing U=
+E Power Saving Mode</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">and response LSs:</span><=
+/b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-133943 and S2-134155: =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Responses to S2-133899: LS f=
+rom CT WG1: Reply LS on CSFB priority call handling in a network supporting=
+ Multimedia Priority Service</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-133925, S2-133962, S2-=
+134028, S2-134127, S2-134145 and S2-1304147:
+</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Responses to S2-133917: LS f=
+rom RAN WG2: LS on CN impacts in RAN WG2 solutions for WLAN/3GPP radio inte=
+rworking</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Best regards,</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Maurice Pope</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span lang=3D"EN-US" =
+style=3D"font-size:12.0pt; font-family:&quot;Times New Roman&quot;,&quot;se=
+rif&quot;; background:white">&nbsp;</span></p>
+<p align=3D"center" style=3D"text-align:center"><span lang=3D"EN-US" style=
+=3D"background:white">Click
+<a href=3D"https://www.mailcontrol.com/sr/Wfz0TQ&#43;Pb&#43;HGX2PQPOmvUkjDa=
+e7bB5IgMF5g1LjBwKCsiRhm1izAs6EkawiSK&#43;0A5o&#43;DwGNVtWaURD1dro2FIg=3D=3D=
+">
+here</a> to report this email as spam.</span></p>
+</div>
+<br>
+<hr>
+<font face=3D"Arial" color=3D"Gray" size=3D"1"><br>
+NEC Technologies (UK) Ltd.,<br>
+Company Registered Office: Imperium, Reading, Berkshire, RG2 0TD<br>
+Registered Number: 4072718<br>
+Attention:<br>
+The information contained in this message and or attachments is intended on=
+ly for the person or entity to which it is addressed and may contain confid=
+ential and/or privileged material. Any review, retransmission, disseminatio=
+n or other use of, or taking of
+ any action in reliance upon, this information by persons or entities other=
+ than the intended recipient is prohibited. If you received this in error, =
+please contact the sender and delete the material from any system and destr=
+oy any copies.<br>
+</font>
+</body>
+</html>
+
+--_000_C828C072B7196041850613963E5F2ECB0B58B235EX10MBX02EUNECC_--
+=========================================================================
+Date:         Wed, 6 Nov 2013 11:48:49 +0000
+Reply-To:     Iskren Ianev <Iskren.Ianev@NECTECH.CO.UK>
+From:         Iskren Ianev <Iskren.Ianev@NECTECH.CO.UK>
+Subject:      Re: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged
+              document deadlines)
+Comments: To: Peter Hedman <peter.hedman@ERICSSON.COM>
+Content-Type: multipart/alternative;
+              boundary="_000_C828C072B7196041850613963E5F2ECB0B58B24FEX10MBX02EUNECC_"
+MIME-Version: 1.0
+Message-ID:  <C828C072B7196041850613963E5F2ECB0B58B24F@EX10MBX02.EU.NEC.COM>
+
+--_000_C828C072B7196041850613963E5F2ECB0B58B24FEX10MBX02EUNECC_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Btw do we need to agree with the contexts in order to merge? I think the me=
+rge principle was based on 'non-overlapping' rather than on 'agreeable'.
+Best regards,
+Iskren
+
+From: Iskren Ianev
+Sent: 06 November 2013 11:45
+To: 'Peter Hedman'; 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: RE: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged docum=
+ent deadlines)
+
+Dear Peter and All,
+Thanks for the e-mail and  the summary.
+I went quickly through the bellow tdocs. I am OK if we merge them. The NEC,=
+ Ericsson and Qualcomm ones do not overlap I believe. If we are OK with the=
+ context, merging should be easy. The ZTE and Ericsson ones are overlapping=
+ in my understanding. Not sure what we can do there.
+Best regards,
+Iskren
+
+
+From: Peter Hedman [mailto:peter.hedman@ERICSSON.COM]
+Sent: 06 November 2013 11:34
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged document =
+deadlines)
+
+Hi,
+
+It would be good to get a quick understanding if it is possible to merge th=
+e UEPCOP CRs.
+
+A quick analysis:
+23.682 CR 0077: Introducing UE Power Saving Mode
+S2-134086: Adds new functionality i.e. IDM
+S2-134108: Attempts to correct UE logic wrt requesting Active Time and Peri=
+odic Update timer
+S2-134181: Proposes UE may apply PSM without network support, and then sepa=
+rately request Periodic Update timer
+
+Same text changed in 4108 and 4181.
+Papers all have different basic proposals, i.e. should be possible to merge=
+ though it seems like some discussions are required on each point.
+
+23.401 CR2603: Introducing UE Power Saving Mode
+S2-134087: Adds new functionality i.e. IDM
+S2-134109: CN support is added to limit impacts of increased failure of GTP=
+ procedures
+S2-134149: "Clarifications"
+S2-134182: Alternative way to describe Active timer impact to PPF flag
+
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4087 and 4109).
+Possible merge of 4149 and 4182.
+
+23.060 CR1814: Introducing UE Power Saving Mode
+S2-134088, S2-134110, S2-134150 and S2-134183
+
+Similar comments as for 23.401 CRs, i.e.
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4088 and 4110).
+Possible merge of 4150 and 4183.
+
+Comments?
+
+BR,
+Peter
+
+From: Maurice Pope [mailto:Maurice.Pope@ETSI.ORG]
+Sent: den 6 november 2013 08:23
+To: 3GPP_TSG_SA_WG2@LIST.ETSI.ORG
+Subject: Merged document deadlines
+
+Dear SA WG2 Members,
+
+This is a reminder that the MERGED document Request and Submission deadline=
+s are as follows:
+
+                MERGED Req:            MERGED Sub:
+
+Thursday 7 November 2013 12:00 (CET)          Thursday 7 November 2013 16:0=
+0 (CET)
+
+
+I have identified some candidate CRs for merging discussions, which are the=
+ CRs which many companies requested revisions for:
+
+S2-133947 and S2-134112:
+23.401 CR2623: Reporting ULI and TimeZone at Network-initiated bearer relea=
+se related procedures
+
+S2-134006 and S2-134178:
+23.401 CR2594: Core Network assisted eNodeB parameters tuning
+
+S2-134086, S2-134108 and S2-134181:
+23.682 CR 0077: Introducing UE Power Saving Mode
+
+S2-134087, 134109, S2-134149 and S2-134182:
+23.401 CR2603: Introducing UE Power Saving Mode
+
+S2-134088, S2-134110, S2-134150 and S2-134183:
+23.060 CR1814: Introducing UE Power Saving Mode
+
+and response LSs:
+
+S2-133943 and S2-134155:
+Responses to S2-133899: LS from CT WG1: Reply LS on CSFB priority call hand=
+ling in a network supporting Multimedia Priority Service
+
+S2-133925, S2-133962, S2-134028, S2-134127, S2-134145 and S2-1304147:
+Responses to S2-133917: LS from RAN WG2: LS on CN impacts in RAN WG2 soluti=
+ons for WLAN/3GPP radio interworking
+
+Best regards,
+
+Maurice Pope
+
+
+
+Click here<https://www.mailcontrol.com/sr/Wfz0TQ+Pb+HGX2PQPOmvUkjDae7bB5IgM=
+F5g1LjBwKCsiRhm1izAs6EkawiSK+0A5o+DwGNVtWaURD1dro2FIg=3D=3D> to report this=
+ email as spam.
+
+________________________________
+
+NEC Technologies (UK) Ltd.,
+Company Registered Office: Imperium, Reading, Berkshire, RG2 0TD
+Registered Number: 4072718
+Attention:
+The information contained in this message and or attachments is intended on=
+ly for the person or entity to which it is addressed and may contain confid=
+ential and/or privileged material. Any review, retransmission, disseminatio=
+n or other use of, or taking of any action in reliance upon, this informati=
+on by persons or entities other than the intended recipient is prohibited. =
+If you received this in error, please contact the sender and delete the mat=
+erial from any system and destroy any copies.
+
+--_000_C828C072B7196041850613963E5F2ECB0B58B24FEX10MBX02EUNECC_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<style>
+<!--
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Tahoma}
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif"}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif"}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif"}
+span.BalloonTextChar
+	{font-family:"Tahoma","sans-serif"}
+span.EmailStyle20
+	{font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal}
+span.EmailStyle21
+	{font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal}
+span.EmailStyle22
+	{font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal}
+span.EmailStyle23
+	{font-family:"Calibri","sans-serif";
+	color:#1F497D}
+span.EmailStyle24
+	{font-family:"Calibri","sans-serif";
+	color:#1F497D}
+span.EmailStyle25
+	{font-family:"Calibri","sans-serif";
+	color:#1F497D}
+.MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.WordSection1
+	{}
+-->
+</style>
+</head>
+<body lang=3D"EN-GB" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Btw do we need to agre=
+e with the contexts in order to merge? I think the merge principle was base=
+d on &#8216;non-overlapping&#8217; rather than on &#8216;agreeable&#8217;.<=
+/span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Best regards,</span></=
+p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Iskren</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<div>
+<div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0c=
+m 0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:10.0pt; f=
+ont-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span=
+ lang=3D"EN-US" style=3D"font-size:10.0pt; font-family:&quot;Tahoma&quot;,&=
+quot;sans-serif&quot;"> Iskren Ianev
+<br>
+<b>Sent:</b> 06 November 2013 11:45<br>
+<b>To:</b> 'Peter Hedman'; 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> RE: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merge=
+d document deadlines)</span></p>
+</div>
+</div>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Dear Peter and All,</s=
+pan></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Thanks for the e-mail =
+and&nbsp; the summary.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">I went quickly through=
+ the bellow tdocs. I am OK if we merge them. The NEC, Ericsson and Qualcomm=
+ ones do not overlap I believe. If we are OK with the context, merging shou=
+ld be easy. The ZTE and Ericsson ones
+ are overlapping in my understanding. Not sure what we can do there.</span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Best regards,</span></=
+p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Iskren </span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<div>
+<div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0c=
+m 0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:10.0pt; f=
+ont-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span=
+ lang=3D"EN-US" style=3D"font-size:10.0pt; font-family:&quot;Tahoma&quot;,&=
+quot;sans-serif&quot;"> Peter Hedman [mailto:peter.hedman@ERICSSON.COM]
+<br>
+<b>Sent:</b> 06 November 2013 11:34<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged do=
+cument deadlines)</span></p>
+</div>
+</div>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Hi,</sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">It woul=
+d be good to get a quick understanding if it is possible to merge the UEPCO=
+P CRs.</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">A quick=
+ analysis:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.682 CR 0077: Introducing =
+UE Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134086: Adds new funct=
+ionality i.e. IDM</span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134108: Attempts to co=
+rrect UE logic wrt requesting Active Time and Periodic Update timer</span><=
+/b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134181: Proposes UE ma=
+y apply PSM without network support, and then separately request Periodic U=
+pdate timer</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Same text changed in 4=
+108 and 4181.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Papers all have differ=
+ent basic proposals, i.e. should be possible to merge though it seems like =
+some discussions are required on each point.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2603: Introducing U=
+E Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134087: Adds new funct=
+ionality i.e. IDM</span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134109:
+</span></b><span lang=3D"EN-US" style=3D"">CN support is added to limit imp=
+acts of increased failure of GTP procedures</span><b><span style=3D"font-si=
+ze:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif&quot;; color:blue=
+"></span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134149: &#8220;Clarifi=
+cations&#8221;</span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134182: Alternative wa=
+y to describe Active timer impact to PPF flag</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">New functionality CRs =
+likely should be discussed before any merging attempt (i.e. 4087 and 4109).=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Possible merge of 4149=
+ and 4182.</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.060 CR1814: Introducing U=
+E Power Saving Mode</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134088, S2-134110, S2-=
+134150 and S2-134183</span></b><span style=3D"color:#1F497D"></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Similar=
+ comments as for 23.401 CRs, i.e.
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">New functionality CRs =
+likely should be discussed before any merging attempt (i.e. 4088 and 4110).=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Possible merge of 4150=
+ and 4183.</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Comment=
+s?</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">BR,</sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">Peter</=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"color:#1F497D">&nbsp;<=
+/span></p>
+<div>
+<div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0c=
+m 0cm 0cm">
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:10.0pt; f=
+ont-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span=
+ lang=3D"EN-US" style=3D"font-size:10.0pt; font-family:&quot;Tahoma&quot;,&=
+quot;sans-serif&quot;"> Maurice Pope [mailto:Maurice.Pope@ETSI.ORG]
+<br>
+<b>Sent:</b> den 6 november 2013 08:23<br>
+<b>To:</b> 3GPP_TSG_SA_WG2@LIST.ETSI.ORG<br>
+<b>Subject:</b> Merged document deadlines</span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Dear SA WG2 Members,</span><=
+/p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">This is a reminder that the =
+MERGED document Request and Submission deadlines are as follows:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"515" style=3D"width:386.0pt; margin-left:-.65pt; border-col=
+lapse:collapse">
+<tbody>
+<tr style=3D"height:25.5pt">
+<td width=3D"191" valign=3D"top" style=3D"width:143.0pt; border:solid windo=
+wtext 1.0pt; background:#E3E3E3; padding:0cm 5.4pt 0cm 5.4pt; height:25.5pt=
+">
+<p class=3D"MsoNormal" align=3D"right" style=3D"text-align:right"><b><span =
+style=3D"font-size:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif&q=
+uot;; color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;
+</span></b><b><span style=3D"font-size:10.0pt; font-family:&quot;Arial&quot=
+;,&quot;sans-serif&quot;; color:green">&nbsp;&nbsp;&nbsp;</span></b><b><spa=
+n style=3D"font-size:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif=
+&quot;; color:blue">&nbsp;MERGED Req:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp; MERGED Sub:</span></b><b><span style=3D"font-s=
+ize:10.0pt; font-family:&quot;Arial&quot;,&quot;sans-serif&quot;; color:red=
+"></span></b></p>
+</td>
+<td width=3D"324" valign=3D"top" style=3D"width:243.0pt; border:solid windo=
+wtext 1.0pt; border-left:none; background:#E3E3E3; padding:0cm 5.4pt 0cm 5.=
+4pt; height:25.5pt">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">Thursday 7 November 2013 =
+12:00 (CET)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thursday =
+7 November 2013 16:00 (CET)</span></b></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">I have identified some ca=
+ndidate CRs for merging discussions</span></b><span style=3D"font-size:10.0=
+pt; font-family:&quot;Arial&quot;,&quot;sans-serif&quot;; color:blue">, whi=
+ch
+ are the CRs which many companies requested revisions for:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-133947 and S2-134112</=
+span></b><span style=3D"font-size:10.0pt; font-family:&quot;Arial&quot;,&qu=
+ot;sans-serif&quot;; color:blue">:</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2623: Reporting ULI=
+ and TimeZone at Network-initiated bearer release related procedures</span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134006 and S2-134178:<=
+/span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2594: Core Network =
+assisted eNodeB parameters tuning</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134086, S2-134108 and =
+S2-134181:</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.682 CR 0077: Introducing =
+UE Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134087, 134109, S2-134=
+149 and S2-134182:</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.401 CR2603: Introducing U=
+E Power Saving Mode
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-134088, S2-134110, S2-=
+134150 and S2-134183:</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">23.060 CR1814: Introducing U=
+E Power Saving Mode</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">and response LSs:</span><=
+/b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-133943 and S2-134155: =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Responses to S2-133899: LS f=
+rom CT WG1: Reply LS on CSFB priority call handling in a network supporting=
+ Multimedia Priority Service</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt; font-family:&quo=
+t;Arial&quot;,&quot;sans-serif&quot;; color:blue">S2-133925, S2-133962, S2-=
+134028, S2-134127, S2-134145 and S2-1304147:
+</span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Responses to S2-133917: LS f=
+rom RAN WG2: LS on CN impacts in RAN WG2 solutions for WLAN/3GPP radio inte=
+rworking</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Best regards,</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">Maurice Pope</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt; font-family:&quot;A=
+rial&quot;,&quot;sans-serif&quot;; color:blue">&nbsp;</span></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span lang=3D"EN-US" =
+style=3D"font-size:12.0pt; font-family:&quot;Times New Roman&quot;,&quot;se=
+rif&quot;; background:white">&nbsp;</span></p>
+<p align=3D"center" style=3D"text-align:center"><span lang=3D"EN-US" style=
+=3D"background:white">Click
+<a href=3D"https://www.mailcontrol.com/sr/Wfz0TQ&#43;Pb&#43;HGX2PQPOmvUkjDa=
+e7bB5IgMF5g1LjBwKCsiRhm1izAs6EkawiSK&#43;0A5o&#43;DwGNVtWaURD1dro2FIg=3D=3D=
+">
+here</a> to report this email as spam.</span></p>
+</div>
+<br>
+<hr>
+<font face=3D"Arial" color=3D"Gray" size=3D"1"><br>
+NEC Technologies (UK) Ltd.,<br>
+Company Registered Office: Imperium, Reading, Berkshire, RG2 0TD<br>
+Registered Number: 4072718<br>
+Attention:<br>
+The information contained in this message and or attachments is intended on=
+ly for the person or entity to which it is addressed and may contain confid=
+ential and/or privileged material. Any review, retransmission, disseminatio=
+n or other use of, or taking of
+ any action in reliance upon, this information by persons or entities other=
+ than the intended recipient is prohibited. If you received this in error, =
+please contact the sender and delete the material from any system and destr=
+oy any copies.<br>
+</font>
+</body>
+</html>
+
+--_000_C828C072B7196041850613963E5F2ECB0B58B24FEX10MBX02EUNECC_--
+=========================================================================
+Date:         Wed, 6 Nov 2013 14:05:58 +0000
+Reply-To:     "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+From:         "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+Subject:      Re: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged
+              document deadlines)
+Comments: To: Iskren Ianev <Iskren.Ianev@NECTECH.CO.UK>
+In-Reply-To:  <C828C072B7196041850613963E5F2ECB0B58B24F@EX10MBX02.EU.NEC.COM>
+Content-Type: multipart/alternative;
+              boundary="_000_4B1B79DE10E7E54C8ABB5302F25C6FB11E0438B8US70TWXCHMBA10z_"
+MIME-Version: 1.0
+Message-ID:  <4B1B79DE10E7E54C8ABB5302F25C6FB11E0438B8@US70TWXCHMBA10.zam.alcatel-lucent.com>
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11E0438B8US70TWXCHMBA10z_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Companies should agree with the content they are putting their name on.
+Thanks,
+Deb
+
+From: Iskren Ianev [mailto:Iskren.Ianev@NECTECH.CO.UK]
+Sent: Wednesday, November 06, 2013 5:49 AM
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG
+Subject: Re: [3GPP_TSG_SA_WG2_MTCE] [MTCe-UEPCOP] Possible merging of UEPCO=
+P CRs (FW: Merged document deadlines)
+
+Btw do we need to agree with the contexts in order to merge? I think the me=
+rge principle was based on 'non-overlapping' rather than on 'agreeable'.
+Best regards,
+Iskren
+
+From: Iskren Ianev
+Sent: 06 November 2013 11:45
+To: 'Peter Hedman'; 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_W=
+G2_MTCE@LIST.ETSI.ORG>
+Subject: RE: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged docum=
+ent deadlines)
+
+Dear Peter and All,
+Thanks for the e-mail and  the summary.
+I went quickly through the bellow tdocs. I am OK if we merge them. The NEC,=
+ Ericsson and Qualcomm ones do not overlap I believe. If we are OK with the=
+ context, merging should be easy. The ZTE and Ericsson ones are overlapping=
+ in my understanding. Not sure what we can do there.
+Best regards,
+Iskren
+
+
+From: Peter Hedman [mailto:peter.hedman@ERICSSON.COM]
+Sent: 06 November 2013 11:34
+To: 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETS=
+I.ORG>
+Subject: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged document =
+deadlines)
+
+Hi,
+
+It would be good to get a quick understanding if it is possible to merge th=
+e UEPCOP CRs.
+
+A quick analysis:
+23.682 CR 0077: Introducing UE Power Saving Mode
+S2-134086: Adds new functionality i.e. IDM
+S2-134108: Attempts to correct UE logic wrt requesting Active Time and Peri=
+odic Update timer
+S2-134181: Proposes UE may apply PSM without network support, and then sepa=
+rately request Periodic Update timer
+
+Same text changed in 4108 and 4181.
+Papers all have different basic proposals, i.e. should be possible to merge=
+ though it seems like some discussions are required on each point.
+
+23.401 CR2603: Introducing UE Power Saving Mode
+S2-134087: Adds new functionality i.e. IDM
+S2-134109: CN support is added to limit impacts of increased failure of GTP=
+ procedures
+S2-134149: "Clarifications"
+S2-134182: Alternative way to describe Active timer impact to PPF flag
+
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4087 and 4109).
+Possible merge of 4149 and 4182.
+
+23.060 CR1814: Introducing UE Power Saving Mode
+S2-134088, S2-134110, S2-134150 and S2-134183
+
+Similar comments as for 23.401 CRs, i.e.
+New functionality CRs likely should be discussed before any merging attempt=
+ (i.e. 4088 and 4110).
+Possible merge of 4150 and 4183.
+
+Comments?
+
+BR,
+Peter
+
+From: Maurice Pope [mailto:Maurice.Pope@ETSI.ORG]
+Sent: den 6 november 2013 08:23
+To: 3GPP_TSG_SA_WG2@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG2@LIST.ETSI.ORG>
+Subject: Merged document deadlines
+
+Dear SA WG2 Members,
+
+This is a reminder that the MERGED document Request and Submission deadline=
+s are as follows:
+
+                MERGED Req:            MERGED Sub:
+
+Thursday 7 November 2013 12:00 (CET)          Thursday 7 November 2013 16:0=
+0 (CET)
+
+
+I have identified some candidate CRs for merging discussions, which are the=
+ CRs which many companies requested revisions for:
+
+S2-133947 and S2-134112:
+23.401 CR2623: Reporting ULI and TimeZone at Network-initiated bearer relea=
+se related procedures
+
+S2-134006 and S2-134178:
+23.401 CR2594: Core Network assisted eNodeB parameters tuning
+
+S2-134086, S2-134108 and S2-134181:
+23.682 CR 0077: Introducing UE Power Saving Mode
+
+S2-134087, 134109, S2-134149 and S2-134182:
+23.401 CR2603: Introducing UE Power Saving Mode
+
+S2-134088, S2-134110, S2-134150 and S2-134183:
+23.060 CR1814: Introducing UE Power Saving Mode
+
+and response LSs:
+
+S2-133943 and S2-134155:
+Responses to S2-133899: LS from CT WG1: Reply LS on CSFB priority call hand=
+ling in a network supporting Multimedia Priority Service
+
+S2-133925, S2-133962, S2-134028, S2-134127, S2-134145 and S2-1304147:
+Responses to S2-133917: LS from RAN WG2: LS on CN impacts in RAN WG2 soluti=
+ons for WLAN/3GPP radio interworking
+
+Best regards,
+
+Maurice Pope
+
+
+
+Click here<https://www.mailcontrol.com/sr/Wfz0TQ+Pb+HGX2PQPOmvUkjDae7bB5IgM=
+F5g1LjBwKCsiRhm1izAs6EkawiSK+0A5o+DwGNVtWaURD1dro2FIg=3D=3D> to report this=
+ email as spam.
+
+________________________________
+
+NEC Technologies (UK) Ltd.,
+Company Registered Office: Imperium, Reading, Berkshire, RG2 0TD
+Registered Number: 4072718
+Attention:
+The information contained in this message and or attachments is intended on=
+ly for the person or entity to which it is addressed and may contain confid=
+ential and/or privileged material. Any review, retransmission, disseminatio=
+n or other use of, or taking of any action in reliance upon, this informati=
+on by persons or entities other than the intended recipient is prohibited. =
+If you received this in error, please contact the sender and delete the mat=
+erial from any system and destroy any copies.
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11E0438B8US70TWXCHMBA10z_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 12 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.balloontextchar0
+	{mso-style-name:balloontextchar;
+	font-family:"Tahoma","sans-serif";}
+span.emailstyle20
+	{mso-style-name:emailstyle20;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.emailstyle21
+	{mso-style-name:emailstyle21;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.emailstyle22
+	{mso-style-name:emailstyle22;
+	font-family:"Arial","sans-serif";
+	color:blue;
+	font-weight:normal;
+	font-style:normal;}
+span.emailstyle23
+	{mso-style-name:emailstyle23;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+span.emailstyle24
+	{mso-style-name:emailstyle24;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+span.emailstyle25
+	{mso-style-name:emailstyle25;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+span.EmailStyle28
+	{mso-style-type:personal-reply;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Companies should agree=
+ with the content they are putting their name on.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Thanks,<br>
+Deb<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Iskren I=
+anev [mailto:Iskren.Ianev@NECTECH.CO.UK]
+<br>
+<b>Sent:</b> Wednesday, November 06, 2013 5:49 AM<br>
+<b>To:</b> 3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG<br>
+<b>Subject:</b> Re: [3GPP_TSG_SA_WG2_MTCE] [MTCe-UEPCOP] Possible merging o=
+f UEPCOP CRs (FW: Merged document deadlines)<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Btw do =
+we need to agree with the contexts in order to merge? I think the merge pri=
+nciple was based on &#8216;non-overlapping&#8217; rather than on &#8216;agr=
+eeable&#8217;.</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Best re=
+gards,</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Iskren<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Iskren I=
+anev
+<br>
+<b>Sent:</b> 06 November 2013 11:45<br>
+<b>To:</b> 'Peter Hedman'; <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI=
+.ORG">3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> RE: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merge=
+d document deadlines)</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB">&nbsp;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Dear Pe=
+ter and All,</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Thanks =
+for the e-mail and&nbsp; the summary.</span><span lang=3D"EN-GB"><o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">I went =
+quickly through the bellow tdocs. I am OK if we merge them. The NEC, Ericss=
+on and Qualcomm ones do not overlap I believe. If we are OK with the contex=
+t, merging should be easy. The ZTE and
+ Ericsson ones are overlapping in my understanding. Not sure what we can do=
+ there.</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Best re=
+gards,</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Iskren =
+</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Peter He=
+dman [<a href=3D"mailto:peter.hedman@ERICSSON.COM">mailto:peter.hedman@ERIC=
+SSON.COM</a>]
+<br>
+<b>Sent:</b> 06 November 2013 11:34<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2_MTCE@LIST.ETSI.ORG">3GPP_TSG_S=
+A_WG2_MTCE@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged do=
+cument deadlines)</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB">&nbsp;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Hi,</span><span lang=
+=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">It would be good to ge=
+t a quick understanding if it is possible to merge the UEPCOP CRs.</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">A quick analysis:</spa=
+n><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.682 CR 0077:=
+ Introducing UE Power Saving Mode
+</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134086: A=
+dds new functionality i.e. IDM</span></b><span lang=3D"EN-GB"><o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134108: A=
+ttempts to correct UE logic wrt requesting Active Time and Periodic Update =
+timer</span></b><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134181: P=
+roposes UE may apply PSM without network support, and then separately reque=
+st Periodic Update timer</span></b><span lang=3D"EN-GB"><o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Same te=
+xt changed in 4108 and 4181.</span><span lang=3D"EN-GB"><o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Papers =
+all have different basic proposals, i.e. should be possible to merge though=
+ it seems like some discussions are required on each point.</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2603: =
+Introducing UE Power Saving Mode
+</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134087: A=
+dds new functionality i.e. IDM</span></b><span lang=3D"EN-GB"><o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134109:
+</span></b>CN support is added to limit impacts of increased failure of GTP=
+ procedures<span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134149: &=
+#8220;Clarifications&#8221;</span></b><span lang=3D"EN-GB"><o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134182: A=
+lternative way to describe Active timer impact to PPF flag</span></b><span =
+lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">New fun=
+ctionality CRs likely should be discussed before any merging attempt (i.e. =
+4087 and 4109).</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Possibl=
+e merge of 4149 and 4182.</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">&nbsp;<=
+/span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.060 CR1814: =
+Introducing UE Power Saving Mode</span><span lang=3D"EN-GB"><o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134088, S=
+2-134110, S2-134150 and S2-134183</span></b><span lang=3D"EN-GB"><o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Similar comments as fo=
+r 23.401 CRs, i.e.
+</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">New fun=
+ctionality CRs likely should be discussed before any merging attempt (i.e. =
+4088 and 4110).</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"color:#1F497D">Possibl=
+e merge of 4150 and 4183.</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Comments?</span><span =
+lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">BR,</span><span lang=
+=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Peter</span><span lang=
+=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">&nbsp;</span><span lan=
+g=3D"EN-GB"><o:p></o:p></span></p>
+<div>
+<div style=3D"border:none;border-top:solid #B5C4DF 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Tahoma&quot;,&quot;sans-serif&quot;">From:</span></b><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;"> Maurice =
+Pope [<a href=3D"mailto:Maurice.Pope@ETSI.ORG">mailto:Maurice.Pope@ETSI.ORG=
+</a>]
+<br>
+<b>Sent:</b> den 6 november 2013 08:23<br>
+<b>To:</b> <a href=3D"mailto:3GPP_TSG_SA_WG2@LIST.ETSI.ORG">3GPP_TSG_SA_WG2=
+@LIST.ETSI.ORG</a><br>
+<b>Subject:</b> Merged document deadlines</span><span lang=3D"EN-GB"><o:p><=
+/o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal">&nbsp;<span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Dear SA WG2 Mem=
+bers,</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">This is a remin=
+der that the MERGED document Request and Submission deadlines are as follow=
+s:</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"515" style=3D"width:386.0pt;margin-left:-.65pt;border-colla=
+pse:collapse">
+<tbody>
+<tr style=3D"height:25.5pt">
+<td width=3D"191" valign=3D"top" style=3D"width:143.0pt;border:solid window=
+text 1.0pt;background:#E3E3E3;padding:0in 5.4pt 0in 5.4pt;height:25.5pt">
+<p class=3D"MsoNormal" align=3D"right" style=3D"text-align:right"><b><span =
+style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&qu=
+ot;;color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;
+</span></b><b><span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;=
+,&quot;sans-serif&quot;;color:green">&nbsp;&nbsp;&nbsp;</span></b><b><span =
+style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&qu=
+ot;;color:blue">&nbsp;MERGED Req:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; MERGED Sub:</span></b><o:p></o:p></p>
+</td>
+<td width=3D"324" valign=3D"top" style=3D"width:243.0pt;border:solid window=
+text 1.0pt;border-left:none;background:#E3E3E3;padding:0in 5.4pt 0in 5.4pt;=
+height:25.5pt">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,&quot;sans-serif&quot;;color:blue">Thursday 7 November 2013 12=
+:00 (CET)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thursday 7 =
+November 2013 16:00 (CET)</span></b><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">I have ident=
+ified some candidate CRs for merging discussions</span></b><span lang=3D"EN=
+-GB" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,&quot;sans-ser=
+if&quot;;color:blue">,
+ which are the CRs which many companies requested revisions for:</span><spa=
+n lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-133947 an=
+d S2-134112</span></b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-f=
+amily:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">:</span><span la=
+ng=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2623: =
+Reporting ULI and TimeZone at Network-initiated bearer release related proc=
+edures</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134006 an=
+d S2-134178:</span></b><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2594: =
+Core Network assisted eNodeB parameters tuning</span><span lang=3D"EN-GB"><=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134086, S=
+2-134108 and S2-134181:</span></b><span lang=3D"EN-GB"><o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.682 CR 0077:=
+ Introducing UE Power Saving Mode
+</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134087, 1=
+34109, S2-134149 and S2-134182:</span></b><span lang=3D"EN-GB"><o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.401 CR2603: =
+Introducing UE Power Saving Mode
+</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-134088, S=
+2-134110, S2-134150 and S2-134183:</span></b><span lang=3D"EN-GB"><o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">23.060 CR1814: =
+Introducing UE Power Saving Mode</span><span lang=3D"EN-GB"><o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">and response=
+ LSs:</span></b><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-133943 an=
+d S2-134155: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Responses to S2=
+-133899: LS from CT WG1: Reply LS on CSFB priority call handling in a netwo=
+rk supporting Multimedia Priority Service</span><span lang=3D"EN-GB"><o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-GB" style=3D"font-size:10.0pt;fo=
+nt-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">S2-133925, S=
+2-133962, S2-134028, S2-134127, S2-134145 and S2-1304147:
+</span></b><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Responses to S2=
+-133917: LS from RAN WG2: LS on CN impacts in RAN WG2 solutions for WLAN/3G=
+PP radio interworking</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Best regards,</=
+span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">Maurice Pope</s=
+pan><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:10.0pt;font-=
+family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:blue">&nbsp;</span><s=
+pan lang=3D"EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"font-s=
+ize:12.0pt;font-family:&quot;Times New Roman&quot;,&quot;serif&quot;;backgr=
+ound:white">&nbsp;</span><span lang=3D"EN-GB"><o:p></o:p></span></p>
+<p align=3D"center" style=3D"text-align:center"><span style=3D"background:w=
+hite">Click <a href=3D"https://www.mailcontrol.com/sr/Wfz0TQ&#43;Pb&#43;HGX=
+2PQPOmvUkjDae7bB5IgMF5g1LjBwKCsiRhm1izAs6EkawiSK&#43;0A5o&#43;DwGNVtWaURD1d=
+ro2FIg=3D=3D">
+here</a> to report this email as spam.</span><span lang=3D"EN-GB"><o:p></o:=
+p></span></p>
+</div>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:12.0pt;font-=
+family:&quot;Times New Roman&quot;,&quot;serif&quot;"><o:p>&nbsp;</o:p></sp=
+an></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ lang=3D"EN-GB" style=3D"font-size:12.0pt;font-family:&quot;Times New Roman=
+&quot;,&quot;serif&quot;">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-size:7.5pt;font-f=
+amily:&quot;Arial&quot;,&quot;sans-serif&quot;;color:gray"><br>
+NEC Technologies (UK) Ltd.,<br>
+Company Registered Office: Imperium, Reading, Berkshire, RG2 0TD<br>
+Registered Number: 4072718<br>
+Attention:<br>
+The information contained in this message and or attachments is intended on=
+ly for the person or entity to which it is addressed and may contain confid=
+ential and/or privileged material. Any review, retransmission, disseminatio=
+n or other use of, or taking of
+ any action in reliance upon, this information by persons or entities other=
+ than the intended recipient is prohibited. If you received this in error, =
+please contact the sender and delete the material from any system and destr=
+oy any copies.</span><span lang=3D"EN-GB" style=3D"font-size:12.0pt;font-fa=
+mily:&quot;Times New Roman&quot;,&quot;serif&quot;"><o:p></o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_4B1B79DE10E7E54C8ABB5302F25C6FB11E0438B8US70TWXCHMBA10z_--
+=========================================================================
+Date:         Thu, 7 Nov 2013 09:33:15 +0800
+Reply-To:     li.zhijun3@ZTE.COM.CN
+From:         Zhijun Li <li.zhijun3@ZTE.COM.CN>
+Subject:      Re: [MTCe-UEPCOP] Possible merging of UEPCOP CRs (FW: Merged
+              document deadlines)
+Comments: To: "Barclay, Deborah L (Deb)" <deb.barclay@ALCATEL-LUCENT.COM>
+In-Reply-To:  <4B1B79DE10E7E54C8ABB5302F25C6FB11E0438B8@US70TWXCHMBA10.zam.alcatel-lucent.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_alternative 0008831C48257C1C_="
+Message-ID:  <OF98B02C80.1C05EB5D-ON48257C1C.0007AA15-48257C1C.0008831E@zte.com.cn>
+
+This is a multipart message in MIME format.
+
+--=_alternative 0008831C48257C1C_=
+Content-Type: text/plain; charset="GB2312"
+Content-Transfer-Encoding: base64
+
+SGVsbG8gYWxsLA0KDQpUaGFua3MgZm9yIGluaXRpYXRpbmcgdGhlIG1lcmdlIGF0dGVtcHQuIA0K
+DQpXZSBzZWUgdGhlcmUgYXJlIHNvbWUgcG9pbnRzIHdlIGNhbiBjb25zaWRlciBtZXJnZSwgZS5n
+LiB0aGUgREROL0RMIA0KdHJhZmZpYyBoYW5sZGluZyBjbGFyaWZpZWQgaW4gRXJpY3Nzb24gNDEw
+OS80MDEwIGFuZCBaVEUgNDE4Mi80MTgzLiBNYXliZSANCndlIGNhbiBjb25zaWRlciB0aGUgcG9z
+c2libGUgbWVyZ2UgYXQgdGhpcyBwb2ludD8gDQoNCkZvciBvdGhlciBjaGFuZ2VzLCBJIGd1ZXNz
+IGRpZmZlcmVudCBjb21wYW55IGludGVycHJldHMgdGhlIFBTTSBpbiANCmRpZmZlcmVudCB3YXks
+IHNlZW1zIGEgYml0IGRpZmZpY3VsdCB0byBtZXJnZS4gSG93IGRvIHlvdSB0aGluaz8NCg0KPT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09DQpaaGlq
+dW4gTEkgKMDu1r6+/CkNCkNOIFByb2R1Y3QgVGVhbSwgV2lyZWxlc3MgUGxhbm5pbmcsIFpURQ0K
+TW9iaWxlOiAwMDg2LTEzOTE1OTE4MTIxDQoNCg0KDQoiQmFyY2xheSwgRGVib3JhaCBMIChEZWIp
+IiA8ZGViLmJhcmNsYXlAQUxDQVRFTC1MVUNFTlQuQ09NPiANCjIwMTMtMTEtMDYgMjI6MDUNCsfr
+tPC4tCC4+A0KIkJhcmNsYXksIERlYm9yYWggTCAoRGViKSIgPGRlYi5iYXJjbGF5QEFMQ0FURUwt
+TFVDRU5ULkNPTT4NCg0KDQrK1bz+yMsNCjNHUFBfVFNHX1NBX1dHMl9NVENFQExJU1QuRVRTSS5P
+UkcNCrOty80NCg0K1vfM4g0KUmU6IFtNVENlLVVFUENPUF0gUG9zc2libGUgbWVyZ2luZyBvZiBV
+RVBDT1AgQ1JzIChGVzogTWVyZ2VkIGRvY3VtZW50IA0KZGVhZGxpbmVzKQ0KDQoNCg0KDQoNCg0K
+Q29tcGFuaWVzIHNob3VsZCBhZ3JlZSB3aXRoIHRoZSBjb250ZW50IHRoZXkgYXJlIHB1dHRpbmcg
+dGhlaXIgbmFtZSBvbi4NClRoYW5rcywNCkRlYg0KIA0KRnJvbTogSXNrcmVuIElhbmV2IFttYWls
+dG86SXNrcmVuLklhbmV2QE5FQ1RFQ0guQ08uVUtdIA0KU2VudDogV2VkbmVzZGF5LCBOb3ZlbWJl
+ciAwNiwgMjAxMyA1OjQ5IEFNDQpUbzogM0dQUF9UU0dfU0FfV0cyX01UQ0VATElTVC5FVFNJLk9S
+Rw0KU3ViamVjdDogUmU6IFszR1BQX1RTR19TQV9XRzJfTVRDRV0gW01UQ2UtVUVQQ09QXSBQb3Nz
+aWJsZSBtZXJnaW5nIG9mIA0KVUVQQ09QIENScyAoRlc6IE1lcmdlZCBkb2N1bWVudCBkZWFkbGlu
+ZXMpDQogDQpCdHcgZG8gd2UgbmVlZCB0byBhZ3JlZSB3aXRoIHRoZSBjb250ZXh0cyBpbiBvcmRl
+ciB0byBtZXJnZT8gSSB0aGluayB0aGUgDQptZXJnZSBwcmluY2lwbGUgd2FzIGJhc2VkIG9uIKGu
+bm9uLW92ZXJsYXBwaW5noa8gcmF0aGVyIHRoYW4gb24goa4NCmFncmVlYWJsZaGvLg0KQmVzdCBy
+ZWdhcmRzLA0KSXNrcmVuDQogDQpGcm9tOiBJc2tyZW4gSWFuZXYgDQpTZW50OiAwNiBOb3ZlbWJl
+ciAyMDEzIDExOjQ1DQpUbzogJ1BldGVyIEhlZG1hbic7IDNHUFBfVFNHX1NBX1dHMl9NVENFQExJ
+U1QuRVRTSS5PUkcNClN1YmplY3Q6IFJFOiBbTVRDZS1VRVBDT1BdIFBvc3NpYmxlIG1lcmdpbmcg
+b2YgVUVQQ09QIENScyAoRlc6IE1lcmdlZCANCmRvY3VtZW50IGRlYWRsaW5lcykNCiANCkRlYXIg
+UGV0ZXIgYW5kIEFsbCwNClRoYW5rcyBmb3IgdGhlIGUtbWFpbCBhbmQgIHRoZSBzdW1tYXJ5Lg0K
+SSB3ZW50IHF1aWNrbHkgdGhyb3VnaCB0aGUgYmVsbG93IHRkb2NzLiBJIGFtIE9LIGlmIHdlIG1l
+cmdlIHRoZW0uIFRoZSANCk5FQywgRXJpY3Nzb24gYW5kIFF1YWxjb21tIG9uZXMgZG8gbm90IG92
+ZXJsYXAgSSBiZWxpZXZlLiBJZiB3ZSBhcmUgT0sgDQp3aXRoIHRoZSBjb250ZXh0LCBtZXJnaW5n
+IHNob3VsZCBiZSBlYXN5LiBUaGUgWlRFIGFuZCBFcmljc3NvbiBvbmVzIGFyZSANCm92ZXJsYXBw
+aW5nIGluIG15IHVuZGVyc3RhbmRpbmcuIE5vdCBzdXJlIHdoYXQgd2UgY2FuIGRvIHRoZXJlLg0K
+QmVzdCByZWdhcmRzLA0KSXNrcmVuIA0KIA0KIA0KRnJvbTogUGV0ZXIgSGVkbWFuIFttYWlsdG86
+cGV0ZXIuaGVkbWFuQEVSSUNTU09OLkNPTV0gDQpTZW50OiAwNiBOb3ZlbWJlciAyMDEzIDExOjM0
+DQpUbzogM0dQUF9UU0dfU0FfV0cyX01UQ0VATElTVC5FVFNJLk9SRw0KU3ViamVjdDogW01UQ2Ut
+VUVQQ09QXSBQb3NzaWJsZSBtZXJnaW5nIG9mIFVFUENPUCBDUnMgKEZXOiBNZXJnZWQgZG9jdW1l
+bnQgDQpkZWFkbGluZXMpDQogDQpIaSwNCiANCkl0IHdvdWxkIGJlIGdvb2QgdG8gZ2V0IGEgcXVp
+Y2sgdW5kZXJzdGFuZGluZyBpZiBpdCBpcyBwb3NzaWJsZSB0byBtZXJnZSANCnRoZSBVRVBDT1Ag
+Q1JzLg0KIA0KQSBxdWljayBhbmFseXNpczoNCjIzLjY4MiBDUiAwMDc3OiBJbnRyb2R1Y2luZyBV
+RSBQb3dlciBTYXZpbmcgTW9kZSANClMyLTEzNDA4NjogQWRkcyBuZXcgZnVuY3Rpb25hbGl0eSBp
+LmUuIElETQ0KUzItMTM0MTA4OiBBdHRlbXB0cyB0byBjb3JyZWN0IFVFIGxvZ2ljIHdydCByZXF1
+ZXN0aW5nIEFjdGl2ZSBUaW1lIGFuZCANClBlcmlvZGljIFVwZGF0ZSB0aW1lcg0KUzItMTM0MTgx
+OiBQcm9wb3NlcyBVRSBtYXkgYXBwbHkgUFNNIHdpdGhvdXQgbmV0d29yayBzdXBwb3J0LCBhbmQg
+dGhlbiANCnNlcGFyYXRlbHkgcmVxdWVzdCBQZXJpb2RpYyBVcGRhdGUgdGltZXINCiANClNhbWUg
+dGV4dCBjaGFuZ2VkIGluIDQxMDggYW5kIDQxODEuDQpQYXBlcnMgYWxsIGhhdmUgZGlmZmVyZW50
+IGJhc2ljIHByb3Bvc2FscywgaS5lLiBzaG91bGQgYmUgcG9zc2libGUgdG8gDQptZXJnZSB0aG91
+Z2ggaXQgc2VlbXMgbGlrZSBzb21lIGRpc2N1c3Npb25zIGFyZSByZXF1aXJlZCBvbiBlYWNoIHBv
+aW50Lg0KIA0KMjMuNDAxIENSMjYwMzogSW50cm9kdWNpbmcgVUUgUG93ZXIgU2F2aW5nIE1vZGUg
+DQpTMi0xMzQwODc6IEFkZHMgbmV3IGZ1bmN0aW9uYWxpdHkgaS5lLiBJRE0NClMyLTEzNDEwOTog
+Q04gc3VwcG9ydCBpcyBhZGRlZCB0byBsaW1pdCBpbXBhY3RzIG9mIGluY3JlYXNlZCBmYWlsdXJl
+IG9mIA0KR1RQIHByb2NlZHVyZXMNClMyLTEzNDE0OTogobBDbGFyaWZpY2F0aW9uc6GxDQpTMi0x
+MzQxODI6IEFsdGVybmF0aXZlIHdheSB0byBkZXNjcmliZSBBY3RpdmUgdGltZXIgaW1wYWN0IHRv
+IFBQRiBmbGFnDQogDQpOZXcgZnVuY3Rpb25hbGl0eSBDUnMgbGlrZWx5IHNob3VsZCBiZSBkaXNj
+dXNzZWQgYmVmb3JlIGFueSBtZXJnaW5nIA0KYXR0ZW1wdCAoaS5lLiA0MDg3IGFuZCA0MTA5KS4N
+ClBvc3NpYmxlIG1lcmdlIG9mIDQxNDkgYW5kIDQxODIuDQogDQoyMy4wNjAgQ1IxODE0OiBJbnRy
+b2R1Y2luZyBVRSBQb3dlciBTYXZpbmcgTW9kZQ0KUzItMTM0MDg4LCBTMi0xMzQxMTAsIFMyLTEz
+NDE1MCBhbmQgUzItMTM0MTgzDQogDQpTaW1pbGFyIGNvbW1lbnRzIGFzIGZvciAyMy40MDEgQ1Jz
+LCBpLmUuIA0KTmV3IGZ1bmN0aW9uYWxpdHkgQ1JzIGxpa2VseSBzaG91bGQgYmUgZGlzY3Vzc2Vk
+IGJlZm9yZSBhbnkgbWVyZ2luZyANCmF0dGVtcHQgKGkuZS4gNDA4OCBhbmQgNDExMCkuDQpQb3Nz
+aWJsZSBtZXJnZSBvZiA0MTUwIGFuZCA0MTgzLg0KIA0KQ29tbWVudHM/DQogDQpCUiwNClBldGVy
+DQogDQpGcm9tOiBNYXVyaWNlIFBvcGUgW21haWx0bzpNYXVyaWNlLlBvcGVARVRTSS5PUkddIA0K
+U2VudDogZGVuIDYgbm92ZW1iZXIgMjAxMyAwODoyMw0KVG86IDNHUFBfVFNHX1NBX1dHMkBMSVNU
+LkVUU0kuT1JHDQpTdWJqZWN0OiBNZXJnZWQgZG9jdW1lbnQgZGVhZGxpbmVzDQogDQpEZWFyIFNB
+IFdHMiBNZW1iZXJzLA0KIA0KVGhpcyBpcyBhIHJlbWluZGVyIHRoYXQgdGhlIE1FUkdFRCBkb2N1
+bWVudCBSZXF1ZXN0IGFuZCBTdWJtaXNzaW9uIA0KZGVhZGxpbmVzIGFyZSBhcyBmb2xsb3dzOg0K
+IA0KDQogICAgICAgICAgICAgICAgTUVSR0VEIFJlcTogICAgICAgICAgICBNRVJHRUQgU3ViOg0K
+VGh1cnNkYXkgNyBOb3ZlbWJlciAyMDEzIDEyOjAwIChDRVQpICAgICAgICAgIFRodXJzZGF5IDcg
+Tm92ZW1iZXIgMjAxMyANCjE2OjAwIChDRVQpDQogDQpJIGhhdmUgaWRlbnRpZmllZCBzb21lIGNh
+bmRpZGF0ZSBDUnMgZm9yIG1lcmdpbmcgZGlzY3Vzc2lvbnMsIHdoaWNoIGFyZSANCnRoZSBDUnMg
+d2hpY2ggbWFueSBjb21wYW5pZXMgcmVxdWVzdGVkIHJldmlzaW9ucyBmb3I6DQogDQpTMi0xMzM5
+NDcgYW5kIFMyLTEzNDExMjoNCjIzLjQwMSBDUjI2MjM6IFJlcG9ydGluZyBVTEkgYW5kIFRpbWVa
+b25lIGF0IE5ldHdvcmstaW5pdGlhdGVkIGJlYXJlciANCnJlbGVhc2UgcmVsYXRlZCBwcm9jZWR1
+cmVzDQogDQpTMi0xMzQwMDYgYW5kIFMyLTEzNDE3ODoNCjIzLjQwMSBDUjI1OTQ6IENvcmUgTmV0
+d29yayBhc3Npc3RlZCBlTm9kZUIgcGFyYW1ldGVycyB0dW5pbmcNCiANClMyLTEzNDA4NiwgUzIt
+MTM0MTA4IGFuZCBTMi0xMzQxODE6DQoyMy42ODIgQ1IgMDA3NzogSW50cm9kdWNpbmcgVUUgUG93
+ZXIgU2F2aW5nIE1vZGUgDQogDQpTMi0xMzQwODcsIDEzNDEwOSwgUzItMTM0MTQ5IGFuZCBTMi0x
+MzQxODI6DQoyMy40MDEgQ1IyNjAzOiBJbnRyb2R1Y2luZyBVRSBQb3dlciBTYXZpbmcgTW9kZSAN
+CiANClMyLTEzNDA4OCwgUzItMTM0MTEwLCBTMi0xMzQxNTAgYW5kIFMyLTEzNDE4MzoNCjIzLjA2
+MCBDUjE4MTQ6IEludHJvZHVjaW5nIFVFIFBvd2VyIFNhdmluZyBNb2RlDQogDQphbmQgcmVzcG9u
+c2UgTFNzOg0KIA0KUzItMTMzOTQzIGFuZCBTMi0xMzQxNTU6IA0KUmVzcG9uc2VzIHRvIFMyLTEz
+Mzg5OTogTFMgZnJvbSBDVCBXRzE6IFJlcGx5IExTIG9uIENTRkIgcHJpb3JpdHkgY2FsbCANCmhh
+bmRsaW5nIGluIGEgbmV0d29yayBzdXBwb3J0aW5nIE11bHRpbWVkaWEgUHJpb3JpdHkgU2Vydmlj
+ZQ0KIA0KUzItMTMzOTI1LCBTMi0xMzM5NjIsIFMyLTEzNDAyOCwgUzItMTM0MTI3LCBTMi0xMzQx
+NDUgYW5kIFMyLTEzMDQxNDc6IA0KUmVzcG9uc2VzIHRvIFMyLTEzMzkxNzogTFMgZnJvbSBSQU4g
+V0cyOiBMUyBvbiBDTiBpbXBhY3RzIGluIFJBTiBXRzIgDQpzb2x1dGlvbnMgZm9yIFdMQU4vM0dQ
+UCByYWRpbyBpbnRlcndvcmtpbmcNCiANCkJlc3QgcmVnYXJkcywNCiANCk1hdXJpY2UgUG9wZQ0K
+IA0KIA0KQ2xpY2sgaGVyZSB0byByZXBvcnQgdGhpcyBlbWFpbCBhcyBzcGFtLg0KIA0KDQoNCk5F
+QyBUZWNobm9sb2dpZXMgKFVLKSBMdGQuLA0KQ29tcGFueSBSZWdpc3RlcmVkIE9mZmljZTogSW1w
+ZXJpdW0sIFJlYWRpbmcsIEJlcmtzaGlyZSwgUkcyIDBURA0KUmVnaXN0ZXJlZCBOdW1iZXI6IDQw
+NzI3MTgNCkF0dGVudGlvbjoNClRoZSBpbmZvcm1hdGlvbiBjb250YWluZWQgaW4gdGhpcyBtZXNz
+YWdlIGFuZCBvciBhdHRhY2htZW50cyBpcyBpbnRlbmRlZCANCm9ubHkgZm9yIHRoZSBwZXJzb24g
+b3IgZW50aXR5IHRvIHdoaWNoIGl0IGlzIGFkZHJlc3NlZCBhbmQgbWF5IGNvbnRhaW4gDQpjb25m
+aWRlbnRpYWwgYW5kL29yIHByaXZpbGVnZWQgbWF0ZXJpYWwuIEFueSByZXZpZXcsIHJldHJhbnNt
+aXNzaW9uLCANCmRpc3NlbWluYXRpb24gb3Igb3RoZXIgdXNlIG9mLCBvciB0YWtpbmcgb2YgYW55
+IGFjdGlvbiBpbiByZWxpYW5jZSB1cG9uLCANCnRoaXMgaW5mb3JtYXRpb24gYnkgcGVyc29ucyBv
+ciBlbnRpdGllcyBvdGhlciB0aGFuIHRoZSBpbnRlbmRlZCByZWNpcGllbnQgDQppcyBwcm9oaWJp
+dGVkLiBJZiB5b3UgcmVjZWl2ZWQgdGhpcyBpbiBlcnJvciwgcGxlYXNlIGNvbnRhY3QgdGhlIHNl
+bmRlciANCmFuZCBkZWxldGUgdGhlIG1hdGVyaWFsIGZyb20gYW55IHN5c3RlbSBhbmQgZGVzdHJv
+eSBhbnkgY29waWVzLg0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQ0KWlRFIEluZm9ybWF0aW9uIFNlY3VyaXR5IE5vdGljZTogVGhlIGlu
+Zm9ybWF0aW9uIGNvbnRhaW5lZCBpbiB0aGlzIG1haWwgKGFuZCBhbnkgYXR0YWNobWVudCB0cmFu
+c21pdHRlZCBoZXJld2l0aCkgaXMgcHJpdmlsZWdlZCBhbmQgY29uZmlkZW50aWFsIGFuZCBpcyBp
+bnRlbmRlZCBmb3IgdGhlIGV4Y2x1c2l2ZSB1c2Ugb2YgdGhlIGFkZHJlc3NlZShzKS4gIElmIHlv
+dSBhcmUgbm90IGFuIGludGVuZGVkIHJlY2lwaWVudCwgYW55IGRpc2Nsb3N1cmUsIHJlcHJvZHVj
+dGlvbiwgZGlzdHJpYnV0aW9uIG9yIG90aGVyIGRpc3NlbWluYXRpb24gb3IgdXNlIG9mIHRoZSBp
+bmZvcm1hdGlvbiBjb250YWluZWQgaXMgc3RyaWN0bHkgcHJvaGliaXRlZC4gIElmIHlvdSBoYXZl
+IHJlY2VpdmVkIHRoaXMgbWFpbCBpbiBlcnJvciwgcGxlYXNlIGRlbGV0ZSBpdCBhbmQgbm90aWZ5
+IHVzIGltbWVkaWF0ZWx5Lg0K
+
+--=_alternative 0008831C48257C1C_=
+Content-Type: text/html; charset="GB2312"
+Content-Transfer-Encoding: base64
+
+DQo8YnI+PGZvbnQgc2l6ZT0yIGZhY2U9InNhbnMtc2VyaWYiPkhlbGxvIGFsbCw8L2ZvbnQ+DQo8
+YnI+DQo8YnI+PGZvbnQgc2l6ZT0yIGZhY2U9InNhbnMtc2VyaWYiPlRoYW5rcyBmb3IgaW5pdGlh
+dGluZyB0aGUgbWVyZ2UgYXR0ZW1wdC4NCjwvZm9udD4NCjxicj4NCjxicj48Zm9udCBzaXplPTIg
+ZmFjZT0ic2Fucy1zZXJpZiI+V2Ugc2VlIHRoZXJlIGFyZSBzb21lIHBvaW50cyB3ZSBjYW4NCmNv
+bnNpZGVyIG1lcmdlLCBlLmcuIHRoZSBERE4vREwgdHJhZmZpYyBoYW5sZGluZyBjbGFyaWZpZWQg
+aW4gRXJpY3Nzb24NCjQxMDkvNDAxMCBhbmQgWlRFIDQxODIvNDE4My4gTWF5YmUgd2UgY2FuIGNv
+bnNpZGVyIHRoZSBwb3NzaWJsZSBtZXJnZSBhdA0KdGhpcyBwb2ludD8gPC9mb250Pg0KPGJyPg0K
+PGJyPjxmb250IHNpemU9MiBmYWNlPSJzYW5zLXNlcmlmIj5Gb3Igb3RoZXIgY2hhbmdlcywgSSBn
+dWVzcyBkaWZmZXJlbnQNCmNvbXBhbnkgaW50ZXJwcmV0cyB0aGUgUFNNIGluIGRpZmZlcmVudCB3
+YXksIHNlZW1zIGEgYml0IGRpZmZpY3VsdCB0byBtZXJnZS4NCkhvdyBkbyB5b3UgdGhpbms/PC9m
+b250Pg0KPGJyPg0KPGJyPjxmb250IHNpemU9MiBmYWNlPSJzYW5zLXNlcmlmIj49PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT08YnI+DQpaaGlqdW4g
+TEkgKMDu1r6+/Ck8YnI+DQpDTiBQcm9kdWN0IFRlYW0sIFdpcmVsZXNzIFBsYW5uaW5nLCBaVEU8
+YnI+DQpNb2JpbGU6IDAwODYtMTM5MTU5MTgxMjE8L2ZvbnQ+DQo8YnI+DQo8YnI+DQo8YnI+DQo8
+dGFibGUgd2lkdGg9MTAwJT4NCjx0ciB2YWxpZ249dG9wPg0KPHRkIHdpZHRoPTM2JT48Zm9udCBz
+aXplPTEgZmFjZT0ic2Fucy1zZXJpZiI+PGI+JnF1b3Q7QmFyY2xheSwgRGVib3JhaA0KTCAoRGVi
+KSZxdW90OyAmbHQ7ZGViLmJhcmNsYXlAQUxDQVRFTC1MVUNFTlQuQ09NJmd0OzwvYj4gPC9mb250
+Pg0KPHA+PGZvbnQgc2l6ZT0xIGZhY2U9InNhbnMtc2VyaWYiPjIwMTMtMTEtMDYgMjI6MDU8L2Zv
+bnQ+DQo8dGFibGUgYm9yZGVyPg0KPHRyIHZhbGlnbj10b3A+DQo8dGQgYmdjb2xvcj13aGl0ZT4N
+CjxkaXYgYWxpZ249Y2VudGVyPjxmb250IHNpemU9MSBmYWNlPSJzYW5zLXNlcmlmIj7H67TwuLQg
+uPg8YnI+DQomcXVvdDtCYXJjbGF5LCBEZWJvcmFoIEwgKERlYikmcXVvdDsgJmx0O2RlYi5iYXJj
+bGF5QEFMQ0FURUwtTFVDRU5ULkNPTSZndDs8L2ZvbnQ+PC9kaXY+PC90YWJsZT4NCjxicj4NCjx0
+ZCB3aWR0aD02MyU+DQo8dGFibGUgd2lkdGg9MTAwJT4NCjx0ciB2YWxpZ249dG9wPg0KPHRkPg0K
+PGRpdiBhbGlnbj1yaWdodD48Zm9udCBzaXplPTEgZmFjZT0ic2Fucy1zZXJpZiI+ytW8/sjLPC9m
+b250PjwvZGl2Pg0KPHRkPjxmb250IHNpemU9MSBmYWNlPSJzYW5zLXNlcmlmIj4zR1BQX1RTR19T
+QV9XRzJfTVRDRUBMSVNULkVUU0kuT1JHPC9mb250Pg0KPHRyIHZhbGlnbj10b3A+DQo8dGQ+DQo8
+ZGl2IGFsaWduPXJpZ2h0Pjxmb250IHNpemU9MSBmYWNlPSJzYW5zLXNlcmlmIj6zrcvNPC9mb250
+PjwvZGl2Pg0KPHRkPg0KPHRyIHZhbGlnbj10b3A+DQo8dGQ+DQo8ZGl2IGFsaWduPXJpZ2h0Pjxm
+b250IHNpemU9MSBmYWNlPSJzYW5zLXNlcmlmIj7W98ziPC9mb250PjwvZGl2Pg0KPHRkPjxmb250
+IHNpemU9MSBmYWNlPSJzYW5zLXNlcmlmIj5SZTogW01UQ2UtVUVQQ09QXSBQb3NzaWJsZSBtZXJn
+aW5nIG9mDQpVRVBDT1AgQ1JzIChGVzogTWVyZ2VkIGRvY3VtZW50IGRlYWRsaW5lcyk8L2ZvbnQ+
+PC90YWJsZT4NCjxicj4NCjx0YWJsZT4NCjx0ciB2YWxpZ249dG9wPg0KPHRkPg0KPHRkPjwvdGFi
+bGU+DQo8YnI+PC90YWJsZT4NCjxicj4NCjxicj4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFm
+NDk3ZCBmYWNlPSJDYWxpYnJpIj5Db21wYW5pZXMgc2hvdWxkIGFncmVlIHdpdGgNCnRoZSBjb250
+ZW50IHRoZXkgYXJlIHB1dHRpbmcgdGhlaXIgbmFtZSBvbi48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6
+ZT0yIGNvbG9yPSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+VGhhbmtzLDxicj4NCkRlYjwvZm9udD4N
+Cjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj4mbmJzcDs8L2Zv
+bnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGZhY2U9IlRhaG9tYSI+PGI+RnJvbTo8L2I+IElza3JlbiBJ
+YW5ldiBbbWFpbHRvOklza3Jlbi5JYW5ldkBORUNURUNILkNPLlVLXQ0KPGI+PGJyPg0KU2VudDo8
+L2I+IFdlZG5lc2RheSwgTm92ZW1iZXIgMDYsIDIwMTMgNTo0OSBBTTxiPjxicj4NClRvOjwvYj4g
+M0dQUF9UU0dfU0FfV0cyX01UQ0VATElTVC5FVFNJLk9SRzxiPjxicj4NClN1YmplY3Q6PC9iPiBS
+ZTogWzNHUFBfVFNHX1NBX1dHMl9NVENFXSBbTVRDZS1VRVBDT1BdIFBvc3NpYmxlIG1lcmdpbmcN
+Cm9mIFVFUENPUCBDUnMgKEZXOiBNZXJnZWQgZG9jdW1lbnQgZGVhZGxpbmVzKTwvZm9udD4NCjxi
+cj48Zm9udCBzaXplPTIgZmFjZT0iQ2FsaWJyaSI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNp
+emU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPkJ0dyBkbyB3ZSBuZWVkIHRvIGFncmVl
+IHdpdGgNCnRoZSBjb250ZXh0cyBpbiBvcmRlciB0byBtZXJnZT8gSSB0aGluayB0aGUgbWVyZ2Ug
+cHJpbmNpcGxlIHdhcyBiYXNlZCBvbg0Koa5ub24tb3ZlcmxhcHBpbmehryByYXRoZXIgdGhhbiBv
+biChrmFncmVlYWJsZaGvLjwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBm
+YWNlPSJDYWxpYnJpIj5CZXN0IHJlZ2FyZHMsPC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xv
+cj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPklza3JlbjwvZm9udD4NCjxicj48Zm9udCBzaXplPTIg
+Y29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj4mbmJzcDs8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6
+ZT0yIGZhY2U9IlRhaG9tYSI+PGI+RnJvbTo8L2I+IElza3JlbiBJYW5ldiA8Yj48YnI+DQpTZW50
+OjwvYj4gMDYgTm92ZW1iZXIgMjAxMyAxMTo0NTxiPjxicj4NClRvOjwvYj4gJ1BldGVyIEhlZG1h
+bic7IDwvZm9udD48YSBocmVmPW1haWx0bzozR1BQX1RTR19TQV9XRzJfTVRDRUBMSVNULkVUU0ku
+T1JHPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IlRhaG9tYSI+PHU+M0dQUF9UU0dfU0Ff
+V0cyX01UQ0VATElTVC5FVFNJLk9SRzwvdT48L2ZvbnQ+PC9hPjxmb250IHNpemU9MiBmYWNlPSJU
+YWhvbWEiPjxiPjxicj4NClN1YmplY3Q6PC9iPiBSRTogW01UQ2UtVUVQQ09QXSBQb3NzaWJsZSBt
+ZXJnaW5nIG9mIFVFUENPUCBDUnMgKEZXOiBNZXJnZWQNCmRvY3VtZW50IGRlYWRsaW5lcyk8L2Zv
+bnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGZhY2U9IkNhbGlicmkiPiZuYnNwOzwvZm9udD4NCjxicj48
+Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj5EZWFyIFBldGVyIGFuZCBB
+bGwsPC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmki
+PlRoYW5rcyBmb3IgdGhlIGUtbWFpbCBhbmQNCiZuYnNwO3RoZSBzdW1tYXJ5LjwvZm9udD4NCjxi
+cj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj5JIHdlbnQgcXVpY2ts
+eSB0aHJvdWdoIHRoZQ0KYmVsbG93IHRkb2NzLiBJIGFtIE9LIGlmIHdlIG1lcmdlIHRoZW0uIFRo
+ZSBORUMsIEVyaWNzc29uIGFuZCBRdWFsY29tbQ0Kb25lcyBkbyBub3Qgb3ZlcmxhcCBJIGJlbGll
+dmUuIElmIHdlIGFyZSBPSyB3aXRoIHRoZSBjb250ZXh0LCBtZXJnaW5nIHNob3VsZA0KYmUgZWFz
+eS4gVGhlIFpURSBhbmQgRXJpY3Nzb24gb25lcyBhcmUgb3ZlcmxhcHBpbmcgaW4gbXkgdW5kZXJz
+dGFuZGluZy4NCk5vdCBzdXJlIHdoYXQgd2UgY2FuIGRvIHRoZXJlLjwvZm9udD4NCjxicj48Zm9u
+dCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj5CZXN0IHJlZ2FyZHMsPC9mb250
+Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPklza3JlbiA8
+L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+Jm5i
+c3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmki
+PiZuYnNwOzwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgZmFjZT0iVGFob21hIj48Yj5Gcm9tOjwv
+Yj4gUGV0ZXIgSGVkbWFuIFs8L2ZvbnQ+PGEgaHJlZj1tYWlsdG86cGV0ZXIuaGVkbWFuQEVSSUNT
+U09OLkNPTT48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJUYWhvbWEiPjx1Pm1haWx0bzpw
+ZXRlci5oZWRtYW5ARVJJQ1NTT04uQ09NPC91PjwvZm9udD48L2E+PGZvbnQgc2l6ZT0yIGZhY2U9
+IlRhaG9tYSI+XQ0KPGI+PGJyPg0KU2VudDo8L2I+IDA2IE5vdmVtYmVyIDIwMTMgMTE6MzQ8Yj48
+YnI+DQpUbzo8L2I+IDwvZm9udD48YSBocmVmPW1haWx0bzozR1BQX1RTR19TQV9XRzJfTVRDRUBM
+SVNULkVUU0kuT1JHPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IlRhaG9tYSI+PHU+M0dQ
+UF9UU0dfU0FfV0cyX01UQ0VATElTVC5FVFNJLk9SRzwvdT48L2ZvbnQ+PC9hPjxmb250IHNpemU9
+MiBmYWNlPSJUYWhvbWEiPjxiPjxicj4NClN1YmplY3Q6PC9iPiBbTVRDZS1VRVBDT1BdIFBvc3Np
+YmxlIG1lcmdpbmcgb2YgVUVQQ09QIENScyAoRlc6IE1lcmdlZCBkb2N1bWVudA0KZGVhZGxpbmVz
+KTwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgZmFjZT0iQ2FsaWJyaSI+Jm5ic3A7PC9mb250Pg0K
+PGJyPjxmb250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPkhpLDwvZm9udD4N
+Cjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj4mbmJzcDs8L2Zv
+bnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+SXQgd291
+bGQgYmUgZ29vZCB0byBnZXQgYQ0KcXVpY2sgdW5kZXJzdGFuZGluZyBpZiBpdCBpcyBwb3NzaWJs
+ZSB0byBtZXJnZSB0aGUgVUVQQ09QIENScy48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9y
+PSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBj
+b2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPkEgcXVpY2sgYW5hbHlzaXM6PC9mb250Pg0KPGJy
+Pjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4yMy42ODIgQ1IgMDA3NzogSW50
+cm9kdWNpbmcgVUUNClBvd2VyIFNhdmluZyBNb2RlIDwvZm9udD4NCjxicj48Zm9udCBzaXplPTIg
+Y29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+PGI+UzItMTM0MDg2OiBBZGRzIG5ldyBmdW5jdGlvbmFs
+aXR5DQppLmUuIElETTwvYj48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFj
+ZT0iQXJpYWwiPjxiPlMyLTEzNDEwODogQXR0ZW1wdHMgdG8gY29ycmVjdA0KVUUgbG9naWMgd3J0
+IHJlcXVlc3RpbmcgQWN0aXZlIFRpbWUgYW5kIFBlcmlvZGljIFVwZGF0ZSB0aW1lcjwvYj48L2Zv
+bnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPjxiPlMyLTEzNDE4
+MTogUHJvcG9zZXMgVUUgbWF5DQphcHBseSBQU00gd2l0aG91dCBuZXR3b3JrIHN1cHBvcnQsIGFu
+ZCB0aGVuIHNlcGFyYXRlbHkgcmVxdWVzdCBQZXJpb2RpYw0KVXBkYXRlIHRpbWVyPC9iPjwvZm9u
+dD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj4mbmJzcDs8
+L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+U2Ft
+ZSB0ZXh0IGNoYW5nZWQgaW4gNDEwOA0KYW5kIDQxODEuPC9mb250Pg0KPGJyPjxmb250IHNpemU9
+MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPlBhcGVycyBhbGwgaGF2ZSBkaWZmZXJlbnQN
+CmJhc2ljIHByb3Bvc2FscywgaS5lLiBzaG91bGQgYmUgcG9zc2libGUgdG8gbWVyZ2UgdGhvdWdo
+IGl0IHNlZW1zIGxpa2UNCnNvbWUgZGlzY3Vzc2lvbnMgYXJlIHJlcXVpcmVkIG9uIGVhY2ggcG9p
+bnQuPC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmki
+PiZuYnNwOzwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+
+MjMuNDAxIENSMjYwMzogSW50cm9kdWNpbmcgVUUNClBvd2VyIFNhdmluZyBNb2RlIDwvZm9udD4N
+Cjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+PGI+UzItMTM0MDg3OiBB
+ZGRzIG5ldyBmdW5jdGlvbmFsaXR5DQppLmUuIElETTwvYj48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6
+ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPjxiPlMyLTEzNDEwOTogPC9iPjwvZm9udD48Zm9u
+dCBzaXplPTIgZmFjZT0iQ2FsaWJyaSI+Q04NCnN1cHBvcnQgaXMgYWRkZWQgdG8gbGltaXQgaW1w
+YWN0cyBvZiBpbmNyZWFzZWQgZmFpbHVyZSBvZiBHVFAgcHJvY2VkdXJlczwvZm9udD4NCjxicj48
+Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+PGI+UzItMTM0MTQ5OiChsENsYXJp
+ZmljYXRpb25zobE8L2I+PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9
+IkFyaWFsIj48Yj5TMi0xMzQxODI6IEFsdGVybmF0aXZlIHdheQ0KdG8gZGVzY3JpYmUgQWN0aXZl
+IHRpbWVyIGltcGFjdCB0byBQUEYgZmxhZzwvYj48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNv
+bG9yPSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9
+MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPk5ldyBmdW5jdGlvbmFsaXR5IENScyBsaWtl
+bHkNCnNob3VsZCBiZSBkaXNjdXNzZWQgYmVmb3JlIGFueSBtZXJnaW5nIGF0dGVtcHQgKGkuZS4g
+NDA4NyBhbmQgNDEwOSkuPC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZh
+Y2U9IkNhbGlicmkiPlBvc3NpYmxlIG1lcmdlIG9mIDQxNDkgYW5kDQo0MTgyLjwvZm9udD4NCjxi
+cj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj4mbmJzcDs8L2ZvbnQ+
+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPjIzLjA2MCBDUjE4MTQ6
+IEludHJvZHVjaW5nIFVFDQpQb3dlciBTYXZpbmcgTW9kZTwvZm9udD4NCjxicj48Zm9udCBzaXpl
+PTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+PGI+UzItMTM0MDg4LCBTMi0xMzQxMTAsIFMyLTEz
+NDE1MA0KYW5kIFMyLTEzNDE4MzwvYj48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPSMx
+ZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xv
+cj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPlNpbWlsYXIgY29tbWVudHMgYXMgZm9yIDIzLjQwMQ0K
+Q1JzLCBpLmUuIDwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJD
+YWxpYnJpIj5OZXcgZnVuY3Rpb25hbGl0eSBDUnMgbGlrZWx5DQpzaG91bGQgYmUgZGlzY3Vzc2Vk
+IGJlZm9yZSBhbnkgbWVyZ2luZyBhdHRlbXB0IChpLmUuIDQwODggYW5kIDQxMTApLjwvZm9udD4N
+Cjxicj48Zm9udCBzaXplPTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj5Qb3NzaWJsZSBt
+ZXJnZSBvZiA0MTUwIGFuZA0KNDE4My48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPSMx
+ZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xv
+cj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPkNvbW1lbnRzPzwvZm9udD4NCjxicj48Zm9udCBzaXpl
+PTIgY29sb3I9IzFmNDk3ZCBmYWNlPSJDYWxpYnJpIj4mbmJzcDs8L2ZvbnQ+DQo8YnI+PGZvbnQg
+c2l6ZT0yIGNvbG9yPSMxZjQ5N2QgZmFjZT0iQ2FsaWJyaSI+QlIsPC9mb250Pg0KPGJyPjxmb250
+IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPlBldGVyPC9mb250Pg0KPGJyPjxm
+b250IHNpemU9MiBjb2xvcj0jMWY0OTdkIGZhY2U9IkNhbGlicmkiPiZuYnNwOzwvZm9udD4NCjxi
+cj48Zm9udCBzaXplPTIgZmFjZT0iVGFob21hIj48Yj5Gcm9tOjwvYj4gTWF1cmljZSBQb3BlIFs8
+L2ZvbnQ+PGEgaHJlZj1tYWlsdG86TWF1cmljZS5Qb3BlQEVUU0kuT1JHPjxmb250IHNpemU9MiBj
+b2xvcj1ibHVlIGZhY2U9IlRhaG9tYSI+PHU+bWFpbHRvOk1hdXJpY2UuUG9wZUBFVFNJLk9SRzwv
+dT48L2ZvbnQ+PC9hPjxmb250IHNpemU9MiBmYWNlPSJUYWhvbWEiPl0NCjxiPjxicj4NClNlbnQ6
+PC9iPiBkZW4gNiBub3ZlbWJlciAyMDEzIDA4OjIzPGI+PGJyPg0KVG86PC9iPiA8L2ZvbnQ+PGEg
+aHJlZj1tYWlsdG86M0dQUF9UU0dfU0FfV0cyQExJU1QuRVRTSS5PUkc+PGZvbnQgc2l6ZT0yIGNv
+bG9yPWJsdWUgZmFjZT0iVGFob21hIj48dT4zR1BQX1RTR19TQV9XRzJATElTVC5FVFNJLk9SRzwv
+dT48L2ZvbnQ+PC9hPjxmb250IHNpemU9MiBmYWNlPSJUYWhvbWEiPjxiPjxicj4NClN1YmplY3Q6
+PC9iPiBNZXJnZWQgZG9jdW1lbnQgZGVhZGxpbmVzPC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBm
+YWNlPSJDYWxpYnJpIj4mbmJzcDs8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUg
+ZmFjZT0iQXJpYWwiPkRlYXIgU0EgV0cyIE1lbWJlcnMsPC9mb250Pg0KPGJyPjxmb250IHNpemU9
+MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4mbmJzcDs8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0y
+IGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPlRoaXMgaXMgYSByZW1pbmRlciB0aGF0IHRoZSBNRVJH
+RUQNCmRvY3VtZW50IFJlcXVlc3QgYW5kIFN1Ym1pc3Npb24gZGVhZGxpbmVzIGFyZSBhcyBmb2xs
+b3dzOjwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+Jm5i
+c3A7PC9mb250Pg0KPHA+DQo8dGFibGUgYm9yZGVyPTM+DQo8dHIgdmFsaWduPXRvcD4NCjx0ZCBi
+Z2NvbG9yPSNlM2UzZTM+DQo8ZGl2IGFsaWduPXJpZ2h0Pjxmb250IHNpemU9MiBjb2xvcj1yZWQg
+ZmFjZT0iQXJpYWwiPjxiPiZuYnNwOyAmbmJzcDsgJm5ic3A7DQombmJzcDsgJm5ic3A7ICZuYnNw
+OyA8L2I+PC9mb250Pjxmb250IHNpemU9MiBjb2xvcj0jMDA4MDAwIGZhY2U9IkFyaWFsIj48Yj4m
+bmJzcDsNCiZuYnNwOzwvYj48L2ZvbnQ+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJp
+YWwiPjxiPiBNRVJHRUQgUmVxOiAmbmJzcDsNCiZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAm
+bmJzcDtNRVJHRUQgU3ViOjwvYj48L2ZvbnQ+PC9kaXY+DQo8dGQgYmdjb2xvcj0jZTNlM2UzPjxm
+b250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj48Yj5UaHVyc2RheSA3DQpOb3ZlbWJl
+ciAyMDEzIDEyOjAwIChDRVQpICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDtUaHVy
+c2RheSA3DQpOb3ZlbWJlciAyMDEzIDE2OjAwIChDRVQpPC9iPjwvZm9udD48L3RhYmxlPg0KPGJy
+Pjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4mbmJzcDs8L2ZvbnQ+DQo8YnI+
+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPjxiPkkgaGF2ZSBpZGVudGlmaWVk
+IHNvbWUgY2FuZGlkYXRlDQpDUnMgZm9yIG1lcmdpbmcgZGlzY3Vzc2lvbnM8L2I+LCB3aGljaCBh
+cmUgdGhlIENScyB3aGljaCBtYW55IGNvbXBhbmllcw0KcmVxdWVzdGVkIHJldmlzaW9ucyBmb3I6
+PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4mbmJzcDs8
+L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPjxiPlMyLTEz
+Mzk0NyBhbmQgUzItMTM0MTEyPC9iPjo8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJs
+dWUgZmFjZT0iQXJpYWwiPjIzLjQwMSBDUjI2MjM6IFJlcG9ydGluZyBVTEkgYW5kDQpUaW1lWm9u
+ZSBhdCBOZXR3b3JrLWluaXRpYXRlZCBiZWFyZXIgcmVsZWFzZSByZWxhdGVkIHByb2NlZHVyZXM8
+L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPiZuYnNwOzwv
+Zm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+PGI+UzItMTM0
+MDA2IGFuZCBTMi0xMzQxNzg6PC9iPjwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1
+ZSBmYWNlPSJBcmlhbCI+MjMuNDAxIENSMjU5NDogQ29yZSBOZXR3b3JrIGFzc2lzdGVkDQplTm9k
+ZUIgcGFyYW1ldGVycyB0dW5pbmc8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUg
+ZmFjZT0iQXJpYWwiPiZuYnNwOzwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBm
+YWNlPSJBcmlhbCI+PGI+UzItMTM0MDg2LCBTMi0xMzQxMDggYW5kIFMyLTEzNDE4MTo8L2I+PC9m
+b250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4yMy42ODIgQ1Ig
+MDA3NzogSW50cm9kdWNpbmcgVUUNClBvd2VyIFNhdmluZyBNb2RlIDwvZm9udD4NCjxicj48Zm9u
+dCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250
+IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj48Yj5TMi0xMzQwODcsIDEzNDEwOSwgUzIt
+MTM0MTQ5DQphbmQgUzItMTM0MTgyOjwvYj48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9y
+PWJsdWUgZmFjZT0iQXJpYWwiPjIzLjQwMSBDUjI2MDM6IEludHJvZHVjaW5nIFVFDQpQb3dlciBT
+YXZpbmcgTW9kZSA8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJp
+YWwiPiZuYnNwOzwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlh
+bCI+PGI+UzItMTM0MDg4LCBTMi0xMzQxMTAsIFMyLTEzNDE1MA0KYW5kIFMyLTEzNDE4Mzo8L2I+
+PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4yMy4wNjAg
+Q1IxODE0OiBJbnRyb2R1Y2luZyBVRQ0KUG93ZXIgU2F2aW5nIE1vZGU8L2ZvbnQ+DQo8YnI+PGZv
+bnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPiZuYnNwOzwvZm9udD4NCjxicj48Zm9u
+dCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+PGI+YW5kIHJlc3BvbnNlIExTczo8L2I+
+PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj4mbmJzcDs8
+L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJpYWwiPjxiPlMyLTEz
+Mzk0MyBhbmQgUzItMTM0MTU1OiAmbmJzcDsNCiZuYnNwOyAmbmJzcDsgJm5ic3A7PC9iPjwvZm9u
+dD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+UmVzcG9uc2VzIHRv
+IFMyLTEzMzg5OTogTFMgZnJvbQ0KQ1QgV0cxOiBSZXBseSBMUyBvbiBDU0ZCIHByaW9yaXR5IGNh
+bGwgaGFuZGxpbmcgaW4gYSBuZXR3b3JrIHN1cHBvcnRpbmcNCk11bHRpbWVkaWEgUHJpb3JpdHkg
+U2VydmljZTwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlhbCI+
+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9IkFyaWFsIj48
+Yj5TMi0xMzM5MjUsIFMyLTEzMzk2MiwgUzItMTM0MDI4LA0KUzItMTM0MTI3LCBTMi0xMzQxNDUg
+YW5kIFMyLTEzMDQxNDc6IDwvYj48L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUg
+ZmFjZT0iQXJpYWwiPlJlc3BvbnNlcyB0byBTMi0xMzM5MTc6IExTIGZyb20NClJBTiBXRzI6IExT
+IG9uIENOIGltcGFjdHMgaW4gUkFOIFdHMiBzb2x1dGlvbnMgZm9yIFdMQU4vM0dQUCByYWRpbyBp
+bnRlcndvcmtpbmc8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUgZmFjZT0iQXJp
+YWwiPiZuYnNwOzwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNlPSJBcmlh
+bCI+QmVzdCByZWdhcmRzLDwvZm9udD4NCjxicj48Zm9udCBzaXplPTIgY29sb3I9Ymx1ZSBmYWNl
+PSJBcmlhbCI+Jm5ic3A7PC9mb250Pg0KPGJyPjxmb250IHNpemU9MiBjb2xvcj1ibHVlIGZhY2U9
+IkFyaWFsIj5NYXVyaWNlIFBvcGU8L2ZvbnQ+DQo8YnI+PGZvbnQgc2l6ZT0yIGNvbG9yPWJsdWUg
+ZmFjZT0iQXJpYWwiPiZuYnNwOzwvZm9udD4NCjxicj48Zm9udCBzaXplPTMgZmFjZT0iVGltZXMg
+TmV3IFJvbWFuIj4mbmJzcDs8L2ZvbnQ+DQo8ZGl2IGFsaWduPWNlbnRlcj4NCjxwPjxmb250IHNp
+emU9MyBmYWNlPSJUaW1lcyBOZXcgUm9tYW4iPkNsaWNrIDwvZm9udD48YSBocmVmPSJodHRwczov
+L3d3dy5tYWlsY29udHJvbC5jb20vc3IvV2Z6MFRRK1BiK0hHWDJQUVBPbXZVa2pEYWU3YkI1SWdN
+RjVnMUxqQndLQ3NpUmhtMWl6QXM2RWthd2lTSyswQTVvK0R3R05WdFdhVVJEMWRybzJGSWc9PSI+
+PGZvbnQgc2l6ZT0zIGNvbG9yPWJsdWUgZmFjZT0iVGltZXMgTmV3IFJvbWFuIj48dT5oZXJlPC91
+PjwvZm9udD48L2E+PGZvbnQgc2l6ZT0zIGZhY2U9IlRpbWVzIE5ldyBSb21hbiI+DQp0byByZXBv
+cnQgdGhpcyBlbWFpbCBhcyBzcGFtLjwvZm9udD48L2Rpdj4NCjxicj48Zm9udCBzaXplPTMgZmFj
+ZT0iVGltZXMgTmV3IFJvbWFuIj4mbmJzcDs8L2ZvbnQ+DQo8ZGl2IGFsaWduPWNlbnRlcj4NCjxi
+cj4NCjxocj48L2Rpdj4NCjxicj48Zm9udCBzaXplPTEgY29sb3I9IzgwODA4MCBmYWNlPSJBcmlh
+bCI+PGJyPg0KTkVDIFRlY2hub2xvZ2llcyAoVUspIEx0ZC4sPGJyPg0KQ29tcGFueSBSZWdpc3Rl
+cmVkIE9mZmljZTogSW1wZXJpdW0sIFJlYWRpbmcsIEJlcmtzaGlyZSwgUkcyIDBURDxicj4NClJl
+Z2lzdGVyZWQgTnVtYmVyOiA0MDcyNzE4PGJyPg0KQXR0ZW50aW9uOjxicj4NClRoZSBpbmZvcm1h
+dGlvbiBjb250YWluZWQgaW4gdGhpcyBtZXNzYWdlIGFuZCBvciBhdHRhY2htZW50cyBpcyBpbnRl
+bmRlZA0Kb25seSBmb3IgdGhlIHBlcnNvbiBvciBlbnRpdHkgdG8gd2hpY2ggaXQgaXMgYWRkcmVz
+c2VkIGFuZCBtYXkgY29udGFpbg0KY29uZmlkZW50aWFsIGFuZC9vciBwcml2aWxlZ2VkIG1hdGVy
+aWFsLiBBbnkgcmV2aWV3LCByZXRyYW5zbWlzc2lvbiwgZGlzc2VtaW5hdGlvbg0Kb3Igb3RoZXIg
+dXNlIG9mLCBvciB0YWtpbmcgb2YgYW55IGFjdGlvbiBpbiByZWxpYW5jZSB1cG9uLCB0aGlzIGlu
+Zm9ybWF0aW9uDQpieSBwZXJzb25zIG9yIGVudGl0aWVzIG90aGVyIHRoYW4gdGhlIGludGVuZGVk
+IHJlY2lwaWVudCBpcyBwcm9oaWJpdGVkLg0KSWYgeW91IHJlY2VpdmVkIHRoaXMgaW4gZXJyb3Is
+IHBsZWFzZSBjb250YWN0IHRoZSBzZW5kZXIgYW5kIGRlbGV0ZSB0aGUNCm1hdGVyaWFsIGZyb20g
+YW55IHN5c3RlbSBhbmQgZGVzdHJveSBhbnkgY29waWVzLjwvZm9udD4NCjxicj4NCg0KPGJyPjxw
+cmU+PGZvbnQgY29sb3I9ImJsdWUiPg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NClpURSBJbmZvcm1hdGlvbiBTZWN1cml0eSBOb3RpY2U6
+IFRoZSBpbmZvcm1hdGlvbiBjb250YWluZWQgaW4gdGhpcyBtYWlsIChhbmQgYW55IGF0dGFjaG1l
+bnQgdHJhbnNtaXR0ZWQgaGVyZXdpdGgpIGlzIHByaXZpbGVnZWQgYW5kIGNvbmZpZGVudGlhbCBh
+bmQgaXMgaW50ZW5kZWQgZm9yIHRoZSBleGNsdXNpdmUgdXNlIG9mIHRoZSBhZGRyZXNzZWUocyku
+ICBJZiB5b3UgYXJlIG5vdCBhbiBpbnRlbmRlZCByZWNpcGllbnQsIGFueSBkaXNjbG9zdXJlLCBy
+ZXByb2R1Y3Rpb24sIGRpc3RyaWJ1dGlvbiBvciBvdGhlciBkaXNzZW1pbmF0aW9uIG9yIHVzZSBv
+ZiB0aGUgaW5mb3JtYXRpb24gY29udGFpbmVkIGlzIHN0cmljdGx5IHByb2hpYml0ZWQuICBJZiB5
+b3UgaGF2ZSByZWNlaXZlZCB0aGlzIG1haWwgaW4gZXJyb3IsIHBsZWFzZSBkZWxldGUgaXQgYW5k
+IG5vdGlmeSB1cyBpbW1lZGlhdGVseS4NCg0KPC9mb250PjwvcHJlPjxicj4NCg==
+
+--=_alternative 0008831C48257C1C_=--

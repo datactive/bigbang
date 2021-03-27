@@ -9,13 +9,14 @@ import yaml
 import bigbang
 from bigbang import listserv
 from bigbang.listserv import ListservArchive, ListservList, ListservMessage
+from config.config import CONFIG
 
+dir_temp = tempfile.gettempdir()
 url_archive = "https://list.etsi.org/scripts/wa.exe?"
 url_list = url_archive + "A0=3GPP_TSG_CT_WG6"
 url_message = url_archive + "A2=ind2101A&L=3GPP_TSG_CT_WG6&O=D&P=1870"
-dir_temp = tempfile.gettempdir()
 file_temp_mbox = dir_temp + "/listserv.mbox"
-file_auth = "../config/authentication.yaml"
+file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
 
 
@@ -37,13 +38,16 @@ class TestListservMessage:
         assert msg.toaddr == "Kimmo.Kymalainen@ETSI.ORG"
 
     @pytest.fixture(name="msg", scope="module")
-    def test__from_url_without_login(self):
+    def get_message(self):
         msg = ListservMessage.from_url(
             list_name="3GPP_TSG_CT_WG6",
             url=url_message,
             fields="total",
             login=auth_key_mock,
         )
+        return msg
+
+    def test__message_content(self, msg):
         assert msg.body.split(",")[0] == "Dear 3GPP CT people"
         assert msg.subject == "Happy New Year 2021"
         assert msg.fromname == "Kimmo Kymalainen"
@@ -52,7 +56,6 @@ class TestListservMessage:
         assert msg.toaddr == "[log in to unmask]"
         assert msg.date == "Tue Jan  5 12:15:30 2021"
         assert msg.contenttype == "multipart/related"
-        return msg
 
     def test__only_header_from_url(self):
         msg = ListservMessage.from_url(
@@ -111,7 +114,7 @@ class TestListservList:
         assert mlist.messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
 
     @pytest.fixture(name="mlist", scope="module")
-    def test__from_url_without_login(self):
+    def get_mailinglist(self):
         mlist = ListservList.from_url(
             name="3GPP_TSG_CT_WG6",
             url=url_list,
@@ -123,11 +126,13 @@ class TestListservList:
             },
             login=auth_key_mock,
         )
+        return mlist
+
+    def test__mailinglist_content(self, mlist):
         assert mlist.name == "3GPP_TSG_CT_WG6"
         assert mlist.source == url_list
         assert len(mlist) == 3
         assert mlist.messages[0].subject == "Happy New Year 2021"
-        return mlist
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
@@ -180,7 +185,7 @@ class TestListservArchive:
         assert arch.lists[0].messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
 
     @pytest.fixture(name="arch", scope="session")
-    def test__from_url_wihout_login(self):
+    def get_mailarchive(self):
         arch = ListservArchive.from_url(
             name="3GPP",
             url_root=url_archive,
@@ -194,12 +199,14 @@ class TestListservArchive:
             login=auth_key_mock,
             instant_dump=False,
         )
+        return arch
+
+    def test__archive_content(self, arch):
         assert arch.name == "3GPP"
         assert arch.url == url_archive
         assert len(arch) == 4
         assert len(arch.lists[0]) == 3
         assert arch.lists[0].messages[0].subject == "Happy New Year 2021"
-        return arch
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
