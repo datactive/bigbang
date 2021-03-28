@@ -155,7 +155,7 @@ class ListservMessage:
         header_start_line_nr: int,
         fields: str = "total",
     ) -> "ListservMessage":
-        file = open(file_path, "r", errors="replace")
+        file = open(file_path, "r")
         fcontent = file.readlines()
         file.close()
         header_end_line_nr = cls.get_header_end_line_nr(
@@ -524,7 +524,7 @@ class ListservList:
         cls,
         name: str,
         directorypaths: List[str],
-        filedsc: str = "*.LOG?????",
+        filedsc: str,
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
@@ -541,7 +541,7 @@ class ListservList:
         # run through directories and collect all filepaths
         for directorypath in directorypaths:
             _filepaths.append(
-                get_paths_to_files_in_directory(directorypath, filedsc)
+                get_all_file_from_directory(directorypath, filedsc)
             )
         # flatten list of lists
         filepaths = [fp for li in _filepaths for fp in li]
@@ -568,7 +568,7 @@ class ListservList:
         msgs = []
         for filepath in filepaths:
             # TODO: implement selection filter
-            file = open(filepath, "r", errors="replace")
+            file = open(filepath, "r")
             fcontent = file.readlines()
             # get positions of all Emails in file
             header_start_line_nrs = cls.get_line_numbers_of_header_starts(
@@ -815,6 +815,7 @@ class ListservList:
             filepath = f"{dir_out}/{self.name}.mbox"
         else:
             filepath = f"{dir_out}/{filename}.mbox"
+        logger.info(f"The list {self.name} is save at {filepath}.")
         first = True
         for msg in self.messages:
             if first:
@@ -843,7 +844,6 @@ class ListservArchive(object):
     -------
     from_url
     from_mailing_lists
-    from_listserv_directory
     get_lists
     get_sections
     to_dict
@@ -889,7 +889,8 @@ class ListservArchive(object):
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
-        instant_dump: bool = True,
+        instant_save: bool = True,
+        only_mlist_urls: bool = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given URL.
@@ -898,7 +899,18 @@ class ListservArchive(object):
             name:
             url_root:
             url_home:
-            select:
+            select: Selection criteria that can filter messages by:
+                - content, i.e. header and/or body
+                - period, i.e. written in a certain year, month, week-of-month
+            url_login: URL to the login page
+            login: login keys {"username": str, "password": str}
+            session: if auth-session was already created externally
+            instant_save: Boolean giving the choice to save a `ListservList` as
+                soon as it is completely scraped or collect entire archive. The
+                prior is recommended if a large number of mailing lists are
+                scraped which can require a lot of memory and time.
+            only_list_urls: Boolean giving the choice to collect only `ListservList`
+                URLs or also their contents.
         """
         session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(
@@ -906,9 +918,17 @@ class ListservArchive(object):
             url_home,
             select,
             session,
-            instant_dump,
+            instant_save,
+            only_mlist_urls,
         )
-        return cls.from_mailing_lists(name, url_root, lists, select, session)
+        return cls.from_mailing_lists(
+            name,
+            url_root,
+            lists,
+            select,
+            session,
+            only_mlist_urls,
+        )
 
     @classmethod
     def from_mailing_lists(
@@ -920,6 +940,7 @@ class ListservArchive(object):
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
+        only_mlist_urls: bool = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given list of 'ListservList'.
@@ -930,7 +951,7 @@ class ListservArchive(object):
             url_mailing_lists:
 
         """
-        if isinstance(url_mailing_lists[0], str):
+        if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             if session is None:
                 session = get_auth_session(url_login, **login)
             lists = []
@@ -947,48 +968,15 @@ class ListservArchive(object):
             lists = url_mailing_lists
         return cls(name, url_root, lists)
 
-    @classmethod
-    def from_listserv_directory(
-        cls,
-        name: str,
-        directorypath: str,
-        folderdsc: str = "*",
-        filedsc: str = "*.LOG?????",
-        select: Optional[dict] = None,
-    ) -> "ListservList":
-        """
-        Args:
-            name: Name of the archive, e.g. '3GPP'.
-            directorypath: Where the ListservArchive can be initialised.
-            folderdsc: A description of the relevant folders
-            filedsc: A description of the relevant files, e.g. *.LOG?????
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
-        """
-        lists = []
-        _dirpaths_to_lists = get_paths_to_dirs_in_directory(
-            directorypath, folderdsc
-        )
-        # run through directories and collect all filepaths
-        for dirpath in _dirpaths_to_lists:
-            _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
-            mlist = ListservList.from_listserv_files(
-                dirpath.split("/")[-2],
-                _filepaths,
-                select,
-            )
-            lists.append(mlist)
-        return cls(name, directorypath, lists)
-
     @staticmethod
     def get_lists_from_url(
         url_root: str,
         url_home: str,
         select: dict,
         session: Optional[str] = None,
-        instant_dump: bool = True,
-    ) -> List[ListservList]:
+        instant_save: bool = True,
+        only_mlist_urls: bool = True,
+    ) -> List[Union[ListservList, str]]:
         """
         Created dictionary of all lists in the archive.
 
@@ -1001,32 +989,38 @@ class ListservArchive(object):
         # run through archive sections
         for url in list(
             ListservArchive.get_sections(url_root, url_home).keys()
-        )[:1]:
+        ):
             soup = get_website_content(url)
             a_tags_in_section = soup.select(
                 'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
             )
 
-            # run through archive lists in section
-            for a_tag in a_tags_in_section:
-                value = urllib.parse.urljoin(url_root, a_tag.get("href"))
-                key = value.split("A0=")[-1]
-                mlist = ListservList.from_url(
-                    name=key,
-                    url=value,
-                    select=select,
-                    session=session,
-                )
-                if len(mlist) != 0:
-                    if instant_dump:
-                        logger.info(
-                            f"The list {mlist.name} is save to a .mbox file."
-                        )
-                        mlist.to_mbox(dir_out=CONFIG.mail_path)
-                        archive.append(mlist.name)
-                    else:
-                        logger.info(f"Recorded the list {mlist.name}.")
-                        archive.append(mlist)
+            mlist_urls = [
+                urllib.parse.urljoin(url_root, a_tag.get("href"))
+                for a_tag in a_tags_in_section
+            ]
+
+            if only_mlist_urls:
+                # collect mailing-list urls
+                [archive.append(mlist_url) for mlist_url in mlist_urls]
+
+            else:
+                # collect mailing-list contents
+                for mlist_url in mlist_urls:
+                    key = mlist_url.split("A0=")[-1]
+                    mlist = ListservList.from_url(
+                        name=key,
+                        url=mlist_url,
+                        select=select,
+                        session=session,
+                    )
+                    if len(mlist) != 0:
+                        if instant_save:
+                            mlist.to_mbox(dir_out=CONFIG.mail_path)
+                            archive.append(mlist.name)
+                        else:
+                            logger.info(f"Recorded the list {mlist.name}.")
+                            archive.append(mlist)
         return archive
 
     def get_sections(url_root: str, url_home: str) -> int:
@@ -1091,16 +1085,6 @@ class ListservArchive(object):
                 .
                 .
                 "ListName": [messages[0], ... , messages[n]]
-            }
-            {
-                "message_ID1":
-                    "body": ...,
-                    "subject": ...,
-                }
-                "message_ID2":
-                    "body": ...,
-                    "subject": ...,
-                }
             }
         """
         # initialize dictionary
@@ -1217,9 +1201,7 @@ def get_website_content(
     return soup
 
 
-def get_paths_to_files_in_directory(
-    directory: str, file_dsc: str = "*"
-) -> List[str]:
+def get_all_file_from_directory(directory: str, file_dsc: str) -> List[str]:
     """ Get paths of all files matching file_dsc in directory """
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
