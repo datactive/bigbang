@@ -177,7 +177,8 @@ class TestListservArchive:
                 "fields": "header",
             },
             login=auth_key,
-            instant_dump=False,
+            instant_save=False,
+            only_mlist_urls=False,
         )
         assert (
             arch.lists[0].messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
@@ -197,26 +198,29 @@ class TestListservArchive:
                 "fields": "header",
             },
             login=auth_key_mock,
-            instant_dump=False,
+            instant_save=False,
+            only_mlist_urls=False,
         )
         return arch
 
     def test__archive_content(self, arch):
+        mlist_names = [mlist.name for mlist in arch.lists]
+        mlist_len = [len(mlist) for mlist in arch.lists]
         assert arch.name == "3GPP"
         assert arch.url == url_archive
-        assert len(arch) == 4
+        assert len(arch) == 13
         assert len(arch.lists[0]) == 3
         assert arch.lists[0].messages[0].subject == "Happy New Year 2021"
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
         assert len(list(dic.keys())) == 9
-        assert len(dic[list(dic.keys())[0]]) == 40
+        assert len(dic[list(dic.keys())[0]]) == 221
 
     def test__to_pandas_dataframe(self, arch):
         df = arch.to_pandas_dataframe()
         assert len(df.columns.values) == 9
-        assert len(df.index.values) == 40
+        assert len(df.index.values) == 221
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)

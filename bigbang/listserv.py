@@ -219,7 +219,7 @@ class ListservMessage:
                     if not re.match(r"\S+:\s+\S+", content[lnr + 1]):
                         value += " " + content[lnr + 1].strip().rstrip("\n")
                 header[key.lower()] = value
-
+        
         header = cls.format_header_content(header)
         header = cls.remove_unwanted_header_content(header)
         return header
@@ -292,12 +292,33 @@ class ListservMessage:
 
     @classmethod
     def format_header_content(cls, header: Dict[str, str]) -> Dict[str, str]:
-        header["fromname"] = cls.get_name(header["from"]).strip()
-        header["fromaddr"] = cls.get_addr(header["from"])
-        header["toname"] = cls.get_name(header["reply-to"]).strip()
-        header["toaddr"] = cls.get_addr(header["reply-to"])
-        header["date"] = cls.get_date(header["date"])
-        header["contenttype"] = header["content-type"]
+        "Formats LISTSERV 16.5 header fields to mbox convention."
+        # define formatting configuration
+        formatting_header_conf = {
+            "from": {
+                "fromname": cls.get_name,
+                "fromaddr": cls.get_addr,
+            },
+            "reply-to": {
+                "toname": cls.get_name,
+                "toaddr": cls.get_addr,
+            },
+            "date": {"date": cls.get_date},
+            "content-type": {"contenttype": None},
+        }
+        # run through format settings
+        for key_old, value in formatting_header_conf.items():
+            # if header contains field
+            if key_old in header.keys():
+                for key_new, fct in formatting_header_conf[key_old].items():
+                    if fct is None or header[key_old] is None:
+                        header[key_new] = header[key_old]
+                    else:
+                        header[key_new] = fct(header[key_old])
+            # if header misses field
+            else:
+                for key_new in formatting_header_conf[key_old].keys():
+                    header[key_new] = empty_header[key_new]
         return header
 
     @classmethod
@@ -320,17 +341,17 @@ class ListservMessage:
             name = re.sub(r"[^a-zA-Z0-9]+", " ", name)
         else:
             name = line
-        return name
+        return name.strip()
 
     @staticmethod
-    def get_addr(line: str) -> str:
+    def get_addr(line: str) -> Union[str, None]:
         # get string in between < and >
-        email_of_sender = re.findall(r"\<(.*)\>", line)
-        if email_of_sender:
-            email_of_sender = email_of_sender[0]
+        email_addr = re.findall(r"\<(.*)\>", line)
+        if email_addr:
+            email_addr = email_addr[0].strip()
         else:
-            email_of_sender = None
-        return email_of_sender
+            email_addr = ListservMessage.empty_header["fromaddr"]
+        return email_addr
 
     @staticmethod
     def get_date(line: str) -> str:
@@ -340,7 +361,7 @@ class ListservMessage:
             line, "%a, %d %b %Y %H:%M:%S"
         )
         return date_time_obj.strftime("%c")
-
+    
     @staticmethod
     def create_message_id(
         date: str,
