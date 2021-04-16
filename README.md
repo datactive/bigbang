@@ -62,7 +62,7 @@ python3 bin/collect_mail.py -f examples/urls.txt
 
 Once the data has been collected, BigBang has functions to support analysis.
 
-## Collecting IETF draft metadata
+### Collecting IETF draft metadata
 
 BigBang can also be used to analyze data from IETF drafts.
 
@@ -74,18 +74,27 @@ The script takes an argument, the working group acronym
 python3 bin/collect_draft_metadata.py -w httpbis
 ```
 
-
-## Git
+### Git
 
 BigBang can also be used to analyze data from Git repositories.
 
 Documentation on this feature can be found [here](https://github.com/datactive/bigbang/blob/master/git-readme.md).
 
-## Unit tests
+## Development
 
-We use `unittest` for automated tests.
+### Unit tests
 
-To run the tests from the command like, use the command `pytest`.
+To run the automated unit tests, use: `pytest tests/unit`.
+
+Our current goal is code coverage of **60%**. Add new unit tests within `tests/unit`. Unit tests run quickly, without relying on network requests.
+
+### Documentation
+
+Docstrings are preferred, so that auto-generated web-based documentation will be possible ([#412](https://github.com/datactive/bigbang/issues/412)). You can follow the [Google style guide for docstrings](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
+
+### Formatting
+
+Run `pre-commit install` to get automated usage of `black`, `flake8` and `isort` to all Python code files for consistent formatting across developers. We try to follow the [PEP8 style guide](https://pep8.org/).
 
 ## Community
 
