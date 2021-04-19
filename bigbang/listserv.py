@@ -95,7 +95,7 @@ class ListservMessage:
         "fromaddr": None,
         "toname": None,
         "toaddr": None,
-        "date": None,
+        "date": "Mon, 11 Jan 1111 11:11:11",
         "contenttype": None,
     }
 
@@ -219,7 +219,7 @@ class ListservMessage:
                     if not re.match(r"\S+:\s+\S+", content[lnr + 1]):
                         value += " " + content[lnr + 1].strip().rstrip("\n")
                 header[key.lower()] = value
-
+        
         header = cls.format_header_content(header)
         header = cls.remove_unwanted_header_content(header)
         return header
@@ -292,12 +292,33 @@ class ListservMessage:
 
     @classmethod
     def format_header_content(cls, header: Dict[str, str]) -> Dict[str, str]:
-        header["fromname"] = cls.get_name(header["from"]).strip()
-        header["fromaddr"] = cls.get_addr(header["from"])
-        header["toname"] = cls.get_name(header["reply-to"]).strip()
-        header["toaddr"] = cls.get_addr(header["reply-to"])
-        header["date"] = cls.get_date(header["date"])
-        header["contenttype"] = header["content-type"]
+        "Formats LISTSERV 16.5 header fields to mbox convention."
+        # define formatting configuration
+        formatting_header_conf = {
+            "from": {
+                "fromname": cls.get_name,
+                "fromaddr": cls.get_addr,
+            },
+            "reply-to": {
+                "toname": cls.get_name,
+                "toaddr": cls.get_addr,
+            },
+            "date": {"date": cls.get_date},
+            "content-type": {"contenttype": None},
+        }
+        # run through format settings
+        for key_old, value in formatting_header_conf.items():
+            # if header contains field
+            if key_old in header.keys():
+                for key_new, fct in formatting_header_conf[key_old].items():
+                    if fct is None or header[key_old] is None:
+                        header[key_new] = header[key_old]
+                    else:
+                        header[key_new] = fct(header[key_old])
+            # if header misses field
+            else:
+                for key_new in formatting_header_conf[key_old].keys():
+                    header[key_new] = cls.empty_header[key_new]
         return header
 
     @classmethod
@@ -320,17 +341,17 @@ class ListservMessage:
             name = re.sub(r"[^a-zA-Z0-9]+", " ", name)
         else:
             name = line
-        return name
+        return name.strip()
 
     @staticmethod
-    def get_addr(line: str) -> str:
+    def get_addr(line: str) -> Union[str, None]:
         # get string in between < and >
-        email_of_sender = re.findall(r"\<(.*)\>", line)
-        if email_of_sender:
-            email_of_sender = email_of_sender[0]
+        email_addr = re.findall(r"\<(.*)\>", line)
+        if email_addr:
+            email_addr = email_addr[0].strip()
         else:
-            email_of_sender = None
-        return email_of_sender
+            email_addr = ListservMessage.empty_header["fromaddr"]
+        return email_addr
 
     @staticmethod
     def get_date(line: str) -> str:
@@ -340,12 +361,14 @@ class ListservMessage:
             line, "%a, %d %b %Y %H:%M:%S"
         )
         return date_time_obj.strftime("%c")
-
+    
     @staticmethod
     def create_message_id(
-        date: str,
-        from_address: str,
+        date: Union[str, None],
+        from_address: Union[str, None],
     ) -> str:
+        #if date is None:
+        #    date = 'Wed Jan 11 11:11:11 1111'
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
@@ -815,6 +838,7 @@ class ListservList:
             filepath = f"{dir_out}/{self.name}.mbox"
         else:
             filepath = f"{dir_out}/{filename}.mbox"
+        logger.info(f"The list {self.name} is save at {filepath}.")
         first = True
         for msg in self.messages:
             if first:
@@ -889,7 +913,8 @@ class ListservArchive(object):
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
-        instant_dump: bool = True,
+        instant_save: bool = True,
+        only_mlist_urls: bool = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given URL.
@@ -898,7 +923,18 @@ class ListservArchive(object):
             name:
             url_root:
             url_home:
-            select:
+            select: Selection criteria that can filter messages by:
+                - content, i.e. header and/or body
+                - period, i.e. written in a certain year, month, week-of-month
+            url_login: URL to the login page
+            login: login keys {"username": str, "password": str}
+            session: if auth-session was already created externally
+            instant_save: Boolean giving the choice to save a `ListservList` as
+                soon as it is completely scraped or collect entire archive. The
+                prior is recommended if a large number of mailing lists are
+                scraped which can require a lot of memory and time.
+            only_list_urls: Boolean giving the choice to collect only `ListservList`
+                URLs or also their contents.
         """
         session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(
@@ -906,9 +942,17 @@ class ListservArchive(object):
             url_home,
             select,
             session,
-            instant_dump,
+            instant_save,
+            only_mlist_urls,
         )
-        return cls.from_mailing_lists(name, url_root, lists, select, session)
+        return cls.from_mailing_lists(
+            name,
+            url_root,
+            lists,
+            select,
+            session,
+            only_mlist_urls,
+        )
 
     @classmethod
     def from_mailing_lists(
@@ -920,6 +964,7 @@ class ListservArchive(object):
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
+        only_mlist_urls: bool = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given list of 'ListservList'.
@@ -930,7 +975,7 @@ class ListservArchive(object):
             url_mailing_lists:
 
         """
-        if isinstance(url_mailing_lists[0], str):
+        if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             if session is None:
                 session = get_auth_session(url_login, **login)
             lists = []
@@ -987,8 +1032,9 @@ class ListservArchive(object):
         url_home: str,
         select: dict,
         session: Optional[str] = None,
-        instant_dump: bool = True,
-    ) -> List[ListservList]:
+        instant_save: bool = True,
+        only_mlist_urls: bool = True,
+    ) -> List[Union[ListservList, str]]:
         """
         Created dictionary of all lists in the archive.
 
@@ -1001,32 +1047,38 @@ class ListservArchive(object):
         # run through archive sections
         for url in list(
             ListservArchive.get_sections(url_root, url_home).keys()
-        )[:1]:
+        ):
             soup = get_website_content(url)
             a_tags_in_section = soup.select(
                 'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
             )
 
-            # run through archive lists in section
-            for a_tag in a_tags_in_section:
-                value = urllib.parse.urljoin(url_root, a_tag.get("href"))
-                key = value.split("A0=")[-1]
-                mlist = ListservList.from_url(
-                    name=key,
-                    url=value,
-                    select=select,
-                    session=session,
-                )
-                if len(mlist) != 0:
-                    if instant_dump:
-                        logger.info(
-                            f"The list {mlist.name} is save to a .mbox file."
-                        )
-                        mlist.to_mbox(dir_out=CONFIG.mail_path)
-                        archive.append(mlist.name)
-                    else:
-                        logger.info(f"Recorded the list {mlist.name}.")
-                        archive.append(mlist)
+            mlist_urls = [
+                urllib.parse.urljoin(url_root, a_tag.get("href"))
+                for a_tag in a_tags_in_section
+            ]
+
+            if only_mlist_urls:
+                # collect mailing-list urls
+                [archive.append(mlist_url) for mlist_url in mlist_urls]
+
+            else:
+                # collect mailing-list contents
+                for mlist_url in mlist_urls:
+                    key = mlist_url.split("A0=")[-1]
+                    mlist = ListservList.from_url(
+                        name=key,
+                        url=mlist_url,
+                        select=select,
+                        session=session,
+                    )
+                    if len(mlist) != 0:
+                        if instant_save:
+                            mlist.to_mbox(dir_out=CONFIG.mail_path)
+                            archive.append(mlist.name)
+                        else:
+                            logger.info(f"Recorded the list {mlist.name}.")
+                            archive.append(mlist)
         return archive
 
     def get_sections(url_root: str, url_home: str) -> int:
@@ -1091,16 +1143,6 @@ class ListservArchive(object):
                 .
                 .
                 "ListName": [messages[0], ... , messages[n]]
-            }
-            {
-                "message_ID1":
-                    "body": ...,
-                    "subject": ...,
-                }
-                "message_ID2":
-                    "body": ...,
-                    "subject": ...,
-                }
             }
         """
         # initialize dictionary
