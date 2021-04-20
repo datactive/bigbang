@@ -1048,9 +1048,13 @@ class ListservArchive(object):
         for url in list(
             ListservArchive.get_sections(url_root, url_home).keys()
         ):
+            print("url ----> ", url)
             soup = get_website_content(url)
+            #a_tags_in_section = soup.select(
+            #    'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
+            #)
             a_tags_in_section = soup.select(
-                'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
+                'a[href^="/cgi-bin/wa?A0="]',
             )
 
             mlist_urls = [
@@ -1102,7 +1106,7 @@ class ListservArchive(object):
                 if value in ["Next", "Previous"]:
                     continue
                 archive_sections_dict[key] = value
-            # TODO check that p=1 is included
+            archive_sections_dict[re.sub(r'p=[0-9]+', 'p=1', key)] = 'FIRST'
         else:
             archive_sections_dict[url_home] = "Home"
         return archive_sections_dict
