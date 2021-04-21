@@ -8,7 +8,8 @@ import os
 import re
 import subprocess
 import time
-import urllib
+from urllib.parse import urlparse
+from urllib.parse import urljoin
 import warnings
 from email.header import Header
 from email.message import Message
@@ -280,7 +281,7 @@ class ListservMessage:
                 if "Fplain" in tag.get("href")
             ][0]
             body_soup = get_website_content(
-                urllib.parse.urljoin(url_root, href_plain_text)
+                urljoin(url_root, href_plain_text)
             )
             return body_soup.find("pre").text
         except Exception:
@@ -697,7 +698,7 @@ class ListservList:
     ) -> Tuple[List[str], List[str]]:
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
         urls_of_periods = [
-            urllib.parse.urljoin(url_root, list_tag.find("a").get("href"))
+            urljoin(url_root, list_tag.find("a").get("href"))
             for list_tag in soup.find_all("li")
         ]
         return periods, urls_of_periods
@@ -755,7 +756,7 @@ class ListservList:
         a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
         if a_tags:
             a_tags = [
-                urllib.parse.urljoin(url_root, url.get("href"))
+                urljoin(url_root, url.get("href"))
                 for url in a_tags
             ]
         return a_tags
@@ -1053,14 +1054,18 @@ class ListservArchive(object):
             #a_tags_in_section = soup.select(
             #    'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
             #)
+            # /cgi-bin/wa?INDEX=&p=2
+            # /scripts/wa.exe?INDEX=&p=2
             a_tags_in_section = soup.select(
-                'a[href^="/cgi-bin/wa?A0="]',
+                #'a[href^="/cgi-bin/wa?A0="]',
+                f'a[href^="{urlparse(url).path}?A0="]',
             )
 
             mlist_urls = [
-                urllib.parse.urljoin(url_root, a_tag.get("href"))
+                urljoin(url_root, a_tag.get("href"))
                 for a_tag in a_tags_in_section
             ]
+            mlist_urls = list(set(mlist_urls))  # remove duplicates
 
             if only_mlist_urls:
                 # collect mailing-list urls
@@ -1101,7 +1106,7 @@ class ListservArchive(object):
         archive_sections_dict = {}
         if sections:
             for sec in sections:
-                key = urllib.parse.urljoin(url_root, sec.get("href"))
+                key = urljoin(url_root, sec.get("href"))
                 value = sec.text
                 if value in ["Next", "Previous"]:
                     continue
