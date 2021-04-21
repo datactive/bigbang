@@ -659,11 +659,8 @@ class ListservList:
         All messages within a certain period
         (e.g. January 2021, Week 5).
         """
-        url_root = ("/").join(url.split("/")[:-2])
         # create dictionary with key indicating period and values the url
-        periods, urls_of_periods = cls.get_all_periods_and_their_urls(
-            url_root, get_website_content(url)
-        )
+        periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
 
         if any(
             period in list(select.keys())
@@ -692,10 +689,9 @@ class ListservList:
         return urls_of_periods
 
     @staticmethod
-    def get_all_periods_and_their_urls(
-        url_root: str,
-        soup: BeautifulSoup,
-    ) -> Tuple[List[str], List[str]]:
+    def get_all_periods_and_their_urls(url: str) -> Tuple[List[str], List[str]]:
+        url_root = ("/").join(url.split("/")[:-2])
+        soup = get_website_content(url)
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
         urls_of_periods = [
             urljoin(url_root, list_tag.find("a").get("href"))
@@ -1049,15 +1045,8 @@ class ListservArchive(object):
         for url in list(
             ListservArchive.get_sections(url_root, url_home).keys()
         ):
-            print("url ----> ", url)
             soup = get_website_content(url)
-            #a_tags_in_section = soup.select(
-            #    'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
-            #)
-            # /cgi-bin/wa?INDEX=&p=2
-            # /scripts/wa.exe?INDEX=&p=2
             a_tags_in_section = soup.select(
-                #'a[href^="/cgi-bin/wa?A0="]',
                 f'a[href^="{urlparse(url).path}?A0="]',
             )
 
@@ -1069,7 +1058,11 @@ class ListservArchive(object):
 
             if only_mlist_urls:
                 # collect mailing-list urls
-                [archive.append(mlist_url) for mlist_url in mlist_urls]
+                [
+                    archive.append(mlist_url)
+                    for mlist_url in mlist_urls
+                    if len(ListservList.get_all_periods_and_their_urls(mlist_url)[1]) > 0
+                ]
 
             else:
                 # collect mailing-list contents
