@@ -134,7 +134,6 @@ class ListservMessage:
         """
         Args:
         """
-        # TODO implement field selection, e.g. return only header, body, etc.
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)

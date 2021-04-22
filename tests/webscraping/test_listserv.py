@@ -1,3 +1,4 @@
+from time import time
 import os
 import tempfile
 from pathlib import Path
@@ -12,9 +13,9 @@ from bigbang.listserv import ListservArchive, ListservList, ListservMessage
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
-url_archive = "https://list.etsi.org/scripts/wa.exe?"
-url_list = url_archive + "A0=3GPP_TSG_CT_WG6"
-url_message = url_archive + "A2=ind2101A&L=3GPP_TSG_CT_WG6&O=D&P=1870"
+url_archive = "https://listserv.ieee.org/cgi-bin/wa?"
+url_list = url_archive + "A0=IEEE-TEST"
+url_message = url_archive + "A2=ind1511d&L=IEEE-TEST&P=67"
 file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
@@ -29,18 +30,18 @@ class TestListservMessage:
         with open(file_auth, "r") as stream:
             auth_key = yaml.safe_load(stream)
         msg = ListservMessage.from_url(
-            list_name="3GPP_TSG_CT_WG6",
+            list_name="IEEE-TEST",
             url=url_message,
             fields="total",
             login=auth_key,
         )
-        assert msg.fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
-        assert msg.toaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        assert msg.fromaddr == "[log in to unmask]"
+        assert msg.toaddr == None
 
     @pytest.fixture(name="msg", scope="module")
     def get_message(self):
         msg = ListservMessage.from_url(
-            list_name="3GPP_TSG_CT_WG6",
+            list_name="IEEE-TEST",
             url=url_message,
             fields="total",
             login=auth_key_mock,
@@ -48,18 +49,18 @@ class TestListservMessage:
         return msg
 
     def test__message_content(self, msg):
-        assert msg.body.split(",")[0] == "Dear 3GPP CT people"
-        assert msg.subject == "Happy New Year 2021"
-        assert msg.fromname == "Kimmo Kymalainen"
+        assert msg.body.split("C")[0] == "=================================================\n"
+        assert msg.subject == "10th International Conference on Electrical Engineering (ICEENG'10)"
+        assert msg.fromname == "iceeng 10"
         assert msg.fromaddr == "[log in to unmask]"
-        assert msg.toname == "Kimmo Kymalainen"
-        assert msg.toaddr == "[log in to unmask]"
-        assert msg.date == "Tue Jan  5 12:15:30 2021"
-        assert msg.contenttype == "multipart/related"
+        assert msg.toname == None
+        assert msg.toaddr == None
+        assert msg.date == "Mon Nov 23 11:00:37 2015"
+        assert msg.contenttype == "multipart/mixed"
 
     def test__only_header_from_url(self):
         msg = ListservMessage.from_url(
-            list_name="3GPP_TSG_CT_WG6",
+            list_name="IEEE-TEST",
             url=url_message,
             fields="header",
             login=auth_key_mock,
@@ -68,7 +69,7 @@ class TestListservMessage:
 
     def test__only_body_from_url(self):
         msg = ListservMessage.from_url(
-            list_name="3GPP_TSG_CT_WG6",
+            list_name="IEEE-TEST",
             url=url_message,
             fields="body",
             login=auth_key_mock,
@@ -83,9 +84,9 @@ class TestListservMessage:
         msg.to_mbox(file_temp_mbox)
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 29
+        assert len(lines) == 57
         assert (
-            lines[1] == "From b'[log in to unmask]' Tue Jan  5 12:15:30 2021\n"
+            lines[1] == "From b'[log in to unmask]' Mon Nov 23 11:00:37 2015\n"
         )
         f.close()
         Path(file_temp_mbox).unlink()
@@ -100,28 +101,26 @@ class TestListservList:
         with open(file_auth, "r") as stream:
             auth_key = yaml.safe_load(stream)
         mlist = ListservList.from_url(
-            name="3GPP_TSG_CT_WG6",
+            name="IEEE-TEST",
             url=url_list,
             select={
-                "years": 2021,
-                "months": "January",
-                "weeks": 1,
+                "years": 2015,
+                "months": "November",
+                "weeks": 4,
                 "fields": "header",
             },
             login=auth_key,
         )
-        assert mlist.messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
-        assert mlist.messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
+        assert mlist.messages[0].fromaddr == "[log in to unmask]"
+        assert mlist.messages[0].toaddr == None
 
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist(self):
         mlist = ListservList.from_url(
-            name="3GPP_TSG_CT_WG6",
+            name="IEEE-TEST",
             url=url_list,
             select={
-                "years": 2021,
-                "months": "January",
-                "weeks": 1,
+                "years": 2015,
                 "fields": "header",
             },
             login=auth_key_mock,
@@ -129,72 +128,47 @@ class TestListservList:
         return mlist
 
     def test__mailinglist_content(self, mlist):
-        assert mlist.name == "3GPP_TSG_CT_WG6"
+        assert mlist.name == "IEEE-TEST"
         assert mlist.source == url_list
-        assert len(mlist) == 3
-        assert mlist.messages[0].subject == "Happy New Year 2021"
+        assert len(mlist) == 1
+        assert mlist.messages[0].subject == "10th International Conference on Electrical Engineering (ICEENG'10)"
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
         assert len(list(dic.keys())) == 8
-        assert len(dic[list(dic.keys())[0]]) == 3
+        assert len(dic[list(dic.keys())[0]]) == 1
 
     def test__to_pandas_dataframe(self, mlist):
         df = mlist.to_pandas_dataframe()
         assert len(df.columns.values) == 8
-        assert len(df.index.values) == 3
+        assert len(df.index.values) == 1
 
     def test__to_mbox(self, mlist):
         mlist.to_mbox(dir_temp, filename=mlist.name)
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 30
+        assert len(lines) == 10
         assert (
-            lines[21]
-            == "From b'[log in to unmask]' Tue Jan  5 09:28:25 2021\n"
+            lines[1]
+            == "From b'[log in to unmask]' Mon Nov 23 11:00:37 2015\n"
         )
         f.close()
         Path(file_temp_mbox).unlink()
 
 
 class TestListservArchive:
-    @pytest.mark.skipif(
-        not os.path.isfile(file_auth),
-        reason="Key to log into LISTSERV could not be found",
-    )
-    def test__from_url_with_login(self):
-        with open(file_auth, "r") as stream:
-            auth_key = yaml.safe_load(stream)
-        arch = ListservArchive.from_url(
-            name="3GPP",
-            url_root=url_archive,
-            url_home=url_archive + "HOME",
-            select={
-                "years": 2021,
-                "months": "January",
-                "weeks": 1,
-                "fields": "header",
-            },
-            login=auth_key,
-            instant_save=False,
-            only_mlist_urls=False,
-        )
-        assert (
-            arch.lists[0].messages[0].fromaddr == "Kimmo.Kymalainen@ETSI.ORG"
-        )
-        assert arch.lists[0].messages[0].toaddr == "Kimmo.Kymalainen@ETSI.ORG"
-
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
+        start = time()
         arch = ListservArchive.from_url(
-            name="3GPP",
+            name="IEEE",
             url_root=url_archive,
             url_home=url_archive + "HOME",
             select={
-                "years": 2021,
-                "months": "January",
-                "weeks": 1,
+                "years": 2015,
+                "months": "November",
+                "weeks": 4,
                 "fields": "header",
             },
             login=auth_key_mock,
@@ -206,29 +180,26 @@ class TestListservArchive:
     def test__archive_content(self, arch):
         mlist_names = [mlist.name for mlist in arch.lists]
         mlist_len = [len(mlist) for mlist in arch.lists]
-        assert arch.name == "3GPP"
+        assert arch.name == "IEEE"
         assert arch.url == url_archive
-        assert len(arch) == 13
-        assert len(arch.lists[0]) == 3
-        assert arch.lists[0].messages[0].subject == "Happy New Year 2021"
+        assert len(arch) == 1
+        assert len(arch.lists[0]) == 1
+        assert arch.lists[0].messages[0].subject == "10th International Conference on Electrical Engineering (ICEENG'10)"
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
         assert len(list(dic.keys())) == 9
-        assert len(dic[list(dic.keys())[0]]) == 221
+        assert len(dic[list(dic.keys())[0]]) == 1
 
     def test__to_pandas_dataframe(self, arch):
         df = arch.to_pandas_dataframe()
         assert len(df.columns.values) == 9
-        assert len(df.index.values) == 221
+        assert len(df.index.values) == 1
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_CT_WG6.mbox": 30,
-            f"{dir_temp}/3GPP_TSG_RAN_WG3.mbox": 40,
-            f"{dir_temp}/3GPP_TSG_RAN.mbox": 30,
-            f"{dir_temp}/3GPP_TSG_RAN_WG4.mbox": 300,
+            f"{dir_temp}/IEEE-TEST.mbox": 10,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
