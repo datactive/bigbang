@@ -8,7 +8,8 @@ import os
 import re
 import subprocess
 import time
-import urllib
+from urllib.parse import urlparse
+from urllib.parse import urljoin
 import warnings
 from email.header import Header
 from email.message import Message
@@ -133,7 +134,6 @@ class ListservMessage:
         """
         Args:
         """
-        # TODO implement field selection, e.g. return only header, body, etc.
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
@@ -280,7 +280,7 @@ class ListservMessage:
                 if "Fplain" in tag.get("href")
             ][0]
             body_soup = get_website_content(
-                urllib.parse.urljoin(url_root, href_plain_text)
+                urljoin(url_root, href_plain_text)
             )
             return body_soup.find("pre").text
         except Exception:
@@ -658,11 +658,8 @@ class ListservList:
         All messages within a certain period
         (e.g. January 2021, Week 5).
         """
-        url_root = ("/").join(url.split("/")[:-2])
         # create dictionary with key indicating period and values the url
-        periods, urls_of_periods = cls.get_all_periods_and_their_urls(
-            url_root, get_website_content(url)
-        )
+        periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
 
         if any(
             period in list(select.keys())
@@ -691,13 +688,12 @@ class ListservList:
         return urls_of_periods
 
     @staticmethod
-    def get_all_periods_and_their_urls(
-        url_root: str,
-        soup: BeautifulSoup,
-    ) -> Tuple[List[str], List[str]]:
+    def get_all_periods_and_their_urls(url: str) -> Tuple[List[str], List[str]]:
+        url_root = ("/").join(url.split("/")[:-2])
+        soup = get_website_content(url)
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
         urls_of_periods = [
-            urllib.parse.urljoin(url_root, list_tag.find("a").get("href"))
+            urljoin(url_root, list_tag.find("a").get("href"))
             for list_tag in soup.find_all("li")
         ]
         return periods, urls_of_periods
@@ -755,7 +751,7 @@ class ListservList:
         a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
         if a_tags:
             a_tags = [
-                urllib.parse.urljoin(url_root, url.get("href"))
+                urljoin(url_root, url.get("href"))
                 for url in a_tags
             ]
         return a_tags
@@ -1050,17 +1046,22 @@ class ListservArchive(object):
         ):
             soup = get_website_content(url)
             a_tags_in_section = soup.select(
-                'a[href*="A0="][onmouseover*="showDesc"][onmouseout*="hideDesc"]',
+                f'a[href^="{urlparse(url).path}?A0="]',
             )
 
             mlist_urls = [
-                urllib.parse.urljoin(url_root, a_tag.get("href"))
+                urljoin(url_root, a_tag.get("href"))
                 for a_tag in a_tags_in_section
             ]
+            mlist_urls = list(set(mlist_urls))  # remove duplicates
 
             if only_mlist_urls:
                 # collect mailing-list urls
-                [archive.append(mlist_url) for mlist_url in mlist_urls]
+                [
+                    archive.append(mlist_url)
+                    for mlist_url in mlist_urls
+                    if len(ListservList.get_all_periods_and_their_urls(mlist_url)[1]) > 0
+                ]
 
             else:
                 # collect mailing-list contents
@@ -1097,12 +1098,12 @@ class ListservArchive(object):
         archive_sections_dict = {}
         if sections:
             for sec in sections:
-                key = urllib.parse.urljoin(url_root, sec.get("href"))
+                key = urljoin(url_root, sec.get("href"))
                 value = sec.text
                 if value in ["Next", "Previous"]:
                     continue
                 archive_sections_dict[key] = value
-            # TODO check that p=1 is included
+            archive_sections_dict[re.sub(r'p=[0-9]+', 'p=1', key)] = 'FIRST'
         else:
             archive_sections_dict[url_home] = "Home"
         return archive_sections_dict
