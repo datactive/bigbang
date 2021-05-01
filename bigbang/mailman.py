@@ -259,7 +259,7 @@ def access_provenance(directory):
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):  # a provenance file already exists
         file_handle = open(file_path, "r")
-        provenance = yaml.load(file_handle)
+        provenance = yaml.safe_load(file_handle)
         return provenance
     return None
 
