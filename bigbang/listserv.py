@@ -961,6 +961,7 @@ class ListservArchive(object):
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
+        instant_save: Optional[bool] = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given list of 'ListservList'.
@@ -976,14 +977,18 @@ class ListservArchive(object):
                 session = get_auth_session(url_login, **login)
             lists = []
             for idx, url in enumerate(url_mailing_lists):
-                lists.append(
-                    ListservList.from_url(
-                        name=idx,
-                        url=url,
-                        select=select,
-                        session=session,
-                    )
+                mlist = ListservList.from_url(
+                    name=idx,
+                    url=url,
+                    select=select,
+                    session=session,
                 )
+                if len(mlist) != 0:
+                    if instant_save:
+                        mlist.to_mbox(dir_out=CONFIG.mail_path)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        lists.append(mlist)
         else:
             lists = url_mailing_lists
         return cls(name, url_root, lists)
