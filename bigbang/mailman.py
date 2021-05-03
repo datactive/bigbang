@@ -302,15 +302,16 @@ def collect_archive_from_url(
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
     elif tgpp_archives_exp.search(url):
-        listserv.ListservArchive.from_mailing_lists(
+        return listserv.ListservArchive.from_mailing_lists(
             name="3GPP",
-            url_root=url,
-            url_home=url + "HOME",
-            instant_save=True,
+            url_root=url_root,
+            url_mailing_lists=urls,
+            login={'username': '...', 'password': '...'},
             only_mlist_urls=False,
+            instant_save=True,
         )
     elif ieee_archives_exp.search(url):
-        listserv.ListservArchive.from_mailing_lists(
+        return listserv.ListservArchive.from_mailing_lists(
             name="IEEE",
             url_root=url_root,
             url_mailing_lists=urls,
