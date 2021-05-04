@@ -987,10 +987,8 @@ class ListservArchive(object):
                 if len(mlist) != 0:
                     if instant_save:
                         dir_out = CONFIG.mail_path + name
-                        try:
+                        if os.path.isdir(dir_out) is False:
                             os.mkdir(dir_out)
-                        except FileExistsError:
-                            pass  # temporary directory already exists, that's cool
                         mlist.to_mbox(dir_out=dir_out)
                     else:
                         logger.info(f"Recorded the list {mlist.name}.")
@@ -1087,10 +1085,8 @@ class ListservArchive(object):
                     if len(mlist) != 0:
                         if instant_save:
                             dir_out = CONFIG.mail_path + name
-                            try:
+                            if os.path.isdir(dir_out) is False:
                                 os.mkdir(dir_out)
-                            except FileExistsError:
-                                pass  # temporary directory already exists, that's cool
                             mlist.to_mbox(dir_out=CONFIG.mail_path)
                             archive.append(mlist.name)
                         else:
