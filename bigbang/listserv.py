@@ -369,6 +369,8 @@ class ListservMessage:
     ) -> str:
         if date is None:
             date = 'None'
+        if from_address is None:
+            from_address = 'None'
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
