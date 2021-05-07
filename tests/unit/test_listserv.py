@@ -87,7 +87,6 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/msg_test.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        print(lines)
         assert len(lines) == 478
         assert "Date: None'\n" in lines
         f.close()
