@@ -10,8 +10,10 @@ import subprocess
 import urllib.error
 import urllib.parse
 import urllib.request
+from urllib.parse import urlparse
 import warnings
 from pprint import pprint as pp
+from typing import Union
 
 import pandas as pd
 import yaml
@@ -27,7 +29,8 @@ txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
 gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile(r"lists\.w3\.org")
-listserv_archives_exp = re.compile(r"list\.etsi\.org")
+tgpp_archives_exp = re.compile(r'list\.etsi\.org')
+ieee_archives_exp = re.compile(r'listserv\.ieee\.org')
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
@@ -93,11 +96,12 @@ def load_data(
 
 
 def collect_from_url(
-    url: str, archive_dir: str = CONFIG.mail_path, notes=None
+    url: Union[list, str], archive_dir: str = CONFIG.mail_path, notes=None
 ):
     """Collect data from a given url."""
 
-    url = url.rstrip()
+    if isinstance(url, str):
+        url = url.rstrip()
     try:
         has_archives = collect_archive_from_url(
             url, archive_dir=archive_dir, notes=notes
@@ -160,8 +164,13 @@ def collect_from_file(
 ):
     """Collect urls from a file."""
     urls = urls_to_collect(urls_file)
-    for url in urls:
-        collect_from_url(url, archive_dir=archive_dir, notes=notes)
+    if tgpp_archives_exp.search(urls[0]):
+        collect_from_url(urls, archive_dir=archive_dir, notes=notes)
+    elif ieee_archives_exp.search(urls[0]):
+        collect_from_url(urls, archive_dir=archive_dir, notes=notes)
+    else:
+        for url in urls:
+            collect_from_url(url, archive_dir=archive_dir, notes=notes)
 
 
 def get_list_name(url):
@@ -259,7 +268,7 @@ def access_provenance(directory):
     file_path = os.path.join(directory, PROVENANCE_FILENAME)
     if os.path.isfile(file_path):  # a provenance file already exists
         file_handle = open(file_path, "r")
-        provenance = yaml.load(file_handle)
+        provenance = yaml.safe_load(file_handle)
         return provenance
     return None
 
@@ -273,24 +282,42 @@ def update_provenance(directory, provenance):
     file_handle.close()
 
 
-def collect_archive_from_url(url, archive_dir=CONFIG.mail_path, notes=None):
+def collect_archive_from_url(
+        url: Union[list, str], archive_dir=CONFIG.mail_path, notes=None,
+):
     """
     Collect archives (generally tar.gz) files from mailmain archive page.
 
     Return True if archives were downloaded, False otherwise
     (for example if the page lists no accessible archive files).
     """
-    list_name = get_list_name(url)
-    logging.info("Getting archive page for %s", list_name)
+    if isinstance(url, str):
+        list_name = get_list_name(url)
+        logging.info("Getting archive page for %s", list_name)
+    elif isinstance(url, list):
+        urls = url
+        url = url[0]
+        url_root = "https://" + urlparse(url).hostname
 
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
-    elif listserv_archives_exp.search(url):
-        listserv.ListservArchive.from_url(
+    elif tgpp_archives_exp.search(url):
+        return listserv.ListservArchive.from_mailing_lists(
             name="3GPP",
-            url_root=url,
-            url_home=url + "HOME",
-            instant_dump=True,
+            url_root=url_root,
+            url_mailing_lists=urls,
+            login={'username': '...', 'password': '...'},
+            only_mlist_urls=False,
+            instant_save=True,
+        )
+    elif ieee_archives_exp.search(url):
+        return listserv.ListservArchive.from_mailing_lists(
+            name="IEEE",
+            url_root=url_root,
+            url_mailing_lists=urls,
+            login={'username': '...', 'password': '...'},
+            only_mlist_urls=False,
+            instant_save=True,
         )
 
     response = urllib.request.urlopen(url)

@@ -834,7 +834,7 @@ class ListservList:
             filepath = f"{dir_out}/{self.name}.mbox"
         else:
             filepath = f"{dir_out}/{filename}.mbox"
-        logger.info(f"The list {self.name} is save at {filepath}.")
+        logger.info(f"The list {self.name} is saved at {filepath}.")
         first = True
         for msg in self.messages:
             if first:
@@ -961,6 +961,7 @@ class ListservArchive(object):
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
+        instant_save: Optional[bool] = True,
     ) -> "ListservArchive":
         """
         Create ListservArchive from a given list of 'ListservList'.
@@ -975,15 +976,23 @@ class ListservArchive(object):
             if session is None:
                 session = get_auth_session(url_login, **login)
             lists = []
-            for idx, url in enumerate(url_mailing_lists):
-                lists.append(
-                    ListservList.from_url(
-                        name=idx,
-                        url=url,
-                        select=select,
-                        session=session,
-                    )
+            for url in url_mailing_lists:
+                mlist_name = url.split('A0=')[-1]
+                mlist = ListservList.from_url(
+                    name=mlist_name,
+                    url=url,
+                    select=select,
+                    session=session,
                 )
+                if len(mlist) != 0:
+                    if instant_save:
+                        dir_out = CONFIG.mail_path + name
+                        if os.path.isdir(dir_out) is False:
+                            os.mkdir(dir_out)
+                        mlist.to_mbox(dir_out=dir_out)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        lists.append(mlist)
         else:
             lists = url_mailing_lists
         return cls(name, url_root, lists)
@@ -996,7 +1005,7 @@ class ListservArchive(object):
         folderdsc: str = "*",
         filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
-    ) -> "ListservList":
+    ) -> "ListservArchive":
         """
         Args:
             name: Name of the archive, e.g. '3GPP'.
@@ -1075,6 +1084,9 @@ class ListservArchive(object):
                     )
                     if len(mlist) != 0:
                         if instant_save:
+                            dir_out = CONFIG.mail_path + name
+                            if os.path.isdir(dir_out) is False:
+                                os.mkdir(dir_out)
                             mlist.to_mbox(dir_out=CONFIG.mail_path)
                             archive.append(mlist.name)
                         else:
