@@ -96,7 +96,7 @@ class ListservMessage:
         "fromaddr": None,
         "toname": None,
         "toaddr": None,
-        "date": "Mon, 11 Jan 1111 11:11:11",
+        "date": None,
         "contenttype": None,
     }
 
@@ -367,8 +367,8 @@ class ListservMessage:
         date: Union[str, None],
         from_address: Union[str, None],
     ) -> str:
-        #if date is None:
-        #    date = 'Wed Jan 11 11:11:11 1111'
+        if date is None:
+            date = 'None'
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)

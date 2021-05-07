@@ -71,6 +71,27 @@ class TestListservList:
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
+    
+    def test__missing_date_in_message(self, mlist):
+        """
+        Test that when a message has no date show, a default value
+        """
+        msg = [
+            msg
+            for msg in mlist.messages
+            if msg.subject
+            == "R: How to proceed with ITUT-AH"
+        ][0]
+        assert msg.date == None
+        msg.to_mbox(filepath=f'{dir_temp}/msg_test.mbox')
+        file_temp_mbox = f"{dir_temp}/msg_test.mbox"
+        f = open(file_temp_mbox, "r")
+        lines = f.readlines()
+        print(lines)
+        assert len(lines) == 478
+        assert "Date: None'\n" in lines
+        f.close()
+        Path(file_temp_mbox).unlink()
 
 
 class TestListservArchive:
