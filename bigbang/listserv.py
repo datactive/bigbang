@@ -8,20 +8,20 @@ import os
 import re
 import subprocess
 import time
-from urllib.parse import urlparse
-from urllib.parse import urljoin
 import warnings
 from email.header import Header
 from email.message import Message
 from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
+from urllib.parse import urljoin, urlparse
 
 import numpy as np
 import pandas as pd
 import requests
 import yaml
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
 from config.config import CONFIG
 
@@ -29,6 +29,7 @@ project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
 
 logging.basicConfig(
     filename=project_directory + "/listserv.log",
+    filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
 )
@@ -219,7 +220,7 @@ class ListservMessage:
                     if not re.match(r"\S+:\s+\S+", content[lnr + 1]):
                         value += " " + content[lnr + 1].strip().rstrip("\n")
                 header[key.lower()] = value
-        
+
         header = cls.format_header_content(header)
         header = cls.remove_unwanted_header_content(header)
         return header
@@ -230,7 +231,7 @@ class ListservMessage:
         content: List[str],
         header_end_line_nr: int,
     ) -> str:
-        """"""
+        """ """
         found = False
         # find body 'position' in file
         for line_nr, line in enumerate(content[header_end_line_nr:]):
@@ -248,7 +249,7 @@ class ListservMessage:
 
     @classmethod
     def get_header_from_html(cls, soup: BeautifulSoup) -> Dict[str, str]:
-        """"""
+        """ """
         text = soup.find(
             "b",
             text=re.compile(r"^\bSubject\b"),
@@ -270,7 +271,7 @@ class ListservMessage:
     def get_body_from_html(
         list_name: str, url: str, soup: BeautifulSoup
     ) -> str:
-        """"""
+        """ """
         try:
             url_root = ("/").join(url.split("/")[:-2])
             a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
@@ -279,9 +280,7 @@ class ListservMessage:
                 for tag in a_tags
                 if "Fplain" in tag.get("href")
             ][0]
-            body_soup = get_website_content(
-                urljoin(url_root, href_plain_text)
-            )
+            body_soup = get_website_content(urljoin(url_root, href_plain_text))
             return body_soup.find("pre").text
         except Exception:
             logger.info(
@@ -361,16 +360,16 @@ class ListservMessage:
             line, "%a, %d %b %Y %H:%M:%S"
         )
         return date_time_obj.strftime("%c")
-    
+
     @staticmethod
     def create_message_id(
         date: Union[str, None],
         from_address: Union[str, None],
     ) -> str:
         if date is None:
-            date = 'None'
+            date = "None"
         if from_address is None:
-            from_address = 'None'
+            from_address = "None"
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
@@ -530,11 +529,11 @@ class ListservList:
             if session is None:
                 session = get_auth_session(url_login, **login)
             msgs = []
-            for idx, url in enumerate(messages):
+            for msg_url in tqdm(messages, ascii=True, desc=name):
                 msgs.append(
                     ListservMessage.from_url(
                         list_name=name,
-                        url=url,
+                        url=msg_url,
                         fields=fields,
                         session=session,
                     )
@@ -635,21 +634,26 @@ class ListservList:
         if select is None:
             select = {"fields": "total"}
         msgs = []
+        msg_urls = []
         # run through periods
         for period_url in ListservList.get_period_urls(url, select):
             # run through messages within period
             for msg_url in ListservList.get_messages_urls(name, period_url):
-                msgs.append(
-                    ListservMessage.from_url(
-                        name,
-                        msg_url,
-                        select["fields"],
-                        session=session,
-                    )
+                msg_urls.append(msg_url)
+
+        # run through collected message urls
+        for msg_url in tqdm(msg_urls, ascii=True, desc=name):
+            msgs.append(
+                ListservMessage.from_url(
+                    list_name=name,
+                    url=msg_url,
+                    fields=select["fields"],
+                    session=session,
                 )
-                logger.info(f"Recorded the message {msg_url}.")
-                # wait between loading messages, for politeness
-                time.sleep(1)
+            )
+            logger.info(f"Recorded the message {msg_url}.")
+            # wait between loading messages, for politeness
+            time.sleep(1)
         return msgs
 
     @classmethod
@@ -690,7 +694,9 @@ class ListservList:
         return urls_of_periods
 
     @staticmethod
-    def get_all_periods_and_their_urls(url: str) -> Tuple[List[str], List[str]]:
+    def get_all_periods_and_their_urls(
+        url: str,
+    ) -> Tuple[List[str], List[str]]:
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
@@ -752,10 +758,7 @@ class ListservList:
         soup = get_website_content(url)
         a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
         if a_tags:
-            a_tags = [
-                urljoin(url_root, url.get("href"))
-                for url in a_tags
-            ]
+            a_tags = [urljoin(url_root, url.get("href")) for url in a_tags]
         return a_tags
 
     @classmethod
@@ -969,7 +972,7 @@ class ListservArchive(object):
         Create ListservArchive from a given list of 'ListservList'.
 
         Args:
-            name:
+            name: Name used for folder in which scraped lists will be stored.
             url_root:
             url_mailing_lists:
 
@@ -979,7 +982,7 @@ class ListservArchive(object):
                 session = get_auth_session(url_login, **login)
             lists = []
             for url in url_mailing_lists:
-                mlist_name = url.split('A0=')[-1]
+                mlist_name = url.split("A0=")[-1]
                 mlist = ListservList.from_url(
                     name=mlist_name,
                     url=url,
@@ -989,8 +992,7 @@ class ListservArchive(object):
                 if len(mlist) != 0:
                     if instant_save:
                         dir_out = CONFIG.mail_path + name
-                        if os.path.isdir(dir_out) is False:
-                            os.mkdir(dir_out)
+                        Path(dir_out).mkdir(parents=True, exist_ok=True)
                         mlist.to_mbox(dir_out=dir_out)
                     else:
                         logger.info(f"Recorded the list {mlist.name}.")
@@ -1071,7 +1073,12 @@ class ListservArchive(object):
                 [
                     archive.append(mlist_url)
                     for mlist_url in mlist_urls
-                    if len(ListservList.get_all_periods_and_their_urls(mlist_url)[1]) > 0
+                    if len(
+                        ListservList.get_all_periods_and_their_urls(mlist_url)[
+                            1
+                        ]
+                    )
+                    > 0
                 ]
 
             else:
@@ -1086,9 +1093,8 @@ class ListservArchive(object):
                     )
                     if len(mlist) != 0:
                         if instant_save:
-                            dir_out = CONFIG.mail_path + name
-                            if os.path.isdir(dir_out) is False:
-                                os.mkdir(dir_out)
+                            dir_out = CONFIG.mail_path + key
+                            Path(dir_out).mkdir(parents=True, exist_ok=True)
                             mlist.to_mbox(dir_out=CONFIG.mail_path)
                             archive.append(mlist.name)
                         else:
@@ -1117,7 +1123,7 @@ class ListservArchive(object):
                 if value in ["Next", "Previous"]:
                     continue
                 archive_sections_dict[key] = value
-            archive_sections_dict[re.sub(r'p=[0-9]+', 'p=1', key)] = 'FIRST'
+            archive_sections_dict[re.sub(r"p=[0-9]+", "p=1", key)] = "FIRST"
         else:
             archive_sections_dict[url_home] = "Home"
         return archive_sections_dict
@@ -1189,7 +1195,7 @@ class ListservArchive(object):
 def get_auth_session(
     url_login: str, username: str, password: str
 ) -> requests.Session:
-    """ Create AuthSession """
+    """Create AuthSession"""
     # ask user for login keys
     username, password = get_login_from_terminal(username, password)
     if username is None or password is None:
@@ -1251,7 +1257,7 @@ def loginkey_to_file(
     password: str,
     file_auth: str,
 ) -> None:
-    """ Safe login key to yaml """
+    """Safe login key to yaml"""
     file = open(file_auth, "w")
     file.write(f"username: '{username}'\n")
     file.write(f"password: '{password}'")
@@ -1262,7 +1268,7 @@ def get_website_content(
     url: str,
     session: Optional[requests.Session] = None,
 ) -> BeautifulSoup:
-    """ Get HTML code from website """
+    """Get HTML code from website"""
     # TODO: include option to change BeautifulSoup args
     if session is None:
         sauce = requests.get(url)
@@ -1277,7 +1283,7 @@ def get_website_content(
 def get_paths_to_files_in_directory(
     directory: str, file_dsc: str = "*"
 ) -> List[str]:
-    """ Get paths of all files matching file_dsc in directory """
+    """Get paths of all files matching file_dsc in directory"""
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
@@ -1286,7 +1292,7 @@ def get_paths_to_files_in_directory(
 def get_paths_to_dirs_in_directory(
     directory: str, folder_dsc: str = "*"
 ) -> List[str]:
-    """ Get paths of all directories matching file_dsc in directory """
+    """Get paths of all directories matching file_dsc in directory"""
     template = f"{directory}{folder_dsc}"
     dir_paths = glob.glob(template)
     # normalize directory paths
