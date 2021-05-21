@@ -305,24 +305,18 @@ def collect_archive_from_url(
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
     elif tgpp_archives_exp.search(url):
-        with open(file_auth, "r") as stream:
-            auth_key = yaml.safe_load(stream)
         return listserv.ListservArchive.from_mailing_lists(
             name="3GPP",
             url_root=url_root,
             url_mailing_lists=urls,
-            login=auth_key,
             only_mlist_urls=False,
             instant_save=True,
         )
     elif ieee_archives_exp.search(url):
-        with open(file_auth, "r") as stream:
-            auth_key = yaml.safe_load(stream)
         return listserv.ListservArchive.from_mailing_lists(
             name="IEEE",
             url_root=url_root,
             url_mailing_lists=urls,
-            login=auth_key,
             only_mlist_urls=False,
             instant_save=True,
         )

@@ -25,10 +25,11 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
-project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
+filepath_auth = CONFIG.config_path + "authentication.yaml"
+directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 
 logging.basicConfig(
-    filename=project_directory + "/listserv.log",
+    filename=directory_project + "/listserv.log",
     filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
@@ -1228,9 +1229,25 @@ class ListservArchive(object):
 def get_auth_session(
     url_login: str, username: str, password: str
 ) -> requests.Session:
-    """Create AuthSession"""
-    # ask user for login keys
-    username, password = get_login_from_terminal(username, password)
+    """
+    Create AuthSession.
+
+    There are three ways to create an AuthSession:
+        - parse username & password directly into method
+        - create a /bigbang/config/authentication.yaml file that contains keys
+        - type then into terminal when the method 'get_login_from_terminal'
+            is raised
+    """
+    if os.path.isfile(filepath_auth):
+        # read from /config/authentication.yaml
+        with open(filepath_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
+        username = auth_key["username"]
+        password = auth_key["password"]
+    else:
+        # ask user for login keys
+        username, password = get_login_from_terminal(username, password)
+
     if username is None or password is None:
         # continue without authentication
         return None
@@ -1252,7 +1269,7 @@ def get_auth_session(
 def get_login_from_terminal(
     username: Union[str, None],
     password: Union[str, None],
-    file_auth: str = project_directory + "/config/authentication.yaml",
+    file_auth: str = directory_project + "/config/authentication.yaml",
 ) -> Tuple[Union[str, None]]:
     """
     Get login key from user during run time if 'username' and/or 'password' is 'None'.
