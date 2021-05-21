@@ -25,15 +25,19 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
-project_directory = str(Path(os.path.abspath(__file__)).parent.parent)
+filepath_auth = CONFIG.config_path + "authentication.yaml"
+directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 
 logging.basicConfig(
-    filename=project_directory + "/listserv.log",
+    filename=directory_project + "/listserv.log",
     filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
 )
 logger = logging.getLogger(__name__)
+
+
+i_am_calling_from = "?"
 
 
 class ListservMessageWarning(BaseException):
@@ -91,6 +95,10 @@ class ListservMessage:
     )
     """
 
+    global i_am_calling_from
+    if i_am_calling_from == "?":
+        i_am_calling_from = "ListservMessage"
+
     empty_header = {
         "subject": None,
         "fromname": None,
@@ -134,18 +142,28 @@ class ListservMessage:
     ) -> "ListservMessage":
         """
         Args:
+            list_name:
+            url:
+            fields:
+            url_login:
+            login:
+            session:
         """
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
-        if fields in ["header", "total"]:
-            header = ListservMessage.get_header_from_html(soup)
-        else:
+        if soup == "RequestException":
+            body = "RequestException"
             header = cls.empty_header
-        if fields in ["body", "total"]:
-            body = ListservMessage.get_body_from_html(list_name, url, soup)
         else:
-            body = None
+            if fields in ["header", "total"]:
+                header = ListservMessage.get_header_from_html(soup)
+            else:
+                header = cls.empty_header
+            if fields in ["body", "total"]:
+                body = ListservMessage.get_body_from_html(list_name, url, soup)
+            else:
+                body = None
         return cls(body, **header)
 
     @classmethod
@@ -281,7 +299,10 @@ class ListservMessage:
                 if "Fplain" in tag.get("href")
             ][0]
             body_soup = get_website_content(urljoin(url_root, href_plain_text))
-            return body_soup.find("pre").text
+            if body_soup == "RequestException":
+                return body_soup
+            else:
+                return body_soup.find("pre").text
         except Exception:
             logger.info(
                 f"The message body of {url} which is part of the "
@@ -459,6 +480,10 @@ class ListservList:
     )
     """
 
+    global i_am_calling_from
+    if i_am_calling_from == "?":
+        i_am_calling_from = "ListservList"
+
     def __init__(
         self,
         name: str,
@@ -530,14 +555,17 @@ class ListservList:
                 session = get_auth_session(url_login, **login)
             msgs = []
             for msg_url in tqdm(messages, ascii=True, desc=name):
-                msgs.append(
-                    ListservMessage.from_url(
-                        list_name=name,
-                        url=msg_url,
-                        fields=fields,
-                        session=session,
-                    )
+                msg = ListservMessage.from_url(
+                    list_name=name,
+                    url=msg_url,
+                    fields=fields,
+                    session=session,
                 )
+                if msg.body == "RequestException":
+                    time.sleep(30)
+                else:
+                    msgs.append(msg)
+                    logger.info(f"Recorded the message {msg_url}.")
         else:
             # create ListservList from list of ListservMessages
             msgs = messages
@@ -620,7 +648,7 @@ class ListservList:
         session: Optional[dict] = None,
     ) -> List[ListservMessage]:
         """
-        Generator that yields all messages within a certain period
+        Generator that returns all messages within a certain period
         (e.g. January 2021, Week 5).
 
         Args:
@@ -643,15 +671,17 @@ class ListservList:
 
         # run through collected message urls
         for msg_url in tqdm(msg_urls, ascii=True, desc=name):
-            msgs.append(
-                ListservMessage.from_url(
-                    list_name=name,
-                    url=msg_url,
-                    fields=select["fields"],
-                    session=session,
-                )
+            msg = ListservMessage.from_url(
+                list_name=name,
+                url=msg_url,
+                fields=select["fields"],
+                session=session,
             )
-            logger.info(f"Recorded the message {msg_url}.")
+            if msg.body == "RequestException":
+                time.sleep(30)
+            else:
+                msgs.append(msg)
+                logger.info(f"Recorded the message {msg_url}.")
             # wait between loading messages, for politeness
             time.sleep(1)
         return msgs
@@ -889,6 +919,10 @@ class ListservArchive(object):
         },
     )
     """
+
+    global i_am_calling_from
+    if i_am_calling_from == "?":
+        i_am_calling_from = "ListservArchive"
 
     def __init__(self, name: str, url: str, lists: List[ListservList]):
         self.name = name
@@ -1195,9 +1229,25 @@ class ListservArchive(object):
 def get_auth_session(
     url_login: str, username: str, password: str
 ) -> requests.Session:
-    """Create AuthSession"""
-    # ask user for login keys
-    username, password = get_login_from_terminal(username, password)
+    """
+    Create AuthSession.
+
+    There are three ways to create an AuthSession:
+        - parse username & password directly into method
+        - create a /bigbang/config/authentication.yaml file that contains keys
+        - type then into terminal when the method 'get_login_from_terminal'
+            is raised
+    """
+    if os.path.isfile(filepath_auth):
+        # read from /config/authentication.yaml
+        with open(filepath_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
+        username = auth_key["username"]
+        password = auth_key["password"]
+    else:
+        # ask user for login keys
+        username, password = get_login_from_terminal(username, password)
+
     if username is None or password is None:
         # continue without authentication
         return None
@@ -1219,7 +1269,7 @@ def get_auth_session(
 def get_login_from_terminal(
     username: Union[str, None],
     password: Union[str, None],
-    file_auth: str = project_directory + "/config/authentication.yaml",
+    file_auth: str = directory_project + "/config/authentication.yaml",
 ) -> Tuple[Union[str, None]]:
     """
     Get login key from user during run time if 'username' and/or 'password' is 'None'.
@@ -1267,17 +1317,35 @@ def loginkey_to_file(
 def get_website_content(
     url: str,
     session: Optional[requests.Session] = None,
-) -> BeautifulSoup:
-    """Get HTML code from website"""
+) -> Union[str, BeautifulSoup]:
+    """
+    Get HTML code from website
+
+    Note: LISTSERV 16.5 archives don't like it when one is sending too many
+    requests from same ip address in short period of time. Therefore we need
+    to:
+        a) catch 'requests.exceptions.RequestException' errors
+            (includes all possible errors to be on the safe side),
+        b) safe intermediate results,
+        c) continue where we left off at a later stage.
+    """
     # TODO: include option to change BeautifulSoup args
-    if session is None:
-        sauce = requests.get(url)
-        assert sauce.status_code == 200
-        soup = BeautifulSoup(sauce.content, "html.parser")
-    else:
-        sauce = session.get(url)
-        soup = BeautifulSoup(sauce.text, "html.parser")
-    return soup
+    try:
+        if session is None:
+            sauce = requests.get(url)
+            assert sauce.status_code == 200
+            soup = BeautifulSoup(sauce.content, "html.parser")
+        else:
+            sauce = session.get(url)
+            soup = BeautifulSoup(sauce.text, "html.parser")
+        return soup
+    except requests.exceptions.RequestException as e:
+        if "A2=" in url:
+            # if URL of ListservMessage
+            logger.info(f"{e} for {url}.")
+            return "RequestException"
+        else:
+            SystemExit()
 
 
 def get_paths_to_files_in_directory(
