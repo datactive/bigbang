@@ -36,6 +36,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+i_am_calling_from = "?"
+
+
 class ListservMessageWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
@@ -91,6 +94,10 @@ class ListservMessage:
     )
     """
 
+    global i_am_calling_from
+    if i_am_calling_from == "?":
+        i_am_calling_from = "ListservMessage"
+
     empty_header = {
         "subject": None,
         "fromname": None,
@@ -138,15 +145,18 @@ class ListservMessage:
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
-        if fields in ["header", "total"]:
-            header = ListservMessage.get_header_from_html(soup)
+        if soup == "RequestException":
+            return cls("RequestException", **cls.empty_header)
         else:
-            header = cls.empty_header
-        if fields in ["body", "total"]:
-            body = ListservMessage.get_body_from_html(list_name, url, soup)
-        else:
-            body = None
-        return cls(body, **header)
+            if fields in ["header", "total"]:
+                header = ListservMessage.get_header_from_html(soup)
+            else:
+                header = cls.empty_header
+            if fields in ["body", "total"]:
+                body = ListservMessage.get_body_from_html(list_name, url, soup)
+            else:
+                body = None
+            return cls(body, **header)
 
     @classmethod
     def from_listserv_file(
@@ -281,7 +291,10 @@ class ListservMessage:
                 if "Fplain" in tag.get("href")
             ][0]
             body_soup = get_website_content(urljoin(url_root, href_plain_text))
-            return body_soup.find("pre").text
+            if body_soup == "RequestException":
+                return body_soup
+            else:
+                return body_soup.find("pre").text
         except Exception:
             logger.info(
                 f"The message body of {url} which is part of the "
@@ -459,6 +472,10 @@ class ListservList:
     )
     """
 
+    global i_am_calling_from
+    if i_am_calling_from == "?":
+        i_am_calling_from = "ListservList"
+
     def __init__(
         self,
         name: str,
@@ -530,14 +547,17 @@ class ListservList:
                 session = get_auth_session(url_login, **login)
             msgs = []
             for msg_url in tqdm(messages, ascii=True, desc=name):
-                msgs.append(
-                    ListservMessage.from_url(
-                        list_name=name,
-                        url=msg_url,
-                        fields=fields,
-                        session=session,
-                    )
+                msg = ListservMessage.from_url(
+                    list_name=name,
+                    url=msg_url,
+                    fields=fields,
+                    session=session,
                 )
+                if msg.body == "RequestException":
+                    time.sleep(30)
+                else:
+                    msgs.append(msg)
+                    logger.info(f"Recorded the message {msg_url}.")
         else:
             # create ListservList from list of ListservMessages
             msgs = messages
@@ -643,15 +663,17 @@ class ListservList:
 
         # run through collected message urls
         for msg_url in tqdm(msg_urls, ascii=True, desc=name):
-            msgs.append(
-                ListservMessage.from_url(
-                    list_name=name,
-                    url=msg_url,
-                    fields=select["fields"],
-                    session=session,
-                )
+            msg = ListservMessage.from_url(
+                list_name=name,
+                url=msg_url,
+                fields=select["fields"],
+                session=session,
             )
-            logger.info(f"Recorded the message {msg_url}.")
+            if msg.body == "RequestException":
+                time.sleep(30)
+            else:
+                msgs.append(msg)
+                logger.info(f"Recorded the message {msg_url}.")
             # wait between loading messages, for politeness
             time.sleep(1)
         return msgs
@@ -889,6 +911,10 @@ class ListservArchive(object):
         },
     )
     """
+
+    global i_am_calling_from
+    if i_am_calling_from == "?":
+        i_am_calling_from = "ListservArchive"
 
     def __init__(self, name: str, url: str, lists: List[ListservList]):
         self.name = name
@@ -1267,17 +1293,36 @@ def loginkey_to_file(
 def get_website_content(
     url: str,
     session: Optional[requests.Session] = None,
-) -> BeautifulSoup:
-    """Get HTML code from website"""
+) -> Union[str, BeautifulSoup]:
+    """
+    Get HTML code from website
+
+    Note: LISTSERV 16.5 archives don't like it when one is sending too many
+    requests from same ip address in short period of time. Therefore we need
+    to:
+        a) catch 'requests.exceptions.RequestException' errors
+            (includes all possible errors to be on the safe side),
+        b) safe intermediate results,
+        c) continue where we left off at a later stage.
+    """
     # TODO: include option to change BeautifulSoup args
-    if session is None:
-        sauce = requests.get(url)
-        assert sauce.status_code == 200
-        soup = BeautifulSoup(sauce.content, "html.parser")
-    else:
-        sauce = session.get(url)
-        soup = BeautifulSoup(sauce.text, "html.parser")
-    return soup
+    try:
+        if session is None:
+            sauce = requests.get(url)
+            assert sauce.status_code == 200
+            soup = BeautifulSoup(sauce.content, "html.parser")
+        else:
+            sauce = session.get(url)
+            soup = BeautifulSoup(sauce.text, "html.parser")
+        return soup
+    except requests.exceptions.RequestException as e:
+        # TODO logger
+        if "A2=" in url:
+            # if URL of ListservMessage
+            logger.info(f"{e} for {url}.")
+            return "RequestException"
+        else:
+            SystemExit()
 
 
 def get_paths_to_files_in_directory(
