@@ -10,10 +10,10 @@ import subprocess
 import urllib.error
 import urllib.parse
 import urllib.request
-from urllib.parse import urlparse
 import warnings
 from pprint import pprint as pp
 from typing import Union
+from urllib.parse import urlparse
 
 import pandas as pd
 import yaml
@@ -29,11 +29,12 @@ txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
 gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile(r"lists\.w3\.org")
-tgpp_archives_exp = re.compile(r'list\.etsi\.org')
-ieee_archives_exp = re.compile(r'listserv\.ieee\.org')
+tgpp_archives_exp = re.compile(r"list\.etsi\.org")
+ieee_archives_exp = re.compile(r"listserv\.ieee\.org")
 
 mailing_list_path_expressions = [gz_exp, ietf_ml_exp, txt_exp]
 
+file_auth = CONFIG.config_path + "authentication.yaml"
 PROVENANCE_FILENAME = "provenance.yaml"
 
 
@@ -283,7 +284,9 @@ def update_provenance(directory, provenance):
 
 
 def collect_archive_from_url(
-        url: Union[list, str], archive_dir=CONFIG.mail_path, notes=None,
+    url: Union[list, str],
+    archive_dir=CONFIG.mail_path,
+    notes=None,
 ):
     """
     Collect archives (generally tar.gz) files from mailmain archive page.
@@ -302,20 +305,24 @@ def collect_archive_from_url(
     if w3c_archives_exp.search(url):
         return w3crawl.collect_from_url(url, archive_dir, notes=notes)
     elif tgpp_archives_exp.search(url):
+        with open(file_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
         return listserv.ListservArchive.from_mailing_lists(
             name="3GPP",
             url_root=url_root,
             url_mailing_lists=urls,
-            login={'username': '...', 'password': '...'},
+            login=auth_key,
             only_mlist_urls=False,
             instant_save=True,
         )
     elif ieee_archives_exp.search(url):
+        with open(file_auth, "r") as stream:
+            auth_key = yaml.safe_load(stream)
         return listserv.ListservArchive.from_mailing_lists(
             name="IEEE",
             url_root=url_root,
             url_mailing_lists=urls,
-            login={'username': '...', 'password': '...'},
+            login=auth_key,
             only_mlist_urls=False,
             instant_save=True,
         )

@@ -141,12 +141,19 @@ class ListservMessage:
     ) -> "ListservMessage":
         """
         Args:
+            list_name:
+            url:
+            fields:
+            url_login:
+            login:
+            session:
         """
         if session is None:
             session = get_auth_session(url_login, **login)
         soup = get_website_content(url, session=session)
         if soup == "RequestException":
-            return cls("RequestException", **cls.empty_header)
+            body = "RequestException"
+            header = cls.empty_header
         else:
             if fields in ["header", "total"]:
                 header = ListservMessage.get_header_from_html(soup)
@@ -156,7 +163,7 @@ class ListservMessage:
                 body = ListservMessage.get_body_from_html(list_name, url, soup)
             else:
                 body = None
-            return cls(body, **header)
+        return cls(body, **header)
 
     @classmethod
     def from_listserv_file(
@@ -640,7 +647,7 @@ class ListservList:
         session: Optional[dict] = None,
     ) -> List[ListservMessage]:
         """
-        Generator that yields all messages within a certain period
+        Generator that returns all messages within a certain period
         (e.g. January 2021, Week 5).
 
         Args:
@@ -1316,7 +1323,6 @@ def get_website_content(
             soup = BeautifulSoup(sauce.text, "html.parser")
         return soup
     except requests.exceptions.RequestException as e:
-        # TODO logger
         if "A2=" in url:
             # if URL of ListservMessage
             logger.info(f"{e} for {url}.")
