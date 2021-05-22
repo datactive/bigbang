@@ -90,13 +90,13 @@ class ListservMessageParser(email.parser.Parser):
     """
 
     empty_header = {
-        "subject": "None",
-        "fromname": "None",
-        "fromaddr": "None",
-        "toname": "None",
-        "toaddr": "None",
-        "date": "None",
-        "contenttype": "None",
+        "subject": None,
+        "fromname": None,
+        "fromaddr": None,
+        "toname": None,
+        "toaddr": None,
+        "date": None,
+        "contenttype": None,
     }
 
     def __init__(
@@ -124,23 +124,26 @@ class ListservMessageParser(email.parser.Parser):
         contenttype: str,
     ) -> mboxMessage:
         msg = email.message.EmailMessage()
-        msg.set_content(body)
-        msg["Subject"] = subject
-        if (fromname != "None") and (fromaddr != "None"):
+        if body is not None:
+            msg.set_content(body)
+        if subject is not None:
+            msg["Subject"] = subject
+        if (fromname is not None) and (fromaddr is not None):
             msg["From"] = email.utils.formataddr((fromname, fromaddr))
-        if (toname != "None") and (toaddr != "None"):
+        if (toname is not None) and (toaddr is not None):
             msg["To"] = email.utils.formataddr((toname, toaddr))
-        if date != "None":
+        if date is not None:
             msg["Date"] = date
-        if contenttype != "None":
+        if contenttype is not None:
             msg.set_param("Content-Type", contenttype)
-        if (date != "None") and (fromaddr != "None"):
+        if (date is not None) and (fromaddr is not None):
             msg["Message-ID"] = self.create_message_id(date, fromaddr)
         mbox_msg = mboxMessage(msg)
-        mbox_msg.set_from(
-            from_=msg["From"],
-            time_=email.utils.parsedate(msg["Date"]),
-        )
+        if (date is not None) and (fromaddr is not None):
+            mbox_msg.set_from(
+                from_=msg["From"],
+                time_=email.utils.parsedate(msg["Date"]),
+            )
         mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
         return mbox_msg
 
@@ -169,7 +172,7 @@ class ListservMessageParser(email.parser.Parser):
             if fields in ["body", "total"]:
                 body = self._get_body_from_html(list_name, url, soup)
             else:
-                body = "None"
+                body = None
         return self.create_email_message(url, body, **header)
 
     def from_listserv_file(
@@ -338,14 +341,14 @@ class ListservMessageParser(email.parser.Parser):
                 "toaddr": self.get_addr,
             },
             "date": {"date": self.get_date},
-            "content-type": {"contenttype": "None"},
+            "content-type": {"contenttype": None},
         }
         # run through format settings
         for key_old, value in formatting_header_conf.items():
             # if header contains field
             if key_old in header.keys():
                 for key_new, fct in formatting_header_conf[key_old].items():
-                    if fct == "None" or header[key_old] == "None":
+                    if fct is None or header[key_old] is None:
                         header[key_new] = header[key_old]
                     else:
                         header[key_new] = fct(header[key_old])
@@ -377,7 +380,7 @@ class ListservMessageParser(email.parser.Parser):
         return name.strip()
 
     @staticmethod
-    def get_addr(line: str) -> Union[str, None]:
+    def get_addr(line: str) -> str:
         # get string in between < and >
         email_addr = re.findall(r"\<(.*)\>", line)
         if email_addr:
@@ -397,8 +400,8 @@ class ListservMessageParser(email.parser.Parser):
 
     @staticmethod
     def create_message_id(
-        date: Union[str, None],
-        from_address: Union[str, None],
+        date: str,
+        from_address: str,
     ) -> str:
         message_id = (".").join([date, from_address])
         # remove special characters
