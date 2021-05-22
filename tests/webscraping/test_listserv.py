@@ -85,7 +85,7 @@ class TestListservMessageParser:
             url=url_message,
             fields="header",
         )
-        assert str(msg.get_payload().split()[0]) == "None"
+        assert msg.get_payload() is None
 
     def test__only_body_from_url(self):
         msg_parser = ListservMessageParser(
@@ -159,7 +159,7 @@ class TestListservList:
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        assert len(list(dic.keys())) == 9
+        assert len(list(dic.keys())) == 7
         assert len(dic[list(dic.keys())[0]]) == 1
 
     def test__to_mbox(self, mlist):
@@ -167,8 +167,11 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 12
-        assert lines[1] == "Content-Transfer-Encoding: 7bit\n"
+        assert len(lines) == 9
+        assert (
+            lines[1]
+            == "Subject: 10th International Conference on Electrical Engineering (ICEENG'10)\n"
+        )
         f.close()
         Path(file_temp_mbox).unlink()
 
@@ -204,13 +207,13 @@ class TestListservArchive:
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 10
+        assert len(list(dic.keys())) == 8
         assert len(dic[list(dic.keys())[0]]) == 1
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/IEEE-TEST.mbox": 10,
+            f"{dir_temp}/IEEE-TEST.mbox": 7,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
