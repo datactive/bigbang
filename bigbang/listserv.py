@@ -1,6 +1,5 @@
 import datetime
 import email
-import email.parser
 import glob
 import logging
 import mailbox
@@ -9,9 +8,7 @@ import re
 import subprocess
 import time
 import warnings
-from email.header import Header
-from email.message import Message
-from email.mime.text import MIMEText
+from mailbox import mboxMessage
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.parse import urljoin, urlparse
@@ -37,10 +34,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-i_am_calling_from = "?"
-
-
-class ListservMessageWarning(BaseException):
+class ListservMessageParserWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
     pass
@@ -58,59 +52,68 @@ class ListservArchiveWarning(BaseException):
     pass
 
 
-class ListservMessage:
+class ListservMessageParser(email.parser.Parser):
     """
+    This class handles the creation of an mailbox.mboxMessage object
+    (via the from_...() methods) and its storage in various other file formats
+    (via the to_...() methods) that can be saved on the local machine.
+
     Parameters
     ----------
-    body
-    subject
-    fromname
-    fromaddr
-    toname
-    toaddr
-    date
-    contenttype
-    messageid
+    website:
+    url_login:
+    login:
+    session:
 
     Methods
     -------
     from_url
-    get_header_from_html
-    get_body_from_html
-    get_header_from_listserv_file
-    get_body_from_listserv_file
+    _get_header_from_html
+    _get_body_from_html
+    _get_header_from_listserv_file
+    _get_body_from_listserv_file
+    _format_header_content
+    _remove_unwanted_header_content
     get_name
     get_addr
     get_date
-    remove_unwanted_header_content
     to_dict
     to_mbox
 
     Example
     -------
-    msg = ListservMessage.from_url(
+    msg = ListservMessageParser.from_url(
         list_name="3GPP_TSG_CT_WG6",
         url=url_message,
         fields="total",
     )
     """
 
-    global i_am_calling_from
-    if i_am_calling_from == "?":
-        i_am_calling_from = "ListservMessage"
-
     empty_header = {
-        "subject": None,
-        "fromname": None,
-        "fromaddr": None,
-        "toname": None,
-        "toaddr": None,
-        "date": None,
-        "contenttype": None,
+        "subject": "None",
+        "fromname": "None",
+        "fromaddr": "None",
+        "toname": "None",
+        "toaddr": "None",
+        "date": "None",
+        "contenttype": "None",
     }
 
     def __init__(
         self,
+        website=False,
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
+    ):
+        if website:
+            if session is None:
+                session = get_auth_session(url_login, **login)
+            self.session = session
+
+    def create_email_message(
+        self,
+        archived_at: str,
         body: str,
         subject: str,
         fromname: str,
@@ -119,84 +122,85 @@ class ListservMessage:
         toaddr: str,
         date: str,
         contenttype: str,
-        messageid: Optional[str] = None,
-    ):
-        self.body = body
-        self.subject = subject
-        self.fromname = fromname
-        self.fromaddr = fromaddr
-        self.toname = toname
-        self.toaddr = toaddr
-        self.date = date
-        self.contenttype = contenttype
+    ) -> mboxMessage:
+        msg = email.message.EmailMessage()
+        msg.set_content(body)
+        msg["Subject"] = subject
+        if (fromname != "None") and (fromaddr != "None"):
+            msg["From"] = email.utils.formataddr((fromname, fromaddr))
+        if (toname != "None") and (toaddr != "None"):
+            msg["To"] = email.utils.formataddr((toname, toaddr))
+        if date != "None":
+            msg["Date"] = date
+        if contenttype != "None":
+            msg.set_param("Content-Type", contenttype)
+        if (date != "None") and (fromaddr != "None"):
+            msg["Message-ID"] = self.create_message_id(date, fromaddr)
+        mbox_msg = mboxMessage(msg)
+        mbox_msg.set_from(
+            from_=msg["From"],
+            time_=email.utils.parsedate(msg["Date"]),
+        )
+        mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
+        return mbox_msg
 
-    @classmethod
     def from_url(
-        cls,
+        self,
         list_name: str,
         url: str,
         fields: str = "total",
-        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[str] = None,
-    ) -> "ListservMessage":
+    ) -> mboxMessage:
         """
         Args:
             list_name:
             url:
             fields:
             url_login:
-            login:
-            session:
         """
-        if session is None:
-            session = get_auth_session(url_login, **login)
-        soup = get_website_content(url, session=session)
+        soup = get_website_content(url, session=self.session)
         if soup == "RequestException":
             body = "RequestException"
-            header = cls.empty_header
+            header = self.empty_header
         else:
             if fields in ["header", "total"]:
-                header = ListservMessage.get_header_from_html(soup)
+                header = self._get_header_from_html(soup)
             else:
-                header = cls.empty_header
+                header = self.empty_header
             if fields in ["body", "total"]:
-                body = ListservMessage.get_body_from_html(list_name, url, soup)
+                body = self._get_body_from_html(list_name, url, soup)
             else:
-                body = None
-        return cls(body, **header)
+                body = "None"
+        return self.create_email_message(url, body, **header)
 
-    @classmethod
     def from_listserv_file(
-        cls,
+        self,
         list_name: str,
         file_path: str,
         header_start_line_nr: int,
         fields: str = "total",
-    ) -> "ListservMessage":
+    ) -> mboxMessage:
         file = open(file_path, "r", errors="replace")
         fcontent = file.readlines()
         file.close()
-        header_end_line_nr = cls.get_header_end_line_nr(
+        header_end_line_nr = self._get_header_end_line_nr(
             fcontent, header_start_line_nr
         )
         if fields in ["header", "total"]:
-            header = cls.get_header_from_listserv_file(
+            header = self._get_header_from_listserv_file(
                 fcontent, header_start_line_nr, header_end_line_nr
             )
         else:
-            header = cls.empty_header
+            header = self.empty_header
         if fields in ["body", "total"]:
-            body = cls.get_body_from_listserv_file(
+            body = self._get_body_from_listserv_file(
                 fcontent, header_end_line_nr
             )
         else:
             body = None
-        return cls(body, **header)
+        return self.create_email_message(file_path, body, **header)
 
-    @classmethod
-    def get_header_end_line_nr(
-        cls,
+    def _get_header_end_line_nr(
+        self,
         content: List[str],
         header_start_line_nr: int,
     ) -> List[int]:
@@ -205,6 +209,7 @@ class ListservMessage:
 
         Args:
             content: The content of one LISTSERV-file.
+            header_start_line_nr:
         """
         for lnr, lcont in enumerate(content[header_start_line_nr:]):
             if len(lcont) <= 1:
@@ -212,17 +217,21 @@ class ListservMessage:
                 break
         return header_end_line_nr
 
-    @classmethod
-    def get_header_from_listserv_file(
-        cls,
+    def _get_header_from_listserv_file(
+        self,
         content: List[str],
         header_start_line_nr: int,
         header_end_line_nr: int,
     ) -> Dict[str, str]:
         """
+        Lexer for the message header.
+
         Args:
-            content:
+            content: The content of one LISTSERV-file.
+            header_start_line_nr:
+            header_end_line_nr:
         """
+        # TODO re-write using email.parser.Parser
         content = content[header_start_line_nr:header_end_line_nr]
         # collect important info from LISTSERV header
         header = {}
@@ -239,17 +248,23 @@ class ListservMessage:
                         value += " " + content[lnr + 1].strip().rstrip("\n")
                 header[key.lower()] = value
 
-        header = cls.format_header_content(header)
-        header = cls.remove_unwanted_header_content(header)
+        header = self.format_header_content(header)
+        header = self._remove_unwanted_header_content(header)
         return header
 
-    @classmethod
-    def get_body_from_listserv_file(
-        cls,
+    def _get_body_from_listserv_file(
+        self,
         content: List[str],
         header_end_line_nr: int,
     ) -> str:
-        """ """
+        """
+        Lexer for the message body/payload.
+
+        Args:
+            content: The content of one LISTSERV-file.
+            header_end_line_nr:
+        """
+        # TODO re-write using email.parser.Parser
         found = False
         # find body 'position' in file
         for line_nr, line in enumerate(content[header_end_line_nr:]):
@@ -265,9 +280,9 @@ class ListservMessage:
         body = ("").join([line for line in body if len(line) > 1])
         return body
 
-    @classmethod
-    def get_header_from_html(cls, soup: BeautifulSoup) -> Dict[str, str]:
-        """ """
+    def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
+        """Lexer for the message header."""
+        # TODO re-write using email.parser.Parser
         text = soup.find(
             "b",
             text=re.compile(r"^\bSubject\b"),
@@ -281,15 +296,15 @@ class ListservMessage:
             field_body = field.replace(field_name + ":", "").strip()
             header[field_name.lower()] = field_body
 
-        header = cls.format_header_content(header)
-        header = cls.remove_unwanted_header_content(header)
+        header = self.format_header_content(header)
+        header = self._remove_unwanted_header_content(header)
         return header
 
-    @staticmethod
-    def get_body_from_html(
-        list_name: str, url: str, soup: BeautifulSoup
+    def _get_body_from_html(
+        self, list_name: str, url: str, soup: BeautifulSoup
     ) -> str:
-        """ """
+        """Lexer for the message body/payload."""
+        # TODO re-write using email.parser.Parser
         try:
             url_root = ("/").join(url.split("/")[:-2])
             a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
@@ -310,43 +325,41 @@ class ListservMessage:
             )
             return None
 
-    @classmethod
-    def format_header_content(cls, header: Dict[str, str]) -> Dict[str, str]:
+    def format_header_content(self, header: Dict[str, str]) -> Dict[str, str]:
         "Formats LISTSERV 16.5 header fields to mbox convention."
         # define formatting configuration
         formatting_header_conf = {
             "from": {
-                "fromname": cls.get_name,
-                "fromaddr": cls.get_addr,
+                "fromname": self.get_name,
+                "fromaddr": self.get_addr,
             },
             "reply-to": {
-                "toname": cls.get_name,
-                "toaddr": cls.get_addr,
+                "toname": self.get_name,
+                "toaddr": self.get_addr,
             },
-            "date": {"date": cls.get_date},
-            "content-type": {"contenttype": None},
+            "date": {"date": self.get_date},
+            "content-type": {"contenttype": "None"},
         }
         # run through format settings
         for key_old, value in formatting_header_conf.items():
             # if header contains field
             if key_old in header.keys():
                 for key_new, fct in formatting_header_conf[key_old].items():
-                    if fct is None or header[key_old] is None:
+                    if fct == "None" or header[key_old] == "None":
                         header[key_new] = header[key_old]
                     else:
                         header[key_new] = fct(header[key_old])
             # if header misses field
             else:
                 for key_new in formatting_header_conf[key_old].keys():
-                    header[key_new] = cls.empty_header[key_new]
+                    header[key_new] = self.empty_header[key_new]
         return header
 
-    @classmethod
-    def remove_unwanted_header_content(
-        cls, header: Dict[str, str]
+    def _remove_unwanted_header_content(
+        self, header: Dict[str, str]
     ) -> Dict[str, str]:
         for key in list(header.keys()):
-            if key not in list(cls.empty_header.keys()):
+            if key not in list(self.empty_header.keys()):
                 del header[key]
         return header
 
@@ -370,7 +383,7 @@ class ListservMessage:
         if email_addr:
             email_addr = email_addr[0].strip()
         else:
-            email_addr = ListservMessage.empty_header["fromaddr"]
+            email_addr = ListservMessageParser.empty_header["fromaddr"]
         return email_addr
 
     @staticmethod
@@ -387,54 +400,30 @@ class ListservMessage:
         date: Union[str, None],
         from_address: Union[str, None],
     ) -> str:
-        if date is None:
-            date = "None"
-        if from_address is None:
-            from_address = "None"
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
         return message_id
 
-    def to_dict(self) -> Dict[str, str]:
-        dic = {
-            "Body": self.body,
-            "Subject": self.subject,
-            "FromName": self.fromname,
-            "FromAddr": self.fromaddr,
-            "ToName": self.toname,
-            "ToAddr": self.toaddr,
-            "Date": self.date,
-            "ContentType": self.contenttype,
-        }
+    @staticmethod
+    def to_dict(msg: mboxMessage) -> Dict[str, str]:
+        dic = {"Body": msg.get_payload()}
+        for key, value in msg.items():
+            dic[key] = value
         return dic
 
-    def to_mbox(self, filepath: str, mode: str = "w"):
+    @staticmethod
+    def to_mbox(msg: mboxMessage, filepath: str, mode: str = "w"):
         """
         Safe mail list to .mbox files.
         """
-        message_id = ListservMessage.create_message_id(
-            self.date,
-            self.fromaddr,
-        )
-        f = open(filepath, mode, encoding="utf-8")
-        f.write("\n")
-        # check that header was selected
-        if self.subject is not None:
-            f.write(f"From b'{self.fromaddr}' {self.date}\n")
-            f.write(f"Content-Type: {self.contenttype}\n")
-            f.write(f"MIME-Version: 1.0\n")
-            f.write(f"In-Reply-To: {self.toname} <b'{self.toaddr}'>\n")
-            f.write(f"From: {self.fromname} <b'{self.fromaddr}'>\n")
-            f.write(f"Subject: b'{self.subject}\n")
-            f.write(f"Message-ID: <{message_id}>'\n")
-            f.write(f"Date: {self.date}'\n")
-            f.write("\n")
-        # check that body was selected
-        if self.body is not None:
-            f.write(self.body)
-            f.write("\n")
-        f.close()
+        if Path(filepath).is_file():
+            Path(filepath).unlink()
+        mbox = mailbox.mbox(filepath)
+        mbox.lock()
+        mbox.add(msg)
+        mbox.flush()
+        mbox.unlock()
 
 
 class ListservList:
@@ -450,7 +439,7 @@ class ListservList:
         Contains the information of the location of the mailing list.
         It can be either an URL where the list or a path to the file(s).
     msgs
-        List of ListservMessage objects
+        List of mboxMessage objects
 
     Methods
     -------
@@ -480,15 +469,11 @@ class ListservList:
     )
     """
 
-    global i_am_calling_from
-    if i_am_calling_from == "?":
-        i_am_calling_from = "ListservList"
-
     def __init__(
         self,
         name: str,
         source: Union[List[str], str],
-        msgs: List[ListservMessage],
+        msgs: List[mboxMessage],
     ):
         self.name = name
         self.source = source
@@ -500,7 +485,7 @@ class ListservList:
     def __iter__(self):
         return iter(self.messages)
 
-    def __getitem__(self, index) -> ListservMessage:
+    def __getitem__(self, index) -> mboxMessage:
         return self.messages[index]
 
     @classmethod
@@ -535,7 +520,7 @@ class ListservList:
         cls,
         name: str,
         url: str,
-        messages: List[Union[str, ListservMessage]],
+        messages: List[Union[str, mboxMessage]],
         fields: str = "total",
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
@@ -544,30 +529,32 @@ class ListservList:
         """
         Args:
             messages: Can either be a list of URLs to specific LISTSERV messages
-                or a list of `ListservMessage` objects.
+                or a list of `mboxMessage` objects.
         """
         if not messages:
             # create empty ListservList for ListservArchive
             msgs = messages
         elif isinstance(messages[0], str):
             # create ListservList from message URLs
-            if session is None:
-                session = get_auth_session(url_login, **login)
             msgs = []
+            msg_parser = ListservMessageParser(
+                website=True,
+                url_login=url_login,
+                login=login,
+            )
             for msg_url in tqdm(messages, ascii=True, desc=name):
-                msg = ListservMessage.from_url(
+                msg = msg_parser.from_url(
                     list_name=name,
                     url=msg_url,
                     fields=fields,
-                    session=session,
                 )
-                if msg.body == "RequestException":
+                if msg.get_payload() == "RequestException":
                     time.sleep(30)
                 else:
                     msgs.append(msg)
                     logger.info(f"Recorded the message {msg_url}.")
         else:
-            # create ListservList from list of ListservMessages
+            # create ListservList from list of mboxMessage
             msgs = messages
         return cls(name, url, msgs)
 
@@ -628,9 +615,10 @@ class ListservList:
             )
             file.close()
             # run through all messages in file
+            msg_parser = ListservMessageParser(website=False)
             for msg_nr in header_start_line_nrs:
                 msgs.append(
-                    ListservMessage.from_listserv_file(
+                    msg_parser.from_listserv_file(
                         name,
                         filepath,
                         msg_nr,
@@ -646,7 +634,7 @@ class ListservList:
         url: str,
         select: Optional[dict] = None,
         session: Optional[dict] = None,
-    ) -> List[ListservMessage]:
+    ) -> List[mboxMessage]:
         """
         Generator that returns all messages within a certain period
         (e.g. January 2021, Week 5).
@@ -670,14 +658,17 @@ class ListservList:
                 msg_urls.append(msg_url)
 
         # run through collected message urls
+        msg_parser = ListservMessageParser(
+            website=True,
+            session=session,
+        )
         for msg_url in tqdm(msg_urls, ascii=True, desc=name):
-            msg = ListservMessage.from_url(
+            msg = msg_parser.from_url(
                 list_name=name,
                 url=msg_url,
                 fields=select["fields"],
-                session=session,
             )
-            if msg.body == "RequestException":
+            if msg.get_payload() == "RequestException":
                 time.sleep(30)
             else:
                 msgs.append(msg)
@@ -752,8 +743,8 @@ class ListservList:
 
         Args:
             times: A list containing information of the period for each
-                group of ListservMessage.
-            urls: Corresponding URLs of each group of ListservMessage of which the
+                group of mboxMessage.
+            urls: Corresponding URLs of each group of mboxMessage of which the
                 period info is contained in `times`.
             filtr: Containing info on what should be filtered.
 
@@ -782,7 +773,7 @@ class ListservList:
             url: URL to group of messages that are within the same period.
 
         Returns:
-            List to URLs from which`ListservMessage` can be initialized.
+            List to URLs from which`mboxMessage` can be initialized.
         """
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
@@ -846,13 +837,16 @@ class ListservList:
             }
         """
         # initialize dictionary
-        dic = {}
-        for key in list(self.messages[0].to_dict().keys()):
-            dic[key] = []
+        dic = {
+            key: []
+            for key in list(
+                ListservMessageParser.to_dict(self.messages[0]).keys()
+            )
+        }
         # run through messages
         for msg in self.messages:
             # run through message attributes
-            for key, value in msg.to_dict().items():
+            for key, value in ListservMessageParser.to_dict(msg).items():
                 dic[key].append(value)
         return dic
 
@@ -865,18 +859,23 @@ class ListservList:
 
         Args:
         """
+        # create filepath
         if filename is None:
             filepath = f"{dir_out}/{self.name}.mbox"
         else:
             filepath = f"{dir_out}/{filename}.mbox"
+        # delete file if there is one at the filepath
+        if Path(filepath).is_file():
+            Path(filepath).unlink()
+        mbox = mailbox.mbox(filepath)
+        mbox.lock()
+        try:
+            for msg in self.messages:
+                mbox.add(msg)
+            mbox.flush()
+        finally:
+            mbox.unlock()
         logger.info(f"The list {self.name} is saved at {filepath}.")
-        first = True
-        for msg in self.messages:
-            if first:
-                msg.to_mbox(filepath, mode="w")
-                first = False
-            else:
-                msg.to_mbox(filepath, mode="a")
 
 
 class ListservArchive(object):
@@ -919,10 +918,6 @@ class ListservArchive(object):
         },
     )
     """
-
-    global i_am_calling_from
-    if i_am_calling_from == "?":
-        i_am_calling_from = "ListservArchive"
 
     def __init__(self, name: str, url: str, lists: List[ListservList]):
         self.name = name
@@ -1201,16 +1196,19 @@ class ListservArchive(object):
             }
         """
         # initialize dictionary
-        dic = {}
-        for key in list(self.lists[0].messages[0].to_dict().keys()):
-            dic[key] = []
+        dic = {
+            key: []
+            for key in list(
+                ListservMessageParser.to_dict(self.lists[0].messages[0]).keys()
+            )
+        }
         dic["ListName"] = []
         # run through lists
         for mlist in self.lists:
             # run through messages
             for msg in mlist.messages:
                 # run through message attributes
-                for key, value in msg.to_dict().items():
+                for key, value in ListservMessageParser.to_dict(msg).items():
                     dic[key].append(value)
                 dic["ListName"].append(mlist.name)
         return dic
@@ -1341,7 +1339,7 @@ def get_website_content(
         return soup
     except requests.exceptions.RequestException as e:
         if "A2=" in url:
-            # if URL of ListservMessage
+            # if URL of mboxMessage
             logger.info(f"{e} for {url}.")
             return "RequestException"
         else:
