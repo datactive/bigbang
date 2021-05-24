@@ -283,22 +283,42 @@ class ListservMessageParser(email.parser.Parser):
 
     def _get_body_from_html(
         self, list_name: str, url: str, soup: BeautifulSoup
-    ) -> str:
-        """Lexer for the message body/payload."""
+    ) -> Union[str, None]:
+        """
+        Lexer for the message body/payload.
+        This methods look first whether the body is available in text/plain,
+        before it looks for the text/html option. If neither is available it
+        returns None.
+
+        Therefore this method does not try to return the richest information
+        content, but simply the ascii format.
+        """
         # TODO re-write using email.parser.Parser
+        url_root = ("/").join(url.split("/")[:-2])
+        a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
+        href_plain_text = [
+            tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
+        ]
+        href_html_text = [
+            tag.get("href") for tag in a_tags if "Fhtml" in tag.get("href")
+        ]
         try:
-            url_root = ("/").join(url.split("/")[:-2])
-            a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
-            href_plain_text = [
-                tag.get("href")
-                for tag in a_tags
-                if "Fplain" in tag.get("href")
-            ][0]
-            body_soup = get_website_content(urljoin(url_root, href_plain_text))
-            if body_soup == "RequestException":
-                return body_soup
-            else:
-                return body_soup.find("pre").text
+            if href_plain_text:
+                body_soup = get_website_content(
+                    urljoin(url_root, href_plain_text[0])
+                )
+                if body_soup == "RequestException":
+                    return body_soup
+                else:
+                    return body_soup.find("pre").text
+            elif href_html_text:
+                body_soup = get_website_content(
+                    urljoin(url_root, href_html_text[0])
+                )
+                if body_soup == "RequestException":
+                    return body_soup
+                else:
+                    return body_soup.get_text(strip=True)
         except Exception:
             logger.info(
                 f"The message body of {url} which is part of the "
@@ -372,6 +392,7 @@ class ListservList:
     -------
     from_url
     from_messages
+    from_mbox
     from_listserv_files
     from_listserv_directories
     get_messages_from_url
@@ -742,12 +763,12 @@ class ListservList:
         # run through messages
         first = True
         for msg in self.messages:
-            df_msg = msg_parser.to_pandas_dataframe(msg)
+            df = msg_parser.to_pandas_dataframe(msg)
             if first:
-                dfsum = df_msg
+                dfsum = df
                 first = False
             else:
-                dfsum = dfsum.append(df_msg, ignore_index=False)
+                dfsum = dfsum.append(df, ignore_index=False)
         return dfsum
 
     def to_dict(self) -> Dict[str, List[str]]:
@@ -799,6 +820,7 @@ class ListservArchive(object):
     Methods
     -------
     from_url
+    from_mbox
     from_mailing_lists
     from_listserv_directory
     get_lists
@@ -967,6 +989,20 @@ class ListservArchive(object):
             lists.append(mlist)
         return cls(name, directorypath, lists)
 
+    @classmethod
+    def from_mbox(
+        cls,
+        name: str,
+        directorypath: str,
+        filedsc: str = "*.mbox",
+    ) -> "ListservArchive":
+        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
+        lists = []
+        for filepath in filepaths:
+            name = filepath.split("/")[-1].split(".")[0]
+            lists.append(ListservList.from_mbox(name, filepath))
+        return cls(name, directorypath, lists)
+
     @staticmethod
     def get_lists_from_url(
         url_root: str,
@@ -1087,37 +1123,23 @@ class ListservArchive(object):
                 msg_nr += 1
         return dic
 
+    def to_pandas_dataframe(self) -> pd.DataFrame:
+        # run through lists
+        first = True
+        for mlist in self.lists:
+            df = mlist.to_pandas_dataframe()
+            if first:
+                dfsum = df
+                first = False
+            else:
+                dfsum = dfsum.append(df, ignore_index=False)
+        return dfsum
+
     def to_dict(self) -> Dict[str, List[str]]:
         """
-        Place all message in all lists into a dictionary of the form:
-            dic = {
-                "Subject": [messages[0], ... , messages[n]],
-                .
-                .
-                .
-                "ListName": [messages[0], ... , messages[n]]
-            }
+        Place all message into a dictionary.
         """
-        # initialize dictionary
-        dic = {
-            key: []
-            for key in list(
-                ListservMessageParser.to_dict(self.lists[0].messages[0]).keys()
-            )
-        }
-        dic["ListName"] = []
-        # run through lists
-        for mlist in self.lists:
-            # run through messages
-            for msg in mlist.messages:
-                # run through message attributes
-                for key, value in ListservMessageParser.to_dict(msg).items():
-                    dic[key].append(value)
-                dic["ListName"].append(mlist.name)
-        return dic
-
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        return pd.DataFrame.from_dict(self.to_dict())
+        return self.to_pandas_dataframe().to_dict("split")
 
     def to_mbox(self, dir_out: str):
         """
