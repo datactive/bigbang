@@ -68,15 +68,13 @@ class ListservMessageParser(email.parser.Parser):
     Methods
     -------
     from_url
+    from_mbox
+    from_listserv_file
     _get_header_from_html
     _get_body_from_html
     _get_header_from_listserv_file
     _get_body_from_listserv_file
-    _format_header_content
-    _remove_unwanted_header_content
-    get_name
-    get_addr
-    get_date
+    get_datetime
     to_dict
     to_mbox
 
@@ -115,35 +113,21 @@ class ListservMessageParser(email.parser.Parser):
         self,
         archived_at: str,
         body: str,
-        subject: str,
-        fromname: str,
-        fromaddr: str,
-        toname: str,
-        toaddr: str,
-        date: str,
-        contenttype: str,
+        **header,
     ) -> mboxMessage:
+        # crea EmailMessage
         msg = email.message.EmailMessage()
         if body is not None:
             msg.set_content(body)
-        if subject is not None:
-            msg["Subject"] = subject
-        if (fromname is not None) and (fromaddr is not None):
-            msg["From"] = email.utils.formataddr((fromname, fromaddr))
-        if (toname is not None) and (toaddr is not None):
-            msg["To"] = email.utils.formataddr((toname, toaddr))
-        if date is not None:
-            msg["Date"] = date
-        if contenttype is not None:
-            msg.set_param("Content-Type", contenttype)
-        if (date is not None) and (fromaddr is not None):
-            msg["Message-ID"] = self.create_message_id(date, fromaddr)
+        for key, value in header.items():
+            if "content-type" == key.lower():
+                msg.set_param("Content-Type", value)
+            else:
+                msg[key] = value
+        if (msg["Date"] is not None) and (msg["From"] is not None):
+            msg["Message-ID"] = archived_at.split("/")[-1]
+        # convert to EmailMessage to mboxMessage
         mbox_msg = mboxMessage(msg)
-        if (date is not None) and (fromaddr is not None):
-            mbox_msg.set_from(
-                from_=msg["From"],
-                time_=email.utils.parsedate(msg["Date"]),
-            )
         mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
         return mbox_msg
 
@@ -250,9 +234,6 @@ class ListservMessageParser(email.parser.Parser):
                     if not re.match(r"\S+:\s+\S+", content[lnr + 1]):
                         value += " " + content[lnr + 1].strip().rstrip("\n")
                 header[key.lower()] = value
-
-        header = self.format_header_content(header)
-        header = self._remove_unwanted_header_content(header)
         return header
 
     def _get_body_from_listserv_file(
@@ -298,9 +279,6 @@ class ListservMessageParser(email.parser.Parser):
             field_name = field.split(":")[0].strip()
             field_body = field.replace(field_name + ":", "").strip()
             header[field_name.lower()] = field_body
-
-        header = self.format_header_content(header)
-        header = self._remove_unwanted_header_content(header)
         return header
 
     def _get_body_from_html(
@@ -328,69 +306,8 @@ class ListservMessageParser(email.parser.Parser):
             )
             return None
 
-    def format_header_content(self, header: Dict[str, str]) -> Dict[str, str]:
-        "Formats LISTSERV 16.5 header fields to mbox convention."
-        # define formatting configuration
-        formatting_header_conf = {
-            "from": {
-                "fromname": self.get_name,
-                "fromaddr": self.get_addr,
-            },
-            "reply-to": {
-                "toname": self.get_name,
-                "toaddr": self.get_addr,
-            },
-            "date": {"date": self.get_date},
-            "content-type": {"contenttype": None},
-        }
-        # run through format settings
-        for key_old, value in formatting_header_conf.items():
-            # if header contains field
-            if key_old in header.keys():
-                for key_new, fct in formatting_header_conf[key_old].items():
-                    if fct is None or header[key_old] is None:
-                        header[key_new] = header[key_old]
-                    else:
-                        header[key_new] = fct(header[key_old])
-            # if header misses field
-            else:
-                for key_new in formatting_header_conf[key_old].keys():
-                    header[key_new] = self.empty_header[key_new]
-        return header
-
-    def _remove_unwanted_header_content(
-        self, header: Dict[str, str]
-    ) -> Dict[str, str]:
-        for key in list(header.keys()):
-            if key not in list(self.empty_header.keys()):
-                del header[key]
-        return header
-
     @staticmethod
-    def get_name(line: str) -> str:
-        # get string in between < and >
-        email_of_sender = re.findall(r"\<(.*)\>", line)
-        if email_of_sender:
-            # remove email_of_sender from line
-            name = line.replace("<" + email_of_sender[0] + ">", "")
-            # remove special characters
-            name = re.sub(r"[^a-zA-Z0-9]+", " ", name)
-        else:
-            name = line
-        return name.strip()
-
-    @staticmethod
-    def get_addr(line: str) -> str:
-        # get string in between < and >
-        email_addr = re.findall(r"\<(.*)\>", line)
-        if email_addr:
-            email_addr = email_addr[0].strip()
-        else:
-            email_addr = ListservMessageParser.empty_header["fromaddr"]
-        return email_addr
-
-    @staticmethod
-    def get_date(line: str) -> str:
+    def get_datetime(line: str) -> str:
         line = (" ").join(line.split(" ")[:-1]).lstrip()
         # convert format to local version of date and time
         date_time_obj = datetime.datetime.strptime(
@@ -414,6 +331,13 @@ class ListservMessageParser(email.parser.Parser):
         for key, value in msg.items():
             dic[key] = value
         return dic
+
+    @staticmethod
+    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+        return pd.DataFrame(
+            ListservMessageParser.to_dict(msg),
+            index=[msg["Message-ID"]],
+        )
 
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str, mode: str = "w"):
@@ -560,6 +484,16 @@ class ListservList:
             # create ListservList from list of mboxMessage
             msgs = messages
         return cls(name, url, msgs)
+
+    @classmethod
+    def from_mbox(
+        cls,
+        name: str,
+        filepath: str,
+    ) -> "ListservList":
+        box = mailbox.mbox(filepath, create=False)
+        msgs = list(box.values())
+        return cls(name, filepath, msgs)
 
     @classmethod
     def from_listserv_directories(
@@ -803,58 +737,24 @@ class ListservList:
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
-    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
-        """
-        Place all message in all lists into a dictionary of the form:
-            dic = {
-                "message_ID1": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-                "message_ID2": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-            }
-        """
-        # initialize dictionary
-        dic = {}
-        msg_nr = 0
+    def to_pandas_dataframe(self) -> pd.DataFrame:
+        msg_parser = ListservMessageParser()
         # run through messages
+        first = True
         for msg in self.messages:
-            dic[f"ID{msg_nr}"] = msg.to_dict()
-            msg_nr += 1
-        return dic
+            df_msg = msg_parser.to_pandas_dataframe(msg)
+            if first:
+                dfsum = df_msg
+                first = False
+            else:
+                dfsum = dfsum.append(df_msg, ignore_index=False)
+        return dfsum
 
     def to_dict(self) -> Dict[str, List[str]]:
         """
-        Place all message into a dictionary of the form:
-            dic = {
-                "Subject": [messages[0], ... , messages[n]],
-                .
-                .
-                .
-                "ContentType": [messages[0], ... , messages[n]]
-            }
+        Place all message into a dictionary.
         """
-        # initialize dictionary
-        dic = {
-            key: []
-            for key in list(
-                ListservMessageParser.to_dict(self.messages[0]).keys()
-            )
-        }
-        # run through messages
-        for msg in self.messages:
-            # run through message attributes
-            for key, value in ListservMessageParser.to_dict(msg).items():
-                dic[key].append(value)
-        return dic
-
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        return pd.DataFrame.from_dict(self.to_dict())
+        return self.to_pandas_dataframe().to_dict("split")
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """
