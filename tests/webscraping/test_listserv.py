@@ -41,7 +41,7 @@ class TestListservMessageParser:
             url=url_message,
             fields="total",
         )
-        assert msg["From"] == '"iceeng 10"'
+        assert msg["From"] == "iceeng-10"
         assert msg["To"] is None
 
     @pytest.fixture(name="msg", scope="module")
@@ -67,9 +67,9 @@ class TestListservMessageParser:
             msg["Subject"]
             == "10th International Conference on Electrical Engineering (ICEENG'10)"
         )
-        assert msg["From"] == '"iceeng 10"'
+        assert msg["From"] == "iceeng-10"
         assert msg["To"] is None
-        assert msg["Date"] == "Mon, 23 Nov 2015 11:00:37 -0000"
+        assert msg["Date"] == "Mon, 23 Nov 2015 11:00:37 +0000"
         assert (
             msg["Content-Type"]
             == 'text/plain; charset="utf-8"; Content-Type="multipart/mixed"'
@@ -97,7 +97,7 @@ class TestListservMessageParser:
             url=url_message,
             fields="body",
         )
-        assert str(msg["Subject"]) == "None"
+        assert str(msg["Subject"]) == ""
 
     def test__to_dict(self, msg):
         dic = ListservMessageParser.to_dict(msg)
@@ -132,7 +132,7 @@ class TestListservList:
             },
             login=auth_key,
         )
-        assert mlist.messages[0]["From"] == '"iceeng 10"'
+        assert mlist.messages[0]["From"] == "iceeng-10"
         assert mlist.messages[0]["To"] is None
 
     @pytest.fixture(name="mlist", scope="module")
@@ -170,7 +170,7 @@ class TestListservList:
         assert len(lines) == 9
         assert (
             lines[1]
-            == "Subject: 10th International Conference on Electrical Engineering (ICEENG'10)\n"
+            == "subject: 10th International Conference on Electrical Engineering (ICEENG'10)\n"
         )
         f.close()
         Path(file_temp_mbox).unlink()
@@ -207,7 +207,7 @@ class TestListservArchive:
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 8
+        assert len(list(dic.keys())) == 7
         assert len(dic[list(dic.keys())[0]]) == 1
 
     def test__to_mbox(self, arch):

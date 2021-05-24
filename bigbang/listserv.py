@@ -68,7 +68,6 @@ class ListservMessageParser(email.parser.Parser):
     Methods
     -------
     from_url
-    from_mbox
     from_listserv_file
     _get_header_from_html
     _get_body_from_html
@@ -122,9 +121,17 @@ class ListservMessageParser(email.parser.Parser):
         for key, value in header.items():
             if "content-type" == key.lower():
                 msg.set_param("Content-Type", value)
+            elif "mime-version" == key.lower():
+                msg.set_param("MIME-Version", value)
+            elif "content-transfer-encoding" == key.lower():
+                msg.set_param("Content-Transfer-Encoding", value)
             else:
                 msg[key] = value
-        if (msg["Date"] is not None) and (msg["From"] is not None):
+        if (
+            (msg["Message-ID"] is None)
+            and (msg["Date"] is not None)
+            and (msg["From"] is not None)
+        ):
             msg["Message-ID"] = archived_at.split("/")[-1]
         # convert to EmailMessage to mboxMessage
         mbox_msg = mboxMessage(msg)
@@ -775,7 +782,7 @@ class ListservList:
         """
         Place all message into a dictionary.
         """
-        return self.to_pandas_dataframe().to_dict("split")
+        return self.to_pandas_dataframe().to_dict()
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """
@@ -1139,7 +1146,7 @@ class ListservArchive(object):
         """
         Place all message into a dictionary.
         """
-        return self.to_pandas_dataframe().to_dict("split")
+        return self.to_pandas_dataframe().to_dict()
 
     def to_mbox(self, dir_out: str):
         """

@@ -47,8 +47,12 @@ class TestListservList:
 
     def test__first_message_header(self, msg):
         assert msg["From"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
-        assert msg["To"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
-        assert msg["Date"] == "Mon, 08 May 2017 10:47:41 -0000"
+        assert msg["Reply-To"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
+        assert (
+            msg["In-Reply-To"]
+            == "<3d326663df91466eaa406d2ac87bd662@PREWE13M05.ad.sprint.com>"
+        )
+        assert msg["Date"] == "Mon, 08 May 2017 10:47:41 +0000"
 
     def test__first_message_body(self, msg):
         assert msg.get_payload().split("\n")[3] == "Hi,"
@@ -56,7 +60,8 @@ class TestListservList:
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        assert len(list(dic.keys())) == 10
+        print(dic.keys())
+        assert len(list(dic.keys())) == 13
         assert len(dic[list(dic.keys())[0]]) == 25
 
     def test__to_mbox(self, mlist):
@@ -64,7 +69,7 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 48738
+        assert len(lines) == 48774
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
@@ -85,7 +90,7 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/msg_test.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 546
+        assert len(lines) == 547
         assert "Inviato: mercoled=3DEC 15 marzo 2017 16:06\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
@@ -118,20 +123,20 @@ class TestListservArchive:
             for msg in arch.lists[mtce_index].messages
             if msg["Subject"] == "test email - please ignore"
         ][0]
-        assert msg["From"] == "Jain Puneet <puneet.jain@INTEL.COM>"
-        assert msg["To"] == "Jain Puneet <puneet.jain@INTEL.COM>"
-        assert msg["Date"] == "Thu, 28 Feb 2013 18:58:18 -0000"
+        assert msg["From"] == '"Jain, Puneet" <puneet.jain@INTEL.COM>'
+        assert msg["Reply-To"] == '"Jain, Puneet" <puneet.jain@INTEL.COM>'
+        assert msg["Date"] == "Thu, 28 Feb 2013 18:58:18 +0000"
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 11
-        assert len(dic[list(dic.keys())[0]]) == 82
+        assert len(list(dic.keys())) == 14
+        assert len(dic[list(dic.keys())[0]]) == 49
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 48738,
-            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 61496,
+            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 48774,
+            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 61569,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
