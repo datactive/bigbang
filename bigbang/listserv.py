@@ -800,13 +800,21 @@ class ListservList:
             Path(filepath).unlink()
         mbox = mailbox.mbox(filepath)
         mbox.lock()
-        try:
-            for msg in self.messages:
+        for msg in self.messages:
+            try:
                 mbox.add(msg)
-            mbox.flush()
-        finally:
-            mbox.unlock()
+            except Exception as e:
+                logger.info(
+                    f'Add to .mbox error for {msg["Archived-At"]} because, {e}'
+                )
+        mbox.flush()
+        mbox.unlock()
         logger.info(f"The list {self.name} is saved at {filepath}.")
+
+        mbox.lock()
+        mbox.add(msg)
+        mbox.flush()
+        mbox.unlock()
 
 
 class ListservArchive(object):
