@@ -69,7 +69,7 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 48774
+        assert len(lines) == 49294
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
@@ -135,8 +135,8 @@ class TestListservArchive:
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 48774,
-            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 61569,
+            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 49294,
+            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 68798,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()

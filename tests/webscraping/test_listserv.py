@@ -167,7 +167,7 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 9
+        assert len(lines) == 18
         assert (
             lines[1]
             == "subject: 10th International Conference on Electrical Engineering (ICEENG'10)\n"
@@ -213,7 +213,7 @@ class TestListservArchive:
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/IEEE-TEST.mbox": 7,
+            f"{dir_temp}/IEEE-TEST.mbox": 14,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
