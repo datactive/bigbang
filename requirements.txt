@@ -13,21 +13,21 @@ jsonschema
 GitPython
 matplotlib>=3.3.3
 networkx>=2.5
-nltk
+nltk>=3.6.2
 numpy>=1.19.5
 pandas>=1.2.1
 python-dateutil
 python-Levenshtein
 pytz>=2020.5
-pyzmq
-tornado
-tqdm
+pyzmq>=22.0.3
+tornado>=6.1
+tqdm>=4.60.0
 requests>=2.25.1
 pyyaml
-common
+common>=0.1.2
 powerlaw
-validator_collection
-testfixtures
+validator_collection>=1.5.0
+testfixtures>=6.17.1
 git+https://github.com/gitpython-developers/GitPython.git
 
 # dev-dependencies

@@ -8,7 +8,11 @@ import yaml
 
 import bigbang
 from bigbang import listserv
-from bigbang.listserv import ListservArchive, ListservList, ListservMessage
+from bigbang.listserv import (
+    ListservArchive,
+    ListservList,
+    ListservMessageParser,
+)
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
@@ -33,7 +37,7 @@ class TestListservList:
         msg = [
             msg
             for msg in mlist.messages
-            if msg.subject
+            if msg["Subject"]
             == "Re: Update on ITU-T related activities needing attention"
         ][0]
         return msg
@@ -42,36 +46,34 @@ class TestListservList:
         assert len(mlist) == 25
 
     def test__first_message_header(self, msg):
-        assert msg.fromname == "Stephen Hayes"
-        assert msg.fromaddr == "stephen.hayes@ERICSSON.COM"
-        assert msg.toname == "Stephen Hayes"
-        assert msg.toaddr == "stephen.hayes@ERICSSON.COM"
-        assert msg.date == "Mon May  8 10:47:41 2017"
+        assert msg["From"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
+        assert msg["Reply-To"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
+        assert (
+            msg["In-Reply-To"]
+            == "<3d326663df91466eaa406d2ac87bd662@PREWE13M05.ad.sprint.com>"
+        )
+        assert msg["Date"] == "Mon, 08 May 2017 10:47:41 +0000"
 
     def test__first_message_body(self, msg):
-        assert msg.body.split("\n")[3] == "Hi,"
-        assert len(msg.body) == 24129
+        assert msg.get_payload().split("\n")[3] == "Hi,"
+        assert len(msg.get_payload()) == 24809
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        assert len(list(dic.keys())) == 8
+        print(dic.keys())
+        assert len(list(dic.keys())) == 13
         assert len(dic[list(dic.keys())[0]]) == 25
-
-    def test__to_pandas_dataframe(self, mlist):
-        df = mlist.to_pandas_dataframe()
-        assert len(df.columns.values) == 8
-        assert len(df.index.values) == 25
 
     def test__to_mbox(self, mlist):
         mlist.to_mbox(dir_temp, filename=mlist.name)
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 41623
+        assert len(lines) == 49294
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
-    
+
     def test__missing_date_in_message(self, mlist):
         """
         Test that when a message has no date show, a default value
@@ -79,16 +81,17 @@ class TestListservList:
         msg = [
             msg
             for msg in mlist.messages
-            if msg.subject
-            == "R: How to proceed with ITUT-AH"
+            if msg["Subject"] == "R: How to proceed with ITUT-AH"
         ][0]
-        assert msg.date == None
-        msg.to_mbox(filepath=f'{dir_temp}/msg_test.mbox')
+        assert msg["Date"] is None
+        ListservMessageParser().to_mbox(
+            msg, filepath=f"{dir_temp}/msg_test.mbox"
+        )
         file_temp_mbox = f"{dir_temp}/msg_test.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 478
-        assert "Date: None'\n" in lines
+        assert len(lines) == 547
+        assert "Inviato: mercoled=3DEC 15 marzo 2017 16:06\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
 
@@ -118,29 +121,22 @@ class TestListservArchive:
         msg = [
             msg
             for msg in arch.lists[mtce_index].messages
-            if msg.subject == "test email - please ignore"
+            if msg["Subject"] == "test email - please ignore"
         ][0]
-        assert msg.fromname == "Jain Puneet"
-        assert msg.fromaddr == "puneet.jain@INTEL.COM"
-        assert msg.toname == "Jain Puneet"
-        assert msg.toaddr == "puneet.jain@INTEL.COM"
-        assert msg.date == "Thu Feb 28 18:58:18 2013"
+        assert msg["From"] == '"Jain, Puneet" <puneet.jain@INTEL.COM>'
+        assert msg["Reply-To"] == '"Jain, Puneet" <puneet.jain@INTEL.COM>'
+        assert msg["Date"] == "Thu, 28 Feb 2013 18:58:18 +0000"
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 9
-        assert len(dic[list(dic.keys())[0]]) == 82
-
-    def test__to_pandas_dataframe(self, arch):
-        df = arch.to_pandas_dataframe()
-        assert len(df.columns.values) == 9
-        assert len(df.index.values) == 82
+        assert len(list(dic.keys())) == 14
+        assert len(dic[list(dic.keys())[0]]) == 49
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 41623,
-            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 61211,
+            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 49294,
+            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 68798,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
@@ -153,7 +149,7 @@ class TestListservArchive:
 
 @mock.patch("bigbang.listserv.ask_for_input", return_value="check")
 def test__get_login_from_terminal(input):
-    """ test if login keys will be documented """
+    """test if login keys will be documented"""
     file_auth = dir_temp + "/authentication.yaml"
     _, _ = listserv.get_login_from_terminal(
         username=None, password=None, file_auth=file_auth
