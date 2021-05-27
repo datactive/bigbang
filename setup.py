@@ -28,6 +28,7 @@ install_requires = [
     "gender-detector",
     "GitPython",
     "html2text>=2020.1.16",
+    "ietfdata>=0.4.0",
     "ipython>=7.22.0",
     "jinja2>=2.11.3",
     "jupyter>=1.0.0",
