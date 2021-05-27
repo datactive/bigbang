@@ -147,8 +147,9 @@ class ListservMessageParser(email.parser.Parser):
         """
         Args:
             list_name:
-            url:
-            fields:
+            url: URL of this Email
+            fields: Indicates whether to return 'header', 'body' or
+                'total'/both or the Email.
             url_login:
         """
         soup = get_website_content(url, session=self.session)

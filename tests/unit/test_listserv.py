@@ -135,14 +135,14 @@ class TestListservArchive:
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 49294,
-            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 68798,
+            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 40000,
+            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 60000,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
             f = open(filepath, "r")
             lines = f.readlines()
-            assert line_nr == len(lines)
+            assert line_nr < len(lines)
             f.close()
             Path(filepath).unlink()
 
