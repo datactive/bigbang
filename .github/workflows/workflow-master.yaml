@@ -27,7 +27,7 @@ jobs:
           pip install -e ".[dev]"
       - name: Generate coverage report
         run: |
-          pip install pytest-cov
+          pip install codecov
           cd tests/unit/
           pytest
       - name: Upload coverage to Codecov
