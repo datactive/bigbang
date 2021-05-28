@@ -6,7 +6,7 @@ Mailman, or [.mbox][mbox] files.
 
 [mbox]: http://tools.ietf.org/html/rfc4155
 
-[![DOI](https://img.shields.io/badge/DOI-10.25080/Majora-7b98e3ed-01b-blue)](http://conference.scipy.org/proceedings/scipy2015/sebastian_benthall.html)
+[![DOI](https://img.shields.io/badge/DIO-10.25080%2FMajora--7b98e3ed--01b-blue)](http://conference.scipy.org/proceedings/scipy2015/sebastian_benthall.html)
 [![codecov](https://codecov.io/gh/datactive/bigbang/branch/master/graph/badge.svg?token=Nhyl6g4ZIO)](https://codecov.io/gh/datactive/bigbang)
 [![Gitter](https://badges.gitter.im/datactive/bigbang.svg)](https://gitter.im/datactive/bigbang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
