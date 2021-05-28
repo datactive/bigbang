@@ -6,6 +6,7 @@ Mailman, or [.mbox][mbox] files.
 
 [mbox]: http://tools.ietf.org/html/rfc4155
 
+[![codecov](https://codecov.io/gh/datactive/bigbang/branch/master/graph/badge.svg?token=Nhyl6g4ZIO)](https://codecov.io/gh/datactive/bigbang)
 [![Gitter](https://badges.gitter.im/datactive/bigbang.svg)](https://gitter.im/datactive/bigbang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## Installation*
