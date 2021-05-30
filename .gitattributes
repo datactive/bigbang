@@ -1,0 +1,2 @@
+archives/3GPP/*.mbox filter=lfs diff=lfs merge=lfs -text
+archives/IEEE/*.mbox filter=lfs diff=lfs merge=lfs -text
