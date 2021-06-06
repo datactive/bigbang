@@ -11,6 +11,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import warnings
+from pathlib import Path
 from pprint import pprint as pp
 from typing import Union
 from urllib.parse import urlparse
@@ -224,8 +225,7 @@ def normalize_archives_url(url):
 def archive_directory(base_dir, list_name):
     """Archive a directory."""
     arc_dir = os.path.join(base_dir, list_name)
-    if not os.path.exists(arc_dir):
-        os.makedirs(arc_dir)
+    Path(arc_dir).mkdir(parents=True, exist_ok=True)
     return arc_dir
 
 
@@ -465,7 +465,9 @@ def open_list_archives(
             for fn in os.listdir(arc_dir)
             if any([fn.endswith(extension) for extension in file_extensions])
         ]
-
+    
+        print("^^^^^^^^^^^^^")
+        print(os.listdir(arc_dir))
         logging.info("Opening %d archive files", len(txts))
 
         def mbox_reader(stream):

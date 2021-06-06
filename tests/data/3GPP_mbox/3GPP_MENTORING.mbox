@@ -1,0 +1,3682 @@
+From MAILER-DAEMON Wed May 26 00:26:54 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: John M Meredith <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 04 Jun 2020 12:48:28 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=1978
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=1978>
+
+Oh, and another bullet point for luck =E2=80=A6
+
+
+  *   Web search reference   https://portal.3gpp.org/3gppreferences/SearchRef=
+erences.aspx
+Allows you to search for which specs have a reference (in the references clau=
+se) to any spec of interest, or vice versa (which specs are referenced by a g=
+iven spec).
+Useful when contemplating withdrawing a spec, or not promoting it to the next=
+ Release, so you can raise CRs to eliminate references which would be broken =
+if the referenced spec no longer exists.
+
+b/r
+John M
+
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of John M Meredith
+Sent: 04 June 2020 14:28
+To: 3GPP_MENTORING <[log in to unmask]>
+Subject: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Gents (and any Ladies who might be listening in)
+
+Some more tools you may not yet have stumbled across:
+
+
+  *   3GPP TR 21.905  https://www.3gpp.org/DynaReport/21905.htm
+Vocabulary (terms and abbreviations) used in 3GPP specs.
+Not fully comprehensive by any means, but is intended to contain terms and ab=
+breviations used in more than one spec.
+  *   TEDDI   https://webapp.etsi.org/Teddi/
+Terms and abbreviations used in (all) published ETSI standards including tran=
+spositions of 3GPP specs.
+Comprehensive (or bewildering), even when constrained to entries for 3GPP doc=
+uments alone. Warning: contains entries ONLY for 3GPP specs which have been p=
+ublished by ETSI =E2=80=93 so excludes 3GPP-internal TRs, and TSs not yet und=
+er change control or under change control in a Release not yet stage-3 frozen.
+  *   The 3GPP advanced search engine   http://isearch.3gpp.org/isysadvsearch=
+.html
+Capable of free-text searching any page on the 3GPP web site or any document =
+on the 3GPP file server (well over a million meeting contributions and spec v=
+ersions)
+So comprehensive it is mind-boggling. The problem is not that you don=E2=80=
+=99t get a hit when searching for something, but that, however carefully you =
+refine your search criteria, you get ten thousand hits. Nevertheless, you jus=
+t might get lucky.
+  *   When all else fails =E2=80=A6 Google.
+You will be surprised how good Google is at finding obscure terms in 3GPP spe=
+cs. Or maybe you will not be surprised. I know many people start their search=
+ for obscure terminology at Google, and go away perfectly satisfied.
+I hope these options might add to the sum total of human happiness.
+
+John M Meredith  =E2=80=93 Former Director, ETSI Mobile Competence Centre / F=
+ormer 3GPP Specifications Manager
+ETSI =E2=97=8F www.etsi.org<http://www.etsi.org/> =E2=97=8F [log in to unmask=
+]<mailto:[log in to unmask]>
+3GPP =E2=97=8F www.3gpp.org<http://www.3gpp.org/> / portal.3gpp.org<http://ww=
+w.3gpp.org/>
+Phone: +33 (0)4 92 94 42 37 =E2=97=8F Mobile: +33 (0)6 10 42 03 76
+This email may contain confidential information and is intended for the use o=
+f the addressee only. Any unauthorized use may be unlawful. If you receive th=
+is email by mistake, please advise the sender immediately by using the reply =
+facility in your email software. Thank you for your co-operation.
+
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Jens Toobe
+Sent: 04 June 2020 13:20
+To: 3GPP_MENTORING <[log in to unmask]>
+Subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Many thanks for the info, Esko.
+
+Looking forward to seeing what might be possible =E2=80=A6. =E2=98=BA
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: Dijk, Esko <[log in to unmask]<mailto:[log in to unmask]>>
+Gesendet: Donnerstag, 4. Juni 2020 09:34
+An: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>
+Betreff: RE: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Jens,
+
+thanks for your feedback. What you propose would be a useful addition I think=
+; currently it is not possible in 3GPP.guru.
+
+  *   adding a verbose list of TR/TS that *define* a specific acronym is easi=
+est to add since that information is already in. Only the client side needs a=
+n additional display format.
+  *   adding a verbose list of TR/TS that *mention* (use) a specific acronym =
+requires a new function in the parser code too. I=E2=80=99m already adding pa=
+rsing for references to other TR/TS docs; so it would be easy to add acronyms=
+ too! That still needs a check to see if the file sizes don=E2=80=99t get too=
+ large.
+
+best regards
+Esko Dijk
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Jens Toobe
+Sent: Thursday, May 28, 2020 14:50
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+
+Dear Georg,
+
+Thanks for the quick reply and the link.
+Looks good, too and will provide a useful addition to search the bewildering =
+array of 3GPP specs.
+
+I do like the fact the results page lists the respective WG, too, AND one can=
+ look up specs per WG!
+That=E2=80=99s very neat.
+
+Allow me to offer a thought.
+
+  *   If I enter =E2=80=9CS1=E2=80=9D under =E2=80=9CSearch 3GPP Specs=E2=80=
+=9D and hit the =E2=80=9CSpecs=E2=80=9D button, a long list of docs is genera=
+ted.
+  *   Some specs have more than one revision and all the revisions are then l=
+isted under the spec, which makes that specific spec row quite deep.
+
+If and when time is available and one is inclined to do so=E2=80=A6. =E2=98=
+=BA, may I propose to limit the # of revisions listed per spec to, say, the l=
+ast three available?
+That would greatly enhance the readability of the page.
+
+Thanks for sharing this tool and for the work that has gone into it.
+I have bookmarked it already and will most certainly use it on a regular basi=
+s from now on.
+
+Best,
+
+Jens
+
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Georg Mayer
+Gesendet: Donnerstag, 28. Mai 2020 14:19
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Tobe, all,
+
+It seems we all meet similar problems at one time =E2=98=BA.
+
+I have written some simple tools which collect information from the 3GPP webs=
+ite and make them in a straight-forward way searchable.
+
+For example you can find the information 24.229 under this link: BLOCKEDwhatt=
+hespec[.]net/3gpp/spec[.]php?q=3D24[.]229BLOCKED
+
+On the top of the page you can search for Work Items (just put in a string th=
+at is related to the work item within the 3GPP workplan and it shows you a li=
+st of WIs which contain that string), Specs (same) and tdocs (only numbers). =
+Search-strings cannot include a blank, it needs to be represented by either a=
+ =E2=80=9C.=E2=80=9D or =E2=80=9C.*=E2=80=9D (regular expression style).
+
+I wrote the whole thing just for myself and have no intention to bring it to =
+any type of perfection. It=E2=80=99s not very reliable I guess, but so far it=
+ serves me quite ok.
+
+Cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jens Toobe
+Sent: Donnerstag, 28. Mai 2020 14:07
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in =E2=80=
+=9C24.229=E2=80=9D and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don=E2=80=99t hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: BLOCKED3gpp[.]guru/BLOCKED
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools (https://eur01.safelinks.protection.outlook.c=
+om/...)<https://eur01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fw=
+ww.3gpp.org%2Ftechnologies%2Ftutorials-tools&data=3D02%7C01%7C%7C698cc62bb20d=
+4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C63726267036=
+3947360&sdata=3DER6n1K9ghYRtgrk1wDYjwxLyFkPT0ICOY6t1KBLZ%2Bxg%3D&reserved=3D0>
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363957354&sdata=3Dl%2FdYl=
+jo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363957354&sdata=3Dl%2FdYl=
+jo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363967346&sdata=3DqwCgavD=
+0e0mm82BM5zJT2il0vswfcPfCfr7BMnfCs9Y%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:26:56 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: John M Meredith <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 04 Jun 2020 12:27:34 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=1005
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=1005>
+
+Gents (and any Ladies who might be listening in)
+
+Some more tools you may not yet have stumbled across:
+
+
+  *   3GPP TR 21.905  https://www.3gpp.org/DynaReport/21905.htm
+Vocabulary (terms and abbreviations) used in 3GPP specs.
+Not fully comprehensive by any means, but is intended to contain terms and ab=
+breviations used in more than one spec.
+
+  *   TEDDI   https://webapp.etsi.org/Teddi/
+Terms and abbreviations used in (all) published ETSI standards including tran=
+spositions of 3GPP specs.
+Comprehensive (or bewildering), even when constrained to entries for 3GPP doc=
+uments alone. Warning: contains entries ONLY for 3GPP specs which have been p=
+ublished by ETSI =E2=80=93 so excludes 3GPP-internal TRs, and TSs not yet und=
+er change control or under change control in a Release not yet stage-3 frozen.
+
+  *   The 3GPP advanced search engine   http://isearch.3gpp.org/isysadvsearch=
+.html
+Capable of free-text searching any page on the 3GPP web site or any document =
+on the 3GPP file server (well over a million meeting contributions and spec v=
+ersions)
+So comprehensive it is mind-boggling. The problem is not that you don=E2=80=
+=99t get a hit when searching for something, but that, however carefully you =
+refine your search criteria, you get ten thousand hits. Nevertheless, you jus=
+t might get lucky.
+
+  *   When all else fails =E2=80=A6 Google.
+You will be surprised how good Google is at finding obscure terms in 3GPP spe=
+cs. Or maybe you will not be surprised. I know many people start their search=
+ for obscure terminology at Google, and go away perfectly satisfied.
+
+I hope these options might add to the sum total of human happiness.
+
+John M Meredith  =E2=80=93 Former Director, ETSI Mobile Competence Centre / F=
+ormer 3GPP Specifications Manager
+ETSI =E2=97=8F www.etsi.org<http://www.etsi.org/> =E2=97=8F [log in to unmask=
+]<mailto:[log in to unmask]>
+3GPP =E2=97=8F www.3gpp.org<http://www.3gpp.org/> / portal.3gpp.org<http://ww=
+w.3gpp.org/>
+Phone: +33 (0)4 92 94 42 37 =E2=97=8F Mobile: +33 (0)6 10 42 03 76
+This email may contain confidential information and is intended for the use o=
+f the addressee only. Any unauthorized use may be unlawful. If you receive th=
+is email by mistake, please advise the sender immediately by using the reply =
+facility in your email software. Thank you for your co-operation.
+
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Jens Toobe
+Sent: 04 June 2020 13:20
+To: 3GPP_MENTORING <[log in to unmask]>
+Subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Many thanks for the info, Esko.
+
+Looking forward to seeing what might be possible =E2=80=A6. =E2=98=BA
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: Dijk, Esko <[log in to unmask]<mailto:[log in to unmask]>>
+Gesendet: Donnerstag, 4. Juni 2020 09:34
+An: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>
+Betreff: RE: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Jens,
+
+thanks for your feedback. What you propose would be a useful addition I think=
+; currently it is not possible in 3GPP.guru.
+
+  *   adding a verbose list of TR/TS that *define* a specific acronym is easi=
+est to add since that information is already in. Only the client side needs a=
+n additional display format.
+  *   adding a verbose list of TR/TS that *mention* (use) a specific acronym =
+requires a new function in the parser code too. I=E2=80=99m already adding pa=
+rsing for references to other TR/TS docs; so it would be easy to add acronyms=
+ too! That still needs a check to see if the file sizes don=E2=80=99t get too=
+ large.
+
+best regards
+Esko Dijk
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Jens Toobe
+Sent: Thursday, May 28, 2020 14:50
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+
+Dear Georg,
+
+Thanks for the quick reply and the link.
+Looks good, too and will provide a useful addition to search the bewildering =
+array of 3GPP specs.
+
+I do like the fact the results page lists the respective WG, too, AND one can=
+ look up specs per WG!
+That=E2=80=99s very neat.
+
+Allow me to offer a thought.
+
+  *   If I enter =E2=80=9CS1=E2=80=9D under =E2=80=9CSearch 3GPP Specs=E2=80=
+=9D and hit the =E2=80=9CSpecs=E2=80=9D button, a long list of docs is genera=
+ted.
+  *   Some specs have more than one revision and all the revisions are then l=
+isted under the spec, which makes that specific spec row quite deep.
+
+If and when time is available and one is inclined to do so=E2=80=A6. =E2=98=
+=BA, may I propose to limit the # of revisions listed per spec to, say, the l=
+ast three available?
+That would greatly enhance the readability of the page.
+
+Thanks for sharing this tool and for the work that has gone into it.
+I have bookmarked it already and will most certainly use it on a regular basi=
+s from now on.
+
+Best,
+
+Jens
+
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Georg Mayer
+Gesendet: Donnerstag, 28. Mai 2020 14:19
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Tobe, all,
+
+It seems we all meet similar problems at one time =E2=98=BA.
+
+I have written some simple tools which collect information from the 3GPP webs=
+ite and make them in a straight-forward way searchable.
+
+For example you can find the information 24.229 under this link: BLOCKEDwhatt=
+hespec[.]net/3gpp/spec[.]php?q=3D24[.]229BLOCKED
+
+On the top of the page you can search for Work Items (just put in a string th=
+at is related to the work item within the 3GPP workplan and it shows you a li=
+st of WIs which contain that string), Specs (same) and tdocs (only numbers). =
+Search-strings cannot include a blank, it needs to be represented by either a=
+ =E2=80=9C.=E2=80=9D or =E2=80=9C.*=E2=80=9D (regular expression style).
+
+I wrote the whole thing just for myself and have no intention to bring it to =
+any type of perfection. It=E2=80=99s not very reliable I guess, but so far it=
+ serves me quite ok.
+
+Cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jens Toobe
+Sent: Donnerstag, 28. Mai 2020 14:07
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in =E2=80=
+=9C24.229=E2=80=9D and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don=E2=80=99t hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: BLOCKED3gpp[.]guru/BLOCKED
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools (https://eur01.safelinks.protection.outlook.c=
+om/...)<https://eur01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fw=
+ww.3gpp.org%2Ftechnologies%2Ftutorials-tools&data=3D02%7C01%7C%7C698cc62bb20d=
+4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C63726267036=
+3947360&sdata=3DER6n1K9ghYRtgrk1wDYjwxLyFkPT0ICOY6t1KBLZ%2Bxg%3D&reserved=3D0>
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363957354&sdata=3Dl%2FdYl=
+jo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363957354&sdata=3Dl%2FdYl=
+jo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363967346&sdata=3DqwCgavD=
+0e0mm82BM5zJT2il0vswfcPfCfr7BMnfCs9Y%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:26:57 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: Jens Toobe <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 04 Jun 2020 11:20:06 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=639
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=639>
+
+Many thanks for the info, Esko.
+
+Looking forward to seeing what might be possible =E2=80=A6. =E2=98=BA
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: Dijk, Esko <[log in to unmask]>
+Gesendet: Donnerstag, 4. Juni 2020 09:34
+An: 3GPP_MENTORING <[log in to unmask]>
+Betreff: RE: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Jens,
+
+thanks for your feedback. What you propose would be a useful addition I think=
+; currently it is not possible in 3GPP.guru.
+
+=C2=B7         adding a verbose list of TR/TS that *define* a specific acrony=
+m is easiest to add since that information is already in. Only the client sid=
+e needs an additional display format.
+
+=C2=B7         adding a verbose list of TR/TS that *mention* (use) a specific=
+ acronym requires a new function in the parser code too. I=E2=80=99m already =
+adding parsing for references to other TR/TS docs; so it would be easy to add=
+ acronyms too! That still needs a check to see if the file sizes don=E2=80=99=
+t get too large.
+
+best regards
+Esko Dijk
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Jens Toobe
+Sent: Thursday, May 28, 2020 14:50
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+
+Dear Georg,
+
+Thanks for the quick reply and the link.
+Looks good, too and will provide a useful addition to search the bewildering =
+array of 3GPP specs.
+
+I do like the fact the results page lists the respective WG, too, AND one can=
+ look up specs per WG!
+That=E2=80=99s very neat.
+
+Allow me to offer a thought.
+
+=C2=B7         If I enter =E2=80=9CS1=E2=80=9D under =E2=80=9CSearch 3GPP Spe=
+cs=E2=80=9D and hit the =E2=80=9CSpecs=E2=80=9D button, a long list of docs i=
+s generated.
+
+=C2=B7         Some specs have more than one revision and all the revisions a=
+re then listed under the spec, which makes that specific spec row quite deep.
+
+If and when time is available and one is inclined to do so=E2=80=A6. =E2=98=
+=BA, may I propose to limit the # of revisions listed per spec to, say, the l=
+ast three available?
+That would greatly enhance the readability of the page.
+
+Thanks for sharing this tool and for the work that has gone into it.
+I have bookmarked it already and will most certainly use it on a regular basi=
+s from now on.
+
+Best,
+
+Jens
+
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Georg Mayer
+Gesendet: Donnerstag, 28. Mai 2020 14:19
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Tobe, all,
+
+It seems we all meet similar problems at one time =E2=98=BA.
+
+I have written some simple tools which collect information from the 3GPP webs=
+ite and make them in a straight-forward way searchable.
+
+For example you can find the information 24.229 under this link: BLOCKEDwhatt=
+hespec[.]net/3gpp/spec[.]php?q=3D24[.]229BLOCKED
+
+On the top of the page you can search for Work Items (just put in a string th=
+at is related to the work item within the 3GPP workplan and it shows you a li=
+st of WIs which contain that string), Specs (same) and tdocs (only numbers). =
+Search-strings cannot include a blank, it needs to be represented by either a=
+ =E2=80=9C.=E2=80=9D or =E2=80=9C.*=E2=80=9D (regular expression style).
+
+I wrote the whole thing just for myself and have no intention to bring it to =
+any type of perfection. It=E2=80=99s not very reliable I guess, but so far it=
+ serves me quite ok.
+
+Cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jens Toobe
+Sent: Donnerstag, 28. Mai 2020 14:07
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in =E2=80=
+=9C24.229=E2=80=9D and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don=E2=80=99t hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: BLOCKED3gpp[.]guru/BLOCKED
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools (https://eur01.safelinks.protection.outlook.c=
+om/...)<https://eur01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fw=
+ww.3gpp.org%2Ftechnologies%2Ftutorials-tools&data=3D02%7C01%7C%7C698cc62bb20d=
+4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C63726267036=
+3947360&sdata=3DER6n1K9ghYRtgrk1wDYjwxLyFkPT0ICOY6t1KBLZ%2Bxg%3D&reserved=3D0>
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363957354&sdata=3Dl%2FdYl=
+jo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363957354&sdata=3Dl%2FdYl=
+jo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1 (https://eu=
+r01.safelinks.protection.outlook.com/...)<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3=
+GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C=
+1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637262670363967346&sdata=3DqwCgavD=
+0e0mm82BM5zJT2il0vswfcPfCfr7BMnfCs9Y%3D&reserved=3D0>
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:26:59 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: "Dijk, Esko" <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 04 Jun 2020 07:34:20 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=67
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2006A&L=3GPP_MENTORING&O=D&P=67>
+
+Hello Jens,
+
+thanks for your feedback. What you propose would be a useful addition I think=
+; currently it is not possible in 3GPP.guru.
+
+=C2=B7         adding a verbose list of TR/TS that *define* a specific acrony=
+m is easiest to add since that information is already in. Only the client sid=
+e needs an additional display format.
+
+=C2=B7         adding a verbose list of TR/TS that *mention* (use) a specific=
+ acronym requires a new function in the parser code too. I=E2=80=99m already =
+adding parsing for references to other TR/TS docs; so it would be easy to add=
+ acronyms too! That still needs a check to see if the file sizes don=E2=80=99=
+t get too large.
+
+best regards
+Esko Dijk
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Jens Toobe
+Sent: Thursday, May 28, 2020 14:50
+To: [log in to unmask]
+Subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+
+Dear Georg,
+
+Thanks for the quick reply and the link.
+Looks good, too and will provide a useful addition to search the bewildering =
+array of 3GPP specs.
+
+I do like the fact the results page lists the respective WG, too, AND one can=
+ look up specs per WG!
+That=E2=80=99s very neat.
+
+Allow me to offer a thought.
+
+=C2=B7         If I enter =E2=80=9CS1=E2=80=9D under =E2=80=9CSearch 3GPP Spe=
+cs=E2=80=9D and hit the =E2=80=9CSpecs=E2=80=9D button, a long list of docs i=
+s generated.
+
+=C2=B7         Some specs have more than one revision and all the revisions a=
+re then listed under the spec, which makes that specific spec row quite deep.
+
+If and when time is available and one is inclined to do so=E2=80=A6. =E2=98=
+=BA, may I propose to limit the # of revisions listed per spec to, say, the l=
+ast three available?
+That would greatly enhance the readability of the page.
+
+Thanks for sharing this tool and for the work that has gone into it.
+I have bookmarked it already and will most certainly use it on a regular basi=
+s from now on.
+
+Best,
+
+Jens
+
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Georg Mayer
+Gesendet: Donnerstag, 28. Mai 2020 14:19
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Tobe, all,
+
+It seems we all meet similar problems at one time =E2=98=BA.
+
+I have written some simple tools which collect information from the 3GPP webs=
+ite and make them in a straight-forward way searchable.
+
+For example you can find the information 24.229 under this link: BLOCKEDwhatt=
+hespec[.]net/3gpp/spec[.]php?q=3D24[.]229BLOCKED
+
+On the top of the page you can search for Work Items (just put in a string th=
+at is related to the work item within the 3GPP workplan and it shows you a li=
+st of WIs which contain that string), Specs (same) and tdocs (only numbers). =
+Search-strings cannot include a blank, it needs to be represented by either a=
+ =E2=80=9C.=E2=80=9D or =E2=80=9C.*=E2=80=9D (regular expression style).
+
+I wrote the whole thing just for myself and have no intention to bring it to =
+any type of perfection. It=E2=80=99s not very reliable I guess, but so far it=
+ serves me quite ok.
+
+Cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jens Toobe
+Sent: Donnerstag, 28. Mai 2020 14:07
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in =E2=80=
+=9C24.229=E2=80=9D and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don=E2=80=99t hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: BLOCKED3gpp[.]guru/BLOCKED
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools<https://eur01.safelinks.protection.outlook.co=
+m/?url=3Dhttps%3A%2F%2Fwww.3gpp.org%2Ftechnologies%2Ftutorials-tools&data=3D0=
+2%7C01%7C%7C698cc62bb20d4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306=
+e4%7C0%7C1%7C637262670363947360&sdata=3DER6n1K9ghYRtgrk1wDYjwxLyFkPT0ICOY6t1K=
+BLZ%2Bxg%3D&reserved=3D0>
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20=
+d4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6372626703=
+63957354&sdata=3Dl%2FdYljo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=
+=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20=
+d4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6372626703=
+63957354&sdata=3Dl%2FdYljo7O31rTNrAQ5TzoOq1ztWyI5UQ%2BOrB7XsB6yY%3D&reserved=
+=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C698cc62bb20=
+d4f9924cc08d80305b6ed%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6372626703=
+63967346&sdata=3DqwCgavD0e0mm82BM5zJT2il0vswfcPfCfr7BMnfCs9Y%3D&reserved=3D0>
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:02 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: AW: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: Jens Toobe <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 28 May 2020 12:50:17 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=2362
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=2362>
+
+
+Dear Georg,
+
+Thanks for the quick reply and the link.
+Looks good, too and will provide a useful addition to search the bewildering =
+array of 3GPP specs.
+
+I do like the fact the results page lists the respective WG, too, AND one can=
+ look up specs per WG!
+That=E2=80=99s very neat.
+
+Allow me to offer a thought.
+
+=C2=B7         If I enter =E2=80=9CS1=E2=80=9D under =E2=80=9CSearch 3GPP Spe=
+cs=E2=80=9D and hit the =E2=80=9CSpecs=E2=80=9D button, a long list of docs i=
+s generated.
+
+=C2=B7         Some specs have more than one revision and all the revisions a=
+re then listed under the spec, which makes that specific spec row quite deep.
+
+If and when time is available and one is inclined to do so=E2=80=A6. =E2=98=
+=BA, may I propose to limit the # of revisions listed per spec to, say, the l=
+ast three available?
+That would greatly enhance the readability of the page.
+
+Thanks for sharing this tool and for the work that has gone into it.
+I have bookmarked it already and will most certainly use it on a regular basi=
+s from now on.
+
+Best,
+
+Jens
+
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Von: 3GPP_MENTORING <[log in to unmask]> Im Auftrag von Georg Mayer
+Gesendet: Donnerstag, 28. Mai 2020 14:19
+An: [log in to unmask]
+Betreff: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Hello Tobe, all,
+
+It seems we all meet similar problems at one time =E2=98=BA.
+
+I have written some simple tools which collect information from the 3GPP webs=
+ite and make them in a straight-forward way searchable.
+
+For example you can find the information 24.229 under this link: BLOCKEDwhatt=
+hespec[.]net/3gpp/spec[.]php?q=3D24[.]229BLOCKED
+
+On the top of the page you can search for Work Items (just put in a string th=
+at is related to the work item within the 3GPP workplan and it shows you a li=
+st of WIs which contain that string), Specs (same) and tdocs (only numbers). =
+Search-strings cannot include a blank, it needs to be represented by either a=
+ =E2=80=9C.=E2=80=9D or =E2=80=9C.*=E2=80=9D (regular expression style).
+
+I wrote the whole thing just for myself and have no intention to bring it to =
+any type of perfection. It=E2=80=99s not very reliable I guess, but so far it=
+ serves me quite ok.
+
+Cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jens Toobe
+Sent: Donnerstag, 28. Mai 2020 14:07
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in =E2=80=
+=9C24.229=E2=80=9D and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don=E2=80=99t hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: BLOCKED3gpp[.]guru/BLOCKED
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:03 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 28 May 2020 12:19:16 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=1523
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=1523>
+
+Hello Tobe, all,
+
+It seems we all meet similar problems at one time :).
+
+I have written some simple tools which collect information from the 3GPP webs=
+ite and make them in a straight-forward way searchable.
+
+For example you can find the information 24.229 under this link: https://what=
+thespec.net/3gpp/spec.php?q=3D24.229
+
+On the top of the page you can search for Work Items (just put in a string th=
+at is related to the work item within the 3GPP workplan and it shows you a li=
+st of WIs which contain that string), Specs (same) and tdocs (only numbers). =
+Search-strings cannot include a blank, it needs to be represented by either a=
+ "." or ".*" (regular expression style).
+
+I wrote the whole thing just for myself and have no intention to bring it to =
+any type of perfection. It's not very reliable I guess, but so far it serves =
+me quite ok.
+
+Cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jens Toobe
+Sent: Donnerstag, 28. Mai 2020 14:07
+To: [log in to unmask]
+Subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in "24.229"=
+ and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don't hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> Im Auftra=
+g von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]<mailto:[log in to unmask]>
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker - Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:05 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Attn: Esko Dijk - Online tool for looking up 3GPP acronyms
+from: Jens Toobe <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 28 May 2020 12:07:13 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=741
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=741>
+
+Dear Esko,
+
+thanks for the great 3GPP.guru tool.
+Been using it nearly daily and I have mentioned it to quite a few colleagues,=
+ too.
+
+I do have a challenge, which I have not been able to solve using Guru and its=
+ search functions.
+
+Example:
+I would very much like to have a list of stage 3 (or stage 1 or 2) documents,=
+ which mention or reference MCData or any other acronym and have a verbose re=
+sults page generated that also shows the title of each spec in that specific =
+stage (here in this example: stage 3).
+With verbose result I mean a result that is available when I type in "24.229"=
+ and hit enter, for example.
+
+Such as:
+:: 24.229 -> hit enter
+24.229 =3D TS 24.229 V15.9.0 (2019-12); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 15)
+24.229 =3D TS 24.229 V16.5.0 (2020-03); TSG CT; IP multimedia call control pr=
+otocol based on Session Initiation Protocol (SIP) and Session Description Pro=
+tocol (SDP); Stage 3 (Release 16)
+
+If this is type of search / verbose results generation is already possible, I=
+ would be grateful for any tips and hints you might be able to provide.
+
+Many thanks again for the hard work and a great tool.
+
+Please don't hesitate to give me a call if you have any questions.
+
+Kind Regards
+on behalf
+
+Jens Toobe
+______________________________________________
+K 3 - Service Design
+Federal Agency for Public Safety Digital Radio (BDBOS)
+
+Postal Address: 11014 Berlin, Germany
+Phone: +49 (0) 30 18681 45498
+Mobile: +49 (0) 160 9057 0796
+E-Mail: [log in to unmask]<mailto:[log in to unmask]>
+
+Von: 3GPP_MENTORING <[log in to unmask]> Im Auftrag von Dijk, Esko
+Gesendet: Freitag, 6. Dezember 2019 16:36
+An: [log in to unmask]
+Betreff: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker - Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:06 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Newcomer Orientation Session Announcement =?utf-8?q?=E2=80=93_16_June_2020=2C_UTC_13=3A00_=E2=80=93?= 14:30
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Mon, 25 May 2020 16:06:48 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=66
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2005D&L=3GPP_MENTORING&O=D&P=66>
+
+Dear 3GPP delegates,
+
+
+
+This mail is an announcement for the first electronic 3GPP Newcomer Orientati=
+on Session, which will take place via GoToMeeting on Tuesday 16 June 2020, fr=
+om 13:00 to 14:30 UTC (please note the timezone!).
+
+
+
+In order to attend, you will have to register for the meeting until Friday 12=
+ June 2020 under this link: https://portal.3gpp.org/?tbid=3DAll&SubTB=3D#/reg=
+istration?MtgId=3D38531
+
+
+
+Only registered delegates will receive a calendar invitation with the dial-in=
+ details.
+
+
+
+The session will be chaired by the 3GPP TSG chairs. The rough agenda is
+
+-          40 minutes presentation on 3GPP basics
+
+-          50 minutes  questions & answers
+
+
+
+The session is meant for all 3GPP delegates who feel new to 3GPP or who have =
+basic questions.
+
+
+
+We look forward to welcome you to the session!
+
+
+
+Cheers,
+
+Georg, Lionel, Balazs
+
+
+(sent to the mailing list of 3GPP SA, SA1/2/3/4/5/6, SA3-LI as well as 3GPP_M=
+ENTORING =E2=80=93 CT and RAN will distribute accordingly)
+
+--
+Georg Mayer
+3GPP SA Chairman
+Huawei Technologies
++43 699 1900 5758
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:08 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Canceled: 3GPP Mentoring face-to-face meeting
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Mon, 10 Feb 2020 12:08:20 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2002B&L=3GPP_MENTORING&O=D&P=71
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2002B&L=3GPP_MENTORING&O=D&P=71>
+
+Hello,
+
+Due to the conversion of the 3GPP Plenary meetings in March to e-meetings, th=
+e face-to-face mentoring meeting is cancelled. I will setup a similar meeting=
+ for June plenary later on.
+
+Thanks for your understanding.
+
+Cheers,
+Georg
+
+
+
+
+
+
+
+
+
+
+
+Hello,
+
+This is an early placeholder for the 3GPP Mentoring face-to-face meeting at t=
+he next SA/RAN/CT plenaries on Jeju Island. There will not be a dedicated pre=
+sentation, we intend to discuss
+a)      further steps in mentoring
+b)      open questions from new participants
+
+Depending on the number of people and the available resources we might start =
+a bit later so that everybody can grab some food first.
+
+Location and other details will be announced during the plenary meetings.
+
+Note that we will also have a newcomer session again (Tuesday morning 7:30), =
+during which we will give the usual general information and have a short Q&A.=
+ Mentors can freely choose whether to attend the newcomer session or not :).
+
+Cheers,
+Georg, Lionel & Balazs
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:10 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: 3GPP Mentoring face-to-face meeting
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Tue, 21 Jan 2020 12:07:18 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind2001C&L=3GPP_MENTORING&O=D&P=70
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind2001C&L=3GPP_MENTORING&O=D&P=70>
+
+Hello,
+
+This is an early placeholder for the 3GPP Mentoring face-to-face meeting at t=
+he next SA/RAN/CT plenaries on Jeju Island. There will not be a dedicated pre=
+sentation, we intend to discuss
+a)      further steps in mentoring
+b)      open questions from new participants
+
+Depending on the number of people and the available resources we might start =
+a bit later so that everybody can grab some food first.
+
+Location and other details will be announced during the plenary meetings.
+
+Note that we will also have a newcomer session again (Tuesday morning 7:30), =
+during which we will give the usual general information and have a short Q&A.=
+ Mentors can freely choose whether to attend the newcomer session or not :).
+
+Cheers,
+Georg, Lionel & Balazs
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:15 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: I-UPF
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Sun, 15 Dec 2019 12:30:19 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"
+Message-ID: wa.exe?A2=ind1912C&L=3GPP_MENTORING&O=D&P=71
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912C&L=3GPP_MENTORING&O=D&P=71>
+
+Hi Jeff,
+
+I think that technical questions on the content of 3GPP  specifications shoul=
+d either go to the related 3GPP groups / mailing lists (SA2 in this case) or =
+to the rapporteur of the related specification (see https://portal.3gpp.org/#=
+55936-specifications)
+
+Hope this helps.
+
+Cheers,
+Georg
+
+-----Original Message-----
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Jeffrey (Zhaohu=
+i) Zhang
+Sent: Freitag, 13. Dezember 2019 15:32
+To: [log in to unmask]
+Subject: I-UPF
+
+Hi,
+
+What is the purpose of I-UPF?
+In 23.501 I can only find some text in 5.33.2.2, about redundant transmission=
+. However, that does not seem to require some "UPF" functionality on the tran=
+sit I-UPF node (and the N4 interface between SMF and I-UPF)? As long as the U=
+PF sends two copies of traffic over two disjoint N3 tunnels shouldn't it work?
+
+Thanks.
+Jeffrey
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:17 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: I-UPF
+from: "Jeffrey (Zhaohui) Zhang" <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Fri, 13 Dec 2019 14:31:32 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"
+Message-ID: wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=2920
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=2920>
+
+Hi,
+
+What is the purpose of I-UPF?
+In 23.501 I can only find some text in 5.33.2.2, about redundant transmission=
+. However, that does not seem to require some "UPF" functionality on the tran=
+sit I-UPF node (and the N4 interface between SMF and I-UPF)? As long as the U=
+PF sends two copies of traffic over two disjoint N3 tunnels shouldn't it work?
+
+Thanks.
+Jeffrey
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:19 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Online tool for looking up 3GPP acronyms
+from: "Dijk, Esko" <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 12 Dec 2019 06:43:49 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"
+Message-ID: wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=2316
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=2316>
+
+Thanks John, Kevin, Richie,
+
+for your feedback. It seems Dynamic Spectrum Sharing is not defined in any of=
+ the 3GPP documents.
+And yes the input for 3GPP.Guru is automatically extracted from the 3GPP zip =
+files and it also looks for inline definitions, not only from the official Ab=
+breviations section.  One of the few manual additions I dared to add is =E2=
+=80=9C4G=E2=80=9D ;-)
+
+best regards
+Esko
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Richie Leo
+Sent: Monday, December 9, 2019 11:30
+To: [log in to unmask]
+Subject: Re: Online tool for looking up 3GPP acronyms
+
+
+Hey all,
+
+
+
+Yes I was also wondering if it should be 21.905. But as pointed out a lot of =
+terms are missing from there... actually it's quite hard to collect all the t=
+erms in one place, it's just way too much work to do.
+
+
+
+I actually have a question for Esko, did you have all the specs processed aut=
+omatically? or did you manually maintain all the terms? I was thinking perhap=
+s there's a way to collect all the terms in a database using some scripts or =
+something.. not sure if you're already doing it this way. Your dictionary was=
+ quite good already, I tried some rarely used acronyms and got matches in you=
+r dictionary. It's really well done! Thank you for your effort!
+
+
+
+Cheers,
+
+
+
+Richie Leo
+
+Research Engineer, 3GPP Delegate
+
+Wireless Research Institute
+
+ZTE Corporation
+
+14th Floor, Tower A, Sinotrans Building,
+
+AnDing Road, ChaoYang District,
+
+Beijing, China
+
+
+
+[cid:image002.png@01D5B0BD.ED21CAE0]
+
+
+Original Mail
+Sender: KevinHolley <[log in to unmask]<mailto:[log in to unmask]>>
+To: [log in to unmask]<mailto:[log in to unmask]> <[log in to unmask]<mailto:=
+[log in to unmask]>>;
+Date: 2019/12/07 00:39
+Subject: Re: Online tool for looking up 3GPP acronyms
+Dear John, Esko, all,
+
+Interesting that none of these has Dynamic Spectrum Sharing (DSS)=E2=80=A6
+
+Also John did you mean 21.905 ?
+
+Regards,
+
+Kevin
+[log in to unmask]<mailto:[log in to unmask]>
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>On Behalf=
+ Of John M Meredith
+Sent: 06 December 2019 15:53
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Re: Online tool for looking up 3GPP acronyms
+
+Thanks Guru, fast and effective.
+And now our own well-kept secret resources, 3GPP TR 21.801 (3GPP vocabulary) =
+and TEDDI: https://webapp.etsi.org/teddi/<https://eur01.safelinks.protection.=
+outlook.com/?url=3Dhttps%3A%2F%2Fwebapp.etsi.org%2Fteddi%2F&data=3D02%7C01%7C=
+%7C8745faacd1b9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e4%7C0%7C=
+1%7C637114842884328626&sdata=3DKrFXgZVZ3nSXFKyfhTbr03HqbiKfjWNBKppmrgFkRQw%3D=
+&reserved=3D0>.
+
+b/r
+John M
+
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>On Behalf=
+ Of Dijk, Esko
+Sent: 06 December 2019 16:36
+To: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>
+Subject: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/<https://eur01.safelinks.prot=
+ection.outlook.com/?url=3Dhttps%3A%2F%2F3gpp.guru%2F&data=3D02%7C01%7C%7C8745=
+faacd1b9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C637=
+114842884338619&sdata=3D4ocSpBWti48goC4YaG%2BR7tUfs6%2FeEMwBF%2FtsUQsTmC8%3D&=
+reserved=3D0>
+
+Also the 3GPP website tools section has some useful links:https://www.3gpp.or=
+g/technologies/tutorials-tools<https://eur01.safelinks.protection.outlook.com=
+/?url=3Dhttps%3A%2F%2Fwww.3gpp.org%2Ftechnologies%2Ftutorials-tools&data=3D02=
+%7C01%7C%7C8745faacd1b9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e=
+4%7C0%7C1%7C637114842884338619&sdata=3DqD61HpPJ61u2s%2BTqAWERGy0sWk8ctTqiBunQ=
+n9fK5j4%3D&reserved=3D0>
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C8745faacd1b=
+9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6371148428=
+84348615&sdata=3D85rRp9nB936Zo2isvZ3VmK73tRMflYuVoC1D5zS4Jvg%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C8745faacd1b=
+9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6371148428=
+84348615&sdata=3D85rRp9nB936Zo2isvZ3VmK73tRMflYuVoC1D5zS4Jvg%3D&reserved=3D0>
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C8745faacd1b=
+9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6371148428=
+84358609&sdata=3DIQL5aVYri5Tl6mVDemCr928Xm%2BUtdJeO19H8tWybWcU%3D&reserved=3D=
+0>
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1<https://eur=
+01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2Fscrip=
+ts%2Fwa.exe%3FSUBED1%3D3GPP_MENTORING%26A%3D1&data=3D02%7C01%7C%7C8745faacd1b=
+9493e7c5a08d77c92f1d1%7C1a407a2d76754d178692b3ac285306e4%7C0%7C1%7C6371148428=
+84358609&sdata=3DIQL5aVYri5Tl6mVDemCr928Xm%2BUtdJeO19H8tWybWcU%3D&reserved=3D=
+0>
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:20 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: FW: Newcomer Orientation Session -- Sitges
+from: John M Meredith <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Mon, 09 Dec 2019 14:10:55 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=1612
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=1612>
+
+
+From: 3gpp_tsg_ran: tsg radio access network group <[log in to unmask]> On Be=
+half Of Georg Mayer
+Sent: 03 December 2019 16:47
+To: 3GPP_TSG_RAN <[log in to unmask]>
+Subject: Newcomer Orientation Session -- Sitges
+
+Dear SA, CT and RAN delegates,
+
+Also in Sitges we will hold a Newcomer Orientation Session. Here are the deta=
+ils.
+
+When & Where?
+              Tuesday, December 10th 2019
+              07:30 =E2=80=93 08:30 am local time in Sitges
+              Room TRAMUNTANA 3
+
+Who should come?
+
+-          Delegates who consider themselves =E2=80=9Cnew=E2=80=9D to 3GPP.
+
+-          Delegates who already participate 3GPP for a while but still find =
+some things about it mysterious.
+
+-          Experienced delegates who are curious (if there are still seats av=
+ailable).
+
+Agenda
+
+-          Quick introduction
+
+-          Presentation of (updated) introduction slides http://www.3gpp.org/=
+ftp/tsg_sa/TSG_SA/TSGS_85/Docs/SP-190845.zip
+
+-          Questions & Answers =E2=80=93 this section should focus on basic q=
+uestions about 3GPP from new delegates.
+
+-          3GPPs approach to mentoring
+
+Please feel free to forward this message to delegates who are not (yet) subsc=
+ribed to the list.
+
+Please drop us an e-mail if you have any questions.
+
+Thanks and cheers,
+Georg
+
+
+--
+Georg Mayer
+3GPP SA Chairman
+Huawei Technologies
++43 699 1900 5758
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:22 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Online tool for looking up 3GPP acronyms
+from: John M Meredith <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Mon, 09 Dec 2019 10:42:15 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=796
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=796>
+
+@ Kevin
+
+Yes, of course I did in fact mean 21.905 and not 21.801 (which is something q=
+uite different, although it too makes good reading for newcomers =E2=80=93 an=
+d indeed, for old hands =F0=9F=98=89).  Thanks Kevin for spotting my bum stee=
+r.
+
+b/r
+John M
+
+
+
+
+Sender: KevinHolley <[log in to unmask]<mailto:[log in to unmask]>>
+To: [log in to unmask]<mailto:[log in to unmask]> <[log in to unmask]<mailto:=
+[log in to unmask]>>;
+Date: 2019/12/07 00:39
+Subject: Re: Online tool for looking up 3GPP acronyms
+Dear John, Esko, all,
+
+Interesting that none of these has Dynamic Spectrum Sharing (DSS)=E2=80=A6
+
+Also John did you mean 21.905 ?
+
+Regards,
+
+Kevin
+[log in to unmask]<mailto:[log in to unmask]>
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>On Behalf=
+ Of John M Meredith
+Sent: 06 December 2019 15:53
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Re: Online tool for looking up 3GPP acronyms
+
+Thanks Guru, fast and effective.
+And now our own well-kept secret resources, 3GPP TR 21.801 (3GPP vocabulary) =
+and TEDDI: https://webapp.etsi.org/teddi/.
+
+b/r
+John M
+
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>On Behalf=
+ Of Dijk, Esko
+Sent: 06 December 2019 16:36
+To: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>
+Subject: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/
+
+Also the 3GPP website tools section has some useful links:https://www.3gpp.or=
+g/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:23 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Online tool for looking up 3GPP acronyms
+from: Richie Leo <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Mon, 09 Dec 2019 18:30:15 +0800
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"
+Message-ID: wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=71
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912B&L=3GPP_MENTORING&O=D&P=71>
+
+Hey all,
+
+
+
+
+
+
+
+Yes I was also wondering if it should be 21.905. But as pointed out a lot of =
+terms are missing from there... actually it's quite hard to collect all the t=
+erms in one place, it's just way too much work to do.
+
+
+
+
+
+
+I actually have a question for Esko, did you have all the specs processed aut=
+omatically? or did you manually maintain all the terms? I was thinking perhap=
+s there's a way to collect all the terms in a database using some scripts or =
+something.. not sure if you're already doing it this way. Your dictionary was=
+ quite good already, I tried some rarely used acronyms and got matches in you=
+r dictionary. It's really well done! Thank you for your effort!
+
+
+
+
+
+
+Cheers,
+
+
+
+
+
+
+
+
+
+
+Richie Leo
+
+
+Research Engineer, 3GPP Delegate
+
+Wireless Research Institute
+
+ZTE Corporation
+
+14th Floor, Tower A, Sinotrans Building,
+
+AnDing Road, ChaoYang District,
+
+Beijing, China
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Original Mail
+
+
+
+Sender: KevinHolley <[log in to unmask]>
+To: [log in to unmask] <[log in to unmask]>;
+Date: 2019/12/07 00:39
+Subject: Re: Online tool for looking up 3GPP acronyms
+
+
+
+
+
+
+Dear John, Esko, all,
+
+
+=20
+
+
+Interesting that none of these has Dynamic Spectrum Sharing (DSS)=E2=80=A6
+
+
+=20
+
+
+Also John did you mean 21.905 ?
+
+
+=20
+
+
+Regards,
+
+
+=20
+
+
+Kevin
+
+
+[log in to unmask]
+
+
+
+=20
+
+
+
+From: 3GPP_MENTORING <[log in to unmask]>On Behalf Of John M Meredith
+Sent: 06 December 2019 15:53
+To: [log in to unmask]
+Subject: Re: Online tool for looking up 3GPP acronyms
+
+
+
+
+=20
+
+
+Thanks Guru, fast and effective.
+
+
+And now our own well-kept secret resources, 3GPP TR 21.801 (3GPP vocabulary) =
+and TEDDI: https://webapp.etsi.org/teddi/.
+
+
+=20
+
+
+b/r
+
+
+John M=20
+
+
+=20
+
+
+=20
+
+
+
+From: 3GPP_MENTORING <[log in to unmask]>On Behalf Of Dijk, Esko
+Sent: 06 December 2019 16:36
+To: 3GPP_MENTORING <[log in to unmask]>
+Subject: Online tool for looking up 3GPP acronyms
+
+
+
+
+=20
+
+
+Hello all,
+
+
+=20
+
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+
+
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+
+
+Feel free to try it out also: https://3gpp.guru/=20
+
+
+=20
+
+
+Also the 3GPP website tools section has some useful links:https://www.3gpp.or=
+g/technologies/tutorials-tools
+
+
+=20
+
+
+best regards
+
+
+Esko Dijk
+
+
+=20
+
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+
+=20
+
+
+
+-----------------------------------------------------------------------------=
+---
+
+
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s).
+ If you are not the intended recipient, you are hereby notified that any use,=
+ forwarding, dissemination, or reproduction of this message is strictly prohi=
+bited and may be unlawful. If you are not the intended recipient, please cont=
+act the sender by return e-mail
+ and destroy all copies of the original message.
+
+
+=20
+
+
+
+-----------------------------------------------------------------------------=
+---
+
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+
+=20
+
+
+
+-----------------------------------------------------------------------------=
+---
+
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+
+
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:25 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Online tool for looking up 3GPP acronyms
+from: Kevin Holley <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Fri, 06 Dec 2019 16:39:15 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=6387
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=6387>
+
+Dear John, Esko, all,
+
+Interesting that none of these has Dynamic Spectrum Sharing (DSS)...
+
+Also John did you mean 21.905 ?
+
+Regards,
+
+Kevin
+[log in to unmask]<mailto:[log in to unmask]>
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of John M Meredith
+Sent: 06 December 2019 15:53
+To: [log in to unmask]
+Subject: Re: Online tool for looking up 3GPP acronyms
+
+Thanks Guru, fast and effective.
+And now our own well-kept secret resources, 3GPP TR 21.801 (3GPP vocabulary) =
+and TEDDI:  https://webapp.etsi.org/teddi/.
+
+b/r
+John M
+
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Dijk, Esko
+Sent: 06 December 2019 16:36
+To: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>>
+Subject: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker - Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:27 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: Online tool for looking up 3GPP acronyms
+from: John M Meredith <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Fri, 06 Dec 2019 15:52:36 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=5441
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=5441>
+
+Thanks Guru, fast and effective.
+And now our own well-kept secret resources, 3GPP TR 21.801 (3GPP vocabulary) =
+and TEDDI:  https://webapp.etsi.org/teddi/.
+
+b/r
+John M
+
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Dijk, Esko
+Sent: 06 December 2019 16:36
+To: 3GPP_MENTORING <[log in to unmask]>
+Subject: Online tool for looking up 3GPP acronyms
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker =E2=80=93 Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:29 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Online tool for looking up 3GPP acronyms
+from: "Dijk, Esko" <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Fri, 06 Dec 2019 15:36:19 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=4802
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=4802>
+
+Hello all,
+
+In my experience it can be hard to understand 3GPP related communications (in=
+ emails, presentations, meetings or even textbooks...) due to the many acrony=
+ms.
+To help with this particular aspect I created an online tool, as a side proje=
+ct, and have been using it over the past months.  It looks up acronym definit=
+ions from TS/TR documents.
+Feel free to try it out also: https://3gpp.guru/
+
+Also the 3GPP website tools section has some useful links: https://www.3gpp.o=
+rg/technologies/tutorials-tools
+
+best regards
+Esko Dijk
+
+R&D contingent worker - Embedded Systems, Philips Research
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:30 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Tue, 03 Dec 2019 14:07:59 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=4139
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=4139>
+
+Dear Anindya, all,
+
+Sorry for the late reply. Yes, we will for sure have a chance to all get toge=
+ther during the week. The time planning for the plenary is still shaping up, =
+but I will announce something over the next days.
+
+Thanks and cheers,
+Georg
+
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Anindya Saha
+Sent: Dienstag, 3. Dezember 2019 04:03
+To: [log in to unmask]
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+Thanks Kevin. Looking forward to it.
+
+-Anindya Saha
+
+On Tue, 3 Dec, 2019, 04:26 , <[log in to unmask]<mailto:[log in to unmask]>> =
+wrote:
+I am sure that could be arranged!
+
+
+Regards,
+
+Kevin
+[log in to unmask]<mailto:[log in to unmask]>
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Anindya Saha
+Sent: 01 December 2019 07:24
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+Hello Georg,
+
+This is a great initiative from 3GPP for both RAN and SA groups. I would like=
+ to know if there is an opportunity to meet some mentors face to face in upco=
+ming meetings at SITGES, Spain (on the sidelines of Plenary meetings).
+
+-best regards
+Anindya Saha
+CTO, Saankhya Labs
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Richie Leo
+Sent: 28 November 2019 08:04
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+
+Hey all, Hey Georg,
+
+
+
+Thank you so much for organizing this event for the newcomers, it was really =
+helpful (and a great opportunity to know other new delegates). I'm just writi=
+ng to ask about the standard of becoming a mentor, so that I can perhaps reco=
+mmend some of my colleagues and ask if they would love to join this mentoring=
+ program.
+
+
+
+Thanks again for your effort in organizing this training program, it really m=
+eans a lot at least to some of us ;)
+
+
+
+Cheers,
+
+
+
+Richie Leo
+
+Research Engineer, 3GPP Delegate
+
+Wireless Research Institute
+
+ZTE Corporation
+
+14th Floor, Tower A, Sinotrans Building,
+
+AnDing Road, ChaoYang District,
+
+Beijing, China
+
+
+
+[cid:image001.png@01D5A957.21AF4080]
+
+
+Original Mail
+Sender: GeorgMayer <[log in to unmask]<mailto:[log in to unmask]>>
+To: [log in to unmask]<mailto:[log in to unmask]> <[log in to unmask]<mailto:=
+[log in to unmask]>>;
+Date: 2019/11/23 03:28
+Subject: 3GPP Mentoring List Kick-Off
+Hello,
+
+3GPP continuously looks for effective ways to help new delegates to overcome =
+initial barriers and to answer their questions. One of the activities we agre=
+ed on recently is to establish a mentoring process.
+
+The process is not based on a 1-to-1 relation between a mentor and a mentee, =
+but an open forum in which new delegates (=E2=80=9Cnewcomers=E2=80=9D) can ea=
+sily approach mentors with their questions about 3GPP processes, structure an=
+d work. This communication should take place during 3GPP meetings but also of=
+fline. For the offline case we have created this mailing list and hope it wil=
+l be used frequently.
+
+As said before this mechanism is in its very early stage and most likely we w=
+ill all learn a lot over the next months on how to best handle the related qu=
+estions and discussions. I know that everybody will take an open mind and wor=
+k to make the 3GPP community more accessible and welcoming =E2=80=93 thank yo=
+u all in advance for that.
+
+I copy the slide with the mentors we have so far below. Thanks to the four of=
+ them =E2=80=93 they volunteered during the 3GPP SA meeting in September. Obv=
+iously we look for extending the pool of mentors over the next week, especial=
+ly also into the regions of RAN and CT and also get more delegates from the d=
+ifferent working groups on board.
+
+So please, don=E2=80=99t be shy. Ask questions and help us create a process t=
+hat serves us all best.
+
+Thank you all and cheers,
+Georg
+
+[cid:image003.png@01D5A957.21AF4080]
+
+--
+Georg Mayer
+3GPP SA Chairman
+Huawei Technologies
++43 699 1900 5758
+
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:32 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Tue, 03 Dec 2019 14:07:59 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=3234
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=3234>
+
+Dear Francesco, all,
+
+Thanks for the reminder :).
+
+Yes, there will be a newcomer orientation session and I will announce it soon=
+ on the CT/RAN/SA reflectors.
+
+Cheers,
+Georg
+
+-----Original Message-----
+From: 3GPP_MENTORING [mailto:[log in to unmask]] On Behalf Of Francesco Mani
+Sent: Dienstag, 3. Dezember 2019 09:31
+To: [log in to unmask]
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+Dear all,
+first of all, as a newcomer to 3GPP meetings, I'd like to thanks the organize=
+rs of this mailing list  and the mentors for setting this system up.
+>From what I understood, in the previous plenary there was a newcomer orientat=
+ion session. Is the same thing going to happen in this coming plenary in Sitg=
+es? If that is the case, when is that session? I couldn't find that informati=
+on online or in the RAN mailing lists I am subscribed to.
+Thanks in advance for any answer.
+
+Regards,
+Francesco
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:33 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Francesco Mani <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Tue, 03 Dec 2019 08:30:43 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=2544
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=2544>
+
+Dear all,
+first of all, as a newcomer to 3GPP meetings, I'd like to thanks the organize=
+rs of this mailing list  and the mentors for setting this system up.
+>From what I understood, in the previous plenary there was a newcomer orientat=
+ion session. Is the same thing going to happen in this coming plenary in Sitg=
+es? If that is the case, when is that session? I couldn't find that informati=
+on online or in the RAN mailing lists I am subscribed to.
+Thanks in advance for any answer.
+
+Regards,
+Francesco
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:35 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Anindya Saha <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Tue, 03 Dec 2019 08:32:58 +0530
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=1566
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=1566>
+
+Thanks Kevin. Looking forward to it.
+
+-Anindya Saha
+
+On Tue, 3 Dec, 2019, 04:26 , <[log in to unmask]> wrote:
+
+> I am sure that could be arranged!
+>
+>
+>
+>
+>
+> Regards,
+>
+>
+>
+> Kevin
+>
+> *[log in to unmask] <[log in to unmask]>*
+>
+>
+>
+> *From:* 3GPP_MENTORING <[log in to unmask]> *On Behalf Of *Anindya
+> Saha
+> *Sent:* 01 December 2019 07:24
+> *To:* [log in to unmask]
+> *Subject:* Re: 3GPP Mentoring List Kick-Off
+>
+>
+>
+> Hello Georg,
+>
+>
+>
+> This is a great initiative from 3GPP for both RAN and SA groups. I would
+> like to know if there is an opportunity to meet some mentors face to face
+> in upcoming meetings at SITGES, Spain (on the sidelines of Plenary
+> meetings).
+>
+>
+>
+> -best regards
+>
+> Anindya Saha
+>
+> CTO, Saankhya Labs
+>
+>
+>
+> *From:* 3GPP_MENTORING <[log in to unmask]> *On Behalf Of *Richie
+> Leo
+> *Sent:* 28 November 2019 08:04
+> *To:* [log in to unmask]
+> *Subject:* Re: 3GPP Mentoring List Kick-Off
+>
+>
+>
+> Hey all, Hey Georg,
+>
+>
+>
+> Thank you so much for organizing this event for the newcomers, it was
+> really helpful (and a great opportunity to know other new delegates). I'm
+> just writing to ask about the standard of becoming a mentor, so that I can
+> perhaps recommend some of my colleagues and ask if they would love to join
+> this mentoring program.
+>
+>
+>
+> Thanks again for your effort in organizing this training program, it
+> really means a lot at least to some of us ;)
+>
+>
+>
+> Cheers,
+>
+>
+>
+> *Richie Leo*
+>
+> Research Engineer, 3GPP Delegate
+>
+> Wireless Research Institute
+>
+> *ZTE Corporation*
+>
+> 14th Floor, Tower A, Sinotrans Building,
+>
+> AnDing Road, ChaoYang District,
+>
+> Beijing, China
+>
+>
+>
+>
+>
+> Original Mail
+>
+> *Sender: *GeorgMayer <[log in to unmask]>
+>
+> *To: *[log in to unmask] <[log in to unmask]>;
+>
+> *Date: *2019/11/23 03:28
+>
+> *Subject: 3GPP Mentoring List Kick-Off*
+>
+> Hello,
+>
+>
+>
+> 3GPP continuously looks for effective ways to help new delegates to
+> overcome initial barriers and to answer their questions. One of the
+> activities we agreed on recently is to establish a mentoring process.
+>
+>
+>
+> The process is not based on a 1-to-1 relation between a mentor and a
+> mentee, but an open forum in which new delegates (=E2=80=9Cnewcomers=E2=80=
+=9D) can easily
+> approach mentors with their questions about 3GPP processes, structure and
+> work. This communication should take place during 3GPP meetings but also
+> offline. For the offline case we have created this mailing list and hope it
+> will be used frequently.
+>
+>
+>
+> As said before this mechanism is in its very early stage and most likely
+> we will all learn a lot over the next months on how to best handle the
+> related questions and discussions. I know that everybody will take an open
+> mind and work to make the 3GPP community more accessible and welcoming =E2=
+=80=93
+> thank you all in advance for that.
+>
+>
+>
+> I copy the slide with the mentors we have so far below. Thanks to the four
+> of them =E2=80=93 they volunteered during the 3GPP SA meeting in September.
+> Obviously we look for extending the pool of mentors over the next week,
+> especially also into the regions of RAN and CT and also get more delegates
+> from the different working groups on board.
+>
+>
+>
+> So please, don=E2=80=99t be shy. Ask questions and help us create a process=
+ that
+> serves us all best.
+>
+>
+>
+> Thank you all and cheers,
+>
+> Georg
+>
+>
+>
+>
+>
+> --
+>
+> Georg Mayer
+>
+> 3GPP SA Chairman
+>
+> Huawei Technologies
+>
+> +43 699 1900 5758
+>
+>
+>
+>
+> ------------------------------
+>
+> To unsubscribe from the 3GPP_MENTORING list, click the following link:
+> http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+>
+>
+>
+>
+> ------------------------------
+>
+> To unsubscribe from the 3GPP_MENTORING list, click the following link:
+> http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+>
+>
+> ------------------------------
+>
+> To unsubscribe from the 3GPP_MENTORING list, click the following link:
+> http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+>
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:37 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Kevin Holley <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Mon, 02 Dec 2019 22:53:43 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=774
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=774>
+
+I am sure that could be arranged!
+
+
+Regards,
+
+Kevin
+[log in to unmask]<mailto:[log in to unmask]>
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Anindya Saha
+Sent: 01 December 2019 07:24
+To: [log in to unmask]
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+Hello Georg,
+
+This is a great initiative from 3GPP for both RAN and SA groups. I would like=
+ to know if there is an opportunity to meet some mentors face to face in upco=
+ming meetings at SITGES, Spain (on the sidelines of Plenary meetings).
+
+-best regards
+Anindya Saha
+CTO, Saankhya Labs
+
+From: 3GPP_MENTORING <[log in to unmask]<mailto:[log in to unmask]>> On Behal=
+f Of Richie Leo
+Sent: 28 November 2019 08:04
+To: [log in to unmask]<mailto:[log in to unmask]>
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+
+Hey all, Hey Georg,
+
+
+
+Thank you so much for organizing this event for the newcomers, it was really =
+helpful (and a great opportunity to know other new delegates). I'm just writi=
+ng to ask about the standard of becoming a mentor, so that I can perhaps reco=
+mmend some of my colleagues and ask if they would love to join this mentoring=
+ program.
+
+
+
+Thanks again for your effort in organizing this training program, it really m=
+eans a lot at least to some of us ;)
+
+
+
+Cheers,
+
+
+
+Richie Leo
+
+Research Engineer, 3GPP Delegate
+
+Wireless Research Institute
+
+ZTE Corporation
+
+14th Floor, Tower A, Sinotrans Building,
+
+AnDing Road, ChaoYang District,
+
+Beijing, China
+
+
+
+[cid:image001.png@01D5A957.21AF4080]
+
+
+Original Mail
+Sender: GeorgMayer <[log in to unmask]<mailto:[log in to unmask]>>
+To: [log in to unmask]<mailto:[log in to unmask]> <[log in to unmask]<mailto:=
+[log in to unmask]>>;
+Date: 2019/11/23 03:28
+Subject: 3GPP Mentoring List Kick-Off
+Hello,
+
+3GPP continuously looks for effective ways to help new delegates to overcome =
+initial barriers and to answer their questions. One of the activities we agre=
+ed on recently is to establish a mentoring process.
+
+The process is not based on a 1-to-1 relation between a mentor and a mentee, =
+but an open forum in which new delegates (=E2=80=9Cnewcomers=E2=80=9D) can ea=
+sily approach mentors with their questions about 3GPP processes, structure an=
+d work. This communication should take place during 3GPP meetings but also of=
+fline. For the offline case we have created this mailing list and hope it wil=
+l be used frequently.
+
+As said before this mechanism is in its very early stage and most likely we w=
+ill all learn a lot over the next months on how to best handle the related qu=
+estions and discussions. I know that everybody will take an open mind and wor=
+k to make the 3GPP community more accessible and welcoming =E2=80=93 thank yo=
+u all in advance for that.
+
+I copy the slide with the mentors we have so far below. Thanks to the four of=
+ them =E2=80=93 they volunteered during the 3GPP SA meeting in September. Obv=
+iously we look for extending the pool of mentors over the next week, especial=
+ly also into the regions of RAN and CT and also get more delegates from the d=
+ifferent working groups on board.
+
+So please, don=E2=80=99t be shy. Ask questions and help us create a process t=
+hat serves us all best.
+
+Thank you all and cheers,
+Georg
+
+[cid:image003.png@01D5A957.21AF4080]
+
+--
+Georg Mayer
+3GPP SA Chairman
+Huawei Technologies
++43 699 1900 5758
+
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:38 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Anindya Saha <[log in to unmask]>
+reply-to: [log in to unmask]
+date: Sun, 01 Dec 2019 12:53:52 +0530
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"
+Message-ID: wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=71
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1912A&L=3GPP_MENTORING&O=D&P=71>
+
+Hello Georg,
+
+=20
+
+This is a great initiative from 3GPP for both RAN and SA groups. I would like=
+ to know if there is an opportunity to meet some mentors face to face in upco=
+ming meetings at SITGES, Spain (on the sidelines of Plenary meetings).
+
+=20
+
+-best regards
+
+Anindya Saha
+
+CTO, Saankhya Labs=20
+
+=20
+
+From: 3GPP_MENTORING <[log in to unmask]> On Behalf Of Richie Leo
+Sent: 28 November 2019 08:04
+To: [log in to unmask]
+Subject: Re: 3GPP Mentoring List Kick-Off
+
+=20
+
+Hey all, Hey Georg,
+
+=20
+
+Thank you so much for organizing this event for the newcomers, it was really =
+helpful (and a great opportunity to know other new delegates). I'm just writi=
+ng to ask about the standard of becoming a mentor, so that I can perhaps reco=
+mmend some of my colleagues and ask if they would love to join this mentoring=
+ program.
+
+=20
+
+Thanks again for your effort in organizing this training program, it really m=
+eans a lot at least to some of us ;)
+
+=20
+
+Cheers,
+
+=20
+
+Richie Leo
+
+Research Engineer, 3GPP Delegate
+
+Wireless Research Institute
+
+ZTE Corporation
+
+14th Floor, Tower A, Sinotrans Building,
+
+AnDing Road, ChaoYang District,
+
+Beijing, China
+
+=20
+
+
+
+=20
+
+Original Mail
+
+Sender: GeorgMayer <[log in to unmask] <mailto:[log in to unmask]> >
+
+To: [log in to unmask] <mailto:[log in to unmask]>  <[log in to unmask] <mail=
+to:[log in to unmask]> >;
+
+Date: 2019/11/23 03:28
+
+Subject: 3GPP Mentoring List Kick-Off
+
+Hello,
+
+=20
+
+3GPP continuously looks for effective ways to help new delegates to overcome =
+initial barriers and to answer their questions. One of the activities we agre=
+ed on recently is to establish a mentoring process.
+
+=20
+
+The process is not based on a 1-to-1 relation between a mentor and a mentee, =
+but an open forum in which new delegates (=E2=80=9Cnewcomers=E2=80=9D) can ea=
+sily approach mentors with their questions about 3GPP processes, structure an=
+d work. This communication should take place during 3GPP meetings but also of=
+fline. For the offline case we have created this mailing list and hope it wil=
+l be used frequently.
+
+=20
+
+As said before this mechanism is in its very early stage and most likely we w=
+ill all learn a lot over the next months on how to best handle the related qu=
+estions and discussions. I know that everybody will take an open mind and wor=
+k to make the 3GPP community more accessible and welcoming =E2=80=93 thank yo=
+u all in advance for that.
+
+=20
+
+I copy the slide with the mentors we have so far below. Thanks to the four of=
+ them =E2=80=93 they volunteered during the 3GPP SA meeting in September. Obv=
+iously we look for extending the pool of mentors over the next week, especial=
+ly also into the regions of RAN and CT and also get more delegates from the d=
+ifferent working groups on board.
+
+=20
+
+So please, don=E2=80=99t be shy. Ask questions and help us create a process t=
+hat serves us all best.
+
+=20
+
+Thank you all and cheers,
+
+Georg
+
+=20
+
+
+
+=20
+
+--
+
+Georg Mayer
+
+3GPP SA Chairman
+
+Huawei Technologies
+
++43 699 1900 5758
+
+=20
+
+=20
+
+  _____ =20
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING <http://list.etsi=
+.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1> &A=3D1
+
+=20
+
+=20
+
+  _____ =20
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING <http://list.etsi=
+.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1> &A=3D1=20
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Wed May 26 00:27:40 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: Re: 3GPP Mentoring List Kick-Off
+from: Richie Leo <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Thu, 28 Nov 2019 10:34:22 +0800
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"
+Message-ID: wa.exe?A2=ind1911D&L=3GPP_MENTORING&O=D&P=880
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1911D&L=3GPP_MENTORING&O=D&P=880>
+
+Hey all, Hey Georg,
+
+
+
+
+
+
+
+Thank you so much for organizing this event for the newcomers, it was really =
+helpful (and a great opportunity to know other new delegates). I'm just writi=
+ng to ask about the standard of becoming a mentor, so that I can perhaps reco=
+mmend some of my colleagues and ask if they would love to join this mentoring=
+ program.
+
+
+
+
+
+
+Thanks again for your effort in organizing this training program, it really m=
+eans a lot at least to some of us ;)
+
+
+
+
+
+
+Cheers,
+
+
+
+
+
+
+
+
+
+
+Richie Leo
+
+
+Research Engineer, 3GPP Delegate
+
+Wireless Research Institute
+
+ZTE Corporation
+
+14th Floor, Tower A, Sinotrans Building,
+
+AnDing Road, ChaoYang District,
+
+Beijing, China
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Original Mail
+
+
+
+Sender: GeorgMayer <[log in to unmask]>
+To: [log in to unmask] <[log in to unmask]>;
+Date: 2019/11/23 03:28
+Subject: 3GPP Mentoring List Kick-Off
+
+
+
+
+
+
+Hello,
+
+
+=20
+
+
+3GPP continuously looks for effective ways to help new delegates to overcome =
+initial barriers and to answer their questions. One of the activities we agre=
+ed on recently is to establish a mentoring process.
+
+
+=20
+
+
+The process is not based on a 1-to-1 relation between a mentor and a mentee, =
+but an open forum in which new delegates (=E2=80=9Cnewcomers=E2=80=9D) can ea=
+sily approach mentors with their questions about 3GPP processes, structure an=
+d work. This communication
+ should take place during 3GPP meetings but also offline. For the offline cas=
+e we have created this mailing list and hope it will be used frequently.
+
+
+=20
+
+
+As said before this mechanism is in its very early stage and most likely we w=
+ill all learn a lot over the next months on how to best handle the related qu=
+estions and discussions. I know that everybody will take an open mind and wor=
+k to
+ make the 3GPP community more accessible and welcoming =E2=80=93 thank you al=
+l in advance for that.
+
+
+=20
+
+
+I copy the slide with the mentors we have so far below. Thanks to the four of=
+ them =E2=80=93 they volunteered during the 3GPP SA meeting in September. Obv=
+iously we look for extending the pool of mentors over the next week, especial=
+ly also into
+ the regions of RAN and CT and also get more delegates from the different wor=
+king groups on board.
+
+
+=20
+
+
+So please, don=E2=80=99t be shy. Ask questions and help us create a process t=
+hat serves us all best.
+
+
+=20
+
+
+Thank you all and cheers,
+
+
+Georg
+
+
+=20
+
+
+
+
+
+=20
+
+
+--
+
+
+Georg Mayer
+
+
+3GPP SA Chairman
+
+
+Huawei Technologies
+
+
++43 699 1900 5758
+
+
+=20
+
+
+
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Wed May 26 00:27:41 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+subject: 3GPP Mentoring List Kick-Off
+from: Georg Mayer <[log in to unmask]>
+reply-to: 3GPP_MENTORING <[log in to unmask]>
+date: Fri, 22 Nov 2019 19:26:51 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"
+Message-ID: wa.exe?A2=ind1911D&L=3GPP_MENTORING&O=D&P=71
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=ind1911D&L=3GPP_MENTORING&O=D&P=71>
+
+Hello,
+
+3GPP continuously looks for effective ways to help new delegates to overcome =
+initial barriers and to answer their questions. One of the activities we agre=
+ed on recently is to establish a mentoring process.
+
+The process is not based on a 1-to-1 relation between a mentor and a mentee, =
+but an open forum in which new delegates ("newcomers") can easily approach me=
+ntors with their questions about 3GPP processes, structure and work. This com=
+munication should take place during 3GPP meetings but also offline. For the o=
+ffline case we have created this mailing list and hope it will be used freque=
+ntly.
+
+As said before this mechanism is in its very early stage and most likely we w=
+ill all learn a lot over the next months on how to best handle the related qu=
+estions and discussions. I know that everybody will take an open mind and wor=
+k to make the 3GPP community more accessible and welcoming - thank you all in=
+ advance for that.
+
+I copy the slide with the mentors we have so far below. Thanks to the four of=
+ them - they volunteered during the 3GPP SA meeting in September. Obviously w=
+e look for extending the pool of mentors over the next week, especially also =
+into the regions of RAN and CT and also get more delegates from the different=
+ working groups on board.
+
+So please, don't be shy. Ask questions and help us create a process that serv=
+es us all best.
+
+Thank you all and cheers,
+Georg
+
+[cid:image001.png@01D59F8A.8691E830]
+
+--
+Georg Mayer
+3GPP SA Chairman
+Huawei Technologies
++43 699 1900 5758
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_MENTORING list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_MENTORING&A=3D1
+
+########################################################################
+
+
