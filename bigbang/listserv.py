@@ -815,7 +815,7 @@ class ListservList:
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """
-        Safe mail list to .mbox files.
+        Safe mailing list to .mbox files.
 
         Args:
         """
