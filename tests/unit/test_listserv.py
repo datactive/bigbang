@@ -20,30 +20,34 @@ file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
 
+@pytest.fixture(name="mlist", scope="module")
+def get_mailinglist():
+    mlist = ListservList.from_listserv_directories(
+        name="3GPP_TSG_SA_ITUT_AHG",
+        directorypaths=[
+            CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"
+        ],
+    )
+    return mlist
 
-class TestListservList:
-    @pytest.fixture(name="mlist", scope="module")
-    def get_mailinglist(self):
-        mlist = ListservList.from_listserv_directories(
-            name="3GPP_TSG_SA_ITUT_AHG",
-            directorypaths=[
-                CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"
-            ],
-        )
-        return mlist
+@pytest.fixture(name="msg_parser", scope="module")
+def get_message_parser():
+    msg_parser = ListservMessageParser()
+    return msg_parser
 
-    @pytest.fixture(name="msg", scope="module")
-    def get_message(self, mlist):
-        msg = [
-            msg
-            for msg in mlist.messages
-            if msg["Subject"]
-            == "Re: Update on ITU-T related activities needing attention"
-        ][0]
-        return msg
+@pytest.fixture(name="msg", scope="module")
+def get_message(msg_parser):
+    file_path = CONFIG.test_data_path + \
+        "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1705B"
+    msg = msg_parser.from_listserv_file(
+        list_name="3GPP_TSG_SA_ITUT_AHG",
+        file_path=file_path,
+        header_start_line_nr=1,
+        fields="total",
+    )
+    return msg
 
-    def test__number_of_messages(self, mlist):
-        assert len(mlist) == 25
+class TestListservMessageParser:
 
     def test__first_message_header(self, msg):
         assert msg["From"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
@@ -58,17 +62,38 @@ class TestListservList:
         assert msg.get_payload().split("\n")[3] == "Hi,"
         assert len(msg.get_payload()) == 24809
 
+    def test__to_pandas_dataframe(self, msg_parser, msg):
+        df = msg_parser.to_pandas_dataframe(msg)
+        assert len(df.columns.values) == 12
+        assert len(df.index.values) == 1
+
+    def test__to_mbox(self, msg_parser, msg):
+        file_temp_mbox = f"{dir_temp}/bigbang_test_listserv.mbox"
+        msg_parser.to_mbox(msg, filepath=file_temp_mbox)
+        f = open(file_temp_mbox, "r")
+        lines = f.readlines()
+        assert len(lines) == 638
+        assert "See my comments below.\n" in lines
+        f.close()
+        Path(file_temp_mbox).unlink()
+
+
+class TestListservList:
+
+    def test__number_of_messages(self, mlist):
+        assert len(mlist) == 25
+
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
         assert len(list(dic.keys())) == 13
         assert len(dic[list(dic.keys())[0]]) == 25
-
+    
     def test__to_mbox(self, mlist):
         mlist.to_mbox(dir_temp, filename=mlist.name)
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) == 49294
+        assert len(lines) >= 49294
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
