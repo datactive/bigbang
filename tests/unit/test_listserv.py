@@ -60,7 +60,6 @@ class TestListservList:
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        print(dic.keys())
         assert len(list(dic.keys())) == 13
         assert len(dic[list(dic.keys())[0]]) == 25
 
