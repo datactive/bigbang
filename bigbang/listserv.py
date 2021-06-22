@@ -404,6 +404,7 @@ class ListservList:
     from_listserv_files
     from_listserv_directories
     get_messages_from_url
+    get_message_urls
     get_period_urls
     get_line_numbers_of_header_starts
     get_index_of_elements_in_selection
@@ -592,7 +593,7 @@ class ListservList:
                     )
                 )
         return cls(name, filepaths, msgs)
-
+    
     @classmethod
     def get_messages_from_url(
         cls,
@@ -613,21 +614,11 @@ class ListservList:
                 - period, i.e. written in a certain year, month, week-of-month
             session: AuthSession
         """
-        if select is None:
-            select = {"fields": "total"}
+        # get all message URLs
+        msg_urls = cls.get_message_urls(name, url, select)
+        msg_parser = ListservMessageParser(website=True, session=session)
+        # get all message contents
         msgs = []
-        msg_urls = []
-        # run through periods
-        for period_url in ListservList.get_period_urls(url, select):
-            # run through messages within period
-            for msg_url in ListservList.get_messages_urls(name, period_url):
-                msg_urls.append(msg_url)
-
-        # run through collected message urls
-        msg_parser = ListservMessageParser(
-            website=True,
-            session=session,
-        )
         for msg_url in tqdm(msg_urls, ascii=True, desc=name):
             msg = msg_parser.from_url(
                 list_name=name,
@@ -642,6 +633,34 @@ class ListservList:
             # wait between loading messages, for politeness
             time.sleep(1)
         return msgs
+    
+    @classmethod
+    def get_message_urls(
+        cls,
+        name: str,
+        url: str,
+        select: Optional[dict] = None,
+    ) -> List[str]:
+        """
+        Args:
+            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+            url: URL to the LISTSERV list.
+            select: Selection criteria that can filter messages by:
+                - content, i.e. header and/or body
+                - period, i.e. written in a certain year, month, week-of-month
+        
+        Returns:
+            List of all selected URLs of the messages in the mailing list.
+        """
+        if select is None:
+            select = {"fields": "total"}
+        msg_urls = []
+        # run through periods
+        for period_url in ListservList.get_period_urls(url, select):
+            # run through messages within period
+            for msg_url in ListservList.get_messages_urls(name, period_url):
+                msg_urls.append(msg_url)
+        return msg_urls
 
     @classmethod
     def get_period_urls(
@@ -684,6 +703,9 @@ class ListservList:
     def get_all_periods_and_their_urls(
         url: str,
     ) -> Tuple[List[str], List[str]]:
+        # wait between loading messages, for politeness
+        time.sleep(0.5)
+        
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
@@ -692,7 +714,7 @@ class ListservList:
             for list_tag in soup.find_all("li")
         ]
         return periods, urls_of_periods
-
+    
     @staticmethod
     def get_index_of_elements_in_selection(
         times: List[Union[int, str]],
@@ -730,6 +752,11 @@ class ListservList:
             # filter specific month
             cond = lambda x: x == filtr
         return [idx for idx, time in enumerate(times) if cond(time)]
+    
+    @staticmethod
+    def get_name_from_url(url: str) -> str:
+        """ Get name of mailing list. """
+        return url.split("A0=")[-1]
 
     @classmethod
     def get_messages_urls(cls, name: str, url: str) -> List[str]:
@@ -741,6 +768,7 @@ class ListservList:
         Returns:
             List to URLs from which`mboxMessage` can be initialized.
         """
+        tstart = time.time()
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
@@ -787,7 +815,7 @@ class ListservList:
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """
-        Safe mail list to .mbox files.
+        Safe mailing list to .mbox files.
 
         Args:
         """
@@ -860,7 +888,7 @@ class ListservArchive(object):
     )
     """
 
-    def __init__(self, name: str, url: str, lists: List[ListservList]):
+    def __init__(self, name: str, url: str, lists: List[Union[ListservList, str]]):
         self.name = name
         self.url = url
         self.lists = lists
@@ -1054,30 +1082,38 @@ class ListservArchive(object):
 
             if only_mlist_urls:
                 # collect mailing-list urls
-                [
-                    archive.append(mlist_url)
-                    for mlist_url in mlist_urls
-                    if len(
-                        ListservList.get_all_periods_and_their_urls(mlist_url)[
-                            1
-                        ]
-                    )
-                    > 0
-                ]
-
+                for mlist_url in mlist_urls:
+                    name = ListservList.get_name_from_url(mlist_url)
+                    # check if mailing list contains messages in period
+                    _period_urls = ListservList.get_all_periods_and_their_urls(
+                        mlist_url
+                    )[1]
+                    # check if mailing list is public
+                    if len(_period_urls) > 0:
+                        loops = 0
+                        for _period_url in _period_urls:
+                            loops += 1
+                            nr_msgs = len(
+                                ListservList.get_messages_urls(
+                                    name=name, url=_period_url
+                                )
+                            )
+                            if nr_msgs > 0:
+                                archive.append(mlist_url)
+                                break
             else:
                 # collect mailing-list contents
                 for mlist_url in mlist_urls:
-                    key = mlist_url.split("A0=")[-1]
+                    name = ListservList.get_name_from_url(mlist_url)
                     mlist = ListservList.from_url(
-                        name=key,
+                        name=name,
                         url=mlist_url,
                         select=select,
                         session=session,
                     )
                     if len(mlist) != 0:
                         if instant_save:
-                            dir_out = CONFIG.mail_path + key
+                            dir_out = CONFIG.mail_path + name
                             Path(dir_out).mkdir(parents=True, exist_ok=True)
                             mlist.to_mbox(dir_out=CONFIG.mail_path)
                             archive.append(mlist.name)
