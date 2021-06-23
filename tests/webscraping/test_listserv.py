@@ -114,6 +114,7 @@ class TestListservMessageParser:
 
 
 class TestListservList:
+
     @pytest.mark.skipif(
         not os.path.isfile(file_auth),
         reason="Key to log into LISTSERV could not be found",
@@ -134,9 +135,21 @@ class TestListservList:
         )
         assert mlist.messages[0]["From"] == "iceeng-10"
         assert mlist.messages[0]["To"] is None
+    
+    def test__get_mailinglist_from_messages(self):
+        msgs_urls = [
+            "https://listserv.ieee.org/cgi-bin/wa?A2=IEEE-TEST;a57724f6.2105a",
+            "https://listserv.ieee.org/cgi-bin/wa?A2=IEEE-TEST;fc0a9fdd.2105b",
+        ]
+        mlist = ListservList.from_messages(
+            name="IEEE-TEST",
+            url=url_list,
+            messages=msgs_urls,
+        )
+        assert len(mlist.messages) == 2
 
     @pytest.fixture(name="mlist", scope="module")
-    def get_mailinglist(self):
+    def get_mailinglist_from_url(self):
         mlist = ListservList.from_url(
             name="IEEE-TEST",
             url=url_list,
