@@ -80,6 +80,24 @@ class TestListservMessageParser:
 
 class TestListservList:
 
+    def test__from_mbox(self):
+        mlist = ListservList.from_mbox(
+            name="3GPP_MENTORING",
+            filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_MENTORING.mbox",
+        )
+        assert len(mlist) == 27
+        assert mlist.messages[0]["From"] == "John M Meredith <[log in to unmask]>"
+    
+    def test__from_listserv_files(self):
+        filepath = CONFIG.test_data_path + \
+            "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1703B"
+        mlist = ListservList.from_listserv_files(
+            name="3GPP_TSG_SA_ITUT_AHG",
+            filepaths=[filepath],
+        )
+        assert len(mlist) == 1
+        assert mlist.messages[0]["From"] == "Kevin Holley <kevin.holley@BT.COM>"
+
     def test__number_of_messages(self, mlist):
         assert len(mlist) == 25
 
@@ -121,6 +139,16 @@ class TestListservList:
 
 
 class TestListservArchive:
+
+    def test__from_mbox(self):
+        march = ListservArchive.from_mbox(
+            name="3GPP_mbox_test",
+            directorypath=CONFIG.test_data_path + "3GPP_mbox/",
+        )
+        assert len(march.lists) == 1
+        assert len(march.lists[0].messages) == 27
+        assert march.lists[0].messages[0]["From"] == "John M Meredith <[log in to unmask]>"
+
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
         arch = ListservArchive.from_listserv_directory(
