@@ -275,18 +275,22 @@ class ListservMessageParser(email.parser.Parser):
     def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
         """Lexer for the message header."""
         # TODO re-write using email.parser.Parser
-        text = soup.find(
-            "b",
-            text=re.compile(r"^\bSubject\b"),
-        ).parent.parent.parent.parent.text
-        # collect important info from LISTSERV header
-        header = {}
-        for field in text.split("Parts/Attachments:")[0].splitlines():
-            if len(field) == 0:
-                continue
-            field_name = field.split(":")[0].strip()
-            field_body = field.replace(field_name + ":", "").strip()
-            header[field_name.lower()] = field_body
+        try:
+            _text = soup.find(
+                "b",
+                text=re.compile(r"^\bSubject\b"),
+            )  # Sometimes this returns None!
+            text = _text.parent.parent.parent.parent.text
+            # collect important info from LISTSERV header
+            header = {}
+            for field in text.split("Parts/Attachments:")[0].splitlines():
+                if len(field) == 0:
+                    continue
+                field_name = field.split(":")[0].strip()
+                field_body = field.replace(field_name + ":", "").strip()
+                header[field_name.lower()] = field_body
+        except Exception:
+            header = self.empty_header
         return header
 
     def _get_body_from_html(
