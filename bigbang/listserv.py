@@ -805,6 +805,10 @@ class ListservList:
                 first = False
             else:
                 dfsum = dfsum.append(df, ignore_index=False)
+        dfsum["date"] = pd.to_datetime(
+            dfsum["date"],
+            format="%a, %d %b %Y %H:%M:%S %z"
+        )
         return dfsum
 
     def to_dict(self) -> Dict[str, List[str]]:
@@ -908,6 +912,8 @@ class ListservArchive(object):
         name: str,
         url_root: str,
         url_home: str,
+        add_missing: Optional[str] = None,
+        update: Optional[str] = None,
         select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
@@ -922,15 +928,20 @@ class ListservArchive(object):
             name:
             url_root:
             url_home:
+            add_missing: If string to local archive directory is provided, the missing
+                mailing lists will be retrieved.
+            update: If string to local archive directory is provided, the
+                mailing lists in it will be updated.
             select: Selection criteria that can filter messages by:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
             url_login: URL to the login page
             login: login keys {"username": str, "password": str}
             session: if auth-session was already created externally
-            instant_save: Boolean giving the choice to save a `ListservList` as
-                soon as it is completely scraped or collect entire archive. The
-                prior is recommended if a large number of mailing lists are
+            instant_save:
+                - 'True': Save `ListservList` immediately after its retrieval.
+                - 'False': Sve once entire `ListservArchive` has been retrieved.
+                The prior is recommended if a large number of mailing lists are
                 scraped which can require a lot of memory and time.
             only_list_urls: Boolean giving the choice to collect only `ListservList`
                 URLs or also their contents.
@@ -939,6 +950,8 @@ class ListservArchive(object):
         lists = cls.get_lists_from_url(
             url_root,
             url_home,
+            add_missing,
+            update,
             select,
             session,
             instant_save,
@@ -1040,6 +1053,12 @@ class ListservArchive(object):
         directorypath: str,
         filedsc: str = "*.mbox",
     ) -> "ListservArchive":
+        """
+        Args:
+            name: Name of the archive, e.g. '3GPP'.
+            directorypath: Where the ListservArchive can be initialised.
+            filedsc: A description of the relevant files, e.g. *.LOG?????
+        """
         filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
         lists = []
         for filepath in filepaths:
@@ -1051,7 +1070,9 @@ class ListservArchive(object):
     def get_lists_from_url(
         url_root: str,
         url_home: str,
-        select: dict,
+        add_missing: Optional[str] = None,
+        update: Optional[str] = None,
+        select: Optional[dict] = None,
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
@@ -1060,10 +1081,32 @@ class ListservArchive(object):
         Created dictionary of all lists in the archive.
 
         Args:
+            add_missing: If string to local archive directory is provided, the missing
+                mailing lists will be retrieved.
+            update: If string to local archive directory is provided, the
+                mailing lists in it will be updated.
+            select: Selection criteria that can filter messages by:
+                - content, i.e. header and/or body
+                - period, i.e. written in a certain year, month, week-of-month
+            session: if auth-session was already created externally
+            instant_save:
+                - 'True': Save `ListservList` immediately after its retrieval.
+                - 'False': Sve once entire `ListservArchive` has been retrieved.
+                The prior is recommended if a large number of mailing lists are
+                scraped which can require a lot of memory and time.
+            only_list_urls: Boolean giving the choice to collect only `ListservList`
+                URLs or also their contents.
 
         Returns:
             archive_dict: the keys are the names of the lists and the value their url
         """
+        if add_missing:
+            filepaths = get_paths_to_files_in_directory(add_missing, "*.mbox")
+            mlist_names = [fp.split('/')[-1].split('.')[0] for fp in filepaths]
+        elif update:
+            mlist_files = get_paths_to_files_in_directory(update, "*.mbox")
+            mlist_names = [fp.split('/')[-1].split('.')[0] for fp in mlist_files]
+
         archive = []
         # run through archive sections
         for url in list(
@@ -1079,6 +1122,15 @@ class ListservArchive(object):
                 for a_tag in a_tags_in_section
             ]
             mlist_urls = list(set(mlist_urls))  # remove duplicates
+
+            if add_missing:
+                mlist_urls = [
+                    mlu for mln in mlist_names for mlu in mlist_urls if mln not in mlu
+                ]
+            elif update:
+                mlist_urls = [
+                    mlu for mln in mlist_names for mlu in mlist_urls if mln in mlu
+                ]
 
             if only_mlist_urls:
                 # collect mailing-list urls
@@ -1103,23 +1155,48 @@ class ListservArchive(object):
                                 break
             else:
                 # collect mailing-list contents
-                for mlist_url in mlist_urls:
-                    name = ListservList.get_name_from_url(mlist_url)
-                    mlist = ListservList.from_url(
-                        name=name,
-                        url=mlist_url,
-                        select=select,
-                        session=session,
-                    )
-                    if len(mlist) != 0:
-                        if instant_save:
-                            dir_out = CONFIG.mail_path + name
-                            Path(dir_out).mkdir(parents=True, exist_ok=True)
-                            mlist.to_mbox(dir_out=CONFIG.mail_path)
-                            archive.append(mlist.name)
-                        else:
-                            logger.info(f"Recorded the list {mlist.name}.")
-                            archive.append(mlist)
+                if update:
+                    for mlist_url, mlist_file in zip(mlist_urls, mlist_files):
+                        name = ListservList.get_name_from_url(mlist_url)
+                        last_entry_dt = ListservList.from_mbox(
+                            name=name,
+                            filepath=mlist_file,
+                        ).to_pandas_dataframe()["date"].max()
+
+
+                        mlist = ListservList.from_url(
+                            name=name,
+                            url=mlist_url,
+                            select=select,
+                            session=session,
+                        )
+                        if len(mlist) != 0:
+                            if instant_save:
+                                dir_out = CONFIG.mail_path + name
+                                Path(dir_out).mkdir(parents=True, exist_ok=True)
+                                mlist.to_mbox(dir_out=CONFIG.mail_path)
+                                archive.append(mlist.name)
+                            else:
+                                logger.info(f"Recorded the list {mlist.name}.")
+                                archive.append(mlist)
+                else:
+                    for mlist_url in mlist_urls:
+                        name = ListservList.get_name_from_url(mlist_url)
+                        mlist = ListservList.from_url(
+                            name=name,
+                            url=mlist_url,
+                            select=select,
+                            session=session,
+                        )
+                        if len(mlist) != 0:
+                            if instant_save:
+                                dir_out = CONFIG.mail_path + name
+                                Path(dir_out).mkdir(parents=True, exist_ok=True)
+                                mlist.to_mbox(dir_out=CONFIG.mail_path)
+                                archive.append(mlist.name)
+                            else:
+                                logger.info(f"Recorded the list {mlist.name}.")
+                                archive.append(mlist)
         return archive
 
     def get_sections(url_root: str, url_home: str) -> int:
@@ -1185,6 +1262,10 @@ class ListservArchive(object):
                 first = False
             else:
                 dfsum = dfsum.append(df, ignore_index=False)
+        dfsum["date"] = pd.to_datetime(
+            dfsum["date"],
+            format="%a, %d %b %Y %H:%M:%S %z"
+        )
         return dfsum
 
     def to_dict(self) -> Dict[str, List[str]]:
