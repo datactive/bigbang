@@ -45,43 +45,58 @@ class ListservList:
 
     Methods
     -------
+    to_percentage
+    iterate_from_name_addr
     get_messagecount_per_affiliations
     get_messagecount_per_affiliations
     get_messagecount_per_timezone
     get_members_per_affiliations
     get_membercount_per_affiliations
-
-
     """
+
+    def to_percentage(arr: np.array) -> np.array:
+        return arr / np.sum(arr)
+
+    def iterate_from_name_addr(li: list) -> tuple:
+        """ Generator that splits the 'from' header field. """
+        domains = []
+        for sender in  li:
+            name, addr = email.utils.parseaddr(sender)
+            if '@' in addr:
+                localpart, domain = addr.split('@')
+                yield name, localpart, domain
+            else:
+                yield name, None, None
+
     def get_messagecount_per_affiliations(
-            df: pd.DataFrame, percentage: bool=False, contract: float=None,
+        df: pd.DataFrame, percentage: bool=False, contract: float=None,
     ) -> Dict[str, int]:
         """
         Get contribution of messages per affiliation.
 
         Args:
-            df:
+            df: DataFrame of mailing list.
             percentage: Whether to return count of messages percentage w.r.t. total.
             contract: If affiliations who contributed less than threshold should be
                 contracted to one class named 'Others'.
         """
-        domains = []
-        for sender in  df["from"].values:
-            name, addr = email.utils.parseaddr(sender)
-            if '@' in addr:
-                domain = addr.split('@')[-1]
-                domains.append(domain)
-            
+        # collect
+        domains = [
+            domain
+            for _, _, domain in ListservList.iterate_from_name_addr(df["from"].values)
+            if domain
+        ]
+
+        # count
         name, count = np.unique(domains, return_counts=True)
+        count = np.array(count)
+        # sort
+        indx = np.argsort(count).astype(int)
+        name = [name[ii] for ii in indx]
+        count = count[indx]
         
         if percentage:
-            count = np.array(count) / np.sum(count)
-
-        # sort low to high contribution
-        name = np.asarray(name)
-        indx = np.argsort(count).astype(int)
-        name = name[indx]
-        count = count[indx]
+            count = to_percentage(count)
         
         if contract:
             idx_low = np.arange(len(count))[count < contract]
@@ -96,21 +111,21 @@ class ListservList:
         """
         Get contribution of members per affiliation.
         """
-        # collect members per affiliation
+        # iterate through senders
         dic = {}
-        for sender in df["from"].values:
-            name, addr = email.utils.parseaddr(sender)
-            if '@' in addr:
-                localpart, domain = addr.split('@')
-                if domain in list(dic.keys()):
-                    dic[domain].append(localpart)
-                else:
-                    dic[domain] = [localpart]
+        for _, localpart, domain in ListservList.iterate_from_name_addr(df["from"].values):
+            if domain is None:
+                continue
+            elif domain in list(dic.keys()):
+                dic[domain].append(localpart)
+            else:
+                dic[domain] = [localpart]
+        # remove duplicates
         dic = {domain: list(set(li)) for domain, li in dic.items()}
         return dic
 
     def get_membercount_per_affiliations(
-            df: pd.DataFrame, percentage: bool=False, contract: float=None,
+        df: pd.DataFrame, percentage: bool=False, contract: float=None,
     ) -> Dict[str, int]:
         """
         Get contribution of members per affiliation.
@@ -122,7 +137,7 @@ class ListservList:
                 contracted to one class named 'Others'.
         """
         # collect members per affiliation
-        dic = get_members_per_affiliations(df)
+        dic = ListservList.get_members_per_affiliations(df)
         # count members per affiliation
         dic = {domain: len(members) for domain, members in dic.items()}
 
@@ -150,7 +165,7 @@ class ListservList:
             return {key: value for key, value in zip(domain, count)}
 
     def get_messagecount_per_timezone(
-            df: pd.DataFrame, percentage: bool=False,
+        df: pd.DataFrame, percentage: bool=False,
     ) -> Dict[str, int]:
         """
         Get contribution of messages per time zone.

@@ -358,16 +358,19 @@ class ListservMessageParser(email.parser.Parser):
         return message_id
 
     @staticmethod
-    def to_dict(msg: mboxMessage) -> Dict[str, str]:
-        dic = {"Body": msg.get_payload()}
+    def to_dict(msg: mboxMessage, include_body: bool=True) -> Dict[str, str]:
+        if include_body:
+            dic = {"Body": msg.get_payload()}
+        else:
+            dic = {}
         for key, value in msg.items():
             dic[key] = value
         return dic
 
     @staticmethod
-    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+    def to_pandas_dataframe(msg: mboxMessage, include_body: bool=True) -> pd.DataFrame:
         return pd.DataFrame(
-            ListservMessageParser.to_dict(msg),
+            ListservMessageParser.to_dict(msg, include_body),
             index=[msg["Message-ID"]],
         )
 
@@ -798,24 +801,41 @@ class ListservList:
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
-    def to_pandas_dataframe(self) -> pd.DataFrame:
+    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
         msg_parser = ListservMessageParser()
-        # run through messages
-        first = True
-        for msg in self.messages:
-            df = msg_parser.to_pandas_dataframe(msg)
-            if first:
-                dfsum = df
-                first = False
-            else:
-                dfsum = dfsum.append(df, ignore_index=False)
-        return dfsum
+        # initialize empty dictionary with lists
+        dic = {key: [] for key in self.messages[0].keys()}
+        # fill dictionary
+        [
+            dic[key].append(value)
+            for msg in self.messages
+            if msg["Message-ID"] != None
+            for key, value in msg.items()
+        ]
+        if include_body:
+            dic['Body'] = []
+            [
+                dic['Body'].append(msg.get_payload())
+                for msg in self.messages
+            ]
+        # ---- Remove this once *1 is fixed
+        _check = {key: len(value) for key, value in dic.items()}
+        _length = np.max(list(_check.values()))
+        for key in _check.keys():
+            if _check[key] < _length:
+                del dic[key]
+        # ----
+        df = pd.DataFrame(dic).set_index("Message-ID")
+        df["date"] = pd.to_datetime(
+            df["date"], format="%a, %d %b %Y %H:%M:%S %z"
+        )
+        return df
 
-    def to_dict(self) -> Dict[str, List[str]]:
+    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
         """
         Place all message into a dictionary.
         """
-        return self.to_pandas_dataframe().to_dict()
+        return self.to_pandas_dataframe(include_body).to_dict()
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """
@@ -1179,23 +1199,50 @@ class ListservArchive(object):
                 msg_nr += 1
         return dic
 
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        # run through lists
-        first = True
-        for mlist in self.lists:
-            df = mlist.to_pandas_dataframe()
-            if first:
-                dfsum = df
-                first = False
-            else:
-                dfsum = dfsum.append(df, ignore_index=False)
-        return dfsum
+    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+        msg_parser = ListservMessageParser()
+        # initialize empty dictionary with lists
+        dic = {key: [] for key in self.lists[0].messages[0].keys()}
+        dic['MailingList'] = []
+        # fill dictionary
+        [
+            dic[key].append(value)
+            for mlist in self.lists
+            for msg in mlist.messages
+            if msg["Message-ID"] != None
+            for key, value in msg.items()
+        ]
+        [
+            dic['MailingList'].append(mlist.name)
+            for mlist in self.lists
+            for msg in mlist.messages
+            if msg["Message-ID"] != None
+        ]
+        if include_body:
+            dic['Body'] = []
+            [
+                dic['Body'].append(msg.get_payload())
+                for mlist in self.lists
+                for msg in mlist.messages
+            ]
+        # ---- Remove this once *1 is fixed
+        _check = {key: len(value) for key, value in dic.items()}
+        _length = np.max(list(_check.values()))
+        for key in _check.keys():
+            if _check[key] < _length:
+                del dic[key]
+        # ----
+        df = pd.DataFrame(dic).set_index("Message-ID")
+        df["date"] = pd.to_datetime(
+            df["date"], format="%a, %d %b %Y %H:%M:%S %z"
+        )
+        return df
 
-    def to_dict(self) -> Dict[str, List[str]]:
+    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
         """
         Place all message into a dictionary.
         """
-        return self.to_pandas_dataframe().to_dict()
+        return self.to_pandas_dataframe(include_body).to_dict()
 
     def to_mbox(self, dir_out: str):
         """
