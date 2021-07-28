@@ -115,7 +115,7 @@ class TestListservList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) >= 49294
+        assert len(lines) >= 48940
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
