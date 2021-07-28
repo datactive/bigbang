@@ -88,10 +88,12 @@ class ListservMessageParser(email.parser.Parser):
 
     empty_header = {
         "subject": None,
-        "fromname": None,
-        "fromaddr": None,
-        "toname": None,
-        "toaddr": None,
+        "from": None,
+        "reply-to": None,
+        #"fromname": None,
+        #"fromaddr": None,
+        #"toname": None,
+        #"toaddr": None,
         "date": None,
         "contenttype": None,
     }
@@ -824,16 +826,18 @@ class ListservList:
 
     def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
         dic = self.to_dict(include_body)
-        ## ---- Remove this once *1 is fixed
-        #_check = {key: len(value) for key, value in dic.items()}
-        #_length = np.max(list(_check.values()))
-        #for key in _check.keys():
-        #    if _check[key] < _length:
-        #        del dic[key]
-        ## ----
         df = pd.DataFrame(dic).set_index("message-id")
-        df["date"] = pd.to_datetime(
-            df["date"], format="%a, %d %b %Y %H:%M:%S %z"
+        # get index of date-times
+        index = np.array([
+            True if (isinstance(dt, str)) and (len(dt) > 10)
+            else False
+            for i, dt in enumerate(df["date"])
+        ], dtype="bool")
+        # convert data type from string to datetime.datetime object
+        df.update(
+            df.loc[index, 'date'].apply(
+                lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
+            )
         )
         return df
 
@@ -1213,7 +1217,6 @@ class ListservArchive(object):
                 # add mlist items to march
                 for key, value in dic_mlist.items():
                     if key not in dic_march.keys():
-                        print(f"{key} is new in dic_march")
                         dic_march[key] = [np.nan]*nr_msgs
                     dic_march[key].extend(value)
                 # if mlist does not contain items that are in march
@@ -1230,8 +1233,17 @@ class ListservArchive(object):
 
     def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
         df = pd.DataFrame(self.to_dict(include_body)).set_index("message-id")
-        df["date"] = pd.to_datetime(
-            df["date"], format="%a, %d %b %Y %H:%M:%S %z"
+        # get index of date-times
+        index = np.array([
+            True if (isinstance(dt, str)) and (len(dt) > 10)
+            else False
+            for i, dt in enumerate(df["date"])
+        ], dtype="bool")
+        # convert data type from string to datetime.datetime object
+        df.update(
+            df.loc[index, 'date'].apply(
+                lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
+            )
         )
         return df
 
