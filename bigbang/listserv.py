@@ -87,25 +87,36 @@ class ListservMessageParser(email.parser.Parser):
     """
 
     empty_header = {
-        "subject": None,
-        "fromname": None,
-        "fromaddr": None,
-        "toname": None,
-        "toaddr": None,
-        "date": None,
-        "contenttype": None,
+        #"subject": None,
+        #"fromname": None,
+        #"fromaddr": None,
+        #"toname": None,
+        #"toaddr": None,
+        #"date": None,
+        #"contenttype": None,
     }
 
     def __init__(
         self,
         website=False,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ):
+        """
+        Args:
+            website: Set 'True' if messages are going to be scraped from websites,
+                otherwise 'False' if read from local memory.
+            url_login: URL to the 'Log In' page.
+            url_pref: URL to the 'Preferences'/settings page.
+            login:
+            session:
+        """
         if website:
             if session is None:
                 session = get_auth_session(url_login, **login)
+            #    session = set_website_preference_for_header(url_pref, session)
             self.session = session
 
     def create_email_message(
@@ -150,7 +161,6 @@ class ListservMessageParser(email.parser.Parser):
             url: URL of this Email
             fields: Indicates whether to return 'header', 'body' or
                 'total'/both or the Email.
-            url_login:
         """
         soup = get_website_content(url, session=self.session)
         if soup == "RequestException":
@@ -274,21 +284,32 @@ class ListservMessageParser(email.parser.Parser):
 
     def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
         """Lexer for the message header."""
-        # TODO re-write using email.parser.Parser
         try:
-            _text = soup.find(
-                "b",
-                text=re.compile(r"^\bSubject\b"),
-            )  # Sometimes this returns None!
-            text = _text.parent.parent.parent.parent.text
+            for string in ["Subject", "SUBJECT"]:
+                try:
+                    _text = soup.find(
+                        "b",
+                        text=re.compile(r"^\b%s\b" % string),
+                    )  # Sometimes this returns None!
+                    text = _text.parent.parent.parent.parent#.text
+                    break
+                except:
+                    continue
             # collect important info from LISTSERV header
             header = {}
-            for field in text.split("Parts/Attachments:")[0].splitlines():
-                if len(field) == 0:
-                    continue
-                field_name = field.split(":")[0].strip()
-                field_body = field.replace(field_name + ":", "").strip()
-                header[field_name.lower()] = field_body
+            for line in text.find_all("tr"):
+                key = str(line.find_all(re.compile("^b"))[0])
+                key = re.search(r'<b>(.*?)<\/b>', key).group(1).lower()
+                value = repr(str(line.find_all(re.compile("^p"))[1]))
+                value = re.search(r'<p>(.*)<\/p>', value).group(1)
+                value = re.sub(r'\\r\\n', '', value).strip()
+                value = re.sub(r'&gt;', '', value).strip()
+                if key == "parts/attachments:":
+                    break
+                elif key == "comments:":
+                    key = "comments: to:"
+                    value = re.sub(r'To:', '', value).strip()
+                header[key] = value
         except Exception:
             header = self.empty_header
         return header
@@ -456,6 +477,7 @@ class ListservList:
         url: str,
         select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservList":
@@ -466,9 +488,12 @@ class ListservList:
             select: Selection criteria that can filter messages by:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
+            url_login: URL to the 'Log In' page
+            url_pref: URL to the 'Preferences'/settings page
         """
         if session is None:
             session = get_auth_session(url_login, **login)
+            session = set_website_preference_for_header(url_pref, session)
         if select is None:
             select = {"fields": "total"}
         elif "fields" not in list(select.keys()):
@@ -484,6 +509,7 @@ class ListservList:
         messages: List[Union[str, mboxMessage]],
         fields: str = "total",
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "ListservList":
@@ -491,6 +517,8 @@ class ListservList:
         Args:
             messages: Can either be a list of URLs to specific LISTSERV messages
                 or a list of `mboxMessage` objects.
+            url_login: URL to the 'Log In' page.
+            url_pref: URL to the 'Preferences'/settings page.
         """
         if not messages:
             # create empty ListservList for ListservArchive
@@ -914,6 +942,7 @@ class ListservArchive(object):
         url_home: str,
         select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
         instant_save: bool = True,
@@ -929,7 +958,8 @@ class ListservArchive(object):
             select: Selection criteria that can filter messages by:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
-            url_login: URL to the login page
+            url_login: URL to the 'Log In' page.
+            url_pref: URL to the 'Preferences'/settings page.
             login: login keys {"username": str, "password": str}
             session: if auth-session was already created externally
             instant_save: Boolean giving the choice to save a `ListservList` as
@@ -939,7 +969,9 @@ class ListservArchive(object):
             only_list_urls: Boolean giving the choice to collect only `ListservList`
                 URLs or also their contents.
         """
-        session = get_auth_session(url_login, **login)
+        if session is None:
+            session = get_auth_session(url_login, **login)
+            session = set_website_preference_for_header(url_pref, session)
         lists = cls.get_lists_from_url(
             url_root,
             url_home,
@@ -965,6 +997,7 @@ class ListservArchive(object):
         url_mailing_lists: Union[List[str], List[ListservList]],
         select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
@@ -977,11 +1010,14 @@ class ListservArchive(object):
             name: Name used for folder in which scraped lists will be stored.
             url_root:
             url_mailing_lists:
+            url_login: URL to the 'Log In' page.
+            url_pref: URL to the 'Preferences'/settings page.
 
         """
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             if session is None:
                 session = get_auth_session(url_login, **login)
+                session = set_website_preference_for_header(url_pref, session)
             lists = []
             for url in url_mailing_lists:
                 mlist_name = url.split("A0=")[-1]
@@ -1204,6 +1240,27 @@ class ListservArchive(object):
         for llist in self.lists:
             llist.to_mbox(dir_out)
 
+#https://listserv.ieee.org/cgi-bin/wa?PREF&TAB=2&X=O704587648BE6D870EF&Y=chrbecker01%40gmail.com
+#https://list.etsi.org/scripts/wa.exe?PREF&TAB=2&X=O49970128C49529B21A&Y=nielsto%40gmail.com
+#https://list.etsi.org/scripts/wa.exe?PREF&TAB=2&X=OC7B51B578304C97A80&Y=nielsto%40gmail.com
+#https://list.etsi.org/scripts/wa.exe?INDEX&X=OC7B51B578304C97A80&Y=nielsto%40gmail.com
+#https://list.etsi.org/scripts/wa.exe?A2=3GPP_CT88_E_MEETING;8935d4.2007a
+
+def set_website_preference_for_header(
+    url_pref: str, session: requests.Session,
+) -> requests.Session:
+    """
+    Set the 'Email Headers' of the 'Archive Preferences' for the auth session
+    to 'Show All Headers'. Otherwise only a restricted list of header fields is
+    shown.
+    """
+    url_archpref = url_pref + "&TAB=2"
+    payload = {
+        "Email Headers": "b",
+    }
+    session.post(url_archpref, data=payload)
+    print("TRIED TO SET PREFERENCES")
+    return session
 
 def get_auth_session(
     url_login: str, username: str, password: str
@@ -1242,6 +1299,7 @@ def get_auth_session(
         }
         # Post the payload to the site to log in
         session.post(url_login, data=payload)
+        print("LOGIN SUCCESS !!!!!!!!!!!!")
         return session
 
 
