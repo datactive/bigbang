@@ -116,10 +116,9 @@ class ListservList:
         for _, localpart, domain in ListservList.iterate_from_name_addr(df["from"].values):
             if domain is None:
                 continue
-            elif domain in list(dic.keys()):
-                dic[domain].append(localpart)
-            else:
-                dic[domain] = [localpart]
+            elif domain not in dic.keys():
+                dic[domain] = []
+            dic[domain].append(localpart)
         # remove duplicates
         dic = {domain: list(set(li)) for domain, li in dic.items()}
         return dic
@@ -213,11 +212,9 @@ class ListservArchive(ListservList):
                 localpart, domain = addr.split('@')
             except:
                 continue
-            if domain in list(dic_mlis.keys()):
-                dic_mlis[domain] += mlist_names
-            else:
+            if domain not in dic_mlis.keys():
                 dic_mlis[domain] = []
-                dic_mlis[domain] += mlist_names
+            dic_mlis[domain] += mlist_names
         dic_mlis = {key: len(list(set(value))) for key, value in dic_mlis.items()}
         return dic_mlis
 

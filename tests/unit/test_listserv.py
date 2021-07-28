@@ -3,6 +3,7 @@ import tempfile
 from pathlib import Path
 from unittest import mock
 
+import numpy as np
 import pytest
 import yaml
 
@@ -103,8 +104,11 @@ class TestListservList:
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        assert len(list(dic.keys())) == 13
-        assert len(dic[list(dic.keys())[0]]) == 25
+        keys = list(dic.keys())
+        lengths = [len(value) for value in dic.values()]
+        assert len(keys) == 13
+        assert all([diff == 0 for diff in np.diff(lengths)])
+        assert lengths[0] == 25
     
     def test__to_mbox(self, mlist):
         mlist.to_mbox(dir_temp, filename=mlist.name)
@@ -164,8 +168,11 @@ class TestListservArchive:
         assert "3GPP_TSG_SA_WG2_MTCE" in mlist_names
         ahg_index = mlist_names.index("3GPP_TSG_SA_ITUT_AHG")
         mtce_index = mlist_names.index("3GPP_TSG_SA_WG2_MTCE")
-        assert len(arch.lists[ahg_index]) == 25
-        assert len(arch.lists[mtce_index]) == 57
+        global mlist_ahg_length, mlist_mtce_length
+        mlist_ahg_length = len(arch.lists[ahg_index])
+        mlist_mtce_length = len(arch.lists[mtce_index])
+        assert mlist_ahg_length == 25
+        assert mlist_mtce_length == 57
 
     def test__message_in_mailinglist_in_archive(self, arch):
         mlist_names = [mlist.name for mlist in arch.lists]
@@ -181,8 +188,11 @@ class TestListservArchive:
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 14
-        assert len(dic[list(dic.keys())[0]]) == 49
+        keys = list(dic.keys())
+        lengths = [len(value) for value in dic.values()]
+        assert len(keys) == 14
+        assert all([diff == 0 for diff in np.diff(lengths)])
+        assert lengths[0] == (mlist_ahg_length + mlist_mtce_length)
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
