@@ -116,7 +116,7 @@ class ListservMessageParser(email.parser.Parser):
         if website:
             if session is None:
                 session = get_auth_session(url_login, **login)
-            #    session = set_website_preference_for_header(url_pref, session)
+                session = set_website_preference_for_header(url_pref, session)
             self.session = session
 
     def create_email_message(
@@ -300,8 +300,8 @@ class ListservMessageParser(email.parser.Parser):
             for line in text.find_all("tr"):
                 key = str(line.find_all(re.compile("^b"))[0])
                 key = re.search(r'<b>(.*?)<\/b>', key).group(1).lower()
-                value = repr(str(line.find_all(re.compile("^p"))[1]))
-                value = re.search(r'<p>(.*)<\/p>', value).group(1)
+                value = repr(str(line.find_all(re.compile("^div"))[0]))
+                value = re.search(r'">(.*)<\/div>', value).group(1)
                 value = re.sub(r'\\r\\n', '', value).strip()
                 value = re.sub(r'&gt;', '', value).strip()
                 if key == "parts/attachments:":
