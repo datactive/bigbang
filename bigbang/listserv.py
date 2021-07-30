@@ -130,11 +130,11 @@ class ListservMessageParser(email.parser.Parser):
         if body is not None:
             msg.set_content(body)
         for key, value in header.items():
-            if "content-type" == key.lower():
+            if "content-type" == key:
                 msg.set_param("Content-Type", value)
-            elif "mime-version" == key.lower():
+            elif "mime-version" == key:
                 msg.set_param("MIME-Version", value)
-            elif "content-transfer-encoding" == key.lower():
+            elif "content-transfer-encoding" == key:
                 msg.set_param("Content-Transfer-Encoding", value)
             else:
                 msg[key] = value
@@ -301,14 +301,28 @@ class ListservMessageParser(email.parser.Parser):
                 key = str(line.find_all(re.compile("^b"))[0])
                 key = re.search(r'<b>(.*?)<\/b>', key).group(1).lower()
                 key = re.sub(r':', '', key).strip()
-                value = repr(str(line.find_all(re.compile("^div"))[0]))
-                value = re.search(r'">(.*)<\/div>', value).group(1)
-                value = re.sub(r'\\r\\n', '', value).strip()
+                if "subject" in key:
+                    value = repr(str(line.find_all(re.compile("^a"))[0].text).strip())
+                else:
+                    try:  # Listserv 17
+                        value = repr(str(line.find_all(re.compile("^div"))[0]))
+                        value = re.search(r'">(.*)<\/div>', value).group(1)
+                        if "content-type" in key:
+                            value = value.split(';')[0]
+                    except:  # Listserv 16.5
+                        value = repr(str(line.find_all(re.compile("^p"))[1]))
+                        value = re.search(r'<p>(.*)<\/p>', value).group(1)
+                        value = value.split(' <')[0]
                 value = re.sub(r'&gt;', '', value).strip()
-                if key == "parts/attachments:":
+                value = re.sub(r'&lt;', '', value).strip()
+                # remove Carriage return
+                value = re.sub(r'\\r', '', value).strip()
+                # remove Linefeed
+                value = re.sub(r'\\n', '', value).strip()
+                if "parts/attachments" in key:
                     break
-                elif key == "comments:":
-                    key = "comments: to:"
+                elif "comments" in key:
+                    key = "comments-to"
                     value = re.sub(r'To:', '', value).strip()
                 header[key] = value
         except Exception:
