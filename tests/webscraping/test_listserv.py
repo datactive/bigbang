@@ -41,8 +41,9 @@ class TestListservMessageParser:
             url=url_message,
             fields="total",
         )
-        assert msg["From"] == "iceeng-10"
-        assert msg["To"] is None
+        print(list(msg.keys()))
+        assert msg["from"] == 'iceeng-10'
+        assert msg["in-reply-to"] is None
 
     @pytest.fixture(name="msg", scope="module")
     def get_message(self):
@@ -64,12 +65,12 @@ class TestListservMessageParser:
             == "onference Announcement: Full Paper Submission Deadline (December 31, 2015)\n"
         )
         assert (
-            msg["Subject"]
-            == "10th International Conference on Electrical Engineering (ICEENG'10)"
+            msg["subject"]
+            == '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
         )
-        assert msg["From"] == "iceeng-10"
-        assert msg["To"] is None
-        assert msg["Date"] == "Mon, 23 Nov 2015 11:00:37 +0000"
+        assert msg["from"] == "iceeng-10"
+        assert msg["to"] is None
+        assert msg["date"] == "Mon, 23 Nov 2015 11:00:37 +0000"
         assert (
             msg["Content-Type"]
             == 'text/plain; charset="utf-8"; Content-Type="multipart/mixed"'
@@ -97,7 +98,7 @@ class TestListservMessageParser:
             url=url_message,
             fields="body",
         )
-        assert str(msg["Subject"]) == ""
+        assert str(msg["subject"]) == 'None'
 
     def test__to_dict(self, msg):
         dic = ListservMessageParser.to_dict(msg)
@@ -133,8 +134,8 @@ class TestListservList:
             },
             login=auth_key,
         )
-        assert mlist.messages[0]["From"] == "iceeng-10"
-        assert mlist.messages[0]["To"] is None
+        assert mlist.messages[0]["from"] == 'iceeng-10'
+        assert mlist.messages[0]["to"] is None
     
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist_from_url(self):
@@ -167,8 +168,8 @@ class TestListservList:
         assert mlist.source == url_list
         assert len(mlist) == 1
         assert (
-            mlist.messages[0]["Subject"]
-            == "10th International Conference on Electrical Engineering (ICEENG'10)"
+            mlist.messages[0]["subject"]
+            == '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
         )
 
     def test__to_dict(self, mlist):
@@ -184,7 +185,7 @@ class TestListservList:
         assert len(lines) == 18
         assert (
             lines[1]
-            == "subject: 10th International Conference on Electrical Engineering (ICEENG'10)\n"
+            == 'subject: "10th International Conference on Electrical Engineering (ICEENG\'10)"\n'
         )
         f.close()
         Path(file_temp_mbox).unlink()
@@ -215,8 +216,8 @@ class TestListservArchive:
         assert len(arch) == 1
         assert len(arch.lists[0]) == 1
         assert (
-            arch.lists[0].messages[0]["Subject"]
-            == "10th International Conference on Electrical Engineering (ICEENG'10)"
+            arch.lists[0].messages[0]["subject"]
+            == '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
         )
 
     def test__to_dict(self, arch):
