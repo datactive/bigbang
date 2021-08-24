@@ -103,6 +103,7 @@ class ListservMessageParser(email.parser.Parser):
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
+        attachurls=None
     ):
         """
         Args:
@@ -118,6 +119,8 @@ class ListservMessageParser(email.parser.Parser):
                 session = get_auth_session(url_login, **login)
                 session = set_website_preference_for_header(url_pref, session)
             self.session = session
+        if attachurls is None:
+            attachurls = []
 
     def create_email_message(
         self,
@@ -147,6 +150,7 @@ class ListservMessageParser(email.parser.Parser):
         # convert to EmailMessage to mboxMessage
         mbox_msg = mboxMessage(msg)
         mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
+        mbox_msg.add_header("Attachment Urls", str(self.attachurls))
         return mbox_msg
 
     def from_url(
@@ -297,6 +301,7 @@ class ListservMessageParser(email.parser.Parser):
                     continue
             # collect important info from LISTSERV header
             header = {}
+            self.attachurls = []
             for line in text.find_all("tr"):
                 key = str(line.find_all(re.compile("^b"))[0])
                 key = re.search(r'<b>(.*?)<\/b>', key).group(1).lower()
@@ -320,6 +325,11 @@ class ListservMessageParser(email.parser.Parser):
                 # remove Linefeed
                 value = re.sub(r'\\n', '', value).strip()
                 if "parts/attachments" in key:
+                    value = [a['href'] for a in line.find_all('a', href=True)]
+                    if len(value) > 2:
+                        del value[:2] #delete the standard attachments that are on every message
+                        self.attachurls.append(value)
+                        break
                     break
                 elif "comments" in key:
                     key = "comments-to"
