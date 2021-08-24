@@ -305,8 +305,8 @@ class ListservMessageParser(email.parser.Parser):
                         value = repr(str(line.find_all(re.compile("^p"))[1]))
                         value = re.search(r'<p>(.*)<\/p>', value).group(1)
                         value = value.split(' <')[0]
-                value = re.sub(r'&gt;', '', value).strip()
-                value = re.sub(r'&lt;', '', value).strip()
+                value = re.sub(r'&gt;', '>', value).strip()
+                value = re.sub(r'&lt;', '<', value).strip()
                 # remove Carriage return
                 value = re.sub(r'\\r', '', value).strip()
                 # remove Linefeed
@@ -866,9 +866,10 @@ class ListservList:
             else False
             for i, dt in enumerate(df["date"])
         ], dtype="bool")
+        df = df.loc[index, :]
         # convert data type from string to datetime.datetime object
         df.update(
-            df.loc[index, 'date'].apply(
+                df.loc[:, 'date'].apply(
                 lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
             )
         )

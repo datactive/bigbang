@@ -52,21 +52,24 @@ class ListservList:
     get_messagecount_per_timezone
     get_members_per_affiliations
     get_membercount_per_affiliations
+    get_messaging_network
     """
 
     def to_percentage(arr: np.array) -> np.array:
         return arr / np.sum(arr)
 
-    def iterate_from_name_addr(li: list) -> tuple:
+    def get_name_localpart_domain(string: str) -> tuple:
+        name, addr = email.utils.parseaddr(string)
+        if '@' in addr:
+            localpart, domain = addr.split('@')
+            return name, localpart, domain
+        else:
+            return name, None, None
+
+    def iterator_name_localpart_domain(li: list) -> tuple:
         """ Generator that splits the 'from' header field. """
-        domains = []
         for sender in  li:
-            name, addr = email.utils.parseaddr(sender)
-            if '@' in addr:
-                localpart, domain = addr.split('@')
-                yield name, localpart, domain
-            else:
-                yield name, None, None
+            yield ListservList.get_name_localpart_domain(sender)
 
     def get_messagecount_per_affiliations(
         df: pd.DataFrame, percentage: bool=False, contract: float=None,
@@ -83,7 +86,7 @@ class ListservList:
         # collect
         domains = [
             domain
-            for _, _, domain in ListservList.iterate_from_name_addr(df["from"].values)
+            for _, _, domain in ListservList.iterator_name_localpart_domain(df["from"].values)
             if domain
         ]
 
@@ -113,7 +116,7 @@ class ListservList:
         """
         # iterate through senders
         dic = {}
-        for _, localpart, domain in ListservList.iterate_from_name_addr(df["from"].values):
+        for _, localpart, domain in ListservList.iterator_name_localpart_domain(df["from"].values):
             if domain is None:
                 continue
             elif domain not in dic.keys():
@@ -190,6 +193,45 @@ class ListservList:
             utcoffsets_hm.append(_dt)
         utcoffsets_hm, counts = np.unique(utcoffsets_hm, return_counts=True)
         return {td: cou for td, cou in zip(utcoffsets_hm, counts)}
+
+    def get_messaging_network(df: pd.DataFrame) -> Dict:
+        """
+        Args:
+            df: DataFrame that contains 'from' and 'comments-to' header fields.
+
+        Returns:
+            Nested dictionary with first layer the 'from'/sender keys and the
+            second layer the 'comments-to'/receiver keys with the integer
+            indicating the number of messages between them.
+        """
+        dic = {}
+        for idx, row in df.iterrows():
+            # decompose sender
+            f_name, f_localpart, f_domain = ListservList.get_name_localpart_domain(row["from"])
+
+            if f_domain not in dic.keys():
+                dic[f_domain] = {}
+                
+            # formatting of 'comments-to' field
+            _commentsto = [
+                s2
+                for s1 in row["comments-to"].split(',')
+                for s2 in s1.split('cc:')
+                if '@' in s2
+            ]
+            
+            for _ct in _commentsto:
+                # formatting of 'comments-to' field
+                _ct = re.sub(r'\((.*?)\)', '', _ct).strip()
+                _ct = re.sub(r'\"', '', _ct).strip()
+                # decompose receiver
+                ct_name, ct_localpart, ct_domain = ListservList.get_name_localpart_domain(_ct)
+                # counting the messages
+                if ct_domain not in dic[f_domain].keys():
+                    dic[f_domain][ct_domain] = 1
+                else:
+                    dic[f_domain][ct_domain] += 1
+        return dic
 
 
 class ListservArchive(ListservList):
