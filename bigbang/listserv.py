@@ -86,15 +86,7 @@ class ListservMessageParser(email.parser.Parser):
     )
     """
 
-    empty_header = {
-        #"subject": None,
-        #"fromname": None,
-        #"fromaddr": None,
-        #"toname": None,
-        #"toaddr": None,
-        #"date": None,
-        #"contenttype": None,
-    }
+    empty_header = {}
 
     def __init__(
         self,
@@ -313,8 +305,8 @@ class ListservMessageParser(email.parser.Parser):
                         value = repr(str(line.find_all(re.compile("^p"))[1]))
                         value = re.search(r'<p>(.*)<\/p>', value).group(1)
                         value = value.split(' <')[0]
-                value = re.sub(r'&gt;', '', value).strip()
-                value = re.sub(r'&lt;', '', value).strip()
+                value = re.sub(r'&gt;', '>', value).strip()
+                value = re.sub(r'&lt;', '<', value).strip()
                 # remove Carriage return
                 value = re.sub(r'\\r', '', value).strip()
                 # remove Linefeed
@@ -394,16 +386,19 @@ class ListservMessageParser(email.parser.Parser):
         return message_id
 
     @staticmethod
-    def to_dict(msg: mboxMessage) -> Dict[str, str]:
-        dic = {"Body": msg.get_payload()}
+    def to_dict(msg: mboxMessage, include_body: bool=True) -> Dict[str, str]:
+        if include_body:
+            dic = {"Body": msg.get_payload()}
+        else:
+            dic = {}
         for key, value in msg.items():
             dic[key] = value
         return dic
 
     @staticmethod
-    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+    def to_pandas_dataframe(msg: mboxMessage, include_body: bool=True) -> pd.DataFrame:
         return pd.DataFrame(
-            ListservMessageParser.to_dict(msg),
+            ListservMessageParser.to_dict(msg, include_body),
             index=[msg["Message-ID"]],
         )
 
@@ -840,25 +835,45 @@ class ListservList:
         return [
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
-
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        msg_parser = ListservMessageParser()
-        # run through messages
-        first = True
-        for msg in self.messages:
-            df = msg_parser.to_pandas_dataframe(msg)
-            if first:
-                dfsum = df
-                first = False
-            else:
-                dfsum = dfsum.append(df, ignore_index=False)
-        return dfsum
-
-    def to_dict(self) -> Dict[str, List[str]]:
+    
+    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
         """
         Place all message into a dictionary.
         """
-        return self.to_pandas_dataframe().to_dict()
+        dic = {}
+        for idx, msg in enumerate(self.messages):
+            #if msg["message-id"] != None:  #TODO: why are some 'None'?
+            for key, value in msg.items():
+                key = key.lower()
+                if key not in dic.keys():
+                    dic[key] = [np.nan]*len(self.messages)
+                dic[key][idx] = value
+        if include_body:
+            dic['body'] = [np.nan]*len(self.messages)
+            for idx, msg in enumerate(self.messages):
+                #if msg["message-id"] != None:
+                dic['body'][idx] = msg.get_payload()
+        lengths = [len(value) for value in dic.values()]
+        assert all([diff == 0 for diff in np.diff(lengths)])
+        return dic
+
+    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+        dic = self.to_dict(include_body)
+        df = pd.DataFrame(dic).set_index("message-id")
+        # get index of date-times
+        index = np.array([
+            True if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
+            else False
+            for i, dt in enumerate(df["date"])
+        ], dtype="bool")
+        df = df.loc[index, :]
+        # convert data type from string to datetime.datetime object
+        df.loc[:, 'date'].update(
+                df.loc[:, 'date'].apply(
+                lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
+            )
+        )
+        return df
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """
@@ -1232,24 +1247,50 @@ class ListservArchive(object):
                 dic[f"ID{msg_nr}"] = msg.to_dict()
                 msg_nr += 1
         return dic
-
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        # run through lists
-        first = True
-        for mlist in self.lists:
-            df = mlist.to_pandas_dataframe()
-            if first:
-                dfsum = df
-                first = False
-            else:
-                dfsum = dfsum.append(df, ignore_index=False)
-        return dfsum
-
-    def to_dict(self) -> Dict[str, List[str]]:
+    
+    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
         """
         Place all message into a dictionary.
         """
-        return self.to_pandas_dataframe().to_dict()
+        nr_msgs = 0
+        for ii, mlist in enumerate(self.lists):
+            dic_mlist = mlist.to_dict(include_body)
+            if ii == 0:
+                dic_march = dic_mlist
+                dic_march['mailing-list'] = [mlist.name]*len(mlist)
+            else:
+                # add mlist items to march
+                for key, value in dic_mlist.items():
+                    if key not in dic_march.keys():
+                        dic_march[key] = [np.nan]*nr_msgs
+                    dic_march[key].extend(value)
+                # if mlist does not contain items that are in march
+                key_miss = list(set(dic_march.keys()) - set(dic_mlist.keys()))
+                key_miss.remove('mailing-list')
+                for key in key_miss:
+                    dic_march[key].extend([np.nan]*len(mlist))
+                
+                dic_march['mailing-list'].extend([mlist.name]*len(mlist))
+            nr_msgs += len(mlist)
+        lengths = [len(value) for value in dic_march.values()]
+        assert all([diff == 0 for diff in np.diff(lengths)])
+        return dic_march
+
+    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+        df = pd.DataFrame(self.to_dict(include_body)).set_index("message-id")
+        # get index of date-times
+        index = np.array([
+            True if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
+            else False
+            for i, dt in enumerate(df["date"])
+        ], dtype="bool")
+        # convert data type from string to datetime.datetime object
+        df.loc[index, 'date'].update(
+            df.loc[index, 'date'].apply(
+                lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
+            )
+        )
+        return df
 
     def to_mbox(self, dir_out: str):
         """

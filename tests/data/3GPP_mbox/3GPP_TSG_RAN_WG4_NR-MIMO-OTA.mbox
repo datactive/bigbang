@@ -1,0 +1,4759 @@
+From MAILER-DAEMON Thu Aug 26 16:49:36 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: CY4PR10MB15280221A838A614A5E5D7C0B3130@CY4PR10MB1528.namprd10.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Revisions to TPs on FR2 channel verification and FR2 DoT'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+date: Thu, 20 Feb 2020 17:40:30 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"; MIME-Version="1.0"
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;5be0a403.2002C&S=>
+
+Dear NR MIMO OTA Colleagues,
+
+Please find attached an advanced copy of the TPs for FR2 DoT, and FR2 channel=
+ verification. The previously submitted TPs did not have the "Track Changes" =
+turned on, so it is difficult to see what changes are being proposed.
+
+The attached are expected to be submitted as revised TPs.
+
+Apologies for the inconvenience.
+
+Regards,
+Alfonso
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:38 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Re: draft WF on FR2 MIMO OTA'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 22 Nov 2019 12:14:47 -0800
+message-id: 2019112212144537800715@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;6040f53a.1911D&S=>
+
+Hi All,
+offline comments received. Please find attached version. Your comments are we=
+lcome.
+
+Please let me know if you want to co-sign.
+
+Ruixin
+CAICT
+
+
+
+=20
+From: Ruixin Wang
+Date: 2019-11-22 10:39
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA
+Subject: draft WF on FR2 MIMO OTA
+Hi All,
+
+Please find attached draft WF on FR2 MIMO OTA.
+
+Ruixin
+CAICT
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:40 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 22 Nov 2019 19:12:11 +0000
+reply-to: Ting-Wei Kang =?utf-8?b?5bq35bqt57at?=              ting-wei.kang@MEDIATEK.COM
+message-id: 51d91738e2814d1c85bb6233718f0f5f@mtkmbs02n1.mediatek.inc
+subject: 'Re: draft WF on FR2 MIMO OTA'
+from: Ting-Wei Kang =?utf-8?b?5bq35bqt57at?=              ting-wei.kang@MEDIATEK.COM
+in-reply-to: 2019112210395147521610@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"; MIME-Version="1.0"
+comments-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;7996391e.1911D&S=>
+
+Hi Ruixin,
+
+We add =E2=80=9CRevisit Initial phase definition of channel model, that is co=
+mmon part for FR2 and FR1.=E2=80=9D in page 2. Please consider it.
+
+Best,
+TingWei
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA [mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.=
+ETSI.ORG] On Behalf Of Ruixin Wang
+Sent: Saturday, November 23, 2019 2:40 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: draft WF on FR2 MIMO OTA
+
+Hi All,
+
+Please find attached draft WF on FR2 MIMO OTA.
+
+Ruixin
+CAICT
+
+________________________________
+
+From MAILER-DAEMON Thu Aug 26 16:49:42 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 22 Nov 2019 18:51:06 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: BY5PR17MB36044FEB6D36BA83FCF5A43482490@BY5PR17MB3604.namprd17.prod.outlook.com
+subject: 'Re: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: 201911221025004126968@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+comments-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;cbec4c4c.1911D&S=>
+
+Ruixin,
+
+Thanks for that. I have uploaded v7
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Ruixin Wang
+Sent: Friday, November 22, 2019 10:25 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Re: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Please find attached suggestion from CAICT.
+
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-11-22 09:43
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: Re: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)
+After offline feedback provided by MTK, I uploaded a revised version of the TP
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Tuesday, November 19, 2019 11:29 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)
+
+
+[EXTERNAL]
+Hi, after offline discussions with R&S, I went ahead and uploaded a revision =
+of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA) to the drafts folder: /=
+RAN/RAN4/Inbox/drafts/NR MIMO OTA
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist || Keysight Technologies
+
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:44 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'draft WF on FR2 MIMO OTA'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 22 Nov 2019 10:39:52 -0800
+message-id: 2019112210395147521610@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;14d8d42b.1911D&S=>
+
+Hi All,
+
+Please find attached draft WF on FR2 MIMO OTA.
+
+Ruixin
+CAICT
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:46 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Re: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 22 Nov 2019 10:25:05 -0800
+message-id: 201911221025004126968@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;dc3804b6.1911D&S=>
+
+Hi Thorsten,
+
+Please find attached suggestion from CAICT.
+
+Ruixin
+
+
+
+=20
+From: Thorsten Hertel
+Date: 2019-11-22 09:43
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA
+Subject: Re: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)
+After offline feedback provided by MTK, I uploaded a revised version of the TP
+=20
+Thorsten=20
+=20
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Tuesday, November 19, 2019 11:29 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)
+=20
+[EXTERNAL]=20
+Hi, after offline discussions with R&S, I went ahead and uploaded a revision =
+of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA) to the drafts folder: /=
+RAN/RAN4/Inbox/drafts/NR MIMO OTA
+=20
+Thorsten
+___
+Thorsten Hertel || Lead Technologist || Keysight Technologies=20
+=20
+=20
+=20
+
+From MAILER-DAEMON Thu Aug 26 16:49:48 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 22 Nov 2019 17:43:22 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+subject: 'Re: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)'
+message-id: BY5PR17MB360412F6962A83F2B17AD31582490@BY5PR17MB3604.namprd17.prod.outlook.com
+in-reply-to: CH2PR17MB3608C4AF297B362786DB6325824C0@CH2PR17MB3608.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;2e9c5b60.1911D&S=>
+
+After offline feedback provided by MTK, I uploaded a revised version of the TP
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Tuesday, November 19, 2019 11:29 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)
+
+
+[EXTERNAL]
+Hi, after offline discussions with R&S, I went ahead and uploaded a revision =
+of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA) to the drafts folder: /=
+RAN/RAN4/Inbox/drafts/NR MIMO OTA
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist || Keysight Technologies
+
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:50 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+message-id: SN6PR02MB553410FD50B73C28AA86E37FF0490@SN6PR02MB5534.namprd02.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'TP on adding 64QAM RMC for FR2 MIMO OTA'
+from: Bin Han binhan@QTI.QUALCOMM.COM
+date: Fri, 22 Nov 2019 06:28:58 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"; MIME-Version="1.0"
+reply-to: Bin Han binhan@QTI.QUALCOMM.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;6fc70c4a.1911D&S=>
+
+Dear all,
+
+Attached please find the draft TP on adding 64QAM RMC for FR2 MIMO OTA.
+
+Any comments are welcome.
+
+Thanks,
+Bin
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:51 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'NR bands grouping'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Thu, 21 Nov 2019 09:38:45 -0800
+message-id: 2019112109384152790932@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;cfa2fa7e.1911C&S=>
+
+Hi All,
+
+Please check the initial bands grouping, which will be discussed in the 2nd M=
+IMO OTA ad-hoc:
+
+Table 1, Ripple and channel model validation frequency
+NR FR1 Bands=20
+Test frequency (MHz)
+n71
+617MHz
+n12,n17,n29,n14,n28, [n29]
+722MHz
+n5,n8,n18,n20
+836.5MHz
+n50,n51,n74
+[1432MHz]
+n3, n2, n25, n39
+1880MHz
+n1, n34, n65
+2132.5MHz
+n7,n30,n41,n40,n38,[n90]
+2450MHz
+n77,n78,[n79]
+3600MHz
+
+Thanks to Alessandro for checking the reference antennas in the market.
+
+Ruixin
+CAICT
+
+
+
+
+
+
+
+
+
+=20
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:53 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: '2nd ad-hoc for NR MIMO OTA'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Thu, 21 Nov 2019 09:05:40 -0800
+message-id: 2019112109053648237125@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;1eb45483.1911C&S=>
+
+Hi All,
+
+As announced by Xutao, we will have 2nd MIMO OTA ad-hoc, from 11:00am to 13:0=
+0pm in the UE RF room(Tuscany3). We will continue discuss based on the 1st ad=
+-hoc meeting agenda.
+
+Thanks,
+Ruixin
+CAICT
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:49:57 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: CH2PR17MB3608C4AF297B362786DB6325824C0@CH2PR17MB3608.namprd17.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Revision of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA)'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+date: Tue, 19 Nov 2019 19:28:30 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;e27c1cd1.1911C&S=>
+
+Hi, after offline discussions with R&S, I went ahead and uploaded a revision =
+of R4-1915074 (RTS Text Proposal for NR FR1 MIMO OTA) to the drafts folder: /=
+RAN/RAN4/Inbox/drafts/NR MIMO OTA
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist || Keysight Technologies
+
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:01 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: CH2PR17MB36083BAE33B260170FFA0E5F82700@CH2PR17MB3608.namprd17.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Revision of R4-1915079: System Implementation of FR2 3D MPAC              Systems'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+date: Fri, 15 Nov 2019 23:08:25 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"; MIME-Version="1.0"
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;1bc0988.1911C&S=>
+
+Hi,
+
+Please find a revision of R4-1915079 attached that includes the PSP simulatio=
+n results and the FR2 system proposals that we were not able to include in th=
+e original contribution.
+
+See you next week
+
+Thorsten
+
+___
+Thorsten Hertel || Lead Technologist || Keysight Technologies
+
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:03 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: SN6PR02MB55340FF4F336CAD93972CD91F0760@SN6PR02MB5534.namprd02.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Missed attachment for R4-1915091'
+from: Bin Han binhan@QTI.QUALCOMM.COM
+date: Wed, 13 Nov 2019 00:59:00 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"; MIME-Version="1.0"
+reply-to: Bin Han binhan@QTI.QUALCOMM.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;9b175459.1911B&S=>
+
+Dear all,
+
+Just realized the SNR range calculator was not attached in R4-1915091. Please=
+ find the attached calculator for your reference.
+
+Thanks,
+Bin
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:05 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Thu, 03 Oct 2019 13:12:21 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CH2PR17MB3608F73099F2E1AF423C5092829F0@CH2PR17MB3608.namprd17.prod.outlook.com
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: 00c601d579a2$51e3e3d0$f5abab70$@vivo.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+comments-to: linhui hui.lin@vivo.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;ad541ead.1910A&S=>
+
+Hi,
+
+Please see responses below.
+
+Thorsten
+
+From: linhui <hui.lin@vivo.com>
+Sent: Wednesday, October 2, 2019 9:24 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-=
+OTA@LIST.ETSI.ORG
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Propos=
+al
+
+
+[EXTERNAL]
+Dear Thorsten,
+
+Thank you very much for providing these result, I will revise my Tdoc accordi=
+ngly.
+
+I have 2 more questions for understanding
+
+  1.  In the simulations, did you apply any optimization method for both sect=
+or and ring layouts e.g. prefaded signals synthesis etc.? or it is based on d=
+irect sampling of  the theoretically continuous PAS (power angular spectrum)?
+[Thorsten@KS] Yes, we used optimization methods for both layouts, i.e., we nu=
+merically optimized the probe weights to reduce the weighted RMS correlation =
+error. We have looked into the direct sampling approach and found a larger er=
+ror and therefore decided to stick with our optimization approach.
+
+  1.  Are you going to propose option 6 also for chamber calibration procedur=
+e? It seems too complex?
+[Thorsten@KS] No, this will be too complex for spatial correlation validation=
+ purposes since there would be too many measurements required.
+
+Best Regards
+
+Lin Hui
+
+
+
+
+From: Thorsten Hertel [mailto:thorsten.hertel@keysight.com]
+Sent: Wednesday, October 2, 2019 11:14 PM
+To: linhui <hui.lin@vivo.com<mailto:hui.lin@vivo.com>>; 3GPP_TSG_RAN_WG4_NR-M=
+IMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Propos=
+al
+
+Hi,
+
+Sorry about the delay but here are the comparisons of Options 5 and 6 you ask=
+ed for. We only considered the two frequencies we studied previously though
+Correlation error vs number of probes
+Option 5 (D=3D40cm) (same as Fig. 7 in R4-1906829)
+[A close up of a map  Description generated with high confidence]
+Option 6 (D=3D20cm)
+[A close up of a map  Description generated with very high confidence]
+
+
+Thorsten
+
+From: linhui <hui.lin@vivo.com<mailto:hui.lin@vivo.com>>
+Sent: Saturday, September 28, 2019 7:46 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Propos=
+al
+
+
+[EXTERNAL]
+Dear Thorsten,
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e. radius=
+=3D20cm.
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by opti=
+on 6 will be much larger than option5 for the same layout and the same test z=
+one size, because of calculating larger correlation distance.
+
+I have 2 suggestions for consideration:
+
+  1.  We relied on the simulations from your contributions for the study. Cur=
+rently all these results are based on option 5. Could you please provide upda=
+ted results before October meeting? i.e. figure7 in  R4-1906829, figure 3 in =
+R4-1909728 etc (as below).  At least 2~3 days before contribution deadline wo=
+uld be preferred, in order to facilitate discussion in the meeting.
+  2.  Another suggestion is that the RMS results are for 3.5GHz and 7.15GHz (=
+7.125?) in figure7 and 7.125GHz in figure3. Could you please add 4.9GHz (N79)=
+? If it is not too troublesome. Because during the offline discussion, some o=
+perators were interested in the situation of this band.
+
+Best Regards
+
+Lin Hui
+
+[figure7 in  R4-1906829]
+[cid:image005.png@01D579E4.2DEFC3D0]
+
+[figure 3 in R4-1909728]
+[cid:image006.png@01D579E4.2DEFC3D0]
+
+
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG<mailto:owner-3gpp_tsg_=
+ran_wg4_nr-mimo-ota@LIST.ETSI.ORG> [mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota=
+@LIST.ETSI.ORG] On Behalf Of Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+Dear NR MIMO OTA Crew,
+
+After offline feedback received and offline discussions with Spirent and CAIC=
+T, I would like to run the suggestion to switch from option 5 to option 6 for=
+ the weighted RMS correlation error NR FR1 analyses by this group.
+
+As outlined in contribution R4-1906829, we outlined 6 different options to de=
+termine the RMS correlation error:
+The definition of [1] opens at least six interpretations. They are illustrate=
+d in Figure 1 and described as follows:
+
+  1.  The spatial correlation is evaluated between locations along a 20cm lon=
+g segment of line centred at the origin and being orthogonal to the highest p=
+ower direction of the PAS (=3D ** =3D mean of PAS). The reference location is=
+ the origin and the other location changes symmetrically to left and right fr=
+om the origin. This should result to a symmetrical spatial correlation functi=
+on and the maximum spacing to be evaluated is 10cm.
+  2.  As interpretation 1. but the reference point is, e.g., one end of the s=
+egment of line. This results to a non-symmetric spatial correlation function =
+and the maximum spacing to be evaluated is 20cm.
+  3.  The spatial correlation is evaluated between the origin and locations o=
+n a circle centred at the origin and having the radius of 10cm. This should r=
+esult to a periodic spatial correlation function and only the spacing of 10cm=
+ is evaluated with different orientations with respect to the PAS.
+  4.  The spatial correlation is evaluated between locations on a circle cent=
+red at the origin and having the radius of 10cm. There is not a fixed referen=
+ce point, but all pairs of sample points along the circle are considered. The=
+ maximum spacing to be evaluated is 20cm.
+  5.  The spatial correlation is evaluated between the origin and locations w=
+ithin a circular disc centred at the origin and having the radius of 10cm. Th=
+e maximum spacing to be evaluated is 10cm.
+  6.  The spatial correlation is evaluated between locations within a circula=
+r disc centred at the origin and having the radius of 10cm. There is not a fi=
+xed reference point, but all pairs of sample points within the disc are consi=
+dered. The maximum spacing to be evaluated is 20cm.
+
+[cid:image007.png@01D579E4.2DEFC3D0]
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation e=
+valuation.
+
+
+
+Observation 1: The spatial correlation validation procedure, specifically the=
+ sampling assumptions, need to be agreed as the current definition is ambiguo=
+us
+In this contribution we follow interpretation #5. However, because the spatia=
+l correlation would be evaluated only with maximum spacing of 10cm we have in=
+creased the radius of the disc to 20cm. By this change we evaluate the spatia=
+l correlation function on distances up to 20cm, which is the agreed maximum D=
+UT and test zone size in [1].
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and max=
+ antenna separation of 20cm, in May but based on feedback received offline fo=
+lks were not pleased with the selected option since it does not comply with t=
+he 20cm test zone size. In order to avoid any confusion and after some intern=
+al discussions with CAICT and Spirent on this, we propose to focus on Option =
+6 instead (20cm diameter disc with 20cm max antenna separation).
+
+Sorry about the late notice but we hope to get preliminary agreement on this =
+revised option before the meeting.
+
+Thorsten
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:07 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Thu, 03 Oct 2019 12:23:33 +0800
+reply-to: linhui hui.lin@VIVO.COM
+message-id: 00c601d579a2$51e3e3d0$f5abab70$@vivo.com
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+from: linhui hui.lin@VIVO.COM
+in-reply-to: CH2PR17MB3608976B38A8D513B3C13E3C829C0@CH2PR17MB3608.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+comments-to: Thorsten Hertel thorsten.hertel@keysight.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;f804faea.1910A&S=>
+
+Dear Thorsten,
+
+ 
+
+Thank you very much for providing these result, I will revise my Tdoc
+accordingly.
+
+ 
+
+I have 2 more questions for understanding
+
+1)       In the simulations, did you apply any optimization method for both
+sector and ring layouts e.g. prefaded signals synthesis etc.? or it is based
+on direct sampling of  the theoretically continuous PAS (power angular
+spectrum)?
+
+2)       Are you going to propose option 6 also for chamber calibration
+procedure? It seems too complex? 
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: Thorsten Hertel [mailto:thorsten.hertel@keysight.com] 
+Sent: Wednesday, October 2, 2019 11:14 PM
+To: linhui <hui.lin@vivo.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6
+Proposal
+
+ 
+
+Hi, 
+
+ 
+
+Sorry about the delay but here are the comparisons of Options 5 and 6 you
+asked for. We only considered the two frequencies we studied previously
+though
+
+
+Correlation error vs number of probes
+
+
+Option 5 (D=40cm) (same as Fig. 7 in R4-1906829)
+
+
+
+
+
+Option 6 (D=20cm) 
+
+
+
+
+ 
+
+ 
+
+Thorsten
+
+ 
+
+From: linhui <hui.lin@vivo.com <mailto:hui.lin@vivo.com> > 
+Sent: Saturday, September 28, 2019 7:46 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com
+<mailto:thorsten.hertel@keysight.com> >;
+3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6
+Proposal
+
+ 
+
+[EXTERNAL] 
+
+Dear Thorsten,
+
+ 
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e.
+radius=20cm. 
+
+ 
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by
+option 6 will be much larger than option5 for the same layout and the same
+test zone size, because of calculating larger correlation distance.
+
+ 
+
+I have 2 suggestions for consideration:
+
+1)       We relied on the simulations from your contributions for the study.
+Currently all these results are based on option 5. Could you please provide
+updated results before October meeting? i.e. figure7 in  R4-1906829, figure
+3 in R4-1909728 etc (as below).  At least 2~3 days before contribution
+deadline would be preferred, in order to facilitate discussion in the
+meeting. 
+
+2)       Another suggestion is that the RMS results are for 3.5GHz and
+7.15GHz (7.125?) in figure7 and 7.125GHz in figure3. Could you please add
+4.9GHz (N79)? If it is not too troublesome. Because during the offline
+discussion, some operators were interested in the situation of this band.
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+[figure7 in  R4-1906829]
+
+
+
+ 
+
+[figure 3 in R4-1909728]
+
+
+
+ 
+
+ 
+
+ 
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG>
+[mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG] On Behalf Of
+Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+ 
+
+Dear NR MIMO OTA Crew, 
+
+ 
+
+After offline feedback received and offline discussions with Spirent and
+CAICT, I would like to run the suggestion to switch from option 5 to option
+6 for the weighted RMS correlation error NR FR1 analyses by this group. 
+
+ 
+
+As outlined in contribution R4-1906829, we outlined 6 different options to
+determine the RMS correlation error:
+
+The definition of [1] opens at least six interpretations. They are
+illustrated in Figure 1 and described as follows:
+
+1.	The spatial correlation is evaluated between locations along a 20cm
+long segment of line centred at the origin and being orthogonal to the
+highest power direction of the PAS (= qm = mean of PAS). The reference
+location is the origin and the other location changes symmetrically to left
+and right from the origin. This should result to a symmetrical spatial
+correlation function and the maximum spacing to be evaluated is 10cm.
+2.	As interpretation 1. but the reference point is, e.g., one end of
+the segment of line. This results to a non-symmetric spatial correlation
+function and the maximum spacing to be evaluated is 20cm.
+3.	The spatial correlation is evaluated between the origin and
+locations on a circle centred at the origin and having the radius of 10cm.
+This should result to a periodic spatial correlation function and only the
+spacing of 10cm is evaluated with different orientations with respect to the
+PAS.
+4.	The spatial correlation is evaluated between locations on a circle
+centred at the origin and having the radius of 10cm. There is not a fixed
+reference point, but all pairs of sample points along the circle are
+considered. The maximum spacing to be evaluated is 20cm.
+5.	The spatial correlation is evaluated between the origin and
+locations within a circular disc centred at the origin and having the radius
+of 10cm. The maximum spacing to be evaluated is 10cm.
+6.	The spatial correlation is evaluated between locations within a
+circular disc centred at the origin and having the radius of 10cm. There is
+not a fixed reference point, but all pairs of sample points within the disc
+are considered. The maximum spacing to be evaluated is 20cm.
+
+ 
+
+
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation
+evaluation.
+
+ 
+
+Observation 1: The spatial correlation validation procedure, specifically
+the sampling assumptions, need to be agreed as the current definition is
+ambiguous 
+
+In this contribution we follow interpretation #5. However, because the
+spatial correlation would be evaluated only with maximum spacing of 10cm we
+have increased the radius of the disc to 20cm. By this change we evaluate
+the spatial correlation function on distances up to 20cm, which is the
+agreed maximum DUT and test zone size in [1].
+
+ 
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and
+max antenna separation of 20cm, in May but based on feedback received
+offline folks were not pleased with the selected option since it does not
+comply with the 20cm test zone size. In order to avoid any confusion and
+after some internal discussions with CAICT and Spirent on this, we propose
+to focus on Option 6 instead (20cm diameter disc with 20cm max antenna
+separation).
+
+ 
+
+Sorry about the late notice but we hope to get preliminary agreement on this
+revised option before the meeting.
+
+ 
+
+Thorsten
+
+ 
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:09 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Thu, 03 Oct 2019 12:23:33 +0800
+reply-to: linhui hui.lin@VIVO.COM
+message-id: 00c601d579a2$51e3e3d0$f5abab70$@vivo.com
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+from: linhui hui.lin@VIVO.COM
+in-reply-to: CH2PR17MB3608976B38A8D513B3C13E3C829C0@CH2PR17MB3608.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+comments-to: Thorsten Hertel thorsten.hertel@keysight.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;f804faea.1910A&S=>
+
+Dear Thorsten,
+
+ 
+
+Thank you very much for providing these result, I will revise my Tdoc
+accordingly.
+
+ 
+
+I have 2 more questions for understanding
+
+1)       In the simulations, did you apply any optimization method for both
+sector and ring layouts e.g. prefaded signals synthesis etc.? or it is based
+on direct sampling of  the theoretically continuous PAS (power angular
+spectrum)?
+
+2)       Are you going to propose option 6 also for chamber calibration
+procedure? It seems too complex? 
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: Thorsten Hertel [mailto:thorsten.hertel@keysight.com] 
+Sent: Wednesday, October 2, 2019 11:14 PM
+To: linhui <hui.lin@vivo.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6
+Proposal
+
+ 
+
+Hi, 
+
+ 
+
+Sorry about the delay but here are the comparisons of Options 5 and 6 you
+asked for. We only considered the two frequencies we studied previously
+though
+
+
+Correlation error vs number of probes
+
+
+Option 5 (D=40cm) (same as Fig. 7 in R4-1906829)
+
+
+
+
+
+Option 6 (D=20cm) 
+
+
+
+
+ 
+
+ 
+
+Thorsten
+
+ 
+
+From: linhui <hui.lin@vivo.com <mailto:hui.lin@vivo.com> > 
+Sent: Saturday, September 28, 2019 7:46 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com
+<mailto:thorsten.hertel@keysight.com> >;
+3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6
+Proposal
+
+ 
+
+[EXTERNAL] 
+
+Dear Thorsten,
+
+ 
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e.
+radius=20cm. 
+
+ 
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by
+option 6 will be much larger than option5 for the same layout and the same
+test zone size, because of calculating larger correlation distance.
+
+ 
+
+I have 2 suggestions for consideration:
+
+1)       We relied on the simulations from your contributions for the study.
+Currently all these results are based on option 5. Could you please provide
+updated results before October meeting? i.e. figure7 in  R4-1906829, figure
+3 in R4-1909728 etc (as below).  At least 2~3 days before contribution
+deadline would be preferred, in order to facilitate discussion in the
+meeting. 
+
+2)       Another suggestion is that the RMS results are for 3.5GHz and
+7.15GHz (7.125?) in figure7 and 7.125GHz in figure3. Could you please add
+4.9GHz (N79)? If it is not too troublesome. Because during the offline
+discussion, some operators were interested in the situation of this band.
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+[figure7 in  R4-1906829]
+
+
+
+ 
+
+[figure 3 in R4-1909728]
+
+
+
+ 
+
+ 
+
+ 
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG>
+[mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG] On Behalf Of
+Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+ 
+
+Dear NR MIMO OTA Crew, 
+
+ 
+
+After offline feedback received and offline discussions with Spirent and
+CAICT, I would like to run the suggestion to switch from option 5 to option
+6 for the weighted RMS correlation error NR FR1 analyses by this group. 
+
+ 
+
+As outlined in contribution R4-1906829, we outlined 6 different options to
+determine the RMS correlation error:
+
+The definition of [1] opens at least six interpretations. They are
+illustrated in Figure 1 and described as follows:
+
+1.	The spatial correlation is evaluated between locations along a 20cm
+long segment of line centred at the origin and being orthogonal to the
+highest power direction of the PAS (= qm = mean of PAS). The reference
+location is the origin and the other location changes symmetrically to left
+and right from the origin. This should result to a symmetrical spatial
+correlation function and the maximum spacing to be evaluated is 10cm.
+2.	As interpretation 1. but the reference point is, e.g., one end of
+the segment of line. This results to a non-symmetric spatial correlation
+function and the maximum spacing to be evaluated is 20cm.
+3.	The spatial correlation is evaluated between the origin and
+locations on a circle centred at the origin and having the radius of 10cm.
+This should result to a periodic spatial correlation function and only the
+spacing of 10cm is evaluated with different orientations with respect to the
+PAS.
+4.	The spatial correlation is evaluated between locations on a circle
+centred at the origin and having the radius of 10cm. There is not a fixed
+reference point, but all pairs of sample points along the circle are
+considered. The maximum spacing to be evaluated is 20cm.
+5.	The spatial correlation is evaluated between the origin and
+locations within a circular disc centred at the origin and having the radius
+of 10cm. The maximum spacing to be evaluated is 10cm.
+6.	The spatial correlation is evaluated between locations within a
+circular disc centred at the origin and having the radius of 10cm. There is
+not a fixed reference point, but all pairs of sample points within the disc
+are considered. The maximum spacing to be evaluated is 20cm.
+
+ 
+
+
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation
+evaluation.
+
+ 
+
+Observation 1: The spatial correlation validation procedure, specifically
+the sampling assumptions, need to be agreed as the current definition is
+ambiguous 
+
+In this contribution we follow interpretation #5. However, because the
+spatial correlation would be evaluated only with maximum spacing of 10cm we
+have increased the radius of the disc to 20cm. By this change we evaluate
+the spatial correlation function on distances up to 20cm, which is the
+agreed maximum DUT and test zone size in [1].
+
+ 
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and
+max antenna separation of 20cm, in May but based on feedback received
+offline folks were not pleased with the selected option since it does not
+comply with the 20cm test zone size. In order to avoid any confusion and
+after some internal discussions with CAICT and Spirent on this, we propose
+to focus on Option 6 instead (20cm diameter disc with 20cm max antenna
+separation).
+
+ 
+
+Sorry about the late notice but we hope to get preliminary agreement on this
+revised option before the meeting.
+
+ 
+
+Thorsten
+
+ 
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:11 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Thu, 03 Oct 2019 12:23:33 +0800
+reply-to: linhui hui.lin@VIVO.COM
+message-id: 00c601d579a2$51e3e3d0$f5abab70$@vivo.com
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+from: linhui hui.lin@VIVO.COM
+in-reply-to: CH2PR17MB3608976B38A8D513B3C13E3C829C0@CH2PR17MB3608.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+comments-to: Thorsten Hertel thorsten.hertel@keysight.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;f804faea.1910A&S=>
+
+Dear Thorsten,
+
+ 
+
+Thank you very much for providing these result, I will revise my Tdoc
+accordingly.
+
+ 
+
+I have 2 more questions for understanding
+
+1)       In the simulations, did you apply any optimization method for both
+sector and ring layouts e.g. prefaded signals synthesis etc.? or it is based
+on direct sampling of  the theoretically continuous PAS (power angular
+spectrum)?
+
+2)       Are you going to propose option 6 also for chamber calibration
+procedure? It seems too complex? 
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: Thorsten Hertel [mailto:thorsten.hertel@keysight.com] 
+Sent: Wednesday, October 2, 2019 11:14 PM
+To: linhui <hui.lin@vivo.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6
+Proposal
+
+ 
+
+Hi, 
+
+ 
+
+Sorry about the delay but here are the comparisons of Options 5 and 6 you
+asked for. We only considered the two frequencies we studied previously
+though
+
+
+Correlation error vs number of probes
+
+
+Option 5 (D=40cm) (same as Fig. 7 in R4-1906829)
+
+
+
+
+
+Option 6 (D=20cm) 
+
+
+
+
+ 
+
+ 
+
+Thorsten
+
+ 
+
+From: linhui <hui.lin@vivo.com <mailto:hui.lin@vivo.com> > 
+Sent: Saturday, September 28, 2019 7:46 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com
+<mailto:thorsten.hertel@keysight.com> >;
+3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6
+Proposal
+
+ 
+
+[EXTERNAL] 
+
+Dear Thorsten,
+
+ 
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e.
+radius=20cm. 
+
+ 
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by
+option 6 will be much larger than option5 for the same layout and the same
+test zone size, because of calculating larger correlation distance.
+
+ 
+
+I have 2 suggestions for consideration:
+
+1)       We relied on the simulations from your contributions for the study.
+Currently all these results are based on option 5. Could you please provide
+updated results before October meeting? i.e. figure7 in  R4-1906829, figure
+3 in R4-1909728 etc (as below).  At least 2~3 days before contribution
+deadline would be preferred, in order to facilitate discussion in the
+meeting. 
+
+2)       Another suggestion is that the RMS results are for 3.5GHz and
+7.15GHz (7.125?) in figure7 and 7.125GHz in figure3. Could you please add
+4.9GHz (N79)? If it is not too troublesome. Because during the offline
+discussion, some operators were interested in the situation of this band.
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+[figure7 in  R4-1906829]
+
+
+
+ 
+
+[figure 3 in R4-1909728]
+
+
+
+ 
+
+ 
+
+ 
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG>
+[mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG] On Behalf Of
+Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+ 
+
+Dear NR MIMO OTA Crew, 
+
+ 
+
+After offline feedback received and offline discussions with Spirent and
+CAICT, I would like to run the suggestion to switch from option 5 to option
+6 for the weighted RMS correlation error NR FR1 analyses by this group. 
+
+ 
+
+As outlined in contribution R4-1906829, we outlined 6 different options to
+determine the RMS correlation error:
+
+The definition of [1] opens at least six interpretations. They are
+illustrated in Figure 1 and described as follows:
+
+1.	The spatial correlation is evaluated between locations along a 20cm
+long segment of line centred at the origin and being orthogonal to the
+highest power direction of the PAS (= qm = mean of PAS). The reference
+location is the origin and the other location changes symmetrically to left
+and right from the origin. This should result to a symmetrical spatial
+correlation function and the maximum spacing to be evaluated is 10cm.
+2.	As interpretation 1. but the reference point is, e.g., one end of
+the segment of line. This results to a non-symmetric spatial correlation
+function and the maximum spacing to be evaluated is 20cm.
+3.	The spatial correlation is evaluated between the origin and
+locations on a circle centred at the origin and having the radius of 10cm.
+This should result to a periodic spatial correlation function and only the
+spacing of 10cm is evaluated with different orientations with respect to the
+PAS.
+4.	The spatial correlation is evaluated between locations on a circle
+centred at the origin and having the radius of 10cm. There is not a fixed
+reference point, but all pairs of sample points along the circle are
+considered. The maximum spacing to be evaluated is 20cm.
+5.	The spatial correlation is evaluated between the origin and
+locations within a circular disc centred at the origin and having the radius
+of 10cm. The maximum spacing to be evaluated is 10cm.
+6.	The spatial correlation is evaluated between locations within a
+circular disc centred at the origin and having the radius of 10cm. There is
+not a fixed reference point, but all pairs of sample points within the disc
+are considered. The maximum spacing to be evaluated is 20cm.
+
+ 
+
+
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation
+evaluation.
+
+ 
+
+Observation 1: The spatial correlation validation procedure, specifically
+the sampling assumptions, need to be agreed as the current definition is
+ambiguous 
+
+In this contribution we follow interpretation #5. However, because the
+spatial correlation would be evaluated only with maximum spacing of 10cm we
+have increased the radius of the disc to 20cm. By this change we evaluate
+the spatial correlation function on distances up to 20cm, which is the
+agreed maximum DUT and test zone size in [1].
+
+ 
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and
+max antenna separation of 20cm, in May but based on feedback received
+offline folks were not pleased with the selected option since it does not
+comply with the 20cm test zone size. In order to avoid any confusion and
+after some internal discussions with CAICT and Spirent on this, we propose
+to focus on Option 6 instead (20cm diameter disc with 20cm max antenna
+separation).
+
+ 
+
+Sorry about the late notice but we hope to get preliminary agreement on this
+revised option before the meeting.
+
+ 
+
+Thorsten
+
+ 
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:15 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Wed, 02 Oct 2019 15:27:55 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+message-id: CH2PR17MB3608CD42CC35F96CCA2F049A829C0@CH2PR17MB3608.namprd17.prod.outlook.com
+in-reply-to: CH2PR17MB3608976B38A8D513B3C13E3C829C0@CH2PR17MB3608.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;4cd06989.1910A&S=>
+
+Here another view comparing the options with each other in one plot
+Sector configurations with both options
+[A close up of a map  Description generated with very high confidence]
+Ring configurations with both options
+[A close up of a map  Description generated with very high confidence]
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Wednesday, October 2, 2019 8:14 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Propos=
+al
+
+
+[EXTERNAL]
+Hi,
+
+Sorry about the delay but here are the comparisons of Options 5 and 6 you ask=
+ed for. We only considered the two frequencies we studied previously though
+Correlation error vs number of probes
+Option 5 (D=3D40cm) (same as Fig. 7 in R4-1906829)
+[A close up of a map  Description generated with high confidence]
+Option 6 (D=3D20cm)
+[A close up of a map  Description generated with very high confidence]
+
+
+Thorsten
+
+From: linhui <hui.lin@vivo.com<mailto:hui.lin@vivo.com>>
+Sent: Saturday, September 28, 2019 7:46 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Propos=
+al
+
+
+[EXTERNAL]
+Dear Thorsten,
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e. radius=
+=3D20cm.
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by opti=
+on 6 will be much larger than option5 for the same layout and the same test z=
+one size, because of calculating larger correlation distance.
+
+I have 2 suggestions for consideration:
+
+  1.  We relied on the simulations from your contributions for the study. Cur=
+rently all these results are based on option 5. Could you please provide upda=
+ted results before October meeting? i.e. figure7 in  R4-1906829, figure 3 in =
+R4-1909728 etc (as below).  At least 2~3 days before contribution deadline wo=
+uld be preferred, in order to facilitate discussion in the meeting.
+  2.  Another suggestion is that the RMS results are for 3.5GHz and 7.15GHz (=
+7.125?) in figure7 and 7.125GHz in figure3. Could you please add 4.9GHz (N79)=
+? If it is not too troublesome. Because during the offline discussion, some o=
+perators were interested in the situation of this band.
+
+Best Regards
+
+Lin Hui
+
+[figure7 in  R4-1906829]
+[cid:image010.png@01D578FB.5AEFB140]
+
+[figure 3 in R4-1909728]
+[cid:image011.png@01D578FB.5AEFB140]
+
+
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG<mailto:owner-3gpp_tsg_=
+ran_wg4_nr-mimo-ota@LIST.ETSI.ORG> [mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota=
+@LIST.ETSI.ORG] On Behalf Of Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+Dear NR MIMO OTA Crew,
+
+After offline feedback received and offline discussions with Spirent and CAIC=
+T, I would like to run the suggestion to switch from option 5 to option 6 for=
+ the weighted RMS correlation error NR FR1 analyses by this group.
+
+As outlined in contribution R4-1906829, we outlined 6 different options to de=
+termine the RMS correlation error:
+The definition of [1] opens at least six interpretations. They are illustrate=
+d in Figure 1 and described as follows:
+
+  1.  The spatial correlation is evaluated between locations along a 20cm lon=
+g segment of line centred at the origin and being orthogonal to the highest p=
+ower direction of the PAS (=3D ** =3D mean of PAS). The reference location is=
+ the origin and the other location changes symmetrically to left and right fr=
+om the origin. This should result to a symmetrical spatial correlation functi=
+on and the maximum spacing to be evaluated is 10cm.
+  2.  As interpretation 1. but the reference point is, e.g., one end of the s=
+egment of line. This results to a non-symmetric spatial correlation function =
+and the maximum spacing to be evaluated is 20cm.
+  3.  The spatial correlation is evaluated between the origin and locations o=
+n a circle centred at the origin and having the radius of 10cm. This should r=
+esult to a periodic spatial correlation function and only the spacing of 10cm=
+ is evaluated with different orientations with respect to the PAS.
+  4.  The spatial correlation is evaluated between locations on a circle cent=
+red at the origin and having the radius of 10cm. There is not a fixed referen=
+ce point, but all pairs of sample points along the circle are considered. The=
+ maximum spacing to be evaluated is 20cm.
+  5.  The spatial correlation is evaluated between the origin and locations w=
+ithin a circular disc centred at the origin and having the radius of 10cm. Th=
+e maximum spacing to be evaluated is 10cm.
+  6.  The spatial correlation is evaluated between locations within a circula=
+r disc centred at the origin and having the radius of 10cm. There is not a fi=
+xed reference point, but all pairs of sample points within the disc are consi=
+dered. The maximum spacing to be evaluated is 20cm.
+
+[cid:image012.png@01D578FB.5AEFB140]
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation e=
+valuation.
+
+
+
+Observation 1: The spatial correlation validation procedure, specifically the=
+ sampling assumptions, need to be agreed as the current definition is ambiguo=
+us
+In this contribution we follow interpretation #5. However, because the spatia=
+l correlation would be evaluated only with maximum spacing of 10cm we have in=
+creased the radius of the disc to 20cm. By this change we evaluate the spatia=
+l correlation function on distances up to 20cm, which is the agreed maximum D=
+UT and test zone size in [1].
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and max=
+ antenna separation of 20cm, in May but based on feedback received offline fo=
+lks were not pleased with the selected option since it does not comply with t=
+he 20cm test zone size. In order to avoid any confusion and after some intern=
+al discussions with CAICT and Spirent on this, we propose to focus on Option =
+6 instead (20cm diameter disc with 20cm max antenna separation).
+
+Sorry about the late notice but we hope to get preliminary agreement on this =
+revised option before the meeting.
+
+Thorsten
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:17 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Wed, 02 Oct 2019 15:14:24 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CH2PR17MB3608976B38A8D513B3C13E3C829C0@CH2PR17MB3608.namprd17.prod.outlook.com
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: 008301d57670$06283250$127896f0$@vivo.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+comments-to: linhui hui.lin@vivo.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;e521605d.1910A&S=>
+
+Hi,
+
+Sorry about the delay but here are the comparisons of Options 5 and 6 you ask=
+ed for. We only considered the two frequencies we studied previously though
+Correlation error vs number of probes
+Option 5 (D=3D40cm) (same as Fig. 7 in R4-1906829)
+[A close up of a map  Description generated with high confidence]
+Option 6 (D=3D20cm)
+[A close up of a map  Description generated with very high confidence]
+
+
+Thorsten
+
+From: linhui <hui.lin@vivo.com>
+Sent: Saturday, September 28, 2019 7:46 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-=
+OTA@LIST.ETSI.ORG
+Subject: RE: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Propos=
+al
+
+
+[EXTERNAL]
+Dear Thorsten,
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e. radius=
+=3D20cm.
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by opti=
+on 6 will be much larger than option5 for the same layout and the same test z=
+one size, because of calculating larger correlation distance.
+
+I have 2 suggestions for consideration:
+
+  1.  We relied on the simulations from your contributions for the study. Cur=
+rently all these results are based on option 5. Could you please provide upda=
+ted results before October meeting? i.e. figure7 in  R4-1906829, figure 3 in =
+R4-1909728 etc (as below).  At least 2~3 days before contribution deadline wo=
+uld be preferred, in order to facilitate discussion in the meeting.
+  2.  Another suggestion is that the RMS results are for 3.5GHz and 7.15GHz (=
+7.125?) in figure7 and 7.125GHz in figure3. Could you please add 4.9GHz (N79)=
+? If it is not too troublesome. Because during the offline discussion, some o=
+perators were interested in the situation of this band.
+
+Best Regards
+
+Lin Hui
+
+[figure7 in  R4-1906829]
+[cid:image006.png@01D578F9.77734310]
+
+[figure 3 in R4-1909728]
+[cid:image007.png@01D578F9.77734310]
+
+
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG<mailto:owner-3gpp_tsg_=
+ran_wg4_nr-mimo-ota@LIST.ETSI.ORG> [mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota=
+@LIST.ETSI.ORG] On Behalf Of Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+Dear NR MIMO OTA Crew,
+
+After offline feedback received and offline discussions with Spirent and CAIC=
+T, I would like to run the suggestion to switch from option 5 to option 6 for=
+ the weighted RMS correlation error NR FR1 analyses by this group.
+
+As outlined in contribution R4-1906829, we outlined 6 different options to de=
+termine the RMS correlation error:
+The definition of [1] opens at least six interpretations. They are illustrate=
+d in Figure 1 and described as follows:
+
+  1.  The spatial correlation is evaluated between locations along a 20cm lon=
+g segment of line centred at the origin and being orthogonal to the highest p=
+ower direction of the PAS (=3D ** =3D mean of PAS). The reference location is=
+ the origin and the other location changes symmetrically to left and right fr=
+om the origin. This should result to a symmetrical spatial correlation functi=
+on and the maximum spacing to be evaluated is 10cm.
+  2.  As interpretation 1. but the reference point is, e.g., one end of the s=
+egment of line. This results to a non-symmetric spatial correlation function =
+and the maximum spacing to be evaluated is 20cm.
+  3.  The spatial correlation is evaluated between the origin and locations o=
+n a circle centred at the origin and having the radius of 10cm. This should r=
+esult to a periodic spatial correlation function and only the spacing of 10cm=
+ is evaluated with different orientations with respect to the PAS.
+  4.  The spatial correlation is evaluated between locations on a circle cent=
+red at the origin and having the radius of 10cm. There is not a fixed referen=
+ce point, but all pairs of sample points along the circle are considered. The=
+ maximum spacing to be evaluated is 20cm.
+  5.  The spatial correlation is evaluated between the origin and locations w=
+ithin a circular disc centred at the origin and having the radius of 10cm. Th=
+e maximum spacing to be evaluated is 10cm.
+  6.  The spatial correlation is evaluated between locations within a circula=
+r disc centred at the origin and having the radius of 10cm. There is not a fi=
+xed reference point, but all pairs of sample points within the disc are consi=
+dered. The maximum spacing to be evaluated is 20cm.
+
+[cid:image008.png@01D578F9.77734310]
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation e=
+valuation.
+
+
+
+Observation 1: The spatial correlation validation procedure, specifically the=
+ sampling assumptions, need to be agreed as the current definition is ambiguo=
+us
+In this contribution we follow interpretation #5. However, because the spatia=
+l correlation would be evaluated only with maximum spacing of 10cm we have in=
+creased the radius of the disc to 20cm. By this change we evaluate the spatia=
+l correlation function on distances up to 20cm, which is the agreed maximum D=
+UT and test zone size in [1].
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and max=
+ antenna separation of 20cm, in May but based on feedback received offline fo=
+lks were not pleased with the selected option since it does not comply with t=
+he 20cm test zone size. In order to avoid any confusion and after some intern=
+al discussions with CAICT and Spirent on this, we propose to focus on Option =
+6 instead (20cm diameter disc with 20cm max antenna separation).
+
+Sorry about the late notice but we hope to get preliminary agreement on this =
+revised option before the meeting.
+
+Thorsten
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:19 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Sun, 29 Sep 2019 10:45:58 +0800
+reply-to: linhui hui.lin@VIVO.COM
+message-id: 008301d57670$06283250$127896f0$@vivo.com
+subject: 'Re: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6              Proposal'
+from: linhui hui.lin@VIVO.COM
+in-reply-to: CY4PR17MB13045E2BF67C667A34785CD482810@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+comments-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;b2e141ad.1909E&S=>
+
+Dear Thorsten,
+
+ 
+
+We noticed that you simulated Option 5 with 40cm test zone size i.e.
+radius=20cm. 
+
+ 
+
+Regarding switch from option 5 to option 6, obviously, RSM calculated by
+option 6 will be much larger than option5 for the same layout and the same
+test zone size, because of calculating larger correlation distance.
+
+ 
+
+I have 2 suggestions for consideration:
+
+1)       We relied on the simulations from your contributions for the study.
+Currently all these results are based on option 5. Could you please provide
+updated results before October meeting? i.e. figure7 in  R4-1906829, figure
+3 in R4-1909728 etc (as below).  At least 2~3 days before contribution
+deadline would be preferred, in order to facilitate discussion in the
+meeting. 
+
+2)       Another suggestion is that the RMS results are for 3.5GHz and
+7.15GHz (7.125?) in figure7 and 7.125GHz in figure3. Could you please add
+4.9GHz (N79)? If it is not too troublesome. Because during the offline
+discussion, some operators were interested in the situation of this band.
+
+ 
+
+Best Regards
+
+ 
+
+Lin Hui
+
+ 
+
+[figure7 in  R4-1906829]
+
+
+
+[figure 3 in R4-1909728]
+
+
+
+ 
+
+ 
+
+ 
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG
+[mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG] On Behalf Of
+Thorsten Hertel
+Sent: Saturday, September 28, 2019 2:04 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal
+
+ 
+
+Dear NR MIMO OTA Crew, 
+
+ 
+
+After offline feedback received and offline discussions with Spirent and
+CAICT, I would like to run the suggestion to switch from option 5 to option
+6 for the weighted RMS correlation error NR FR1 analyses by this group. 
+
+ 
+
+As outlined in contribution R4-1906829, we outlined 6 different options to
+determine the RMS correlation error:
+
+The definition of [1] opens at least six interpretations. They are
+illustrated in Figure 1 and described as follows:
+
+1.	The spatial correlation is evaluated between locations along a 20cm
+long segment of line centred at the origin and being orthogonal to the
+highest power direction of the PAS (= qm = mean of PAS). The reference
+location is the origin and the other location changes symmetrically to left
+and right from the origin. This should result to a symmetrical spatial
+correlation function and the maximum spacing to be evaluated is 10cm.
+2.	As interpretation 1. but the reference point is, e.g., one end of
+the segment of line. This results to a non-symmetric spatial correlation
+function and the maximum spacing to be evaluated is 20cm.
+3.	The spatial correlation is evaluated between the origin and
+locations on a circle centred at the origin and having the radius of 10cm.
+This should result to a periodic spatial correlation function and only the
+spacing of 10cm is evaluated with different orientations with respect to the
+PAS.
+4.	The spatial correlation is evaluated between locations on a circle
+centred at the origin and having the radius of 10cm. There is not a fixed
+reference point, but all pairs of sample points along the circle are
+considered. The maximum spacing to be evaluated is 20cm.
+5.	The spatial correlation is evaluated between the origin and
+locations within a circular disc centred at the origin and having the radius
+of 10cm. The maximum spacing to be evaluated is 10cm.
+6.	The spatial correlation is evaluated between locations within a
+circular disc centred at the origin and having the radius of 10cm. There is
+not a fixed reference point, but all pairs of sample points within the disc
+are considered. The maximum spacing to be evaluated is 20cm.
+
+ 
+
+
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation
+evaluation.
+
+ 
+
+Observation 1: The spatial correlation validation procedure, specifically
+the sampling assumptions, need to be agreed as the current definition is
+ambiguous 
+
+In this contribution we follow interpretation #5. However, because the
+spatial correlation would be evaluated only with maximum spacing of 10cm we
+have increased the radius of the disc to 20cm. By this change we evaluate
+the spatial correlation function on distances up to 20cm, which is the
+agreed maximum DUT and test zone size in [1].
+
+ 
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and
+max antenna separation of 20cm, in May but based on feedback received
+offline folks were not pleased with the selected option since it does not
+comply with the 20cm test zone size. In order to avoid any confusion and
+after some internal discussions with CAICT and Spirent on this, we propose
+to focus on Option 6 instead (20cm diameter disc with 20cm max antenna
+separation).
+
+ 
+
+Sorry about the late notice but we hope to get preliminary agreement on this
+revised option before the meeting.
+
+ 
+
+Thorsten
+
+ 
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:21 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: CY4PR17MB13045E2BF67C667A34785CD482810@CY4PR17MB1304.namprd17.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Weighted RMS Correlation Error for NR FR1: Option 5 --> 6 Proposal'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+date: Fri, 27 Sep 2019 18:04:16 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;84c5529f.1909D&S=>
+
+Dear NR MIMO OTA Crew,
+
+After offline feedback received and offline discussions with Spirent and CAIC=
+T, I would like to run the suggestion to switch from option 5 to option 6 for=
+ the weighted RMS correlation error NR FR1 analyses by this group.
+
+As outlined in contribution R4-1906829, we outlined 6 different options to de=
+termine the RMS correlation error:
+The definition of [1] opens at least six interpretations. They are illustrate=
+d in Figure 1 and described as follows:
+
+  1.  The spatial correlation is evaluated between locations along a 20cm lon=
+g segment of line centred at the origin and being orthogonal to the highest p=
+ower direction of the PAS (=3D ** =3D mean of PAS). The reference location is=
+ the origin and the other location changes symmetrically to left and right fr=
+om the origin. This should result to a symmetrical spatial correlation functi=
+on and the maximum spacing to be evaluated is 10cm.
+  2.  As interpretation 1. but the reference point is, e.g., one end of the s=
+egment of line. This results to a non-symmetric spatial correlation function =
+and the maximum spacing to be evaluated is 20cm.
+  3.  The spatial correlation is evaluated between the origin and locations o=
+n a circle centred at the origin and having the radius of 10cm. This should r=
+esult to a periodic spatial correlation function and only the spacing of 10cm=
+ is evaluated with different orientations with respect to the PAS.
+  4.  The spatial correlation is evaluated between locations on a circle cent=
+red at the origin and having the radius of 10cm. There is not a fixed referen=
+ce point, but all pairs of sample points along the circle are considered. The=
+ maximum spacing to be evaluated is 20cm.
+  5.  The spatial correlation is evaluated between the origin and locations w=
+ithin a circular disc centred at the origin and having the radius of 10cm. Th=
+e maximum spacing to be evaluated is 10cm.
+  6.  The spatial correlation is evaluated between locations within a circula=
+r disc centred at the origin and having the radius of 10cm. There is not a fi=
+xed reference point, but all pairs of sample points within the disc are consi=
+dered. The maximum spacing to be evaluated is 20cm.
+
+[cid:image001.png@01D57520.C56EBDB0]
+
+Figure 1. Illustrations of six sampling assumptions for spatial correlation e=
+valuation.
+
+
+
+Observation 1: The spatial correlation validation procedure, specifically the=
+ sampling assumptions, need to be agreed as the current definition is ambiguo=
+us
+In this contribution we follow interpretation #5. However, because the spatia=
+l correlation would be evaluated only with maximum spacing of 10cm we have in=
+creased the radius of the disc to 20cm. By this change we evaluate the spatia=
+l correlation function on distances up to 20cm, which is the agreed maximum D=
+UT and test zone size in [1].
+
+We settled on Option 5, i.e., a disc with 20cm radius (40cm diameter) and max=
+ antenna separation of 20cm, in May but based on feedback received offline fo=
+lks were not pleased with the selected option since it does not comply with t=
+he 20cm test zone size. In order to avoid any confusion and after some intern=
+al discussions with CAICT and Spirent on this, we propose to focus on Option =
+6 instead (20cm diameter disc with 20cm max antenna separation).
+
+Sorry about the late notice but we hope to get preliminary agreement on this =
+revised option before the meeting.
+
+Thorsten
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:23 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 30 Aug 2019 10:58:52 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB130403D411C3DD3A51DE76BF82BD0@CY4PR17MB1304.namprd17.prod.outlook.com
+subject: 'Re: R4-xxxx WF on NR MIMO OTA-CAICT'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: 201908301145294356943@oppo.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: "xingjinqiang@oppo.com" xingjinqiang@OPPO.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;f2db8649.1908E&S=>
+
+No, it was agreed to use RMS error and consider weighted as alternative
+
+____
+Thorsten Hertel || Keysight Technologies || Lead Technologist/Architect
+=E2=80=A2=E2=80=A2=E2=80=A2 sent from mobile device =E2=80=A2=E2=80=A2=E2=80=
+=A2
+________________________________
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> on behalf of xingjinqiang@oppo.com <xingjinqiang@OPPO.COM>
+Sent: Friday, August 30, 2019 11:45:32 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@=
+LIST.ETSI.ORG>
+Subject: Re: R4-xxxx WF on NR MIMO OTA-CAICT
+
+
+[EXTERNAL]
+
+Hi Ruixin,
+
+Is below a typo? It seems the weighted RMS correlation error was agreed. Than=
+ks!
+
+[cid:_Foxmail.1@4ff9c627-9c36-8d86-e42a-2aa345f75b83]
+
+BR, Jin qiang (=E9=87=91=E5=BC=BA)
+
+From: linhui<mailto:hui.lin@VIVO.COM>
+Date: 2019-08-30 11:01
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: Re: R4-xxxx WF on NR MIMO OTA-CAICT
+Dear Ruixin
+
+Thank you very much for the WF.
+
+In page4, there is a sentence
+=E2=80=A2        RMS Spatial correlation error of LTE MIMO OTA channel model =
+(i.e. UMi and UMa) is selected as a reference (i.e. the error between ideal c=
+hannel model correlation and  theoretical LTE 8 probes correlation within 1l)
+
+I think we never discuss whether to select the reference. If the LTE value re=
+ally needs to be captured in this WF, the sentence in your adhoc agenda could=
+ be better. Which is as below.
+
+[For information]  The RMS correlation error of LTE UMa channel model vs 8 pr=
+obes is about 0.067
+Thank you.
+
+Linhui
+
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG [mailto:owner-3gpp_tsg=
+_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG] On Behalf Of Ruixin Wang
+Sent: Friday, August 30, 2019 10:39 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: R4-xxxx WF on NR MIMO OTA-CAICT
+
+Hi All,
+
+Please find attached the draft WF for NR MIMO OTA. Please let me know your co=
+mments.
+
+The 3rd round return to will be 2:00PM in the main room, I would like to sugg=
+est a short offline discussion before online session at coffee break area fro=
+m 1:40~2:00 pm.
+
+Thank you,
+Ruixin
+
+________________________________
+
+From MAILER-DAEMON Thu Aug 26 16:50:25 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 30 Aug 2019 09:49:00 +0000
+reply-to: Nazmul Islam mislam@QTI.QUALCOMM.COM
+message-id: DM6PR02MB5820FE81FE6A8F1C023161E9E5BD0@DM6PR02MB5820.namprd02.prod.outlook.com
+subject: 'Re: R4-xxxx WF on NR MIMO OTA-CAICT'
+from: Nazmul Islam mislam@QTI.QUALCOMM.COM
+in-reply-to: 201908301145294356943@oppo.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: "xingjinqiang@oppo.com" xingjinqiang@OPPO.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;72541178.1908E&S=>
+
+Dear Ruixin,
+
+Thanks a lot for sending the WF. We have a couple of comments regarding the f=
+ollowing proposals.
+
+1. =E2=80=9CUse the non-weighted RMS correlation error for NR FR1=E2=80=9D
+
+I guess that this proposal came into play after I asked about the specific we=
+ights that get used in weighted RMS correlation error. Actually, as I mention=
+ed during the ad-hoc, I have no intention of precluding weighted RMS correlat=
+ion error approach. In fact, internally, we have observed that weighted RMS c=
+orrelation error approach may lead to better performances. However, it depend=
+s on how we are selecting the weights. That=E2=80=99s why, I wanted to know h=
+ow weights get selected.
+
+I suggest that we don=E2=80=99t down-select between =E2=80=98weighted=E2=80=
+=99 and =E2=80=98non-weighted=E2=80=99 RMS correlation error. Keysight can po=
+int to us their previous contribution in 2017 where they mentioned the weight=
+ selection process for =E2=80=98weighted RMS correlation error=E2=80=99 appro=
+ach (or we can get it from them offline =F0=9F=98=8A). We can down-select in =
+the next meeting.
+
+2. =E2=80=9CTest the UE in FS DML, and FS DMP for FR2, other orientations are=
+ not precluded=E2=80=9D
+
+We think that the UE should be tested in FS DSMU mode as well. So, we are not=
+ sure why this won=E2=80=99t be included in the baseline test setup for FR2.
+
+Thanks,
+Nazmul
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of xingjinqiang@oppo.com
+Sent: Friday, August 30, 2019 11:46 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Re: R4-xxxx WF on NR MIMO OTA-CAICT
+
+
+CAUTION: This email originated from outside of the organization.
+Hi Ruixin,
+
+Is below a typo? It seems the weighted RMS correlation error was agreed. Than=
+ks!
+
+[cid:image001.jpg@01D55F28.E8B1E1C0]
+
+BR, Jin qiang (=E9=87=91=E5=BC=BA)
+
+From: linhui<mailto:hui.lin@VIVO.COM>
+Date: 2019-08-30 11:01
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: Re: R4-xxxx WF on NR MIMO OTA-CAICT
+Dear Ruixin
+
+Thank you very much for the WF.
+
+In page4, there is a sentence
+=E2=80=A2        RMS Spatial correlation error of LTE MIMO OTA channel model =
+(i.e. UMi and UMa) is selected as a reference (i.e. the error between ideal c=
+hannel model correlation and  theoretical LTE 8 probes correlation within 1l)
+
+I think we never discuss whether to select the reference. If the LTE value re=
+ally needs to be captured in this WF, the sentence in your adhoc agenda could=
+ be better. Which is as below.
+
+[For information]  The RMS correlation error of LTE UMa channel model vs 8 pr=
+obes is about 0.067
+Thank you.
+
+Linhui
+
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG<mailto:owner-3gpp_tsg_=
+ran_wg4_nr-mimo-ota@LIST.ETSI.ORG> [mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota=
+@LIST.ETSI.ORG] On Behalf Of Ruixin Wang
+Sent: Friday, August 30, 2019 10:39 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: R4-xxxx WF on NR MIMO OTA-CAICT
+
+Hi All,
+
+Please find attached the draft WF for NR MIMO OTA. Please let me know your co=
+mments.
+
+The 3rd round return to will be 2:00PM in the main room, I would like to sugg=
+est a short offline discussion before online session at coffee break area fro=
+m 1:40~2:00 pm.
+
+Thank you,
+Ruixin
+
+________________________________
+
+From MAILER-DAEMON Thu Aug 26 16:50:27 2021
+Content-Type: text/plain; MIME-Version="1.0"; Content-Type="multipart/related"
+date: Fri, 30 Aug 2019 11:45:32 +0200
+reply-to: "xingjinqiang@oppo.com" xingjinqiang@OPPO.COM
+subject: 'Re: R4-xxxx WF on NR MIMO OTA-CAICT'
+from: "xingjinqiang@oppo.com" xingjinqiang@OPPO.COM
+message-id: 201908301145294356943@oppo.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+comments-to: =?utf-8?b?546L55Ge6ZGr?= wangruixin@caict.ac.cn
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;38315d32.1908E&S=>
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:29 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 30 Aug 2019 11:01:54 +0200
+reply-to: linhui hui.lin@VIVO.COM
+message-id: 015a01d55f11$963b0230$c2b10690$@vivo.com
+subject: 'Re: R4-xxxx WF on NR MIMO OTA-CAICT'
+from: linhui hui.lin@VIVO.COM
+in-reply-to: 2019083010390227935918@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+comments-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;2dc90080.1908E&S=>
+
+Dear Ruixin
+
+ 
+
+Thank you very much for the WF.
+
+ 
+
+In page4, there is a sentence
+
+.        RMS Spatial correlation error of LTE MIMO OTA channel model (i.e.
+UMi and UMa) is selected as a reference (i.e. the error between ideal
+channel model correlation and  theoretical LTE 8 probes correlation within
+1l)
+
+ 
+
+I think we never discuss whether to select the reference. If the LTE value
+really needs to be captured in this WF, the sentence in your adhoc agenda
+could be better. Which is as below. 
+
+ 
+
+[For information]  The RMS correlation error of LTE UMa channel model vs 8
+probes is about 0.067
+
+Thank you.
+
+ 
+
+Linhui 
+
+ 
+
+ 
+
+From: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG
+[mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@LIST.ETSI.ORG] On Behalf Of
+Ruixin Wang
+Sent: Friday, August 30, 2019 10:39 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: R4-xxxx WF on NR MIMO OTA-CAICT
+
+ 
+
+Hi All,
+
+ 
+
+Please find attached the draft WF for NR MIMO OTA. Please let me know your
+comments.
+
+ 
+
+The 3rd round return to will be 2:00PM in the main room, I would like to
+suggest a short offline discussion before online session at coffee break
+area from 1:40~2:00 pm.
+
+ 
+
+Thank you,
+
+Ruixin
+
+ 
+
+  _____  
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:32 2021
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'R4-xxxx WF on NR MIMO OTA-CAICT'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 30 Aug 2019 10:39:04 +0200
+message-id: 2019083010390227935918@caict.ac.cn
+Content-Type: text/plain; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;ed908f5f.1908E&S=>
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:36 2021
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Re: Update- 2nd round Online session'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Thu, 29 Aug 2019 14:28:16 +0200
+message-id: 2019082914281470408218@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;9a79a5b7.1908E&S=>
+
+SnVzdCBhbiB1cGRhdGUsIHRoZSAybmQgUm91bmQgb25saW5lIHNlc3Npb24gd2lsbCBiZSBzdGFy
+dGVkIGFmdGVyIHRoZSBDb2ZmZWUgYnJlYWsuIAoKVGhhbmtzLApSdWl4aW4gCgoKCiAK5Y+R5Lu2
+5Lq677yaIFJ1aXhpbiBXYW5nCuWPkemAgeaXtumXtO+8miAyMDE5LTA4LTI5IDExOjM1CuaUtuS7
+tuS6uu+8miAzR1BQX1RTR19SQU5fV0c0X05SLU1JTU8tT1RBCuS4u+mimO+8miBOUiBNSU1PIE9U
+QS0gMm5kIHJvdW5kIG9ubGluZSBzZXNzaW9uCkhpIEFMTO+8jAoKSSBoYXZlIGEgdGFsayB3aXRo
+IFh1dGFvLCB3ZSB3aWxsIHN0YXJ0IE1JTU8gT1RBIDJuZCByb3VuZCBlYXJsaWVyLCAgYWZ0ZXIg
+ZmluaXNoaW5nIDFzdCByb3VuZC4gUGxlYXNlIGdvIGJhY2sgdG8gdGhlIG1haW4gcm9vbSBiZWZv
+cmUgMTc6MDBwbSB0b2RheSAoaGUgYXNzdW1lcyB0byBmaW5pc2ggMXN0IHJvdW5kIGF0IDE3OjAw
+KS4gCgpUaGFuayB5b3UsClJ1aXhpbgpDQUlDVAoKCgo=
+
+From MAILER-DAEMON Thu Aug 26 16:50:38 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Thu, 29 Aug 2019 10:32:35 +0000
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+message-id: CY4PR10MB12537750D3E459558FC24E67B3A20@CY4PR10MB1253.namprd10.prod.outlook.com
+subject: 'Re: Revision of Text Proposal for Channel Models'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+in-reply-to: DM5PR17MB1306C65C451F1146034AC04F82A20@DM5PR17MB1306.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+comments-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;a8630b04.1908E&S=>
+
+Hi Thorsten,
+
+I was taking a look at the antenna element parameters phi_3dB and Amax are mi=
+ssing. I think that the intention is to set them to the same value as those o=
+f the vertical cut theta_3dB and SLAv.
+
+If you agree, could you please add those?
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Thursday, August 29, 2019 3:43 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Revision of Text Proposal for Channel Models
+
+Hi,
+
+Please find the revised TP to introduce the channel models into 38.827 attach=
+ed.
+
+Thorsten
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:40 2021
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;d7bad5a2.1908E&S=>
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:42 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: DM5PR17MB1306C65C451F1146034AC04F82A20@DM5PR17MB1306.namprd17.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Revision of Text Proposal for Channel Models'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+date: Thu, 29 Aug 2019 08:43:10 +0000
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;5ee0b508.1908E&S=>
+
+Hi,
+
+Please find the revised TP to introduce the channel models into 38.827 attach=
+ed.
+
+Thorsten
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:44 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Re: NR MIMO OTA WF'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Sat, 18 May 2019 02:22:26 +0800
+message-id: 2019051802212296000310@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;6f9aba94.1905C&S=>
+
+Hi All,
+
+Thanks for the comments. Please find the updated WF, I would like to stabiliz=
+e the content before 2nd round online session.
+
+BR,
+Ruixin
+
+
+
+=20
+From: Thorsten Hertel
+Date: 2019-05-18 01:30
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA
+Subject: Re: NR MIMO OTA WF
+Ruixin,=20
+=20
+I suggest to specify the following grid for the FR1 spatial correlation simul=
+ations:=20
+Rectangular
+Dx=3DDy=3D0.1*l
+=20
+Thanks
+=20
+Thorsten=20
+=20
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Ruixin Wang
+Sent: Thursday, May 16, 2019 7:16 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: NR MIMO OTA WF
+=20
+[EXTERNAL] =20
+Hi All=EF=BC=8C
+=20
+Thanks for the ~2.5h offline discussion. Please find attached WF, you comment=
+s are welcome.
+=20
+Please let me know if you want to co-sign.
+=20
+Ruixin
+CAICT
+=20
+
+
+=20
+From: Ruixin Wang
+Date: 2019-05-17 07:42
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA
+Subject: draft WF for discussion
+Hi=20
+=20
+attached draft WF for discussion.
+=20
+Ruixin
+=20
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:46 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+date: Fri, 17 May 2019 17:30:17 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+subject: 'Re: NR MIMO OTA WF'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB1304E71B9C02C84A9DBBD7C5820B0@CY4PR17MB1304.namprd17.prod.outlook.com
+in-reply-to: 201905171014442107688@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;ed9c78f8.1905C&S=>
+
+Ruixin,
+
+I suggest to specify the following grid for the FR1 spatial correlation simul=
+ations:
+
+  *   Rectangular
+  *   =E2=80=A2x=3D=E2=80=A2y=3D0.1*=E2=80=A2
+
+Thanks
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Ruixin Wang
+Sent: Thursday, May 16, 2019 7:16 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: NR MIMO OTA WF
+
+
+[EXTERNAL]
+Hi All=EF=BC=8C
+
+Thanks for the ~2.5h offline discussion. Please find attached WF, you comment=
+s are welcome.
+
+Please let me know if you want to co-sign.
+
+Ruixin
+CAICT
+
+________________________________
+
+From: Ruixin Wang<mailto:wangruixin@caict.ac.cn>
+Date: 2019-05-17 07:42
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: draft WF for discussion
+Hi
+
+attached draft WF for discussion.
+
+Ruixin
+
+________________________________
+
+From MAILER-DAEMON Thu Aug 26 16:50:48 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+date: Fri, 17 May 2019 14:11:49 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+subject: 'Re: Revised Channel Model Tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB13049C0A9E2F243FA75A9CF8820B0@CY4PR17MB1304.namprd17.prod.outlook.com
+in-reply-to: CY4PR17MB13045B4DD44990BFFCEA5361820A0@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/mixed"; MIME-Version="1.0"
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;4a84d957.1905C&S=>
+
+Hi,
+
+After the approval of the channel model tables in R4-1907712&R4-1907713, we r=
+ealized an error in the CDL-C tables. By accident, we used same cluster IDs (=
+2-4 and 5-7) for midpath power division in CDL-C as for CDL-A. For CDL-C, clu=
+sters IDs to which power division should be made are 2-4 and 6-8.
+
+Please find revised tables attached here. I hope that we can approve these ta=
+bles later today when we return to the NR MIMO agenda.
+
+Additionally, we tabulated AS parameters for LOS-models (D and E) properly de=
+pending on UMi/UMa (K-factor of 9dB) vs InO (K-factor of 7dB).
+
+Sorry about the inconvenience.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Thursday, May 16, 2019 8:35 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Revised Channel Model Tables
+
+
+[EXTERNAL]
+Hi,
+
+Please find the draft contributions with the revised channel model tables att=
+ached that take agreements from yesterday's AH into account.
+
+Please let me know if you have any comments
+
+Thanks
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:50 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Thu, 16 May 2019 19:33:34 -0700
+reply-to: aioffe@APPLE.COM
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+subject: 'Re: NR MIMO OTA WF'
+from: Anatoliy Ioffe aioffe@APPLE.COM
+in-reply-to: 201905171014442107688@caict.ac.cn
+message-id: 672CA259-A998-475D-90B8-267C6177966C@apple.com
+comments-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;bad14fdb.1905C&S=>
+
+Dear Ruixin,
+
+Thank you very much for preparing this WF.  Apple would be happy to co-sign.
+
+Best regards,
+
+            - - -
+Anatoliy (Toliy) Ioffe
+         Apple Inc.
+
+
+
+> On May 16, 2019, at 19:15, Ruixin Wang <wangruixin@CAICT.AC.CN> wrote:
+>=20
+> Hi All=EF=BC=8C
+>=20
+> Thanks for the ~2.5h offline discussion. Please find attached WF, you comme=
+nts are welcome.
+>=20
+> Please let me know if you want to co-sign.
+>=20
+> Ruixin
+> CAICT
+>=20
+> =20
+> From: Ruixin Wang <mailto:wangruixin@caict.ac.cn>
+> Date: 2019-05-17 07:42
+> To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.=
+ETSI.ORG>
+> Subject: draft WF for discussion
+> Hi=20
+>=20
+> attached draft WF for discussion.
+>=20
+> Ruixin
+>=20
+> <R4-19xxxx WF on NR MIMO OTA.PPTX>
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:52 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'NR MIMO OTA WF'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 17 May 2019 10:15:47 +0800
+message-id: 201905171014442107688@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;fbab3eca.1905C&S=>
+
+Hi All=EF=BC=8C
+
+Thanks for the ~2.5h offline discussion. Please find attached WF, you comment=
+s are welcome.
+
+Please let me know if you want to co-sign.
+
+Ruixin
+CAICT
+
+
+
+=20
+From: Ruixin Wang
+Date: 2019-05-17 07:42
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA
+Subject: draft WF for discussion
+Hi=20
+
+attached draft WF for discussion.
+
+Ruixin
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:54 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'draft WF for discussion'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 17 May 2019 07:42:23 +0800
+message-id: 201905170741189100681@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;25eab4f2.1905C&S=>
+
+Hi 
+
+attached draft WF for discussion.
+
+Ruixin
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:50:58 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'revised TP  on test methods channel model'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 17 May 2019 05:00:19 +0800
+message-id: 201905170459164234205@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;d52724fa.1905C&S=>
+
+Hi All,
+
+Please find the revised TP on test methods and channel model.
+
+Ruixin
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:02 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'MIMO OTA offline discussion for WF'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 17 May 2019 02:23:43 +0800
+message-id: 201905170222398627385@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;f80a95fe.1905C&S=>
+
+Hi All,
+
+I am planning an offline discussion for MIMO OTA Way Forward, this afternoon =
+Coffee Break, around the Tuscany coffee area.=20
+
+Thanks,
+Ruixin
+
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:04 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: CY4PR17MB13045B4DD44990BFFCEA5361820A0@CY4PR17MB1304.namprd17.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Revised Channel Model Tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+date: Thu, 16 May 2019 15:35:02 +0000
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;b031bb48.1905C&S=>
+
+Hi,
+
+Please find the draft contributions with the revised channel model tables att=
+ached that take agreements from yesterday's AH into account.
+
+Please let me know if you have any comments
+
+Thanks
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:06 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 03 May 2019 16:14:02 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB1304B1138D423046A9A8D4ED82350@CY4PR17MB1304.namprd17.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: 8167879812273393.WA.mislamqti.qualcomm.com@list.etsi.org
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Transfer-Encoding="base64"; Content-Type="text/plain"
+comments-to: Nazmul Islam mislam@QTI.QUALCOMM.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;2faf583.1905A&S=>
+
+Dear Nazmul,=20
+
+After offline discussions with Spirent on the differences between our results=
+, we came to the conclusions that some of the scaling procedures should be cl=
+arified and augmented with additional steps. This clarification will be inclu=
+ded in one of our contributions.
+
+Thanks
+
+Thorsten=20
+
+-----Original Message-----
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Nazmul Islam
+Sent: Wednesday, May 1, 2019 5:42 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Re: scaled channel model tables
+
+[EXTERNAL]
+
+Hi Thorsten and Alfonso,
+
+I did the calculations for CDL-C and CDL-A based on equation A-1, A-2 and A-3=
+ of 25.996. The ASA, for CDL-A model, turned out to be 84.98 degree for me. T=
+he ASD, ZSD and ZSA values of CDL-A; and all angular spread values of CDL-C t=
+urned out to be same as the ones reported in R4-1904197.
+
+I wonder if these discrepancies are arising because these values are based on=
+ equation A-3 of 25.996 and that equation is performing a linear sum of weigh=
+ted angles. A linear sum of angles may lead to some ambiguity, e.g., the dire=
+ct computation of mean of 179 and -179 degree is 0 degree. But, in real angul=
+ar space, the mean of 179 and -179 degree should be 180 degree.
+
+In this context, I wonder why we don=E2=80=99t use equation A-1 of 38.901 ins=
+tead to calculate these angular spreads? Equation A-1 of 38.901 is based on s=
+um of e^(j=E2=88=85) instead of =E2=88=85 and this might lead to consistent a=
+ngular spread result among different company=E2=80=99s calculations (?).
+
+Thanks,
+Nazmul
+
+From MAILER-DAEMON Thu Aug 26 16:51:08 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+date: Thu, 02 May 2019 01:42:06 +0100
+reply-to: Nazmul Islam mislam@QTI.QUALCOMM.COM
+subject: 'Re: scaled channel model tables'
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="text/plain"; Content-Transfer-Encoding="quoted-printable"
+message-id: 8167879812273393.WA.mislamqti.qualcomm.com@list.etsi.org
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+from: Nazmul Islam mislam@QTI.QUALCOMM.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;942e653.1905A&S=>
+
+Hi Thorsten and Alfonso,
+
+I did the calculations for CDL-C and CDL-A based on equation A-1, A-2 and A-3=
+ of 25.996. The ASA, for CDL-A model, turned out to be 84.98 degree for me. T=
+he ASD, ZSD and ZSA values of CDL-A; and all angular spread values of CDL-C t=
+urned out to be same as the ones reported in R4-1904197.
+
+I wonder if these discrepancies are arising because these values are based on=
+ equation A-3 of 25.996 and that equation is performing a linear sum of weigh=
+ted angles. A linear sum of angles may lead to some ambiguity, e.g., the dire=
+ct computation of mean of 179 and -179 degree is 0 degree. But, in real angul=
+ar space, the mean of 179 and -179 degree should be 180 degree.
+
+In this context, I wonder why we don=E2=80=99t use equation A-1 of 38.901 ins=
+tead to calculate these angular spreads? Equation A-1 of 38.901 is based on s=
+um of e^(j=E2=88=85) instead of =E2=88=85 and this might lead to consistent a=
+ngular spread result among different company=E2=80=99s calculations (?).
+
+Thanks,
+Nazmul
+
+From MAILER-DAEMON Thu Aug 26 16:51:10 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Tue, 30 Apr 2019 20:15:31 +0000
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+message-id: SN6PR10MB297348F62277F7EEC654F58CB33A0@SN6PR10MB2973.namprd10.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+in-reply-to: CY4PR17MB1304BF66897A9AB3E1A2C1B6823A0@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: Thorsten Hertel thorsten.hertel@keysight.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;4e5420bf.1904E&S=>
+
+Hi Thorsten,
+
+I changed the angle spread formula to reflect the latest version of 25.996 po=
+inted in your email directly below. I got the exact same value for AS, 85.56 =
+degrees.
+
+I then evaluated the expression for [cid:image008.png@01D4FF67.2A012720] usin=
+g the CDL A table in 38.901, and I get a totally different results, I get -1.=
+2796 radians.
+
+Regards,
+Alfonso
+
+
+From: Thorsten Hertel <thorsten.hertel@keysight.com>
+Sent: Tuesday, April 30, 2019 6:57 AM
+To: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com>; 3GPP_=
+TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: RE: scaled channel model tables
+
+Alfonso,
+
+We are using same formula, i.e.,  eq. A-1 from Annex A of TR 25.996
+
+[cid:image002.png@01D4FF66.0AF06220]
+
+where [cid:image004.png@01D4FF67.8043AC20]  is defined according to eq. A-2  =
+from Annex A of TR 25.996
+
+[cid:image006.png@01D4FF66.0AF06220], here [cid:image011.png@01D4FF66.0AF0622=
+0]  is defined as (eq. A-3  from Annex A of TR 25.996) is
+
+
+[cid:image013.png@01D4FF66.0AF06220].
+
+
+For CDL-A model, we get [cid:image011.png@01D4FF66.0AF06220]  =3D  -0.1451 ra=
+dians.  Is this also what you are getting?
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Monday, April 29, 2019 6:10 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks for the confirmation.
+
+We keep on getting the value of 85.56 degrees (0.3 degrees more than what you=
+ get).
+
+Could you please confirm the equation?
+
+We are using:
+
+[cid:image015.png@01D4FF66.0AF06220]
+
+>From TR 25.996.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Monday, April 29, 2019 8:06 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+Alfonso,
+
+We checked and get the same the mean angle of the original CDL-A, i.e., -164.=
+4029 degrees.
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Friday, April 26, 2019 4:11 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks.
+
+Looking at your contribution (4197), the AS is calculated using the equation =
+in TR 25.996 without searching for the minimum over shifts (capital delta), w=
+here the mean angle is calculated using the equation in annex A.2 of 38.901. =
+If KS and Spirent are operating on the same data set (CDL Tables from 38.901)=
+, we should get about the same value.
+
+Could you please provide the mean angle for original CDL A?
+
+The value that we get for the mean angle of the original CDL A is -164.4029 d=
+egrees. This will help finding the source of the discrepancy.
+
+Regards,
+Alfonso
+
+
+From: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@ke=
+ysight.com>>
+Sent: Friday, April 26, 2019 11:35 AM
+To: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailto:=
+Alfonso.Rodriguez-Herrera@spirent.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ET=
+SI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+Alfonso, thanks for reviewing the tables.
+
+We double checked and are getting the same values. The value you are highligh=
+ting (CDL-A ASA) was confirmed to be 85.2652 degrees
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Thursday, April 25, 2019 6:45 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks for providing the very first denormalized and scaled channel model tab=
+les.
+
+We were able to match the numbers in the tables to a reasonable level.
+
+Regarding the table values for:
+Table 2. Original (non-circular) angle spreads of CDL models.
+Model
+
+[cid:image016.png@01D4FF66.0AF06220][deg]
+
+ASD
+
+ASA
+
+ZSD
+
+ZSA
+
+CDL-A
+
+
+73.7
+
+
+85.3
+
+
+28.6
+
+
+21.1
+
+CDL-B
+
+
+41.6
+
+
+59.3
+
+
+6.0
+
+
+10.4
+
+CDL-C
+
+
+39.1
+
+
+71.1
+
+
+4.1
+
+
+10.4
+
+CDL-D
+
+
+19.0
+
+
+21.1
+
+
+3.0
+
+
+1.9
+
+CDL-E
+
+
+13.2
+
+
+37.6
+
+
+1.5
+
+
+2.5
+
+
+We get a slightly different value for ASA before any scaling for the highligh=
+ted value.  The other values match very closely.  Since the ASA and other val=
+ues are based on published numbers, we are wondering if there is an inaccurac=
+y in this value?  This difference in value is then showing up as an error in =
+calculated AoA calculations in the scaled results for our values compared to =
+the KS values.
+
+For CDL-A ASA we get 85.56 compared to 85.3, which is quite a large differenc=
+e.
+
+Since the Target AS and the Original AS is forming a ratio and being multipli=
+ed by large angles, this makes it important to have the most accurate values =
+possible.
+
+Thank you for the clarification.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Thursday, April 25, 2019 9:17 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+Ruixin,
+
+We believe it is more important to focus on the propagation parameters, i.e.,=
+ without the effect of BS antenna filtering, and agree on the tables that are=
+ actually entered into the CM. At this point, we do not see much value in cre=
+ating channel model tables with BS filtering as they are not entered into the=
+ CM; more importantly, we do not have the bandwidth given the short time in b=
+etween meetings and some of the action items we are working on.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin WANG
+Sent: Tuesday, April 23, 2019 7:12 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: =E7=AD=94=E5=A4=8D: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten, and all
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+BR,
+Ruixin
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org> [mailto:owner-3gpp_=
+tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8 Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailt=
+o:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+Ruixin,
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin Wang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:13 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Tue, 30 Apr 2019 11:57:23 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB1304BF66897A9AB3E1A2C1B6823A0@CY4PR17MB1304.namprd17.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: DM6PR10MB296924C517D637AC96033A29B3390@DM6PR10MB2969.namprd10.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: "Rodriguez-Herrera, Alfonso"          Alfonso.Rodriguez-Herrera@spirent.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;673fa66.1904E&S=>
+
+Alfonso,
+
+We are using same formula, i.e.,  eq. A-1 from Annex A of TR 25.996
+
+[cid:image001.png@01D4FF2A.56051530]
+
+where [cid:image005.png@01D4FF2A.56051530]  is defined according to eq. A-2  =
+from Annex A of TR 25.996
+
+[cid:image006.png@01D4FF2A.56051530], here [cid:image007.png@01D4FF2A.5605153=
+0]  is defined as (eq. A-3  from Annex A of TR 25.996) is
+
+
+[cid:image008.png@01D4FF2A.56051530].
+
+
+For CDL-A model, we get [cid:image007.png@01D4FF2A.56051530]  =3D  -0.1451 ra=
+dians.  Is this also what you are getting?
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com>
+Sent: Monday, April 29, 2019 6:10 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-=
+OTA@LIST.ETSI.ORG
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks for the confirmation.
+
+We keep on getting the value of 85.56 degrees (0.3 degrees more than what you=
+ get).
+
+Could you please confirm the equation?
+
+We are using:
+
+[cid:image009.png@01D4FF2A.56051530]
+
+>From TR 25.996.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Monday, April 29, 2019 8:06 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+Alfonso,
+
+We checked and get the same the mean angle of the original CDL-A, i.e., -164.=
+4029 degrees.
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Friday, April 26, 2019 4:11 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks.
+
+Looking at your contribution (4197), the AS is calculated using the equation =
+in TR 25.996 without searching for the minimum over shifts (capital delta), w=
+here the mean angle is calculated using the equation in annex A.2 of 38.901. =
+If KS and Spirent are operating on the same data set (CDL Tables from 38.901)=
+, we should get about the same value.
+
+Could you please provide the mean angle for original CDL A?
+
+The value that we get for the mean angle of the original CDL A is -164.4029 d=
+egrees. This will help finding the source of the discrepancy.
+
+Regards,
+Alfonso
+
+
+From: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@ke=
+ysight.com>>
+Sent: Friday, April 26, 2019 11:35 AM
+To: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailto:=
+Alfonso.Rodriguez-Herrera@spirent.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ET=
+SI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+Alfonso, thanks for reviewing the tables.
+
+We double checked and are getting the same values. The value you are highligh=
+ting (CDL-A ASA) was confirmed to be 85.2652 degrees
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Thursday, April 25, 2019 6:45 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks for providing the very first denormalized and scaled channel model tab=
+les.
+
+We were able to match the numbers in the tables to a reasonable level.
+
+Regarding the table values for:
+Table 2. Original (non-circular) angle spreads of CDL models.
+Model
+
+[cid:image010.png@01D4FF2A.56051530][deg]
+
+ASD
+
+ASA
+
+ZSD
+
+ZSA
+
+CDL-A
+
+
+73.7
+
+
+85.3
+
+
+28.6
+
+
+21.1
+
+CDL-B
+
+
+41.6
+
+
+59.3
+
+
+6.0
+
+
+10.4
+
+CDL-C
+
+
+39.1
+
+
+71.1
+
+
+4.1
+
+
+10.4
+
+CDL-D
+
+
+19.0
+
+
+21.1
+
+
+3.0
+
+
+1.9
+
+CDL-E
+
+
+13.2
+
+
+37.6
+
+
+1.5
+
+
+2.5
+
+
+We get a slightly different value for ASA before any scaling for the highligh=
+ted value.  The other values match very closely.  Since the ASA and other val=
+ues are based on published numbers, we are wondering if there is an inaccurac=
+y in this value?  This difference in value is then showing up as an error in =
+calculated AoA calculations in the scaled results for our values compared to =
+the KS values.
+
+For CDL-A ASA we get 85.56 compared to 85.3, which is quite a large differenc=
+e.
+
+Since the Target AS and the Original AS is forming a ratio and being multipli=
+ed by large angles, this makes it important to have the most accurate values =
+possible.
+
+Thank you for the clarification.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Thursday, April 25, 2019 9:17 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+Ruixin,
+
+We believe it is more important to focus on the propagation parameters, i.e.,=
+ without the effect of BS antenna filtering, and agree on the tables that are=
+ actually entered into the CM. At this point, we do not see much value in cre=
+ating channel model tables with BS filtering as they are not entered into the=
+ CM; more importantly, we do not have the bandwidth given the short time in b=
+etween meetings and some of the action items we are working on.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin WANG
+Sent: Tuesday, April 23, 2019 7:12 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: =E7=AD=94=E5=A4=8D: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten, and all
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+BR,
+Ruixin
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org> [mailto:owner-3gpp_=
+tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8 Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailt=
+o:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+Ruixin,
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin Wang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:16 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Mon, 29 Apr 2019 22:10:12 +0000
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+message-id: DM6PR10MB296924C517D637AC96033A29B3390@DM6PR10MB2969.namprd10.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+in-reply-to: CY4PR17MB1304DE38976284BBF41ACA4882390@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;ac0b2e36.1904E&S=>
+
+Hi Thorsten,
+
+Thanks for the confirmation.
+
+We keep on getting the value of 85.56 degrees (0.3 degrees more than what you=
+ get).
+
+Could you please confirm the equation?
+
+We are using:
+
+[cid:image003.png@01D4FEAE.66276750]
+
+>From TR 25.996.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Monday, April 29, 2019 8:06 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Re: scaled channel model tables
+
+Alfonso,
+
+We checked and get the same the mean angle of the original CDL-A, i.e., -164.=
+4029 degrees.
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Friday, April 26, 2019 4:11 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks.
+
+Looking at your contribution (4197), the AS is calculated using the equation =
+in TR 25.996 without searching for the minimum over shifts (capital delta), w=
+here the mean angle is calculated using the equation in annex A.2 of 38.901. =
+If KS and Spirent are operating on the same data set (CDL Tables from 38.901)=
+, we should get about the same value.
+
+Could you please provide the mean angle for original CDL A?
+
+The value that we get for the mean angle of the original CDL A is -164.4029 d=
+egrees. This will help finding the source of the discrepancy.
+
+Regards,
+Alfonso
+
+
+From: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@ke=
+ysight.com>>
+Sent: Friday, April 26, 2019 11:35 AM
+To: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailto:=
+Alfonso.Rodriguez-Herrera@spirent.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ET=
+SI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+Alfonso, thanks for reviewing the tables.
+
+We double checked and are getting the same values. The value you are highligh=
+ting (CDL-A ASA) was confirmed to be 85.2652 degrees
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailt=
+o:Alfonso.Rodriguez-Herrera@spirent.com>>
+Sent: Thursday, April 25, 2019 6:45 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@keys=
+ight.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG=
+4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks for providing the very first denormalized and scaled channel model tab=
+les.
+
+We were able to match the numbers in the tables to a reasonable level.
+
+Regarding the table values for:
+Table 2. Original (non-circular) angle spreads of CDL models.
+Model
+
+[cid:image004.png@01D4FEAE.66276750][deg]
+
+ASD
+
+ASA
+
+ZSD
+
+ZSA
+
+CDL-A
+
+
+73.7
+
+
+85.3
+
+
+28.6
+
+
+21.1
+
+CDL-B
+
+
+41.6
+
+
+59.3
+
+
+6.0
+
+
+10.4
+
+CDL-C
+
+
+39.1
+
+
+71.1
+
+
+4.1
+
+
+10.4
+
+CDL-D
+
+
+19.0
+
+
+21.1
+
+
+3.0
+
+
+1.9
+
+CDL-E
+
+
+13.2
+
+
+37.6
+
+
+1.5
+
+
+2.5
+
+
+We get a slightly different value for ASA before any scaling for the highligh=
+ted value.  The other values match very closely.  Since the ASA and other val=
+ues are based on published numbers, we are wondering if there is an inaccurac=
+y in this value?  This difference in value is then showing up as an error in =
+calculated AoA calculations in the scaled results for our values compared to =
+the KS values.
+
+For CDL-A ASA we get 85.56 compared to 85.3, which is quite a large differenc=
+e.
+
+Since the Target AS and the Original AS is forming a ratio and being multipli=
+ed by large angles, this makes it important to have the most accurate values =
+possible.
+
+Thank you for the clarification.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Thursday, April 25, 2019 9:17 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+Ruixin,
+
+We believe it is more important to focus on the propagation parameters, i.e.,=
+ without the effect of BS antenna filtering, and agree on the tables that are=
+ actually entered into the CM. At this point, we do not see much value in cre=
+ating channel model tables with BS filtering as they are not entered into the=
+ CM; more importantly, we do not have the bandwidth given the short time in b=
+etween meetings and some of the action items we are working on.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin WANG
+Sent: Tuesday, April 23, 2019 7:12 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: =E7=AD=94=E5=A4=8D: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten, and all
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+BR,
+Ruixin
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org> [mailto:owner-3gpp_=
+tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8 Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailt=
+o:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+Ruixin,
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin Wang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:19 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+date: Mon, 29 Apr 2019 13:06:28 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+subject: 'Re: scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB1304DE38976284BBF41ACA4882390@CY4PR17MB1304.namprd17.prod.outlook.com
+in-reply-to: DM6PR10MB2969C33B91E9DE27847E81D9B33E0@DM6PR10MB2969.namprd10.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/related"; MIME-Version="1.0"
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;4d98b3cb.1904E&S=>
+
+Alfonso,
+
+We checked and get the same the mean angle of the original CDL-A, i.e., -164.=
+4029 degrees.
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com>
+Sent: Friday, April 26, 2019 4:11 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-=
+OTA@LIST.ETSI.ORG
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks.
+
+Looking at your contribution (4197), the AS is calculated using the equation =
+in TR 25.996 without searching for the minimum over shifts (capital delta), w=
+here the mean angle is calculated using the equation in annex A.2 of 38.901. =
+If KS and Spirent are operating on the same data set (CDL Tables from 38.901)=
+, we should get about the same value.
+
+Could you please provide the mean angle for original CDL A?
+
+The value that we get for the mean angle of the original CDL A is -164.4029 d=
+egrees. This will help finding the source of the discrepancy.
+
+Regards,
+Alfonso
+
+
+From: Thorsten Hertel <thorsten.hertel@keysight.com<mailto:thorsten.hertel@ke=
+ysight.com>>
+Sent: Friday, April 26, 2019 11:35 AM
+To: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com<mailto:=
+Alfonso.Rodriguez-Herrera@spirent.com>>; 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ET=
+SI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+Subject: RE: scaled channel model tables
+
+Alfonso, thanks for reviewing the tables.
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:21 2021
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 26 Apr 2019 20:10:38 +0000
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+message-id: DM6PR10MB2969C33B91E9DE27847E81D9B33E0@DM6PR10MB2969.namprd10.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+in-reply-to: CY4PR17MB13044E923ECDF2D58C9C1998823E0@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: Thorsten Hertel thorsten.hertel@keysight.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;c04d6d09.1904D&S=>
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:24 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 26 Apr 2019 16:34:49 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB13044E923ECDF2D58C9C1998823E0@CY4PR17MB1304.namprd17.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: DM6PR10MB29694C671DE8F251C780E149B33E0@DM6PR10MB2969.namprd10.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: "Rodriguez-Herrera, Alfonso"          Alfonso.Rodriguez-Herrera@spirent.com
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;ce1c937d.1904D&S=>
+
+Alfonso, thanks for reviewing the tables.
+
+We double checked and are getting the same values. The value you are highligh=
+ting (CDL-A ASA) was confirmed to be 85.2652 degrees
+
+Thorsten
+
+From: Rodriguez-Herrera, Alfonso <Alfonso.Rodriguez-Herrera@spirent.com>
+Sent: Thursday, April 25, 2019 6:45 PM
+To: Thorsten Hertel <thorsten.hertel@keysight.com>; 3GPP_TSG_RAN_WG4_NR-MIMO-=
+OTA@LIST.ETSI.ORG
+Subject: RE: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thanks for providing the very first denormalized and scaled channel model tab=
+les.
+
+We were able to match the numbers in the tables to a reasonable level.
+
+Regarding the table values for:
+Table 2. Original (non-circular) angle spreads of CDL models.
+Model
+
+[cid:image001.png@01D4FC13.49E3A1A0][deg]
+
+ASD
+
+ASA
+
+ZSD
+
+ZSA
+
+CDL-A
+
+
+73.7
+
+
+85.3
+
+
+28.6
+
+
+21.1
+
+CDL-B
+
+
+41.6
+
+
+59.3
+
+
+6.0
+
+
+10.4
+
+CDL-C
+
+
+39.1
+
+
+71.1
+
+
+4.1
+
+
+10.4
+
+CDL-D
+
+
+19.0
+
+
+21.1
+
+
+3.0
+
+
+1.9
+
+CDL-E
+
+
+13.2
+
+
+37.6
+
+
+1.5
+
+
+2.5
+
+
+We get a slightly different value for ASA before any scaling for the highligh=
+ted value.  The other values match very closely.  Since the ASA and other val=
+ues are based on published numbers, we are wondering if there is an inaccurac=
+y in this value?  This difference in value is then showing up as an error in =
+calculated AoA calculations in the scaled results for our values compared to =
+the KS values.
+
+For CDL-A ASA we get 85.56 compared to 85.3, which is quite a large differenc=
+e.
+
+Since the Target AS and the Original AS is forming a ratio and being multipli=
+ed by large angles, this makes it important to have the most accurate values =
+possible.
+
+Thank you for the clarification.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Thorsten H=
+ertel
+Sent: Thursday, April 25, 2019 9:17 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+Ruixin,
+
+We believe it is more important to focus on the propagation parameters, i.e.,=
+ without the effect of BS antenna filtering, and agree on the tables that are=
+ actually entered into the CM. At this point, we do not see much value in cre=
+ating channel model tables with BS filtering as they are not entered into the=
+ CM; more importantly, we do not have the bandwidth given the short time in b=
+etween meetings and some of the action items we are working on.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin WANG
+Sent: Tuesday, April 23, 2019 7:12 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: =E7=AD=94=E5=A4=8D: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten, and all
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+BR,
+Ruixin
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org> [mailto:owner-3gpp_=
+tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8 Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailt=
+o:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+Ruixin,
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin Wang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:26 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 26 Apr 2019 01:44:50 +0000
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+message-id: DM6PR10MB29694C671DE8F251C780E149B33E0@DM6PR10MB2969.namprd10.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+in-reply-to: CY4PR17MB1304BE756773B1424CF401F4823D0@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;1d3c20df.1904D&S=>
+
+Hi Thorsten,
+
+Thanks for providing the very first denormalized and scaled channel model tab=
+les.
+
+We were able to match the numbers in the tables to a reasonable level.
+
+Regarding the table values for:
+Table 2. Original (non-circular) angle spreads of CDL models.
+Model
+
+[cid:image001.png@01D4FBA7.B5FFFDF0][deg]
+
+ASD
+
+ASA
+
+ZSD
+
+ZSA
+
+CDL-A
+
+
+73.7
+
+
+85.3
+
+
+28.6
+
+
+21.1
+
+CDL-B
+
+
+41.6
+
+
+59.3
+
+
+6.0
+
+
+10.4
+
+CDL-C
+
+
+39.1
+
+
+71.1
+
+
+4.1
+
+
+10.4
+
+CDL-D
+
+
+19.0
+
+
+21.1
+
+
+3.0
+
+
+1.9
+
+CDL-E
+
+
+13.2
+
+
+37.6
+
+
+1.5
+
+
+2.5
+
+
+We get a slightly different value for ASA before any scaling for the highligh=
+ted value.  The other values match very closely.  Since the ASA and other val=
+ues are based on published numbers, we are wondering if there is an inaccurac=
+y in this value?  This difference in value is then showing up as an error in =
+calculated AoA calculations in the scaled results for our values compared to =
+the KS values.
+
+For CDL-A ASA we get 85.56 compared to 85.3, which is quite a large differenc=
+e.
+
+Since the Target AS and the Original AS is forming a ratio and being multipli=
+ed by large angles, this makes it important to have the most accurate values =
+possible.
+
+Thank you for the clarification.
+
+Regards,
+Alfonso
+
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Thorsten Hertel
+Sent: Thursday, April 25, 2019 9:17 AM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: Re: scaled channel model tables
+
+Ruixin,
+
+We believe it is more important to focus on the propagation parameters, i.e.,=
+ without the effect of BS antenna filtering, and agree on the tables that are=
+ actually entered into the CM. At this point, we do not see much value in cre=
+ating channel model tables with BS filtering as they are not entered into the=
+ CM; more importantly, we do not have the bandwidth given the short time in b=
+etween meetings and some of the action items we are working on.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin WANG
+Sent: Tuesday, April 23, 2019 7:12 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: =E7=AD=94=E5=A4=8D: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten, and all
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+BR,
+Ruixin
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org> [mailto:owner-3gpp_=
+tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8 Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailt=
+o:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+Ruixin,
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin Wang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:28 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+date: Thu, 25 Apr 2019 14:16:43 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+subject: 'Re: scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB1304BE756773B1424CF401F4823D0@CY4PR17MB1304.namprd17.prod.outlook.com
+in-reply-to: 028c01d4fa43$13f2d060$3bd87120$@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;393dd994.1904D&S=>
+
+Ruixin,
+
+We believe it is more important to focus on the propagation parameters, i.e.,=
+ without the effect of BS antenna filtering, and agree on the tables that are=
+ actually entered into the CM. At this point, we do not see much value in cre=
+ating channel model tables with BS filtering as they are not entered into the=
+ CM; more importantly, we do not have the bandwidth given the short time in b=
+etween meetings and some of the action items we are working on.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G> On Behalf Of Ruixin WANG
+Sent: Tuesday, April 23, 2019 7:12 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+Subject: =E7=AD=94=E5=A4=8D: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten, and all
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+BR,
+Ruixin
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+<mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org> [mailto:owner-3gpp_=
+tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8 Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailt=
+o:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+Ruixin,
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901.
+
+Thorsten
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG>> On Behalf Of Ruixin Wang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG<mailto:3GPP_TSG_RAN_WG4_NR-MIM=
+O-OTA@LIST.ETSI.ORG>
+Subject: Re: scaled channel model tables
+
+
+[EXTERNAL]
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+________________________________
+
+From: Thorsten Hertel<mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG>
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA<mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETS=
+I.ORG>
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:30 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Wed, 24 Apr 2019 10:11:50 +0800
+reply-to: Ruixin WANG wangruixin@CAICT.AC.CN
+subject: =?utf-8?b?J+etlOWkjTo=?= scaled channel model tables'
+message-id: 028c01d4fa43$13f2d060$3bd87120$@caict.ac.cn
+in-reply-to: CY4PR17MB13044684AA901AB9CBD146B682270@CY4PR17MB1304.namprd17.prod.outlook.com
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Ruixin WANG wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;a86831bd.1904D&S=>
+
+Hi Thorsten, and all
+
+=20
+
+Thanks for your feedback. The scaled channel model is the first thing we need=
+ to align next meeting. Furthermore, in my understanding, the spatial correla=
+tion curve, RMS error and system layout discussion should be based on the mod=
+el with BS filtering. So I am wondering if it is possible for CE vendors to s=
+hare the Channel model tables with BS pattern filtering.
+
+=20
+
+BR,
+
+Ruixin=20
+
+=20
+
+=E5=8F=91=E4=BB=B6=E4=BA=BA: owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org=
+ [mailto:owner-3gpp_tsg_ran_wg4_nr-mimo-ota@list.etsi.org] =E4=BB=A3=E8=A1=A8=
+ Thorsten Hertel
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2019=E5=B9=B44=E6=9C=8820=E6=97=A5 3:16
+=E6=94=B6=E4=BB=B6=E4=BA=BA: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+=E4=B8=BB=E9=A2=98: Re: scaled channel model tables
+
+=20
+
+Ruixin,=20
+
+=20
+
+These tables are without BS filtering. The power of the individual clusters i=
+n these tables match the powers in Tables 7.7.1-1 and Table 7.7.1-3 of 38.901=
+.=20
+
+=20
+
+Thorsten=20
+
+=20
+
+From: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA <3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.OR=
+G <mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> > On Behalf Of Ruixin W=
+ang
+Sent: Thursday, April 18, 2019 9:09 PM
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG <mailto:3GPP_TSG_RAN_WG4_NR-MI=
+MO-OTA@LIST.ETSI.ORG>=20
+Subject: Re: scaled channel model tables
+
+=20
+
+[EXTERNAL] =20
+
+Hi Thorsten,
+
+=20
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+=20
+
+BR,
+
+Ruixin
+
+=20
+
+  _____ =20
+
+=20
+
+From:  <mailto:000000e134e541c5-dmarc-request@LIST.ETSI.ORG> Thorsten Hertel
+
+Date: 2019-04-18 23:50
+
+To:  <mailto:3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG> 3GPP_TSG_RAN_WG4_NR-=
+MIMO-OTA
+
+Subject: scaled channel model tables
+
+Dear NR MIMO OTA=E2=80=99ers,=20
+
+=20
+
+As discussed last week and as captured in the WF
+
+*	Companies to share the resulting channel model table in the NR MIMO OTA ref=
+lector before next RAN4 meeting. Suggested order is CDL-A with UMi and CDL-C =
+with UMa for FR1.
+
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+=20
+
+Any feedback would be appreciated
+
+=20
+
+Thorsten
+
+___
+
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies=20
+
+=20
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:32 2021
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+date: Fri, 19 Apr 2019 19:15:39 +0000
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+message-id: CY4PR17MB13044684AA901AB9CBD146B682270@CY4PR17MB1304.namprd17.prod.outlook.com
+subject: 'Re: scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+in-reply-to: 201904191208038776243@caict.ac.cn
+Content-Type: text/plain; MIME-Version="1.0"; Content-Type="multipart/alternative"
+comments-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;567d0255.1904C&S=>
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:34 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Re: scaled channel model tables'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 19 Apr 2019 12:09:04 +0800
+message-id: 201904191208038776243@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;e42a2488.1904C&S=>
+
+Hi Thorsten,
+
+Thank you very much for sharing the channel model tables. Just a clarificatio=
+n question, are these tables already including the BS pattern filtering effec=
+t?
+
+BR,
+Ruixin
+
+
+
+=20
+From: Thorsten Hertel
+Date: 2019-04-18 23:50
+To: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA
+Subject: scaled channel model tables
+Dear NR MIMO OTA=E2=80=99ers,=20
+=20
+As discussed last week and as captured in the WF
+Companies to share the resulting channel model table in the NR MIMO OTA refle=
+ctor before next RAN4 meeting. Suggested order is CDL-A with UMi and CDL-C wi=
+th UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+=20
+Any feedback would be appreciated
+=20
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies=20
+=20
+
+From MAILER-DAEMON Thu Aug 26 16:51:36 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: CY4PR17MB1304E76B5A1415D54C2BF40582260@CY4PR17MB1304.namprd17.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'scaled channel model tables'
+from: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+date: Thu, 18 Apr 2019 15:50:19 +0000
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/mixed"
+reply-to: Thorsten Hertel thorsten.hertel@KEYSIGHT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;9e0264df.1904C&S=>
+
+Dear NR MIMO OTA'ers,
+
+As discussed last week and as captured in the WF
+
+  *   Companies to share the resulting channel model table in the NR MIMO OTA=
+ reflector before next RAN4 meeting. Suggested order is CDL-A with UMi and CD=
+L-C with UMa for FR1.
+Keysight would like to share the scaled channel model table (without the dith=
+ered midpaths which are still being simulated) for these two channel model/sc=
+enario combinations.
+
+Any feedback would be appreciated
+
+Thorsten
+___
+Thorsten Hertel || Lead Technologist&Architect || Keysight Technologies
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:38 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: '2nd Round offline discussion for NR MIMO OTA-Thursday coffee break'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Thu, 11 Apr 2019 14:46:19 +0800
+message-id: 2019041114451879526911@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;fd456c94.1904B&S=>
+
+Hi All,
+
+The 2nd Round of offline discussion for NR MIMO OTA will be afternoon Coffee =
+Break . I will stabilize the content of the WF.
+
+Thanks,
+Ruixin
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:40 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'MIMO OTA 2nd Roound in the main room'
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+date: Fri, 01 Mar 2019 12:38:47 +0200
+message-id: 2019030112374440934718@caict.ac.cn
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;7d94c538.1903A&S=>
+
+Hi All,
+
+The 2nd Round of NR MIMO OTA will be 1:30~2:00 in the main room.
+
+Thank you,
+Ruixin
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:42 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: BYAPR10MB3064B28268103E0E0ED35F9FB3750@BYAPR10MB3064.namprd10.prod.outlook.com
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'WF text on channel modeling'
+from: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+date: Thu, 28 Feb 2019 23:37:41 +0000
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: "Rodriguez-Herrera, Alfonso"              Alfonso.Rodriguez-Herrera@SPIRENT.COM
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;54b730af.1902D&S=>
+
+All,
+
+As per Spirent's action item on channel model modification for the WF, please=
+ find below the proposed text:
+
+CE vendors and other interested parties will propose AoDs/ZoDs rotations and =
+scaling to CDL-A and CDL-C using the methods in 38.901 (section 7.7.5.1) to m=
+ake them fit the median values in 38.901 Table 7.5-6 for the accepted scenari=
+os.
+
+Please let me know if you have any comments/proposals/modifications.
+
+Regards,
+Alfonso
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:44 2021
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+date: Tue, 27 Nov 2018 11:59:03 +0000
+reply-to: Ruixin Wang wangruixin@CAICT.AC.CN
+subject: 'Test-First email'
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="text/plain"; Content-Transfer-Encoding="quoted-printable"
+message-id: 6440191436878539.WA.wangruixincaict.ac.cn@list.etsi.org
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+from: Ruixin Wang wangruixin@CAICT.AC.CN
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;8993979f.1811D&S=>
+
+Test！
+
+
+Ruixin
+
+From MAILER-DAEMON Thu Aug 26 16:51:46 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+message-id: 179a521c2441416b9a6b4a9313443056@xMail.etsihq.org
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Test'
+from: Kyoungseok Oh Kyoungseok.Oh@ETSI.ORG
+date: Tue, 27 Nov 2018 11:40:35 +0000
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Kyoungseok Oh Kyoungseok.Oh@ETSI.ORG
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;64428738.1811D&S=>
+
+
+
+
+From MAILER-DAEMON Thu Aug 26 16:51:46 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+message-id: 179a521c2441416b9a6b4a9313443056@xMail.etsihq.org
+sender: 3GPP_TSG_RAN_WG4_NR-MIMO-OTA              3GPP_TSG_RAN_WG4_NR-MIMO-OTA@LIST.ETSI.ORG
+subject: 'Test'
+from: Kyoungseok Oh Kyoungseok.Oh@ETSI.ORG
+date: Tue, 27 Nov 2018 11:40:35 +0000
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Kyoungseok Oh Kyoungseok.Oh@ETSI.ORG
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_RAN_WG4_NR-MIMO-OTA;64428738.1811D&S=>
+
+
+
+

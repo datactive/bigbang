@@ -222,7 +222,7 @@ class TestListservArchive:
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 7
+        assert len(list(dic.keys())) == 8
         assert len(dic[list(dic.keys())[0]]) == 1
 
     def test__to_mbox(self, arch):

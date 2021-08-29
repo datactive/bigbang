@@ -1,0 +1,3641 @@
+From MAILER-DAEMON Sat Aug 28 14:17:14 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Thu, 26 Aug 2021 20:51:14 +0000
+reply-to: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+message-id: <HE1PR0702MB36431C99F09F56144B855CF3FAC79@HE1PR0702MB3643.eurprd07.prod.outlook.com>
+subject: 'Re: Draft EVS-8a'
+from: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+in-reply-to: <364608fb-05ec-10ac-c62e-3a663ddcc41a@USherbrooke.ca>
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"; Content-Transfer-Encoding="base64"; MIME-Version="1.0"
+comments-to: "Milan.Jelinek@USherbrooke.ca" <Milan.Jelinek@USherbrooke.ca>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;467c1147.2108D&S=>
+
+Hi Milan,
+
+Thanks for the clarification, it sounds good to me. It is just that earlier w=
+e have also agreed on whether include certain text within brackets or not at =
+all, e.g. in certain Pdocs, and given that the input contribution proposed it=
+ within brackets I was a bit unsure. I see no issue in using this as the init=
+ial structure for IVAS-8a.
+
+Best regards,
+Tomas
+
+-----Original Message-----
+From: Milan Jelinek <Milan.Jelinek@USherbrooke.ca>=20
+Sent: den 26 augusti 2021 20:42
+To: Tomas Toftg=C3=A5rd <tomas.toftgard@ericsson.com>; 3GPP_TSG_SA_WG4_EVS@LI=
+ST.ETSI.ORG
+Subject: Re: Draft EVS-8a
+
+Hi Tomas,
+
+The skeleton is the structure of EVS-8a which was agreed (from minutes:=20
+"....we appoint M. Jelinek as the editor of IVAS-8a and he is requested to pr=
+oduce 1288 based on the agreed skeleton..."). A text in square brackets is no=
+t agreed.
+
+So to me there is no ambiguity. Obviously, if we need to adapt the structure =
+to better fit IVAS, we are free to do it, this is just the initial version.
+
+So I really fail to see any controversy, nevertheless if you request putting =
+the brackets back, please be explicit,
+
+Best regards
+Milan
+
+On 2021-08-26 12:10, Tomas Toftg=C3=A5rd wrote:
+> Hi Milan, all,
+>=20
+> For sure the references should be included, but I have no strong views on w=
+hen this would be done.
+>=20
+> I am not sure what it means to agree on the skeleton, and I am not sure we =
+discussed the removal of brackets in the main part of IVAS-8a, if that was pr=
+oposed by someone. In the input contribution this was within brackets. I unde=
+rstand that the sections are based on the corresponding EVS Pdoc, and should =
+likely make sense also for IVAS, but I assume there could be some differences=
+ as well, so I am not sure what it means that we remove the brackets.
+>=20
+> Sorry if I missed something.
+>=20
+> Best regards,
+> Tomas
+>=20
+> -----Original Message-----
+> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On=20
+> Behalf Of Imre Varga
+> Sent: den 25 augusti 2021 15:07
+> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Re: Draft EVS-8a
+>=20
+> Hi Milan,
+>=20
+> No strong views on when this editorial work on references should be done. I=
+f you choose to do it now, you may say at the presentation that an editorial =
+cleanup of references is included. It is also fine If you choose doing it wit=
+h the next version.
+>=20
+> Best regards
+> Imre
+>=20
+> -----Original Message-----
+> From: Milan Jelinek <Milan.Jelinek@USherbrooke.ca>
+> Sent: Wednesday, August 25, 2021 1:16 PM
+> To: Imre Varga <ivarga@qti.qualcomm.com>;=20
+> 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Re: Draft EVS-8a
+>=20
+> WARNING: This email originated from outside of Qualcomm. Please be wary of =
+any links or attachments, and do not enable macros.
+>=20
+> Hi Imre, all,
+>=20
+> I am aware of this, but I did not want to go beyond what was agreed in the =
+SWG. There is certainly some more editing needed, but my thinking was that it=
+ can be prepared for the next meeting, including the consolidation of the ref=
+erences at one place.
+>=20
+> However, if you think it should be done right now, and seek agreement in th=
+e Plenary, please let me know.
+>=20
+> Best regards
+> Milan
+>=20
+> On 2021-08-25 03:49, Imre Varga wrote:
+>> Dear Milan, all,
+>>
+>> Thank you for your editing work!
+>>
+>> I have a question relating to the references -- example 2 has its own list=
+ of references while example 1 and 3 have none at all, which looks like somew=
+hat incomplete.
+>> Right, we did not talk about this at the meeting as this is a purely edito=
+rial issue.
+>>
+>> One possible method could be to replace the per-example list of references=
+ by an overall appendix-related list of references or even one single list fo=
+r the entire IVAS-8a. There we can include P.800, P.811, the handbook, BS.177=
+0-4, certain relevant SA4 contributions  etc and what else is useful. This im=
+plies some editorial rework though, especially the occurrences of referencing=
+ have to be revised in this case.
+>>
+>> Your comments, especially from the authors of the respective contributions=
+ are welcome.
+>>
+>> Best regards
+>> Imre
+>>
+>> -----Original Message-----
+>> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On=20
+>> Behalf Of Milan Jelinek
+>> Sent: Tuesday, August 24, 2021 8:44 PM
+>> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+>> Subject: Draft EVS-8a
+>>
+>> WARNING: This email originated from outside of Qualcomm. Please be wary of=
+ any links or attachments, and do not enable macros.
+>>
+>> Dear colleagues,
+>>
+>> I put a new draft of the document S4-211288 v.0.1.0 in the draft folder fo=
+r review (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments by tomor=
+row, August 25, 18:00 CEST, I will put it into Inbox as S4-211288.zip.
+>>
+>> Please note that:
+>> - I kept the header as in the draft proposed by Stefan, but I noticed that=
+ there are about as many formats of contribution headers as there are contrib=
+utors. Is there any up-to-date template somewhere?
+>>
+>> - As the revision date, I put the date of the closing plenary.
+>>
+>> - My understanding is that both the EVS-8a skeleton and the 3 example desi=
+gns were agreed, so I removed the square brackets.
+>>
+>> - In Nokia's example, the Tdoc number to include in the example is explici=
+tly given (different from the Nokia's contribution). To strictly follow the a=
+greement in EVS SWG, I copied this Tdoc number in the Appendix I. For Dolby's=
+ and Ericsson's contributions, no Tdoc was explicitly mentioned in the sectio=
+ns to be copied in Appendix I, so I used the numbers of the contributions. Ho=
+pefully this is OK. If not please let me know, or alternatively, it can be ed=
+ited for the next meeting.
+>>
+>> - I did some formatting, but I have not fixed the numbering entirely yet.
+>>
+>> Best regards
+>> Milan
+>> --
+>>
+>> **********************************************
+>> Milan JELINEK, Ph.D.
+>>
+>> R&D, VoiceAge Corporation
+>>
+>> Speech and Audio Coding Research Group Department of Electrical &=20
+>> Computer Engineering University of Sherbrooke Sherbrooke (Quebec) =20
+>> J1K
+>> 2R1  CANADA
+>>
+>> E-mail: Milan.Jelinek@USherbrooke.ca
+>> Blackberry: (+1) 819 446 7843
+>> phone:  (+1) 819 821 8000 / 63893
+>>
+>> CONFIDENTIALITY MESSAGE
+>> This email message is confidential and is intended for the exclusive use o=
+f the addressee.
+>> Any other person is strictly prohibited from disclosing, distributing or r=
+eproducing it.
+>> If the addressee cannot be reached or is unknown to you, please inform the=
+ sender by return email immediately, delete this email message and destroy al=
+l copies. Thank you.
+>>
+>> #####################################################################
+>> #
+>> ##
+>>
+>> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+>> https://protect2.fireeye.com/v1/url?k=3Dc4d053d2-9b4b6a96-c4d01349-861d41a=
+bace8-7b4d4820959d3817&q=3D1&e=3D4930cbcb-77fb-4c0f-8ca4-3c9a291c4107&u=3Dhtt=
+ps%3A%2F%2Fcan01.safelinks.protection.outlook.com%2F%3Furl%3Dhttp%253A%252F%2=
+52Flist.
+>> etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&am
+>> p
+>> ;data=3D04%7C01%7CMilan.Jelinek%40usherbrooke.ca%7C05a14d05cae04e8d04fa
+>> 0
+>> 8d9679cdfea%7C3a5a8744593545f99423b32c3a5de082%7C0%7C0%7C637654746170
+>> 7=20
+>> 28446%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJ
+>> B=20
+>> TiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=3DzKE1V%2ByyqMVIDZ21WrYwFEG
+>> v
+>> pX%2BpC1yq1khgdAK2XAc%3D&amp;reserved=3D0
+>>
+>> #####################################################################
+>> #
+>> ##
+>>
+>=20
+> --
+>=20
+> **********************************************
+> Milan JELINEK, Ph.D.
+>=20
+> R&D, VoiceAge Corporation
+>=20
+> Speech and Audio Coding Research Group Department of Electrical &=20
+> Computer Engineering University of Sherbrooke Sherbrooke (Quebec)  J1K=20
+> 2R1  CANADA
+>=20
+> E-mail: Milan.Jelinek@USherbrooke.ca
+> Blackberry: (+1) 819 446 7843
+> phone:  (+1) 819 821 8000 / 63893
+>=20
+> CONFIDENTIALITY MESSAGE
+> This email message is confidential and is intended for the exclusive use of=
+ the addressee.
+> Any other person is strictly prohibited from disclosing, distributing or re=
+producing it.
+> If the addressee cannot be reached or is unknown to you, please inform the =
+sender by return email immediately, delete this email message and destroy all=
+ copies. Thank you.
+>=20
+>=20
+> ######################################################################
+> ##
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://protect2.fireeye.com/v1/url?k=3Dabae4fbf-f43576fb-abae0f24-861d4
+> 1abace8-548a82bf6bab1be6&q=3D1&e=3D4930cbcb-77fb-4c0f-8ca4-3c9a291c4107&u=3D
+> https%3A%2F%2Fcan01.safelinks.protection.outlook.com%2F%3Furl%3Dhttp%2
+> 53A%252F%252Flist.etsi.org%252Fscripts%252Fwa.exe%253FSUBED1%253D3GPP_
+> TSG_SA_WG4_EVS%2526A%253D1%26amp%3Bdata%3D04%257C01%257CMilan.Jelinek%
+> 2540USHERBROOKE.CA%257C55cd57ef8930439abbb608d968ac1309%257C3a5a874459
+> 3545f99423b32c3a5de082%257C0%257C0%257C637655910978152901%257CUnknown%
+> 257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLC
+> JXVCI6Mn0%253D%257C3000%26amp%3Bsdata%3DTUf8K47xg0xrE1j1UF6o1WYRUdY95%
+> 252BwX%252FHY9NfFQwns%253D%26amp%3Breserved%3D0
+>=20
+> ######################################################################
+> ##
+>=20
+> ######################################################################
+> ##
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://protect2.fireeye.com/v1/url?k=3D3d7b2a3d-62e01379-3d7b6aa6-861d4
+> 1abace8-cc18cf891fa3b50f&q=3D1&e=3D4930cbcb-77fb-4c0f-8ca4-3c9a291c4107&u=3D
+> https%3A%2F%2Fcan01.safelinks.protection.outlook.com%2F%3Furl%3Dhttp%2
+> 53A%252F%252Flist.etsi.org%252Fscripts%252Fwa.exe%253FSUBED1%253D3GPP_
+> TSG_SA_WG4_EVS%2526A%253D1%26amp%3Bdata%3D04%257C01%257CMilan.Jelinek%
+> 2540USHERBROOKE.CA%257C55cd57ef8930439abbb608d968ac1309%257C3a5a874459
+> 3545f99423b32c3a5de082%257C0%257C0%257C637655910978152901%257CUnknown%
+> 257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLC
+> JXVCI6Mn0%253D%257C3000%26amp%3Bsdata%3DTUf8K47xg0xrE1j1UF6o1WYRUdY95%
+> 252BwX%252FHY9NfFQwns%253D%26amp%3Breserved%3D0
+>=20
+> ######################################################################
+> ##
+>=20
+
+--=20
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering University of Sherbrooke Sher=
+brooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use of t=
+he addressee.
+Any other person is strictly prohibited from disclosing, distributing or repr=
+oducing it.
+If the addressee cannot be reached or is unknown to you, please inform the se=
+nder by return email immediately, delete this email message and destroy all c=
+opies. Thank you.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:16 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Thu, 26 Aug 2021 14:42:29 -0400
+reply-to: Milan.Jelinek@USherbrooke.ca
+message-id: <364608fb-05ec-10ac-c62e-3a663ddcc41a@USherbrooke.ca>
+subject: 'Re: Draft EVS-8a'
+from: Milan Jelinek <Milan.Jelinek@USHERBROOKE.CA>
+in-reply-to: <HE1PR0702MB36439AC3CD71874BE92BB78EFAC79@HE1PR0702MB3643.eurprd07.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Transfer-Encoding="8bit"; Content-Type="text/plain"; MIME-Version="1.0"
+comments-to: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;6fc4f8af.2108D&S=>
+
+Hi Tomas,
+
+The skeleton is the structure of EVS-8a which was agreed (from minutes:=20
+"....we appoint M. Jelinek as the editor of IVAS-8a and he is requested=20
+to produce 1288 based on the agreed skeleton..."). A text in square=20
+brackets is not agreed.
+
+So to me there is no ambiguity. Obviously, if we need to adapt the=20
+structure to better fit IVAS, we are free to do it, this is just the=20
+initial version.
+
+So I really fail to see any controversy, nevertheless if you request=20
+putting the brackets back, please be explicit,
+
+Best regards
+Milan
+
+On 2021-08-26 12:10, Tomas Toftg=C3=A5rd wrote:
+> Hi Milan, all,
+>=20
+> For sure the references should be included, but I have no strong views on w=
+hen this would be done.
+>=20
+> I am not sure what it means to agree on the skeleton, and I am not sure we =
+discussed the removal of brackets in the main part of IVAS-8a, if that was pr=
+oposed by someone. In the input contribution this was within brackets. I unde=
+rstand that the sections are based on the corresponding EVS Pdoc, and should =
+likely make sense also for IVAS, but I assume there could be some differences=
+ as well, so I am not sure what it means that we remove the brackets.
+>=20
+> Sorry if I missed something.
+>=20
+> Best regards,
+> Tomas
+>=20
+> -----Original Message-----
+> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On Behalf Of =
+Imre Varga
+> Sent: den 25 augusti 2021 15:07
+> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Re: Draft EVS-8a
+>=20
+> Hi Milan,
+>=20
+> No strong views on when this editorial work on references should be done. I=
+f you choose to do it now, you may say at the presentation that an editorial =
+cleanup of references is included. It is also fine If you choose doing it wit=
+h the next version.
+>=20
+> Best regards
+> Imre
+>=20
+> -----Original Message-----
+> From: Milan Jelinek <Milan.Jelinek@USherbrooke.ca>
+> Sent: Wednesday, August 25, 2021 1:16 PM
+> To: Imre Varga <ivarga@qti.qualcomm.com>; 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Re: Draft EVS-8a
+>=20
+> WARNING: This email originated from outside of Qualcomm. Please be wary of =
+any links or attachments, and do not enable macros.
+>=20
+> Hi Imre, all,
+>=20
+> I am aware of this, but I did not want to go beyond what was agreed in the =
+SWG. There is certainly some more editing needed, but my thinking was that it=
+ can be prepared for the next meeting, including the consolidation of the ref=
+erences at one place.
+>=20
+> However, if you think it should be done right now, and seek agreement in th=
+e Plenary, please let me know.
+>=20
+> Best regards
+> Milan
+>=20
+> On 2021-08-25 03:49, Imre Varga wrote:
+>> Dear Milan, all,
+>>
+>> Thank you for your editing work!
+>>
+>> I have a question relating to the references -- example 2 has its own list=
+ of references while example 1 and 3 have none at all, which looks like somew=
+hat incomplete.
+>> Right, we did not talk about this at the meeting as this is a purely edito=
+rial issue.
+>>
+>> One possible method could be to replace the per-example list of references=
+ by an overall appendix-related list of references or even one single list fo=
+r the entire IVAS-8a. There we can include P.800, P.811, the handbook, BS.177=
+0-4, certain relevant SA4 contributions  etc and what else is useful. This im=
+plies some editorial rework though, especially the occurrences of referencing=
+ have to be revised in this case.
+>>
+>> Your comments, especially from the authors of the respective contributions=
+ are welcome.
+>>
+>> Best regards
+>> Imre
+>>
+>> -----Original Message-----
+>> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On
+>> Behalf Of Milan Jelinek
+>> Sent: Tuesday, August 24, 2021 8:44 PM
+>> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+>> Subject: Draft EVS-8a
+>>
+>> WARNING: This email originated from outside of Qualcomm. Please be wary of=
+ any links or attachments, and do not enable macros.
+>>
+>> Dear colleagues,
+>>
+>> I put a new draft of the document S4-211288 v.0.1.0 in the draft folder fo=
+r review (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments by tomor=
+row, August 25, 18:00 CEST, I will put it into Inbox as S4-211288.zip.
+>>
+>> Please note that:
+>> - I kept the header as in the draft proposed by Stefan, but I noticed that=
+ there are about as many formats of contribution headers as there are contrib=
+utors. Is there any up-to-date template somewhere?
+>>
+>> - As the revision date, I put the date of the closing plenary.
+>>
+>> - My understanding is that both the EVS-8a skeleton and the 3 example desi=
+gns were agreed, so I removed the square brackets.
+>>
+>> - In Nokia's example, the Tdoc number to include in the example is explici=
+tly given (different from the Nokia's contribution). To strictly follow the a=
+greement in EVS SWG, I copied this Tdoc number in the Appendix I. For Dolby's=
+ and Ericsson's contributions, no Tdoc was explicitly mentioned in the sectio=
+ns to be copied in Appendix I, so I used the numbers of the contributions. Ho=
+pefully this is OK. If not please let me know, or alternatively, it can be ed=
+ited for the next meeting.
+>>
+>> - I did some formatting, but I have not fixed the numbering entirely yet.
+>>
+>> Best regards
+>> Milan
+>> --
+>>
+>> **********************************************
+>> Milan JELINEK, Ph.D.
+>>
+>> R&D, VoiceAge Corporation
+>>
+>> Speech and Audio Coding Research Group Department of Electrical &
+>> Computer Engineering University of Sherbrooke Sherbrooke (Quebec)  J1K
+>> 2R1  CANADA
+>>
+>> E-mail: Milan.Jelinek@USherbrooke.ca
+>> Blackberry: (+1) 819 446 7843
+>> phone:  (+1) 819 821 8000 / 63893
+>>
+>> CONFIDENTIALITY MESSAGE
+>> This email message is confidential and is intended for the exclusive use o=
+f the addressee.
+>> Any other person is strictly prohibited from disclosing, distributing or r=
+eproducing it.
+>> If the addressee cannot be reached or is unknown to you, please inform the=
+ sender by return email immediately, delete this email message and destroy al=
+l copies. Thank you.
+>>
+>> ######################################################################
+>> ##
+>>
+>> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+>> https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.
+>> etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&amp
+>> ;data=3D04%7C01%7CMilan.Jelinek%40usherbrooke.ca%7C05a14d05cae04e8d04fa0
+>> 8d9679cdfea%7C3a5a8744593545f99423b32c3a5de082%7C0%7C0%7C6376547461707
+>> 28446%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJB
+>> TiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=3DzKE1V%2ByyqMVIDZ21WrYwFEGv
+>> pX%2BpC1yq1khgdAK2XAc%3D&amp;reserved=3D0
+>>
+>> ######################################################################
+>> ##
+>>
+>=20
+> --
+>=20
+> **********************************************
+> Milan JELINEK, Ph.D.
+>=20
+> R&D, VoiceAge Corporation
+>=20
+> Speech and Audio Coding Research Group
+> Department of Electrical & Computer Engineering University of Sherbrooke Sh=
+erbrooke (Quebec)  J1K 2R1  CANADA
+>=20
+> E-mail: Milan.Jelinek@USherbrooke.ca
+> Blackberry: (+1) 819 446 7843
+> phone:  (+1) 819 821 8000 / 63893
+>=20
+> CONFIDENTIALITY MESSAGE
+> This email message is confidential and is intended for the exclusive use of=
+ the addressee.
+> Any other person is strictly prohibited from disclosing, distributing or re=
+producing it.
+> If the addressee cannot be reached or is unknown to you, please inform the =
+sender by return email immediately, delete this email message and destroy all=
+ copies. Thank you.
+>=20
+>=20
+> ########################################################################
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.ets=
+i.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&amp;data=3D04=
+%7C01%7CMilan.Jelinek%40USHERBROOKE.CA%7C55cd57ef8930439abbb608d968ac1309%7C3=
+a5a8744593545f99423b32c3a5de082%7C0%7C0%7C637655910978152901%7CUnknown%7CTWFp=
+bGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C=
+3000&amp;sdata=3DTUf8K47xg0xrE1j1UF6o1WYRUdY95%2BwX%2FHY9NfFQwns%3D&amp;reser=
+ved=3D0
+>=20
+> ########################################################################
+>=20
+> ########################################################################
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.ets=
+i.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&amp;data=3D04=
+%7C01%7CMilan.Jelinek%40USHERBROOKE.CA%7C55cd57ef8930439abbb608d968ac1309%7C3=
+a5a8744593545f99423b32c3a5de082%7C0%7C0%7C637655910978152901%7CUnknown%7CTWFp=
+bGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C=
+3000&amp;sdata=3DTUf8K47xg0xrE1j1UF6o1WYRUdY95%2BwX%2FHY9NfFQwns%3D&amp;reser=
+ved=3D0
+>=20
+> ########################################################################
+>=20
+
+--=20
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering
+University of Sherbrooke
+Sherbrooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use=20
+of the addressee.
+Any other person is strictly prohibited from disclosing, distributing or=20
+reproducing it.
+If the addressee cannot be reached or is unknown to you, please inform=20
+the sender by return email immediately,
+delete this email message and destroy all copies. Thank you.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:18 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Thu, 26 Aug 2021 16:10:39 +0000
+reply-to: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+message-id: <HE1PR0702MB36439AC3CD71874BE92BB78EFAC79@HE1PR0702MB3643.eurprd07.prod.outlook.com>
+subject: 'Re: Draft EVS-8a'
+from: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+in-reply-to: <SN6PR02MB5456BCADE03A9C46C138467FF8C69@SN6PR02MB5456.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"; Content-Transfer-Encoding="base64"; MIME-Version="1.0"
+comments-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;efdb7621.2108D&S=>
+
+Hi Milan, all,
+
+For sure the references should be included, but I have no strong views on whe=
+n this would be done.=20
+
+I am not sure what it means to agree on the skeleton, and I am not sure we di=
+scussed the removal of brackets in the main part of IVAS-8a, if that was prop=
+osed by someone. In the input contribution this was within brackets. I unders=
+tand that the sections are based on the corresponding EVS Pdoc, and should li=
+kely make sense also for IVAS, but I assume there could be some differences a=
+s well, so I am not sure what it means that we remove the brackets.
+
+Sorry if I missed something.
+
+Best regards,
+Tomas
+
+-----Original Message-----
+From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On Behalf Of Im=
+re Varga
+Sent: den 25 augusti 2021 15:07
+To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+Subject: Re: Draft EVS-8a
+
+Hi Milan,
+
+No strong views on when this editorial work on references should be done. If =
+you choose to do it now, you may say at the presentation that an editorial cl=
+eanup of references is included. It is also fine If you choose doing it with =
+the next version.
+
+Best regards
+Imre
+
+-----Original Message-----
+From: Milan Jelinek <Milan.Jelinek@USherbrooke.ca>
+Sent: Wednesday, August 25, 2021 1:16 PM
+To: Imre Varga <ivarga@qti.qualcomm.com>; 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+Subject: Re: Draft EVS-8a
+
+WARNING: This email originated from outside of Qualcomm. Please be wary of an=
+y links or attachments, and do not enable macros.
+
+Hi Imre, all,
+
+I am aware of this, but I did not want to go beyond what was agreed in the SW=
+G. There is certainly some more editing needed, but my thinking was that it c=
+an be prepared for the next meeting, including the consolidation of the refer=
+ences at one place.
+
+However, if you think it should be done right now, and seek agreement in the =
+Plenary, please let me know.
+
+Best regards
+Milan
+
+On 2021-08-25 03:49, Imre Varga wrote:
+> Dear Milan, all,
+>
+> Thank you for your editing work!
+>
+> I have a question relating to the references -- example 2 has its own list =
+of references while example 1 and 3 have none at all, which looks like somewh=
+at incomplete.
+> Right, we did not talk about this at the meeting as this is a purely editor=
+ial issue.
+>
+> One possible method could be to replace the per-example list of references =
+by an overall appendix-related list of references or even one single list for=
+ the entire IVAS-8a. There we can include P.800, P.811, the handbook, BS.1770=
+-4, certain relevant SA4 contributions  etc and what else is useful. This imp=
+lies some editorial rework though, especially the occurrences of referencing =
+have to be revised in this case.
+>
+> Your comments, especially from the authors of the respective contributions =
+are welcome.
+>
+> Best regards
+> Imre
+>
+> -----Original Message-----
+> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On=20
+> Behalf Of Milan Jelinek
+> Sent: Tuesday, August 24, 2021 8:44 PM
+> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Draft EVS-8a
+>
+> WARNING: This email originated from outside of Qualcomm. Please be wary of =
+any links or attachments, and do not enable macros.
+>
+> Dear colleagues,
+>
+> I put a new draft of the document S4-211288 v.0.1.0 in the draft folder for=
+ review (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments by tomorr=
+ow, August 25, 18:00 CEST, I will put it into Inbox as S4-211288.zip.
+>
+> Please note that:
+> - I kept the header as in the draft proposed by Stefan, but I noticed that =
+there are about as many formats of contribution headers as there are contribu=
+tors. Is there any up-to-date template somewhere?
+>
+> - As the revision date, I put the date of the closing plenary.
+>
+> - My understanding is that both the EVS-8a skeleton and the 3 example desig=
+ns were agreed, so I removed the square brackets.
+>
+> - In Nokia's example, the Tdoc number to include in the example is explicit=
+ly given (different from the Nokia's contribution). To strictly follow the ag=
+reement in EVS SWG, I copied this Tdoc number in the Appendix I. For Dolby's =
+and Ericsson's contributions, no Tdoc was explicitly mentioned in the section=
+s to be copied in Appendix I, so I used the numbers of the contributions. Hop=
+efully this is OK. If not please let me know, or alternatively, it can be edi=
+ted for the next meeting.
+>
+> - I did some formatting, but I have not fixed the numbering entirely yet.
+>
+> Best regards
+> Milan
+> --
+>
+> **********************************************
+> Milan JELINEK, Ph.D.
+>
+> R&D, VoiceAge Corporation
+>
+> Speech and Audio Coding Research Group Department of Electrical &=20
+> Computer Engineering University of Sherbrooke Sherbrooke (Quebec)  J1K
+> 2R1  CANADA
+>
+> E-mail: Milan.Jelinek@USherbrooke.ca
+> Blackberry: (+1) 819 446 7843
+> phone:  (+1) 819 821 8000 / 63893
+>
+> CONFIDENTIALITY MESSAGE
+> This email message is confidential and is intended for the exclusive use of=
+ the addressee.
+> Any other person is strictly prohibited from disclosing, distributing or re=
+producing it.
+> If the addressee cannot be reached or is unknown to you, please inform the =
+sender by return email immediately, delete this email message and destroy all=
+ copies. Thank you.
+>
+> ######################################################################
+> ##
+>
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.
+> etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&amp
+> ;data=3D04%7C01%7CMilan.Jelinek%40usherbrooke.ca%7C05a14d05cae04e8d04fa0
+> 8d9679cdfea%7C3a5a8744593545f99423b32c3a5de082%7C0%7C0%7C6376547461707
+> 28446%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJB
+> TiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=3DzKE1V%2ByyqMVIDZ21WrYwFEGv
+> pX%2BpC1yq1khgdAK2XAc%3D&amp;reserved=3D0
+>
+> ######################################################################
+> ##
+>
+
+--
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering University of Sherbrooke Sher=
+brooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use of t=
+he addressee.
+Any other person is strictly prohibited from disclosing, distributing or repr=
+oducing it.
+If the addressee cannot be reached or is unknown to you, please inform the se=
+nder by return email immediately, delete this email message and destroy all c=
+opies. Thank you.
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:20 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Wed, 25 Aug 2021 13:07:12 +0000
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+message-id: <SN6PR02MB5456BCADE03A9C46C138467FF8C69@SN6PR02MB5456.namprd02.prod.outlook.com>
+subject: 'Re: Draft EVS-8a'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+in-reply-to: <a0d893d0-a0d9-3cb1-9db4-b23ffe99b25e@USherbrooke.ca>
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"; Content-Transfer-Encoding="base64"; MIME-Version="1.0"
+comments-to: "Milan.Jelinek@USherbrooke.ca" <Milan.Jelinek@USherbrooke.ca>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;5cb19e0d.2108D&S=>
+
+Hi Milan,
+
+No strong views on when this editorial work on references should be done. If =
+you choose to do it now, you may say at the presentation that an editorial cl=
+eanup of references is included. It is also fine If you choose doing it with =
+the next version.
+
+Best regards
+Imre
+
+-----Original Message-----
+From: Milan Jelinek <Milan.Jelinek@USherbrooke.ca>=20
+Sent: Wednesday, August 25, 2021 1:16 PM
+To: Imre Varga <ivarga@qti.qualcomm.com>; 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+Subject: Re: Draft EVS-8a
+
+WARNING: This email originated from outside of Qualcomm. Please be wary of an=
+y links or attachments, and do not enable macros.
+
+Hi Imre, all,
+
+I am aware of this, but I did not want to go beyond what was agreed in the SW=
+G. There is certainly some more editing needed, but my thinking was that it c=
+an be prepared for the next meeting, including the consolidation of the refer=
+ences at one place.
+
+However, if you think it should be done right now, and seek agreement in the =
+Plenary, please let me know.
+
+Best regards
+Milan
+
+On 2021-08-25 03:49, Imre Varga wrote:
+> Dear Milan, all,
+>
+> Thank you for your editing work!
+>
+> I have a question relating to the references -- example 2 has its own list =
+of references while example 1 and 3 have none at all, which looks like somewh=
+at incomplete.
+> Right, we did not talk about this at the meeting as this is a purely editor=
+ial issue.
+>
+> One possible method could be to replace the per-example list of references =
+by an overall appendix-related list of references or even one single list for=
+ the entire IVAS-8a. There we can include P.800, P.811, the handbook, BS.1770=
+-4, certain relevant SA4 contributions  etc and what else is useful. This imp=
+lies some editorial rework though, especially the occurrences of referencing =
+have to be revised in this case.
+>
+> Your comments, especially from the authors of the respective contributions =
+are welcome.
+>
+> Best regards
+> Imre
+>
+> -----Original Message-----
+> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On=20
+> Behalf Of Milan Jelinek
+> Sent: Tuesday, August 24, 2021 8:44 PM
+> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Draft EVS-8a
+>
+> WARNING: This email originated from outside of Qualcomm. Please be wary of =
+any links or attachments, and do not enable macros.
+>
+> Dear colleagues,
+>
+> I put a new draft of the document S4-211288 v.0.1.0 in the draft folder for=
+ review (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments by tomorr=
+ow, August 25, 18:00 CEST, I will put it into Inbox as S4-211288.zip.
+>
+> Please note that:
+> - I kept the header as in the draft proposed by Stefan, but I noticed that =
+there are about as many formats of contribution headers as there are contribu=
+tors. Is there any up-to-date template somewhere?
+>
+> - As the revision date, I put the date of the closing plenary.
+>
+> - My understanding is that both the EVS-8a skeleton and the 3 example desig=
+ns were agreed, so I removed the square brackets.
+>
+> - In Nokia's example, the Tdoc number to include in the example is explicit=
+ly given (different from the Nokia's contribution). To strictly follow the ag=
+reement in EVS SWG, I copied this Tdoc number in the Appendix I. For Dolby's =
+and Ericsson's contributions, no Tdoc was explicitly mentioned in the section=
+s to be copied in Appendix I, so I used the numbers of the contributions. Hop=
+efully this is OK. If not please let me know, or alternatively, it can be edi=
+ted for the next meeting.
+>
+> - I did some formatting, but I have not fixed the numbering entirely yet.
+>
+> Best regards
+> Milan
+> --
+>
+> **********************************************
+> Milan JELINEK, Ph.D.
+>
+> R&D, VoiceAge Corporation
+>
+> Speech and Audio Coding Research Group Department of Electrical &=20
+> Computer Engineering University of Sherbrooke Sherbrooke (Quebec)  J1K=20
+> 2R1  CANADA
+>
+> E-mail: Milan.Jelinek@USherbrooke.ca
+> Blackberry: (+1) 819 446 7843
+> phone:  (+1) 819 821 8000 / 63893
+>
+> CONFIDENTIALITY MESSAGE
+> This email message is confidential and is intended for the exclusive use of=
+ the addressee.
+> Any other person is strictly prohibited from disclosing, distributing or re=
+producing it.
+> If the addressee cannot be reached or is unknown to you, please inform the =
+sender by return email immediately, delete this email message and destroy all=
+ copies. Thank you.
+>
+> ######################################################################
+> ##
+>
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.
+> etsi.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&amp
+> ;data=3D04%7C01%7CMilan.Jelinek%40usherbrooke.ca%7C05a14d05cae04e8d04fa0
+> 8d9679cdfea%7C3a5a8744593545f99423b32c3a5de082%7C0%7C0%7C6376547461707
+> 28446%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJB
+> TiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=3DzKE1V%2ByyqMVIDZ21WrYwFEGv
+> pX%2BpC1yq1khgdAK2XAc%3D&amp;reserved=3D0
+>
+> ######################################################################
+> ##
+>
+
+--
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering University of Sherbrooke Sher=
+brooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use of t=
+he addressee.
+Any other person is strictly prohibited from disclosing, distributing or repr=
+oducing it.
+If the addressee cannot be reached or is unknown to you, please inform the se=
+nder by return email immediately, delete this email message and destroy all c=
+opies. Thank you.
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:22 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Wed, 25 Aug 2021 07:15:56 -0400
+reply-to: Milan.Jelinek@USherbrooke.ca
+message-id: <a0d893d0-a0d9-3cb1-9db4-b23ffe99b25e@USherbrooke.ca>
+subject: 'Re: Draft EVS-8a'
+from: Milan Jelinek <Milan.Jelinek@USHERBROOKE.CA>
+in-reply-to: <SN6PR02MB54564AFB483F293AE150B1C5F8C69@SN6PR02MB5456.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Transfer-Encoding="7bit"; Content-Type="text/plain"; MIME-Version="1.0"
+comments-to: Imre Varga <ivarga@qti.qualcomm.com>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;1be90bb0.2108D&S=>
+
+Hi Imre, all,
+
+I am aware of this, but I did not want to go beyond what was agreed in=20
+the SWG. There is certainly some more editing needed, but my thinking=20
+was that it can be prepared for the next meeting, including the=20
+consolidation of the references at one place.
+
+However, if you think it should be done right now, and seek agreement in=20
+the Plenary, please let me know.
+
+Best regards
+Milan
+
+On 2021-08-25 03:49, Imre Varga wrote:
+> Dear Milan, all,
+>=20
+> Thank you for your editing work!
+>=20
+> I have a question relating to the references -- example 2 has its own list =
+of references while example 1 and 3 have none at all, which looks like somewh=
+at incomplete.
+> Right, we did not talk about this at the meeting as this is a purely editor=
+ial issue.
+>=20
+> One possible method could be to replace the per-example list of references =
+by an overall appendix-related list of references or even one single list for=
+ the entire IVAS-8a. There we can include P.800, P.811, the handbook, BS.1770=
+-4, certain relevant SA4 contributions  etc and what else is useful. This imp=
+lies some editorial rework though, especially the occurrences of referencing =
+have to be revised in this case.
+>=20
+> Your comments, especially from the authors of the respective contributions =
+are welcome.
+>=20
+> Best regards
+> Imre
+>=20
+> -----Original Message-----
+> From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On Behalf Of =
+Milan Jelinek
+> Sent: Tuesday, August 24, 2021 8:44 PM
+> To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+> Subject: Draft EVS-8a
+>=20
+> WARNING: This email originated from outside of Qualcomm. Please be wary of =
+any links or attachments, and do not enable macros.
+>=20
+> Dear colleagues,
+>=20
+> I put a new draft of the document S4-211288 v.0.1.0 in the draft folder for=
+ review (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments by tomorr=
+ow, August 25, 18:00 CEST, I will put it into Inbox as S4-211288.zip.
+>=20
+> Please note that:
+> - I kept the header as in the draft proposed by Stefan, but I noticed that =
+there are about as many formats of contribution headers as there are contribu=
+tors. Is there any up-to-date template somewhere?
+>=20
+> - As the revision date, I put the date of the closing plenary.
+>=20
+> - My understanding is that both the EVS-8a skeleton and the 3 example desig=
+ns were agreed, so I removed the square brackets.
+>=20
+> - In Nokia's example, the Tdoc number to include in the example is explicit=
+ly given (different from the Nokia's contribution). To strictly follow the ag=
+reement in EVS SWG, I copied this Tdoc number in the Appendix I. For Dolby's =
+and Ericsson's contributions, no Tdoc was explicitly mentioned in the section=
+s to be copied in Appendix I, so I used the numbers of the contributions. Hop=
+efully this is OK. If not please let me know, or alternatively, it can be edi=
+ted for the next meeting.
+>=20
+> - I did some formatting, but I have not fixed the numbering entirely yet.
+>=20
+> Best regards
+> Milan
+> --
+>=20
+> **********************************************
+> Milan JELINEK, Ph.D.
+>=20
+> R&D, VoiceAge Corporation
+>=20
+> Speech and Audio Coding Research Group
+> Department of Electrical & Computer Engineering University of Sherbrooke Sh=
+erbrooke (Quebec)  J1K 2R1  CANADA
+>=20
+> E-mail: Milan.Jelinek@USherbrooke.ca
+> Blackberry: (+1) 819 446 7843
+> phone:  (+1) 819 821 8000 / 63893
+>=20
+> CONFIDENTIALITY MESSAGE
+> This email message is confidential and is intended for the exclusive use of=
+ the addressee.
+> Any other person is strictly prohibited from disclosing, distributing or re=
+producing it.
+> If the addressee cannot be reached or is unknown to you, please inform the =
+sender by return email immediately, delete this email message and destroy all=
+ copies. Thank you.
+>=20
+> ########################################################################
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.ets=
+i.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&amp;data=3D04=
+%7C01%7CMilan.Jelinek%40usherbrooke.ca%7C05a14d05cae04e8d04fa08d9679cdfea%7C3=
+a5a8744593545f99423b32c3a5de082%7C0%7C0%7C637654746170728446%7CUnknown%7CTWFp=
+bGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C=
+1000&amp;sdata=3DzKE1V%2ByyqMVIDZ21WrYwFEGvpX%2BpC1yq1khgdAK2XAc%3D&amp;reser=
+ved=3D0
+>=20
+> ########################################################################
+>=20
+
+--=20
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering
+University of Sherbrooke
+Sherbrooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use=20
+of the addressee.
+Any other person is strictly prohibited from disclosing, distributing or=20
+reproducing it.
+If the addressee cannot be reached or is unknown to you, please inform=20
+the sender by return email immediately,
+delete this email message and destroy all copies. Thank you.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:24 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Wed, 25 Aug 2021 07:49:28 +0000
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+message-id: <SN6PR02MB54564AFB483F293AE150B1C5F8C69@SN6PR02MB5456.namprd02.prod.outlook.com>
+subject: 'Re: Draft EVS-8a'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+in-reply-to: <a6172d5f-a7d4-c50c-19bc-de0a42997d58@USherbrooke.ca>
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"; Content-Transfer-Encoding="base64"; MIME-Version="1.0"
+comments-to: "Milan.Jelinek@USherbrooke.ca" <Milan.Jelinek@USherbrooke.ca>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;b0d4555c.2108D&S=>
+
+Dear Milan, all,
+
+Thank you for your editing work!
+
+I have a question relating to the references -- example 2 has its own list of=
+ references while example 1 and 3 have none at all, which looks like somewhat=
+ incomplete.=20
+Right, we did not talk about this at the meeting as this is a purely editoria=
+l issue.
+
+One possible method could be to replace the per-example list of references by=
+ an overall appendix-related list of references or even one single list for t=
+he entire IVAS-8a. There we can include P.800, P.811, the handbook, BS.1770-4=
+, certain relevant SA4 contributions  etc and what else is useful. This impli=
+es some editorial rework though, especially the occurrences of referencing ha=
+ve to be revised in this case.=20
+
+Your comments, especially from the authors of the respective contributions ar=
+e welcome.
+
+Best regards
+Imre
+
+-----Original Message-----
+From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On Behalf Of Mi=
+lan Jelinek
+Sent: Tuesday, August 24, 2021 8:44 PM
+To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+Subject: Draft EVS-8a
+
+WARNING: This email originated from outside of Qualcomm. Please be wary of an=
+y links or attachments, and do not enable macros.
+
+Dear colleagues,
+
+I put a new draft of the document S4-211288 v.0.1.0 in the draft folder for r=
+eview (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments by tomorrow=
+, August 25, 18:00 CEST, I will put it into Inbox as S4-211288.zip.
+
+Please note that:
+- I kept the header as in the draft proposed by Stefan, but I noticed that th=
+ere are about as many formats of contribution headers as there are contributo=
+rs. Is there any up-to-date template somewhere?
+
+- As the revision date, I put the date of the closing plenary.
+
+- My understanding is that both the EVS-8a skeleton and the 3 example designs=
+ were agreed, so I removed the square brackets.
+
+- In Nokia's example, the Tdoc number to include in the example is explicitly=
+ given (different from the Nokia's contribution). To strictly follow the agre=
+ement in EVS SWG, I copied this Tdoc number in the Appendix I. For Dolby's an=
+d Ericsson's contributions, no Tdoc was explicitly mentioned in the sections =
+to be copied in Appendix I, so I used the numbers of the contributions. Hopef=
+ully this is OK. If not please let me know, or alternatively, it can be edite=
+d for the next meeting.
+
+- I did some formatting, but I have not fixed the numbering entirely yet.
+
+Best regards
+Milan
+--
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering University of Sherbrooke Sher=
+brooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use of t=
+he addressee.
+Any other person is strictly prohibited from disclosing, distributing or repr=
+oducing it.
+If the addressee cannot be reached or is unknown to you, please inform the se=
+nder by return email immediately, delete this email message and destroy all c=
+opies. Thank you.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:26 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+date: Tue, 24 Aug 2021 14:43:53 -0400
+reply-to: Milan.Jelinek@USherbrooke.ca
+subject: 'Draft EVS-8a'
+message-id: <a6172d5f-a7d4-c50c-19bc-de0a42997d58@USherbrooke.ca>
+Content-Type: text/plain; charset="utf-8"; Content-Type="text/plain"; MIME-Version="1.0"; Content-Transfer-Encoding="7bit"
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+from: Milan Jelinek <Milan.Jelinek@USHERBROOKE.CA>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;5b5f8551.2108D&S=>
+
+Dear colleagues,
+
+I put a new draft of the document S4-211288 v.0.1.0 in the draft folder 
+for review (Draft_S4-211288_IVAS-8a_v.0.0.1.zip). If I get no comments 
+by tomorrow, August 25, 18:00 CEST, I will put it into Inbox as 
+S4-211288.zip.
+
+Please note that:
+- I kept the header as in the draft proposed by Stefan, but I noticed 
+that there are about as many formats of contribution headers as there 
+are contributors. Is there any up-to-date template somewhere?
+
+- As the revision date, I put the date of the closing plenary.
+
+- My understanding is that both the EVS-8a skeleton and the 3 example 
+designs were agreed, so I removed the square brackets.
+
+- In Nokia's example, the Tdoc number to include in the example is 
+explicitly given (different from the Nokia's contribution). To strictly 
+follow the agreement in EVS SWG, I copied this Tdoc number in the 
+Appendix I. For Dolby's and Ericsson's contributions, no Tdoc was 
+explicitly mentioned in the sections to be copied in Appendix I, so I 
+used the numbers of the contributions. Hopefully this is OK. If not 
+please let me know, or alternatively, it can be edited for the next meeting.
+
+- I did some formatting, but I have not fixed the numbering entirely yet.
+
+Best regards
+Milan
+-- 
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering
+University of Sherbrooke
+Sherbrooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use 
+of the addressee.
+Any other person is strictly prohibited from disclosing, distributing or 
+reproducing it.
+If the addressee cannot be reached or is unknown to you, please inform 
+the sender by return email immediately,
+delete this email message and destroy all copies. Thank you.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:27 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'IVAS-1 v0.4.0 available in the Inbox'
+from: Huan-yu Su <hs@QOSOUND.COM>
+date: Wed, 25 Aug 2021 01:00:39 +0800
+message-id: <2021082501003790244483@qosound.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Huan-yu Su <hs@QOSOUND.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;62dc93ad.2108D&S=>
+
+Dear Colleagues,
+
+As agreed at today's EVS SWG, I have put the revised IVAS-1 v0.4.0 document i=
+n the Inbox:
+
+https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_115-e/Inbox/S4-211287.zip
+
+
+
+Best regards,
+
+Huan-yu
++86 186 8027 1821
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:29 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <D03EC70D-25CA-4D74-8090-5CBEAE78A8CE@iis.fraunhofer.de>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Updated CRs to 26.442/443/444/452 in Inbox'
+from: "Multrus, Markus" <markus.multrus@IIS.FRAUNHOFER.DE>
+date: Tue, 24 Aug 2021 12:27:07 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: "Multrus, Markus" <markus.multrus@IIS.FRAUNHOFER.DE>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;3b88992b.2108D&S=>
+
+Dear all,
+
+I=E2=80=99ve just copied the updated CRs to 26.442/443/444/452 to the Inbox:
+
+  *   S4-211109 =E2=80=A2 S4-211294
+  *   S4-211110 =E2=80=A2 S4-211295
+  *   S4-211111 =E2=80=A2 S4-211296
+  *   S4-211112 =E2=80=A2 S4-211297
+  *   S4-211113 =E2=80=A2 S4-211298
+  *   S4-211114 =E2=80=A2 S4-211299
+  *   S4-211115 =E2=80=A2 S4-211300
+  *   S4-211116 =E2=80=A2 S4-211301
+  *   S4-211117 =E2=80=A2 S4-211302
+  *   S4-211118 =E2=80=A2 S4-211303
+  *   S4-211119 =E2=80=A2 S4-211293
+  *   S4-211127 =E2=80=A2 S4-211304
+  *   S4-211128 =E2=80=A2 S4-211305
+  *   S4-211129 =E2=80=A2 S4-211306
+  *   S4-211130 =E2=80=A2 S4-211307
+  *   S4-211131 =E2=80=A2 S4-211308
+
+Thank you, best regards,
+
+Markus
+
+--
+Dipl.-Ing. Markus Multrus | Phone: +49 9131 776 6019
+Fraunhofer IIS            | Fax:   +49 9131 776 6099
+Am Wolfsmantel 33         | markus.multrus@iis.fraunhofer.de<mailto:markus.mu=
+ltrus@iis.fraunhofer.de>
+D 91058 Erlangen          | http://www.iis.fraunhofer.de/amm/
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:31 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <DM6PR06MB5307F3BFEE111595ADBE02D58FC59@DM6PR06MB5307.namprd06.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Draft IVAS-8a in Draft folder'
+from: "Bruhn, Stefan" <Stefan.Bruhn@DOLBY.COM>
+date: Tue, 24 Aug 2021 07:16:12 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: "Bruhn, Stefan" <Stefan.Bruhn@DOLBY.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;f505bda8.2108D&S=>
+
+Dear Colleagues,
+
+A draft of the initial Pdoc IVAS-8a is now available in the drafts folder: ht=
+tps://www.3gpp.org/ftp/TSG_SA/WG4_CODEC/TSGS4_115-e/Inbox/Drafts/EVS<https://=
+urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.3gpp.org_ftp_TSG-5FSA_WG4-=
+5FCODEC_TSGS4-5F115-2De_Inbox_Drafts_EVS&d=3DDwMFAg&c=3DlI8Zb6TzM3d1tX4iEu7bp=
+g&r=3DKOodPMyewKPZFGRTQCK8NdtN7cS4BfT7K5Bnbmu_XHU&m=3DZDF5x6ZnfOrj_mPAXfMWQmd=
+iRi3Lj3AMeY3K_NANSgM&s=3DhXQEJbbq4KtzbC7Z3XXVhxShsH2gIlfaAjijzccDPo0&e=3D>
+with the following link:
+https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_115-e/Inbox/Drafts/EVS/Draft_=
+S4-211288_IVAS-8a_v.0.0.1.docx
+
+Please note that I have not yet imported any content from Tdocs 1155 or 1151 =
+that has been proposed to go into the Appendix of IVAS-8a since we did not ye=
+t conclude on these proposals.
+
+Best regards,
+
+Stefan
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:33 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Revised IVAS-1 in Draft folder'
+from: Huan-yu Su <hs@QOSOUND.COM>
+date: Tue, 24 Aug 2021 11:53:39 +0800
+message-id: <2021082411533842954464@qosound.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Huan-yu Su <hs@QOSOUND.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;dc7e9163.2108D&S=>
+
+Dear Colleagues,
+
+FYI, I have uploaded a revised IVAS-1 in the draft folder: https://www.3gpp.o=
+rg/ftp/TSG_SA/WG4_CODEC/TSGS4_115-e/Inbox/Drafts/EVS
+with the following title:
+S4-211287 Draft IVAS codec development overview (IVAS-1) v0.3.1 - r1.docx
+
+A few typos were corrected.=20
+
+
+
+Best regards,
+
+Huan-yu
++86 186 8027 1821
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:35 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <DM6PR06MB5307CB3C0D29F5B3FDDE585F8FC49@DM6PR06MB5307.namprd06.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Draft LS reply to SG12 on P.SUPPL800  &  draft IVAS call for labs'
+from: "Bruhn, Stefan" <Stefan.Bruhn@DOLBY.COM>
+date: Mon, 23 Aug 2021 10:32:40 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: "Bruhn, Stefan" <Stefan.Bruhn@DOLBY.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;a14339e6.2108D&S=>
+
+Dear Colleagues,
+
+A draft of the LS reply to SG12 is now available in the drafts folder (www.3g=
+pp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_115-e/Inbox/Drafts/EVS<http://www.3gpp.org/=
+ftp/tsg_sa/WG4_CODEC/TSGS4_115-e/Inbox/Drafts/EVS>).
+
+Also available there is the draft message for the IVAS call for labs.
+
+Best regards,
+
+Stefan
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:37 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Thu, 19 Aug 2021 12:18:51 +0000
+reply-to: "Szczerba, Marek" <marek.szczerba@PHILIPS.COM>
+message-id: <VE1P122MB01593CDDB0708C942A6D12FC98C09@VE1P122MB0159.EURP122.PROD.OUTLOOK.COM>
+subject: 'Re: Information related to EVS SWG Sessions during SA4#115e              meeting'
+from: "Szczerba, Marek" <marek.szczerba@PHILIPS.COM>
+in-reply-to: <SN6PR02MB5456E28AA965FF9865284C7CF8FF9@SN6PR02MB5456.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+comments-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>cc: "Bont, Frans de" <frans.de.bont@philips.com>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;a705e51.2108C&S=>
+
+Dear Imre,
+
+Due to updated IT security measures at Philips we are unable to access google=
+ docs anymore. Could you please add our names to the list (Frans de Bont and =
+myself) and share the minutes after the meeting via e-mail? Many thanks in ad=
+vance.
+
+Kind regards,
+Marek
+
+From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On Behalf Of Im=
+re Varga
+Sent: Wednesday, 18 August 2021 14:30
+To: 3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG
+Subject: Information related to EVS SWG Sessions during SA4#115e meeting
+
+Caution: This e-mail originated from outside of Philips, be careful for phish=
+ing.
+
+Dear Colleagues,
+
+Welcome to the EVS SWG sessions!
+
+Here I would like to give you some information related to EVS SWG sessions du=
+ring the SA4#115e meeting:
+
+  *   Please find the revised draft agenda (1100R1) with Tdoc allocation in t=
+he drafts folder.
+  *   The on-line meeting minutes will be at the following location:
+
+https://docs.google.com/document/d/1FB_e9T-ZlewR-7WQu3dEgeNfLfcDITLr4yT3rjcg6=
+5E/edit#heading=3Dh.8xi6ohz62qvi<https://eur01.safelinks.protection.outlook.c=
+om/?url=3Dhttps%3A%2F%2Fdocs.google.com%2Fdocument%2Fd%2F1FB_e9T-ZlewR-7WQu3d=
+EgeNfLfcDITLr4yT3rjcg65E%2Fedit%23heading%3Dh.8xi6ohz62qvi&data=3D04%7C01%7C%=
+7C25f3fcde4a4946e31c7508d96244811d%7C1a407a2d76754d178692b3ac285306e4%7C0%7C0=
+%7C637648869043042934%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2l=
+uMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=3DqRgN7plWOVuc1ns9iQThPPRe7Y=
+zhj%2Fx5DPr1DLc7hyg%3D&reserved=3D0>
+
+  *   No hand-raising tool will be used during the sessions.
+
+Best regards
+Imre
+
+
+
+
+
+
+
+
+
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1<https:=
+//eur01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.etsi.org%2F=
+scripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&data=3D04%7C01%7C%7C2=
+5f3fcde4a4946e31c7508d96244811d%7C1a407a2d76754d178692b3ac285306e4%7C0%7C0%7C=
+637648869043042934%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMz=
+IiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=3DlBLaiu3O%2FQ%2FbjR%2B%2BZxwwo=
+t4fSx7lQ6T4nHRkgm%2FAGMk%3D&reserved=3D0>
+
+________________________________
+The information contained in this message may be confidential and legally pro=
+tected under applicable law. The message is intended solely for the addressee=
+(s). If you are not the intended recipient, you are hereby notified that any =
+use, forwarding, dissemination, or reproduction of this message is strictly p=
+rohibited and may be unlawful. If you are not the intended recipient, please =
+contact the sender by return e-mail and destroy all copies of the original me=
+ssage.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:39 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB5456E28AA965FF9865284C7CF8FF9@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Information related to EVS SWG Sessions during SA4#115e meeting'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Wed, 18 Aug 2021 12:30:16 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;9001fd86.2108C&S=>
+
+Dear Colleagues,
+
+Welcome to the EVS SWG sessions!
+
+Here I would like to give you some information related to EVS SWG sessions du=
+ring the SA4#115e meeting:
+
+  *   Please find the revised draft agenda (1100R1) with Tdoc allocation in t=
+he drafts folder.
+  *   The on-line meeting minutes will be at the following location:
+
+https://docs.google.com/document/d/1FB_e9T-ZlewR-7WQu3dEgeNfLfcDITLr4yT3rjcg6=
+5E/edit#heading=3Dh.8xi6ohz62qvi
+
+  *   No hand-raising tool will be used during the sessions.
+
+Best regards
+Imre
+
+
+
+
+
+
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:41 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <DM6PR06MB53077F4183ED51A4712E53518F259@DM6PR06MB5307.namprd06.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Draft IVAS-8a (IVAS test plan skeleton with Appendix with example              test designs)'
+from: "Bruhn, Stefan" <Stefan.Bruhn@DOLBY.COM>
+date: Tue, 25 May 2021 08:09:56 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: "Bruhn, Stefan" <Stefan.Bruhn@DOLBY.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;71ebb54f.2105D&S=>
+
+Dear all,
+
+To speed up our work today in the EVS SWG, I undertook the effort to create a=
+n IVAS-8a (IVAS testplan) skeleton including Appendix for IVAS test design ex=
+amples. I included the test design from Tdoc 836 with a few formatting change=
+s or other minor changes (in yellow highlight).
+
+I uploaded that draft to the drafts folder: https://www.3gpp.org/ftp/TSG_SA/W=
+G4_CODEC/TSGS4_114-e/Inbox/Drafts/EVS/Draft%20S4-210xxx_IVAS-8a_v.0.0.1.docx
+
+The proposal is thus to collect the test design examples in the Appendix of I=
+VAS-8a rather than creating to that purpose just a further Pdoc, which appear=
+s more logical to me.
+
+
+What would be needed besides agreeing on this initial document as editing ver=
+sion is to assign an editor. It would be good to find some other volunteer th=
+an myself since I am already editor of two IVAS Pdocs.
+
+
+Stefan
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:43 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB54563CA9F8A4D2E8F8574F62F82B9@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Information related to EVS SWG Sessions during SA4#114e meeting'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Wed, 19 May 2021 20:38:39 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;ddc38641.2105C&S=>
+
+Dear Colleagues,
+
+Here I would like to give you some information related to EVS SWG sessions du=
+ring the SA4#114e meeting:
+
+  *   Please find the revised draft agenda (733R1) with Tdoc allocation in th=
+e drafts folder.
+  *   The on-line meeting minutes will be at the following location:
+
+https://docs.google.com/document/d/1HL29ZdzB4iVLuaojIZ8eslbUG9uS0uIldvm9Q8m5O=
+Ec/edit#
+
+  *   No hand-raising tool will be used during the sessions.
+
+Thank you and
+Best regards
+Imre
+
+
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:44 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+date: Mon, 12 Apr 2021 22:14:34 +0800
+reply-to: Huan-yu Su <hs@QOSOUND.COM>
+subject: 'IVAS-1 is in the Inbox now'
+from: Huan-yu Su <hs@QOSOUND.COM>
+message-id: <202104122214303907583@qosound.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+comments-to: Imre Varga <ivarga@qti.qualcomm.com>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;9aff5c81.2104B&S=>
+
+Dear Imre and all,
+
+FYI, I have just uploaded the IVAS-1 to the inbox at:
+
+https://www.3gpp.org/ftp/TSG_SA/WG4_CODEC/TSGS4_113-e/Inbox/S4-210646.zip
+
+
+
+
+Best regards,
+
+Huan-yu
++86 186 8027 1821
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:46 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 06 Apr 2021 19:55:05 +0000
+reply-to: "Multrus, Markus" <markus.multrus@IIS.FRAUNHOFER.DE>
+message-id: <68D3D8C0-0D6B-493E-A12B-C674A9C2D472@iis.fraunhofer.de>
+subject: 'Re: Information for #113e EVS SWG participants'
+from: "Multrus, Markus" <markus.multrus@IIS.FRAUNHOFER.DE>
+in-reply-to: <SN6PR02MB54567B0763574E96206CD5A1F8769@SN6PR02MB5456.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+comments-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;b0875734.2104A&S=>
+
+Hi Imre,
+
+as of now, we currently don=E2=80=99t have access to the Google doc =E2=80=93=
+ seems to be an permission issue.
+
+Best regards,
+
+Markus
+
+From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> on behalf of Im=
+re Varga <ivarga@QTI.QUALCOMM.COM>
+Reply-To: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Date: Tuesday, 6. April 2021 at 19:50
+To: "3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+Subject: Information for #113e EVS SWG participants
+
+Dear Colleagues,
+
+Below items for your information on #113e sessions:
+
+  *   The revised draft agenda containing Tdoc allocation can be found in dra=
+fts folder.
+  *   Please be informed on the location of the on-line report: https://docs.=
+google.com/document/d/1eB0fX1dRnSsAirtkEHWIUiMP9zvpspRgf5xJBeUyNNY/edit#<http=
+s://docs.google.com/document/d/1eB0fX1dRnSsAirtkEHWIUiMP9zvpspRgf5xJBeUyNNY/e=
+dit>; participants will be requested to enter their name.
+  *   Hand raising tool will not be used during the sessions.
+  *   Note that Tdoc 571 is currently missing.
+
+Hear you tomorrow,
+Best regards
+Imre
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:48 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 06 Apr 2021 20:03:35 +0200
+reply-to: Stefan =?utf-8?q?D=C3=B6hla?= <stefan.doehla@IIS.FRAUNHOFER.DE>
+message-id: <6F665C99-70A6-4E29-AD99-A8AC1152D3E5@iis.fraunhofer.de>
+subject: 'Re: Information for #113e EVS SWG participants'
+from: Stefan =?utf-8?q?D=C3=B6hla?= <stefan.doehla@IIS.FRAUNHOFER.DE>
+in-reply-to: <SN6PR02MB54567B0763574E96206CD5A1F8769@SN6PR02MB5456.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+comments-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;71ee4598.2104A&S=>
+
+Dear Mr. Chairman,
+
+thanks for the note!
+
+>   *   Note that Tdoc 571 is currently missing.
+
+Sorry, I must have clicked "Close" instead of "Upload" in 3GU after 
+dragging the ZIP on the window. The document is for Information - no 
+decision is requested.
+
+Best regards,
+-Stefan
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:50 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB54567B0763574E96206CD5A1F8769@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Information for #113e EVS SWG participants'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Tue, 06 Apr 2021 17:50:34 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;87ed1f77.2104A&S=>
+
+Dear Colleagues,
+
+Below items for your information on #113e sessions:
+
+  *   The revised draft agenda containing Tdoc allocation can be found in dra=
+fts folder.
+  *   Please be informed on the location of the on-line report: https://docs.=
+google.com/document/d/1eB0fX1dRnSsAirtkEHWIUiMP9zvpspRgf5xJBeUyNNY/edit#; par=
+ticipants will be requested to enter their name.
+  *   Hand raising tool will not be used during the sessions.
+  *   Note that Tdoc 571 is currently missing.
+
+Hear you tomorrow,
+Best regards
+Imre
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:52 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <HE1PR0702MB3643B736A6DB0C7DB5500FDCFAB29@HE1PR0702MB3643.eurprd07.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'IVAS-7a_v.0.2.0 available in S4-210315'
+from: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+date: Fri, 05 Feb 2021 15:20:59 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;3c153ec8.2102A&S=>
+
+Dear all,
+
+The new version of IVAS-7a in S4-210315 is available in the inbox. The revisi=
+on marks are against the latest agreed version on SA4 level, i.e. v.0.1.0.
+
+https://www.3gpp.org/ftp/TSG_SA/WG4_CODEC/TSGS4_112-e/Inbox/S4-210315.zip
+
+Best regards,
+Tomas
+
+[http://mediabank.ericsson.net/internet-media/Email_logo_Ericsson.png]<http:/=
+/www.ericsson.com/>
+
+Tomas Toftg=C3=A5rd
+Master Researcher
+
+Researcher
+GFTL ER DRI Audio Technology
+Phone: +46722441850
+tomas.toftgard@ericsson.com
+
+Ericsson
+Torshamnsgatan 23
+164 83,Stockholm
+Sweden
+ericsson.com<http://www.ericsson.com/>
+
+[http://mediabank.ericsson.net/internet-media/Email_Message.gif]<http://www.e=
+ricsson.com/current_campaign>
+
+Our commitment to Technology for Good<http://www.ericsson.com/thecompany/sust=
+ainability-corporateresponsibility> and Diversity and Inclusion<http://www.er=
+icsson.com/thecompany/diversity-inclusion> contributes to positive change.
+Follow us on: Facebook<https://www.facebook.com/ericsson> LinkedIn<https://ww=
+w.linkedin.com/company/ericsson> Twitter<https://twitter.com/Ericsson>
+
+Legal entity:ERICSSON AB registration number 556056-6258, registered office i=
+n .
+This communication is confidential. Our email terms: www.ericsson.com/en/lega=
+l/privacy/email-disclaimer<https://www.ericsson.com/en/legal/privacy/email-di=
+sclaimer>
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:17:54 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Final IVAS-1 is available in the Inbox'
+from: Huan-yu Su <hs@QOSOUND.COM>
+date: Fri, 05 Feb 2021 22:07:54 +0800
+message-id: <20210205220713620165157@qosound.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Huan-yu Su <hs@QOSOUND.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;92cfd58c.2102A&S=>
+
+Dear Colleagues, 
+
+I have just uploaded the IVAS-1 (redline and clean versions) to the Inbox:
+
+https://www.3gpp.org/ftp/TSG_SA/WG4_CODEC/TSGS4_112-e/Inbox/S4-210286.zip
+
+Should there be any problem, please let me know. 
+
+
+
+Best regards,
+
+Huan-yu
++86 186 8027 1821
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:56 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Rev1 of S4-210133 (IVAS-1) is available in the draft folder'
+from: Huan-yu Su <hs@QOSOUND.COM>
+date: Wed, 03 Feb 2021 15:15:20 +0800
+message-id: <2021020315144509986592@qosound.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Huan-yu Su <hs@QOSOUND.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;87aa3b04.2102A&S=>
+
+Dear Colleagues,
+
+Please note the revised IVAS-1 is available in the draft folder:
+S4-210xxx Draft IVAS-1 Codec development overview v0.1.1-Rev1.zip
+
+Please let us know if you have any comment. 
+
+
+
+Best regards,
+
+Huan-yu
++86 186 8027 1821
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:17:58 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 02 Feb 2021 05:42:02 +0000
+reply-to: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+subject: 'FW: [11.5, S4-210129, Block A, 3 Feb 16:00 CET]  Update to: Audio              mixing of multiple streaming in ITT4RT'
+message-id: <3D5BC8AE-B74A-4E64-8D94-1BFD370CF55C@qti.qualcomm.com>
+in-reply-to: <B460FA39-08D8-43FD-BEC0-DE9999B92A0D@qti.qualcomm.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;2a21ccc3.2102A&S=>
+
+Dear EVS SWG Colleagues,
+
+Please note that the email discussion on an ITT4RT document with audio aspect=
+s has begun on the MTSI SWG list.  Any comments should be provided on the MTS=
+I list before the indicated deadline.
+
+Thank you.
+
+Best Regards,
+
+-Nikolai
+
+From: "3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.OR=
+G> on behalf of Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+Reply-To: Nikolai Leung <nleung@qti.qualcomm.com>
+Date: Monday, February 1, 2021 at 9:35 PM
+To: "3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG>
+Subject: [11.5, S4-210129, Block A, 3 Feb 16:00 CET] Update to: Audio mixing =
+of multiple streaming in ITT4RT
+
+
+CAUTION: This email originated from outside of the organization.
+Dear MTSI SWG Colleagues,
+
+I declare the email agreement process started on the Tdoc(s) listed below.
+
+
+S4-210129<https://www.3gpp.org/ftp/TSG_SA/WG4_CODEC/TSGS4_112-e/Docs/S4-21012=
+9.zip>
+
+
+Update to: Audio mixing of multiple streaming in ITT4RT
+
+
+Tencent
+
+
+3 Feb 16:00 CET
+
+
+If no comments are received by the indicated time the document(s) will be agr=
+eed.
+
+Best Regards,
+
+-Nikolai
+
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_MTSI list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_MTSI&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:00 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB5456EA9DF9C4E4A5DCC86172F8B69@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Draft revised agenda and report template'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Mon, 01 Feb 2021 15:04:32 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;3563c652.2102A&S=>
+
+Dear Colleagues,
+
+Draft revised agenda with Tdoc allocation S4-210099R1 can be found in the DRA=
+FTS/EVS folder.
+
+Also please note the that the template of the on-line report can be found her=
+e:
+https://docs.google.com/document/d/1TtvMtkd5EGOuk0W8-q1R5nSDJ3xv-7NzAFBcjx2j8=
+_Q/edit#
+
+
+Best regards
+Imre
+
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:01 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 17 Nov 2020 17:09:52 -0500
+reply-to: Milan.Jelinek@USherbrooke.ca
+message-id: <498d57bd-a4ec-e04e-39c6-ca6a3a5f8f05@USherbrooke.ca>
+subject: 'Re: FW: [11.5; 1451; 18 Nov 1600 CET] Audio mixing of multiple              streaming in ITT4RT - for agreement'
+from: Milan Jelinek <Milan.Jelinek@USHERBROOKE.CA>
+in-reply-to: <82F2C509-0F29-4158-B739-1743615311B7@qti.qualcomm.com>
+Content-Type: text/plain; charset="utf-8"; Content-Transfer-Encoding="8bit"; Content-Type="text/plain"; MIME-Version="1.0"
+comments-to: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;7ffeeb55.2011C&S=>
+
+Thank you Nik for reminder,
+
+As briefly mentioned during the first MTSI session, I think this=20
+contribution should be reviewed by SA4 audio people before agreement. I=20
+would like to bring it up for discussion tomorrow in the EVS session,=20
+and I propose that interested audio experts join the MTSI Wash-up=20
+session if there is time to discuss it.
+
+ From my perspective, there are several unclear aspects, e.g.:
+
+- Does this proposal address Phase 1 (limited audio support using EVS)=20
+or Phase 2 (full 3D audio support using IVAS)?
+
+- In the 2nd case, my understanding is that the down/up-mixing=20
+functionality should be dealt with by the IVAS encoder/decoder.
+
+- The audio scenario for overlays needs some clarifications, both for=20
+the remote users and the teleconference room.
+
+Best regards
+Milan
+
+On 2020-11-17 16:42, Nikolai Leung wrote:
+> Dear EVS SWG Colleagues,
+>=20
+> I am notifying you of this email discussion on the MTSI SWG list as some=20
+> EVS delegates had expressed interest in this topic.=C2=A0 Please share any =
+
+> comments on the MTSI SWG list.
+>=20
+> Cheers,
+>=20
+> -Nikolai
+>=20
+> *From: *"3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG"=20
+> <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG> on behalf of Nikolai Leung=20
+> <nleung@QTI.QUALCOMM.COM>
+> *Reply-To: *Nikolai Leung <nleung@qti.qualcomm.com>
+> *Date: *Tuesday, November 17, 2020 at 12:05 PM
+> *To: *"3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG"=20
+> <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG>
+> *Subject: *[11.5; 1451; 18 Nov 1600 CET] Audio mixing of multiple=20
+> streaming in ITT4RT - for agreement
+>=20
+> *CAUTION*: This email originated from outside of the organization.
+>=20
+> Dear MTSI SWG Colleagues,
+>=20
+> I declare the email agreement process started on the Tdoc(s) indicated=20
+> in the subject line.=C2=A0 If no comments are received by 18 Nov 1600 CET t=
+he=20
+> document(s) will be*agreed*.
+>=20
+> Tdocs are available=20
+> at:https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_111-e/Docs=20
+> <https://can01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Furldef=
+ense.proofpoint.com%2Fv2%2Furl%3Fu%3Dhttps-3A__www.3gpp.org_ftp_tsg-5Fsa_WG4-=
+5FCODEC_TSGS4-5F111-2De_Docs%26d%3DDwMFAw%26c%3DlI8Zb6TzM3d1tX4iEu7bpg%26r%3D=
+Qunu7V7Ia9GvcnanPK7R7ry2Z-OGP4S2J6WaonVrTrQ%26m%3Drol1cQOcHvwa-TmzzJFJ_1iuhZ8=
+DhFo81LWqsmEhUJ8%26s%3D_noSmC4vXQkoQJgPrMWVHJFPh3rTwqZ8wR4HPrxlcLI%26e%3D&dat=
+a=3D04%7C01%7CMilan.Jelinek%40USHERBROOKE.CA%7C7e3614f2cf664f434e6208d88b432a=
+31%7C3a5a8744593545f99423b32c3a5de082%7C0%7C0%7C637412467883776842%7CUnknown%=
+7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0=
+%3D%7C3000&sdata=3DJYveeZ%2Fy%2BvGqCIMMUkvjSELrSIrvKzfnFWetQ1dzNXM%3D&reserve=
+d=3D0>
+>=20
+> Cheers,
+>=20
+> -Nikolai
+>=20
+> ------------------------------------------------------------------------
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_MTSI list, click the following link:
+> http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_MTSI&A=3D1=20
+> <https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.et=
+si.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_MTSI%26A%3D1&data=3D04%7=
+C01%7CMilan.Jelinek%40USHERBROOKE.CA%7C7e3614f2cf664f434e6208d88b432a31%7C3a5=
+a8744593545f99423b32c3a5de082%7C0%7C0%7C637412467883786837%7CUnknown%7CTWFpbG=
+Zsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C30=
+00&sdata=3DEWxB77eO3n2VQYH6Erk37AaKsUANp%2BQUjCZ03qdR4w0%3D&reserved=3D0>=20
+>=20
+>=20
+>=20
+> ------------------------------------------------------------------------
+>=20
+> To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+> http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1=20
+> <https://can01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Flist.et=
+si.org%2Fscripts%2Fwa.exe%3FSUBED1%3D3GPP_TSG_SA_WG4_EVS%26A%3D1&data=3D04%7C=
+01%7CMilan.Jelinek%40USHERBROOKE.CA%7C7e3614f2cf664f434e6208d88b432a31%7C3a5a=
+8744593545f99423b32c3a5de082%7C0%7C0%7C637412467883786837%7CUnknown%7CTWFpbGZ=
+sb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C300=
+0&sdata=3D9%2F40e4JGT3RP58W%2BGmalEr9i2rL4jY%2Fq%2Bwq82%2BsOB1w%3D&reserved=
+=3D0>=20
+>=20
+>=20
+
+--=20
+
+**********************************************
+Milan JELINEK, Ph.D.
+
+R&D, VoiceAge Corporation
+
+Speech and Audio Coding Research Group
+Department of Electrical & Computer Engineering
+University of Sherbrooke
+Sherbrooke (Quebec)  J1K 2R1  CANADA
+
+E-mail: Milan.Jelinek@USherbrooke.ca
+Blackberry: (+1) 819 446 7843
+phone:  (+1) 819 821 8000 / 63893
+
+CONFIDENTIALITY MESSAGE
+This email message is confidential and is intended for the exclusive use=20
+of the addressee.
+Any other person is strictly prohibited from disclosing, distributing or=20
+reproducing it.
+If the addressee cannot be reached or is unknown to you, please inform=20
+the sender by return email immediately,
+delete this email message and destroy all copies. Thank you.
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:03 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 17 Nov 2020 21:51:12 +0000
+reply-to: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+subject: 'FW: [11.5; 1451; 18 Nov 1600 CET] Audio mixing of multiple              streaming in ITT4RT - for agreement'
+message-id: <86F1FA94-07B5-4122-B058-50FA63F59ABE@qti.qualcomm.com>
+in-reply-to: <CF69280A-4113-407B-A0C6-355085554D18@qti.qualcomm.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;bf26bd39.2011C&S=>
+
+Dear EVS SWG Colleagues,
+
+I am notifying you of this email discussion on the MTSI SWG list as some EVS =
+delegates had expressed interest in this topic.  Please share any comments on=
+ the MTSI SWG list.
+
+Cheers,
+
+-Nikolai
+
+
+
+From: Nikolai Leung <nleung@qti.qualcomm.com>
+Date: Tuesday, November 17, 2020 at 12:05 PM
+To: "3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG>
+Subject: [11.5; 1451; 18 Nov 1600 CET] Audio mixing of multiple streaming in =
+ITT4RT - for agreement
+
+Dear MTSI SWG Colleagues,
+
+I declare the email agreement process started on the Tdoc(s) indicated in the=
+ subject line.  If no comments are received by 18 Nov 1600 CET the document(s=
+) will be agreed.
+
+Tdocs are available at: https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_111-e=
+/Docs<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.3gpp.org_ftp=
+_tsg-5Fsa_WG4-5FCODEC_TSGS4-5F111-2De_Docs&d=3DDwMFAw&c=3DlI8Zb6TzM3d1tX4iEu7=
+bpg&r=3DQunu7V7Ia9GvcnanPK7R7ry2Z-OGP4S2J6WaonVrTrQ&m=3Drol1cQOcHvwa-TmzzJFJ_=
+1iuhZ8DhFo81LWqsmEhUJ8&s=3D_noSmC4vXQkoQJgPrMWVHJFPh3rTwqZ8wR4HPrxlcLI&e=3D>
+
+Cheers,
+
+-Nikolai
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:05 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 17 Nov 2020 21:42:48 +0000
+reply-to: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+subject: 'FW: [11.5; 1451; 18 Nov 1600 CET] Audio mixing of multiple              streaming in ITT4RT - for agreement'
+message-id: <82F2C509-0F29-4158-B739-1743615311B7@qti.qualcomm.com>
+in-reply-to: <CF69280A-4113-407B-A0C6-355085554D18@qti.qualcomm.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;5e1045fe.2011C&S=>
+
+Dear EVS SWG Colleagues,
+
+I am notifying you of this email discussion on the MTSI SWG list as some EVS =
+delegates had expressed interest in this topic.  Please share any comments on=
+ the MTSI SWG list.
+
+Cheers,
+
+-Nikolai
+
+
+From: "3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.OR=
+G> on behalf of Nikolai Leung <nleung@QTI.QUALCOMM.COM>
+Reply-To: Nikolai Leung <nleung@qti.qualcomm.com>
+Date: Tuesday, November 17, 2020 at 12:05 PM
+To: "3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG>
+Subject: [11.5; 1451; 18 Nov 1600 CET] Audio mixing of multiple streaming in =
+ITT4RT - for agreement
+
+
+CAUTION: This email originated from outside of the organization.
+Dear MTSI SWG Colleagues,
+
+I declare the email agreement process started on the Tdoc(s) indicated in the=
+ subject line.  If no comments are received by 18 Nov 1600 CET the document(s=
+) will be agreed.
+
+Tdocs are available at: https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_111-e=
+/Docs<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.3gpp.org_ftp=
+_tsg-5Fsa_WG4-5FCODEC_TSGS4-5F111-2De_Docs&d=3DDwMFAw&c=3DlI8Zb6TzM3d1tX4iEu7=
+bpg&r=3DQunu7V7Ia9GvcnanPK7R7ry2Z-OGP4S2J6WaonVrTrQ&m=3Drol1cQOcHvwa-TmzzJFJ_=
+1iuhZ8DhFo81LWqsmEhUJ8&s=3D_noSmC4vXQkoQJgPrMWVHJFPh3rTwqZ8wR4HPrxlcLI&e=3D>
+
+Cheers,
+
+-Nikolai
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_MTSI list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_MTSI&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:07 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB5456DC67669A720F0E678341F8E70@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Information related to EVS SWG sessions'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Thu, 12 Nov 2020 21:08:13 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;7dadac35.2011B&S=>
+
+Dear Colleagues,
+
+Here is some information related to EVS SWG sessions:
+
+  *   No email agreement procedure is used.
+  *   Draft revised version of the agenda (S4-201361R1) with Tdoc allocations=
+ can be found in the drafts folder, please check.
+  *   The URL of the on-line meeting minutes template is as follows: https://=
+docs.google.com/document/d/1cec0bqqsfsyMblrQ6z4q0EWGJ-zFbQCuvkbwgdFOrQw/edit#=
+ This will also be needed to enter your name/affiliation in the list of parti=
+cipants.
+
+
+In case of questions or comments, please address them,
+Best regards
+Imre
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:09 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 25 Aug 2020 22:34:09 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: '3GPP SA4#110-e SQ SWG'
+message-id: <AM0PR04MB7025CF991CB78DD9510B82BCA8570@AM0PR04MB7025.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4_SQ <3GPP_TSG_SA_WG4_SQ@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;4ad57058.2008D&S=>
+
+[This slot is re-allocated to SQ as EVS SWG has cancelled its meeting in the =
+current slot].
+The GTM details remain same.
+
+https://global.gotomeeting.com/join/354255941
+
+There are upto 3 parallel sessions during SA4#110-e for which 3 different TOH=
+RU Meeting IDs are allocated as below.
+The Session Name is written in the Location of the invitation.
+
+SA4#110-e-GTM0
+SA4#110-e-GTM1
+SA4#110-e-GTM2
+Each of them corresponds respectively to =E2=80=9CGTM0=E2=80=9D, =E2=80=9CGTM=
+1=E2=80=9D and =E2=80=9CGTM2=E2=80=9D sessions as indicated in the SA4#110-e =
+schedule.
+
+Before each session please visit https://tohru.raisingthefloor.org/
+
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANY =E2=80=93 Firstname Lastname (e.g. Dolby=
+ =E2=80=93 Fr=C3=A9d=C3=A9ric Gabin)
+  *   And Push the =E2=80=9CEnter as Participant=E2=80=9D button.
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:11 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 25 Aug 2020 19:52:11 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: 'Update on the Tohru Hand raising Tool'
+message-id: <AM7PR04MB703092931FFDB5313627B9A2A8570@AM7PR04MB7030.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4_VIDEO <3GPP_TSG_SA_WG4_VIDEO@list.etsi.org>,          3GPP_TSG_SA_WG4_MBS <3GPP_TSG_SA_WG4_MBS@list.etsi.org>,          3GPP_TSG_SA_WG4_MTSI <3GPP_TSG_SA_WG4_MTSI@list.etsi.org>,          3GPP_TSG_SA_WG4_SQ <3GPP_TSG_SA_WG4_SQ@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;464934ab.2008D&S=>
+
+Dear Delegates,
+
+The certificate of TOHRU is not renewed until now.
+I have received a response from the hosting organization that, they are going=
+ to extend the certificate soon =E2=80=93 till then we could to use exception=
+s in Chrome and Brave.
+I know you must have been aware by now that, for Mozilla it=E2=80=99s not wor=
+king with the exceptions unlike the last time, when it worked.
+
+Also, people having certificates issued by Kaspersky has an extended date of =
+the certificate and might not have any problem to access TOHRU.
+
+I will comeback to you soon as I receive any update on the certificates.
+>From the next SA4 meeting, we could use the TOHRU hand raising tool hosted on=
+ the ETSI server =E2=80=93 we won=E2=80=99t have any certificate issues then =
+hopefully.
+
+Best Regards,
+Jayeeta
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:13 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB54561788E6096F738A2E2725F8560@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Wednesday meeting'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Mon, 24 Aug 2020 13:20:25 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;bd747a3a.2008D&S=>
+
+Dear all,
+
+Since the group finalized work at today's meeting, the EVS SWG meeting on Wed=
+nesday is cancelled.
+
+Best regards
+Imre
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:15 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Mon, 24 Aug 2020 11:52:40 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+message-id: <AM0PR04MB7025C662E37642417E8B29D9A8560@AM0PR04MB7025.eurprd04.prod.outlook.com>
+subject: 'Re: Updated Draft Schedule of MTSI SWG Telco sessions at SA4#110-e'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+in-reply-to: <BL0PR02MB5441B75846740C4C374B0D3FF85B0@BL0PR02MB5441.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+comments-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;bba78be.2008D&S=>
+
+Dear All,
+
+The EVS SWG Session starts from 2 PM today.
+The GTM link is given below:
+https://global.gotomeeting.com/join/986204501
+
+There are upto 3 parallel sessions during SA4#110-e for which 3 different TOH=
+RU Meeting IDs are allocated as below.
+The GTM Session Name (0/1/2) is written in the Location of the invitation.
+
+SA4#110-e-GTM0
+SA4#110-e-GTM1
+SA4#110-e-GTM2
+Each of them corresponds respectively to =E2=80=9CGTM0=E2=80=9D, =E2=80=9CGTM=
+1=E2=80=9D and =E2=80=9CGTM2=E2=80=9D sessions as indicated in the SA4#110-e =
+schedule.
+
+Before each session please visit https://tohru.raisingthefloor.org/
+
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANY =E2=80=93 Firstname Lastname (e.g. NYZ =
+=E2=80=93  Sharon Bryden)
+  *   And Push the =E2=80=9CEnter as Participant=E2=80=9D button.
+
+Please join, if you have registered in the SA4#110 =E2=80=93 e meeting.
+
+BR
+Jayeeta
+
+From: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG> On Behalf Of Im=
+re Varga
+Sent: Friday, August 21, 2020 10:37 PM
+To: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@list.etsi.org>
+Subject: FW: Updated Draft Schedule of MTSI SWG Telco sessions at SA4#110-e
+
+FYI:
+Monday August 24th
+11.5     ITT4RT (invited EVS SWG members to discuss 1018 and 1022)
+
+Best regards
+Imre
+
+From: 3GPP_TSG_SA_WG4_MTSI <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG<mailto:3GPP_TS=
+G_SA_WG4_MTSI@LIST.ETSI.ORG>> On Behalf Of Nikolai Leung
+Sent: Friday, August 21, 2020 7:54 PM
+To: 3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.=
+ORG>
+Subject: Updated Draft Schedule of MTSI SWG Telco sessions at SA4#110-e
+
+
+CAUTION: This email originated from outside of the organization.
+Dear MTSI SWG Colleagues,
+
+As discussed during the last MTSI SWG Telco Session, below is the updated dra=
+ft schedule (all days in CEST):
+Friday August 21st
+11.1     Opening of the session
+11.2     Registration of documents
+11.3     Reports and liaisons from other groups
+11.4     CRs to Features in Release 16 and earlier
+11.5     ITT4RT
+
+Monday August 24th
+11.5     ITT4RT (invited EVS SWG members to discuss 1018 and 1022)
+11.6     FS_FLUS_NBMP
+
+Tuesday August 25th
+11.8     New Work / New Work Items and Study Items
+11.5     ITT4RT
+
+Wednesday August 26th
+            Wash-up of any open items and other documents
+11.9     Any Other Business
+11.10   Close of the session
+
+Best Regards,
+
+-Nikolai
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_MTSI list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_MTSI&A=3D1
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:17 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Fri, 21 Aug 2020 20:37:01 +0000
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+subject: 'FW: Updated Draft Schedule of MTSI SWG Telco sessions at SA4#110-e'
+message-id: <BL0PR02MB5441B75846740C4C374B0D3FF85B0@BL0PR02MB5441.namprd02.prod.outlook.com>
+in-reply-to: <1AD36CAB-9D6C-4019-9FCD-2E303CE206A7@qti.qualcomm.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;4d23296a.2008C&S=>
+
+FYI:
+Monday August 24th
+11.5     ITT4RT (invited EVS SWG members to discuss 1018 and 1022)
+
+Best regards
+Imre
+
+From: 3GPP_TSG_SA_WG4_MTSI <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG> On Behalf Of =
+Nikolai Leung
+Sent: Friday, August 21, 2020 7:54 PM
+To: 3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG
+Subject: Updated Draft Schedule of MTSI SWG Telco sessions at SA4#110-e
+
+
+CAUTION: This email originated from outside of the organization.
+Dear MTSI SWG Colleagues,
+
+As discussed during the last MTSI SWG Telco Session, below is the updated dra=
+ft schedule (all days in CEST):
+Friday August 21st
+11.1     Opening of the session
+11.2     Registration of documents
+11.3     Reports and liaisons from other groups
+11.4     CRs to Features in Release 16 and earlier
+11.5     ITT4RT
+
+Monday August 24th
+11.5     ITT4RT (invited EVS SWG members to discuss 1018 and 1022)
+11.6     FS_FLUS_NBMP
+
+Tuesday August 25th
+11.8     New Work / New Work Items and Study Items
+11.5     ITT4RT
+
+Wednesday August 26th
+            Wash-up of any open items and other documents
+11.9     Any Other Business
+11.10   Close of the session
+
+Best Regards,
+
+-Nikolai
+
+
+
+________________________________
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_MTSI list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_MTSI&A=3D1
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:19 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <SN6PR02MB545664F8281955464AC5C70AF85A0@SN6PR02MB5456.namprd02.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'Draft revised agenda and report template'
+from: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+date: Thu, 20 Aug 2020 14:24:12 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Imre Varga <ivarga@QTI.QUALCOMM.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;613bc34c.2008C&S=>
+
+Dear Colleagues,
+
+S4-201133R1 can be found in the DRAFTS folder.
+
+Also please note the that the template of the on-line report can be found her=
+e:
+https://docs.google.com/document/d/1jPmf6Jx_dIUlsbFBA669NZum9hHmGIVVNBcFw_Rrs=
+I0/edit#
+
+Best regards
+Imre
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:20 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <AM0PR04MB7025CD66BD8292AA6CA813C8A85D0@AM0PR04MB7025.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Wed, 19 Aug 2020 12:51:03 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;8dcb9c79.2008C&S=>
+
+https://global.gotomeeting.com/join/986204501
+
+There are upto 3 parallel sessions during SA4#110-e for which 3 different TOH=
+RU Meeting IDs are allocated as below.
+The GTM Session Name (0/1/2) is written in the Location of the invitation.
+
+SA4#110-e-GTM0
+SA4#110-e-GTM1
+SA4#110-e-GTM2
+Each of them corresponds respectively to =E2=80=9CGTM0=E2=80=9D, =E2=80=9CGTM=
+1=E2=80=9D and =E2=80=9CGTM2=E2=80=9D sessions as indicated in the SA4#110-e =
+schedule.
+
+Before each session please visit https://tohru.raisingthefloor.org/
+
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANY =E2=80=93 Firstname Lastname (e.g. NYZ =
+=E2=80=93  Sharon Bryden)
+  *   And Push the =E2=80=9CEnter as Participant=E2=80=9D button.
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:23 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <AM0PR04MB702528C97AA98815F788437EA85D0@AM0PR04MB7025.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Wed, 19 Aug 2020 12:29:16 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;1f4970eb.2008C&S=>
+
+https://global.gotomeeting.com/join/354255941
+
+There are upto 3 parallel sessions during SA4#110-e for which 3 different TOH=
+RU Meeting IDs are allocated as below.
+The Session Name is written in the Location of the invitation.
+
+SA4#110-e-GTM0
+SA4#110-e-GTM1
+SA4#110-e-GTM2
+Each of them corresponds respectively to =E2=80=9CGTM0=E2=80=9D, =E2=80=9CGTM=
+1=E2=80=9D and =E2=80=9CGTM2=E2=80=9D sessions as indicated in the SA4#110-e =
+schedule.
+
+Before each session please visit https://tohru.raisingthefloor.org/
+
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANY =E2=80=93 Firstname Lastname (e.g. Dolby=
+ =E2=80=93 Fr=C3=A9d=C3=A9ric Gabin)
+  *   And Push the =E2=80=9CEnter as Participant=E2=80=9D button.
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:25 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <AM0PR04MB702586ECAB9168A44C343A6AA85D0@AM0PR04MB7025.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Wed, 19 Aug 2020 12:23:00 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;cc0f20a3.2008C&S=>
+
+https://global.gotomeeting.com/join/986204501
+
+There are upto 3 parallel sessions during SA4#110-e for which 3 different TOH=
+RU Meeting IDs are allocated as below.
+The Session Name is written in the Location of the invitation.
+
+SA4#110-e-GTM0
+SA4#110-e-GTM1
+SA4#110-e-GTM2
+Each of them corresponds respectively to =E2=80=9CGTM0=E2=80=9D, =E2=80=9CGTM=
+1=E2=80=9D and =E2=80=9CGTM2=E2=80=9D sessions as indicated in the SA4#110-e =
+schedule.
+
+Before each session please visit https://tohru.raisingthefloor.org/
+
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANY =E2=80=93 Firstname Lastname (e.g. ERICS=
+SON =E2=80=93 Fr=C3=A9d=C3=A9ric Gabin)
+  *   And Push the =E2=80=9CEnter as Participant=E2=80=9D button.
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:26 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+message-id: <AM7PR04MB703048BB618A33E600F9A38FA85C0@AM7PR04MB7030.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Tue, 18 Aug 2020 16:20:17 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;6c780cee.2008C&S=>
+
+https://global.gotomeeting.com/join/986204501
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:28 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+message-id: <AM7PR04MB7030675A1B186CFDCE20FB4CA85C0@AM7PR04MB7030.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Tue, 18 Aug 2020 15:54:37 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;8d74832a.2008C&S=>
+
+https://global.gotomeeting.com/join/354255941
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:30 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+message-id: <AM7PR04MB70309A5E683D293AC853F724A85C0@AM7PR04MB7030.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Tue, 18 Aug 2020 15:20:33 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;8a312191.2008C&S=>
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:32 2021
+message-id: <AM0PR04MB7025AC4D38816EC968B53A35A85C0@AM0PR04MB7025.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: '3GPP SA4#110-e EVS SWG'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Tue, 18 Aug 2020 11:18:51 +0000
+Content-Type: text/plain; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;791d7c97.2008C&S=>
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:34 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Wed, 27 May 2020 21:33:38 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: 'EVS SWG on 28th May: cancelled'
+message-id: <AM0PR04MB7025BF34981A45C8B26B8610A8B10@AM0PR04MB7025.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4 <3GPP_TSG_SA_WG4@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;2e7b2293.2005D&S=>
+
+Dear Delegates,
+
+This is just to let you know, that tomorrow=E2=80=99s EVS session at 6:00 AM =
+CEST is cancelled. Please see the trailing mail for your reference.
+
+BR,
+Jayeeta
+
+From: 3gpp_tsg_sa_wg4: tsg sa codec <3GPP_TSG_SA_WG4@LIST.ETSI.ORG> On Behalf=
+ Of Imre Varga
+Sent: Tuesday, May 26, 2020 5:25 PM
+To: 3GPP_TSG_SA_WG4 <3GPP_TSG_SA_WG4@list.etsi.org>
+Subject: FW: EVS SWG planning
+
+Please note that the EVS SWG completed all its agenda today, so the second te=
+lco on Thursday 6:00 =E2=80=93 8:00 CEST is not needed and is CANCELLED.
+
+Best regards
+Imre
+
+From: Imre Varga
+Sent: Monday, May 25, 2020 4:15 PM
+To: 3GPP_TSG_SA_WG4@LIST.ETSI.ORG<mailto:3GPP_TSG_SA_WG4@LIST.ETSI.ORG>
+Subject: EVS SWG planning
+
+Dear all,
+
+Please find the revised EVS SWG agenda (S4-200815R1), including Tdoc allocati=
+ons, in the draft folder.
+
+Please be informed that email discussions will not be used.
+
+I have prepared a template for the SWG report in https://docs.google.com/docu=
+ment/d/1p-KUZPUI0HVMw62MEbFC8pskxAS6krMm-Bot7P-rZWc/edit#<https://docs.google=
+.com/document/d/1p-KUZPUI0HVMw62MEbFC8pskxAS6krMm-Bot7P-rZWc/edit>
+
+Also note please that the discussion on 850 will take place in EVS SWG; I wou=
+ld like to encourage interested MTSI experts to participate at the EVS Tuesda=
+y telco.
+
+Best regards
+Imre
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:37 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Wed, 27 May 2020 11:36:06 +0900
+reply-to: kyunghun.jung@samsung.com
+subject: 'Re: Continue discussion of 777 in the MTSI SWG Telco May 28              7:00-7:30 CEST'
+from: Kyunghun Jung <kyunghun.jung@SAMSUNG.COM>
+message-id: <20200527023606epcms1p636255d12590a047208538ca937a2b6dc@epcms1p6>
+in-reply-to: <23307935-C94B-4E92-8536-BEEF443D6FB8@qti.qualcomm.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+comments-to: "3GPP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORG"          <3GPP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORG>,          "3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG"          <3GPP_TSG_SA_WG4_MTSI@LIST.ETSI.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;7245209d.2005D&S=>
+
+LISTSERV - 3GPP_TSG_SA_WG4_EVS Archives - LIST.ETSI.ORGHello Teng, EVS, Video=
+, and MTSI SWG colleagues,Let me suggest a possible wayforward of this propos=
+al.Very few SIs or WIs in MTSI handled both audio and video simulatneously, p=
+robably the one taken in 2006 for V1.0 of 26.114. Even in the works including=
+ either audio or video media, MTSI SWG=C2=A0followed standard specifications =
+provided with media codecs and guided by EVS and Video SWGs.In the bandwidth =
+extension aspects, most EVS colleagues could not understand the very presence=
+ of problems as EVS achieves higher quality, higher audio bandwidth, and high=
+er error resilience at similar or lower bit-rates than any other codecs in al=
+l channel conditions, as analyzed in TR 26.952. Increase of qualoty, coverage=
+, and network capacity can be achieved by using EVS instead of legacy NB code=
+cs.If the academic research mentiond in 777 revealed new promising results us=
+ing other approaches, they might be presented at EVS SWG in SA4#110 meeting f=
+or further discussion.In the super resolution issues, MTSI colleagues wouldno=
+t be able tounderstand the presence of problems either as MTSI has an IETF-st=
+andard mechanism to agree the resolution using the imageattr attribute, unlik=
+e in the broadcasting or streaming applications where video cannot be tailore=
+d as precisely as in MTSI. The resolution is determined based on the processi=
+ng capability, b=3DAS, and the available area on the user interface. Therefor=
+e the need for re-sizing is not present orminimized in MTSI. If the academic =
+research mentiond in 777 revealed new promising results using other approache=
+s, they might be presented at Video SWG in SA4#110 meeting for further discus=
+sion.Best regards,Kyunghun Jung---------Original Message---------Sender: Niko=
+lai Leung=C2=A0<nleung@QTI.QUALCOMM.COM>Date: 2020-05-27 07:50 (GMT+9)Title: =
+Re: Continue discussion of 777 in the MTSI SWG Telco May 28 7:00-7:30 CESTTo =
+:3GPP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORGCc: Teng who presented the SIDHi Gilles &=
+ Video SWG Colleagues,The discussion started in the EVS SWG mainly fielded qu=
+estions focusing on the audio aspects.=C2=A0 The main questions were:Would th=
+ere be any significant gains using lower rate/audio bandwidth from the sender=
+ given the low rates of the 3GPP speech codecs at various audio bandwidths?Wh=
+y could the audio bandwidth extension not be performed post decoder in the te=
+rminal?While Teng, the Huawei delegate, focused responses on video super reso=
+lution as the primary use case, there were no details given on particular res=
+olutions or the signal processing aspects.There was one question from another=
+ delegate seeking clarification on whether the super resolution processing in=
+ the network only required the low resolution video to be sent from the sende=
+r/encoder, or if it required additional metadata to be sent to aid the networ=
+k processing.=C2=A0 I do not believe this question was answered.I hope this h=
+elps and entices you to attend the MTSI SWG discussion.=F0=9F=98=8ABest Regar=
+ds,-NikolaiFrom:Gilles Teniou <gilles.teniou@orange.com>Date:Tuesday, May 26,=
+ 2020 at 2:09 PMTo:Nikolai Leung <nleung@qti.qualcomm.com>, "3GPP_TSG_SA_WG4_=
+VIDEO@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORG>Subject:Re: Continu=
+e discussion of 777 in the MTSI SWG Telco May 28 7:00-7:30 CESTCAUTION: This =
+email originated from outside of the organization.Hi Nik,Thanks for the invit=
+e. When you saycontinue, I assume you already started discussing this contrib=
+ution. Have you figured out what a super resolution is?Is it associated to a =
+particular resolution or is it just a signal processing (maybe in the network=
+) that upscale the picture size (with or without AI)?Best regards,Gilles TENI=
+OUOrange LabsSenior Standardization Manager - Content & TV Servicesphone:+33 =
+(2) 23 48 75 87mobile:+33 (6) 89 32 65 12gilles.teniou@orange.comDe=C2=A0:"3G=
+PP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORG> on b=
+ehalf of "Leung, Nikolai" <nleung@qti.qualcomm.com>R=C3=A9pondre =C3=A0=C2=A0=
+:"Leung, Nikolai" <nleung@qti.qualcomm.com>Date=C2=A0:mardi 26 mai 2020 =C3=
+=A0 18:39=C3=80=C2=A0:"3GPP_TSG_SA_WG4_VIDEO@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4_=
+VIDEO@LIST.ETSI.ORG>Objet=C2=A0:FW: Continue discussion of 777 in the MTSI SW=
+G Telco May 28 7:00-7:30 CESTDear Video Experts,Please note the invitation to=
+ attend discussion of 777 where your input on the video/super resolution aspe=
+cts would be welcomed and appreciated.Best Regards,-NikolaiFrom:"3GPP_TSG_SA_=
+WG4@LIST.ETSI.ORG" <3GPP_TSG_SA_WG4@LIST.ETSI.ORG> on behalf of Nikolai Leung=
+ <nleung@QTI.QUALCOMM.COM>Reply-To:Nikolai Leung <nleung@qti.qualcomm.com>Dat=
+e:Tuesday, May 26, 2020 at 9:01 AMTo:"3GPP_TSG_SA_WG4@LIST.ETSI.ORG" <3GPP_TS=
+G_SA_WG4@LIST.ETSI.ORG>Subject:Continue discussion of 777 in the MTSI SWG Tel=
+co May 28 7:00-7:30 CESTCAUTION: This email originated from outside of the or=
+ganization.Dear SA4 Colleagues,Following the discussion in the EVS SWG on the=
+ audio/speech aspects of this Study Item proposal, the MTSI SWG will have a d=
+iscussion of 777 during the last 30 minutes of our scheduled Telco on 28 May.=
+We invite all interested delegates to participate -- especially Video experts=
+ who may have interest in the super resolution aspects.Best Regards,-NikolaiT=
+o unsubscribe from the 3GPP_TSG_SA_WG4_VIDEO list, click the following link:h=
+ttp://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_VIDEO&A=3D1______=
+_____________________________________________________________________________=
+______________________________________Ce message et ses pieces jointes peuven=
+t contenir des informations confidentielles ou privilegiees et ne doivent don=
+cpas etre diffuses, exploites ou copies sans autorisation. Si vous avez recu =
+ce message par erreur, veuillez le signalera l'expediteur et le detruire ains=
+i que les pieces jointes. Les messages electroniques etant susceptibles d'alt=
+eration,Orange decline toute responsabilite si ce message a ete altere, defor=
+me ou falsifie. Merci.This message and its attachments may contain confidenti=
+al or privileged information that may be protected by law;they should not be =
+distributed, used or copied without authorisation.If you have received this e=
+mail in error, please notify the sender and delete this message and its attac=
+hments.As emails may be altered, Orange is not liable for messages that have =
+been modified, changed or falsified.Thank you.To unsubscribe from the 3GPP_TS=
+G_SA_WG4_VIDEO list, click the following link:http://list.etsi.org/scripts/wa=
+.exe?SUBED1=3D3GPP_TSG_SA_WG4_VIDEO&A=3D1To unsubscribe from the 3GPP_TSG_SA_=
+WG4_EVS list, click the following link:http://list.etsi.org/scripts/wa.exe?SU=
+BED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+From MAILER-DAEMON Sat Aug 28 14:18:40 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Tue, 26 May 2020 09:59:15 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: 'GTM Links A/B/C: SA4#109-e SWG Sessions'
+message-id: <AM0PR04MB70254876140DB8FE3E950BB2A8B00@AM0PR04MB7025.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4_MBS <3GPP_TSG_SA_WG4_MBS@list.etsi.org>,          3GPP_TSG_SA_WG4_VIDEO <3GPP_TSG_SA_WG4_VIDEO@list.etsi.org>,          3GPP_TSG_SA_WG4_MTSI <3GPP_TSG_SA_WG4_MTSI@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;34874196.2005D&S=>
+
+Dear Delegates,
+
+The links for today=E2=80=99s SWG Sessions are given below:
+
+Day
+Time (CEST)
+Session Title
+Chair
+GTM Links
+Remarks
+Tohru Mtg ID
+Tuesday
+15:00 - 16:30
+MBS SWG  A.I.8
+Frederic Gabin
+https://global.gotomeeting.com/join/626723709
+GTM A - MCC
+SA4#109-e-A
+16:30 - 18:00
+Video SWG A.I.10
+Gilles Teniou
+https://global.gotomeeting.com/join/626723709
+GTM A - MCC
+SA4#109-e-A
+15:00 -17:00
+EVS SWG
+Imre Varga
+https://global.gotomeeting.com/join/604145325
+GTM B - MCC
+SA4#109-e-B
+16:30 - 18:00
+MTSI SWG A.I.11
+Nikolai Leung
+https://global.gotomeeting.com/join/622151405
+GTM C - MCC
+SA4#109-e-C
+
+
+TOHRU (: http://tohru.raisingthefloor.org/) might be used as the =E2=80=98han=
+d-raising=E2=80=99 tool during this session.
+
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANYNAME =E2=80=93 Firstname Lastname
+  *   Press the =E2=80=9CEnter as Participant=E2=80=9D button.
+
+Best Regards,
+Jayeeta
+
+From: 3gpp_tsg_sa_wg4: tsg sa codec <3GPP_TSG_SA_WG4@LIST.ETSI.ORG> On Behalf=
+ Of Jayeeta Saha
+Sent: Monday, May 25, 2020 10:22 AM
+To: 3GPP_TSG_SA_WG4 <3GPP_TSG_SA_WG4@list.etsi.org>
+Subject: SA4#109-e Meeting GTM-A Opening Session Today
+
+Dear All,
+The online sessions and email-threads on technical discussions for SA4#109-e =
+meeting starts today. If you have not registered yet, request you to register=
+ at the following before taking part in the online sessions/email-discussions=
+ , otherwise, your comments might be ignored.
+
+Online Session:
+
+
+
+  1.  The opening plenary session will be held today from 15:00 to 17:00 hrs =
+CEST. The GoToMeeting (GoToMeeting =E2=80=93 A) Link for the same is given he=
+re: https://global.gotomeeting.com/join/782906437 [Ref: S4-200851]
+  2.  In addition, TOHRU (: http://tohru.raisingthefloor.org/) will be used a=
+s the =E2=80=98hand-raising=E2=80=99 tool during this session. Please allow e=
+xceptions in your respective browsers for TOHRU to work.
+
+  *   The Meeting ID of TOHRU for today=E2=80=99s session: SA4#109-e-A.
+  *   Indicate the appropriate Meeting ID.
+  *   Indicate your Name as: COMPANYNAME =E2=80=93 Firstname Lastname
+  *   Press the =E2=80=9CEnter as Participant=E2=80=9D button.
+For Email Discussions:
+
+  1.  Too Long email subject-line apart from the usual =E2=80=9CRE:[AI#, Tdoc=
+ number(s), deadline date/time] free text=E2=80=9D by appending inadvertent u=
+se of [DKIM Error], External, RE RE etc. [Ref: Slide 10 of S4-200702] is disc=
+ouraged.
+  2.  Please do not share any contribution on any of the email reflectors dur=
+ing these meeting days.
+  3.  The following folders are in place for this meeting:
+
+
+     *   =E2=80=9CInbox=E2=80=9D folder:   https://www.3gpp.org/ftp/tsg_sa/WG=
+4_CODEC/TSGS4_109-e/Inbox
+
+  To submit formal Tdocs (with appropriate Tdoc nos.) during the meeting
+
+  Only files with .zip extension to be allowed (Naming Convention: For Exampl=
+e - S4-20xxxx.zip.).
+
+
+
+     *   =E2=80=9CDrafts=E2=80=9D folder: https://www.3gpp.org/ftp/tsg_sa/WG4=
+_CODEC/TSGS4_109-e/Inbox/Drafts
+
+  Draft documents for discussion during the meeting. Typically used for revis=
+ions before they are submitted as formal TDocs.
+
+  Documents submitted in this area will not be treated formally during the me=
+eting.
+
+  While naming the files in the draft folder, please limit the filenames to 2=
+55 characters max and avoid long filenames.
+
+
+
+     *   =E2=80=9CChairmen=E2=80=99s Notes=E2=80=9D folder: https://www.3gpp.=
+org/ftp/tsg_sa/WG4_CODEC/TSGS4_109-e/Inbox/Chairman_Notes_during_e-Mtg
+
+To share Chairmen's Notes after every SWG session/working sessions during the=
+ meeting.
+
+The SA4 Chairman, Vice-Chairmen, SWG Chairmen can upload interim notes in thi=
+s folder.
+
+  1.  Please make sure you are subscribed to the respective email lists for t=
+he SA4 and/or SWG in order to take part in the email discussions. Ref to: The=
+ mail on 20th May, 2020 10:42 CEST, on the Subscriptions list (.xlsx) and the=
+ list of SA4 reflectors.
+ Please note that,
+
+  *   At the instant of document submission deadline, the following TDocs had=
+ an updated status:
+
+           *   S4-200703 is revised to S4-200732
+           *   S4-200704 is revised to S4-200807
+           *   S4-200734 is revised to S4-200851
+           *   S4-200738 is revised to S4-200840
+           *   S4-200778 is revised to S4-200846
+
+TDoc
+Title
+Source
+Type
+TDoc Status
+Revised to
+Related WIs
+S4-200703<http://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_109-e/Docs/S4-200703=
+.zip>
+Update domain model diagrams
+BBC
+draftCR
+Revised
+S4-200732<https://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=3Dview&contrib=
+utionId=3D1120773>
+5GMSA<http://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?wor=
+kitemId=3D820002>
+S4-200704<http://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_109-e/Docs/S4-200704=
+.zip>
+Report of SA4#108-e Meeting
+3GPP MCC
+report
+Revised
+S4-200807<https://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=3Dview&contrib=
+utionId=3D1121557>
+
+S4-200734<http://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_109-e/Docs/S4-200734=
+.zip>
+SA4#109-e Online Sessions: GoToMeeting invitation links
+3GPP MCC
+other
+Revised
+S4-200851<https://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=3Dview&contrib=
+utionId=3D1122313>
+
+S4-200738<http://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_109-e/Docs/S4-200738=
+.zip>
+ITT4RT Permanent Document v0.7.0
+Intel, Nokia Corporation (ITT4RT Rapporteurs)
+other
+Revised
+S4-200840<https://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=3Dview&contrib=
+utionId=3D1121603>
+
+S4-200778<http://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_109-e/Docs/S4-200778=
+.zip>
+4K-TV Scenario fo FS_5GVideo
+ATEME, InterDigital
+pCR
+Revised
+S4-200846<https://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=3Dview&contrib=
+utionId=3D1122000>
+FS_5GVideo<http://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.asp=
+x?workitemId=3D870011>
+
+
+  *   The incoming Liaisons to this meeting are being put up in the ../Incomi=
+ng_Liaisons folder (Link: https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_109=
+-e/Incoming_Liaisons) and ../Docs (Link: https://www.3gpp.org/ftp/tsg_sa/WG4_=
+CODEC/TSGS4_109-e/Docs).
+If you have any concerns or queries/questions including request for TDoc numb=
+ers during the meeting, please contact me at jayeeta.saha@3gpp.org<mailto:jay=
+eeta.saha@3gpp.org>.
+
+Thanks,
+Best Regards,
+Jayeeta
+
+For today=E2=80=99s meeting, you can join through the following numbers as we=
+ll:
+France: +33 187 210 241<tel:+33187210241,,782906437>
+
+Access Code: 782-906-437
+
+More phone numbers
+United States: +1 (669) 224-3318<tel:+16692243318,,782906437>
+Austria: +43 7 2081 5337<tel:+43720815337,,782906437>
+Belgium: +32 28 93 7002<tel:+3228937002,,782906437>
+Canada: +1 (647) 497-9373<tel:+16474979373,,782906437>
+Czech Republic: +420 2 96 21 62 28<tel:+420296216228,,782906437>
+Denmark: +45 32 72 03 69<tel:+4532720369,,782906437>
+Finland: +358 923 17 0556<tel:+358923170556,,782906437>
+Germany: +49 892 0194 301<tel:+498920194301,,782906437>
+Hungary: +36 1 933 3700<tel:+3619333700,,782906437>
+Ireland: +353 15 295 146<tel:+35315295146,,782906437>
+Israel: +972 3 376 3071<tel:+97233763071,,782906437>
+Italy: +39 0 230 57 81 80<tel:+390230578180,,782906437>
+Luxembourg: +352 34 2080 9220<tel:+3523420809220,,782906437>
+Netherlands: +31 202 251 001<tel:+31202251001,,782906437>
+South Africa: +27 11 259 4925<tel:+27112594925,,782906437>
+Spain: +34 932 75 1230<tel:+34932751230,,782906437>
+Sweden: +46 853 527 818<tel:+46853527818,,782906437>
+Switzerland: +41 225 4599 60<tel:+41225459960,,782906437>
+United Kingdom: +44 330 221 0097<tel:+443302210097,,782906437>
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:43 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'subscribe'
+from: Huan-yu Su <hs@QOSOUND.COM>
+date: Mon, 25 May 2020 18:26:08 +0800
+message-id: <20200525182528542390342@qosound.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+reply-to: Huan-yu Su <hs@QOSOUND.COM>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;8815189a.2005D&S=>
+
+
+
+
+
+Best regards,
+
+Huan-yu
++86 186 8027 1821
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:46 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+message-id: <AM0PR04MB7025AB5F7E7129038034D3F4A8C30@AM0PR04MB7025.eurprd04.prod.outlook.com>
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+subject: 'SQA4 Breakout Sessions: =?utf-8?q?Today=E2=80=99s?= link for the              online sessions'
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+date: Tue, 07 Apr 2020 10:55:32 +0000
+Content-Type: text/plain; charset="utf-8"; Content-Type="multipart/alternative"; MIME-Version="1.0"
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;266a8cca.2004A&S=>
+
+Dear All,
+Today=E2=80=99s link for the online sessions starting at 1 PM
+
+3GPP SA4#108-e: GTM Sessions - DAY2 [07/04/2020]: BreakOutSessions (EVS/Video=
+/MTSI/MBS)
+Tue, Apr 7, 2020 1:00 PM - 8:00 PM (CEST)
+
+GTM Link: https://global.gotomeeting.com/join/877401637
+
+Please join
+
+Thanks,
+Best Regards,
+Jayeeta
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:48 2021
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Wed, 25 Mar 2020 13:16:22 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: 'Hosted: Agenda for SA4#108-e meeting'
+message-id: <AM0PR04MB4386481180A0D0D5DC4995A8A8CE0@AM0PR04MB4386.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/related"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4 <3GPP_TSG_SA_WG4@list.etsi.org>,          3GPP_TSG_SA_WG4_SQ <3GPP_TSG_SA_WG4_SQ@list.etsi.org>,          3GPP_TSG_SA_WG4_VIDEO <3GPP_TSG_SA_WG4_VIDEO@list.etsi.org>,          3GPP_TSG_SA_WG4_MTSI <3GPP_TSG_SA_WG4_MTSI@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;296a432e.2003D&S=>
+
+Dear All,
+
+The agenda for the upcoming SA4#108-e has been uploaded at the link given bel=
+ow:
+https://www.3gpp.org/ftp/tsg_sa/WG4_CODEC/TSGS4_108-e/Agenda/
+
+You can now reserve Tdocs and upload your contributions corresponding to them=
+, for SA4#108-e.
+The last date of submission of contribution is 31st March 23:59 hours.
+The latest versions of the specifications pertaining to SA4 that were approve=
+d in the SA plenary last Friday are uploaded in 3GU.
+
+ Please register for the SA4#108-e meeting, if not done yet.
+
+Thanks,
+Best Regards,
+Jayeeta
+
+From: 3gpp_tsg_sa_wg4: tsg sa codec <3GPP_TSG_SA_WG4@LIST.ETSI.ORG> On Behalf=
+ Of Frederic Gabin
+Sent: 10 March 2020 19:00
+To: 3GPP_TSG_SA_WG4 <3GPP_TSG_SA_WG4@list.etsi.org>
+Subject: Draft proposed agenda for SA4#108-e meeting
+
+Dear colleagues,
+
+Attached is the draft proposed agenda for our SA4#108e e-meeting.
+
+Following cancellation of face to face WG meetings in April, the decision was=
+ to transform SA4#108 into an e-meeting using a combination of telcos and ema=
+il agreement procedures.
+
+The SA4#108-e is an ordinary e-meeting and a regular agenda is proposed. Howe=
+ver, the expectation is that progress will be slower than during a regular fa=
+ce to face meeting, so priority will be given to Rel-16 work. The prioritized=
+ items have been defined as follows:
+
+  *   Maintenance of Rel-16 (5GMSA, 5G_Media_MTSI_Ext, RTCPVer etc.)
+  *   5GMS3
+  *   E_FLUS
+  *   IVAS_Codec
+  *   HaNTE
+  *   FS_5GVideo
+Prioritized items will have time allocated during telcos. Telcos will take pl=
+ace during 6-9 April, the original SA4#108 planned meeting dates. Other items=
+ will be handled via email only. Email meeting will take place during 2-9 Apr=
+il.
+
+The leadership and SWG chairmen and secretary have agreed that proposed agend=
+a. Details of procedures and schedule are still being worked on. They will be=
+ communicated before the end of the week.
+
+Your comments and questions are most welcome,
+Best regards,
+/Fr=C3=A9d=C3=A9ric
+
+[cid:image001.png@01D5F70D.E624E1F0]<http://www.ericsson.com/>
+FR=C3=89D=C3=89RIC GABIN
+3GPP SA4 chairman
+Standardization Manager Ecosystem Expansion
+G/F Standardization and Industry
+
+Ericsson
+25 avenue Carnot
+91348 Massy Cedex, France
+Phone +33 6 78 44 85 75
+frederic.gabin@ericsson.com<mailto:frederic.gabin@ericsson.com>
+www.ericsson.com<http://www.ericsson.com/>
+
+
+Legal entity: Ericsson France, registered office in France. This Communicatio=
+n is Confidential. We only send and receive email on the basis of the terms s=
+et out at www.ericsson.com/email_disclaimer<http://www.ericsson.com/email_dis=
+claimer>
+
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3D3GPP_TSG_SA_WG4_EVS&A=3D1
+
+########################################################################
+
+
+From MAILER-DAEMON Sat Aug 28 14:18:50 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Mon, 16 Mar 2020 18:54:49 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: 'test mail -'
+message-id: <AM0PR04MB43866036209F08871287E845A8F90@AM0PR04MB4386.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4_VIDEO <3GPP_TSG_SA_WG4_VIDEO@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;57ae5cf3.2003C&S=>
+
+This is a test mail, kindly ignore
+
+Best Regards,
+Jayeeta
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
+From MAILER-DAEMON Sat Aug 28 14:18:50 2021
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+sender: 3GPP_TSG_SA_WG4_EVS <3GPP_TSG_SA_WG4_EVS@LIST.ETSI.ORG>
+date: Mon, 16 Mar 2020 18:54:49 +0000
+reply-to: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+subject: 'test mail -'
+message-id: <AM0PR04MB43866036209F08871287E845A8F90@AM0PR04MB4386.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; MIME-Version="1.0"; Content-Type="multipart/alternative"
+from: Jayeeta Saha <Jayeeta.Saha@3GPP.ORG>
+comments-to: 3GPP_TSG_SA_WG4_VIDEO <3GPP_TSG_SA_WG4_VIDEO@list.etsi.org>
+Archived-At: <https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG4_EVS;57ae5cf3.2003C&S=>
+
+This is a test mail, kindly ignore
+
+Best Regards,
+Jayeeta
+
+########################################################################
+
+To unsubscribe from the 3GPP_TSG_SA_WG4_EVS list, click the following link:
+http://list.etsi.org/scripts/wa.exe?SUBED1=3GPP_TSG_SA_WG4_EVS&A=1
+
+########################################################################
+
