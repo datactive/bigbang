@@ -150,9 +150,11 @@ class TestListservArchive:
             name="3GPP_mbox_test",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
         )
+        mlist_names = [mlist.name for mlist in march.lists]
+        mlist_index = mlist_names.index("3GPP_TSG_SA_WG4_EVS")
         assert len(march.lists) == 2
-        assert len(march.lists[0].messages) == 50
-        assert march.lists[0].messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
+        assert len(march.lists[mlist_index].messages) == 50
+        assert march.lists[mlist_index].messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
 
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
