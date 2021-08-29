@@ -862,13 +862,13 @@ class ListservList:
         df = pd.DataFrame(dic).set_index("message-id")
         # get index of date-times
         index = np.array([
-            True if (isinstance(dt, str)) and (len(dt) > 10)
+            True if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
             else False
             for i, dt in enumerate(df["date"])
         ], dtype="bool")
         df = df.loc[index, :]
         # convert data type from string to datetime.datetime object
-        df.update(
+        df.loc[:, 'date'].update(
                 df.loc[:, 'date'].apply(
                 lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
             )
@@ -1280,12 +1280,12 @@ class ListservArchive(object):
         df = pd.DataFrame(self.to_dict(include_body)).set_index("message-id")
         # get index of date-times
         index = np.array([
-            True if (isinstance(dt, str)) and (len(dt) > 10)
+            True if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
             else False
             for i, dt in enumerate(df["date"])
         ], dtype="bool")
         # convert data type from string to datetime.datetime object
-        df.update(
+        df.loc[index, 'date'].update(
             df.loc[index, 'date'].apply(
                 lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
             )
