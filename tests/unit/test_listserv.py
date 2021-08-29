@@ -87,8 +87,8 @@ class TestListservList:
             name=mlist_name,
             filepath=CONFIG.test_data_path + f"3GPP_mbox/{mlist_name}.mbox",
         )
-        assert len(mlist) == 27
-        assert mlist.messages[0]["From"] == "John M Meredith <[log in to unmask]>"
+        assert len(mlist) == 50
+        assert mlist.messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
     
     def test__from_listserv_files(self):
         filepath = CONFIG.test_data_path + \
@@ -150,9 +150,9 @@ class TestListservArchive:
             name="3GPP_mbox_test",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
         )
-        assert len(march.lists) == 1
-        assert len(march.lists[0].messages) == 27
-        assert march.lists[0].messages[0]["From"] == "John M Meredith <[log in to unmask]>"
+        assert len(march.lists) == 2
+        assert len(march.lists[0].messages) == 50
+        assert march.lists[0].messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
 
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
