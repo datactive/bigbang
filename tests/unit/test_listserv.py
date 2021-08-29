@@ -82,9 +82,10 @@ class TestListservMessageParser:
 class TestListservList:
 
     def test__from_mbox(self):
+        mlist_name = "3GPP_TSG_SA_WG4_EVS"
         mlist = ListservList.from_mbox(
-            name="3GPP_MENTORING",
-            filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_MENTORING.mbox",
+            name=mlist_name,
+            filepath=CONFIG.test_data_path + f"3GPP_mbox/{mlist_name}.mbox",
         )
         assert len(mlist) == 27
         assert mlist.messages[0]["From"] == "John M Meredith <[log in to unmask]>"
