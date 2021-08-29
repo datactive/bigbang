@@ -47,11 +47,11 @@ class ListservList:
     -------
     to_percentage
     iterate_from_name_addr
-    get_messagecount_per_affiliations
-    get_messagecount_per_affiliations
+    get_messagecount_per_domain
+    get_localpart_per_domain
     get_messagecount_per_timezone
-    get_members_per_affiliations
-    get_membercount_per_affiliations
+    get_localpart_per_domain
+    get_localpartcount_per_domain
     get_messaging_network
     """
 
@@ -71,7 +71,7 @@ class ListservList:
         for sender in  li:
             yield ListservList.get_name_localpart_domain(sender)
 
-    def get_messagecount_per_affiliations(
+    def get_messagecount_per_domain(
         df: pd.DataFrame, percentage: bool=False, contract: float=None,
     ) -> Dict[str, int]:
         """
@@ -99,7 +99,7 @@ class ListservList:
         count = count[indx]
         
         if percentage:
-            count = to_percentage(count)
+            count = ListservList.to_percentage(count)
         
         if contract:
             idx_low = np.arange(len(count))[count < contract]
@@ -110,7 +110,7 @@ class ListservList:
         else:
             return {key: value for key, value in zip(name, count)}
 
-    def get_members_per_affiliations(df: pd.DataFrame) -> Dict[str, int]:
+    def get_localpart_per_domain(df: pd.DataFrame) -> Dict[str, int]:
         """
         Get contribution of members per affiliation.
         """
@@ -126,7 +126,7 @@ class ListservList:
         dic = {domain: list(set(li)) for domain, li in dic.items()}
         return dic
 
-    def get_membercount_per_affiliations(
+    def get_localpartcount_per_domain(
         df: pd.DataFrame, percentage: bool=False, contract: float=None,
     ) -> Dict[str, int]:
         """
@@ -139,7 +139,7 @@ class ListservList:
                 contracted to one class named 'Others'.
         """
         # collect members per affiliation
-        dic = ListservList.get_members_per_affiliations(df)
+        dic = ListservList.get_localpart_per_domain(df)
         # count members per affiliation
         dic = {domain: len(members) for domain, members in dic.items()}
 
@@ -197,7 +197,7 @@ class ListservList:
     def get_messaging_network(df: pd.DataFrame) -> Dict:
         """
         Args:
-            df: DataFrame that contains 'from' and 'comments-to' header fields.
+            df: pd.DataFrame that contains 'from' and 'comments-to' header fields.
 
         Returns:
             Nested dictionary with first layer the 'from'/sender keys and the
@@ -206,6 +206,9 @@ class ListservList:
         """
         dic = {}
         for idx, row in df.iterrows():
+            if pd.isnull(row["comments-to"]) or pd.isnull(row["from"]):
+                continue
+            
             # decompose sender
             f_name, f_localpart, f_domain = ListservList.get_name_localpart_domain(row["from"])
 
@@ -238,17 +241,17 @@ class ListservArchive(ListservList):
     """
     Methods
     -------
-        get_mlists_per_institution
+        get_mlistscount_per_institution
     """
 
-    def get_mlists_per_institution(df: pd.DataFrame) -> Dict[str, int]:
+    def get_mlistscount_per_institution(df: pd.DataFrame) -> Dict[str, int]:
         """
         Get a dictionary that lists the mailing lists/working groups in which
         a institute/company is active.
         """
         dic_mlis = {}
         for mem in list(set(df['from'].values)):
-            mlist_names = list(set(df[df['from'] == mem]['MailingList'].values))
+            mlist_names = list(set(df[df['from'] == mem]['mailing-list'].values))
             name, addr = email.utils.parseaddr(mem)
             try:
                 localpart, domain = addr.split('@')
