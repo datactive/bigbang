@@ -47,10 +47,9 @@ class ListservList:
     -------
     to_percentage
     iterate_from_name_addr
+    get_localpart_per_domain
     get_messagecount_per_domain
-    get_localpart_per_domain
     get_messagecount_per_timezone
-    get_localpart_per_domain
     get_localpartcount_per_domain
     get_messaging_network
     """
