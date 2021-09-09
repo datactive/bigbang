@@ -22,9 +22,10 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
+from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
-
 logging.basicConfig(
     filename=directory_project + "/listserv.log",
     filemode="w",
@@ -52,7 +53,7 @@ class ListservArchiveWarning(BaseException):
     pass
 
 
-class ListservMessageParser(email.parser.Parser, ListservMessageIO):
+class ListservMessageParser(email.parser.Parser):
     """
     This class handles the creation of an mailbox.mboxMessage object
     (via the from_...() methods) and its storage in various other file formats
@@ -374,14 +375,23 @@ class ListservMessageParser(email.parser.Parser, ListservMessageIO):
         return date_time_obj.strftime("%c")
 
     @staticmethod
-    def create_message_id(
-        date: str,
-        from_address: str,
-    ) -> str:
+    def create_message_id(date: str, from_address: str) -> str:
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
         return message_id
+
+    @staticmethod
+    def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
+        return ListservMessageIO.to_dict(msg)
+
+    @staticmethod
+    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+        return ListservMessageIO.to_pandas_dataframe(msg)
+    
+    @staticmethod
+    def to_mbox(msg: mboxMessage, filepath: str):
+        return ListservMessageIO.to_mbox(msg, filepath)
 
 
 class ListservList(ListservListIO):
@@ -800,10 +810,10 @@ class ListservList(ListservListIO):
         ]
 
     def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
-        ListservListIO.to_dict(self.messages, include_body)
+        return ListservListIO.to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
-        ListservListIO.to_pandas_dataframe(self.messages, include_body)
+        return ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """Safe mailing list to .mbox files."""
@@ -1154,10 +1164,10 @@ class ListservArchive(object):
         return dic
 
     def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
-        ListservArchiveIO.to_dict(self.lists, include_body)
+        return ListservArchiveIO.to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
-        ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
+        return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """

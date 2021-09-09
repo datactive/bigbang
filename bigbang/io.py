@@ -1,7 +1,23 @@
+import datetime
+import os
+import logging
+from typing import Dict, List, Optional, Tuple, Union
 import mailbox
 from mailbox import mboxMessage
-
+from pathlib import Path
+import numpy as np
 import pandas as pd
+from config.config import CONFIG
+
+filepath_auth = CONFIG.config_path + "authentication.yaml"
+directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
+logging.basicConfig(
+    filename=directory_project + "/listserv.log",
+    filemode="w",
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 
 class ListservMessageIO:
@@ -108,11 +124,11 @@ class ListservListIO:
                 )
         mbox.flush()
         mbox.unlock()
-        logger.info(f"The list {self.name} is saved at {filepath}.")
-        #mbox.lock()
-        #mbox.add(msg)
-        #mbox.flush()
-        #mbox.unlock()
+        logger.info(f"The list {filename} is saved at {filepath}.")
+        mbox.lock()
+        mbox.add(msg)
+        mbox.flush()
+        mbox.unlock()
 
 
 

@@ -105,7 +105,7 @@ class TestListservMessageParser:
         assert len(list(dic.keys())) == 9
 
     def test__to_mbox(self, msg):
-        ListservMessageParser.to_mbox(msg, file_temp_mbox)
+        ListservMessageParser.to_mbox(msg, filepath=file_temp_mbox)
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
         assert len(lines) == 75
