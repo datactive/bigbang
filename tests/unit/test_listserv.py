@@ -3,6 +3,7 @@ import tempfile
 from pathlib import Path
 from unittest import mock
 
+import numpy as np
 import pytest
 import yaml
 
@@ -81,12 +82,13 @@ class TestListservMessageParser:
 class TestListservList:
 
     def test__from_mbox(self):
+        mlist_name = "3GPP_TSG_SA_WG4_EVS"
         mlist = ListservList.from_mbox(
-            name="3GPP_MENTORING",
-            filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_MENTORING.mbox",
+            name=mlist_name,
+            filepath=CONFIG.test_data_path + f"3GPP_mbox/{mlist_name}.mbox",
         )
-        assert len(mlist) == 27
-        assert mlist.messages[0]["From"] == "John M Meredith <[log in to unmask]>"
+        assert len(mlist) == 50
+        assert mlist.messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
     
     def test__from_listserv_files(self):
         filepath = CONFIG.test_data_path + \
@@ -103,15 +105,18 @@ class TestListservList:
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        assert len(list(dic.keys())) == 13
-        assert len(dic[list(dic.keys())[0]]) == 25
+        keys = list(dic.keys())
+        lengths = [len(value) for value in dic.values()]
+        assert len(keys) == 13
+        assert all([diff == 0 for diff in np.diff(lengths)])
+        assert lengths[0] == 25
     
     def test__to_mbox(self, mlist):
         mlist.to_mbox(dir_temp, filename=mlist.name)
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) >= 49294
+        assert len(lines) >= 48940
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
@@ -145,9 +150,11 @@ class TestListservArchive:
             name="3GPP_mbox_test",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
         )
-        assert len(march.lists) == 1
-        assert len(march.lists[0].messages) == 27
-        assert march.lists[0].messages[0]["From"] == "John M Meredith <[log in to unmask]>"
+        mlist_names = [mlist.name for mlist in march.lists]
+        mlist_index = mlist_names.index("3GPP_TSG_SA_WG4_EVS")
+        assert len(march.lists) == 2
+        assert len(march.lists[mlist_index].messages) == 50
+        assert march.lists[mlist_index].messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
 
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
@@ -164,8 +171,11 @@ class TestListservArchive:
         assert "3GPP_TSG_SA_WG2_MTCE" in mlist_names
         ahg_index = mlist_names.index("3GPP_TSG_SA_ITUT_AHG")
         mtce_index = mlist_names.index("3GPP_TSG_SA_WG2_MTCE")
-        assert len(arch.lists[ahg_index]) == 25
-        assert len(arch.lists[mtce_index]) == 57
+        global mlist_ahg_length, mlist_mtce_length
+        mlist_ahg_length = len(arch.lists[ahg_index])
+        mlist_mtce_length = len(arch.lists[mtce_index])
+        assert mlist_ahg_length == 25
+        assert mlist_mtce_length == 57
 
     def test__message_in_mailinglist_in_archive(self, arch):
         mlist_names = [mlist.name for mlist in arch.lists]
@@ -181,8 +191,11 @@ class TestListservArchive:
 
     def test__to_dict(self, arch):
         dic = arch.to_dict()
-        assert len(list(dic.keys())) == 14
-        assert len(dic[list(dic.keys())[0]]) == 49
+        keys = list(dic.keys())
+        lengths = [len(value) for value in dic.values()]
+        assert len(keys) == 14
+        assert all([diff == 0 for diff in np.diff(lengths)])
+        assert lengths[0] == (mlist_ahg_length + mlist_mtce_length)
 
     def test__to_mbox(self, arch):
         arch.to_mbox(dir_temp)
