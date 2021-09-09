@@ -2,12 +2,12 @@ import datetime
 import email
 import glob
 import logging
-import mailbox
 import os
 import re
 import subprocess
 import time
 import warnings
+import mailbox
 from mailbox import mboxMessage
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
@@ -52,7 +52,7 @@ class ListservArchiveWarning(BaseException):
     pass
 
 
-class ListservMessageParser(email.parser.Parser):
+class ListservMessageParser(email.parser.Parser, ListservMessageIO):
     """
     This class handles the creation of an mailbox.mboxMessage object
     (via the from_...() methods) and its storage in various other file formats
@@ -74,8 +74,6 @@ class ListservMessageParser(email.parser.Parser):
     _get_header_from_listserv_file
     _get_body_from_listserv_file
     get_datetime
-    to_dict
-    to_mbox
 
     Example
     -------
@@ -86,15 +84,7 @@ class ListservMessageParser(email.parser.Parser):
     )
     """
 
-    empty_header = {
-        #"subject": None,
-        #"fromname": None,
-        #"fromaddr": None,
-        #"toname": None,
-        #"toaddr": None,
-        #"date": None,
-        #"contenttype": None,
-    }
+    empty_header = {}
 
     def __init__(
         self,
@@ -393,38 +383,11 @@ class ListservMessageParser(email.parser.Parser):
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
         return message_id
 
-    @staticmethod
-    def to_dict(msg: mboxMessage) -> Dict[str, str]:
-        dic = {"Body": msg.get_payload()}
-        for key, value in msg.items():
-            dic[key] = value
-        return dic
 
-    @staticmethod
-    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
-        return pd.DataFrame(
-            ListservMessageParser.to_dict(msg),
-            index=[msg["Message-ID"]],
-        )
-
-    @staticmethod
-    def to_mbox(msg: mboxMessage, filepath: str, mode: str = "w"):
-        """
-        Safe mail list to .mbox files.
-        """
-        if Path(filepath).is_file():
-            Path(filepath).unlink()
-        mbox = mailbox.mbox(filepath)
-        mbox.lock()
-        mbox.add(msg)
-        mbox.flush()
-        mbox.unlock()
-
-
-class ListservList:
+class ListservList(ListservListIO):
     """
-    This class handles a single mailing list of a public archive in the
-    LISTSERV 16.5 format.
+    This class handles the scraping of a single mailing list of a public archive
+    in the LISTSERV 16.5 format.
 
     Parameters
     ----------
@@ -563,11 +526,7 @@ class ListservList:
         return cls(name, url, msgs)
 
     @classmethod
-    def from_mbox(
-        cls,
-        name: str,
-        filepath: str,
-    ) -> "ListservList":
+    def from_mbox(cls, name: str, filepath: str) -> "ListservList":
         box = mailbox.mbox(filepath, create=False)
         msgs = list(box.values())
         return cls(name, filepath, msgs)
@@ -841,62 +800,24 @@ class ListservList:
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        msg_parser = ListservMessageParser()
-        # run through messages
-        first = True
-        for msg in self.messages:
-            df = msg_parser.to_pandas_dataframe(msg)
-            if first:
-                dfsum = df
-                first = False
-            else:
-                dfsum = dfsum.append(df, ignore_index=False)
-        return dfsum
+    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
+        ListservListIO.to_dict(self.messages, include_body)
 
-    def to_dict(self) -> Dict[str, List[str]]:
-        """
-        Place all message into a dictionary.
-        """
-        return self.to_pandas_dataframe().to_dict()
+    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+        ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
-        """
-        Safe mailing list to .mbox files.
-
-        Args:
-        """
-        # create filepath
+        """Safe mailing list to .mbox files."""
         if filename is None:
-            filepath = f"{dir_out}/{self.name}.mbox"
+            ListservListIO.to_mbox(self.messages, dir_out, self.name)
         else:
-            filepath = f"{dir_out}/{filename}.mbox"
-        # delete file if there is one at the filepath
-        if Path(filepath).is_file():
-            Path(filepath).unlink()
-        mbox = mailbox.mbox(filepath)
-        mbox.lock()
-        for msg in self.messages:
-            try:
-                mbox.add(msg)
-            except Exception as e:
-                logger.info(
-                    f'Add to .mbox error for {msg["Archived-At"]} because, {e}'
-                )
-        mbox.flush()
-        mbox.unlock()
-        logger.info(f"The list {self.name} is saved at {filepath}.")
-
-        mbox.lock()
-        mbox.add(msg)
-        mbox.flush()
-        mbox.unlock()
+            ListservListIO.to_mbox(self.messages, dir_out, filename)
 
 
 class ListservArchive(object):
     """
-    This class handles a public mailing list archive that uses the
-    LISTSERV 16.5 format.
+    This class handles the scraping of a public mailing list archive that uses
+    the LISTSERV 16.5 and 17 format.
     An archive is a list of ListservList elements.
 
     Parameters
@@ -1233,30 +1154,17 @@ class ListservArchive(object):
                 msg_nr += 1
         return dic
 
-    def to_pandas_dataframe(self) -> pd.DataFrame:
-        # run through lists
-        first = True
-        for mlist in self.lists:
-            df = mlist.to_pandas_dataframe()
-            if first:
-                dfsum = df
-                first = False
-            else:
-                dfsum = dfsum.append(df, ignore_index=False)
-        return dfsum
+    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
+        ListservArchiveIO.to_dict(self.lists, include_body)
 
-    def to_dict(self) -> Dict[str, List[str]]:
-        """
-        Place all message into a dictionary.
-        """
-        return self.to_pandas_dataframe().to_dict()
+    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+        ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """
         Save Archive content to .mbox files
         """
-        for llist in self.lists:
-            llist.to_mbox(dir_out)
+        ListservArchiveIO.to_mbox(self.lists, dir_out)
 
 
 def set_website_preference_for_header(
@@ -1370,13 +1278,13 @@ def get_website_content(
     """
     Get HTML code from website
 
-    Note: LISTSERV 16.5 archives don't like it when one is sending too many
-    requests from same ip address in short period of time. Therefore we need
-    to:
-        a) catch 'requests.exceptions.RequestException' errors
-            (includes all possible errors to be on the safe side),
-        b) safe intermediate results,
-        c) continue where we left off at a later stage.
+    Note: Servers don't like it when one is sending too many requests from same
+        ip address in short period of time. Therefore we need
+        to:
+            a) catch 'requests.exceptions.RequestException' errors
+                (includes all possible errors to be on the safe side),
+            b) safe intermediate results,
+            c) continue where we left off at a later stage.
     """
     # TODO: include option to change BeautifulSoup args
     try:
