@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.parse import urljoin, urlparse
 
+import networkx as nx
 import numpy as np
 import pandas as pd
 import requests
@@ -45,18 +46,45 @@ class ListservList:
 
     Methods
     -------
+    period_of_activity
     to_percentage
-    iterate_from_name_addr
-    get_localpart_per_domain
+    get_name_localpart_domain
+    iterator_name_localpart_domain
     get_messagecount_per_domain
     get_messagecount_per_timezone
     get_localpartcount_per_domain
-    get_messaging_network
+    get_sender_receiver_dictionary
+    create_sender_receiver_digraph
     """
 
+    def __init__(self, df: pd.DataFrame):
+        self.df = df
+
+    def __len__(self) -> int:
+        return len(df.index.values)
+
+    def filter_by_year(self, yrs: Union[int, list]) -> pd.DataFrame:
+        if isinstance(yrs, int) or isinstance(yrs, np.int64):
+            mask = [dt.year == yrs for dt in self.df['date'].values]
+        if isinstance(yrs, list):
+            mask = [
+                (dt.year >= min(yrs)) & (dt.year < max([yrs])) 
+                for dt in self.df['date'].values
+            ]
+        return self.df.loc[mask]
+
+    def period_of_activity(self) -> list:
+        """
+        Return a list containing the datetime of the first and last message
+        written in the mailing list.
+        """
+        return [min(self.df['date'].values), max(self.df['date'].values)]
+
+    @staticmethod
     def to_percentage(arr: np.array) -> np.array:
         return arr / np.sum(arr)
 
+    @staticmethod
     def get_name_localpart_domain(string: str) -> tuple:
         name, addr = email.utils.parseaddr(string)
         if '@' in addr:
@@ -65,19 +93,19 @@ class ListservList:
         else:
             return name, None, None
 
+    @staticmethod
     def iterator_name_localpart_domain(li: list) -> tuple:
         """ Generator that splits the 'from' header field. """
         for sender in  li:
             yield ListservList.get_name_localpart_domain(sender)
 
     def get_messagecount_per_domain(
-        df: pd.DataFrame, percentage: bool=False, contract: float=None,
+        self, percentage: bool=False, contract: float=None,
     ) -> Dict[str, int]:
         """
         Get contribution of messages per affiliation.
 
         Args:
-            df: DataFrame of mailing list.
             percentage: Whether to return count of messages percentage w.r.t. total.
             contract: If affiliations who contributed less than threshold should be
                 contracted to one class named 'Others'.
@@ -85,7 +113,7 @@ class ListservList:
         # collect
         domains = [
             domain
-            for _, _, domain in ListservList.iterator_name_localpart_domain(df["from"].values)
+            for _, _, domain in ListservList.iterator_name_localpart_domain(self.df["from"].values)
             if domain
         ]
 
@@ -109,13 +137,13 @@ class ListservList:
         else:
             return {key: value for key, value in zip(name, count)}
 
-    def get_localpart_per_domain(df: pd.DataFrame) -> Dict[str, int]:
+    def get_localpart_per_domain(self) -> Dict[str, int]:
         """
         Get contribution of members per affiliation.
         """
         # iterate through senders
         dic = {}
-        for _, localpart, domain in ListservList.iterator_name_localpart_domain(df["from"].values):
+        for _, localpart, domain in ListservList.iterator_name_localpart_domain(self.df["from"].values):
             if domain is None:
                 continue
             elif domain not in dic.keys():
@@ -126,19 +154,18 @@ class ListservList:
         return dic
 
     def get_localpartcount_per_domain(
-        df: pd.DataFrame, percentage: bool=False, contract: float=None,
+        self, percentage: bool=False, contract: float=None,
     ) -> Dict[str, int]:
         """
         Get contribution of members per affiliation.
 
         Args:
-            df: DataFrame of mailing list.
             percentage: Whether to return count of messages percentage w.r.t. total.
             contract: If affiliations who contributed less than threshold should be
                 contracted to one class named 'Others'.
         """
         # collect members per affiliation
-        dic = ListservList.get_localpart_per_domain(df)
+        dic = ListservList.get_localpart_per_domain(self.df)
         # count members per affiliation
         dic = {domain: len(members) for domain, members in dic.items()}
 
@@ -166,16 +193,15 @@ class ListservList:
             return {key: value for key, value in zip(domain, count)}
 
     def get_messagecount_per_timezone(
-        df: pd.DataFrame, percentage: bool=False,
+        self, percentage: bool=False,
     ) -> Dict[str, int]:
         """
         Get contribution of messages per time zone.
 
         Args:
-            df: DataFrame of mailing list.
             percentage: Whether to return count of messages percentage w.r.t. total.
         """
-        utcoffsets = [dt.utcoffset() for dt in df['date'].values]
+        utcoffsets = [dt.utcoffset() for dt in self.df['date'].values]
         utcoffsets_hm = []
         for utcoffset in utcoffsets:
             if utcoffset.days == -1:
@@ -193,7 +219,7 @@ class ListservList:
         utcoffsets_hm, counts = np.unique(utcoffsets_hm, return_counts=True)
         return {td: cou for td, cou in zip(utcoffsets_hm, counts)}
 
-    def get_messaging_network(df: pd.DataFrame) -> Dict:
+    def get_sender_receiver_dictionary(self) -> Dict:
         """
         Args:
             df: pd.DataFrame that contains 'from' and 'comments-to' header fields.
@@ -203,8 +229,9 @@ class ListservList:
             second layer the 'comments-to'/receiver keys with the integer
             indicating the number of messages between them.
         """
+        _df = self.df[["from", "comments-to",]].dropna()
         dic = {}
-        for idx, row in df.iterrows():
+        for idx, row in _df.iterrows():
             if pd.isnull(row["comments-to"]) or pd.isnull(row["from"]):
                 continue
             
@@ -235,8 +262,56 @@ class ListservList:
                     dic[f_domain][ct_domain] += 1
         return dic
 
+    def create_sender_receiver_digraph(self, nw: Optional[dict]=None):
+        """
+        Create directed graph from messaging network created with
+        ListservList.get_messaging_network_dictionary().
 
-class ListservArchive(ListservList):
+        Args:
+            nw: dictionary created with ListservList.get_sender_receiver_dictionary()
+        """
+        if nw is None:
+            nw = self.get_sender_receiver_dictionary()
+        # initialise graph
+        DG = nx.DiGraph()
+        # create nodes
+        [DG.add_node(sender) for sender in nw.keys()]
+        [
+            DG.add_node(receiver)
+            for receivers in nw.values()
+            for receiver in receivers.keys()
+        ]
+        # create edges
+        for sender, receivers in nw.items():
+            for receiver, nr_msgs in receivers.items():
+                DG.add_edge(sender, receiver, weight=nr_msgs)
+        # attach directed graph to class
+        self.dg = DG
+
+    def get_domain_betweenness_centrality_per_year() -> dict:
+        dic_evol = {}
+        period_of_activity = mlist_al.period_of_activity()
+        years_of_activity = [dt.year for dt in period_of_activity]
+
+        for year in np.arange(min(years_of_activity), max(years_of_activity)+1):
+            df_al_fi = mlist_al.filter_by_year(year)
+            mlist_al_fi = MList(df_al_fi)    
+            mlist_al_fi.create_sender_receiver_digraph()
+
+            adj = nx.betweenness_centrality(mlist_al_fi.dg)
+
+            labels = list(adj.keys())
+            values = np.array(list(adj.values()))
+            
+            for lab, val in zip(labels, values):
+                if lab not in list(dic_evol.keys()):
+                    dic_evol[lab] = {"year": [year], "betweenness_centrality": [val]}
+                else:
+                    dic_evol[lab]["year"].append(year)
+                    dic_evol[lab]["betweenness_centrality"].append(val)
+
+
+class ListservArchive():
     """
     Methods
     -------
