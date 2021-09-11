@@ -2,12 +2,12 @@ import datetime
 import email
 import glob
 import logging
-import mailbox
 import os
 import re
 import subprocess
 import time
 import warnings
+import mailbox
 from mailbox import mboxMessage
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
@@ -22,9 +22,10 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
+from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
-
 logging.basicConfig(
     filename=directory_project + "/listserv.log",
     filemode="w",
@@ -74,8 +75,6 @@ class ListservMessageParser(email.parser.Parser):
     _get_header_from_listserv_file
     _get_body_from_listserv_file
     get_datetime
-    to_dict
-    to_mbox
 
     Example
     -------
@@ -376,50 +375,29 @@ class ListservMessageParser(email.parser.Parser):
         return date_time_obj.strftime("%c")
 
     @staticmethod
-    def create_message_id(
-        date: str,
-        from_address: str,
-    ) -> str:
+    def create_message_id(date: str, from_address: str) -> str:
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
         return message_id
 
     @staticmethod
-    def to_dict(msg: mboxMessage, include_body: bool=True) -> Dict[str, str]:
-        if include_body:
-            dic = {"Body": msg.get_payload()}
-        else:
-            dic = {}
-        for key, value in msg.items():
-            dic[key] = value
-        return dic
+    def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
+        return ListservMessageIO.to_dict(msg)
 
     @staticmethod
-    def to_pandas_dataframe(msg: mboxMessage, include_body: bool=True) -> pd.DataFrame:
-        return pd.DataFrame(
-            ListservMessageParser.to_dict(msg, include_body),
-            index=[msg["Message-ID"]],
-        )
-
+    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+        return ListservMessageIO.to_pandas_dataframe(msg)
+    
     @staticmethod
-    def to_mbox(msg: mboxMessage, filepath: str, mode: str = "w"):
-        """
-        Safe mail list to .mbox files.
-        """
-        if Path(filepath).is_file():
-            Path(filepath).unlink()
-        mbox = mailbox.mbox(filepath)
-        mbox.lock()
-        mbox.add(msg)
-        mbox.flush()
-        mbox.unlock()
+    def to_mbox(msg: mboxMessage, filepath: str):
+        return ListservMessageIO.to_mbox(msg, filepath)
 
 
-class ListservList:
+class ListservList(ListservListIO):
     """
-    This class handles a single mailing list of a public archive in the
-    LISTSERV 16.5 format.
+    This class handles the scraping of a single mailing list of a public archive
+    in the LISTSERV 16.5 format.
 
     Parameters
     ----------
@@ -558,13 +536,8 @@ class ListservList:
         return cls(name, url, msgs)
 
     @classmethod
-    def from_mbox(
-        cls,
-        name: str,
-        filepath: str,
-    ) -> "ListservList":
-        box = mailbox.mbox(filepath, create=False)
-        msgs = list(box.values())
+    def from_mbox(cls, name: str, filepath: str) -> "ListservList":
+        msgs = ListservListIO.from_mbox(name, filepath)
         return cls(name, filepath, msgs)
 
     @classmethod
@@ -835,83 +808,25 @@ class ListservList:
         return [
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
-    
+
     def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
-        """
-        Place all message into a dictionary.
-        """
-        dic = {}
-        for idx, msg in enumerate(self.messages):
-            #if msg["message-id"] != None:  #TODO: why are some 'None'?
-            for key, value in msg.items():
-                key = key.lower()
-                if key not in dic.keys():
-                    dic[key] = [np.nan]*len(self.messages)
-                dic[key][idx] = value
-        if include_body:
-            dic['body'] = [np.nan]*len(self.messages)
-            for idx, msg in enumerate(self.messages):
-                #if msg["message-id"] != None:
-                dic['body'][idx] = msg.get_payload()
-        lengths = [len(value) for value in dic.values()]
-        assert all([diff == 0 for diff in np.diff(lengths)])
-        return dic
+        return ListservListIO.to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
-        dic = self.to_dict(include_body)
-        df = pd.DataFrame(dic).set_index("message-id")
-        # get index of date-times
-        index = np.array([
-            True if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
-            else False
-            for i, dt in enumerate(df["date"])
-        ], dtype="bool")
-        df = df.loc[index, :]
-        # convert data type from string to datetime.datetime object
-        df.loc[:, 'date'].update(
-                df.loc[:, 'date'].apply(
-                lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
-            )
-        )
-        return df
+        return ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
-        """
-        Safe mailing list to .mbox files.
-
-        Args:
-        """
-        # create filepath
+        """Safe mailing list to .mbox files."""
         if filename is None:
-            filepath = f"{dir_out}/{self.name}.mbox"
+            ListservListIO.to_mbox(self.messages, dir_out, self.name)
         else:
-            filepath = f"{dir_out}/{filename}.mbox"
-        # delete file if there is one at the filepath
-        if Path(filepath).is_file():
-            Path(filepath).unlink()
-        mbox = mailbox.mbox(filepath)
-        mbox.lock()
-        for msg in self.messages:
-            try:
-                mbox.add(msg)
-            except Exception as e:
-                logger.info(
-                    f'Add to .mbox error for {msg["Archived-At"]} because, {e}'
-                )
-        mbox.flush()
-        mbox.unlock()
-        logger.info(f"The list {self.name} is saved at {filepath}.")
-
-        mbox.lock()
-        mbox.add(msg)
-        mbox.flush()
-        mbox.unlock()
+            ListservListIO.to_mbox(self.messages, dir_out, filename)
 
 
 class ListservArchive(object):
     """
-    This class handles a public mailing list archive that uses the
-    LISTSERV 16.5 format.
+    This class handles the scraping of a public mailing list archive that uses
+    the LISTSERV 16.5 and 17 format.
     An archive is a list of ListservList elements.
 
     Parameters
@@ -1247,57 +1162,18 @@ class ListservArchive(object):
                 dic[f"ID{msg_nr}"] = msg.to_dict()
                 msg_nr += 1
         return dic
-    
+
     def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
-        """
-        Place all message into a dictionary.
-        """
-        nr_msgs = 0
-        for ii, mlist in enumerate(self.lists):
-            dic_mlist = mlist.to_dict(include_body)
-            if ii == 0:
-                dic_march = dic_mlist
-                dic_march['mailing-list'] = [mlist.name]*len(mlist)
-            else:
-                # add mlist items to march
-                for key, value in dic_mlist.items():
-                    if key not in dic_march.keys():
-                        dic_march[key] = [np.nan]*nr_msgs
-                    dic_march[key].extend(value)
-                # if mlist does not contain items that are in march
-                key_miss = list(set(dic_march.keys()) - set(dic_mlist.keys()))
-                key_miss.remove('mailing-list')
-                for key in key_miss:
-                    dic_march[key].extend([np.nan]*len(mlist))
-                
-                dic_march['mailing-list'].extend([mlist.name]*len(mlist))
-            nr_msgs += len(mlist)
-        lengths = [len(value) for value in dic_march.values()]
-        assert all([diff == 0 for diff in np.diff(lengths)])
-        return dic_march
+        return ListservArchiveIO.to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
-        df = pd.DataFrame(self.to_dict(include_body)).set_index("message-id")
-        # get index of date-times
-        index = np.array([
-            True if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
-            else False
-            for i, dt in enumerate(df["date"])
-        ], dtype="bool")
-        # convert data type from string to datetime.datetime object
-        df.loc[index, 'date'].update(
-            df.loc[index, 'date'].apply(
-                lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
-            )
-        )
-        return df
+        return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """
         Save Archive content to .mbox files
         """
-        for llist in self.lists:
-            llist.to_mbox(dir_out)
+        ListservArchiveIO.to_mbox(self.lists, dir_out)
 
 
 def set_website_preference_for_header(
@@ -1411,13 +1287,13 @@ def get_website_content(
     """
     Get HTML code from website
 
-    Note: LISTSERV 16.5 archives don't like it when one is sending too many
-    requests from same ip address in short period of time. Therefore we need
-    to:
-        a) catch 'requests.exceptions.RequestException' errors
-            (includes all possible errors to be on the safe side),
-        b) safe intermediate results,
-        c) continue where we left off at a later stage.
+    Note: Servers don't like it when one is sending too many requests from same
+        ip address in short period of time. Therefore we need
+        to:
+            a) catch 'requests.exceptions.RequestException' errors
+                (includes all possible errors to be on the safe side),
+            b) safe intermediate results,
+            c) continue where we left off at a later stage.
     """
     # TODO: include option to change BeautifulSoup args
     try:
