@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Benthall"
+  given-names: "Sebastian"
+  orcid: "https://orcid.org/0000-0002-1789-5109"
+- family-names: "Doty"
+  given-names: "Nick"
+- family-names: "ten Oever"
+  given-names: "Niels"
+  orcid: "https://orcid.org/0000-0001-5134-2199"
+- family-names: "Becker"
+  given-names: "Christoph"
+  orcid: "https://orcid.org/0000-0002-3324-3880"
+title: "BigBang"
+version: 0.3.0
+doi: 10.5281/zenodo.5243261
+date-released: 2021-08-24
+url: "https://github.com/datactive/bigbang"
