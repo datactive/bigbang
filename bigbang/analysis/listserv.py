@@ -65,7 +65,7 @@ class ListservList:
     ):
         self.name = name
         self.filepath = filepath
-        self.messages = msgs
+        self.df = msgs
 
     @classmethod
     def from_mbox(
@@ -73,6 +73,15 @@ class ListservList:
     ) -> "ListservList":
         msgs = ListservListIO.from_mbox(name, filepath)
         df = ListservListIO.to_pandas_dataframe(msgs, include_body)
+        return cls.from_pandas_dataframe(df, name, filepath)
+    
+    @classmethod
+    def from_pandas_dataframe(
+        cls,
+        df: pd.DataFrame,
+        name: Optional[str]=None,
+        filepath: Optional[str]=None,
+    ) -> "ListservList":
         return cls(name, filepath, df)
     
     def __len__(self) -> int:
