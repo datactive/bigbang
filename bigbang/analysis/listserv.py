@@ -23,6 +23,8 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
+from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 
@@ -46,6 +48,7 @@ class ListservList:
 
     Methods
     -------
+    from_mbox
     period_of_activity
     to_percentage
     get_name_localpart_domain
@@ -57,9 +60,21 @@ class ListservList:
     create_sender_receiver_digraph
     """
 
-    def __init__(self, df: pd.DataFrame):
-        self.df = df
+    def __init__(
+        self, name: str, filepath: str, msgs: pd.DataFrame,
+    ):
+        self.name = name
+        self.filepath = filepath
+        self.messages = msgs
 
+    @classmethod
+    def from_mbox(
+        cls, name: str, filepath: str, include_body: bool=True,
+    ) -> "ListservList":
+        msgs = ListservListIO.from_mbox(name, filepath)
+        df = ListservListIO.to_pandas_dataframe(msgs, include_body)
+        return cls(name, filepath, df)
+    
     def __len__(self) -> int:
         return len(df.index.values)
 
