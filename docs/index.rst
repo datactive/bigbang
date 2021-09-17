@@ -11,7 +11,7 @@ Welcome to BigBang's documentation!
    :caption: Contents:
 
    intro
-   installation
+   readme
 
 Indices and tables
 ==================
