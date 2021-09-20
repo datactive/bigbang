@@ -15,7 +15,7 @@ First name:\
 Email:\
 Research institute, educational establishment or other facility:\
 Title:\
-Degree:\
+Degree:
 
 ## Other Research Group Members
 Surname:\
@@ -23,10 +23,10 @@ First name:\
 Email:\
 Research institute, educational establishment or other facility:\
 Title:\
-Degree:\
+Degree:
 
 ## Research/Application Description
 Name & Subject of the research/application (short description):\
 Has BigBang granted an earlier permit:\
     [ ] Yes, by whom (name) and when (date):\
-    [ ] No\
+    [ ] No
