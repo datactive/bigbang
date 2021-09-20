@@ -312,17 +312,19 @@ class ListservList:
         # attach directed graph to class
         self.dg = DG
 
-    def get_domain_betweenness_centrality_per_year() -> dict:
+    def get_domain_betweenness_centrality_per_year(
+        self, years: Optional[tuple]=None, func=nx.betweenness_centrality,
+    ) -> dict:
+        if years is None:
+            period_of_activity = self.period_of_activity()
+            years = [dt.year for dt in period_of_activity]
+
         dic_evol = {}
-        period_of_activity = mlist_al.period_of_activity()
-        years_of_activity = [dt.year for dt in period_of_activity]
+        for year in np.arange(min(years), max(years)+1):
+            mlist_fi = ListservList.from_pandas_dataframe(df=self.filter_by_year(year))
+            mlist_fi.create_sender_receiver_digraph()
 
-        for year in np.arange(min(years_of_activity), max(years_of_activity)+1):
-            df_al_fi = mlist_al.filter_by_year(year)
-            mlist_al_fi = MList(df_al_fi)    
-            mlist_al_fi.create_sender_receiver_digraph()
-
-            adj = nx.betweenness_centrality(mlist_al_fi.dg)
+            adj = func(mlist_fi.dg)
 
             labels = list(adj.keys())
             values = np.array(list(adj.values()))
@@ -333,6 +335,7 @@ class ListservList:
                 else:
                     dic_evol[lab]["year"].append(year)
                     dic_evol[lab]["betweenness_centrality"].append(val)
+        return dic_evol
 
 
 class ListservArchive():
