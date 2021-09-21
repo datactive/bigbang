@@ -15,8 +15,8 @@ from bigbang.listserv import (
     ListservList,
     ListservMessageParser,
 )
-from bigbang.analysis.listserv import ListservArchive as MArchive
-from bigbang.analysis.listserv import ListservList as MList
+from bigbang.analysis.listserv import ListservArchive
+from bigbang.analysis.listserv import ListservList
 
 from config.config import CONFIG
 
@@ -31,37 +31,35 @@ def get_mailinglist():
         name="3GPP_TSG_SA_WG4_EVS",
         filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_TSG_SA_WG4_EVS.mbox",
     )
-    df_mlist = mlist.to_pandas_dataframe(include_body=False)
-    return df_mlist
+    return mlist
 
 @pytest.fixture(name="march", scope="module")
 def get_mailingarchive():
-    filedsc = "3GPP_TSG_GERAN*"
     march = ListservArchive.from_mbox(
         name="3GPP",
         directorypath=CONFIG.test_data_path + "3GPP_mbox/",
+        filedsc="3GPP_TSG_*",
     )
-    df_march = march.to_pandas_dataframe(include_body=False)
-    df_march = df_march.dropna()
-    return df_march
+    march.df = march.df.dropna()
+    return march
 
 
 class TestListservList:
     def test__to_percentage(self):
         abso = np.array([1, 3])
-        perc = MList.to_percentage(abso)
+        perc = ListservList.to_percentage(abso)
         np.testing.assert_array_equal(perc, np.array([0.25, 0.75]))
 
     def test__get_name_localpart_domain(self):
         addr = '"Gabin, Frederic" <Frederic.Gabin@DOLBY.COM>'
-        name, localpart, domain = MList.get_name_localpart_domain(addr)
+        name, localpart, domain = ListservList.get_name_localpart_domain(addr)
         assert name == "Gabin, Frederic"
         assert localpart == "Frederic.Gabin"
         assert domain == "DOLBY.COM"
 
     def test__get_messagecount_per_domain(self, mlist):
-        dic_msg = MList.get_messagecount_per_domain(
-            mlist, percentage=True, contract=0.1
+        dic_msg = mlist.get_messagecount_per_domain(
+            percentage=True, contract=0.1
         )
         dic_msg_true = {
             'QOSOUND.COM': 0.12,
@@ -73,7 +71,7 @@ class TestListservList:
             assert dic_msg_true[key] == dic_msg[key]
 
     def test__get_localpart_per_domain(self, mlist):
-        dic_mem = MList.get_localpart_per_domain(mlist)
+        dic_mem = mlist.get_localpart_per_domain()
         dic_mem_true = {
             'ERICSSON.COM': ['tomas.toftgard'],
             'USHERBROOKE.CA': ['Milan.Jelinek'],
@@ -90,8 +88,8 @@ class TestListservList:
                 assert localpart in dic_mem_true[key]
 
     def test__get_localpartcount_per_domain(self, mlist):
-        dic_lps = MList.get_localpartcount_per_domain(
-            mlist, percentage=True, contract=0.1
+        dic_lps = mlist.get_localpartcount_per_domain(
+            percentage=True, contract=0.1
         )
         dic_lps_true = {
             'QTI.QUALCOMM.COM': 0.18181818181818182,
@@ -103,8 +101,8 @@ class TestListservList:
                 dic_lps_true[key], dic_lps[key], decimal=7,
             )
 
-    def test__get_messaging_network(self, mlist):
-        dic = MList.get_messaging_network(mlist)
+    def test__get_sender_receiver_dictionary(self, mlist):
+        dic = mlist.get_sender_receiver_dictionary()
         dic_true = {
             'ERICSSON.COM': {'USherbrooke.ca': 1, 'QTI.QUALCOMM.COM': 1},
             'USHERBROOKE.CA': {'ERICSSON.COM': 1, 'qti.qualcomm.com': 1, 'QTI.QUALCOMM.COM': 1},
@@ -122,7 +120,7 @@ class TestListservList:
 
 class TestListservArchive:
     def test__get_mlistscount_per_institution(self, march):
-        dic = MArchive.get_mlistscount_per_institution(march)
+        dic = ListservArchive.get_mlistscount_per_institution(march)
         dic_true = {
             'QTI.QUALCOMM.COM': 2,
             'USHERBROOKE.CA': 1,
