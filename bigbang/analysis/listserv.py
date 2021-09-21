@@ -24,6 +24,7 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+from bigbang.utils import get_paths_to_files_in_directory, get_paths_to_dirs_in_directory
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -189,7 +190,7 @@ class ListservList:
                 contracted to one class named 'Others'.
         """
         # collect members per affiliation
-        dic = ListservList.get_localpart_per_domain(self.df)
+        dic = self.get_localpart_per_domain()
         # count members per affiliation
         dic = {domain: len(members) for domain, members in dic.items()}
 
@@ -289,7 +290,7 @@ class ListservList:
     def create_sender_receiver_digraph(self, nw: Optional[dict]=None):
         """
         Create directed graph from messaging network created with
-        ListservList.get_messaging_network_dictionary().
+        ListservList.get_sender_receiver_dictionary().
 
         Args:
             nw: dictionary created with ListservList.get_sender_receiver_dictionary()
@@ -340,19 +341,53 @@ class ListservList:
 
 class ListservArchive():
     """
+    Parameters
+    ----------
+    name
+        The of whom the archive is (e.g. 3GPP, IEEE, ...)
+    filedsc
+        The file description of the archive
+    lists
+        A list containing the mailing lists as `ListservList` types
+
     Methods
     -------
         get_mlistscount_per_institution
     """
 
-    def get_mlistscount_per_institution(df: pd.DataFrame) -> Dict[str, int]:
+    def __init__(self, name: str, filedsc: str, lists: pd.DataFrame):
+        self.name = name
+        self.filedsc = filedsc
+        self.df = lists
+
+    @classmethod
+    def from_mbox(
+        cls,
+        name: str,
+        directorypath: str,
+        filedsc: str = "*.mbox",
+    ) -> "ListservArchive":
+        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
+        if len(filepaths) > 0:
+            ListservArchiveWarning("No files found fitting the description")
+        for count, filepath in enumerate(filepaths):
+            name = filepath.split("/")[-1].split(".")[0]
+            mlist = ListservList.from_mbox(name, filepath).df
+            mlist['mailing-list'] = name
+            if count == 0:
+                mlists = mlist
+            else:
+                mlists = mlists.append(mlist, ignore_index=True)
+        return cls(name, directorypath + filedsc, mlists)
+
+    def get_mlistscount_per_institution(self) -> Dict[str, int]:
         """
         Get a dictionary that lists the mailing lists/working groups in which
         a institute/company is active.
         """
         dic_mlis = {}
-        for mem in list(set(df['from'].values)):
-            mlist_names = list(set(df[df['from'] == mem]['mailing-list'].values))
+        for mem in list(set(self.df['from'].values)):
+            mlist_names = list(set(self.df[self.df['from'] == mem]['mailing-list'].values))
             name, addr = email.utils.parseaddr(mem)
             try:
                 localpart, domain = addr.split('@')

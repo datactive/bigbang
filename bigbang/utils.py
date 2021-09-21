@@ -1,5 +1,28 @@
+import glob
+from typing import Dict, List, Optional, Tuple, Union
+
 import networkx as nx
 import pandas as pd
+
+
+def get_paths_to_files_in_directory(
+    directory: str, file_dsc: str = "*"
+) -> List[str]:
+    """Get paths of all files matching file_dsc in directory"""
+    template = f"{directory}{file_dsc}"
+    file_paths = glob.glob(template)
+    return file_paths
+
+
+def get_paths_to_dirs_in_directory(
+    directory: str, folder_dsc: str = "*"
+) -> List[str]:
+    """Get paths of all directories matching file_dsc in directory"""
+    template = f"{directory}{folder_dsc}"
+    dir_paths = glob.glob(template)
+    # normalize directory paths
+    dir_paths = [dir_path + "/" for dir_path in dir_paths]
+    return dir_paths
 
 
 def labeled_blockmodel(g, partition):
@@ -92,11 +115,8 @@ def remove_quoted(mess):
 def clean_message(mess):
     if mess is None:
         mess = ""
-
     mess = remove_quoted(mess)
-
     mess = mess.strip()
-
     return mess
 
 
