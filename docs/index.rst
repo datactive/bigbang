@@ -12,6 +12,7 @@ Welcome to BigBang's documentation!
 
    intro
    readme
+   api-docs
 
 Indices and tables
 ==================
