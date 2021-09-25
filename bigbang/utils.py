@@ -1,3 +1,7 @@
+"""
+Miscellaneous utility functions used in other modules.
+"""
+
 import networkx as nx
 import pandas as pd
 

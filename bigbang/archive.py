@@ -1,3 +1,9 @@
+"""
+This module supports the Archive class, a generic
+structure representing a collection of archived emails,
+typically from a single mailing list.
+"""
+
 import datetime
 import logging
 import mailbox
