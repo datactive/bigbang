@@ -51,8 +51,12 @@ m2r2.setup = patched_m2r2_setup
 # ones.
 extensions = [
     'm2r2',
+    'sphinx.ext.autodoc',
     'sphinx.ext.napoleon'
 ]
+
+# autodoc settings
+autoclass_content = 'both'
 
 # Napoleon settings
 napoleon_google_docstring = True

@@ -57,6 +57,14 @@ class Archive(object):
 
         Upon initialization, the Archive object drops duplicate entries
         and sorts its member variable *data* by Date.
+
+        Parameters
+        ----------
+        data : pandas.DataFrame, or str
+        archive_dir: str, optional
+            Defaults to CONFIG.mail_path
+        mbox: bool
+
         """
 
         if isinstance(data, pd.core.frame.DataFrame):
@@ -143,7 +151,18 @@ class Archive(object):
             )
 
     def resolve_entities(self, inplace=True):
-        """Return data with resolved entities."""
+        """Return data with resolved entities.
+        
+        Parameters
+        ----------
+        inplace : bool, default True
+
+        Returns
+        -------
+        pandas.DataFrame or None
+            Returns None if inplace == True
+        
+        """
         if self.entities is None:
             if self.activity is None:
                 self.get_activity()
