@@ -49,14 +49,22 @@ class ListservList:
 
     Methods
     -------
-    from_mbox
+    classmethod:
+        from_mbox
+        from_pandas_dataframe
+    staticmethod:
+        to_percentage
+        contract
+        get_name_localpart_domain
+        iterator_name_localpart_domain
+    filter_by_year
+    filter_by_address
     period_of_activity
-    to_percentage
-    get_name_localpart_domain
-    iterator_name_localpart_domain
-    get_messagecount_per_domain
+    get_domains
+    get_localparts
+    get_localpartcount
+    get_messagecount
     get_messagecount_per_timezone
-    get_localpartcount_per_domain
     get_sender_receiver_dictionary
     create_sender_receiver_digraph
     get_graph_prop_per_domain_per_year
@@ -89,23 +97,6 @@ class ListservList:
     def __len__(self) -> int:
         return len(df.index.values)
 
-    def filter_by_year(self, yrs: Union[int, list]) -> pd.DataFrame:
-        if isinstance(yrs, int) or isinstance(yrs, np.int64):
-            mask = [dt.year == yrs for dt in self.df['date'].values]
-        if isinstance(yrs, list):
-            mask = [
-                (dt.year >= min(yrs)) & (dt.year < max([yrs])) 
-                for dt in self.df['date'].values
-            ]
-        return self.df.loc[mask]
-
-    def period_of_activity(self) -> list:
-        """
-        Return a list containing the datetime of the first and last message
-        written in the mailing list.
-        """
-        return [min(self.df['date'].values), max(self.df['date'].values)]
-
     @staticmethod
     def to_percentage(arr: np.array) -> np.array:
         return arr / np.sum(arr)
@@ -136,104 +127,143 @@ class ListservList:
         """ Generator that splits the 'from' header field. """
         for sender in  li:
             yield ListservList.get_name_localpart_domain(sender)
-
-    def get_messagecount_per_domain(
+    
+    def filter_by_year(self, yrs: Union[int, list]) -> "ListservList":
+        """
+        Filter self.df by year in message date.
+        """
+        if isinstance(yrs, int) or isinstance(yrs, np.int64):
+            mask = [dt.year == yrs for dt in self.df['date'].values]
+        if isinstance(yrs, list):
+            mask = [
+                (dt.year >= min(yrs)) & (dt.year < max([yrs])) 
+                for dt in self.df['date'].values
+            ]
+        mlist = self
+        mlist.df = self.df.loc[mask]
+        return mlist
+    
+    def filter_by_address(
         self,
-        percentage: bool=False,
-        contract: float=None,
-        per_year: bool=False,
-    ) -> Dict[str, int]:
+        header_field: str,
+        address_field: Dict[str, List[str]],
+    ) -> "ListservList":
         """
-        Get contribution of messages per affiliation.
-
         Args:
-            percentage: Whether to return count of messages percentage w.r.t. total.
-            contract: If affiliations who contributed less than threshold should be
-                contracted to one class named 'Others'.
-            per_year:
+        -----
+            header_field: For a Listserv mailing list the most representative
+                header fields for senders and receivers are 'from' and
+                'comments-to' respectively.
+            address_field: Filter by 'local-part' or 'domain' part of an address.
+                The data structure of the argument should be, e.g.:
+                    {'localpart': [string-1, string-2, ...]}
         """
-        if per_year:
-            period_of_activity = self.period_of_activity()
-            years = [dt.year for dt in period_of_activity]
-            dic_yrs = {}
-            for year in np.arange(min(years), max(years)+1):
-                mlist_fi = ListservList.from_pandas_dataframe(
-        
-        # collect
-        domains = [
-            domain
-            for _, _, domain in ListservList.iterator_name_localpart_domain(self.df["from"].values)
-            if domain
-        ]
+        mlist = self.df
+        indices = []
+        index = 0
+        generator = ListservList.iterator_name_localpart_domain(
+            mlist.df[header_field].values
+        )
+        for _, localpart, domain in generator:
+            if "domain" in list(address_field.keys()):
+                if domain in address_field["domain"]:
+                    indices.append(index)
+            if "localpart" in list(address_field.keys()):
+                if localpart in address_field["localpart"]:
+                    indices.append(index)
+            index += 1
+        mlist.df = mlist.df.iloc[indices]
+        return mlist
 
-        # count
-        name, count = np.unique(domains, return_counts=True)
-        count = np.array(count)
-        # sort
-        indx = np.argsort(count).astype(int)
-        name = [name[ii] for ii in indx]
-        count = count[indx]
-        
-        if percentage:
-            count = ListservList.to_percentage(count)
-        
-        if contract:
-            return ListservList.contract(count, name)
-        else:
-            return {key: value for key, value in zip(name, count)}
+    def period_of_activity(self) -> list:
+        """
+        Return a list containing the datetime of the first and last message
+        written in the mailing list.
+        """
+        return [min(self.df['date'].values), max(self.df['date'].values)]
+    
+    def get_domains(
+            self, header_fields: List[str], return_counts: bool=False,
+        ) -> list:
+        """
+        Get contribution of members per affiliation.
 
-    def get_localpart_per_domain(self) -> Dict[str, int]:
+        Note:
+            For a Listserv mailing list the most representative header fields
+            for senders and receivers are 'from' and 'comments-to' respectively.
+        """
+        domains = {}
+        for header_field in header_fields:
+            generator = ListservList.iterator_name_localpart_domain(
+                mlist.df[header_field].values
+            )
+            # collect domain labels
+            _domains = [domain for _, _, domain in generator]
+            _domains_unique = list(set(_domains))
+            if return_counts:
+                _domains_unique = [
+                    [du, _domains.count(du)] for du in _domains_unique
+                ]
+                domains[header_field] = _domains_unique
+            else:
+                domains[header_field] = _domains_unique
+        return domains
+
+    def get_localparts(
+        self, per_domain_sender: bool=False, per_domain_receiver: bool=False,
+        ) -> Union[List[str], Dict[str, str]]:
         """
         Get contribution of members per affiliation.
         """
-        # iterate through senders
-        dic = {}
-        for _, localpart, domain in ListservList.iterator_name_localpart_domain(self.df["from"].values):
-            if domain is None:
-                continue
-            elif domain not in dic.keys():
-                dic[domain] = []
-            dic[domain].append(localpart)
-        # remove duplicates
-        dic = {domain: list(set(li)) for domain, li in dic.items()}
-        return dic
-
-    def _get_localpartcount_per_domain(
-        self, percentage: bool=False, contract: float=None,
-    ) -> Dict[str, int]:
-        # count
-        dic = self.get_localpart_per_domain()
-        domains = list(dic.keys())
-        counts = np.array([len(localparts) for localparts in dic.values()])
-        # sort low to high contribution
-        indx = np.argsort(counts).astype(int)
-        domains = [domains[ii] for ii in indx]
-        counts = counts[indx]
-        if percentage:
-            counts = ListservList.to_percentage(counts)
-        if contract:
-            dic = ListservList.contract(counts, domains, contract)
+        if (per_domain_sender) or (per_domain_receiver):
+            if per_domain_sender:
+                column_label = "from"
+            elif per_domain_receiver:
+                column_label = "comments-to"
+            # iterate through senders
+            localparts = {}
+            generator = ListservList.iterator_name_localpart_domain(
+                mlist.df[column_label].values
+            )
+            for _, localpart, domain in generator:
+                if domain is None:
+                    continue
+                elif domain not in localparts.keys():
+                    localparts[domain] = []
+                localparts[domain].append(localpart)
+            # remove duplicates
+            localparts = {domain: list(set(li)) for domain, li in localparts.items()}
         else:
-            dic = {key: value for key, value in zip(domain, counts)}
-        return dic
-
+            # iterate through senders
+            localparts = []
+            generator = ListservList.iterator_name_localpart_domain(
+                mlist.df["from"].values
+            )
+            for _, localpart, domain in generator:
+                if domain is None:
+                    continue
+                localparts.append(localpart)
+            # remove duplicates
+            localparts = list(set(localparts))
+        return localparts
+    
     def get_localpartcount(
         self,
-        percentage: bool=False,
-        contract: float=None,
-        per_domain: bool=False,
+        per_domain_sender: bool=False,
+        per_domain_receiver: bool=False,
         per_year: bool=False,
     ) -> Dict[str, int]:
         """
         Get contribution of members per affiliation.
+        Note: Only one of (per_domain_sender, per_domain_receiver) can be True.
 
         Args:
-            percentage: Whether to return count of messages percentage w.r.t. total.
-            contract: If affiliations who contributed less than threshold should be
-                contracted to one class named 'Others'.
+            per_domain_sender:
+            per_domain_receiver:
             per_year:
-            per_domain:
         """
+        assert not all((per_domain_sender, per_domain_receiver))
+
         if per_year:
             period_of_activity = self.period_of_activity()
             years = [dt.year for dt in period_of_activity]
@@ -241,12 +271,10 @@ class ListservList:
 
             dic_yrs = {}
             for year in years:
-                mlist_fi = ListservList.from_pandas_dataframe(
-                    df=self.filter_by_year(year)
-                )
-                dic = mlist_fi._get_localpartcount_per_domain(percentage, contract)
+                mlist_fi = self.filter_by_year(year)
 
-                if per_domain:
+                if (per_domain_sender) or (per_domain_receiver):
+                    dic = mlist_fi.get_localparts(per_domain_sender, per_domain_receiver)
                     # count members per affiliation
                     for domain, localparts in dic.items():
                         if domain not in list(dic_yrs.keys()):
@@ -257,15 +285,53 @@ class ListservList:
                             dic_yrs[domain]["year"].append(year)
                             dic_yrs[domain]["localparts"].append(len(localparts))
                 else:
-                    dic_yrs[year] = np.sum(np.array(dic.values()))
+                    dic_yrs[year] = len(mlist_fi.get_localparts())
             return dic_yrs
+        if (per_domain_sender) or (per_domain_receiver)::
+            dic = self.get_localparts(per_domain_sender, per_domain_receiver)
+            return {domain: len(li) for domain, li in dic.items()}
         else:
-            dic = self._get_localpartcount_per_domain(percentage, contract)
-            if per_domain:
-                return dic
-            else:
-                return np.sum(np.array(list(dic.values())))
-        
+            return len(self.get_localparts())
+    
+    def get_messagecount(
+        self,
+        header_field: Optional[str]=None,
+        per_year: bool=False,
+    ) -> Dict[str, int]:
+        """
+        Args:
+            header_field:
+            per_year:
+        """
+        if per_year:
+            period_of_activity = self.period_of_activity()
+            years = [dt.year for dt in period_of_activity]
+            years = np.arange(min(years), max(years)+1)
+
+            dic_yrs = {}
+            for year in years:
+                mlist_fi = self.filter_by_year(year)
+
+                if header_field:
+                    dic = mlist_fi.get_localparts(per_domain_sender, per_domain_receiver)
+                    # count members per affiliation
+                    for domain, localparts in dic.items():
+                        if domain not in list(dic_yrs.keys()):
+                            dic_yrs[domain] = {
+                                "year": [year], "localparts": [len(localparts)]
+                            }
+                        else:
+                            dic_yrs[domain]["year"].append(year)
+                            dic_yrs[domain]["localparts"].append(len(localparts))
+                else:
+                    dic_yrs[year] = len(mlist_fi.get_localparts())
+            return dic_yrs
+        if header_field:
+            li = self.get_domains(header_fields, return_counts=True)
+            return {domain: count for domain, count in li]
+        else:
+            return len(self.df.index.values)
+    
     def get_messagecount_per_timezone(
         self, percentage: bool=False,
     ) -> Dict[str, int]:
@@ -391,7 +457,7 @@ class ListservList:
 
         dic_evol = {}
         for year in np.arange(min(years), max(years)+1):
-            mlist_fi = ListservList.from_pandas_dataframe(df=self.filter_by_year(year))
+            mlist_fi = self.filter_by_year(year)
             mlist_fi.create_sender_receiver_digraph()
 
             adj = func(mlist_fi.dg)
