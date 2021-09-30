@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://datactive.github.io/bigbang/">
-    <img src="https://github.com/datactive/bigbang/blob/gh-pages/images/bigbang-logo-dark.png?raw=true" align="center" width="500">
+    <img src="https://github.com/datactive/bigbang/blob/gh-pages/images/bigbang-logo-dark.png?raw=true" align="center" width="200">
   </a>
   <br>
   <br>
