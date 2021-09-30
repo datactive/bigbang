@@ -1,3 +1,11 @@
+<div align="center">
+  <a href="https://datactive.github.io/bigbang/">
+    <img src="https://github.com/datactive/bigbang/blob/gh-pages/images/bigbang-logo-dark.png?raw=true" align="center" width="200">
+  </a>
+  <br>
+  <br>
+</div>
+
 # BigBang
 
 BigBang is a toolkit for studying communications data from collaborative
@@ -124,3 +132,18 @@ The mailing-list archives are large and time consuming to scrape from the web. T
 ## License
 
 MIT, see [LICENSE](LICENSE) for its text. This license may be changed at any time according to the principles of the project [Governance](https://github.com/datactive/bigbang/wiki/Governance).
+
+## Acknowledgements 
+
+This project is funded by:
+
+<div align="center">
+  <a href="https://www.bmbf.de/bmbf/de/home/home_node.html">
+    <img src="https://github.com/datactive/bigbang/blob/gh-pages/images/logo_bmbf.png?raw=true" align="center">
+  </a>
+  <a href="https://prototypefund.de/">
+    <img src="https://github.com/datactive/bigbang/blob/gh-pages/images/logo_prototypefund.png?raw=true" align="center">
+  </a>
+  <br>
+  <br>
+</div>
