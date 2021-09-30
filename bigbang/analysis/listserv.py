@@ -59,6 +59,7 @@ class ListservList:
     get_localpartcount_per_domain
     get_sender_receiver_dictionary
     create_sender_receiver_digraph
+    get_graph_prop_per_domain_per_year
     """
 
     def __init__(
@@ -108,15 +109,27 @@ class ListservList:
     @staticmethod
     def to_percentage(arr: np.array) -> np.array:
         return arr / np.sum(arr)
+    
+    @staticmethod
+    def contract(count: np.array, label: list, contract: float) -> dict:
+        idx_low = np.arange(len(count))[count < contract]
+        idx_high = np.arange(len(count))[count >= contract]
+        count_comp = list(count[idx_high]) + [np.sum(count[idx_low])]
+        name_comp = [label[idx] for idx in idx_high] + ['Others']
+        return {key: value for key, value in zip(name_comp, count_comp)}
 
     @staticmethod
     def get_name_localpart_domain(string: str) -> tuple:
+        """
+        Returns only lower case strings to avoid duplicates.
+        """
         name, addr = email.utils.parseaddr(string)
+        addr = addr.split(' ')[-1]
         if '@' in addr:
             localpart, domain = addr.split('@')
-            return name, localpart, domain
+            return name.lower(), localpart.lower(), domain.lower()
         else:
-            return name, None, None
+            return name.lower(), None, None
 
     @staticmethod
     def iterator_name_localpart_domain(li: list) -> tuple:
@@ -125,7 +138,10 @@ class ListservList:
             yield ListservList.get_name_localpart_domain(sender)
 
     def get_messagecount_per_domain(
-        self, percentage: bool=False, contract: float=None,
+        self,
+        percentage: bool=False,
+        contract: float=None,
+        per_year: bool=False,
     ) -> Dict[str, int]:
         """
         Get contribution of messages per affiliation.
@@ -134,7 +150,15 @@ class ListservList:
             percentage: Whether to return count of messages percentage w.r.t. total.
             contract: If affiliations who contributed less than threshold should be
                 contracted to one class named 'Others'.
+            per_year:
         """
+        if per_year:
+            period_of_activity = self.period_of_activity()
+            years = [dt.year for dt in period_of_activity]
+            dic_yrs = {}
+            for year in np.arange(min(years), max(years)+1):
+                mlist_fi = ListservList.from_pandas_dataframe(
+        
         # collect
         domains = [
             domain
@@ -154,11 +178,7 @@ class ListservList:
             count = ListservList.to_percentage(count)
         
         if contract:
-            idx_low = np.arange(len(count))[count < contract]
-            idx_high = np.arange(len(count))[count >= contract]
-            count_comp = list(count[idx_high]) + [np.sum(count[idx_low])]
-            name_comp = [name[idx] for idx in idx_high] + ['Others']
-            return {key: value for key, value in zip(name_comp, count_comp)}
+            return ListservList.contract(count, name)
         else:
             return {key: value for key, value in zip(name, count)}
 
@@ -178,8 +198,31 @@ class ListservList:
         dic = {domain: list(set(li)) for domain, li in dic.items()}
         return dic
 
-    def get_localpartcount_per_domain(
+    def _get_localpartcount_per_domain(
         self, percentage: bool=False, contract: float=None,
+    ) -> Dict[str, int]:
+        # count
+        dic = self.get_localpart_per_domain()
+        domains = list(dic.keys())
+        counts = np.array([len(localparts) for localparts in dic.values()])
+        # sort low to high contribution
+        indx = np.argsort(counts).astype(int)
+        domains = [domains[ii] for ii in indx]
+        counts = counts[indx]
+        if percentage:
+            counts = ListservList.to_percentage(counts)
+        if contract:
+            dic = ListservList.contract(counts, domains, contract)
+        else:
+            dic = {key: value for key, value in zip(domain, counts)}
+        return dic
+
+    def get_localpartcount(
+        self,
+        percentage: bool=False,
+        contract: float=None,
+        per_domain: bool=False,
+        per_year: bool=False,
     ) -> Dict[str, int]:
         """
         Get contribution of members per affiliation.
@@ -188,35 +231,41 @@ class ListservList:
             percentage: Whether to return count of messages percentage w.r.t. total.
             contract: If affiliations who contributed less than threshold should be
                 contracted to one class named 'Others'.
+            per_year:
+            per_domain:
         """
-        # collect members per affiliation
-        dic = self.get_localpart_per_domain()
-        # count members per affiliation
-        dic = {domain: len(members) for domain, members in dic.items()}
+        if per_year:
+            period_of_activity = self.period_of_activity()
+            years = [dt.year for dt in period_of_activity]
+            years = np.arange(min(years), max(years)+1)
 
-        if percentage:
-            total_member_nr = np.sum(list(dic.values()))
-            dic = {
-                domain: member_nr/total_member_nr
-                for domain, member_nr in dic.items()
-            }
+            dic_yrs = {}
+            for year in years:
+                mlist_fi = ListservList.from_pandas_dataframe(
+                    df=self.filter_by_year(year)
+                )
+                dic = mlist_fi._get_localpartcount_per_domain(percentage, contract)
 
-        # sort low to high contribution
-        domain = np.asarray(list(dic.keys()))
-        count = np.asarray(list(dic.values()))
-        indx = np.argsort(count).astype(int)
-        domain = domain[indx]
-        count = count[indx]
-        
-        if contract:
-            idx_low = np.arange(len(count))[count < contract]
-            idx_high = np.arange(len(count))[count >= contract]
-            count_comp = list(count[idx_high]) + [np.sum(count[idx_low])]
-            name_comp = [domain[idx] for idx in idx_high] + ['Others']
-            return {key: value for key, value in zip(name_comp, count_comp)}
+                if per_domain:
+                    # count members per affiliation
+                    for domain, localparts in dic.items():
+                        if domain not in list(dic_yrs.keys()):
+                            dic_yrs[domain] = {
+                                "year": [year], "localparts": [len(localparts)]
+                            }
+                        else:
+                            dic_yrs[domain]["year"].append(year)
+                            dic_yrs[domain]["localparts"].append(len(localparts))
+                else:
+                    dic_yrs[year] = np.sum(np.array(dic.values()))
+            return dic_yrs
         else:
-            return {key: value for key, value in zip(domain, count)}
-
+            dic = self._get_localpartcount_per_domain(percentage, contract)
+            if per_domain:
+                return dic
+            else:
+                return np.sum(np.array(list(dic.values())))
+        
     def get_messagecount_per_timezone(
         self, percentage: bool=False,
     ) -> Dict[str, int]:
@@ -244,15 +293,15 @@ class ListservList:
         utcoffsets_hm, counts = np.unique(utcoffsets_hm, return_counts=True)
         return {td: cou for td, cou in zip(utcoffsets_hm, counts)}
 
-    def get_sender_receiver_dictionary(self) -> Dict:
+    def get_sender_receiver_dictionary(
+        self,
+        domains_of_interest: Optional[list]=None,
+    ) -> Dict:
         """
-        Args:
-            df: pd.DataFrame that contains 'from' and 'comments-to' header fields.
-
         Returns:
-            Nested dictionary with first layer the 'from'/sender keys and the
-            second layer the 'comments-to'/receiver keys with the integer
-            indicating the number of messages between them.
+            Nested dictionary with first layer the 'from'/sender domain keys and
+            the second layer the 'comments-to'/receiver domain keys with the
+            integer indicating the number of messages between them.
         """
         _df = self.df[["from", "comments-to",]].dropna()
         dic = {}
@@ -285,9 +334,29 @@ class ListservList:
                     dic[f_domain][ct_domain] = 1
                 else:
                     dic[f_domain][ct_domain] += 1
+
+        if domains_of_interest is not None:
+            dic_doi = {}
+            for sender, receivers in dic.items():
+                for receiver, nr_msgs in receivers.items():
+                    if (sender in domains_of_interest):
+                        if sender not in dic_doi.keys():
+                            dic_doi[sender] = {}
+                        dic_doi[sender][receiver] = nr_msgs
+                    
+                    if (receiver in domains_of_interest):
+                        if sender not in dic_doi.keys():
+                            dic_doi[sender] = {}
+                        dic_doi[sender][receiver] = nr_msgs
+            dic = dic_doi
+
         return dic
 
-    def create_sender_receiver_digraph(self, nw: Optional[dict]=None):
+    def create_sender_receiver_digraph(
+        self,
+        nw: Optional[dict]=None,
+        domains_of_interest: Optional[list]=None,
+    ):
         """
         Create directed graph from messaging network created with
         ListservList.get_sender_receiver_dictionary().
@@ -296,7 +365,7 @@ class ListservList:
             nw: dictionary created with ListservList.get_sender_receiver_dictionary()
         """
         if nw is None:
-            nw = self.get_sender_receiver_dictionary()
+            nw = self.get_sender_receiver_dictionary(domains_of_interest)
         # initialise graph
         DG = nx.DiGraph()
         # create nodes
@@ -313,7 +382,7 @@ class ListservList:
         # attach directed graph to class
         self.dg = DG
 
-    def get_domain_betweenness_centrality_per_year(
+    def get_graph_prop_per_domain_per_year(
         self, years: Optional[tuple]=None, func=nx.betweenness_centrality,
     ) -> dict:
         if years is None:
