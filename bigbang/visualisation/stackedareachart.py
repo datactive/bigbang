@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 from matplotlib.pyplot import figure
 
+from bigbang.visualisation import utils
+
 
 def get_ylabels(data) -> List[str]:
     ylabels = list(set([
@@ -36,35 +38,13 @@ def data_transformation(idata: dict, percentage: bool=False) -> np.ndarray:
         odata = odata / np.sum(odata, axis=0)
     return odata
 
-def create_color_palette(
-    data: dict, domains_of_interest: Optional[List[str]]=None,
-) -> list:
-    # collect all ylabels
-    ylabels = get_ylabels(data)
-    # find domains_of_interest in ylabels
-    domains_of_interest = [doi for doi in domains_of_interest if doi in ylabels]
-    # get colors
-    if domains_of_interest:
-        doi_colors = mpl.cm.jet(np.linspace(0, 1, len(domains_of_interest)))
-        colors = []
-        count = 0
-        for ylab in ylabels:
-            if ylab in domains_of_interest:
-                colors.append(doi_colors[count])
-                count += 1
-            else:
-                colors.append(
-                    Color(rgb=(np.array([175, 175, 175])/255)).rgb,
-                )
-    else:
-        colors = mpl.cm.jet(np.linspace(0, 1, len(ylabels)))
-    return colors
-
 def stacked_area_chart(
     data: dict,
     ax: mpl.axes,
     domains_of_interest: Optional[list]=None,
     percentage: bool=False,
+    colormap: Optional[mpl.colors.LinearSegmentedColormap]=None,
+    color_default: Optional[np.array]=None,
 ):
     """
     Parameters
@@ -75,7 +55,10 @@ def stacked_area_chart(
     """
     x = list(data.keys())
     y = data_transformation(data, percentage)
-    colors = create_color_palette(data, domains_of_interest)
+    ylabels = get_ylabels(idata)
+    colors = utils.create_color_palette(
+        ylabels, domains_of_interest, colormap, color_default,
+    )
     ax.stackplot(
         x, y,
         colors=colors,

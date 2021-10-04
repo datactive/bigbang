@@ -10,6 +10,7 @@ import matplotlib.lines as mlines
 from matplotlib.pyplot import figure
 
 from bigbang.visualisation import stackedareachart
+from bigbang.visualisation import utils
 
 
 def evolution_of_participation(
@@ -17,7 +18,9 @@ def evolution_of_participation(
     ax: mpl.axes,
     domains_of_interest: Optional[list]=None,
     percentage: bool=False,
-):
+    colormap: mpl.colors.LinearSegmentedColormap=mpl.cm.jet,
+    color_default: np.array=np.array([175, 175, 175]),
+) -> mpl.axes:
     """
     Parameters
     ----------
@@ -28,12 +31,31 @@ def evolution_of_participation(
     x = list(data.keys())
     ylabels = stackedareachart.get_ylabels(data)
     y = stackedareachart.data_transformation(data, percentage)
-    colors = stackedareachart.create_color_palette(data, domains_of_interest)
+    colors = utils.create_color_palette(
+        ylabels, domains_of_interest, colormap, color_default,
+    )
     for iy, ylab in enumerate(ylabels):
-        ax.plot(
-            x, y[iy, :],
-            color=colors[iy],
-        )
+        if ylab in domains_of_interest:
+            ax.plot(
+                x, y[iy, :],
+                color='w',
+                linewidth=4,
+                zorder=1,
+            )
+            ax.plot(
+                x, y[iy, :],
+                color=colors[iy],
+                linewidth=3,
+                zorder=1,
+                label=ylab,
+            )
+        else:
+            ax.plot(
+                x, y[iy, :],
+                color=colors[iy],
+                linewidth=1,
+                zorder=0,
+            )
     ax.set_xlim(np.min(x), np.max(x))
     ax.set_ylim(np.min(y), np.max(y))
     return ax
@@ -45,7 +67,7 @@ def evolution_of_graph_property_by_domain(
         ax: mpl.axes,
         domains_of_interest: Optional[list]=None,
         percentile: Optional[float]=None,
-):
+) -> mpl.axes:
     """
     Parameters
     ----------

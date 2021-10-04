@@ -46,6 +46,9 @@ standards_release_date_3GPP = [3, 6, 9, 12]  #[month]
 
 class ListservList:
     """
+    Note
+    ----
+    Issues loading 3GPP_TSG_RAN_WG1 which is 3.3Gb large
 
     Methods
     -------
@@ -318,12 +321,13 @@ class ListservList:
         per_year: bool=False,
     ) -> dict:
         """
-        Args:
-            header_fields: For a Listserv mailing list the most representative
+        Parameters
+        ----------
+            header_fields : For a Listserv mailing list the most representative
                 header fields of senders and receivers are 'from' and
                 'comments-to' respectively.
-            per_domain:
-            per_year:
+            per_domain :
+            per_year :
         """
         if per_year:
             dics = {}
