@@ -153,21 +153,28 @@ class TestListservList:
         assert msgcount['from'][2021]['milan.jelinek'] == 2
         assert msgcount['from'][2021]['markus.multrus'] == 1
 
-    #def test__get_sender_receiver_dictionary(self, mlist):
-    #    dic = mlist.get_sender_receiver_dictionary()
-    #    dic_true = {
-    #        'ERICSSON.COM': {'USherbrooke.ca': 1, 'QTI.QUALCOMM.COM': 1},
-    #        'USHERBROOKE.CA': {'ERICSSON.COM': 1, 'qti.qualcomm.com': 1, 'QTI.QUALCOMM.COM': 1},
-    #        'QTI.QUALCOMM.COM': {'USherbrooke.ca': 2},
-    #        'PHILIPS.COM': {'QTI.QUALCOMM.COM': 1, 'philips.com': 1},
-    #        'QOSOUND.COM': {'qti.qualcomm.com': 1},
-    #        'IIS.FRAUNHOFER.DE': {'QTI.QUALCOMM.COM': 2},
-    #        '3GPP.ORG': {'list.etsi.org': 15, 'QTI.QUALCOMM.COM': 1},
-    #        'SAMSUNG.COM': {'LIST.ETSI.ORG': 2},
-    #    }
-    #    for key1, value1 in dic.items():
-    #        for key2, value2 in value1.items():
-    #            assert dic_true[key1][key2] == value2
+    def test__get_messagecount_per_timezone(self, mlist):
+        msgcount = mlist.get_messagecount_per_timezone()
+        print(msgcount)
+        assert msgcount['+00:00'] == 7
+        assert msgcount['+02:00'] == 1
+        assert msgcount['-04:00'] == 2
+        assert msgcount['-05:00'] == 1
+    
+    def test__get_sender_receiver_dictionary(self, mlist):
+        dic = mlist.get_sender_receiver_dictionary()
+        dic_true = {
+            'ericsson.com': {'usherbrooke.ca': 1, 'qti.qualcomm.com': 1},
+            'usherbrooke.ca': {'ericsson.com': 1, 'qti.qualcomm.com': 2},
+            'qti.qualcomm.com': {'usherbrooke.ca': 2},
+            'philips.com': {'qti.qualcomm.com': 1, 'philips.com': 1},
+            'iis.fraunhofer.de': {'qti.qualcomm.com': 2},
+            '3gpp.org': {'qti.qualcomm.com': 1},
+            'samsung.com': {'list.etsi.org': 2},
+        }
+        for key1, value1 in dic.items():
+            for key2, value2 in value1.items():
+                assert dic_true[key1][key2] == value2
 
 
 class TestListservArchive:
