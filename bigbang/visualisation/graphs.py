@@ -12,6 +12,12 @@ from matplotlib.pyplot import figure
 
 
 def edge_thickness(graph, domains_of_interest: list):
+    """
+    Parameters
+    ----------
+        graph : 
+        domains_of_interest : 
+    """
     edges, weights = zip(*nx.get_edge_attributes(graph, 'weight').items())
     _edges = []
     _weights = []

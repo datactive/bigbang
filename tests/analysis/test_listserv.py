@@ -101,8 +101,8 @@ class TestListservList:
         domains = mlist.get_domainscount(
             header_fields=['comments-to'], per_year=True,
         )
-        assert domains[2020]['comments-to'] == 2
-        assert domains[2021]['comments-to'] == 3
+        assert domains['comments-to'][2020] == 2
+        assert domains['comments-to'][2021] == 3
         domains = mlist.get_domainscount(
             header_fields=['from'], per_year=False,
         )

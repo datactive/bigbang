@@ -236,17 +236,17 @@ class ListservList:
             per_year:
         """
         if per_year:
-            period_of_activity = self.period_of_activity()
-            years = [dt.year for dt in period_of_activity]
-            years = np.arange(min(years), max(years)+1)
-
             dics = {}
-            for year in years:
-                mlist_fi = self.crop_by_year(year)
-                dic = mlist_fi.get_domains(header_fields, return_counts=False)
-                for header_field, domains in dic.items():
-                    dic[header_field] = len(domains)
-                dics[year] = dic
+            for header_field in header_fields:
+                dics[header_field] = {}
+                period_of_activity = self.period_of_activity()
+                years = [dt.year for dt in period_of_activity]
+                years = np.arange(min(years), max(years)+1)
+
+                for year in years:
+                    mlist_fi = self.crop_by_year(year)
+                    domains = mlist_fi.get_domains([header_field], return_counts=False)
+                    dics[header_field][year] = len(domains[header_field])
             return dics
         else:
             dic = self.get_domains(header_fields, return_counts=False)
@@ -333,19 +333,15 @@ class ListservList:
                 years = [dt.year for dt in period_of_activity]
                 years = np.arange(min(years), max(years)+1)
 
-
                 for year in years:
                     dics[header_field][year] = {}
                     mlist_fi = self.crop_by_year(year)
-                    dic = mlist_fi.get_localparts(header_fields, per_domain)
+                    dic_lp = mlist_fi.get_localparts([header_field], per_domain)
                     if per_domain:
-                        dic[year] = {}
-                        for header_field, domains in dic.items():
-                            for domain, localparts in domains.items():
-                                dics[header_field][year][domain] = len(localparts)
+                        for domain, localparts in dic_lp[header_field].items():
+                            dics[header_field][year][domain] = len(localparts)
                     else:
-                        for header_field, localparts in dic.items():
-                            dics[header_field][year] = len(localparts)
+                        dics[header_field][year] = len(dic_lp[header_field])
             return dics
         else:
             dic = self.get_localparts(header_fields, per_domain)
