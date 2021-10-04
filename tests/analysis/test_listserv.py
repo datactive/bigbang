@@ -25,14 +25,6 @@ file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
 
-@pytest.fixture(name="mlist", scope="module")
-def get_mailinglist():
-    mlist = ListservList.from_mbox(
-        name="3GPP_TSG_SA_WG4_EVS",
-        filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_TSG_SA_WG4_EVS.mbox",
-    )
-    return mlist
-
 @pytest.fixture(name="march", scope="module")
 def get_mailingarchive():
     march = ListservArchive.from_mbox(
@@ -42,6 +34,15 @@ def get_mailingarchive():
     )
     march.df = march.df.dropna()
     return march
+
+@pytest.fixture(name="mlist", scope="module")
+def get_mailinglist():
+    mlist = ListservList.from_mbox(
+        name="3GPP_TSG_SA_WG4_EVS",
+        filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_TSG_SA_WG4_EVS.mbox",
+    )
+    mlist.df = mlist.df.dropna()
+    return mlist
 
 
 class TestListservList:
@@ -53,69 +54,120 @@ class TestListservList:
     def test__get_name_localpart_domain(self):
         addr = '"Gabin, Frederic" <Frederic.Gabin@DOLBY.COM>'
         name, localpart, domain = ListservList.get_name_localpart_domain(addr)
-        assert name == "Gabin, Frederic"
-        assert localpart == "Frederic.Gabin"
-        assert domain == "DOLBY.COM"
+        assert name == "gabin, frederic"
+        assert localpart == "frederic.gabin"
+        assert domain == "dolby.com"
 
-    def test__get_messagecount_per_domain(self, mlist):
-        dic_msg = mlist.get_messagecount_per_domain(
-            percentage=True, contract=0.1
+    def test__period_of_activity(self, mlist):
+        datetimes = mlist.period_of_activity()
+        years = [dt.year for dt in datetimes]
+        assert years == [2020, 2021]
+    
+    def test__crop_by_year(self, mlist):
+        _mlist = mlist.crop_by_year(2020)
+        assert len(_mlist.df.index.values) == 3
+        datetimes = _mlist.period_of_activity()
+        years = [dt.year for dt in datetimes]
+        assert years == [2020, 2020]
+    
+    def test__crop_by_address(self, mlist):
+        _mlist = mlist.crop_by_address(
+            header_field='from', address_field={'domain': ['samsung.com']},
         )
-        dic_msg_true = {
-            'QOSOUND.COM': 0.12,
-            'QTI.QUALCOMM.COM': 0.26,
-            '3GPP.ORG': 0.32,
-            'Others': 0.3,
-        }
-        for key in dic_msg.keys():
-            assert dic_msg_true[key] == dic_msg[key]
+        assert len(_mlist.df.index.values) == 1
 
-    def test__get_localpart_per_domain(self, mlist):
-        dic_mem = mlist.get_localpart_per_domain()
-        dic_mem_true = {
-            'ERICSSON.COM': ['tomas.toftgard'],
-            'USHERBROOKE.CA': ['Milan.Jelinek'],
-            'QTI.QUALCOMM.COM': ['ivarga', 'nleung'],
-            'QOSOUND.COM': ['hs'],
-            'IIS.FRAUNHOFER.DE': ['stefan.doehla', 'markus.multrus'],
-            'DOLBY.COM': ['Stefan.Bruhn'],
-            'PHILIPS.COM': ['marek.szczerba'],
-            '3GPP.ORG': ['Jayeeta.Saha'],
-            'SAMSUNG.COM': ['kyunghun.jung'],
-        }
-        for key in dic_mem.keys():
-            for localpart in dic_mem[key]:
-                assert localpart in dic_mem_true[key]
-
-    def test__get_localpartcount_per_domain(self, mlist):
-        dic_lps = mlist.get_localpartcount_per_domain(
-            percentage=True, contract=0.1
+    def test__get_domains(self, mlist):
+        domains = mlist.get_domains(header_fields=['comments-to'], return_counts=True)
+        domains_comp = [
+            'ericsson.com', 'qti.qualcomm.com', 'list.etsi.org', 'usherbrooke.ca',
+        ]
+        for domain in domains['comments-to']:
+            assert domain[0] in domains_comp
+            if domain[0] == 'qti.qualcomm.com':
+                assert domain[1] == 7
+        domains = mlist.get_domains(header_fields=['from'], return_counts=False)
+        domains_comp = [
+            'samsung.com',
+            'qti.qualcomm.com',
+            'philips.com',
+            'iis.fraunhofer.de',
+            'ericsson.com',
+            'usherbrooke.ca',
+            '3gpp.org',
+        ]
+        assert set(domains['from']) == set(domains_comp)
+    
+    def test__get_domainscount(self, mlist):
+        domains = mlist.get_domainscount(
+            header_fields=['comments-to'], per_year=True,
         )
-        dic_lps_true = {
-            'QTI.QUALCOMM.COM': 0.18181818181818182,
-            'IIS.FRAUNHOFER.DE': 0.18181818181818182,
-            'Others': 0.6363636363636365,
-        }
-        for key in dic_lps.keys():
-            np.testing.assert_almost_equal(
-                dic_lps_true[key], dic_lps[key], decimal=7,
-            )
+        assert domains[2020]['comments-to'] == 2
+        assert domains[2021]['comments-to'] == 3
+        domains = mlist.get_domainscount(
+            header_fields=['from'], per_year=False,
+        )
+        assert domains['from'] == 7
+    
+    def test__get_localparts(self, mlist):
+        localparts = mlist.get_localparts(
+            header_fields=['comments-to'], per_domain=True, return_counts=False,
+        )
+        assert localparts['comments-to']['ericsson.com'] == ['tomas.toftgard']
+        assert set(localparts['comments-to']['qti.qualcomm.com']) == set(['nleung', 'ivarga'])
+        localparts = mlist.get_localparts(
+            header_fields=['comments-to'], per_domain=False, return_counts=True,
+        )
+        localparts = list(map(list, zip(*localparts['comments-to'])))
+        assert '3gpp_tsg_sa_wg4_video' in localparts[0]
+        assert 'ivarga' in localparts[0]
+        assert 'milan.jelinek' in localparts[0]
+        assert set(localparts[1]) == set([1, 6, 3, 1, 1])
+ 
+    def test__get_localpartscount(self, mlist):
+        localparts = mlist.get_localpartscount(
+            header_fields=['comments-to'], per_domain=True, per_year=False,
+        )
+        assert localparts['comments-to']['list.etsi.org'] == 1
+        assert localparts['comments-to']['usherbrooke.ca'] == 1
+        assert localparts['comments-to']['qti.qualcomm.com'] == 2
+        localparts = mlist.get_localpartscount(
+            header_fields=['from'], per_domain=False, per_year=True,
+        )
+        assert localparts['from'][2020] == 3
+        assert localparts['from'][2021] == 6
 
-    def test__get_sender_receiver_dictionary(self, mlist):
-        dic = mlist.get_sender_receiver_dictionary()
-        dic_true = {
-            'ERICSSON.COM': {'USherbrooke.ca': 1, 'QTI.QUALCOMM.COM': 1},
-            'USHERBROOKE.CA': {'ERICSSON.COM': 1, 'qti.qualcomm.com': 1, 'QTI.QUALCOMM.COM': 1},
-            'QTI.QUALCOMM.COM': {'USherbrooke.ca': 2},
-            'PHILIPS.COM': {'QTI.QUALCOMM.COM': 1, 'philips.com': 1},
-            'QOSOUND.COM': {'qti.qualcomm.com': 1},
-            'IIS.FRAUNHOFER.DE': {'QTI.QUALCOMM.COM': 2},
-            '3GPP.ORG': {'list.etsi.org': 15, 'QTI.QUALCOMM.COM': 1},
-            'SAMSUNG.COM': {'LIST.ETSI.ORG': 2},
-        }
-        for key1, value1 in dic.items():
-            for key2, value2 in value1.items():
-                assert dic_true[key1][key2] == value2
+    def test__get_messagecount(self, mlist):
+        msgcount = mlist.get_messagecount()
+        assert msgcount == 12
+        msgcount = mlist.get_messagecount(
+            header_fields=['comments-to'], address_field='domain', per_year=False,
+        )
+        assert msgcount['comments-to']['list.etsi.org'] == 1
+        assert msgcount['comments-to']['usherbrooke.ca'] == 3
+        assert msgcount['comments-to']['qti.qualcomm.com'] == 7
+        msgcount = mlist.get_messagecount(
+            header_fields=['from'], address_field='localpart', per_year=True,
+        )
+        print(msgcount)
+        assert msgcount['from'][2020]['milan.jelinek'] == 1
+        assert msgcount['from'][2021]['milan.jelinek'] == 2
+        assert msgcount['from'][2021]['markus.multrus'] == 1
+
+    #def test__get_sender_receiver_dictionary(self, mlist):
+    #    dic = mlist.get_sender_receiver_dictionary()
+    #    dic_true = {
+    #        'ERICSSON.COM': {'USherbrooke.ca': 1, 'QTI.QUALCOMM.COM': 1},
+    #        'USHERBROOKE.CA': {'ERICSSON.COM': 1, 'qti.qualcomm.com': 1, 'QTI.QUALCOMM.COM': 1},
+    #        'QTI.QUALCOMM.COM': {'USherbrooke.ca': 2},
+    #        'PHILIPS.COM': {'QTI.QUALCOMM.COM': 1, 'philips.com': 1},
+    #        'QOSOUND.COM': {'qti.qualcomm.com': 1},
+    #        'IIS.FRAUNHOFER.DE': {'QTI.QUALCOMM.COM': 2},
+    #        '3GPP.ORG': {'list.etsi.org': 15, 'QTI.QUALCOMM.COM': 1},
+    #        'SAMSUNG.COM': {'LIST.ETSI.ORG': 2},
+    #    }
+    #    for key1, value1 in dic.items():
+    #        for key2, value2 in value1.items():
+    #            assert dic_true[key1][key2] == value2
 
 
 class TestListservArchive:
