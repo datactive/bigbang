@@ -72,6 +72,10 @@ class TestListservList:
         )
         assert len(_mlist.df.index.values) == 1
 
+    def test__crop_by_subject(self, mlist):
+        _mlist = mlist.crop_by_subject(match="EVS SWG Sessions")
+        assert len(_mlist.df.index.values) == 1
+
     def test__get_domains(self, mlist):
         domains = mlist.get_domains(
             header_fields=["comments-to"], return_counts=True
