@@ -23,7 +23,10 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
-from bigbang.utils import get_paths_to_files_in_directory, get_paths_to_dirs_in_directory
+from bigbang.utils import (
+    get_paths_to_files_in_directory,
+    get_paths_to_dirs_in_directory,
+)
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -283,39 +286,41 @@ class ListservMessageParser(email.parser.Parser):
                         "b",
                         text=re.compile(r"^\b%s\b" % string),
                     )  # Sometimes this returns None!
-                    text = _text.parent.parent.parent.parent#.text
+                    text = _text.parent.parent.parent.parent  # .text
                     break
-                except:
+                except Exception:
                     continue
             # collect important info from LISTSERV header
             header = {}
             for line in text.find_all("tr"):
                 key = str(line.find_all(re.compile("^b"))[0])
-                key = re.search(r'<b>(.*?)<\/b>', key).group(1).lower()
-                key = re.sub(r':', '', key).strip()
+                key = re.search(r"<b>(.*?)<\/b>", key).group(1).lower()
+                key = re.sub(r":", "", key).strip()
                 if "subject" in key:
-                    value = repr(str(line.find_all(re.compile("^a"))[0].text).strip())
+                    value = repr(
+                        str(line.find_all(re.compile("^a"))[0].text).strip()
+                    )
                 else:
                     try:  # Listserv 17
                         value = repr(str(line.find_all(re.compile("^div"))[0]))
                         value = re.search(r'">(.*)<\/div>', value).group(1)
                         if "content-type" in key:
-                            value = value.split(';')[0]
-                    except:  # Listserv 16.5
+                            value = value.split(";")[0]
+                    except Exception:  # Listserv 16.5
                         value = repr(str(line.find_all(re.compile("^p"))[1]))
-                        value = re.search(r'<p>(.*)<\/p>', value).group(1)
-                        value = value.split(' <')[0]
-                value = re.sub(r'&gt;', '>', value).strip()
-                value = re.sub(r'&lt;', '<', value).strip()
+                        value = re.search(r"<p>(.*)<\/p>", value).group(1)
+                        value = value.split(" <")[0]
+                value = re.sub(r"&gt;", ">", value).strip()
+                value = re.sub(r"&lt;", "<", value).strip()
                 # remove Carriage return
-                value = re.sub(r'\\r', '', value).strip()
+                value = re.sub(r"\\r", "", value).strip()
                 # remove Linefeed
-                value = re.sub(r'\\n', '', value).strip()
+                value = re.sub(r"\\n", "", value).strip()
                 if "parts/attachments" in key:
                     break
                 elif "comments" in key:
                     key = "comments-to"
-                    value = re.sub(r'To:', '', value).strip()
+                    value = re.sub(r"To:", "", value).strip()
                 header[key] = value
         except Exception:
             header = self.empty_header
@@ -389,7 +394,7 @@ class ListservMessageParser(email.parser.Parser):
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         return ListservMessageIO.to_pandas_dataframe(msg)
-    
+
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
         return ListservMessageIO.to_mbox(msg, filepath)
@@ -609,7 +614,7 @@ class ListservList(ListservListIO):
                     )
                 )
         return cls(name, filepaths, msgs)
-    
+
     @classmethod
     def get_messages_from_url(
         cls,
@@ -649,7 +654,7 @@ class ListservList(ListservListIO):
             # wait between loading messages, for politeness
             time.sleep(1)
         return msgs
-    
+
     @classmethod
     def get_message_urls(
         cls,
@@ -664,7 +669,7 @@ class ListservList(ListservListIO):
             select: Selection criteria that can filter messages by:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
-        
+
         Returns:
             List of all selected URLs of the messages in the mailing list.
         """
@@ -721,7 +726,7 @@ class ListservList(ListservListIO):
     ) -> Tuple[List[str], List[str]]:
         # wait between loading messages, for politeness
         time.sleep(0.5)
-        
+
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
@@ -730,7 +735,7 @@ class ListservList(ListservListIO):
             for list_tag in soup.find_all("li")
         ]
         return periods, urls_of_periods
-    
+
     @staticmethod
     def get_index_of_elements_in_selection(
         times: List[Union[int, str]],
@@ -768,10 +773,10 @@ class ListservList(ListservListIO):
             # filter specific month
             cond = lambda x: x == filtr
         return [idx for idx, time in enumerate(times) if cond(time)]
-    
+
     @staticmethod
     def get_name_from_url(url: str) -> str:
-        """ Get name of mailing list. """
+        """Get name of mailing list."""
         return url.split("A0=")[-1]
 
     @classmethod
@@ -784,7 +789,6 @@ class ListservList(ListservListIO):
         Returns:
             List to URLs from which`mboxMessage` can be initialized.
         """
-        tstart = time.time()
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
@@ -810,10 +814,10 @@ class ListservList(ListservListIO):
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
-    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
+    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         return ListservListIO.to_dict(self.messages, include_body)
 
-    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         return ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
@@ -866,7 +870,9 @@ class ListservArchive(object):
     )
     """
 
-    def __init__(self, name: str, url: str, lists: List[Union[ListservList, str]]):
+    def __init__(
+        self, name: str, url: str, lists: List[Union[ListservList, str]]
+    ):
         self.name = name
         self.url = url
         self.lists = lists
@@ -1164,10 +1170,10 @@ class ListservArchive(object):
                 msg_nr += 1
         return dic
 
-    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
+    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         return ListservArchiveIO.to_dict(self.lists, include_body)
 
-    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
@@ -1178,7 +1184,8 @@ class ListservArchive(object):
 
 
 def set_website_preference_for_header(
-    url_pref: str, session: requests.Session,
+    url_pref: str,
+    session: requests.Session,
 ) -> requests.Session:
     """
     Set the 'Email Headers' of the 'Archive Preferences' for the auth session
