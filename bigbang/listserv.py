@@ -23,6 +23,7 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+from bigbang.utils import get_paths_to_files_in_directory, get_paths_to_dirs_in_directory
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -1312,23 +1313,3 @@ def get_website_content(
             return "RequestException"
         else:
             SystemExit()
-
-
-def get_paths_to_files_in_directory(
-    directory: str, file_dsc: str = "*"
-) -> List[str]:
-    """Get paths of all files matching file_dsc in directory"""
-    template = f"{directory}{file_dsc}"
-    file_paths = glob.glob(template)
-    return file_paths
-
-
-def get_paths_to_dirs_in_directory(
-    directory: str, folder_dsc: str = "*"
-) -> List[str]:
-    """Get paths of all directories matching file_dsc in directory"""
-    template = f"{directory}{folder_dsc}"
-    dir_paths = glob.glob(template)
-    # normalize directory paths
-    dir_paths = [dir_path + "/" for dir_path in dir_paths]
-    return dir_paths
