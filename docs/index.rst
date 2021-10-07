@@ -6,10 +6,12 @@
 Welcome to BigBang's documentation!
 ===================================
 
-``BigBang`` is a toolkit for studying processes of open collaboration
-via analysis of the communciations records.
+``BigBang`` is a toolkit for studying processes of open collaboration and
+deliberation via analysis of the communciations records.
 
-It currently supports analyzing mailing lists from Sourceforge, Mailman, or .mbox files. BigBang provides tools for efficiently scraping this data
+It currently supports analyzing mailing lists from Sourceforge, Mailman,
+ListServ or .mbox files.
+BigBang provides tools for efficiently scraping this data
 from on-line sources.
 
 It also provides a variety of preprocessing scripts to assist researchers in gaining valuable insight from this data.
