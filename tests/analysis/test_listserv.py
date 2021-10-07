@@ -49,7 +49,7 @@ class TestListservList:
     def test__get_name_localpart_domain(self):
         addr = '"Gabin, Frederic" <Frederic.Gabin@DOLBY.COM>'
         name, localpart, domain = ListservList.get_name_localpart_domain(addr)
-        assert name == "gabin, frederic"
+        assert name == "gabin frederic"
         assert localpart == "frederic.gabin"
         assert domain == "dolby.com"
 

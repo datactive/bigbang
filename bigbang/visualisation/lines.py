@@ -63,8 +63,10 @@ def evolution_of_participation_1D(
                 zorder=0,
                 alpha=0.2,
             )
-    ax.set_xlim(np.min(x), np.max(x))
-    ax.set_ylim(np.min(y), np.max(y))
+    if np.isfinite(np.max(x)):
+        ax.set_xlim(np.min(x), np.max(x))
+    if np.isfinite(np.max(y)):
+        ax.set_ylim(np.min(y), np.max(y))
     return ax
 
 
@@ -145,7 +147,8 @@ def evolution_of_graph_property_by_domain(
     """
     Parameters
     ----------
-        data : Dictionary create with mlist.get_domain_betweenness_centrality_per_year()
+        data : Dictionary create with
+            bigbang.analysis.ListservList.get_graph_prop_per_domain_per_year()
         ax :
         domains_in_focus :
         percentile :

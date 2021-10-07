@@ -45,8 +45,19 @@ class ListservArchiveWarning(BaseException):
     pass
 
 
-standards_release_date_3GPP = [3, 6, 9, 12]  # [month]
-reply_labels = ["Re:", "AW:", "=?utf-8?b?J+etlOWkjTo=?="]
+# Turn off pandas SettingWithCopyWarning warning
+pd.options.mode.chained_assignment = None
+
+standards_release_dates_3GPP = [3, 6, 9, 12]  # [month]
+
+reply_labels = [
+    "Re:",
+    "Re\xa0",
+    "AW:",
+    "=?utf-8?b?J+WbnuWkjTo=?=",
+    "=?utf-8?b?J+etlOWkjTo=?=",
+]
+# =?utf-8?b?J++9llNSVkND?=
 
 
 class ListservList:
@@ -73,10 +84,12 @@ class ListservList:
     get_domainscount
     get_localparts
     get_localpartscount
-    - get_threads
-    - get_threadscount
-    get_messagecount
-    get_messagecount_per_timezone
+    get_subjectthreads
+    get_subjects
+    get_subjectscount
+    get_messages
+    get_messagescount
+    get_messagescount_per_timezone
     get_sender_receiver_dictionary
     create_sender_receiver_digraph
     get_graph_prop_per_domain_per_year
@@ -118,7 +131,18 @@ class ListservList:
     ) -> "ListservList":
         if "subject" in df.columns:
             # remove multiple spaces in string
-            df["subject"] = df["subject"].apply(lambda x: re.sub(" +", " ", x))
+            df.loc[:, "subject"] = df["subject"].apply(
+                lambda x: re.sub(" +", " ", x)
+            )
+            # remove leading and trailing apostrophe
+            # TODO: this step should not be necessary if it is corrected for in
+            # bigbang.listserv.ListservMessageParser
+            df.loc[:, "subject"] = [
+                re.match(r"^(?:')(.*)(?:')$", sb)[1]
+                if re.match(r"^(?:')(.*)(?:')$", sb) is not None
+                else sb
+                for sb in df["subject"].values
+            ]
         return cls(name, filepath, df)
 
     @staticmethod
@@ -141,13 +165,33 @@ class ListservList:
         local-part, and domain.
         All strings are returned in lower case only to avoid duplicates.
         """
-        name, addr = email.utils.parseaddr(string)
-        addr = addr.split(" ")[-1]
-        if "@" in addr:
+        # remove multiple white spaces
+        string = re.sub(" +", " ", string)
+        # remove leading and trailing white spaces
+        string = string.strip()
+        # all characters in lower case
+        string = string.lower()
+        # remove apostrophes and commas as they are not allowed in an atom- or obs-phrase
+        string = string.replace('"', "")
+        string = string.replace(",", "")
+        # test if name is in string or if address is duplicated
+        test = string.split(" ")
+        if (
+            (len(test) == 2)
+            and all("@" in st for st in test)
+            and (test[0] == test[1])
+        ):
+            addr = test[0]
             localpart, domain = addr.split("@")
-            return name.lower(), localpart.lower(), domain.lower()
+            return None, localpart.lower(), domain.lower()
         else:
-            return name.lower(), None, None
+            name, addr = email.utils.parseaddr(string)
+            addr = addr.split(" ")[-1]
+            if "@" in addr:
+                localpart, domain = addr.split("@")
+                return name.lower(), localpart.lower(), domain.lower()
+            else:
+                return name.lower(), None, None
 
     @staticmethod
     def iterator_name_localpart_domain(li: list) -> tuple:
@@ -168,7 +212,7 @@ class ListservList:
 
         Returns
         -------
-            'ListservList' object cropped to specification.
+        'ListservList' object cropped to specification.
         """
         if isinstance(yrs, int) or isinstance(yrs, np.int64):
             mask = [dt.year == yrs for dt in self.df["date"].values]
@@ -191,15 +235,16 @@ class ListservList:
         """
         Parameters
         ----------
-            header_field : For a Listserv mailing list the most representative
-                header fields for senders and receivers are 'from' and
-                'comments-to' respectively.
-            per_address_field : Filter by 'local-part' or 'domain' part of an address.
-                The data structure of the argument should be, e.g.:
-                    {'localpart': [string-1, string-2, ...]}
+        header_field : For a Listserv mailing list the most representative
+            header fields for senders and receivers are 'from' and
+            'comments-to' respectively.
+        per_address_field : Filter by 'local-part' or 'domain' part of an address.
+            The data structure of the argument should be, e.g.:
+                {'localpart': [string-1, string-2, ...]}
+
         Returns
         -------
-            'ListservList' object cropped to specification.
+        'ListservList' object cropped to specification.
         """
         mlist = self
         indices = []
@@ -227,10 +272,12 @@ class ListservList:
         -------
             'ListservList' object cropped to message subject.
         """
-        mask = [
-            True if re.search(match, sb) else False
-            for sb in self.df["subject"].values
-        ]
+        mask = []
+        for sb in self.df["subject"].values:
+            if re.search(re.escape(match), sb):
+                mask.append(True)
+            else:
+                mask.append(False)
         return ListservList.from_pandas_dataframe(
             df=self.df.loc[mask],
             name=self.name,
@@ -247,16 +294,16 @@ class ListservList:
 
         Note
         ----
-            For a Listserv mailing list the most representative header fields
-            of senders and receivers are 'from' and 'comments-to' respectively.
+        For a Listserv mailing list the most representative header fields
+        of senders and receivers are 'from' and 'comments-to' respectively.
 
         Parameters
         ----------
-            header_fields : Indicate which Email header field to process
-                (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
-                mailing list the most representative header fields of
-                senders and receivers are 'from' and 'comments-to' respectively.
-            return_counts : If 'True', return # of messages per domain.
+        header_fields : Indicate which Email header field to process
+            (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
+            mailing list the most representative header fields of
+            senders and receivers are 'from' and 'comments-to' respectively.
+        return_counts : If 'True', return # of messages per domain.
         """
         domains = {}
         for header_field in header_fields:
@@ -283,11 +330,11 @@ class ListservList:
         """
         Parameters
         ----------
-            header_fields : Indicate which Email header field to process
-                (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
-                mailing list the most representative header fields of
-                senders and receivers are 'from' and 'comments-to' respectively.
-            per_year :
+        header_fields : Indicate which Email header field to process
+            (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
+            mailing list the most representative header fields of
+            senders and receivers are 'from' and 'comments-to' respectively.
+        per_year :
         """
         if per_year:
             dics = {}
@@ -321,12 +368,12 @@ class ListservList:
 
         Parameters
         ----------
-            header_fields : Indicate which Email header field to process
-                (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
-                mailing list the most representative header fields of
-                senders and receivers are 'from' and 'comments-to' respectively.
-            per_domain :
-            return_counts : If 'True', return # of messages per localpart.
+        header_fields : Indicate which Email header field to process
+            (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
+            mailing list the most representative header fields of
+            senders and receivers are 'from' and 'comments-to' respectively.
+        per_domain :
+        return_counts : If 'True', return # of messages per localpart.
         """
         localparts = {}
         for header_field in header_fields:
@@ -385,12 +432,12 @@ class ListservList:
         """
         Parameters
         ----------
-            header_fields : Indicate which Email header field to process
-                (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
-                mailing list the most representative header fields of
-                senders and receivers are 'from' and 'comments-to' respectively.
-            per_domain :
-            per_year :
+        header_fields : Indicate which Email header field to process
+            (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
+            mailing list the most representative header fields of
+            senders and receivers are 'from' and 'comments-to' respectively.
+        per_domain :
+        per_year :
         """
         if per_year:
             dics = {}
@@ -423,6 +470,33 @@ class ListservList:
                     dic[header_field] = len(localparts)
             return dic
 
+    def get_subjectthreads(
+        self,
+        return_length: bool = False,
+    ) -> dict:
+        """
+        Collect all messages that belong to the same thread.
+
+        Parameters
+        ----------
+        return_length :
+            If 'True', the returned dictionary will be of the form
+            {'subject1': # of messages, 'subject2': # of messages, ...}.
+            If 'False', the returned dictionary will be of the form
+            {'subject1': list of indices, 'subject2': list of indices, ...}.
+        """
+        thread_subjects = {tsb: [] for tsb in self.get_subjects()}
+        for indx, sb in enumerate(self.df["subject"].values):
+            for tsb in thread_subjects.keys():
+                if re.search(re.escape(tsb), sb):
+                    thread_subjects[tsb].append(indx)
+                    break
+        if return_length:
+            thread_subjects = {
+                key: len(values) for key, values in thread_subjects.items()
+            }
+        return thread_subjects
+
     def get_subjects(
         self,
         per_address_field: Optional[str] = None,
@@ -432,20 +506,20 @@ class ListservList:
 
         Note
         ----
-            i) Some Emails start with 'AW:', which comes from German and has
-                the same meaning as 'Re:'.
-            ii) Some Emails start with '=?utf-8?b?J+etlOWkjTo=?=', which is a
-                UTF-8 encoding of the Chinese characters '答复' which has the
-                same meaning as 'Re:'.
-            iii) Leading strings such as 'FW:' are treated as new subjects.
+        i) Some Emails start with 'AW:', which comes from German and has
+            the same meaning as 'Re:'.
+        ii) Some Emails start with '=?utf-8?b?J+WbnuWkjTo=?=' or
+            '=?utf-8?b?J+etlOWkjTo=?=', which are UTF-8 encodings of the
+            Chinese characters '回复' and '答复' both of which have the
+            same meaning as 'Re:'.
+        iii) Leading strings such as 'FW:' are treated as new subjects.
 
         Parameters
         ----------
-            per_address_field :
+        per_address_field :
         """
         subjects = []
         indices = []
-        print(self.df["subject"])
         for indx, sb in enumerate(self.df["subject"].values):
             subject_not_reply = []
             for rl in reply_labels:
@@ -480,14 +554,41 @@ class ListservList:
     def get_subjectscount(
         self,
         per_address_field: Optional[str] = None,
-    ) -> int:
-        subjects = self.get_subjects(per_address_field)
-        if per_address_field:
-            return {key: len(values) for key, values in subjects.items()}
-        else:
-            return len(subjects)
+        per_year: bool = False,
+    ) -> Union[int, dict]:
+        if per_year:
+            dics = {}
+            period_of_activity = self.period_of_activity()
+            years = [dt.year for dt in period_of_activity]
+            years = np.arange(min(years), max(years) + 1)
 
-    def get_messagecount(
+            for year in years:
+                mlist_fi = self.crop_by_year(year)
+                subjects = mlist_fi.get_subjects(per_address_field)
+                if per_address_field:
+                    dics[year] = {
+                        key: len(values) for key, values in subjects.items()
+                    }
+                else:
+                    dics[year] = len(subjects)
+            return dics
+        else:
+            subjects = self.get_subjects(per_address_field)
+            if per_address_field:
+                return {key: len(values) for key, values in subjects.items()}
+            else:
+                return len(subjects)
+
+    # def get_messages(
+    #    self,
+    #    return_replies: bool = False,
+    # ) ->:
+    #    if return_replies:
+    #        # only return messages that are replies
+    #    else:
+    #        # only return messages that are not replies
+
+    def get_messagescount(
         self,
         header_fields: Optional[List[str]] = None,
         per_address_field: Optional[str] = None,
@@ -496,8 +597,8 @@ class ListservList:
         """
         Parameters
         ----------
-            header_field :
-            per_year :
+        header_field :
+        per_year :
         """
         if per_year:
             dics = {}
@@ -543,7 +644,7 @@ class ListservList:
         else:
             return len(self.df.index.values)
 
-    def get_messagecount_per_timezone(
+    def get_messagescount_per_timezone(
         self,
         percentage: bool = False,
     ) -> Dict[str, int]:
@@ -552,7 +653,7 @@ class ListservList:
 
         Parameters
         ----------
-            percentage: Whether to return count of messages percentage w.r.t. total.
+        percentage: Whether to return count of messages percentage w.r.t. total.
         """
         utcoffsets = [dt.utcoffset() for dt in self.df["date"].values]
         utcoffsets_hm = []
@@ -574,15 +675,22 @@ class ListservList:
 
     def get_sender_receiver_dictionary(
         self,
-        domains_of_interest: Optional[list] = None,
+        address_field: str = "domain",
+        domains_in_focus: Optional[list] = None,
     ) -> Dict:
         """
+        Parameters
+        ----------
+        domains_in_focus :
+
         Returns
         -------
-            Nested dictionary with first layer the 'from'/sender domain keys and
-            the second layer the 'comments-to'/receiver domain keys with the
-            integer indicating the number of messages between them.
+        Nested dictionary with first layer the 'from' domain keys and
+        the second layer the 'comments-to' domain keys with the
+        integer indicating the number of messages between them.
         """
+        # remove messages that have been written to the whole group without
+        # addressing anyone specifically.
         _df = self.df[
             [
                 "from",
@@ -590,54 +698,46 @@ class ListservList:
             ]
         ].dropna()
         dic = {}
-        for idx, row in _df.iterrows():
-            if pd.isnull(row["comments-to"]) or pd.isnull(row["from"]):
+        f_generator = ListservList.iterator_name_localpart_domain(
+            _df["from"].values
+        )
+        # loop through messages
+        for index, (_, f_localpart, f_domain) in enumerate(f_generator):
+            if f_domain is None:
                 continue
-
-            # decompose sender
-            (
-                f_name,
-                f_localpart,
-                f_domain,
-            ) = ListservList.get_name_localpart_domain(row["from"])
 
             if f_domain not in dic.keys():
                 dic[f_domain] = {}
 
-            # formatting of 'comments-to' field
+            # identify all receivers
             _commentsto = [
                 s2
-                for s1 in row["comments-to"].split(",")
+                for s1 in _df.iloc[index]["comments-to"].split(",")
                 for s2 in s1.split("cc:")
                 if "@" in s2
             ]
-
-            for _ct in _commentsto:
-                # formatting of 'comments-to' field
-                _ct = re.sub(r"\((.*?)\)", "", _ct).strip()
-                _ct = re.sub(r"\"", "", _ct).strip()
-                # decompose receiver
-                (
-                    ct_name,
-                    ct_localpart,
-                    ct_domain,
-                ) = ListservList.get_name_localpart_domain(_ct)
+            ct_generator = ListservList.iterator_name_localpart_domain(
+                _commentsto
+            )
+            for _, ct_localpart, ct_domain in ct_generator:
+                if ct_domain is None:
+                    continue
                 # counting the messages
                 if ct_domain not in dic[f_domain].keys():
                     dic[f_domain][ct_domain] = 1
                 else:
                     dic[f_domain][ct_domain] += 1
 
-        if domains_of_interest is not None:
+        if domains_in_focus is not None:
             dic_doi = {}
             for sender, receivers in dic.items():
                 for receiver, nr_msgs in receivers.items():
-                    if sender in domains_of_interest:
+                    if sender in domains_in_focus:
                         if sender not in dic_doi.keys():
                             dic_doi[sender] = {}
                         dic_doi[sender][receiver] = nr_msgs
 
-                    if receiver in domains_of_interest:
+                    if receiver in domains_in_focus:
                         if sender not in dic_doi.keys():
                             dic_doi[sender] = {}
                         dic_doi[sender][receiver] = nr_msgs
@@ -648,7 +748,7 @@ class ListservList:
     def create_sender_receiver_digraph(
         self,
         nw: Optional[dict] = None,
-        domains_of_interest: Optional[list] = None,
+        domains_in_focus: Optional[list] = None,
     ):
         """
         Create directed graph from messaging network created with
@@ -656,10 +756,10 @@ class ListservList:
 
         Parameters
         ----------
-            nw: dictionary created with ListservList.get_sender_receiver_dictionary()
+        nw : dictionary created with self.get_sender_receiver_dictionary()
         """
         if nw is None:
-            nw = self.get_sender_receiver_dictionary(domains_of_interest)
+            nw = self.get_sender_receiver_dictionary(domains_in_focus)
         # initialise graph
         DG = nx.DiGraph()
         # create nodes
@@ -684,9 +784,10 @@ class ListservList:
         if years is None:
             period_of_activity = self.period_of_activity()
             years = [dt.year for dt in period_of_activity]
+            years = np.arange(min(years), max(years) + 1)
 
         dic_evol = {}
-        for year in np.arange(min(years), max(years) + 1):
+        for year in years:
             mlist_fi = self.crop_by_year(year)
             mlist_fi.create_sender_receiver_digraph()
 
@@ -699,11 +800,11 @@ class ListservList:
                 if lab not in list(dic_evol.keys()):
                     dic_evol[lab] = {
                         "year": [year],
-                        "betweenness_centrality": [val],
+                        func.__name__: [val],
                     }
                 else:
                     dic_evol[lab]["year"].append(year)
-                    dic_evol[lab]["betweenness_centrality"].append(val)
+                    dic_evol[lab][func.__name__].append(val)
         return dic_evol
 
 
