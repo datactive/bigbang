@@ -31,6 +31,26 @@ from bigbang.utils import (
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
+logging.basicConfig(
+    filename=directory_project + "/listserv.analysis.log",
+    filemode="w",
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+# Turn off pandas SettingWithCopyWarning warning
+pd.options.mode.chained_assignment = None
+
+# Indicators that a message is a reply
+reply_labels = [
+    "Re:",
+    "Re\xa0",
+    "AW:",
+    "=?utf-8?b?J+WbnuWkjTo=?=",
+    "=?utf-8?b?J+etlOWkjTo=?=",
+]
+# =?utf-8?b?J++9llNSVkND?=
 
 
 class ListservListWarning(BaseException):
@@ -43,21 +63,6 @@ class ListservArchiveWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
     pass
-
-
-# Turn off pandas SettingWithCopyWarning warning
-pd.options.mode.chained_assignment = None
-
-standards_release_dates_3GPP = [3, 6, 9, 12]  # [month]
-
-reply_labels = [
-    "Re:",
-    "Re\xa0",
-    "AW:",
-    "=?utf-8?b?J+WbnuWkjTo=?=",
-    "=?utf-8?b?J+etlOWkjTo=?=",
-]
-# =?utf-8?b?J++9llNSVkND?=
 
 
 class ListservList:
@@ -191,6 +196,10 @@ class ListservList:
                 localpart, domain = addr.split("@")
                 return name.lower(), localpart.lower(), domain.lower()
             else:
+                logger.info(
+                    f"The localpart and domain could not be obtained from the "
+                    f"address: {string}"
+                )
                 return name.lower(), None, None
 
     @staticmethod

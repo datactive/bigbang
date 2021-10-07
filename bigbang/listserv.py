@@ -31,7 +31,7 @@ from bigbang.utils import (
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 logging.basicConfig(
-    filename=directory_project + "/listserv.log",
+    filename=directory_project + "/listserv.scraping.log",
     filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
