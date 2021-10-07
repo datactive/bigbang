@@ -163,10 +163,10 @@ class TestListservList:
         count = mlist.get_subjectscount()
         assert count == 0  # as they are all replies
 
-    def test__get_messagecount(self, mlist):
-        msgcount = mlist.get_messagecount()
+    def test__get_messagescount(self, mlist):
+        msgcount = mlist.get_messagescount()
         assert msgcount == 12
-        msgcount = mlist.get_messagecount(
+        msgcount = mlist.get_messagescount(
             header_fields=["comments-to"],
             per_address_field="domain",
             per_year=False,
@@ -174,7 +174,7 @@ class TestListservList:
         assert msgcount["comments-to"]["list.etsi.org"] == 1
         assert msgcount["comments-to"]["usherbrooke.ca"] == 3
         assert msgcount["comments-to"]["qti.qualcomm.com"] == 7
-        msgcount = mlist.get_messagecount(
+        msgcount = mlist.get_messagescount(
             header_fields=["from"],
             per_address_field="localpart",
             per_year=True,
@@ -183,8 +183,8 @@ class TestListservList:
         assert msgcount["from"][2021]["milan.jelinek"] == 2
         assert msgcount["from"][2021]["markus.multrus"] == 1
 
-    def test__get_messagecount_per_timezone(self, mlist):
-        msgcount = mlist.get_messagecount_per_timezone()
+    def test__get_messagescount_per_timezone(self, mlist):
+        msgcount = mlist.get_messagescount_per_timezone()
         assert msgcount["+00:00"] == 7
         assert msgcount["+02:00"] == 1
         assert msgcount["-04:00"] == 2
