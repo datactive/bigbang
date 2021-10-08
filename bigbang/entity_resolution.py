@@ -1,3 +1,9 @@
+"""
+Tools for resolving entities in a data set,
+in particular individual persons based on their name and email
+address.
+"""
+
 import re
 
 import numpy as np
