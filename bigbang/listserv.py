@@ -133,7 +133,13 @@ class ListservMessageParser(email.parser.Parser):
             elif "content-transfer-encoding" == key:
                 msg.set_param("Content-Transfer-Encoding", value)
             else:
-                msg[key] = value
+                try:
+                    # TODO: find out why it sometimes raises
+                    # email/_header_value_parser.py
+                    # IndexError: list index out of range
+                    msg[key] = value
+                except Exception:
+                    pass
         if (
             (msg["Message-ID"] is None)
             and (msg["Date"] is not None)
