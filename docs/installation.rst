@@ -1,4 +1,0 @@
-Installation
-============
-
-Installation instructions TBD.

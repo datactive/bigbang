@@ -1,3 +1,7 @@
+"""
+Complex plotting functions.
+"""
+
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import networkx as nx

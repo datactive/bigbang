@@ -1,3 +1,7 @@
+"""
+Functions for extracting parts of an email address, such as its domain.
+"""
+
 import math
 import re
 

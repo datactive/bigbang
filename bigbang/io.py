@@ -1,3 +1,7 @@
+"""
+Input/Output for Listserv data.
+"""
+
 import datetime
 import os
 import logging
@@ -158,7 +162,7 @@ class ListservArchiveIO:
                 key_miss.remove('mailing-list')
                 for key in key_miss:
                     dic_march[key].extend([np.nan]*len(mlist))
-                
+
                 dic_march['mailing-list'].extend([mlist.name]*len(mlist))
             nr_msgs += len(mlist)
         lengths = [len(value) for value in dic_march.values()]

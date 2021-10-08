@@ -1,3 +1,8 @@
+"""
+Tools for studying the graph of interactions between message senders.
+An interaction, for the purposes of this module, is a direct reply
+"""
+
 import datetime
 import math
 from collections import Counter

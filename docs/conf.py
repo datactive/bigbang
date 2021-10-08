@@ -25,13 +25,56 @@ author = 'BigBang Team'
 release = 'v0.3.0'
 
 
+# m2r2 workaround ---
+
+"""Patching m2r2"""
+import m2r2
+
+current_m2r2_setup = m2r2.setup
+
+def patched_m2r2_setup(app):
+    try:
+        return current_m2r2_setup(app)
+    except (AttributeError):
+        app.add_source_suffix(".md", "markdown")
+        app.add_source_parser(m2r2.M2RParser)
+    return dict(
+        version=m2r2.__version__, parallel_read_safe=True, parallel_write_safe=True,
+    )
+
+m2r2.setup = patched_m2r2_setup
+
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'm2r2',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon'
 ]
+
+# autodoc settings
+autoclass_content = 'both'
+
+# Napoleon settings
+napoleon_google_docstring = True
+napoleon_numpy_docstring = True
+napoleon_include_init_with_doc = False
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = True
+napoleon_use_admonition_for_examples = False
+napoleon_use_admonition_for_notes = False
+napoleon_use_admonition_for_references = False
+napoleon_use_ivar = False
+napoleon_use_param = True
+napoleon_use_rtype = True
+napoleon_preprocess_types = False
+napoleon_type_aliases = None
+napoleon_attr_annotations = True
+
+source_suffix = ['.rst', '.md']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

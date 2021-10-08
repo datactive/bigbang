@@ -26,9 +26,11 @@ requests>=2.25.1
 pyyaml
 common>=0.1.2
 powerlaw
+sphinx==3.3.1
 validator_collection>=1.5.0
 testfixtures>=6.17.1
 git+https://github.com/gitpython-developers/GitPython.git
+m2r2
 
 # dev-dependencies
 black>=20.8b1
