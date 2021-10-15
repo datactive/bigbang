@@ -12,6 +12,8 @@ BigBang is a toolkit for studying communications data from collaborative
 projects. It currently supports analyzing mailing lists from Sourceforge,
 Mailman, ListServ, or [.mbox][mbox] files.
 
+Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang-py.readthedocs.io/en/latest/).
+
 [mbox]: http://tools.ietf.org/html/rfc4155
 
 [![DOI](https://img.shields.io/badge/DIO-10.25080%2FMajora--7b98e3ed--01b-blue)](http://conference.scipy.org/proceedings/scipy2015/sebastian_benthall.html)

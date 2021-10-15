@@ -9,6 +9,8 @@ Welcome to BigBang's documentation!
 ``BigBang`` is a toolkit for studying processes of open collaboration and
 deliberation via analysis of the communciations records.
 
+BigBang is open source software hosted on `GitHub <https://github.com/datactive/bigbang>`_.
+
 It currently supports analyzing mailing lists from Sourceforge, Mailman,
 ListServ or .mbox files.
 BigBang provides tools for efficiently scraping this data
