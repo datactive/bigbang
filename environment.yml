@@ -25,3 +25,5 @@ dependencies:
   - scikit-learn>=0.24.1
   - nltk
   - testfixtures
+  - sphinx_rtd_theme
+

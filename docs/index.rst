@@ -20,14 +20,28 @@ Last but not least, BigBang is a community of researchers sharing code and best 
 These examples are designed to support data science and communictions
 research pedagogy.
 
-
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
 
+   installation
    intro
-   readme
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Documentation
+
+   data-sources
+   git
    api-docs
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Community
+
+   data-access
+   release-notes
 
 Indices and tables
 ==================

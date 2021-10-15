@@ -42,6 +42,10 @@ bash conda-setup.sh
 python3 setup.py develop --user
 ```
 
+This video tutorial shows how to install BigBang.
+[![BigBang Video Tutorial](http://img.youtube.com/vi/JWimku8JVqE/0.jpg)](http://www.youtube.com/watch?v=JWimku8JVqE "BigBang Tutorial")
+
+
 ## Usage
 
 There are serveral Jupyter notebooks in the `examples/` directory of this
@@ -52,13 +56,8 @@ source activate bigbang
 ipython notebook examples/
 ```
 
-### Collecting mail archives
-
-BigBang comes with a script for collecting files from public Mailman web
-archives. An example of this is the
-[scipy-dev](http://mail.python.org/pipermail/scipy-dev/) mailing list page. To
-collect the archives of the scipy-dev mailing list, run the following command
-from the root directory of this repository:
+BigBang contains scripts that make it easy to collect data from a variety of sources.
+For example, to collect data from an open mailing list archive hosted by Mailman, use:
 
 ```bash
 python3 bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
@@ -72,23 +71,7 @@ python3 bin/collect_mail.py -f examples/urls.txt
 
 Once the data has been collected, BigBang has functions to support analysis.
 
-### Collecting IETF draft metadata
-
-BigBang can also be used to analyze data from IETF drafts.
-
-It does this using the Glasgow IPL group's `ietfdata` [tool](https://github.com/glasgow-ipl/ietfdata).
-
-The script takes an argument, the working group acronym
-
-```bash
-python3 bin/collect_draft_metadata.py -w httpbis
-```
-
-### Git
-
-BigBang can also be used to analyze data from Git repositories.
-
-Documentation on this feature can be found [here](https://github.com/datactive/bigbang/blob/master/git-readme.md).
+You can read more about data source supported by BigBang in the [documentation](https://bigbang-py.readthedocs.io/).
 
 ## Development
 
@@ -122,12 +105,7 @@ git clone https://github.com/datactive/bigbang.git
 pip3 install -r requirements.txt
 python3 setup.py develop --user
 ```
-If you have problems installing, you might want to have a look at the video tutorial below (clicking on the image will take you to YouTube).
 
-[![BigBang Video Tutorial](http://img.youtube.com/vi/JWimku8JVqE/0.jpg)](http://www.youtube.com/watch?v=JWimku8JVqE "BigBang Tutorial")
-
-## Data Access Permit Application
-The mailing-list archives are large and time consuming to scrape from the web. That is why we keep a complete and up-to-date copy of it in .mbox format that can easily be converted into other data structures to make its analysis as easy as possible. If you would like to obtain access to these archives, we would ask you send us your filled in [data access permit application](https://github.com/datactive/bigbang/blob/master/data_access_permit_application.md) to [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev).
 
 ## License
 

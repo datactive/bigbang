@@ -17,3 +17,8 @@ infrastructure processes that shape their world.
 BigBang is a telescope designed to study the originating singularities
 that gave rise to the Internet, scientific computation, and other
 pivotal technological developments.
+
+License
+=========
+
+BigBang is open source software. It is released under the MIT license.
