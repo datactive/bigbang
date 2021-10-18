@@ -12,25 +12,59 @@ from matplotlib.pyplot import figure
 
 def create_color_palette(
     ylabels: List[str],
-    domains_of_interest: Optional[List[str]]=None,
-    colormap: mpl.colors.LinearSegmentedColormap=mpl.cm.jet,
-    color_default: np.array=np.array([175, 175, 175]),
+    domains_in_focus: Optional[List[str]] = None,
+    colormap: mpl.colors.LinearSegmentedColormap = mpl.cm.jet,
+    include_dof: bool = True,
+    color_dof: np.array = np.array([175, 175, 175]),
+    return_dict: bool = False,
 ) -> list:
-    # find domains_of_interest in ylabels
-    domains_of_interest = [doi for doi in domains_of_interest if doi in ylabels]
-    # get colors
-    if domains_of_interest:
-        doi_colors = colormap(np.linspace(0, 1, len(domains_of_interest)))
-        colors = []
-        count = 0
-        for ylab in ylabels:
-            if ylab in domains_of_interest:
-                colors.append(doi_colors[count])
-                count += 1
+    """
+    Create colors for lines.py and stackedareachart.py
+
+    Parameters
+    ----------
+        ylabels :
+        domains_in_focus :
+        colormap :
+        color_dof :
+        return_dict :
+    """
+    if domains_in_focus:
+        if return_dict is False:
+            domains_in_focus = [
+                dof for dof in domains_in_focus if dof in ylabels
+            ]
+        color_dif = colormap(np.linspace(0, 1, len(domains_in_focus)))
+        if include_dof:
+            if return_dict:
+                colors = {}
+                count = 0
+                for ylab in ylabels:
+                    if ylab in domains_in_focus:
+                        colors[ylab] = color_dif[count]
+                        count += 1
+                    else:
+                        colors[ylab] = (Color(rgb=(color_dof / 255)).rgb,)
             else:
-                colors.append(
-                    Color(rgb=(color_default/255)).rgb,
-                )
+                colors = []
+                count = 0
+                for ylab in ylabels:
+                    if ylab in domains_in_focus:
+                        colors.append(color_dif[count])
+                        count += 1
+                    else:
+                        colors.append(
+                            Color(rgb=(color_dof / 255)).rgb,
+                        )
+        else:
+            if return_dict:
+                colors = {
+                    ylab: col for ylab, col in zip(domains_in_focus, color_dif)
+                }
+            else:
+                colors = color_dif
     else:
         colors = mpl.cm.jet(np.linspace(0, 1, len(ylabels)))
+        if return_dict:
+            colors = {ylab: col for ylab, col in zip(ylabels, colors)}
     return colors

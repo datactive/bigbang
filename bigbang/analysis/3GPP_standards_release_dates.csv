@@ -1,0 +1,29 @@
+# Source: https://portal.3gpp.org/#/55934-releases
+# Accessed: 10/10/2021
+Release Code,Name,Status,Start date,End date,Closure date
+Rel-19,Release 19,Open,2021-06-18,, 
+Rel-18,Release 18,Open,2019-09-16,, 
+Rel-17,Release 17,Open,2018-06-15,2022-06-10 (SA#96), 
+Rel-16,Release 16,Frozen,2017-03-22,2020-07-03 (SA#88-e), 
+Rel-15,Release 15,Frozen,2016-06-01,2019-06-07 (SA#84), 
+Rel-14,Release 14,Frozen,2014-09-17,2017-06-09 (SA#76), 
+Rel-13,Release 13,Frozen,2012-09-30,2016-03-11 (SA#71), 
+Rel-12,Release 12,Frozen,2011-06-26,2015-03-13 (SA#67), 
+Rel-11,Release 11,Frozen,2010-01-22,2013-03-06 (SA#59), 
+Rel-10,Release 10,Frozen,2009-01-20,2011-06-08 (SA#52), 
+Rel-9,Release 9,Frozen,2008-03-06,2010-03-25 (SA#47), 
+Rel-8,Release 8,Frozen,2006-01-23,2009-03-12 (SA#43), 
+Rel-7,Release 7,Closed,2003-10-06,2008-03-13 (SA#39),2014-09-17 (SA#65) 
+Rel-6,Release 6,Closed,2000-03-28,2005-09-28 (SA#29),2014-09-17 (SA#65) 
+Rel-5,Release 5,Closed,2000-05-01,2002-09-12 (SA-#17),2014-09-17 (SA#65)
+Rel-4,Release 4,Closed,1998-08-01,2001-06-21 (SA-#12),2014-09-17 (SA#65)
+R00,Release 2000,Closed,1999-03-30,,1999-12-17 (SA-#6)
+R99,Release 1999,Closed,1996-11-01,1999-12-17 (SA-#6),2008-06-05 (SA#40)
+UMTS,UMTS,Closed,1994-08-18,1999-02-12 (SMG-#28),2005-06-08 (SA#28)
+R98,Release 1998,Closed,1996-03-26,1999-02-12 (SMG-#28),2005-06-08 (SA#28)
+R97,Release 1997,Closed,1996-04-15,,2005-06-08 (SA#28)
+R96,Phase 2+,Closed,1995-07-20,,2004-09-16 (SA#25)
+Ph2,Phase 2,Closed,1993-03-25,,2004-09-16 (SA#25)
+Ph1-EXT, Phase 1 extension,Closed,1994-10-01,,2004-09-16 (SA#25)
+Ph1-DCS, Phase 1 DCS-1800,Closed,1992-12-03,,2004-09-16 (SA#25)
+Ph1,Phase 1,Closed,1982-12-07,,2004-09-16 (SA#25)

@@ -13,21 +13,31 @@ from bigbang.visualisation import utils
 
 
 def get_ylabels(data) -> List[str]:
-    ylabels = list(set([
-        ykey
-        for ydic in data.values()
-        for ykey in ydic.keys()
-    ]))
+    ylabels = list(
+        set([ykey for ydic in data.values() for ykey in ydic.keys()])
+    )
     return ylabels
 
-def data_transformation(idata: dict, percentage: bool=False) -> np.ndarray:
+
+def data_transformation(
+    idata: dict,
+    ylabels: Optional[List[str]] = None,
+    percentage: bool = False,
+) -> np.ndarray:
     """
+    Parameters
+    ----------
+    idata :
+    ylabels :
+    percentage :
+
     Returns
     -------
     odata : array with the format (# of ylabels, # of xlabels)
     """
-    # collect all ylabels
-    ylabels = get_ylabels(idata)
+    if ylabels is None:
+        # collect all ylabels
+        ylabels = get_ylabels(idata)
     # create numpy array and fill sparse matrix
     odata = np.zeros((len(ylabels), len(idata.keys())))
     for iy, ylab in enumerate(ylabels):
@@ -38,29 +48,35 @@ def data_transformation(idata: dict, percentage: bool=False) -> np.ndarray:
         odata = odata / np.sum(odata, axis=0)
     return odata
 
+
 def stacked_area_chart(
     data: dict,
     ax: mpl.axes,
-    domains_of_interest: Optional[list]=None,
-    percentage: bool=False,
-    colormap: Optional[mpl.colors.LinearSegmentedColormap]=None,
-    color_default: Optional[np.array]=None,
+    domains_in_focus: Optional[list] = None,
+    percentage: bool = False,
+    colormap: Optional[mpl.colors.LinearSegmentedColormap] = None,
+    color_default: Optional[np.array] = None,
 ):
     """
     Parameters
     ----------
     data : Dictionary with a format {'x_axis_labels': {'y_axis_labels': y_values}}
-    domains_of_interest : 
-    percentage : 
+    domains_in_focus :
+    percentage :
     """
     x = list(data.keys())
     y = data_transformation(data, percentage)
-    ylabels = get_ylabels(idata)
+    ylabels = get_ylabels(data)
     colors = utils.create_color_palette(
-        ylabels, domains_of_interest, colormap, color_default,
+        ylabels,
+        domains_in_focus,
+        colormap,
+        include_dof=True,
+        return_dict=False,
     )
     ax.stackplot(
-        x, y,
+        x,
+        y,
         colors=colors,
     )
     ax.set_xlim(np.min(x), np.max(x))

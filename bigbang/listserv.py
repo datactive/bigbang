@@ -1,6 +1,5 @@
 import datetime
 import email
-import glob
 import logging
 import os
 import re
@@ -23,12 +22,15 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
-from bigbang.utils import get_paths_to_files_in_directory, get_paths_to_dirs_in_directory
+from bigbang.utils import (
+    get_paths_to_files_in_directory,
+    get_paths_to_dirs_in_directory,
+)
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 logging.basicConfig(
-    filename=directory_project + "/listserv.log",
+    filename=directory_project + "/listserv.scraping.log",
     filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
@@ -97,7 +99,8 @@ class ListservMessageParser(email.parser.Parser):
         session: Optional[str] = None,
     ):
         """
-        Args:
+        Parameters
+        ----------
             website: Set 'True' if messages are going to be scraped from websites,
                 otherwise 'False' if read from local memory.
             url_login: URL to the 'Log In' page.
@@ -120,7 +123,12 @@ class ListservMessageParser(email.parser.Parser):
         # crea EmailMessage
         msg = email.message.EmailMessage()
         if body is not None:
-            msg.set_content(body)
+            try:
+                msg.set_content(body)  # don't use charset="utf-16"
+            except Exception:
+                # UnicodeEncodeError: 'utf-16' codec can't encode character
+                # '\ud83d' in position 8638: surrogates not allowed
+                pass
         for key, value in header.items():
             if "content-type" == key:
                 msg.set_param("Content-Type", value)
@@ -129,7 +137,14 @@ class ListservMessageParser(email.parser.Parser):
             elif "content-transfer-encoding" == key:
                 msg.set_param("Content-Transfer-Encoding", value)
             else:
-                msg[key] = value
+                try:
+                    # TODO: find out why it sometimes raises
+                    # email/_header_value_parser.py
+                    # IndexError: list index out of range.
+                    # Also look into UTF-8 encoding.
+                    msg[key] = value
+                except Exception:
+                    pass
         if (
             (msg["Message-ID"] is None)
             and (msg["Date"] is not None)
@@ -148,11 +163,12 @@ class ListservMessageParser(email.parser.Parser):
         fields: str = "total",
     ) -> mboxMessage:
         """
-        Args:
-            list_name:
-            url: URL of this Email
-            fields: Indicates whether to return 'header', 'body' or
-                'total'/both or the Email.
+        Parameters
+        ----------
+        list_name :
+        url : URL of this Email
+        fields : Indicates whether to return 'header', 'body' or
+            'total'/both or the Email.
         """
         soup = get_website_content(url, session=self.session)
         if soup == "RequestException":
@@ -204,7 +220,8 @@ class ListservMessageParser(email.parser.Parser):
         """
         The header ends with the first empty line encountered.
 
-        Args:
+        Parameters
+        ----------
             content: The content of one LISTSERV-file.
             header_start_line_nr:
         """
@@ -223,7 +240,8 @@ class ListservMessageParser(email.parser.Parser):
         """
         Lexer for the message header.
 
-        Args:
+        Parameters
+        ----------
             content: The content of one LISTSERV-file.
             header_start_line_nr:
             header_end_line_nr:
@@ -254,7 +272,8 @@ class ListservMessageParser(email.parser.Parser):
         """
         Lexer for the message body/payload.
 
-        Args:
+        Parameters
+        ----------
             content: The content of one LISTSERV-file.
             header_end_line_nr:
         """
@@ -275,7 +294,16 @@ class ListservMessageParser(email.parser.Parser):
         return body
 
     def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
-        """Lexer for the message header."""
+        """
+        Lexer for the message header.
+
+        Note
+        ----
+            Currently, this module encodes Chinese characters in UTF-8.
+            This should be avoided. When improving this, you can use
+            https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_CT_WG4;d2c3487b.2106A&S=
+            to test.
+        """
         try:
             for string in ["Subject", "SUBJECT"]:
                 try:
@@ -283,39 +311,41 @@ class ListservMessageParser(email.parser.Parser):
                         "b",
                         text=re.compile(r"^\b%s\b" % string),
                     )  # Sometimes this returns None!
-                    text = _text.parent.parent.parent.parent#.text
+                    text = _text.parent.parent.parent.parent  # .text
                     break
-                except:
+                except Exception:
                     continue
             # collect important info from LISTSERV header
             header = {}
             for line in text.find_all("tr"):
                 key = str(line.find_all(re.compile("^b"))[0])
-                key = re.search(r'<b>(.*?)<\/b>', key).group(1).lower()
-                key = re.sub(r':', '', key).strip()
+                key = re.search(r"<b>(.*?)<\/b>", key).group(1).lower()
+                key = re.sub(r":", "", key).strip()
                 if "subject" in key:
-                    value = repr(str(line.find_all(re.compile("^a"))[0].text).strip())
+                    value = repr(
+                        str(line.find_all(re.compile("^a"))[0].text).strip()
+                    )
                 else:
                     try:  # Listserv 17
                         value = repr(str(line.find_all(re.compile("^div"))[0]))
                         value = re.search(r'">(.*)<\/div>', value).group(1)
                         if "content-type" in key:
-                            value = value.split(';')[0]
-                    except:  # Listserv 16.5
+                            value = value.split(";")[0]
+                    except Exception:  # Listserv 16.5
                         value = repr(str(line.find_all(re.compile("^p"))[1]))
-                        value = re.search(r'<p>(.*)<\/p>', value).group(1)
-                        value = value.split(' <')[0]
-                value = re.sub(r'&gt;', '>', value).strip()
-                value = re.sub(r'&lt;', '<', value).strip()
+                        value = re.search(r"<p>(.*)<\/p>", value).group(1)
+                        value = value.split(" <")[0]
+                value = re.sub(r"&gt;", ">", value).strip()
+                value = re.sub(r"&lt;", "<", value).strip()
                 # remove Carriage return
-                value = re.sub(r'\\r', '', value).strip()
+                value = re.sub(r"\\r", "", value).strip()
                 # remove Linefeed
-                value = re.sub(r'\\n', '', value).strip()
+                value = re.sub(r"\\n", "", value).strip()
                 if "parts/attachments" in key:
                     break
                 elif "comments" in key:
                     key = "comments-to"
-                    value = re.sub(r'To:', '', value).strip()
+                    value = re.sub(r"To:", "", value).strip()
                 header[key] = value
         except Exception:
             header = self.empty_header
@@ -389,7 +419,7 @@ class ListservMessageParser(email.parser.Parser):
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         return ListservMessageIO.to_pandas_dataframe(msg)
-    
+
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
         return ListservMessageIO.to_mbox(msg, filepath)
@@ -471,7 +501,8 @@ class ListservList(ListservListIO):
         session: Optional[str] = None,
     ) -> "ListservList":
         """
-        Args:
+        Parameters
+        ----------
             name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
             url: URL to the LISTSERV list.
             select: Selection criteria that can filter messages by:
@@ -503,7 +534,8 @@ class ListservList(ListservListIO):
         session: Optional[str] = None,
     ) -> "ListservList":
         """
-        Args:
+        Parameters
+        ----------
             messages: Can either be a list of URLs to specific LISTSERV messages
                 or a list of `mboxMessage` objects.
             url_login: URL to the 'Log In' page.
@@ -538,7 +570,7 @@ class ListservList(ListservListIO):
 
     @classmethod
     def from_mbox(cls, name: str, filepath: str) -> "ListservList":
-        msgs = ListservListIO.from_mbox(name, filepath)
+        msgs = ListservListIO.from_mbox(filepath)
         return cls(name, filepath, msgs)
 
     @classmethod
@@ -550,7 +582,8 @@ class ListservList(ListservListIO):
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
-        Args:
+        Parameters
+        ----------
             name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
             directorypaths: List of directory paths where LISTSERV formatted
                 messages are.
@@ -577,7 +610,8 @@ class ListservList(ListservListIO):
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
-        Args:
+        Parameters
+        ----------
             name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
             filepaths: List of file paths where LISTSERV formatted messages are.
                 Such files can have a file extension of the form: *.LOG1405D
@@ -609,7 +643,7 @@ class ListservList(ListservListIO):
                     )
                 )
         return cls(name, filepaths, msgs)
-    
+
     @classmethod
     def get_messages_from_url(
         cls,
@@ -622,7 +656,8 @@ class ListservList(ListservListIO):
         Generator that returns all messages within a certain period
         (e.g. January 2021, Week 5).
 
-        Args:
+        Parameters
+        ----------
             name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
             url: URL to the LISTSERV list.
             select: Selection criteria that can filter messages by:
@@ -649,7 +684,7 @@ class ListservList(ListservListIO):
             # wait between loading messages, for politeness
             time.sleep(1)
         return msgs
-    
+
     @classmethod
     def get_message_urls(
         cls,
@@ -658,14 +693,16 @@ class ListservList(ListservListIO):
         select: Optional[dict] = None,
     ) -> List[str]:
         """
-        Args:
+        Parameters
+        ----------
             name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
             url: URL to the LISTSERV list.
             select: Selection criteria that can filter messages by:
                 - content, i.e. header and/or body
                 - period, i.e. written in a certain year, month, week-of-month
-        
-        Returns:
+
+        Returns
+        -------
             List of all selected URLs of the messages in the mailing list.
         """
         if select is None:
@@ -721,7 +758,7 @@ class ListservList(ListservListIO):
     ) -> Tuple[List[str], List[str]]:
         # wait between loading messages, for politeness
         time.sleep(0.5)
-        
+
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         periods = [list_tag.find("a").text for list_tag in soup.find_all("li")]
@@ -730,7 +767,7 @@ class ListservList(ListservListIO):
             for list_tag in soup.find_all("li")
         ]
         return periods, urls_of_periods
-    
+
     @staticmethod
     def get_index_of_elements_in_selection(
         times: List[Union[int, str]],
@@ -745,14 +782,16 @@ class ListservList(ListservListIO):
             - months: ["January", "July"], "November"
             - weeks: (1, 4), [1, 5], 2
 
-        Args:
+        Parameters
+        ----------
             times: A list containing information of the period for each
                 group of mboxMessage.
             urls: Corresponding URLs of each group of mboxMessage of which the
                 period info is contained in `times`.
             filtr: Containing info on what should be filtered.
 
-        Returns:
+        Returns
+        -------
             Indices of to the elements in `times`/`ursl`.
         """
         if isinstance(filtr, tuple):
@@ -768,23 +807,24 @@ class ListservList(ListservListIO):
             # filter specific month
             cond = lambda x: x == filtr
         return [idx for idx, time in enumerate(times) if cond(time)]
-    
+
     @staticmethod
     def get_name_from_url(url: str) -> str:
-        """ Get name of mailing list. """
+        """Get name of mailing list."""
         return url.split("A0=")[-1]
 
     @classmethod
     def get_messages_urls(cls, name: str, url: str) -> List[str]:
         """
-        Args:
+        Parameters
+        ----------
             name: Name of the `ListservList`
             url: URL to group of messages that are within the same period.
 
-        Returns:
+        Returns
+        -------
             List to URLs from which`mboxMessage` can be initialized.
         """
-        tstart = time.time()
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
         a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
@@ -800,20 +840,22 @@ class ListservList(ListservListIO):
         By definition LISTSERV logs seperate new messages by a row
         of 73 equal signs.
 
-        Args:
-            content: The content of one LISTSERV-file.
+        Parameters
+        ----------
+        content: The content of one LISTSERV-file.
 
-        Returns:
-            List of line numbers where header starts
+        Returns
+        -------
+        List of line numbers where header starts
         """
         return [
             line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
         ]
 
-    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
+    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         return ListservListIO.to_dict(self.messages, include_body)
 
-    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         return ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
@@ -866,7 +908,9 @@ class ListservArchive(object):
     )
     """
 
-    def __init__(self, name: str, url: str, lists: List[Union[ListservList, str]]):
+    def __init__(
+        self, name: str, url: str, lists: List[Union[ListservList, str]]
+    ):
         self.name = name
         self.url = url
         self.lists = lists
@@ -897,23 +941,24 @@ class ListservArchive(object):
         """
         Create ListservArchive from a given URL.
 
-        Args:
-            name:
-            url_root:
-            url_home:
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
-            url_login: URL to the 'Log In' page.
-            url_pref: URL to the 'Preferences'/settings page.
-            login: login keys {"username": str, "password": str}
-            session: if auth-session was already created externally
-            instant_save: Boolean giving the choice to save a `ListservList` as
-                soon as it is completely scraped or collect entire archive. The
-                prior is recommended if a large number of mailing lists are
-                scraped which can require a lot of memory and time.
-            only_list_urls: Boolean giving the choice to collect only `ListservList`
-                URLs or also their contents.
+        Parameters
+        ----------
+        name:
+        url_root:
+        url_home:
+        select: Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        url_login: URL to the 'Log In' page.
+        url_pref: URL to the 'Preferences'/settings page.
+        login: login keys {"username": str, "password": str}
+        session: if auth-session was already created externally
+        instant_save: Boolean giving the choice to save a `ListservList` as
+            soon as it is completely scraped or collect entire archive. The
+            prior is recommended if a large number of mailing lists are
+            scraped which can require a lot of memory and time.
+        only_list_urls: Boolean giving the choice to collect only `ListservList`
+            URLs or also their contents.
         """
         if session is None:
             session = get_auth_session(url_login, **login)
@@ -952,7 +997,8 @@ class ListservArchive(object):
         """
         Create ListservArchive from a given list of 'ListservList'.
 
-        Args:
+        Parameters
+        ----------
             name: Name used for folder in which scraped lists will be stored.
             url_root:
             url_mailing_lists:
@@ -995,7 +1041,8 @@ class ListservArchive(object):
         select: Optional[dict] = None,
     ) -> "ListservArchive":
         """
-        Args:
+        Parameters
+        ----------
             name: Name of the archive, e.g. '3GPP'.
             directorypath: Where the ListservArchive can be initialised.
             folderdsc: A description of the relevant folders
@@ -1045,9 +1092,11 @@ class ListservArchive(object):
         """
         Created dictionary of all lists in the archive.
 
-        Args:
+        Parameters
+        ----------
 
-        Returns:
+        Returns
+        -------
             archive_dict: the keys are the names of the lists and the value their url
         """
         archive = []
@@ -1116,7 +1165,8 @@ class ListservArchive(object):
         On the Listserv 17 website they look like:
         [<<][<]1-50(798)[>][>>]
 
-        Returns:
+        Returns
+        -------
             If sections exist, it returns their urls and names. Otherwise it returns
             the url_home.
         """
@@ -1164,10 +1214,10 @@ class ListservArchive(object):
                 msg_nr += 1
         return dic
 
-    def to_dict(self, include_body: bool=True) -> Dict[str, List[str]]:
+    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         return ListservArchiveIO.to_dict(self.lists, include_body)
 
-    def to_pandas_dataframe(self, include_body: bool=True) -> pd.DataFrame:
+    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
@@ -1178,7 +1228,8 @@ class ListservArchive(object):
 
 
 def set_website_preference_for_header(
-    url_pref: str, session: requests.Session,
+    url_pref: str,
+    session: requests.Session,
 ) -> requests.Session:
     """
     Set the 'Email Headers' of the 'Archive Preferences' for the auth session
@@ -1288,13 +1339,14 @@ def get_website_content(
     """
     Get HTML code from website
 
-    Note: Servers don't like it when one is sending too many requests from same
-        ip address in short period of time. Therefore we need
-        to:
-            a) catch 'requests.exceptions.RequestException' errors
-                (includes all possible errors to be on the safe side),
-            b) safe intermediate results,
-            c) continue where we left off at a later stage.
+    Note
+    ----
+    Servers don't like it when one is sending too many requests from same
+    ip address in short period of time. Therefore we need to:
+        a) catch 'requests.exceptions.RequestException' errors
+            (includes all possible errors to be on the safe side),
+        b) safe intermediate results,
+        c) continue where we left off at a later stage.
     """
     # TODO: include option to change BeautifulSoup args
     try:
