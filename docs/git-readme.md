@@ -1,8 +1,4 @@
-# Git Information
-
-A new branch of BigBang is collecting git commit information for projects. We can analyze a project using both its mail and git information to answer new questions about development.
-
-## Collecting Git Information
+# Git as data source
 
 After the git repositories have been cloned locally, you will be able to start analyzing them. To do this, you will need a GitRepo object, which is a convenient wrapper which does the work of extracting and generating git information and storing it internally in a pandas dataframe. You can then use this GitRepo object's methods to gain access to the large pandas dataframe.
 
