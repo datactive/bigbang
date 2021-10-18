@@ -21,25 +21,28 @@ file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
 
+
 @pytest.fixture(name="mlist", scope="module")
 def get_mailinglist():
     mlist = ListservList.from_listserv_directories(
         name="3GPP_TSG_SA_ITUT_AHG",
-        directorypaths=[
-            CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"
-        ],
+        directorypaths=[CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"],
     )
     return mlist
+
 
 @pytest.fixture(name="msg_parser", scope="module")
 def get_message_parser():
     msg_parser = ListservMessageParser()
     return msg_parser
 
+
 @pytest.fixture(name="msg", scope="module")
 def get_message(msg_parser):
-    file_path = CONFIG.test_data_path + \
-        "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1705B"
+    file_path = (
+        CONFIG.test_data_path
+        + "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1705B"
+    )
     msg = msg_parser.from_listserv_file(
         list_name="3GPP_TSG_SA_ITUT_AHG",
         file_path=file_path,
@@ -48,8 +51,8 @@ def get_message(msg_parser):
     )
     return msg
 
-class TestListservMessageParser:
 
+class TestListservMessageParser:
     def test__first_message_header(self, msg):
         assert msg["From"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
         assert msg["Reply-To"] == "Stephen Hayes <stephen.hayes@ERICSSON.COM>"
@@ -60,6 +63,7 @@ class TestListservMessageParser:
         assert msg["Date"] == "Mon, 08 May 2017 10:47:41 +0000"
 
     def test__first_message_body(self, msg):
+        # print(msg.get_payload())
         assert msg.get_payload().split("\n")[3] == "Hi,"
         assert len(msg.get_payload()) == 24809
 
@@ -80,7 +84,6 @@ class TestListservMessageParser:
 
 
 class TestListservList:
-
     def test__from_mbox(self):
         mlist_name = "3GPP_TSG_SA_WG4_EVS"
         mlist = ListservList.from_mbox(
@@ -88,17 +91,24 @@ class TestListservList:
             filepath=CONFIG.test_data_path + f"3GPP_mbox/{mlist_name}.mbox",
         )
         assert len(mlist) == 50
-        assert mlist.messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
-    
+        assert (
+            mlist.messages[0]["From"]
+            == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
+        )
+
     def test__from_listserv_files(self):
-        filepath = CONFIG.test_data_path + \
-            "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1703B"
+        filepath = (
+            CONFIG.test_data_path
+            + "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1703B"
+        )
         mlist = ListservList.from_listserv_files(
             name="3GPP_TSG_SA_ITUT_AHG",
             filepaths=[filepath],
         )
         assert len(mlist) == 1
-        assert mlist.messages[0]["From"] == "Kevin Holley <kevin.holley@BT.COM>"
+        assert (
+            mlist.messages[0]["From"] == "Kevin Holley <kevin.holley@BT.COM>"
+        )
 
     def test__number_of_messages(self, mlist):
         assert len(mlist) == 25
@@ -110,7 +120,7 @@ class TestListservList:
         assert len(keys) == 13
         assert all([diff == 0 for diff in np.diff(lengths)])
         assert lengths[0] == 25
-    
+
     def test__to_mbox(self, mlist):
         mlist.to_mbox(dir_temp, filename=mlist.name)
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
@@ -144,7 +154,6 @@ class TestListservList:
 
 
 class TestListservArchive:
-
     def test__from_mbox(self):
         march = ListservArchive.from_mbox(
             name="3GPP_mbox_test",
@@ -154,7 +163,10 @@ class TestListservArchive:
         mlist_index = mlist_names.index("3GPP_TSG_SA_WG4_EVS")
         assert len(march.lists) == 2
         assert len(march.lists[mlist_index].messages) == 50
-        assert march.lists[mlist_index].messages[0]["From"] == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
+        assert (
+            march.lists[mlist_index].messages[0]["From"]
+            == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
+        )
 
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):

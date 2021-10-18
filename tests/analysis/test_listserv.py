@@ -223,8 +223,8 @@ class TestListservList:
         assert msgcount["-04:00"] == 3
         assert msgcount["-05:00"] == 1
 
-    def test__get_sender_receiver_dictionary(self, mlist):
-        dic = mlist.get_sender_receiver_dictionary()
+    def test__get_sender_receiver_dict(self, mlist):
+        dic = mlist.get_sender_receiver_dict()
         dic_true = {
             "ericsson.com": {"usherbrooke.ca": 1, "qti.qualcomm.com": 1},
             "usherbrooke.ca": {"ericsson.com": 1, "qti.qualcomm.com": 2},

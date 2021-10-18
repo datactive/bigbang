@@ -124,7 +124,7 @@ class ListservMessageParser(email.parser.Parser):
         msg = email.message.EmailMessage()
         if body is not None:
             try:
-                msg.set_content(body, "text", charset="utf-16")
+                msg.set_content(body)  # don't use charset="utf-16"
             except Exception:
                 # UnicodeEncodeError: 'utf-16' codec can't encode character
                 # '\ud83d' in position 8638: surrogates not allowed
