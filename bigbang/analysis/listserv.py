@@ -1,7 +1,6 @@
 import copy
 import datetime
 import email
-import glob
 import logging
 import mailbox
 import os
@@ -19,7 +18,6 @@ import pandas as pd
 import requests
 import yaml
 from bs4 import BeautifulSoup
-from tqdm import tqdm
 
 from config.config import CONFIG
 
@@ -27,6 +25,10 @@ from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
+)
+from bigbang.analysis.utils import (
+    get_index_of_msgs_with_subject,
+    get_index_of_msgs_with_datetime,
 )
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
@@ -89,13 +91,14 @@ class ListservList:
     get_domainscount
     get_localparts
     get_localpartscount
+    add_thread_info
     get_threads
     get_threadsroot
     get_threadsrootcount
     get_messages
     get_messagescount
     get_messagescount_per_timezone
-    get_sender_receiver_dictionary
+    get_sender_receiver_dict
     create_sender_receiver_digraph
     get_graph_prop_per_domain_per_year
     """
@@ -123,8 +126,7 @@ class ListservList:
         filepath: str,
         include_body: bool = True,
     ) -> "ListservList":
-        msgs = ListservListIO.from_mbox(name, filepath)
-        df = ListservListIO.to_pandas_dataframe(msgs, include_body)
+        df = ListservListIO.from_mbox_to_pandas_dataframe(filepath)
         return cls.from_pandas_dataframe(df, name, filepath)
 
     @classmethod
@@ -134,20 +136,6 @@ class ListservList:
         name: Optional[str] = None,
         filepath: Optional[str] = None,
     ) -> "ListservList":
-        if "subject" in df.columns:
-            # remove multiple spaces in string
-            df.loc[:, "subject"] = df["subject"].apply(
-                lambda x: re.sub(" +", " ", x)
-            )
-            # remove leading and trailing apostrophe
-            # TODO: this step should not be necessary if it is corrected for in
-            # bigbang.listserv.ListservMessageParser
-            df.loc[:, "subject"] = [
-                re.match(r"^(?:')(.*)(?:')$", sb)[1]
-                if re.match(r"^(?:')(.*)(?:')$", sb) is not None
-                else sb
-                for sb in df["subject"].values
-            ]
         return cls(name, filepath, df)
 
     @staticmethod
@@ -170,15 +158,6 @@ class ListservList:
         local-part, and domain.
         All strings are returned in lower case only to avoid duplicates.
         """
-        # remove multiple white spaces
-        string = re.sub(" +", " ", string)
-        # remove leading and trailing white spaces
-        string = string.strip()
-        # all characters in lower case
-        string = string.lower()
-        # remove apostrophes and commas as they are not allowed in an atom- or obs-phrase
-        string = string.replace('"', "")
-        string = string.replace(",", "")
         # test if name is in string or if address is duplicated
         test = string.split(" ")
         if (
@@ -189,6 +168,13 @@ class ListservList:
             addr = test[0]
             localpart, domain = addr.split("@")
             return None, localpart.lower(), domain.lower()
+        elif (len(test) > 2) and "@" in test[-1]:
+            name = (" ").join(test[:-1])
+            name = name.replace('"', "").replace('"', "")
+            addr = test[-1]
+            addr = addr.replace("<", "").replace(">", "")
+            localpart, domain = addr.split("@")
+            return name.lower(), localpart.lower(), domain.lower()
         else:
             name, addr = email.utils.parseaddr(string)
             addr = addr.split(" ")[-1]
@@ -205,15 +191,25 @@ class ListservList:
     @staticmethod
     def iterator_name_localpart_domain(li: list) -> tuple:
         """Generator for the self.get_name_localpart_domain() function."""
-        for sender in li:
-            yield ListservList.get_name_localpart_domain(sender)
+        for string in li:
+            if ("<" in string) and (">" in string):
+                addresses = re.findall(r"(?<=\<).+?(?=\>)", string)
+                for addr in addresses:
+                    yield ListservList.get_name_localpart_domain(addr)
+            else:
+                yield ListservList.get_name_localpart_domain(string)
 
     def period_of_activity(self) -> list:
         """
         Return a list containing the datetime of the first and last message
         written in the mailing list.
         """
-        return [min(self.df["date"].values), max(self.df["date"].values)]
+        index = get_index_of_msgs_with_datetime(self.df)
+        period_of_activity = [
+            min(self.df.loc[index, "date"].values),
+            max(self.df.loc[index, "date"].values),
+        ]
+        return period_of_activity
 
     def crop_by_year(self, yrs: Union[int, list]) -> "ListservList":
         """
@@ -223,15 +219,17 @@ class ListservList:
         -------
         'ListservList' object cropped to specification.
         """
+        index = get_index_of_msgs_with_datetime(self.df)
+        _df = self.df.loc[index]
         if isinstance(yrs, int) or isinstance(yrs, np.int64):
-            mask = [dt.year == yrs for dt in self.df["date"].values]
+            mask = [dt.year == yrs for dt in _df["date"].values]
         if isinstance(yrs, list):
             mask = [
                 (dt.year >= min(yrs)) & (dt.year < max([yrs]))
-                for dt in self.df["date"].values
+                for dt in _df["date"].values
             ]
         return ListservList.from_pandas_dataframe(
-            df=self.df.loc[mask],
+            df=_df.loc[mask],
             name=self.name,
             filepath=self.filepath,
         )
@@ -275,16 +273,45 @@ class ListservList:
             filepath=self.filepath,
         )
 
-    def crop_by_subject(self, match=str) -> "ListservList":
+    def crop_by_subject(self, match=str, place: int = 2) -> "ListservList":
         """
+        Parameters
+        ----------
+            match :
+            place :
+                0 =
+                1 =
+                2 =
+
         Returns
         -------
             'ListservList' object cropped to message subject.
         """
-        func = lambda x: True if re.search(re.escape(match), x) else False
-        mask = self.df["subject"].apply(func).values  # returns bool-type array
+        index = get_index_of_msgs_with_subject(self.df)
+        _df = self.df.loc[index]
+        if place == 0:
+            func = lambda x: True if re.search(re.escape(match), x) else False
+        elif place == 1:
+            func = lambda x: True if x.endswith(match) else False
+        else:
+            func = (
+                lambda x: True
+                if any(
+                    [
+                        len(
+                            x.replace(match, "")
+                            .replace(rl, "")
+                            .replace(" ", "")
+                        )
+                        == 0
+                        for rl in reply_labels
+                    ]
+                )
+                else False
+            )
+        mask = _df["subject"].apply(func).values  # returns bool-type array
         return ListservList.from_pandas_dataframe(
-            df=self.df.loc[mask],
+            df=_df.loc[mask],
             name=self.name,
             filepath=self.filepath,
         )
@@ -293,6 +320,7 @@ class ListservList:
         self,
         header_fields: List[str],
         return_msg_counts: bool = False,
+        df: Optional[pd.DataFrame] = None,
     ) -> dict:
         """
         Get contribution of members per affiliation.
@@ -310,10 +338,12 @@ class ListservList:
             senders and receivers are 'from' and 'comments-to' respectively.
         return_msg_counts : If 'True', return # of messages per domain.
         """
+        if df is None:
+            df = self.df
         domains = {}
         for header_field in header_fields:
             generator = ListservList.iterator_name_localpart_domain(
-                self.df[header_field].dropna().values
+                df[header_field].dropna().values
             )
             # collect domain labels
             _domains = [
@@ -352,7 +382,9 @@ class ListservList:
                 for year in years:
                     mlist_fi = self.crop_by_year(year)
                     domains = mlist_fi.get_domains(
-                        [header_field], return_msg_counts=False
+                        [header_field],
+                        return_msg_counts=False,
+                        df=mlist_fi.df,
                     )
                     dics[header_field][year] = len(domains[header_field])
             return dics
@@ -367,6 +399,7 @@ class ListservList:
         header_fields: List[str],
         per_domain: bool = False,
         return_msg_counts: bool = False,
+        df: Optional[pd.DataFrame] = None,
     ) -> dict:
         """
         Get contribution of members per affiliation.
@@ -380,13 +413,15 @@ class ListservList:
         per_domain :
         return_msg_counts : If 'True', return # of messages per localpart.
         """
+        if df is None:
+            df = self.df
         localparts = {}
         for header_field in header_fields:
             if per_domain:
                 # TODO: Needs two for loop. Find way to reduce it.
                 localparts[header_field] = {}
                 generator = ListservList.iterator_name_localpart_domain(
-                    self.df[header_field].dropna().values
+                    df[header_field].dropna().values
                 )
                 _domains = list(
                     set(
@@ -399,7 +434,7 @@ class ListservList:
                 )
                 _localparts = {d: [] for d in _domains}
                 generator = ListservList.iterator_name_localpart_domain(
-                    self.df[header_field].dropna().values
+                    df[header_field].dropna().values
                 )
                 for _, localpart, domain in generator:
                     if domain is not None:
@@ -412,7 +447,7 @@ class ListservList:
                 localparts[header_field] = _localparts
             else:
                 generator = ListservList.iterator_name_localpart_domain(
-                    self.df[header_field].dropna().values
+                    df[header_field].dropna().values
                 )
                 _localparts = [
                     localpart
@@ -443,6 +478,9 @@ class ListservList:
             senders and receivers are 'from' and 'comments-to' respectively.
         per_domain :
         per_year :
+
+        Returns
+        -------
         """
         if per_year:
             dics = {}
@@ -456,7 +494,7 @@ class ListservList:
                     dics[header_field][year] = {}
                     mlist_fi = self.crop_by_year(year)
                     dic_lp = mlist_fi.get_localparts(
-                        [header_field], per_domain
+                        [header_field], per_domain, df=mlist_fi.df
                     )
                     if per_domain:
                         for domain, localparts in dic_lp[header_field].items():
@@ -474,6 +512,28 @@ class ListservList:
                 for header_field, localparts in dic.items():
                     dic[header_field] = len(localparts)
             return dic
+
+    def add_thread_info(self):
+        """
+        Edit pd.DataFrame to include extra column to identify which thread
+        a message belongs to.
+
+        Returns
+        -------
+        """
+        # get thread subjects
+        threads_root = self.get_threadsroot()
+        # initialise new columns
+        indices = []
+        nr_thread = []
+        # run through subjects and find associated messages
+        for index, tsb in enumerate(threads_root.keys()):
+            _mlist_fi = self.crop_by_subject(match=tsb)
+            indices += list(_mlist_fi.df.index.values)
+            nr_thread += [index] * len(_mlist_fi.df.index.values)
+        # add new columns to pd.DataFrame
+        self.df["thread"] = np.nan
+        self.df.loc[indices, "thread"] = nr_thread
 
     def get_threads(
         self,
@@ -493,6 +553,9 @@ class ListservList:
             {'subject1': # of messages, 'subject2': # of messages, ...}.
             If 'False', the returned dictionary will be of the form
             {'subject1': list of indices, 'subject2': list of indices, ...}.
+
+        Returns
+        -------
         """
         mlist = self
         mlist.df = self.df.reset_index()
@@ -508,12 +571,22 @@ class ListservList:
     def get_threadsroot(
         self,
         per_address_field: Optional[str] = None,
+        df: Optional[pd.DataFrame] = None,
     ) -> dict:
         """
         Find all unique message subjects. Replies not treated as a new subject.
 
         Note
         ----
+        The most reliable ways to find the beginning of threads is to check
+        whether the subject line of a message contains an element of
+        reply_labels at the beginning. Checking whether the header field
+        'comments-to' is empty is not reliable, as 'reply-all' is often chosen
+        by mistake as seen here:
+        2020-04-01 10:08:58+00:00 joern.krause@etsi.org, juergen.hofmann@nokia.com
+        2020-03-26 21:41:27+00:00 joern.krause@etsi.org NaN
+        2020-03-26 21:00:08+00:00 joern.krause@etsi.org	juergen.hofmann@nokia.com
+
         i) Some Emails start with 'AW:', which comes from German and has
             the same meaning as 'Re:'.
         ii) Some Emails start with '=?utf-8?b?J+WbnuWkjTo=?=' or
@@ -525,22 +598,40 @@ class ListservList:
         Parameters
         ----------
         per_address_field :
+
+        Returns
+        -------
+        A dictionary of the form {'subject1': index of message, 'subject2': ...}
+        is returned. If per_address_field is specified, the subjects are sorted
+        into the domain or localpart from which they originate.
         """
+        if df is None:
+            indices = get_index_of_msgs_with_subject(
+                self.df, return_boolmask=True
+            )
+            _df = self.df.loc[indices]
+        else:
+            indices = get_index_of_msgs_with_subject(df, return_boolmask=True)
+            _df = df.loc[indices]
         # find index of thread root and its subject line
-        subjects = {}
-        for indx, sb in enumerate(self.df["subject"].values):
+        indices = []
+        for index, row in _df.iterrows():
             subject_not_reply = []
             for rl in reply_labels:
-                if rl not in sb[:25]:
+                if rl not in row.subject[:25]:
                     subject_not_reply.append(True)
                 else:
                     subject_not_reply.append(False)
             if all(subject_not_reply):
-                subjects[sb] = indx
+                indices.append(index)
+        _df = self.df.loc[indices]
+        subjects = {
+            value: key for key, value in _df["subject"].to_dict().items()
+        }
         # sort into address field
         if per_address_field:
             generator = ListservList.iterator_name_localpart_domain(
-                self.df.iloc[list(subjects.values())]["from"].values
+                _df["from"].values
             )
             if "domain" in per_address_field:
                 domains = [domain for _, _, domain in generator]
@@ -572,7 +663,9 @@ class ListservList:
 
             for year in years:
                 mlist_fi = self.crop_by_year(year)
-                subjects = mlist_fi.get_subjects(per_address_field)
+                subjects = self.get_threadsroot(
+                    per_address_field, df=mlist_fi.df
+                )
                 if per_address_field:
                     dics[year] = {
                         key: len(values) for key, values in subjects.items()
@@ -581,20 +674,11 @@ class ListservList:
                     dics[year] = len(subjects)
             return dics
         else:
-            subjects = self.get_subjects(per_address_field)
+            subjects = self.get_threadsroot(per_address_field)
             if per_address_field:
                 return {key: len(values) for key, values in subjects.items()}
             else:
                 return len(subjects)
-
-    # def get_messages(
-    #    self,
-    #    return_replies: bool = False,
-    # ) ->:
-    #    if return_replies:
-    #        # only return messages that are replies
-    #    else:
-    #        # only return messages that are not replies
 
     def get_messagescount(
         self,
@@ -678,15 +762,14 @@ class ListservList:
                 _hour = "+%02d" % int(_hour)
                 _dt = (":").join([_hour, _min])
             utcoffsets_hm.append(_dt)
-        utcoffsets_hm, counts = np.unique(
-            utcoffsets_hm, return_msg_counts=True
-        )
+        utcoffsets_hm, counts = np.unique(utcoffsets_hm, return_counts=True)
         return {td: cou for td, cou in zip(utcoffsets_hm, counts)}
 
-    def get_sender_receiver_dictionary(
+    def get_sender_receiver_dict(
         self,
         address_field: str = "domain",
         entity_in_focus: Optional[list] = None,
+        df: Optional[pd.DataFrame] = None,
     ) -> Dict:
         """
         Parameters
@@ -702,12 +785,9 @@ class ListservList:
         """
         # remove messages that have been written to the whole group without
         # addressing anyone specifically.
-        _df = self.df[
-            [
-                "from",
-                "comments-to",
-            ]
-        ].dropna()
+        if df is None:
+            df = self.df
+        df = df[["from", "comments-to"]].dropna()
         if address_field == "domain":
             domains = self.get_domains(header_fields=["from", "comments-to"])
             domains = list(set(domains["from"] + domains["comments-to"]))
@@ -720,85 +800,105 @@ class ListservList:
                 set(localparts["from"] + localparts["comments-to"])
             )
             dic = {lp: {} for lp in localparts}
-        f_generator = ListservList.iterator_name_localpart_domain(
-            _df["from"].values
-        )
         # loop through messages
-        for index, (_, f_localpart, f_domain) in enumerate(f_generator):
+        for index, row in df.iterrows():
+            _, f_localpart, f_domain = ListservList.get_name_localpart_domain(
+                row["from"]
+            )
             if f_domain is None:
                 continue
 
-            # identify all receivers
-            _commentsto = [
-                s2
-                for s1 in _df.iloc[index]["comments-to"].split(",")
-                for s2 in s1.split("cc:")
-                if "@" in s2
-            ]
             ct_generator = ListservList.iterator_name_localpart_domain(
-                _commentsto
+                [df.loc[index]["comments-to"]]
             )
             for _, ct_localpart, ct_domain in ct_generator:
                 if ct_domain is None:
                     continue
                 if address_field == "domain":
                     # counting the messages
-                    if ct_domain not in dic[f_domain].keys():
-                        dic[f_domain][ct_domain] = 1
-                    else:
-                        dic[f_domain][ct_domain] += 1
+                    dic = self.add_weight_to_edge(dic, f_domain, ct_domain)
                 if address_field == "localpart":
                     # counting the messages
-                    if ct_localpart not in dic[f_localpart].keys():
-                        dic[f_localpart][ct_localpart] = 1
-                    else:
-                        dic[f_localpart][ct_localpart] += 1
+                    dic = self.add_weight_to_edge(
+                        dic, f_localpart, ct_localpart
+                    )
 
         if entity_in_focus is not None:
-            dic_eif = {}
-            for sender, receivers in dic.items():
-                for receiver, nr_msgs in receivers.items():
-                    if sender in entity_in_focus:
-                        if sender not in dic_eif.keys():
-                            dic_eif[sender] = {}
-                        dic_eif[sender][receiver] = nr_msgs
+            dic = self.crop_dic_to_entity_in_focus(dic)
 
-                    if receiver in entity_in_focus:
-                        if sender not in dic_eif.keys():
-                            dic_eif[sender] = {}
-                        dic_eif[sender][receiver] = nr_msgs
-            dic = dic_eif
+        return dic
 
+    def crop_dic_to_entity_in_focus(
+        self, dic: dict, entity_in_focus: list
+    ) -> dict:
+        dic_eif = {}
+        for sender, receivers in dic.items():
+            for receiver, nr_msgs in receivers.items():
+                if sender in entity_in_focus:
+                    if sender not in dic_eif.keys():
+                        dic_eif[sender] = {}
+                    dic_eif[sender][receiver] = nr_msgs
+
+                if receiver in entity_in_focus:
+                    if sender not in dic_eif.keys():
+                        dic_eif[sender] = {}
+                    dic_eif[sender][receiver] = nr_msgs
+        return dic_eif
+
+    def add_weight_to_edge(self, dic: dict, key1: str, key2: str) -> dict:
+        # counting the messages
+        if key2 not in dic[key1].keys():
+            dic[key1][key2] = 1
+        else:
+            dic[key1][key2] += 1
         return dic
 
     def create_sender_receiver_digraph(
         self,
         nw: Optional[dict] = None,
-        domains_in_focus: Optional[list] = None,
+        entity_in_focus: Optional[list] = None,
     ):
         """
         Create directed graph from messaging network created with
-        ListservList.get_sender_receiver_dictionary().
+        ListservList.get_sender_receiver_dict().
 
         Parameters
         ----------
-        nw : dictionary created with self.get_sender_receiver_dictionary()
+        nw : dictionary created with self.get_sender_receiver_dict()
+        entity_in_focus :
         """
         if nw is None:
-            nw = self.get_sender_receiver_dictionary(domains_in_focus)
+            nw = self.get_sender_receiver_dict(
+                address_field="domain",
+                entity_in_focus=entity_in_focus,
+            )
         # initialise graph
         DG = nx.DiGraph()
         # create nodes
         [DG.add_node(sender) for sender in nw.keys()]
-        [
-            DG.add_node(receiver)
-            for receivers in nw.values()
-            for receiver in receivers.keys()
-        ]
-        # create edges
-        for sender, receivers in nw.items():
-            for receiver, nr_msgs in receivers.items():
-                DG.add_edge(sender, receiver, weight=nr_msgs)
+        if entity_in_focus:
+            [
+                DG.add_node(receiver)
+                for receivers in nw.values()
+                for receiver in receivers.keys()
+                if receiver in entity_in_focus
+            ]
+            # create edges
+            for sender, receivers in nw.items():
+                if sender not in entity_in_focus:
+                    continue
+                for receiver, nr_msgs in receivers.items():
+                    DG.add_edge(sender, receiver, weight=nr_msgs)
+        else:
+            [
+                DG.add_node(receiver)
+                for receivers in nw.values()
+                for receiver in receivers.keys()
+            ]
+            # create edges
+            for sender, receivers in nw.items():
+                for receiver, nr_msgs in receivers.items():
+                    DG.add_edge(sender, receiver, weight=nr_msgs)
         # attach directed graph to class
         self.dg = DG
 
@@ -806,6 +906,7 @@ class ListservList:
         self,
         years: Optional[tuple] = None,
         func=nx.betweenness_centrality,
+        **args,
     ) -> dict:
         if years is None:
             period_of_activity = self.period_of_activity()
@@ -815,9 +916,13 @@ class ListservList:
         dic_evol = {}
         for year in years:
             mlist_fi = self.crop_by_year(year)
-            mlist_fi.create_sender_receiver_digraph()
+            nw = self.get_sender_receiver_dict(
+                address_field="domain",
+                df=mlist_fi.df,
+            )
+            mlist_fi.create_sender_receiver_digraph(nw=nw)
 
-            adj = func(mlist_fi.dg)
+            adj = func(mlist_fi.dg, **args)
 
             labels = list(adj.keys())
             values = np.array(list(adj.values()))

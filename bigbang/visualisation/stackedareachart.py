@@ -25,6 +25,12 @@ def data_transformation(
     percentage: bool = False,
 ) -> np.ndarray:
     """
+    Parameters
+    ----------
+    idata :
+    ylabels :
+    percentage :
+
     Returns
     -------
     odata : array with the format (# of ylabels, # of xlabels)

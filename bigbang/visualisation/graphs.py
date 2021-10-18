@@ -11,18 +11,18 @@ import matplotlib.lines as mlines
 from matplotlib.pyplot import figure
 
 
-def edge_thickness(graph, domains_of_interest: list):
+def edge_thickness(graph, entity_in_focus: list):
     """
     Parameters
     ----------
-        graph : 
-        domains_of_interest : 
+        graph :
+        entity_in_focus :
     """
-    edges, weights = zip(*nx.get_edge_attributes(graph, 'weight').items())
+    edges, weights = zip(*nx.get_edge_attributes(graph, "weight").items())
     _edges = []
     _weights = []
     for edg, wei in zip(edges, weights):
-        if (edg[0] in domains_of_interest) or (edg[1] in domains_of_interest):
+        if (edg[0] in entity_in_focus) or (edg[1] in entity_in_focus):
             _edges.append(edg)
             _weights.append(wei)
     edges = tuple(_edges)
@@ -32,4 +32,4 @@ def edge_thickness(graph, domains_of_interest: list):
 
 def node_size(graph):
     adj = nx.betweenness_centrality(graph)
-    return np.array([x*1e3 for x in adj.values()])
+    return np.array([x * 1e3 for x in adj.values()])

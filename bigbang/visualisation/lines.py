@@ -16,7 +16,7 @@ from bigbang.visualisation import utils
 def evolution_of_participation_1D(
     data: dict,
     ax: mpl.axes,
-    domains_in_focus: Optional[list] = None,
+    entity_in_focus: Optional[list] = None,
     percentage: bool = False,
     colormap: mpl.colors.LinearSegmentedColormap = mpl.cm.jet,
 ) -> mpl.axes:
@@ -24,7 +24,7 @@ def evolution_of_participation_1D(
     Parameters
     ----------
     data : Dictionary with a format {'x_axis_labels': {'y_axis_labels': y_values}}
-    domains_in_focus :
+    entity_in_focus :
     percentage :
     """
     x = list(data.keys())
@@ -32,13 +32,13 @@ def evolution_of_participation_1D(
     y = stackedareachart.data_transformation(data, ylabels, percentage)
     colors = utils.create_color_palette(
         ylabels,
-        domains_in_focus,
+        entity_in_focus,
         colormap,
         include_dof=False,
         return_dict=True,
     )
     for iy, ylab in enumerate(ylabels):
-        if ylab in domains_in_focus:
+        if ylab in entity_in_focus:
             ax.plot(
                 x,
                 y[iy, :],
@@ -74,7 +74,7 @@ def evolution_of_participation_2D(
     xdata: dict,
     ydata: dict,
     ax: mpl.axes,
-    domains_in_focus: Optional[list] = None,
+    entity_in_focus: Optional[list] = None,
     percentage: bool = False,
     colormap: mpl.colors.LinearSegmentedColormap = mpl.cm.jet,
 ) -> mpl.axes:
@@ -82,7 +82,7 @@ def evolution_of_participation_2D(
     Parameters
     ----------
     data : Dictionary with a format {'x_axis_labels': {'y_axis_labels': y_values}}
-    domains_in_focus :
+    entity_in_focus :
     percentage :
     """
     # TODO: include time indication
@@ -99,14 +99,14 @@ def evolution_of_participation_2D(
     y = stackedareachart.data_transformation(ydata, ylabels, percentage)
     colors = utils.create_color_palette(
         ylabels,
-        domains_in_focus,
+        entity_in_focus,
         colormap,
         include_dof=False,
         return_dict=True,
     )
     ax.plot([0, np.max(y)], [0, np.max(y)], c="k", linestyle="--", zorder=0)
     for i, lab in enumerate(labels):
-        if lab in domains_in_focus:
+        if lab in entity_in_focus:
             ax.plot(
                 x[i, :],
                 y[i, :],
@@ -141,8 +141,9 @@ def evolution_of_graph_property_by_domain(
     xkey: str,
     ykey: str,
     ax: mpl.axes,
-    domains_in_focus: Optional[list] = None,
+    entity_in_focus: Optional[list] = None,
     percentile: Optional[float] = None,
+    colormap: mpl.colors.LinearSegmentedColormap = mpl.cm.jet,
 ) -> mpl.axes:
     """
     Parameters
@@ -150,12 +151,19 @@ def evolution_of_graph_property_by_domain(
         data : Dictionary create with
             bigbang.analysis.ListservList.get_graph_prop_per_domain_per_year()
         ax :
-        domains_in_focus :
+        entity_in_focus :
         percentile :
     """
-    if domains_in_focus:
+    colors = utils.create_color_palette(
+        list(data.keys()),
+        entity_in_focus,
+        colormap,
+        include_dof=False,
+        return_dict=True,
+    )
+    if entity_in_focus:
         for key, value in data.items():
-            if key in domains_in_focus:
+            if key in entity_in_focus:
                 ax.plot(
                     value[xkey],
                     value[ykey],
@@ -166,6 +174,7 @@ def evolution_of_graph_property_by_domain(
                 ax.plot(
                     value[xkey],
                     value[ykey],
+                    color=colors[key],
                     linewidth=3,
                     label=key,
                     zorder=2,
@@ -175,6 +184,7 @@ def evolution_of_graph_property_by_domain(
                     value[xkey],
                     value[ykey],
                     color="grey",
+                    alpha=0.2,
                     linewidth=1,
                     zorder=0,
                 )
@@ -198,6 +208,7 @@ def evolution_of_graph_property_by_domain(
                     value[xkey],
                     value[ykey],
                     linewidth=3,
+                    color=colors[key],
                     label=key,
                     zorder=2,
                 )
@@ -207,6 +218,7 @@ def evolution_of_graph_property_by_domain(
                     value[ykey],
                     color="grey",
                     linewidth=1,
+                    alpha=0.2,
                     zorder=0,
                 )
     return ax

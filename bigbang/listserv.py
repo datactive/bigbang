@@ -1,6 +1,5 @@
 import datetime
 import email
-import glob
 import logging
 import os
 import re
@@ -124,7 +123,12 @@ class ListservMessageParser(email.parser.Parser):
         # crea EmailMessage
         msg = email.message.EmailMessage()
         if body is not None:
-            msg.set_content(body)
+            try:
+                msg.set_content(body, "text", charset="utf-16")
+            except Exception:
+                # UnicodeEncodeError: 'utf-16' codec can't encode character
+                # '\ud83d' in position 8638: surrogates not allowed
+                pass
         for key, value in header.items():
             if "content-type" == key:
                 msg.set_param("Content-Type", value)
@@ -136,7 +140,8 @@ class ListservMessageParser(email.parser.Parser):
                 try:
                     # TODO: find out why it sometimes raises
                     # email/_header_value_parser.py
-                    # IndexError: list index out of range
+                    # IndexError: list index out of range.
+                    # Also look into UTF-8 encoding.
                     msg[key] = value
                 except Exception:
                     pass
@@ -565,7 +570,7 @@ class ListservList(ListservListIO):
 
     @classmethod
     def from_mbox(cls, name: str, filepath: str) -> "ListservList":
-        msgs = ListservListIO.from_mbox(name, filepath)
+        msgs = ListservListIO.from_mbox(filepath)
         return cls(name, filepath, msgs)
 
     @classmethod
