@@ -22,10 +22,12 @@ import bigbang.process as process
 from bigbang.archive import Archive
 
 
-# Gets the target two people A, B to analyze and returns
-# the amount of time they communicated in the mailing list
-# in TimeDelta type
 def duration(exchanges, A, B):
+    """
+    Gets the target two people A, B to analyze and returns
+    the amount of time they communicated in the mailing list
+    in TimeDelta type
+    """
     AtoB = exchanges[exchanges["From_original"] == A]
     AtoB = AtoB[AtoB["From_response"] == B]
     BtoA = exchanges[exchanges["From_original"] == B]
@@ -39,9 +41,11 @@ def duration(exchanges, A, B):
     )
 
 
-# Returns the number of replies that two people A and B sent to
-# each other in a tuple (# of replies from A to B, # of replies from B to A)
 def num_replies(exchanges, A, B):
+    """
+    Returns the number of replies that two people A and B sent to
+    each other in a tuple (# of replies from A to B, # of replies from B to A)
+    """
     AtoB = exchanges[exchanges["From_original"] == A]
     AtoB = AtoB[AtoB["From_response"] == B]
     BtoA = exchanges[exchanges["From_original"] == B]
@@ -49,17 +53,21 @@ def num_replies(exchanges, A, B):
     return (len(AtoB), len(BtoA))
 
 
-# Returns the reciprocity of communication between two people A and B
-# in float type. This expresses how interactively they communicated to each
-# other
 def reciprocity(exchanges, A, B):
+    """
+    Returns the reciprocity of communication between two people A and B
+    in float type. This expresses how interactively they communicated to each
+    other
+    """
     num = num_replies(exchanges, A, B)
     return float(min(num)) / max(num)
 
 
-# Finds every unique pair (A, B) from the pandas DataFrame "exchanges"
-# and returns them in set data type
 def unique_pairs(exchanges):
+    """
+    Finds every unique pair (A, B) from the pandas DataFrame "exchanges"
+    and returns them in set data type
+    """
     pairs = set()
     total_responses = len(exchanges["From_original"])
     for i in range(total_responses):
@@ -73,9 +81,11 @@ def unique_pairs(exchanges):
     return pairs
 
 
-# Forms a new Pandas DataFrame that contains information about communication
-# between a pair A and B using functions provided above and returns the result
 def panda_pair(exchanges, A, B):
+    """
+    Forms a new Pandas DataFrame that contains information about communication
+    between a pair A and B using functions provided above and returns the result
+    """
     try:
         return pd.DataFrame(
             [
@@ -92,9 +102,11 @@ def panda_pair(exchanges, A, B):
         print('No exchange between "%s" and "%s" exists.' % (A, B))
 
 
-# With given pairs of communication, returns a Pandas DataFrame that contains
-# communication information between two people A and B in every pair
 def panda_allpairs(exchanges, pairs):
+    """
+    With given pairs of communication, returns a Pandas DataFrame that contains
+    communication information between two people A and B in every pair
+    """
     data_list = []
     for pair in pairs:
         A = pair[0]

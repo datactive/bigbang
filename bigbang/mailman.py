@@ -66,10 +66,17 @@ def load_data(
     Failing that, if the the name is a URL, it will try to derive
     the list name from that URL and load the .csv again.
 
-    Args:
-        name: archive name
-        archive_dir: archive directory path
-        mbox:
+    Parameters
+    ----------
+    name : str
+    archive_dir : str, default CONFIG.mail_path
+    mbox : bool, default False
+        If true, expects and opens an mbox file at this path
+
+    Returns
+    -------
+    data : pandas.DataFrame
+
     """
 
     if mbox:
@@ -428,20 +435,29 @@ def open_list_archives(
     """
     Return a list of all email messages contained in the specified directory.
 
-    TODO: this argument should be re-named. sometimes it's being called with
+    Parameters
+    -----------
+    url: str
+        the name of a subdirectory of the directory specified
+        in argument *archive_dir*. This directory is expected to contain
+        files with extensions .txt, .mail, or .mbox. These files are all
+        expected to be in mbox format-- i.e. a series of blocks of text
+        starting with headers (colon-separated key-value pairs) followed by
+        an email body.
+        TODO: this argument should be re-named. sometimes it's being called with
         actual URLs, other times with subdirectory names, leading to spurious
-        warnings in various places.
 
-    Args:
-        url: the name of a subdirectory of the directory specified
-            in argument *archive_dir*. This directory is expected to contain
-            files with extensions .txt, .mail, or .mbox. These files are all
-            expected to be in mbox format-- i.e. a series of blocks of text
-            starting with headers (colon-separated key-value pairs) followed by
-            an email body.
-        archive_dir: directory containing all messages.
+    archive_dir : str:
+        directory containing all messages.
 
-    Returns:
+    mbox: bool, default False
+        True if there's an mbox file already available for this archive.
+
+    Returns
+    --------
+
+    data : pandas.DataFrame
+
     """
     if (url is None) and (archive_dir is None):
         raise ValueError("Either `url` or `archive_dir` must be given.")
@@ -465,7 +481,7 @@ def open_list_archives(
             for fn in os.listdir(arc_dir)
             if any([fn.endswith(extension) for extension in file_extensions])
         ]
-    
+
         print("^^^^^^^^^^^^^")
         print(os.listdir(arc_dir))
         logging.info("Opening %d archive files", len(txts))
