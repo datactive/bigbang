@@ -3,7 +3,7 @@ Motivation
 
 BigBang was originally designed to study communities developing
 open sources scientific software.
-It was quickly thereafter adopte by researchers studying Internet
+It was quickly thereafter adopted by researchers studying Internet
 and network standards-setting.
 Organizations such as the IETF conduct much of their technical work
 via open mailing list and document records.
