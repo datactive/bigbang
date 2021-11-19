@@ -11,7 +11,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import warnings
-from pathlib import Path
+
 from pprint import pprint as pp
 from typing import Union
 from urllib.parse import urlparse
@@ -20,7 +20,8 @@ import pandas as pd
 import yaml
 from validator_collection import checkers
 
-from bigbang.parse import get_date
+import bigbang.archive as archive
+
 from config.config import CONFIG
 
 from . import listserv, parse, w3crawl
@@ -47,63 +48,6 @@ class InvalidURLException(Exception):
         return repr(self.value)
 
 
-class MissingDataException(Exception):
-    def __init__(self, value):
-        self.value = value
-
-    def __str__(self):
-        return repr(self.value)
-
-
-def load_data(
-    name: str, archive_dir: str = CONFIG.mail_path, mbox: bool = False
-):
-    """
-    Load the data associated with an archive name, given as a string.
-
-    Attempt to open {archives-directory}/NAME.csv as data.
-
-    Failing that, if the the name is a URL, it will try to derive
-    the list name from that URL and load the .csv again.
-
-    Parameters
-    ----------
-    name : str
-    archive_dir : str, default CONFIG.mail_path
-    mbox : bool, default False
-        If true, expects and opens an mbox file at this path
-
-    Returns
-    -------
-    data : pandas.DataFrame
-
-    """
-
-    if mbox:
-        return open_list_archives(name, archive_dir=archive_dir, mbox=True)
-
-    # a first pass at detecting if the string is a URL...
-    if not (name.startswith("http://") or name.startswith("https://")):
-        path = os.path.join(archive_dir, name + ".csv")
-
-        if os.path.exists(path):
-            data = pd.read_csv(path)
-            return data
-        else:
-            logging.warning("No data available at %s", path)
-    else:
-        path = os.path.join(archive_dir, get_list_name(name) + ".csv")
-
-        if os.path.exists(path):
-            data = pd.read_csv(path)
-            return data
-        else:
-            logging.warning(
-                "No data found for %s. Check directory name and whether archives have been collected.",
-                name,
-            )
-
-
 def collect_from_url(
     url: Union[list, str], archive_dir: str = CONFIG.mail_path, notes=None
 ):
@@ -122,8 +66,8 @@ def collect_from_url(
     if has_archives:
         unzip_archive(url)
         try:
-            data = open_list_archives(url)
-        except MissingDataException as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
+            data = archive.open_list_archives(url)
+        except archive.MissingDataException as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
             print(e)
             return None
 
@@ -229,13 +173,6 @@ def normalize_archives_url(url):
     return url  # if no other change found, return the original URL
 
 
-def archive_directory(base_dir, list_name):
-    """Archive a directory."""
-    arc_dir = os.path.join(base_dir, list_name)
-    Path(arc_dir).mkdir(parents=True, exist_ok=True)
-    return arc_dir
-
-
 def populate_provenance(directory, list_name, list_url, notes=None):
     """Create a provenance metadata file for current mailing list collection."""
     provenance = {
@@ -338,7 +275,7 @@ def collect_archive_from_url(
     pp(results)
 
     # directory for downloaded files
-    arc_dir = archive_directory(archive_dir, list_name)
+    arc_dir = archive.archive_directory(archive_dir, list_name)
 
     populate_provenance(
         directory=arc_dir, list_name=list_name, list_url=url, notes=notes
@@ -378,7 +315,7 @@ def collect_archive_from_url(
 
 def unzip_archive(url, archive_dir=CONFIG.mail_path):
     """Unzip archive files."""
-    arc_dir = archive_directory(archive_dir, get_list_name(url))
+    arc_dir = archive.archive_directory(archive_dir, get_list_name(url))
 
     gzs = [
         os.path.join(arc_dir, fn)
@@ -427,90 +364,6 @@ def recursive_get_payload(x):
         return None
 
 
-def open_list_archives(
-    url: str,
-    archive_dir: str = CONFIG.mail_path,
-    mbox: bool = False,
-) -> pd.DataFrame:
-    """
-    Return a list of all email messages contained in the specified directory.
-
-    Parameters
-    -----------
-    url: str
-        the name of a subdirectory of the directory specified
-        in argument *archive_dir*. This directory is expected to contain
-        files with extensions .txt, .mail, or .mbox. These files are all
-        expected to be in mbox format-- i.e. a series of blocks of text
-        starting with headers (colon-separated key-value pairs) followed by
-        an email body.
-        TODO: this argument should be re-named. sometimes it's being called with
-        actual URLs, other times with subdirectory names, leading to spurious
-
-    archive_dir : str:
-        directory containing all messages.
-
-    mbox: bool, default False
-        True if there's an mbox file already available for this archive.
-
-    Returns
-    --------
-
-    data : pandas.DataFrame
-
-    """
-    if (url is None) and (archive_dir is None):
-        raise ValueError("Either `url` or `archive_dir` must be given.")
-
-    messages = None
-
-    if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
-        # treat string as the path to a file that is an mbox
-        box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
-        messages = list(box.values())
-
-    else:
-        # assume string is the path to a directory with many
-        list_name = get_list_name(url)
-        arc_dir = archive_directory(archive_dir, list_name)
-
-        file_extensions = [".txt", ".mail", ".mbox"]
-
-        txts = [
-            os.path.join(arc_dir, fn)
-            for fn in os.listdir(arc_dir)
-            if any([fn.endswith(extension) for extension in file_extensions])
-        ]
-
-        print("^^^^^^^^^^^^^")
-        print(os.listdir(arc_dir))
-        logging.info("Opening %d archive files", len(txts))
-
-        def mbox_reader(stream):
-            """Read a non-ascii message from mailbox"""
-            data = stream.read()
-            text = data.decode(encoding="utf-8", errors="replace")
-            return mailbox.mboxMessage(text)
-
-        arch = [
-            mailbox.mbox(txt, factory=mbox_reader, create=False).values()
-            for txt in txts
-        ]
-
-        if len(arch) == 0:
-            raise MissingDataException(
-                (
-                    "No messages in %s under %s. Did you run the "
-                    "collect_mail.py script?"
-                )
-                % (archive_dir, list_name)
-            )
-
-        messages = [item for sublist in arch for item in sublist]
-
-    return messages_to_dataframe(messages)
-
-
 def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     """
     Open the message activity summary for a particular mailing list (as specified by url).
@@ -518,7 +371,7 @@ def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     Return the dataframe, or return None if no activity summary export file is found.
     """
     list_name = get_list_name(url)
-    arc_dir = archive_directory(archive_dir, list_name)
+    arc_dir = archive.archive_directory(archive_dir, list_name)
 
     activity_csvs = fnmatch.filter(os.listdir(arc_dir), "*-activity.csv")
     if len(activity_csvs) == 0:
@@ -535,102 +388,3 @@ def open_activity_summary(url, archive_dir=CONFIG.mail_path):
     path = os.path.join(arc_dir, activity_csv)
     activity_frame = pd.read_csv(path, index_col=0, encoding="utf-8")
     return activity_frame
-
-
-def get_text(msg):
-    """Get text from a message."""
-    ## This code for character detection and dealing with exceptions is terrible
-    ## It is in need of refactoring badly. - sb
-    import chardet
-
-    text = ""
-    if msg.is_multipart():
-        html = None
-        for part in msg.walk():
-            charset = part.get_content_charset()
-            if part.get_content_type() == "text/plain":
-                try:
-                    text = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-                except LookupError:
-                    logging.debug(
-                        "Unknown encoding %s in message %s. Will use UTF-8 instead.",
-                        charset,
-                        msg["Message-ID"],
-                    )
-                    charset = "utf-8"
-                    text = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-            if part.get_content_type() == "text/html":
-                try:
-                    html = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-                except LookupError:
-                    logging.debug(
-                        "Unknown encoding %s in message %s. Will use UTF-8 instead.",
-                        charset,
-                        msg["Message-ID"],
-                    )
-                    charset = "utf-8"
-                    html = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
-
-        if text is not None:
-            return text.strip()
-        else:
-            import html2text
-
-            h = html2text.HTML2Text()
-            h.encoding = "utf-8"
-            return str(h.handle(html))
-    else:
-        charset = msg.get_content_charset() or "utf-8"
-        if charset != "utf-8":
-            logging.debug("charset is %s" % (charset))
-        text = msg.get_payload()
-        return text.strip()
-
-
-def messages_to_dataframe(messages):
-    """
-    Turn a list of parsed messages into a dataframe of message data,
-    indexed by message-id, with column-names from headers.
-    """
-    # extract data into a list of tuples -- records -- with
-    # the Message-ID separated out as an index
-    # valid_messages = [m for m in messages if m.get()
-
-    pm = [
-        (
-            m.get("Message-ID"),
-            str(m.get("From")).replace("\\", " "),
-            str(m.get("Subject")),
-            get_date(m),
-            str(m.get("In-Reply-To")),
-            str(m.get("References")),
-            get_text(m),
-        )
-        for m in messages
-        if m.get("From")
-    ]
-
-    mdf = pd.DataFrame.from_records(
-        list(pm),
-        index="Message-ID",
-        columns=[
-            "Message-ID",
-            "From",
-            "Subject",
-            "Date",
-            "In-Reply-To",
-            "References",
-            "Body",
-        ],
-    )
-    mdf.index.name = "Message-ID"
-
-    return mdf

@@ -9,14 +9,18 @@ import logging
 import mailbox
 
 import numpy as np
+import os
 import pandas as pd
+from pathlib import Path
 import pytz
 
+import bigbang.mailman as mailman
+from bigbang.parse import get_date, get_text
 import bigbang.process as process
 from bigbang.thread import Node, Thread
 from config.config import CONFIG
 
-from . import mailman, utils
+from . import utils
 
 
 def load(path):
@@ -28,6 +32,14 @@ class ArchiveWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
     pass
+
+
+class MissingDataException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
 
 
 class Archive(object):
@@ -70,9 +82,7 @@ class Archive(object):
         if isinstance(data, pd.core.frame.DataFrame):
             self.data = data.copy()
         elif isinstance(data, str):
-            self.data = mailman.load_data(
-                data, archive_dir=archive_dir, mbox=mbox
-            )
+            self.data = load_data(data, archive_dir=archive_dir, mbox=mbox)
 
         try:
             self.data["Date"] = pd.to_datetime(
@@ -146,13 +156,13 @@ class Archive(object):
             )
 
         if self.data.empty:
-            raise mailman.MissingDataException(
+            raise MissingDataException(
                 "Archive after initial processing is empty. Was data collected properly?"
             )
 
     def resolve_entities(self, inplace=True):
         """Return data with resolved entities.
-        
+
         Parameters
         ----------
         inplace : bool, default True
@@ -161,7 +171,7 @@ class Archive(object):
         -------
         pandas.DataFrame or None
             Returns None if inplace == True
-        
+
         """
         if self.entities is None:
             if self.activity is None:
@@ -285,6 +295,13 @@ class Archive(object):
         self.data.to_csv(path, ",", encoding=encoding)
 
 
+def archive_directory(base_dir, list_name):
+    """Archive a directory."""
+    arc_dir = os.path.join(base_dir, list_name)
+    Path(arc_dir).mkdir(parents=True, exist_ok=True)
+    return arc_dir
+
+
 def find_footer(messages, number=1):
     """
     Returns the footer of a DataFrame of emails.
@@ -340,3 +357,179 @@ def find_footer(messages, number=1):
     )
 
     return candidates[0:number]
+
+
+def load_data(
+    name: str, archive_dir: str = CONFIG.mail_path, mbox: bool = False
+):
+    """
+    Load the data associated with an archive name, given as a string.
+
+    Attempt to open {archives-directory}/NAME.csv as data.
+
+    Failing that, if the the name is a URL, it will try to derive
+    the list name from that URL and load the .csv again.
+
+    Parameters
+    ----------
+    name : str
+    archive_dir : str, default CONFIG.mail_path
+    mbox : bool, default False
+        If true, expects and opens an mbox file at this path
+
+    Returns
+    -------
+    data : pandas.DataFrame
+
+    """
+
+    if mbox:
+        return open_list_archives(name, archive_dir=archive_dir, mbox=True)
+
+    # a first pass at detecting if the string is a URL...
+    if not (name.startswith("http://") or name.startswith("https://")):
+        path = os.path.join(archive_dir, name + ".csv")
+
+        if os.path.exists(path):
+            data = pd.read_csv(path)
+            return data
+        else:
+            logging.warning("No data available at %s", path)
+    else:
+        # TODO: Should "get_list_name" be more general than mailman?
+        path = os.path.join(archive_dir, mailman.get_list_name(name) + ".csv")
+
+        if os.path.exists(path):
+            data = pd.read_csv(path)
+            return data
+        else:
+            logging.warning(
+                "No data found for %s. Check directory name and whether archives have been collected.",
+                name,
+            )
+
+
+def messages_to_dataframe(messages):
+    """
+    Turn a list of parsed messages into a dataframe of message data,
+    indexed by message-id, with column-names from headers.
+    """
+    # extract data into a list of tuples -- records -- with
+    # the Message-ID separated out as an index
+    # valid_messages = [m for m in messages if m.get()
+
+    pm = [
+        (
+            m.get("Message-ID"),
+            str(m.get("From")).replace("\\", " "),
+            str(m.get("Subject")),
+            get_date(m),
+            str(m.get("In-Reply-To")),
+            str(m.get("References")),
+            get_text(m),
+        )
+        for m in messages
+        if m.get("From")
+    ]
+
+    mdf = pd.DataFrame.from_records(
+        list(pm),
+        index="Message-ID",
+        columns=[
+            "Message-ID",
+            "From",
+            "Subject",
+            "Date",
+            "In-Reply-To",
+            "References",
+            "Body",
+        ],
+    )
+    mdf.index.name = "Message-ID"
+
+    return mdf
+
+
+def open_list_archives(
+    url: str,
+    archive_dir: str = CONFIG.mail_path,
+    mbox: bool = False,
+) -> pd.DataFrame:
+    """
+    Return a list of all email messages contained in the specified directory.
+
+    Parameters
+    -----------
+    url: str
+        the name of a subdirectory of the directory specified
+        in argument *archive_dir*. This directory is expected to contain
+        files with extensions .txt, .mail, or .mbox. These files are all
+        expected to be in mbox format-- i.e. a series of blocks of text
+        starting with headers (colon-separated key-value pairs) followed by
+        an email body.
+        TODO: this argument should be re-named. sometimes it's being called with
+        actual URLs, other times with subdirectory names, leading to spurious
+
+    archive_dir : str:
+        directory containing all messages.
+
+    mbox: bool, default False
+        True if there's an mbox file already available for this archive.
+
+    Returns
+    --------
+
+    data : pandas.DataFrame
+
+    """
+    if (url is None) and (archive_dir is None):
+        raise ValueError("Either `url` or `archive_dir` must be given.")
+
+    messages = None
+
+    if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
+        # treat string as the path to a file that is an mbox
+        box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
+        messages = list(box.values())
+
+    else:
+        # assume string is the path to a directory with many
+        # TODO: Generalize get_list_name to listserv, w3c?
+        list_name = mailman.get_list_name(url)
+        arc_dir = archive_directory(archive_dir, list_name)
+
+        file_extensions = [".txt", ".mail", ".mbox"]
+
+        txts = [
+            os.path.join(arc_dir, fn)
+            for fn in os.listdir(arc_dir)
+            if any([fn.endswith(extension) for extension in file_extensions])
+        ]
+
+        print("^^^^^^^^^^^^^")
+        print(os.listdir(arc_dir))
+        logging.info("Opening %d archive files", len(txts))
+
+        def mbox_reader(stream):
+            """Read a non-ascii message from mailbox"""
+            data = stream.read()
+            text = data.decode(encoding="utf-8", errors="replace")
+            return mailbox.mboxMessage(text)
+
+        arch = [
+            mailbox.mbox(txt, factory=mbox_reader, create=False).values()
+            for txt in txts
+        ]
+
+        if len(arch) == 0:
+            raise MissingDataException(
+                (
+                    "No messages in %s under %s. Did you run the "
+                    "collect_mail.py script?"
+                )
+                % (archive_dir, list_name)
+            )
+
+        messages = [item for sublist in arch for item in sublist]
+
+    return messages_to_dataframe(messages)

@@ -15,9 +15,8 @@ from email.mime.text import MIMEText
 import dateutil
 from bs4 import BeautifulSoup
 
-import bigbang.mailman
-
-from . import parse
+import bigbang.archive as archive
+import bigbang.mailman as mailman
 
 
 class W3cMailingListArchivesParser(email.parser.Parser):
@@ -115,7 +114,7 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
 
     Logs an error and returns False if no messages can be collected.
     """
-    list_name = bigbang.mailman.get_list_name(url)
+    list_name = mailman.get_list_name(url)
     logging.info("Getting W3C list archive for %s", list_name)
 
     try:
@@ -139,8 +138,8 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
         return False
 
     # directory for downloaded files
-    arc_dir = bigbang.mailman.archive_directory(base_arch_dir, list_name)
-    bigbang.mailman.populate_provenance(
+    arc_dir = archive.archive_directory(base_arch_dir, list_name)
+    mailman.populate_provenance(
         directory=arc_dir,
         list_name=list_name,
         list_url=url,
@@ -204,6 +203,6 @@ def collect_from_url(url, base_arch_dir="archives", notes=None):
         logging.info("Saved %s", year_month_mbox)
 
     # assumes all archives were downloaded if no exceptions have been thrown
-    provenance = bigbang.mailman.access_provenance(arc_dir)
+    provenance = mailman.access_provenance(arc_dir)
     provenance["complete"] = True
-    bigbang.mailman.update_provenance(arc_dir, provenance)
+    mailman.update_provenance(arc_dir, provenance)
