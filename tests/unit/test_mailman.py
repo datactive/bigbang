@@ -125,7 +125,7 @@ class TestMailman(unittest.TestCase):
         )
         df = pd.read_csv(test_df_csv_path)
 
-        with self.assertRaises(mailman.MissingDataException):
+        with self.assertRaises(archive.MissingDataException):
             empty_archive = archive.Archive(df)
             empty_archive.get_activity()
 
