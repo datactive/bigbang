@@ -12,9 +12,9 @@ from matplotlib.pyplot import figure
 
 def create_color_palette(
     ylabels: List[str],
-    domains_in_focus: Optional[List[str]] = None,
+    entity_in_focus: Optional[List[str]] = None,
     colormap: mpl.colors.LinearSegmentedColormap = mpl.cm.jet,
-    include_dof: bool = True,
+    include_eif: bool = True,
     color_dof: np.array = np.array([175, 175, 175]),
     return_dict: bool = False,
 ) -> list:
@@ -24,45 +24,45 @@ def create_color_palette(
     Parameters
     ----------
         ylabels :
-        domains_in_focus :
+        entity_in_focus :
         colormap :
         color_dof :
         return_dict :
     """
-    if domains_in_focus:
+    if entity_in_focus:
         if return_dict is False:
-            domains_in_focus = [
-                dof for dof in domains_in_focus if dof in ylabels
+            entity_in_focus = [
+                eif for eif in entity_in_focus if eif in ylabels
             ]
-        color_dif = colormap(np.linspace(0, 1, len(domains_in_focus)))
-        if include_dof:
+        color_eif = colormap(np.linspace(0, 1, len(entity_in_focus)))
+        if include_eif:
             if return_dict:
                 colors = {}
                 count = 0
                 for ylab in ylabels:
-                    if ylab in domains_in_focus:
-                        colors[ylab] = color_dif[count]
+                    if ylab in entity_in_focus:
+                        colors[ylab] = color_eif[count]
                         count += 1
                     else:
-                        colors[ylab] = (Color(rgb=(color_dof / 255)).rgb,)
+                        colors[ylab] = (Color(rgb=(color_eif / 255)).rgb,)
             else:
                 colors = []
                 count = 0
                 for ylab in ylabels:
-                    if ylab in domains_in_focus:
-                        colors.append(color_dif[count])
+                    if ylab in entity_in_focus:
+                        colors.append(color_eif[count])
                         count += 1
                     else:
                         colors.append(
-                            Color(rgb=(color_dof / 255)).rgb,
+                            Color(rgb=(color_eif / 255)).rgb,
                         )
         else:
             if return_dict:
                 colors = {
-                    ylab: col for ylab, col in zip(domains_in_focus, color_dif)
+                    ylab: col for ylab, col in zip(entity_in_focus, color_eif)
                 }
             else:
-                colors = color_dif
+                colors = color_eif
     else:
         colors = mpl.cm.jet(np.linspace(0, 1, len(ylabels)))
         if return_dict:

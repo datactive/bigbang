@@ -225,7 +225,7 @@ class ListservList:
             mask = [dt.year == yrs for dt in _df["date"].values]
         if isinstance(yrs, list):
             mask = [
-                (dt.year >= min(yrs)) & (dt.year < max([yrs]))
+                (dt.year >= min(yrs)) & (dt.year < max(yrs))
                 for dt in _df["date"].values
             ]
         return ListservList.from_pandas_dataframe(
@@ -410,7 +410,7 @@ class ListservList:
             (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
             mailing list the most representative header fields of
             senders and receivers are 'from' and 'comments-to' respectively.
-        per_domain :
+        per_domain : aggregate 'localparts' per domain
         return_msg_counts : If 'True', return # of messages per localpart.
         """
         if df is None:

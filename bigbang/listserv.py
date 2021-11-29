@@ -810,7 +810,7 @@ class ListservList(ListservListIO):
 
     @staticmethod
     def get_name_from_url(url: str) -> str:
-        """Get name of mailing list."""
+        """Get mailing list name from mailing list URL."""
         return url.split("A0=")[-1]
 
     @classmethod

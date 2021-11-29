@@ -34,7 +34,7 @@ def evolution_of_participation_1D(
         ylabels,
         entity_in_focus,
         colormap,
-        include_dof=False,
+        include_eif=False,
         return_dict=True,
     )
     for iy, ylab in enumerate(ylabels):
@@ -101,7 +101,7 @@ def evolution_of_participation_2D(
         ylabels,
         entity_in_focus,
         colormap,
-        include_dof=False,
+        include_eif=False,
         return_dict=True,
     )
     ax.plot([0, np.max(y)], [0, np.max(y)], c="k", linestyle="--", zorder=0)
@@ -158,7 +158,7 @@ def evolution_of_graph_property_by_domain(
         list(data.keys()),
         entity_in_focus,
         colormap,
-        include_dof=False,
+        include_eif=False,
         return_dict=True,
     )
     if entity_in_focus:
