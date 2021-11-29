@@ -83,7 +83,7 @@ class ListservMessageParser(email.parser.Parser):
     -------
     >>> msg_parser = ListservMessageParser(
     >>>     website=True,
-    >>>     login={"username": "nielsto@gmail.com", "password": "BigBang11!"},
+    >>>     login={"username": <your_username>, "password": <your_password>},
     >>> )
 
     >>> msg = msg_parser.from_url(
@@ -172,8 +172,8 @@ class ListservMessageParser(email.parser.Parser):
         ----------
         list_name :
         url : URL of this Email
-        fields : Indicates whether to return 'header', 'body' or
-            'total'/both or the Email.
+        fields : Indicates whether to return 'header', 'body' or 'total'/both or
+            the Email.
         """
         soup = get_website_content(url, session=self.session)
         if soup == "RequestException":
@@ -197,6 +197,15 @@ class ListservMessageParser(email.parser.Parser):
         header_start_line_nr: int,
         fields: str = "total",
     ) -> mboxMessage:
+        """
+        Parameters
+        ----------
+        list_name :
+        file_path :
+        header_start_line_nr :
+        fields : Indicates whether to return 'header', 'body' or 'total'/both or
+            the Email.
+        """
         file = open(file_path, "r", errors="replace")
         fcontent = file.readlines()
         file.close()
@@ -227,8 +236,8 @@ class ListservMessageParser(email.parser.Parser):
 
         Parameters
         ----------
-            content: The content of one LISTSERV-file.
-            header_start_line_nr:
+        content : The content of one LISTSERV-file.
+        header_start_line_nr :
         """
         for lnr, lcont in enumerate(content[header_start_line_nr:]):
             if len(lcont) <= 1:
@@ -247,9 +256,9 @@ class ListservMessageParser(email.parser.Parser):
 
         Parameters
         ----------
-            content: The content of one LISTSERV-file.
-            header_start_line_nr:
-            header_end_line_nr:
+        content : The content of one LISTSERV-file.
+        header_start_line_nr :
+        header_end_line_nr :
         """
         # TODO re-write using email.parser.Parser
         content = content[header_start_line_nr:header_end_line_nr]
@@ -279,8 +288,8 @@ class ListservMessageParser(email.parser.Parser):
 
         Parameters
         ----------
-            content: The content of one LISTSERV-file.
-            header_end_line_nr:
+        content : The content of one LISTSERV-file.
+        header_end_line_nr :
         """
         # TODO re-write using email.parser.Parser
         found = False
@@ -302,12 +311,16 @@ class ListservMessageParser(email.parser.Parser):
         """
         Lexer for the message header.
 
+        Parameters
+        ----------
+        soup :
+
         Note
         ----
-            Currently, this module encodes Chinese characters in UTF-8.
-            This should be avoided. When improving this, you can use
-            https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_CT_WG4;d2c3487b.2106A&S=
-            to test.
+        Currently, this module encodes Chinese characters in UTF-8.
+        This should be avoided. When improving this, you can use
+        https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_CT_WG4;d2c3487b.2106A&S=
+        to test.
         """
         try:
             for string in ["Subject", "SUBJECT"]:
@@ -367,6 +380,12 @@ class ListservMessageParser(email.parser.Parser):
 
         Therefore this method does not try to return the richest information
         content, but simply the ascii format.
+
+        Parameters
+        ----------
+        list_name :
+        url :
+        soup :
         """
         # TODO re-write using email.parser.Parser
         url_root = ("/").join(url.split("/")[:-2])
@@ -403,6 +422,11 @@ class ListservMessageParser(email.parser.Parser):
 
     @staticmethod
     def get_datetime(line: str) -> str:
+        """
+        Parameters
+        ----------
+        line :
+        """
         line = (" ").join(line.split(" ")[:-1]).lstrip()
         # convert format to local version of date and time
         date_time_obj = datetime.datetime.strptime(
@@ -412,6 +436,12 @@ class ListservMessageParser(email.parser.Parser):
 
     @staticmethod
     def create_message_id(date: str, from_address: str) -> str:
+        """
+        Parameters
+        ----------
+        date :
+        from_address :
+        """
         message_id = (".").join([date, from_address])
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
@@ -419,14 +449,30 @@ class ListservMessageParser(email.parser.Parser):
 
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
+        """
+        Parameters
+        ----------
+        msg :
+        """
         return ListservMessageIO.to_dict(msg)
 
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+        """
+        Parameters
+        ----------
+        msg :
+        """
         return ListservMessageIO.to_pandas_dataframe(msg)
 
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
+        """
+        Parameters
+        ----------
+        msg :
+        filepath :
+        """
         return ListservMessageIO.to_mbox(msg, filepath)
 
 
@@ -447,32 +493,39 @@ class ListservList(ListservListIO):
 
     Methods
     -------
-    from_url
-    from_messages
-    from_mbox
-    from_listserv_files
-    from_listserv_directories
-    get_messages_from_url
-    get_message_urls
-    get_period_urls
-    get_line_numbers_of_header_starts
-    get_index_of_elements_in_selection
-    to_dict
-    to_pandas_dataframe
-    to_mbox
+    from_url()
+    from_messages()
+    from_mbox()
+    from_listserv_files()
+    from_listserv_directories()
+    get_messages_from_url()
+    get_message_urls()
+    get_period_urls()
+    get_line_numbers_of_header_starts()
+    get_index_of_elements_in_selection()
+    to_dict()
+    to_pandas_dataframe()
+    to_mbox()
+
 
     Example
     -------
-    mlist = ListservList.from_url(
-        "3GPP_TSG_CT_WG6",
-        url="https://list.etsi.org/scripts/wa.exe?A0=3GPP_TSG_CT_WG6",
-        select={
-            "years": (2020, 2021),
-            "months": "January",
-            "weeks": [1,5],
-            "fields": "header",
-        },
-    )
+    To scrape a Listserv mailing list from an URL and store it in
+    run-time memory, we do the following
+    >>> mlist = ListservList.from_url(
+    >>>     name="IEEE-TEST",
+    >>>     url="https://listserv.ieee.org/cgi-bin/wa?A0=IEEE-TEST",
+    >>>     select={
+    >>>         "years": 2015,
+    >>>         "months": "November",
+    >>>         "weeks": 4,
+    >>>         "fields": "header",
+    >>>     },
+    >>>     login={"username": <your_username>, "password": <your_password>},
+    >>> )
+
+    To save it as *.mbox file we do the following
+    >>> mlist.to_mbox(path_to_file)
     """
 
     def __init__(
@@ -486,12 +539,15 @@ class ListservList(ListservListIO):
         self.messages = msgs
 
     def __len__(self) -> int:
+        """Get number of messsages within the mailing list."""
         return len(self.messages)
 
     def __iter__(self):
+        """Iterate over each message within the mailing list."""
         return iter(self.messages)
 
     def __getitem__(self, index) -> mboxMessage:
+        """Get specific message at position `index` within the mailing list."""
         return self.messages[index]
 
     @classmethod
@@ -508,13 +564,15 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
-            url: URL to the LISTSERV list.
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
-            url_login: URL to the 'Log In' page
-            url_pref: URL to the 'Preferences'/settings page
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+        url : URL to the LISTSERV list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        url_login : URL to the 'Log In' page
+        url_pref : URL to the 'Preferences'/settings page
+        login :
+        session :
         """
         if session is None:
             session = get_auth_session(url_login, **login)
@@ -541,10 +599,10 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-            messages: Can either be a list of URLs to specific LISTSERV messages
-                or a list of `mboxMessage` objects.
-            url_login: URL to the 'Log In' page.
-            url_pref: URL to the 'Preferences'/settings page.
+        messages : Can either be a list of URLs to specific LISTSERV messages
+            or a list of `mboxMessage` objects.
+        url_login : URL to the 'Log In' page.
+        url_pref : URL to the 'Preferences'/settings page.
         """
         if not messages:
             # create empty ListservList for ListservArchive
@@ -575,6 +633,12 @@ class ListservList(ListservListIO):
 
     @classmethod
     def from_mbox(cls, name: str, filepath: str) -> "ListservList":
+        """
+        Parameters
+        ----------
+        name :
+        filepath :
+        """
         msgs = ListservListIO.from_mbox(filepath)
         return cls(name, filepath, msgs)
 
@@ -589,13 +653,13 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
-            directorypaths: List of directory paths where LISTSERV formatted
-                messages are.
-            filedsc: A description of the relevant files, e.g. *.LOG?????
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
+        directorypaths : List of directory paths where LISTSERV formatted
+            messages are.
+        filedsc : A description of the relevant files, e.g. *.LOG?????
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
         """
         _filepaths = []
         # run through directories and collect all filepaths
@@ -617,12 +681,12 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
-            filepaths: List of file paths where LISTSERV formatted messages are.
-                Such files can have a file extension of the form: *.LOG1405D
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+        filepaths : List of file paths where LISTSERV formatted messages are.
+            Such files can have a file extension of the form: *.LOG1405D
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
         """
         if select is None:
             select = {"fields": "total"}
@@ -663,12 +727,12 @@ class ListservList(ListservListIO):
 
         Parameters
         ----------
-            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
-            url: URL to the LISTSERV list.
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
-            session: AuthSession
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+        url : URL to the LISTSERV list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        session : AuthSession
         """
         # get all message URLs
         msg_urls = cls.get_message_urls(name, url, select)
@@ -700,15 +764,15 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-            name: Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
-            url: URL to the LISTSERV list.
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+        url : URL to the LISTSERV list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
 
         Returns
         -------
-            List of all selected URLs of the messages in the mailing list.
+        List of all selected URLs of the messages in the mailing list.
         """
         if select is None:
             select = {"fields": "total"}
@@ -727,6 +791,13 @@ class ListservList(ListservListIO):
         """
         All messages within a certain period
         (e.g. January 2021, Week 5).
+
+        Parameters
+        ----------
+        url : URL to the LISTSERV list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
         """
         # create dictionary with key indicating period and values the url
         periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
@@ -761,6 +832,10 @@ class ListservList(ListservListIO):
     def get_all_periods_and_their_urls(
         url: str,
     ) -> Tuple[List[str], List[str]]:
+        """
+        Parameters
+        ----------
+        """
         # wait between loading messages, for politeness
         time.sleep(0.5)
 
@@ -789,15 +864,15 @@ class ListservList(ListservListIO):
 
         Parameters
         ----------
-            times: A list containing information of the period for each
-                group of mboxMessage.
-            urls: Corresponding URLs of each group of mboxMessage of which the
-                period info is contained in `times`.
-            filtr: Containing info on what should be filtered.
+        times : A list containing information of the period for each
+            group of mboxMessage.
+        urls : Corresponding URLs of each group of mboxMessage of which the
+            period info is contained in `times`.
+        filtr : Containing info on what should be filtered.
 
         Returns
         -------
-            Indices of to the elements in `times`/`ursl`.
+        Indices of to the elements in `times`/`ursl`.
         """
         if isinstance(filtr, tuple):
             # filter year or week in range
@@ -823,12 +898,12 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-            name: Name of the `ListservList`
-            url: URL to group of messages that are within the same period.
+        name : Name of the `ListservList`
+        url : URL to group of messages that are within the same period.
 
         Returns
         -------
-            List to URLs from which`mboxMessage` can be initialized.
+        List to URLs from which `mboxMessage` can be initialized.
         """
         url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
@@ -847,7 +922,7 @@ class ListservList(ListservListIO):
 
         Parameters
         ----------
-        content: The content of one LISTSERV-file.
+        content : The content of one LISTSERV file.
 
         Returns
         -------
@@ -858,9 +933,25 @@ class ListservList(ListservListIO):
         ]
 
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
+        """
+        Parameters
+        ----------
+        include_body :
+
+        Returns
+        -------
+        """
         return ListservListIO.to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
+        """
+        Parameters
+        ----------
+        include_body :
+
+        Returns
+        -------
+        """
         return ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
@@ -879,12 +970,9 @@ class ListservArchive(object):
 
     Parameters
     ----------
-    name
-        The of whom the archive is (e.g. 3GPP, IEEE, ...)
-    url
-        The URL where the archive lives
-    lists
-        A list containing the mailing lists as `ListservList` types
+    name : The of whom the archive is (e.g. 3GPP, IEEE, ...)
+    url : The URL where the archive lives
+    lists : A list containing the mailing lists as `ListservList` types
 
     Methods
     -------
@@ -904,15 +992,15 @@ class ListservArchive(object):
     run-time memory, we do the following
     >>> arch = ListservArchive.from_url(
     >>>     name="IEEE",
-    >>>     url_root=url_archive,
-    >>>     url_home=url_archive + "HOME",
+    >>>     url_root="https://listserv.ieee.org/cgi-bin/wa?",
+    >>>     url_home="https://listserv.ieee.org/cgi-bin/wa?HOME",
     >>>     select={
     >>>         "years": 2015,
     >>>         "months": "November",
     >>>         "weeks": 4,
     >>>         "fields": "header",
     >>>     },
-    >>>     login=auth_key_mock,
+    >>>     login={"username": <your_username>, "password": <your_password>},
     >>>     instant_save=False,
     >>>     only_mlist_urls=False,
     >>> )
