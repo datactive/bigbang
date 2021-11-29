@@ -71,21 +71,26 @@ class ListservMessageParser(email.parser.Parser):
 
     Methods
     -------
-    from_url
-    from_listserv_file
-    _get_header_from_html
-    _get_body_from_html
-    _get_header_from_listserv_file
-    _get_body_from_listserv_file
-    get_datetime
+    from_url()
+    from_listserv_file()
+    _get_header_from_html()
+    _get_body_from_html()
+    _get_header_from_listserv_file()
+    _get_body_from_listserv_file()
+    get_datetime()
 
     Example
     -------
-    msg = ListservMessageParser.from_url(
-        list_name="3GPP_TSG_CT_WG6",
-        url=url_message,
-        fields="total",
-    )
+    >>> msg_parser = ListservMessageParser(
+    >>>     website=True,
+    >>>     login={"username": "nielsto@gmail.com", "password": "BigBang11!"},
+    >>> )
+
+    >>> msg = msg_parser.from_url(
+    >>>     list_name="3GPP_TSG_RAN_DRAFTS",
+    >>>     url="https://list.etsi.org/scripts/wa.exe?A2=ind2010B&L=3GPP_TSG_RAN_DRAFTS&O=D&P=29883",
+    >>>     fields="total",
+    >>> )
     """
 
     empty_header = {}
@@ -883,29 +888,37 @@ class ListservArchive(object):
 
     Methods
     -------
-    from_url
-    from_mbox
-    from_mailing_lists
-    from_listserv_directory
-    get_lists
-    get_sections
-    to_dict
-    to_pandas_dataframe
-    to_mbox
+    from_url()
+    from_mbox()
+    from_mailing_lists()
+    from_listserv_directory()
+    get_lists()
+    get_sections()
+    to_dict()
+    to_pandas_dataframe()
+    to_mbox()
 
     Example
     -------
-    arch = ListservArchive.from_url(
-        "3GPP",
-        "https://list.etsi.org/scripts/wa.exe?",
-        "https://list.etsi.org/scripts/wa.exe?HOME",
-        select={
-            "years": (2020, 2021),
-            "months": "January",
-            "weeks": [1,5],
-            "fields": "header",
-        },
-    )
+    To scrape a Listserv mailing list archive from an URL and store it in
+    run-time memory, we do the following
+    >>> arch = ListservArchive.from_url(
+    >>>     name="IEEE",
+    >>>     url_root=url_archive,
+    >>>     url_home=url_archive + "HOME",
+    >>>     select={
+    >>>         "years": 2015,
+    >>>         "months": "November",
+    >>>         "weeks": 4,
+    >>>         "fields": "header",
+    >>>     },
+    >>>     login=auth_key_mock,
+    >>>     instant_save=False,
+    >>>     only_mlist_urls=False,
+    >>> )
+
+    To save it as *.mbox file we do the following
+    >>> arch.to_mbox(path_to_directory)
     """
 
     def __init__(
