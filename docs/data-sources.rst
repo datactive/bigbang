@@ -31,16 +31,27 @@ Ethical Considerations
 
 
 
-ListServ (3GPP)
+3GPP
 =================
+The 3GPP mailing archive is managed using the LISTSERV software and is hosted at:
+https://list.etsi.org/scripts/wa.exe?HOME
 
+In order to be able to view most header fields and text bodies (there might still
+be some fields that are hidden) on needs to create an account here:
+https://list.etsi.org/scripts/wa.exe?GETPW1=&X=&Y=
+
+The entire archive reaches back to 1998 and is multiple GBs in size. Therefore,
+it takes a considerable amount of time to scrape the entire archive and strain on
+the server host if everyone of interest would scrape them individually. To 
+resolve this issue we keep an up to date version of the archive.
+
+We are currently working on a improved version of the 'Data Access Permit Application'.
 
 Usage
 -------
 
 Ethical Considerations
 ------------------------
-
 
 
 
