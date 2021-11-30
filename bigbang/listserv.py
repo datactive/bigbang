@@ -121,6 +121,14 @@ class ListservMessageParser(email.parser.Parser):
         body: str,
         **header,
     ) -> mboxMessage:
+        """
+        Parameters
+        ----------
+        archived_at : URL to the Email message.
+        body : String that contains the body of the message.
+        header : Dictionary that contains all available header fields of the
+            message.
+        """
         # crea EmailMessage
         msg = email.message.EmailMessage()
         if body is not None:
@@ -194,7 +202,9 @@ class ListservMessageParser(email.parser.Parser):
         fields: str = "total",
     ) -> mboxMessage:
         """
-        This method is required if the
+        This method is required if the message is inside a file that was directly
+        exported from LISTSERV 16.5 (e.g. by a member of 3GPP). Such files have
+        an extension starting with LOG and ending with five digits.
 
         Parameters
         ----------
@@ -311,7 +321,7 @@ class ListservMessageParser(email.parser.Parser):
 
         Parameters
         ----------
-        soup :
+        soup : HTML code from which the Email header can be obtained.
 
         Note
         ----
@@ -381,9 +391,9 @@ class ListservMessageParser(email.parser.Parser):
 
         Parameters
         ----------
-        list_name :
-        url :
-        soup :
+        list_name : The name of the LISTSERV Email list.
+        url : URL to the Email.
+        soup : HTML code from which the Email body can be obtained.
         """
         # TODO re-write using email.parser.Parser
         url_root = ("/").join(url.split("/")[:-2])
@@ -423,7 +433,7 @@ class ListservMessageParser(email.parser.Parser):
         """
         Parameters
         ----------
-        line :
+        line : String that contains date and time.
         """
         line = (" ").join(line.split(" ")[:-1]).lstrip()
         # convert format to local version of date and time
@@ -437,8 +447,8 @@ class ListservMessageParser(email.parser.Parser):
         """
         Parameters
         ----------
-        date :
-        from_address :
+        date : Date and time of Email.
+        from_address : The sender address of the Email.
         """
         message_id = (".").join([date, from_address])
         # remove special characters
@@ -447,20 +457,12 @@ class ListservMessageParser(email.parser.Parser):
 
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
-        """
-        Parameters
-        ----------
-        msg :
-        """
+        """Convert mboxMessage to a Dictionary"""
         return ListservMessageIO.to_dict(msg)
 
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
-        """
-        Parameters
-        ----------
-        msg :
-        """
+        """Convert mboxMessage to a pandas.DataFrame"""
         return ListservMessageIO.to_pandas_dataframe(msg)
 
     @staticmethod
@@ -468,8 +470,8 @@ class ListservMessageParser(email.parser.Parser):
         """
         Parameters
         ----------
-        msg :
-        filepath :
+        msg : The Email.
+        filepath : Path to file in which the Email will be stored.
         """
         return ListservMessageIO.to_mbox(msg, filepath)
 
@@ -637,8 +639,8 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-        name :
-        filepath :
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
+        filepath : Path to file in which mailing list is stored.
         """
         msgs = ListservListIO.from_mbox(filepath)
         return cls(name, filepath, msgs)
@@ -847,8 +849,8 @@ class ListservList(ListservListIO):
         url: str,
     ) -> Tuple[List[str], List[str]]:
         """
-        Parameters
-        ----------
+        LISTSERV groups messages into weekly time bundles. This method
+        obtains all the URLs that lead to the messages of each time bundle.
         """
         # wait between loading messages, for politeness
         time.sleep(0.5)
@@ -950,10 +952,15 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-        include_body :
+        include_body : A boolean that indicates whether the message body should
+            be included or not.
 
         Returns
         -------
+        A Dictionary with the first key layer being the header field names and
+        the "body" key. Each value field is a list containing the respective
+        header field contents arranged by the order as they were scraped from
+        the web. This format makes the conversion to a pandas.DataFrame easier.
         """
         return ListservListIO.to_dict(self.messages, include_body)
 
@@ -961,10 +968,13 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
-        include_body :
+        include_body : A boolean that indicates whether the message body should
+            be included or not.
 
         Returns
         -------
+        Converts the mailing list into a pandas.DataFrame object in which each
+        row represents an Email.
         """
         return ListservListIO.to_pandas_dataframe(self.messages, include_body)
 
@@ -1031,12 +1041,15 @@ class ListservArchive(object):
         self.lists = lists
 
     def __len__(self):
+        """Get number of mailing lists within the mailing archive."""
         return len(self.lists)
 
     def __iter__(self):
+        """Iterate over each mailing list within the mailing archive."""
         return iter(self.lists)
 
     def __getitem__(self, index):
+        """Get specific mailing list at position `index` from the mailing archive."""
         return self.lists[index]
 
     @classmethod
@@ -1375,9 +1388,17 @@ class ListservArchive(object):
         return dic
 
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
+        """
+        Concatenates mailing list dictionaries created using
+        `ListservList.to_dict()`.
+        """
         return ListservArchiveIO.to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
+        """
+        Concatenates mailing list pandas.DataFrames created using
+        `ListservList.to_pandas_dataframe()`.
+        """
         return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
