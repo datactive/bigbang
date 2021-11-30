@@ -59,15 +59,18 @@ class ListservArchiveWarning(BaseException):
 class ListservMessageParser(email.parser.Parser):
     """
     This class handles the creation of an mailbox.mboxMessage object
-    (via the from_...() methods) and its storage in various other file formats
-    (via the to_...() methods) that can be saved on the local machine.
+    (using the from_*() methods) and its storage in various other file formats
+    (using the to_*() methods) that can be saved on the local memory.
 
     Parameters
     ----------
-    website:
-    url_login:
-    login:
-    session:
+    website : Set 'True' if messages are going to be scraped from websites,
+        otherwise 'False' if read from local memory.
+    url_login : URL to the 'Log In' page.
+    url_pref : URL to the 'Preferences'/settings page.
+    login : Login credentials (username and password) that were used to set
+        up AuthSession. You can create your own for the 3GPP archive.
+    session : requests.Session() object for the Email archive website.
 
     Methods
     -------
@@ -81,11 +84,14 @@ class ListservMessageParser(email.parser.Parser):
 
     Example
     -------
+    To create a Email message parser object, use the following syntax:
     >>> msg_parser = ListservMessageParser(
     >>>     website=True,
     >>>     login={"username": <your_username>, "password": <your_password>},
     >>> )
 
+    To obtain the Email message content and return it as `email.message.EmailMessage`
+    object, you need to do the following:
     >>> msg = msg_parser.from_url(
     >>>     list_name="3GPP_TSG_RAN_DRAFTS",
     >>>     url="https://list.etsi.org/scripts/wa.exe?A2=ind2010B&L=3GPP_TSG_RAN_DRAFTS&O=D&P=29883",
@@ -101,18 +107,8 @@ class ListservMessageParser(email.parser.Parser):
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[str] = None,
+        session: Optional[requests.Session] = None,
     ):
-        """
-        Parameters
-        ----------
-            website: Set 'True' if messages are going to be scraped from websites,
-                otherwise 'False' if read from local memory.
-            url_login: URL to the 'Log In' page.
-            url_pref: URL to the 'Preferences'/settings page.
-            login:
-            session:
-        """
         if website:
             if session is None:
                 session = get_auth_session(url_login, **login)
@@ -170,10 +166,10 @@ class ListservMessageParser(email.parser.Parser):
         """
         Parameters
         ----------
-        list_name :
+        list_name : The name of the LISTSERV Email list.
         url : URL of this Email
         fields : Indicates whether to return 'header', 'body' or 'total'/both or
-            the Email.
+            the Email. The latter is the default.
         """
         soup = get_website_content(url, session=self.session)
         if soup == "RequestException":
@@ -198,11 +194,13 @@ class ListservMessageParser(email.parser.Parser):
         fields: str = "total",
     ) -> mboxMessage:
         """
+        This method is required if the
+
         Parameters
         ----------
-        list_name :
-        file_path :
-        header_start_line_nr :
+        list_name : The name of the LISTSERV Email list.
+        file_path : Path to file that contains the Email list.
+        header_start_line_nr : Line number in the file on which a new message starts.
         fields : Indicates whether to return 'header', 'body' or 'total'/both or
             the Email.
         """
@@ -236,8 +234,8 @@ class ListservMessageParser(email.parser.Parser):
 
         Parameters
         ----------
-        content : The content of one LISTSERV-file.
-        header_start_line_nr :
+        content : The content of one LISTSERV file.
+        header_start_line_nr : Line number in the file on which a new message starts.
         """
         for lnr, lcont in enumerate(content[header_start_line_nr:]):
             if len(lcont) <= 1:
@@ -257,8 +255,8 @@ class ListservMessageParser(email.parser.Parser):
         Parameters
         ----------
         content : The content of one LISTSERV-file.
-        header_start_line_nr :
-        header_end_line_nr :
+        header_start_line_nr : Line number in the file on which a new message starts.
+        header_end_line_nr : Line number in the file on which a new message ends.
         """
         # TODO re-write using email.parser.Parser
         content = content[header_start_line_nr:header_end_line_nr]
@@ -289,7 +287,7 @@ class ListservMessageParser(email.parser.Parser):
         Parameters
         ----------
         content : The content of one LISTSERV-file.
-        header_end_line_nr :
+        header_end_line_nr : Line number in the file on which a new message ends.
         """
         # TODO re-write using email.parser.Parser
         found = False
@@ -483,13 +481,10 @@ class ListservList(ListservListIO):
 
     Parameters
     ----------
-    name
-        The of whom the list (e.g. 3GPP_COMMON_IMS_XFER, IEEESCO-DIFUSION, ...)
-    source
-        Contains the information of the location of the mailing list.
+    name : The of whom the list (e.g. 3GPP_COMMON_IMS_XFER, IEEESCO-DIFUSION, ...)
+    source : Contains the information of the location of the mailing list.
         It can be either an URL where the list or a path to the file(s).
-    msgs
-        List of mboxMessage objects
+    msgs : List of mboxMessage objects
 
     Methods
     -------
@@ -559,7 +554,7 @@ class ListservList(ListservListIO):
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[str] = None,
+        session: Optional[requests.Session] = None,
     ) -> "ListservList":
         """
         Parameters
@@ -571,8 +566,9 @@ class ListservList(ListservListIO):
             - period, i.e. written in a certain year, month, week-of-month
         url_login : URL to the 'Log In' page
         url_pref : URL to the 'Preferences'/settings page
-        login :
-        session :
+        login : Login credentials (username and password) that were used to set
+            up AuthSession. You can create your own for the 3GPP archive.
+        session : requests.Session() object for the Email archive website.
         """
         if session is None:
             session = get_auth_session(url_login, **login)
@@ -599,10 +595,15 @@ class ListservList(ListservListIO):
         """
         Parameters
         ----------
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
+        url : URL to the LISTSERV Email list.
         messages : Can either be a list of URLs to specific LISTSERV messages
             or a list of `mboxMessage` objects.
         url_login : URL to the 'Log In' page.
         url_pref : URL to the 'Preferences'/settings page.
+        login : Login credentials (username and password) that were used to set
+            up AuthSession. You can create your own for the 3GPP archive.
+        session : requests.Session() object for the LISTSERV Email archive website.
         """
         if not messages:
             # create empty ListservList for ListservArchive
@@ -651,6 +652,11 @@ class ListservList(ListservListIO):
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
+        This method is required if the files that contain the list messages
+        were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
+        Each mailing list has its own directory and is split over multiple
+        files with an extension starting with LOG and ending with five digits.
+
         Parameters
         ----------
         name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
@@ -679,6 +685,14 @@ class ListservList(ListservListIO):
         select: Optional[dict] = None,
     ) -> "ListservList":
         """
+        This method is required if the files that contain the list messages
+        were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
+        Each mailing list has its own directory and is split over multiple
+        files with an extension starting with LOG and ending with five digits.
+        Compared to `ListservList.from_listserv_directories()`, this method
+        reads messages from single files, instead of all the files contained in
+        a directory.
+
         Parameters
         ----------
         name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'
@@ -732,7 +746,7 @@ class ListservList(ListservListIO):
         select : Selection criteria that can filter messages by:
             - content, i.e. header and/or body
             - period, i.e. written in a certain year, month, week-of-month
-        session : AuthSession
+        session : requests.Session() object for the LISTSERV Email archive website.
         """
         # get all message URLs
         msg_urls = cls.get_message_urls(name, url, select)
@@ -1044,21 +1058,25 @@ class ListservArchive(object):
 
         Parameters
         ----------
-        name:
-        url_root:
-        url_home:
+        name : Email archive name, such that multiple instances of `ListservArchive`
+            can easily be distinguished.
+        url_root : The invariant root URL that does not change no matter what
+            part of the LISTSERV archive we access.
+        url_home : The 'home' space of the LISTSERV archive. This is required as
+            it contains the different sections which we obtain using `get_sections()`.
         select: Selection criteria that can filter messages by:
             - content, i.e. header and/or body
             - period, i.e. written in a certain year, month, week-of-month
-        url_login: URL to the 'Log In' page.
-        url_pref: URL to the 'Preferences'/settings page.
-        login: login keys {"username": str, "password": str}
-        session: if auth-session was already created externally
-        instant_save: Boolean giving the choice to save a `ListservList` as
+        url_login : URL to the 'Log In' page.
+        url_pref : URL to the 'Preferences'/settings page.
+        login : Login credentials (username and password) that were used to set
+            up AuthSession. You can create your own for the 3GPP archive.
+        session : requests.Session() object for the LISTSERV Email archive website.
+        instant_save : Boolean giving the choice to save a `ListservList` as
             soon as it is completely scraped or collect entire archive. The
             prior is recommended if a large number of mailing lists are
             scraped which can require a lot of memory and time.
-        only_list_urls: Boolean giving the choice to collect only `ListservList`
+        only_list_urls : Boolean giving the choice to collect only `ListservList`
             URLs or also their contents.
         """
         if session is None:
@@ -1100,12 +1118,24 @@ class ListservArchive(object):
 
         Parameters
         ----------
-            name: Name used for folder in which scraped lists will be stored.
-            url_root:
-            url_mailing_lists:
-            url_login: URL to the 'Log In' page.
-            url_pref: URL to the 'Preferences'/settings page.
-
+        name : Email archive name, such that multiple instances of `ListservArchive`
+            can easily be distinguished.
+        url_root : The invariant root URL that does not change no matter what
+            part of the LISTSERV archive we access.
+        url_mailing_lists : This argument can either be a list of `ListservList`
+            objects or a list of string containing the URLs to the LISTSERV
+            Email lists of interest.
+        url_login : URL to the 'Log In' page.
+        url_pref : URL to the 'Preferences'/settings page.
+        login : Login credentials (username and password) that were used to set
+            up AuthSession. You can create your own for the 3GPP archive.
+        session : requests.Session() object for the LISTSERV Email archive website.
+        only_list_urls : Boolean giving the choice to collect only `ListservList`
+            URLs or also their contents.
+        instant_save : Boolean giving the choice to save a `ListservList` as
+            soon as it is completely scraped or collect entire archive. The
+            prior is recommended if a large number of mailing lists are
+            scraped which can require a lot of memory and time.
         """
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             if session is None:
@@ -1142,15 +1172,21 @@ class ListservArchive(object):
         select: Optional[dict] = None,
     ) -> "ListservArchive":
         """
+        This method is required if the files that contain the archive messages
+        were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
+        Each mailing list has its own subdirectory and is split over multiple
+        files with an extension starting with LOG and ending with five digits.
+
         Parameters
         ----------
-            name: Name of the archive, e.g. '3GPP'.
-            directorypath: Where the ListservArchive can be initialised.
-            folderdsc: A description of the relevant folders
-            filedsc: A description of the relevant files, e.g. *.LOG?????
-            select: Selection criteria that can filter messages by:
-                - content, i.e. header and/or body
-                - period, i.e. written in a certain year, month, week-of-month
+        name : Email archive name, such that multiple instances of `ListservArchive`
+            can easily be distinguished.
+        directorypath : Where the `ListservArchive` can be initialised.
+        folderdsc : A description of the relevant folders
+        filedsc : A description of the relevant files, e.g. *.LOG?????
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
         """
         lists = []
         _dirpaths_to_lists = get_paths_to_dirs_in_directory(
@@ -1174,6 +1210,15 @@ class ListservArchive(object):
         directorypath: str,
         filedsc: str = "*.mbox",
     ) -> "ListservArchive":
+        """
+        Parameters
+        ----------
+        name : Email archive name, such that multiple instances of `ListservArchive`
+            can easily be distinguished.
+        directorypath : Path to the folder in which `ListservArchive` is stored.
+        filedsc : Optional filter that only reads files matching the description.
+            By default all files with an mbox extension are read.
+        """
         filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
         lists = []
         for filepath in filepaths:
@@ -1195,10 +1240,24 @@ class ListservArchive(object):
 
         Parameters
         ----------
+        url_root : The invariant root URL that does not change no matter what
+            part of the LISTSERV archive we access.
+        url_home : The 'home' space of the LISTSERV archive. This is required as
+            it contains the different sections which we obtain using `get_sections()`.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        session : requests.Session() object for the LISTSERV Email archive website.
+        instant_save : Boolean giving the choice to save a `ListservList` as
+            soon as it is completely scraped or collect entire archive. The
+            prior is recommended if a large number of mailing lists are
+            scraped which can require a lot of memory and time.
+        only_list_urls : Boolean giving the choice to collect only `ListservList`
+            URLs or also their contents.
 
         Returns
         -------
-            archive_dict: the keys are the names of the lists and the value their url
+        archive_dict : the keys are the names of the lists and the value their url
         """
         archive = []
         # run through archive sections
@@ -1268,8 +1327,8 @@ class ListservArchive(object):
 
         Returns
         -------
-            If sections exist, it returns their urls and names. Otherwise it returns
-            the url_home.
+        If sections exist, it returns their urls and names. Otherwise it returns
+        the url_home.
         """
         soup = get_website_content(url_home)
         sections = soup.select(
