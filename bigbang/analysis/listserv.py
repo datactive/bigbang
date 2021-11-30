@@ -75,32 +75,30 @@ class ListservList:
 
     Methods
     -------
-    classmethod:
-        from_mbox
-        from_pandas_dataframe
-    staticmethod:
-        to_percentage
-        contract
-        get_name_localpart_domain
-        iterator_name_localpart_domain
-    period_of_activity
-    crop_by_year
-    crop_by_address
-    crop_by_subject
-    get_domains
-    get_domainscount
-    get_localparts
-    get_localpartscount
-    add_thread_info
-    get_threads
-    get_threadsroot
-    get_threadsrootcount
-    get_messages
-    get_messagescount
-    get_messagescount_per_timezone
-    get_sender_receiver_dict
-    create_sender_receiver_digraph
-    get_graph_prop_per_domain_per_year
+    from_mbox()
+    from_pandas_dataframe()
+    to_percentage()
+    contract()
+    get_name_localpart_domain()
+    iterator_name_localpart_domain()
+    period_of_activity()
+    crop_by_year()
+    crop_by_address()
+    crop_by_subject()
+    get_domains()
+    get_domainscount()
+    get_localparts()
+    get_localpartscount()
+    add_thread_info()
+    get_threads()
+    get_threadsroot()
+    get_threadsrootcount()
+    get_messages()
+    get_messagescount()
+    get_messagescount_per_timezone()
+    get_sender_receiver_dict()
+    create_sender_receiver_digraph()
+    get_graph_prop_per_domain_per_year()
     """
 
     def __init__(
@@ -114,9 +112,11 @@ class ListservList:
         self.df = msgs
 
     def __len__(self) -> int:
+        """Get number of messsages within the mailing list."""
         return len(self.df.index.values)
 
     def __iter__(self):
+        """Iterate over each message within the mailing list."""
         return iter(self.df.iterrows())
 
     @classmethod
@@ -144,6 +144,13 @@ class ListservList:
 
     @staticmethod
     def contract(count: np.array, label: list, contract: float) -> dict:
+        """
+        Parameters
+        ----------
+        count :
+        label :
+        contract :
+        """
         idx_low = np.arange(len(count))[count < contract]
         idx_high = np.arange(len(count))[count >= contract]
         count_comp = list(count[idx_high]) + [np.sum(count[idx_low])]
@@ -213,11 +220,16 @@ class ListservList:
 
     def crop_by_year(self, yrs: Union[int, list]) -> "ListservList":
         """
-        Filter self.df by year in message date.
+        Filter `self.df` DataFrame by year in message date.
+
+        Parameters
+        ----------
+        yrs : Specify a specific year, such as 2021, or a range of years, such
+            as [2011, 2021].
 
         Returns
         -------
-        'ListservList' object cropped to specification.
+        `ListservList` object cropped to specification.
         """
         index = get_index_of_msgs_with_datetime(self.df)
         _df = self.df.loc[index]
@@ -251,7 +263,7 @@ class ListservList:
 
         Returns
         -------
-        'ListservList' object cropped to specification.
+        `ListservList` object cropped to specification.
         """
         mlist = self
         indices = []
@@ -277,15 +289,15 @@ class ListservList:
         """
         Parameters
         ----------
-            match :
-            place :
-                0 =
-                1 =
-                2 =
+        match : Only keep messages with subject lines containing `match` string.
+        place : Define how to filter for `match`. Use on of the following methods:
+            0 = Using Regex expression
+            1 = String ends with match
+            2 =
 
         Returns
         -------
-            'ListservList' object cropped to message subject.
+        `ListservList` object cropped to message subject.
         """
         index = get_index_of_msgs_with_subject(self.df)
         _df = self.df.loc[index]
@@ -369,7 +381,7 @@ class ListservList:
             (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
             mailing list the most representative header fields of
             senders and receivers are 'from' and 'comments-to' respectively.
-        per_year :
+        per_year : Aggregate results for each year.
         """
         if per_year:
             dics = {}
@@ -476,8 +488,8 @@ class ListservList:
             (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
             mailing list the most representative header fields of
             senders and receivers are 'from' and 'comments-to' respectively.
-        per_domain :
-        per_year :
+        per_domain : Aggregate results for each domain.
+        per_year : Aggregate results for each year.
 
         Returns
         -------
@@ -655,6 +667,15 @@ class ListservList:
         per_address_field: Optional[str] = None,
         per_year: bool = False,
     ) -> Union[int, dict]:
+        """
+        Identify number conversation threads in mailing list.
+
+        Parameters
+        ----------
+        per_address_field: Aggregate results for each address field, which can
+            be, e.g., `from`, `send-to`, `received-by`.
+        per_year : Aggregate results for each year.
+        """
         if per_year:
             dics = {}
             period_of_activity = self.period_of_activity()
@@ -689,8 +710,11 @@ class ListservList:
         """
         Parameters
         ----------
-        header_field :
-        per_year :
+        header_fields : Indicate which Email header field to process
+            (e.g. 'from', 'reply-to', 'comments-to'). For a listserv
+            mailing list the most representative header fields of
+            senders and receivers are 'from' and 'comments-to' respectively.
+        per_year : Aggregate results for each year.
         """
         if per_year:
             dics = {}
@@ -745,7 +769,7 @@ class ListservList:
 
         Parameters
         ----------
-        percentage: Whether to return count of messages percentage w.r.t. total.
+        percentage : Whether to return count of messages percentage w.r.t. total.
         """
         utcoffsets = [dt.utcoffset() for dt in self.df["date"].values]
         utcoffsets_hm = []
@@ -775,7 +799,9 @@ class ListservList:
         Parameters
         ----------
         address_field :
-        entity_in_focus :
+        entity_in_focus : This can a list of domain names or localparts. If such
+            a list is provided, the creaed dictionary will only contain their
+            information.
 
         Returns
         -------
@@ -831,6 +857,11 @@ class ListservList:
     def crop_dic_to_entity_in_focus(
         self, dic: dict, entity_in_focus: list
     ) -> dict:
+        """
+        Parameters
+        ----------
+        entity_in_focus : This can a list of domain names or localparts.
+        """
         dic_eif = {}
         for sender, receivers in dic.items():
             for receiver, nr_msgs in receivers.items():
@@ -846,6 +877,13 @@ class ListservList:
         return dic_eif
 
     def add_weight_to_edge(self, dic: dict, key1: str, key2: str) -> dict:
+        """
+        Parameters
+        ----------
+        dic :
+        key1 :
+        key2 :
+        """
         # counting the messages
         if key2 not in dic[key1].keys():
             dic[key1][key2] = 1
@@ -865,7 +903,9 @@ class ListservList:
         Parameters
         ----------
         nw : dictionary created with self.get_sender_receiver_dict()
-        entity_in_focus :
+        entity_in_focus : This can a list of domain names or localparts. If such
+            a list is provided, the creaed di-graph will only focus on their
+            relations.
         """
         if nw is None:
             nw = self.get_sender_receiver_dict(
@@ -908,6 +948,12 @@ class ListservList:
         func=nx.betweenness_centrality,
         **args,
     ) -> dict:
+        """
+        Parameters
+        ----------
+        years :
+        func :
+        """
         if years is None:
             period_of_activity = self.period_of_activity()
             years = [dt.year for dt in period_of_activity]
