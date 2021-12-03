@@ -68,7 +68,7 @@ def collect_from_url(
         try:
             data = archive.open_list_archives(url)
         except archive.MissingDataException as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
-            print(e)
+            logging.info(e)
             return None
 
         # hard coding the archives directory in too many places
@@ -80,7 +80,7 @@ def collect_from_url(
         try:
             data.to_csv(path, ",", encoding="utf-8")
         except Exception as e:
-            print(e)
+            logging.info(e)
             # if encoding doesn't work...don't encode? ----better not not encode !!
             # try:
             #     data.to_csv(path, ",")
@@ -337,7 +337,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
             f2.write(content)
             f2.close()
         except Exception as e:
-            print(e)
+            logging.info(e)
 
 
 # This works for the names of the files. Order them.
@@ -360,7 +360,7 @@ def recursive_get_payload(x):
     # elif isinstance(x, email.message.Message):
     #    return recursive_get_payload(x.get_payload())
     else:
-        print(x)
+        logging.info(x)
         return None
 
 

@@ -57,14 +57,14 @@ class TestArchive(unittest.TestCase):
 
     def test__open_list_archives(self):
         data = archive.open_list_archives(
-            url="3GPP_TSG_SA_WG4_EVS.mbox",
+            archive_name="3GPP_TSG_SA_WG4_EVS.mbox",
             archive_dir=CONFIG.test_data_path + "3GPP_mbox/",
             mbox=True,
         )
         assert len(data.columns.values) == 6
         assert len(data.index.values) == 50
         data = archive.open_list_archives(
-            url="3GPP_mbox",
+            archive_name="3GPP_mbox",
             archive_dir=CONFIG.test_data_path,
             mbox=False,
         )

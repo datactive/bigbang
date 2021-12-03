@@ -267,7 +267,7 @@ class Archive(object):
             if verbose:
                 c += 1
                 if c % 1000 == 0:
-                    print("Processed %d of %d" % (c, total))
+                    logging.info("Processed %d of %d" % (c, total))
 
             if i[1]["In-Reply-To"] == "None":
                 root = Node(i[0], i[1])
@@ -296,7 +296,10 @@ class Archive(object):
 
 
 def archive_directory(base_dir, list_name):
-    """Archive a directory."""
+    """
+    Creates a new archive directory for the given list_name unless one already exists.
+    Returns the path of the archive directory.
+    """
     arc_dir = os.path.join(base_dir, list_name)
     Path(arc_dir).mkdir(parents=True, exist_ok=True)
     return arc_dir
@@ -451,7 +454,7 @@ def messages_to_dataframe(messages):
 
 
 def open_list_archives(
-    url: str,
+    archive_name: str,
     archive_dir: str = CONFIG.mail_path,
     mbox: bool = False,
 ) -> pd.DataFrame:
@@ -460,15 +463,13 @@ def open_list_archives(
 
     Parameters
     -----------
-    url: str
+    archive_name: str
         the name of a subdirectory of the directory specified
         in argument *archive_dir*. This directory is expected to contain
         files with extensions .txt, .mail, or .mbox. These files are all
         expected to be in mbox format-- i.e. a series of blocks of text
         starting with headers (colon-separated key-value pairs) followed by
         an email body.
-        TODO: this argument should be re-named. sometimes it's being called with
-        actual URLs, other times with subdirectory names, leading to spurious
 
     archive_dir : str:
         directory containing all messages.
@@ -482,20 +483,19 @@ def open_list_archives(
     data : pandas.DataFrame
 
     """
-    if (url is None) and (archive_dir is None):
-        raise ValueError("Either `url` or `archive_dir` must be given.")
-
     messages = None
 
-    if mbox and (os.path.isfile(os.path.join(archive_dir, url))):
+    if mbox and (os.path.isfile(os.path.join(archive_dir, archive_name))):
         # treat string as the path to a file that is an mbox
-        box = mailbox.mbox(os.path.join(archive_dir, url), create=False)
+        box = mailbox.mbox(
+            os.path.join(archive_dir, archive_name), create=False
+        )
         messages = list(box.values())
 
     else:
         # assume string is the path to a directory with many
         # TODO: Generalize get_list_name to listserv, w3c?
-        list_name = mailman.get_list_name(url)
+        list_name = mailman.get_list_name(archive_name)
         arc_dir = archive_directory(archive_dir, list_name)
 
         file_extensions = [".txt", ".mail", ".mbox"]
@@ -506,8 +506,7 @@ def open_list_archives(
             if any([fn.endswith(extension) for extension in file_extensions])
         ]
 
-        print("^^^^^^^^^^^^^")
-        print(os.listdir(arc_dir))
+        logging.info(os.listdir(arc_dir))
         logging.info("Opening %d archive files", len(txts))
 
         def mbox_reader(stream):
