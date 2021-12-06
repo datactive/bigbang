@@ -35,32 +35,9 @@ class TestMailman(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(TEMP_DIR)
 
-    def test__get_list_name(self):
-        mailman.get_list_name()
-
-    def test__load_data(self):
-        data = mailman.load_data(
-            name="empty-archive-df",
-            archive_dir=CONFIG.test_data_path,
-            mbox=False,
-        )
-        assert len(data.columns.values) == 7
-        assert len(data.index.values) == 0
-        data = mailman.load_data(
-            name="https://www.just_a_test.org/empty-archive-df/",
-            archive_dir=CONFIG.test_data_path,
-            mbox=False,
-        )
-        assert len(data.columns.values) == 7
-        assert len(data.index.values) == 0
-
     def test__collect_from_file(self):
         urls_file = CONFIG.test_data_path + "urls-test-file.txt"
         mailman.collect_from_file(urls_file)
-
-    def test__archive_directory(self):
-        dir_path = mailman.archive_directory(TEMP_DIR, "test_bigbang")
-        Path(dir_path).rmdir()
 
     def test__provenance(self):
         test_list_name = "test-list-name"
@@ -148,7 +125,7 @@ class TestMailman(unittest.TestCase):
         )
         df = pd.read_csv(test_df_csv_path)
 
-        with self.assertRaises(mailman.MissingDataException):
+        with self.assertRaises(archive.MissingDataException):
             empty_archive = archive.Archive(df)
             empty_archive.get_activity()
 
@@ -193,22 +170,6 @@ class TestMailman(unittest.TestCase):
             mailman.get_list_name(random_url) == random_url,
             msg="should not have changed other url",
         )
-
-    def test__open_list_archives(self):
-        data = mailman.open_list_archives(
-            url="3GPP_TSG_SA_WG4_EVS.mbox",
-            archive_dir=CONFIG.test_data_path + "3GPP_mbox/",
-            mbox=True,
-        )
-        assert len(data.columns.values) == 6
-        assert len(data.index.values) == 50
-        data = mailman.open_list_archives(
-            url="3GPP_mbox",
-            archive_dir=CONFIG.test_data_path,
-            mbox=False,
-        )
-        assert len(data.columns.values) == 6
-        assert len(data.index.values) == 108
 
     def test__activity_summary(self):
         list_url = (
