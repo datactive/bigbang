@@ -27,7 +27,11 @@ Last but not least, BigBang is a community of researchers sharing code and best 
    :caption: Documentation
 
    data-sources
+   datatracker
    git
+   datasets
+   analysis
+   visualization
    api-docs
 
 
@@ -35,6 +39,7 @@ Last but not least, BigBang is a community of researchers sharing code and best 
    :maxdepth: 1
    :caption: Community
 
+   contributing
    data-access
    release-notes
 
