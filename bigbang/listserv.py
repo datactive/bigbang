@@ -21,7 +21,11 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
-from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+from bigbang.bigbang_io import (
+    ListservMessageIO,
+    ListservListIO,
+    ListservArchiveIO,
+)
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
