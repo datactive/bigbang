@@ -11,7 +11,7 @@ import matplotlib.lines as mlines
 from matplotlib.pyplot import figure
 
 
-def edge_thickness(graph, entity_in_focus: list):
+def edge_thickness(graph, entity_in_focus: list, exponent: float):
     """
     Parameters
     ----------
@@ -26,7 +26,7 @@ def edge_thickness(graph, entity_in_focus: list):
             _edges.append(edg)
             _weights.append(wei)
     edges = tuple(_edges)
-    weights = np.sqrt(np.array(list(_weights)))
+    weights = np.power(np.array(list(_weights)), exponent)
     return edges, weights
 
 
