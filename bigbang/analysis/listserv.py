@@ -265,22 +265,23 @@ class ListservList:
         -------
         `ListservList` object cropped to specification.
         """
-        mlist = self
-        indices = []
-        indx = 0
-        generator = ListservList.iterator_name_localpart_domain(
-            mlist.df[header_field].dropna().values
-        )
-        for _, localpart, domain in generator:
-            if "domain" in list(per_address_field.keys()):
-                if domain in per_address_field["domain"]:
-                    indices.append(indx)
-            if "localpart" in list(per_address_field.keys()):
-                if localpart in per_address_field["localpart"]:
-                    indices.append(indx)
-            indx += 1
+        mlist = self.df.dropna(subset=['from'])
+        generator = ListservList.iterator_name_localpart_domain(mlist["from"].values)
+        if "domain" in list(per_address_field.keys()):
+            _addr = pd.Series(
+                [
+                    ListservList.get_name_localpart_domain(addr)[-1]
+                    for addr in mlist["from"].values
+                ],
+                index=mlist.index.values,
+            ).dropna()
+            mlist = mlist.loc[_addr.index]
+            mlist = mlist[_addr.isin(per_address_field["domain"])]
+        if "localpart" in list(per_address_field.keys()):
+            _addr = pd.Series([localpart for _, localpart, _ in generator])
+            indices = _addr[_addr.isin(per_address_field["localpart"])].index.values
         return ListservList.from_pandas_dataframe(
-            df=mlist.df.iloc[indices],
+            df=mlist,
             name=self.name,
             filepath=self.filepath,
         )
@@ -895,6 +896,7 @@ class ListservList:
         self,
         nw: Optional[dict] = None,
         entity_in_focus: Optional[list] = None,
+        node_attributes: Optional[Dict[str,  list]] = None,
     ):
         """
         Create directed graph from messaging network created with
@@ -939,6 +941,17 @@ class ListservList:
             for sender, receivers in nw.items():
                 for receiver, nr_msgs in receivers.items():
                     DG.add_edge(sender, receiver, weight=nr_msgs)
+        if node_attributes is not None:
+            node_attribute_value = {}
+            for index, node in enumerate(DG.nodes):
+                attribute_row = node_attributes[
+                    node_attributes["node_name"] == node
+                ]
+                if any(attribute_row.index):
+                    node_attribute_value[node] = attribute_row["node_attribute"].values[0]
+                else:
+                    node_attribute_value[node] = "-"
+            nx.set_node_attributes(DG, node_attribute_value, name="node_attribute")
         # attach directed graph to class
         self.dg = DG
 
