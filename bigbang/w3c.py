@@ -78,7 +78,8 @@ class W3CMessageParser(email.parser.Parser):
     Parameters
     ----------
     website : Set 'True' if messages are going to be scraped from websites,
-        otherwise 'False' if read from local memory.
+        otherwise 'False' if read from local memory. This distinction needs to
+        be made if missing messages should be added.
     url_login : URL to the 'Log In' page.
     url_pref : URL to the 'Preferences'/settings page.
     login : Login credentials (username and password) that were used to set
@@ -110,16 +111,15 @@ class W3CMessageParser(email.parser.Parser):
 
     def __init__(
         self,
-        url_login: str,
-        url_pref: str,
+        url_login: str = None,
+        url_pref: str = None,
         website: bool = False,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
     ):
         if website:
-            if session is None:
+            if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
-                session = set_website_preference_for_header(url_pref, session)
             self.session = session
 
     def create_email_message(
@@ -322,12 +322,9 @@ class W3CList(ListservListIO):
     from_url()
     from_messages()
     from_mbox()
-    from_listserv_files()
-    from_listserv_directories()
     get_messages_from_url()
     get_message_urls()
     get_period_urls()
-    get_line_numbers_of_header_starts()
     get_index_of_elements_in_selection()
     to_dict()
     to_pandas_dataframe()
@@ -379,8 +376,8 @@ class W3CList(ListservListIO):
         cls,
         name: str,
         url: str,
-        url_login: str,
-        url_pref: str,
+        url_login: str = None,
+        url_pref: str = None,
         select: Optional[dict] = None,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
@@ -399,9 +396,8 @@ class W3CList(ListservListIO):
             up AuthSession.
         session : requests.Session() object for the Email archive website.
         """
-        if session is None:
+        if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
-            session = set_website_preference_for_header(url_pref, session)
         if select is None:
             select = {"fields": "total"}
         elif "fields" not in list(select.keys()):
@@ -415,8 +411,8 @@ class W3CList(ListservListIO):
         name: str,
         url: str,
         messages: List[Union[str, mboxMessage]],
-        url_login: str,
-        url_pref: str,
+        url_login: str = None,
+        url_pref: str = None,
         fields: str = "total",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
@@ -605,11 +601,10 @@ class W3CList(ListservListIO):
     ) -> List[int]:
         """
         Filter out messages that where in a specific period. Period here is a set
-        containing units of year, month, and week-of-month which can have the following
+        containing units of year and month which can have the following
         example elements:
             - years: (1992, 2010), [2000, 2008], 2021
             - months: ["January", "July"], "November"
-            - weeks: (1, 4), [1, 5], 2
 
         Parameters
         ----------
@@ -637,11 +632,6 @@ class W3CList(ListservListIO):
             cond = lambda x: x == filtr
         return [idx for idx, time in enumerate(times) if cond(time)]
 
-    @staticmethod
-    def get_name_from_url(url: str) -> str:
-        """Get name of mailing list."""
-        return url.split("A0=")[-1]
-
     @classmethod
     def get_messages_urls(cls, name: str, url: str) -> List[str]:
         """
@@ -654,11 +644,14 @@ class W3CList(ListservListIO):
         -------
         List to URLs from which `mboxMessage` can be initialized.
         """
-        url_root = ("/").join(url.split("/")[:-2])
         soup = get_website_content(url)
-        a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
+        a_tags = soup.select("div.messages-list a")
         if a_tags:
-            a_tags = [urljoin(url_root, url.get("href")) for url in a_tags]
+            a_tags = [
+                urljoin(url, a_tag.get("href"))
+                for a_tag in a_tags
+                if a_tag.get("href") is not None
+            ]
         return a_tags
 
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
@@ -697,202 +690,6 @@ class W3CList(ListservListIO):
             ListservListIO.to_mbox(self.messages, dir_out, self.name)
         else:
             ListservListIO.to_mbox(self.messages, dir_out, filename)
-
-
-class W3cMailingListArchivesParser(email.parser.Parser):
-    """
-    A subclass of email.parser.Parser that parses the HTML of single-message
-    archive pages generated by W3C's mail archives system, based on Hypermail.
-    """
-
-    parse = None
-    # doesn't implement the file version
-
-    # TODO: ignore spam (has separate error message in w3c archives)
-    def parsestr(self, text, headersonly=False):
-        """
-        Takes the full HTML of a single message page; returns an email Message
-        as an mboxMessage, with appropriate From separator line.
-
-        headersonly is not supported. Not all headers are being parsed yet.
-        """
-        soup = BeautifulSoup(text, "html.parser")
-        body = self._text_for_selector(soup, "#body")
-        msg = MIMEText(body, "plain", "utf-8")
-
-        from_text = self._parse_dfn_header(
-            self._text_for_selector(soup, "#from")
-        )
-        from_name = from_text.split("<")[0].strip()
-        from_address = self._text_for_selector(soup, "#from a")
-
-        from_addr = email.utils.formataddr(
-            (from_name, email.header.Header(from_address).encode())
-        )
-        msg["From"] = from_addr
-
-        subject = self._text_for_selector(soup, "h1")
-        msg["Subject"] = subject
-
-        message_id = self._parse_dfn_header(
-            self._text_for_selector(soup, "#message-id")
-        )
-        msg["Message-ID"] = message_id.strip()
-
-        message_date = self._parse_dfn_header(
-            self._text_for_selector(soup, "#date")
-        )
-        msg["Date"] = message_date.strip()
-
-        message_to = self._parse_dfn_header(
-            self._text_for_selector(soup, "#to")
-        )
-        if message_to:
-            msg["To"] = message_to.strip()
-
-        message_cc = self._parse_dfn_header(
-            self._text_for_selector(soup, "#cc")
-        )
-        if message_cc:
-            msg["Cc"] = message_cc.strip()
-
-        in_reply_to_pattern = re.compile('<!-- inreplyto="(.+?)"')
-        match = in_reply_to_pattern.search(str(text))
-        if match:
-            msg["In-Reply-To"] = "<" + match.groups()[0] + ">"
-
-        mbox_message = mailbox.mboxMessage(msg)
-        mbox_message.set_from(
-            email.header.Header(from_address).encode(),
-            email.utils.parsedate(message_date),
-        )
-
-        return mbox_message
-
-    def _parse_dfn_header(self, header_text):
-        header_texts = str(header_text).split(":", 1)
-        if len(header_texts) == 2:
-            return header_texts[1]
-        else:
-            logging.debug("Split failed on %s", header_text)
-            return ""
-
-
-def collect_from_url(url, base_arch_dir="archives", notes=None):
-    """
-    Collects W3C mailing list archives from a particular mailing list URL.
-
-    Logs an error and returns False if no messages can be collected.
-    """
-    list_name = mailman.get_list_name(url)
-    logging.info("Getting W3C list archive for %s", list_name)
-
-    try:
-        response = urllib.request.urlopen(url)
-        response_url = response.geturl()
-        html = response.read()
-        soup = BeautifulSoup(html, "html.parser")
-    except urllib.error.HTTPError:
-        logging.exception("Error in loading W3C list archive page for %s", url)
-        return False
-
-    try:
-        time_period_indices = list()
-        rows = soup.select("tbody tr")
-        for row in rows:
-            link = row.select("td:nth-of-type(1) a")[0].get("href")
-            logging.info("Found time period archive page: %s", link)
-            time_period_indices.append(link)
-    except Exception:
-        logging.exception("Error in parsing list archives for %s", url)
-        return False
-
-    # directory for downloaded files
-    arc_dir = archive.archive_directory(base_arch_dir, list_name)
-    mailman.populate_provenance(
-        directory=arc_dir,
-        list_name=list_name,
-        list_url=url,
-        notes=notes,
-    )
-
-    for link in time_period_indices:
-
-        try:
-            link_url = urllib.parse.urljoin(response_url, link)
-            response = urllib.request.urlopen(link_url)
-            html = response.read()
-            soup = BeautifulSoup(html, "html.parser")
-        except urllib.error.HTTPError:
-            logging.exception("Error in loading: %s", link_url)
-            return False
-
-        end_date_string = (
-            soup.select("#end")[0].parent.parent.select("em")[0].get_text()
-        )
-        end_date = dateutil.parser.parse(end_date_string)
-        year_month_mbox = end_date.strftime("%Y-%m") + ".mbox"
-        mbox_path = os.path.join(arc_dir, year_month_mbox)
-
-        # looks like we've already downloaded this timeperiod
-        if os.path.isfile(mbox_path):
-            logging.info("Looks like %s already exists, moving on.", mbox_path)
-            continue
-        logging.info("Downloading messages to archive to %s.", mbox_path)
-
-        message_links = list()
-        messages = list()
-
-        anchors = soup.select("div.messages-list a")
-        for anchor in anchors:
-            if anchor.get("href"):
-                message_url = urllib.parse.urljoin(
-                    link_url, anchor.get("href")
-                )
-                message_links.append(message_url)
-
-        for message_link in message_links:
-            response = urllib.request.urlopen(message_link)
-            html = response.read()
-
-            message = W3cMailingListArchivesParser().parsestr(html)
-            message.add_header("Archived-At", "<" + message_link + ">")
-            messages.append(message)
-            time.sleep(1)  # wait between loading messages, for politeness
-
-        mbox = mailbox.mbox(mbox_path)
-        mbox.lock()
-
-        try:
-            for message in messages:
-                mbox.add(message)
-            mbox.flush()
-        finally:
-            mbox.unlock()
-
-        logging.info("Saved %s", year_month_mbox)
-
-    # assumes all archives were downloaded if no exceptions have been thrown
-    provenance = mailman.access_provenance(arc_dir)
-    provenance["complete"] = True
-    mailman.update_provenance(arc_dir, provenance)
-
-
-def set_website_preference_for_header(
-    url_pref: str,
-    session: requests.Session,
-) -> requests.Session:
-    """
-    Set the 'Email Headers' of the 'Archive Preferences' for the auth session
-    to 'Show All Headers'. Otherwise only a restricted list of header fields is
-    shown.
-    """
-    url_archpref = url_pref + "&TAB=2"
-    payload = {
-        "Email Headers": "b",
-    }
-    session.post(url_archpref, data=payload)
-    return session
 
 
 def get_auth_session(
