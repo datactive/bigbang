@@ -97,6 +97,14 @@ class W3CMessageParser(email.parser.Parser):
     >>>     website=True,
     >>>     login={"username": <your_username>, "password": <your_password>},
     >>> )
+
+    To obtain the Email message content and return it as `mboxMessage` object,
+    you need to do the following:
+    >>> msg = msg_parser.from_url(
+    >>>     list_name="public-2018-permissions-ws",
+    >>>     url="https://lists.w3.org/Archives/Public/public-2018-permissions-ws/2019May/0000.html",
+    >>>     fields="total",
+    >>> )
     """
 
     empty_header = {}
@@ -189,7 +197,7 @@ class W3CMessageParser(email.parser.Parser):
             else:
                 header = self.empty_header
             if fields in ["body", "total"]:
-                body = self._get_body_from_html(list_name, url, soup)
+                body = self._get_body_from_html(url, soup)
             else:
                 body = None
         return self.create_email_message(url, body, **header)
@@ -202,96 +210,53 @@ class W3CMessageParser(email.parser.Parser):
         ----------
         soup : HTML code from which the Email header can be obtained.
         """
-        try:
-            for string in ["Subject", "SUBJECT"]:
-                try:
-                    _text = soup.find(
-                        "b",
-                        text=re.compile(r"^\b%s\b" % string),
-                    )  # Sometimes this returns None!
-                    text = _text.parent.parent.parent.parent  # .text
-                    break
-                except Exception:
-                    continue
-            # collect important info from W3C header
-            header = {}
-            for line in text.find_all("tr"):
-                key = str(line.find_all(re.compile("^b"))[0])
-                key = re.search(r"<b>(.*?)<\/b>", key).group(1).lower()
-                key = re.sub(r":", "", key).strip()
-                if "subject" in key:
-                    value = repr(
-                        str(line.find_all(re.compile("^a"))[0].text).strip()
-                    )
-                else:
-                    value = repr(str(line.find_all(re.compile("^p"))[1]))
-                    value = re.search(r"<p>(.*)<\/p>", value).group(1)
-                    value = value.split(" <")[0]
-                value = re.sub(r"&gt;", ">", value).strip()
-                value = re.sub(r"&lt;", "<", value).strip()
-                # remove Carriage return
-                value = re.sub(r"\\r", "", value).strip()
-                # remove Linefeed
-                value = re.sub(r"\\n", "", value).strip()
-                if "parts/attachments" in key:
-                    break
-                elif "comments" in key:
-                    key = "comments-to"
-                    value = re.sub(r"To:", "", value).strip()
-                header[key] = value
-        except Exception:
-            header = self.empty_header
+        header = {
+            "message-ID": "#message-id",
+            "Date": "#date",
+            "To": "#to",
+            "Cc": "#cc",
+        }
+        for key, value in header.items():
+            try:
+                header[key] = parse_dfn_header(
+                    text_for_selector(soup, value)
+                ).strip()
+            except Exception:
+                header[key] = ""
+                continue
+        header["Subject"] = text_for_selector(soup, "h1")
+
+        from_text = parse_dfn_header(text_for_selector(soup, "#from"))
+        from_name = from_text.split("<")[0].strip()
+        from_address = text_for_selector(soup, "#from a")
+        header["From"] = email.utils.formataddr(
+            (from_name, email.header.Header(from_address).encode())
+        )
+
+        in_reply_to_pattern = re.compile('<!-- inreplyto="(.+?)"')
+        match = in_reply_to_pattern.search(str(soup))
+        if match:
+            header["In-Reply-To"] = "<" + match.groups()[0] + ">"
+
         return header
 
     def _get_body_from_html(
-        self, list_name: str, url: str, soup: BeautifulSoup
+        self, url: str, soup: BeautifulSoup
     ) -> Union[str, None]:
         """
         Lexer for the message body/payload.
-        This methods look first whether the body is available in text/plain,
-        before it looks for the text/html option. If neither is available it
-        returns None.
-
-        Therefore this method does not try to return the richest information
-        content, but simply the ascii format.
+        This methods assumes that the body is available in text/plain.
 
         Parameters
         ----------
-        list_name : The name of the LISTSERV Email list.
-        url : URL to the Email.
+        url : URL to the Email message.
         soup : HTML code from which the Email body can be obtained.
         """
         # TODO re-write using email.parser.Parser
-        url_root = ("/").join(url.split("/")[:-2])
-        a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
-        href_plain_text = [
-            tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
-        ]
-        href_html_text = [
-            tag.get("href") for tag in a_tags if "Fhtml" in tag.get("href")
-        ]
         try:
-            if href_plain_text:
-                body_soup = get_website_content(
-                    urljoin(url_root, href_plain_text[0])
-                )
-                if body_soup == "RequestException":
-                    return body_soup
-                else:
-                    return body_soup.find("pre").text
-            elif href_html_text:
-                body_soup = get_website_content(
-                    urljoin(url_root, href_html_text[0])
-                )
-                if body_soup == "RequestException":
-                    return body_soup
-                else:
-                    return body_soup.get_text(strip=True)
+            return text_for_selector(soup, "#body")
         except Exception:
-            logger.info(
-                f"The message body of {url} which is part of the "
-                f"list {list_name} could not be loaded."
-            )
+            logger.info(f"The message body of {url} could not be loaded.")
             return None
 
     @staticmethod
@@ -301,12 +266,12 @@ class W3CMessageParser(email.parser.Parser):
         ----------
         line : String that contains date and time.
         """
-        line = (" ").join(line.split(" ")[:-1]).lstrip()
+        dt = (" ").join(line.split(" ")[:-1]).lstrip()
         # convert format to local version of date and time
         date_time_obj = datetime.datetime.strptime(
-            line, "%a, %d %b %Y %H:%M:%S"
+            dt, "%a, %d %b %Y %H:%M:%S %z"
         )
-        return date_time_obj.strftime("%c")
+        return date_time_obj.strftime("%a, %d %b %Y %H:%M:%S %z")
 
     @staticmethod
     def create_message_id(date: str, from_address: str) -> str:
@@ -419,16 +384,6 @@ class W3cMailingListArchivesParser(email.parser.Parser):
         else:
             logging.debug("Split failed on %s", header_text)
             return ""
-
-    def _text_for_selector(self, soup, selector):
-        results = soup.select(selector)
-        if results:
-            result = results[0].get_text(strip=True)
-        else:
-            result = ""
-            logging.debug("No matching text for selector %s", selector)
-
-        return str(result)
 
 
 def collect_from_url(url, base_arch_dir="archives", notes=None):
@@ -669,3 +624,26 @@ def get_website_content(
             return "RequestException"
         else:
             SystemExit()
+
+
+def text_for_selector(soup: BeautifulSoup, selector: str):
+    """
+    Filter out header or body field from website and return them as utf-8 string.
+    """
+    results = soup.select(selector)
+    if results:
+        result = results[0].get_text(strip=True)
+    else:
+        result = ""
+        logging.debug("No matching text for selector %s", selector)
+
+    return str(result)
+
+
+def parse_dfn_header(header_text):
+    header_texts = str(header_text).split(":", 1)
+    if len(header_texts) == 2:
+        return header_texts[1]
+    else:
+        logging.debug("Split failed on %s", header_text)
+        return ""

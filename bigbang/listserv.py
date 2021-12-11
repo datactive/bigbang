@@ -78,6 +78,7 @@ class ListservMessageParser(email.parser.Parser):
 
     Methods
     -------
+    create_email_message()
     from_url()
     from_listserv_file()
     _get_header_from_html()
@@ -94,8 +95,8 @@ class ListservMessageParser(email.parser.Parser):
     >>>     login={"username": <your_username>, "password": <your_password>},
     >>> )
 
-    To obtain the Email message content and return it as `email.message.EmailMessage`
-    object, you need to do the following:
+    To obtain the Email message content and return it as `mboxMessage` object,
+    you need to do the following:
     >>> msg = msg_parser.from_url(
     >>>     list_name="3GPP_TSG_RAN_DRAFTS",
     >>>     url="https://list.etsi.org/scripts/wa.exe?A2=ind2010B&L=3GPP_TSG_RAN_DRAFTS&O=D&P=29883",
@@ -439,10 +440,10 @@ class ListservMessageParser(email.parser.Parser):
         ----------
         line : String that contains date and time.
         """
-        line = (" ").join(line.split(" ")[:-1]).lstrip()
+        dt = (" ").join(line.split(" ")[:-1]).lstrip()
         # convert format to local version of date and time
         date_time_obj = datetime.datetime.strptime(
-            line, "%a, %d %b %Y %H:%M:%S"
+            dt, "%a, %d %b %Y %H:%M:%S %z"
         )
         return date_time_obj.strftime("%c")
 
