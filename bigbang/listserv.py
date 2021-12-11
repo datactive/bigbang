@@ -484,7 +484,7 @@ class ListservMessageParser(email.parser.Parser):
 class ListservList(ListservListIO):
     """
     This class handles the scraping of a single mailing list of a public archive
-    in the LISTSERV 16.5 format.
+    in the LISTSERV 16.5 and 17 format.
 
     Parameters
     ----------
@@ -548,7 +548,7 @@ class ListservList(ListservListIO):
         """Iterate over each message within the mailing list."""
         return iter(self.messages)
 
-    def __getitem__(self, index) -> mboxMessage:
+    def __getitem__(self, index: int) -> mboxMessage:
         """Get specific message at position `index` within the mailing list."""
         return self.messages[index]
 
@@ -856,6 +856,11 @@ class ListservList(ListservListIO):
         """
         LISTSERV groups messages into weekly time bundles. This method
         obtains all the URLs that lead to the messages of each time bundle.
+
+        Returns
+        -------
+        Returns a tuple of two lists that look like:
+        (['April 2017,  2', 'January 2001', ...], ['ulr1', 'url2', ...])
         """
         # wait between loading messages, for politeness
         time.sleep(0.5)

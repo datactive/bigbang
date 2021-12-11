@@ -1,4 +1,6 @@
+import numpy as np
 import email
+from tqdm import tqdm
 from urllib.parse import urljoin, urlparse
 import datetime
 import yaml
@@ -93,10 +95,7 @@ class W3CMessageParser(email.parser.Parser):
     Example
     -------
     To create a Email message parser object, use the following syntax:
-    >>> msg_parser = W3CMessageParser(
-    >>>     website=True,
-    >>>     login={"username": <your_username>, "password": <your_password>},
-    >>> )
+    >>> msg_parser = W3CMessageParser(website=True)
 
     To obtain the Email message content and return it as `mboxMessage` object,
     you need to do the following:
@@ -111,9 +110,9 @@ class W3CMessageParser(email.parser.Parser):
 
     def __init__(
         self,
-        website=False,
-        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
+        url_login: str,
+        url_pref: str,
+        website: bool = False,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
     ):
@@ -305,6 +304,399 @@ class W3CMessageParser(email.parser.Parser):
         filepath : Path to file in which the Email will be stored.
         """
         return ListservMessageIO.to_mbox(msg, filepath)
+
+
+class W3CList(ListservListIO):
+    """
+    This class handles the scraping of a single W3C mailing list.
+
+    Parameters
+    ----------
+    name : The name of the list (e.g. public-2018-permissions-ws, ...)
+    source : Contains the information of the location of the mailing list.
+        It can be either an URL where the list or a path to the file(s).
+    msgs : List of mboxMessage objects
+
+    Methods
+    -------
+    from_url()
+    from_messages()
+    from_mbox()
+    from_listserv_files()
+    from_listserv_directories()
+    get_messages_from_url()
+    get_message_urls()
+    get_period_urls()
+    get_line_numbers_of_header_starts()
+    get_index_of_elements_in_selection()
+    to_dict()
+    to_pandas_dataframe()
+    to_mbox()
+
+
+    Example
+    -------
+    To scrape a W3C mailing list from an URL and store it in
+    run-time memory, we do the following
+    >>> mlist = W3CList.from_url(
+    >>>     name="public-bigdata",
+    >>>     url="https://lists.w3.org/Archives/Public/public-bigdata/",
+    >>>     select={
+    >>>         "years": 2015,
+    >>>         "months": "August",
+    >>>         "fields": "header",
+    >>>     },
+    >>> )
+
+    To save it as *.mbox file we do the following
+    >>> mlist.to_mbox(path_to_file)
+    """
+
+    def __init__(
+        self,
+        name: str,
+        source: Union[List[str], str],
+        msgs: List[mboxMessage],
+    ):
+        self.name = name
+        self.source = source
+        self.messages = msgs
+
+    def __len__(self) -> int:
+        """Get number of messsages within the mailing list."""
+        return len(self.messages)
+
+    def __iter__(self):
+        """Iterate over each message within the mailing list."""
+        return iter(self.messages)
+
+    def __getitem__(self, index: int) -> mboxMessage:
+        """Get specific message at position `index` within the mailing list."""
+        return self.messages[index]
+
+    @classmethod
+    def from_url(
+        cls,
+        name: str,
+        url: str,
+        url_login: str,
+        url_pref: str,
+        select: Optional[dict] = None,
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[requests.Session] = None,
+    ) -> "W3CList":
+        """
+        Parameters
+        ----------
+        name : Name of the list of messages, e.g. 'public-bigdata'
+        url : URL to the W3C list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year and month
+        url_login : URL to the 'Log In' page
+        url_pref : URL to the 'Preferences'/settings page
+        login : Login credentials (username and password) that were used to set
+            up AuthSession.
+        session : requests.Session() object for the Email archive website.
+        """
+        if session is None:
+            session = get_auth_session(url_login, **login)
+            session = set_website_preference_for_header(url_pref, session)
+        if select is None:
+            select = {"fields": "total"}
+        elif "fields" not in list(select.keys()):
+            select["fields"] = "total"
+        msgs = cls.get_messages_from_url(name, url, select, session)
+        return cls.from_messages(name, url, msgs)
+
+    @classmethod
+    def from_messages(
+        cls,
+        name: str,
+        url: str,
+        messages: List[Union[str, mboxMessage]],
+        url_login: str,
+        url_pref: str,
+        fields: str = "total",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
+    ) -> "W3CList":
+        """
+        Parameters
+        ----------
+        name : Name of the list of messages, e.g. 'public-bigdata'
+        url : URL to the W3C Email list.
+        messages : Can either be a list of URLs to specific W3C messages
+            or a list of `mboxMessage` objects.
+        url_login : URL to the 'Log In' page.
+        url_pref : URL to the 'Preferences'/settings page.
+        login : Login credentials (username and password) that were used to set
+            up AuthSession. You can create your own for the W3C archive.
+        session : requests.Session() object for the W3C Email archive website.
+        """
+        if not messages:
+            # create empty ListservList for ListservArchive
+            msgs = messages
+        elif isinstance(messages[0], str):
+            # create W3CList from message URLs
+            msgs = []
+            msg_parser = W3CMessageParser(
+                website=True,
+                url_login=url_login,
+                login=login,
+            )
+            for msg_url in tqdm(messages, ascii=True, desc=name):
+                msg = msg_parser.from_url(
+                    list_name=name,
+                    url=msg_url,
+                    fields=fields,
+                )
+                if msg.get_payload() == "RequestException":
+                    time.sleep(30)
+                else:
+                    msgs.append(msg)
+                    logger.info(f"Recorded the message {msg_url}.")
+        else:
+            # create W3CList from list of mboxMessage
+            msgs = messages
+        return cls(name, url, msgs)
+
+    @classmethod
+    def get_messages_from_url(
+        cls,
+        name: str,
+        url: str,
+        select: Optional[dict] = None,
+        session: Optional[dict] = None,
+    ) -> List[mboxMessage]:
+        """
+        Generator that returns all messages within a certain period
+        (e.g. January 2021, Week 5).
+
+        Parameters
+        ----------
+        name : Name of the list of messages, e.g. 'public-bigdata'
+        url : URL to the W3C list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year and month
+        session : requests.Session() object for the W3C Email archive website.
+        """
+        # get all message URLs
+        msg_urls = cls.get_message_urls(name, url, select)
+        msg_parser = W3CMessageParser(website=True, session=session)
+        # get all message contents
+        msgs = []
+        for msg_url in tqdm(msg_urls, ascii=True, desc=name):
+            msg = msg_parser.from_url(
+                list_name=name,
+                url=msg_url,
+                fields=select["fields"],
+            )
+            if msg.get_payload() == "RequestException":
+                time.sleep(30)
+            else:
+                msgs.append(msg)
+                logger.info(f"Recorded the message {msg_url}.")
+            # wait between loading messages, for politeness
+            time.sleep(1)
+        return msgs
+
+    @classmethod
+    def get_message_urls(
+        cls,
+        name: str,
+        url: str,
+        select: Optional[dict] = None,
+    ) -> List[str]:
+        """
+        Parameters
+        ----------
+        name : Name of the list of messages, e.g. 'public-bigdata'
+        url : URL to the W3C list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year and month
+
+        Returns
+        -------
+        List of all selected URLs of the messages in the mailing list.
+        """
+        if select is None:
+            select = {"fields": "total"}
+        msg_urls = []
+        # run through periods
+        for period_url in W3CList.get_period_urls(url, select):
+            # run through messages within period
+            for msg_url in W3CList.get_messages_urls(name, period_url):
+                msg_urls.append(msg_url)
+        return msg_urls
+
+    @classmethod
+    def get_period_urls(
+        cls, url: str, select: Optional[dict] = None
+    ) -> List[str]:
+        """
+        All messages within a certain period (e.g. January 2021).
+
+        Parameters
+        ----------
+        url : URL to the W3C list.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year and month
+        """
+        # create dictionary with key indicating period and values the url
+        periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
+
+        if any(
+            period in list(select.keys()) for period in ["years", "months"]
+        ):
+            for key, value in select.items():
+                if key == "years":
+                    cond = lambda x: int(re.findall(r"\d{4}", x)[0])
+                elif key == "months":
+                    cond = lambda x: x.split(" ")[0]
+                else:
+                    continue
+
+                periodquants = [cond(period) for period in periods]
+
+                indices = W3CList.get_index_of_elements_in_selection(
+                    periodquants,
+                    urls_of_periods,
+                    value,
+                )
+
+                periods = [periods[idx] for idx in indices]
+                urls_of_periods = [urls_of_periods[idx] for idx in indices]
+        return urls_of_periods
+
+    @staticmethod
+    def get_all_periods_and_their_urls(
+        url: str,
+    ) -> Tuple[List[str], List[str]]:
+        """
+        W3C groups messages into monthly time bundles. This method
+        obtains all the URLs that lead to the messages of each time bundle.
+
+        Returns
+        -------
+        Returns a tuple of two lists that look like:
+        (['April 2017', 'January 2001', ...], ['ulr1', 'url2', ...])
+        """
+        # wait between loading messages, for politeness
+        time.sleep(0.5)
+        soup = get_website_content(url)
+        periods = []
+        urls_of_periods = []
+        rows = soup.select("tbody tr")
+        for row in rows:
+            link = row.select("td:nth-of-type(1) a")[0]
+            periods.append(link.text)
+            urls_of_periods.append(url + link.get("href"))
+        return periods, urls_of_periods
+
+    @staticmethod
+    def get_index_of_elements_in_selection(
+        times: List[Union[int, str]],
+        urls: List[str],
+        filtr: Union[tuple, list, int, str],
+    ) -> List[int]:
+        """
+        Filter out messages that where in a specific period. Period here is a set
+        containing units of year, month, and week-of-month which can have the following
+        example elements:
+            - years: (1992, 2010), [2000, 2008], 2021
+            - months: ["January", "July"], "November"
+            - weeks: (1, 4), [1, 5], 2
+
+        Parameters
+        ----------
+        times : A list containing information of the period for each
+            group of mboxMessage.
+        urls : Corresponding URLs of each group of mboxMessage of which the
+            period info is contained in `times`.
+        filtr : Containing info on what should be filtered.
+
+        Returns
+        -------
+        Indices of to the elements in `times`/`ursl`.
+        """
+        if isinstance(filtr, tuple):
+            # filter year or week in range
+            cond = lambda x: (np.min(filtr) <= x <= np.max(filtr))
+        if isinstance(filtr, list):
+            # filter in year, week, or month in list
+            cond = lambda x: x in filtr
+        if isinstance(filtr, int):
+            # filter specific year or week
+            cond = lambda x: x == filtr
+        if isinstance(filtr, str):
+            # filter specific month
+            cond = lambda x: x == filtr
+        return [idx for idx, time in enumerate(times) if cond(time)]
+
+    @staticmethod
+    def get_name_from_url(url: str) -> str:
+        """Get name of mailing list."""
+        return url.split("A0=")[-1]
+
+    @classmethod
+    def get_messages_urls(cls, name: str, url: str) -> List[str]:
+        """
+        Parameters
+        ----------
+        name : Name of the W3C mailing list.
+        url : URL to group of messages that are within the same period.
+
+        Returns
+        -------
+        List to URLs from which `mboxMessage` can be initialized.
+        """
+        url_root = ("/").join(url.split("/")[:-2])
+        soup = get_website_content(url)
+        a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
+        if a_tags:
+            a_tags = [urljoin(url_root, url.get("href")) for url in a_tags]
+        return a_tags
+
+    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
+        """
+        Parameters
+        ----------
+        include_body : A boolean that indicates whether the message body should
+            be included or not.
+
+        Returns
+        -------
+        A Dictionary with the first key layer being the header field names and
+        the "body" key. Each value field is a list containing the respective
+        header field contents arranged by the order as they were scraped from
+        the web. This format makes the conversion to a pandas.DataFrame easier.
+        """
+        return ListservListIO.to_dict(self.messages, include_body)
+
+    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
+        """
+        Parameters
+        ----------
+        include_body : A boolean that indicates whether the message body should
+            be included or not.
+
+        Returns
+        -------
+        Converts the mailing list into a pandas.DataFrame object in which each
+        row represents an Email.
+        """
+        return ListservListIO.to_pandas_dataframe(self.messages, include_body)
+
+    def to_mbox(self, dir_out: str, filename: Optional[str] = None):
+        """Safe mailing list to .mbox files."""
+        if filename is None:
+            ListservListIO.to_mbox(self.messages, dir_out, self.name)
+        else:
+            ListservListIO.to_mbox(self.messages, dir_out, filename)
 
 
 class W3cMailingListArchivesParser(email.parser.Parser):
