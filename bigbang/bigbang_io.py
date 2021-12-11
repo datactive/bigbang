@@ -1,5 +1,5 @@
 """
-Input/Output for Listserv data.
+Input/Output for mailing data.
 """
 
 import datetime
@@ -28,7 +28,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class ListservMessageIO:
+class MessageIO:
     """
     Methods
     -------
@@ -45,7 +45,7 @@ class ListservMessageIO:
 
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         return pd.DataFrame(
-            ListservMessageIO.to_dict(msg),
+            MessageIO.to_dict(msg),
             index=[msg["Message-ID"]],
         )
 
@@ -62,9 +62,9 @@ class ListservMessageIO:
         mbox.unlock()
 
 
-class ListservListIO:
+class ListIO:
     """
-    This class handles the data transformations for Listserv Lists.
+    This class handles the data transformations for Lists.
     """
 
     def from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
@@ -114,7 +114,7 @@ class ListservListIO:
     def to_pandas_dataframe(
         msgs: list, include_body: bool = True
     ) -> pd.DataFrame:
-        dic = ListservListIO.to_dict(msgs, include_body)
+        dic = ListIO.to_dict(msgs, include_body)
         df = pd.DataFrame(dic)
         # filter out messages with unrecognisable datetime
         index = np.array(
@@ -164,9 +164,9 @@ class ListservListIO:
         mbox.unlock()
 
 
-class ListservArchiveIO:
+class ArchiveIO:
     """
-    This class handles the data transformations for Listserv Archives.
+    This class handles the data transformations for Archives.
     """
 
     def to_dict(
@@ -177,7 +177,7 @@ class ListservArchiveIO:
         """
         nr_msgs = 0
         for ii, mlist in enumerate(mlists):
-            dic_mlist = ListservListIO.to_dict(mlist.messages, include_body)
+            dic_mlist = ListIO.to_dict(mlist.messages, include_body)
             if ii == 0:
                 dic_march = dic_mlist
                 dic_march["mailing-list"] = [mlist.name] * len(mlist)
@@ -202,9 +202,9 @@ class ListservArchiveIO:
     def to_pandas_dataframe(
         mlists: list, include_body: bool = True
     ) -> pd.DataFrame:
-        df = pd.DataFrame(
-            ListservArchiveIO.to_dict(mlists, include_body)
-        ).set_index("message-id")
+        df = pd.DataFrame(ArchiveIO.to_dict(mlists, include_body)).set_index(
+            "message-id"
+        )
         # get index of date-times
         index = np.array(
             [

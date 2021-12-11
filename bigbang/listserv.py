@@ -21,11 +21,7 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
-from bigbang.bigbang_io import (
-    ListservMessageIO,
-    ListservListIO,
-    ListservArchiveIO,
-)
+from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
@@ -463,12 +459,12 @@ class ListservMessageParser(email.parser.Parser):
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
         """Convert mboxMessage to a Dictionary"""
-        return ListservMessageIO.to_dict(msg)
+        return MessageIO.to_dict(msg)
 
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         """Convert mboxMessage to a pandas.DataFrame"""
-        return ListservMessageIO.to_pandas_dataframe(msg)
+        return MessageIO.to_pandas_dataframe(msg)
 
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
@@ -478,10 +474,10 @@ class ListservMessageParser(email.parser.Parser):
         msg : The Email.
         filepath : Path to file in which the Email will be stored.
         """
-        return ListservMessageIO.to_mbox(msg, filepath)
+        return MessageIO.to_mbox(msg, filepath)
 
 
-class ListservList(ListservListIO):
+class ListservList(ListIO):
     """
     This class handles the scraping of a single mailing list of a public archive
     in the LISTSERV 16.5 and 17 format.
@@ -647,7 +643,7 @@ class ListservList(ListservListIO):
         name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
         filepath : Path to file in which mailing list is stored.
         """
-        msgs = ListservListIO.from_mbox(filepath)
+        msgs = ListIO.from_mbox(filepath)
         return cls(name, filepath, msgs)
 
     @classmethod
@@ -972,7 +968,7 @@ class ListservList(ListservListIO):
         header field contents arranged by the order as they were scraped from
         the web. This format makes the conversion to a pandas.DataFrame easier.
         """
-        return ListservListIO.to_dict(self.messages, include_body)
+        return ListIO.to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
@@ -986,14 +982,14 @@ class ListservList(ListservListIO):
         Converts the mailing list into a pandas.DataFrame object in which each
         row represents an Email.
         """
-        return ListservListIO.to_pandas_dataframe(self.messages, include_body)
+        return ListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """Safe mailing list to .mbox files."""
         if filename is None:
-            ListservListIO.to_mbox(self.messages, dir_out, self.name)
+            ListIO.to_mbox(self.messages, dir_out, self.name)
         else:
-            ListservListIO.to_mbox(self.messages, dir_out, filename)
+            ListIO.to_mbox(self.messages, dir_out, filename)
 
 
 class ListservArchive(object):
@@ -1402,20 +1398,20 @@ class ListservArchive(object):
         Concatenates mailing list dictionaries created using
         `ListservList.to_dict()`.
         """
-        return ListservArchiveIO.to_dict(self.lists, include_body)
+        return ArchiveIO.to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
         Concatenates mailing list pandas.DataFrames created using
         `ListservList.to_pandas_dataframe()`.
         """
-        return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
+        return ArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """
         Save Archive content to .mbox files
         """
-        ListservArchiveIO.to_mbox(self.lists, dir_out)
+        ArchiveIO.to_mbox(self.lists, dir_out)
 
 
 def set_website_preference_for_header(

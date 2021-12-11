@@ -25,16 +25,9 @@ import pandas as pd
 import dateutil
 from bs4 import BeautifulSoup
 
-import bigbang.archive as archive
-import bigbang.mailman as mailman
-
 from config.config import CONFIG
 
-from bigbang.bigbang_io import (
-    ListservMessageIO,
-    ListservListIO,
-    ListservArchiveIO,
-)
+from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
@@ -288,12 +281,12 @@ class W3CMessageParser(email.parser.Parser):
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
         """Convert mboxMessage to a Dictionary"""
-        return ListservMessageIO.to_dict(msg)
+        return MessageIO.to_dict(msg)
 
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         """Convert mboxMessage to a pandas.DataFrame"""
-        return ListservMessageIO.to_pandas_dataframe(msg)
+        return MessageIO.to_pandas_dataframe(msg)
 
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
@@ -303,10 +296,10 @@ class W3CMessageParser(email.parser.Parser):
         msg : The Email.
         filepath : Path to file in which the Email will be stored.
         """
-        return ListservMessageIO.to_mbox(msg, filepath)
+        return MessageIO.to_mbox(msg, filepath)
 
 
-class W3CList(ListservListIO):
+class W3CList(ListIO):
     """
     This class handles the scraping of a single W3C mailing list.
 
@@ -431,7 +424,7 @@ class W3CList(ListservListIO):
         session : requests.Session() object for the W3C Email archive website.
         """
         if not messages:
-            # create empty ListservList for ListservArchive
+            # create empty W3CList for W3CArchive
             msgs = messages
         elif isinstance(messages[0], str):
             # create W3CList from message URLs
@@ -668,7 +661,7 @@ class W3CList(ListservListIO):
         header field contents arranged by the order as they were scraped from
         the web. This format makes the conversion to a pandas.DataFrame easier.
         """
-        return ListservListIO.to_dict(self.messages, include_body)
+        return ListIO.to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
@@ -682,14 +675,429 @@ class W3CList(ListservListIO):
         Converts the mailing list into a pandas.DataFrame object in which each
         row represents an Email.
         """
-        return ListservListIO.to_pandas_dataframe(self.messages, include_body)
+        return ListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """Safe mailing list to .mbox files."""
         if filename is None:
-            ListservListIO.to_mbox(self.messages, dir_out, self.name)
+            ListIO.to_mbox(self.messages, dir_out, self.name)
         else:
-            ListservListIO.to_mbox(self.messages, dir_out, filename)
+            ListIO.to_mbox(self.messages, dir_out, filename)
+
+
+class W3CArchive(object):
+    """
+    This class handles the scraping of W3C public mailing list archive in the
+    hypermail format.
+
+    Parameters
+    ----------
+    name : The name of the archive.
+    url : The URL where the archive lives
+    lists : A list containing the mailing lists as `W3CList` types
+
+    Methods
+    -------
+    from_url()
+    from_mbox()
+    from_mailing_lists()
+    from_listserv_directory()
+    get_lists()
+    get_sections()
+    to_dict()
+    to_pandas_dataframe()
+    to_mbox()
+
+    Example
+    -------
+    To scrape a W3C mailing list archive from an URL and store it in
+    run-time memory, we do the following
+    >>> arch = W3CArchive.from_url(
+    >>>     name="IEEE",
+    >>>     url_root="https://listserv.ieee.org/cgi-bin/wa?",
+    >>>     url_home="https://listserv.ieee.org/cgi-bin/wa?HOME",
+    >>>     select={
+    >>>         "years": 2015,
+    >>>         "months": "November",
+    >>>         "weeks": 4,
+    >>>         "fields": "header",
+    >>>     },
+    >>>     login={"username": <your_username>, "password": <your_password>},
+    >>>     instant_save=False,
+    >>>     only_mlist_urls=False,
+    >>> )
+
+    To save it as *.mbox file we do the following
+    >>> arch.to_mbox(path_to_directory)
+    """
+
+    def __init__(self, name: str, url: str, lists: List[Union[W3CList, str]]):
+        self.name = name
+        self.url = url
+        self.lists = lists
+
+    def __len__(self):
+        """Get number of mailing lists within the mailing archive."""
+        return len(self.lists)
+
+    def __iter__(self):
+        """Iterate over each mailing list within the mailing archive."""
+        return iter(self.lists)
+
+    def __getitem__(self, index):
+        """Get specific mailing list at position `index` from the mailing archive."""
+        return self.lists[index]
+
+    @classmethod
+    def from_url(
+        cls,
+        name: str,
+        url_root: str,
+        url_home: str,
+        select: Optional[dict] = None,
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
+        instant_save: bool = True,
+        only_mlist_urls: bool = True,
+    ) -> "W3CArchive":
+        """
+        Create W3CArchive from a given URL.
+
+        Parameters
+        ----------
+        name : Email archive name, such that multiple instances of `W3CArchive`
+            can easily be distinguished.
+        url_root : The invariant root URL that does not change no matter what
+            part of the W3C archive we access.
+        url_home : The 'home' space of the W3C archive. This is required as
+            it contains the different sections which we obtain using `get_sections()`.
+        select: Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        url_login : URL to the 'Log In' page.
+        url_pref : URL to the 'Preferences'/settings page.
+        login : Login credentials (username and password) that were used to set
+            up AuthSession.
+        session : requests.Session() object for the W3C Email archive website.
+        instant_save : Boolean giving the choice to save a `W3CList` as
+            soon as it is completely scraped or collect entire archive. The
+            prior is recommended if a large number of mailing lists are
+            scraped which can require a lot of memory and time.
+        only_list_urls : Boolean giving the choice to collect only `W3CList`
+            URLs or also their contents.
+        """
+        if session is None:
+            session = get_auth_session(url_login, **login)
+        lists = cls.get_lists_from_url(
+            url_root,
+            url_home,
+            select,
+            session,
+            instant_save,
+            only_mlist_urls,
+        )
+        return cls.from_mailing_lists(
+            name,
+            url_root,
+            lists,
+            select,
+            session,
+            only_mlist_urls,
+        )
+
+    @classmethod
+    def from_mailing_lists(
+        cls,
+        name: str,
+        url_root: str,
+        url_mailing_lists: Union[List[str], List[W3CList]],
+        select: Optional[dict] = None,
+        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
+        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
+        login: Optional[Dict[str, str]] = {"username": None, "password": None},
+        session: Optional[str] = None,
+        only_mlist_urls: bool = True,
+        instant_save: Optional[bool] = True,
+    ) -> "W3CArchive":
+        """
+        Create W3CArchive from a given list of 'W3CList'.
+
+        Parameters
+        ----------
+        name : Email archive name, such that multiple instances of `W3CArchive`
+            can easily be distinguished.
+        url_root : The invariant root URL that does not change no matter what
+            part of the W3C archive we access.
+        url_mailing_lists : This argument can either be a list of `W3CList`
+            objects or a list of string containing the URLs to the W3C
+            Email lists of interest.
+        url_login : URL to the 'Log In' page.
+        url_pref : URL to the 'Preferences'/settings page.
+        login : Login credentials (username and password) that were used to set
+            up AuthSession.
+        session : requests.Session() object for the W3C Email archive website.
+        only_list_urls : Boolean giving the choice to collect only `W3CList`
+            URLs or also their contents.
+        instant_save : Boolean giving the choice to save a `W3CList` as
+            soon as it is completely scraped or collect entire archive. The
+            prior is recommended if a large number of mailing lists are
+            scraped which can require a lot of memory and time.
+        """
+        if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
+            if session is None:
+                session = get_auth_session(url_login, **login)
+            lists = []
+            for url in url_mailing_lists:
+                mlist_name = url.split("A0=")[-1]
+                mlist = W3CList.from_url(
+                    name=mlist_name,
+                    url=url,
+                    select=select,
+                    session=session,
+                )
+                if len(mlist) != 0:
+                    if instant_save:
+                        dir_out = CONFIG.mail_path + name
+                        Path(dir_out).mkdir(parents=True, exist_ok=True)
+                        mlist.to_mbox(dir_out=dir_out)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        lists.append(mlist)
+        else:
+            lists = url_mailing_lists
+        return cls(name, url_root, lists)
+
+    @classmethod
+    def from_listserv_directory(
+        cls,
+        name: str,
+        directorypath: str,
+        folderdsc: str = "*",
+        filedsc: str = "*.LOG?????",
+        select: Optional[dict] = None,
+    ) -> "W3CArchive":
+        """
+        This method is required if the files that contain the archive messages
+        were directly exported from W3C.
+        Each mailing list has its own subdirectory and is split over multiple
+        files with an extension starting with LOG and ending with five digits.
+
+        Parameters
+        ----------
+        name : Email archive name, such that multiple instances of `W3CArchive`
+            can easily be distinguished.
+        directorypath : Where the `W3CArchive` can be initialised.
+        folderdsc : A description of the relevant folders
+        filedsc : A description of the relevant files, e.g. *.LOG?????
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        """
+        lists = []
+        _dirpaths_to_lists = get_paths_to_dirs_in_directory(
+            directorypath, folderdsc
+        )
+        # run through directories and collect all filepaths
+        for dirpath in _dirpaths_to_lists:
+            _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
+            mlist = W3CList.from_listserv_files(
+                dirpath.split("/")[-2],
+                _filepaths,
+                select,
+            )
+            lists.append(mlist)
+        return cls(name, directorypath, lists)
+
+    @classmethod
+    def from_mbox(
+        cls,
+        name: str,
+        directorypath: str,
+        filedsc: str = "*.mbox",
+    ) -> "W3CArchive":
+        """
+        Parameters
+        ----------
+        name : Email archive name, such that multiple instances of `W3CArchive`
+            can easily be distinguished.
+        directorypath : Path to the folder in which `W3CArchive` is stored.
+        filedsc : Optional filter that only reads files matching the description.
+            By default all files with an mbox extension are read.
+        """
+        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
+        lists = []
+        for filepath in filepaths:
+            name = filepath.split("/")[-1].split(".")[0]
+            lists.append(W3CList.from_mbox(name, filepath))
+        return cls(name, directorypath, lists)
+
+    @staticmethod
+    def get_lists_from_url(
+        url_root: str,
+        url_home: str,
+        select: dict,
+        session: Optional[str] = None,
+        instant_save: bool = True,
+        only_mlist_urls: bool = True,
+    ) -> List[Union[W3CList, str]]:
+        """
+        Created dictionary of all lists in the archive.
+
+        Parameters
+        ----------
+        url_root : The invariant root URL that does not change no matter what
+            part of the W3C archive we access.
+        url_home : The 'home' space of the W3C archive. This is required as
+            it contains the different sections which we obtain using `get_sections()`.
+        select : Selection criteria that can filter messages by:
+            - content, i.e. header and/or body
+            - period, i.e. written in a certain year, month, week-of-month
+        session : requests.Session() object for the W3C Email archive website.
+        instant_save : Boolean giving the choice to save a `W3CList` as
+            soon as it is completely scraped or collect entire archive. The
+            prior is recommended if a large number of mailing lists are
+            scraped which can require a lot of memory and time.
+        only_list_urls : Boolean giving the choice to collect only `W3CList`
+            URLs or also their contents.
+
+        Returns
+        -------
+        archive_dict : the keys are the names of the lists and the value their url
+        """
+        archive = []
+        # run through archive sections
+        for url in list(W3CArchive.get_sections(url_root, url_home).keys()):
+            soup = get_website_content(url)
+            a_tags_in_section = soup.select(
+                f'a[href^="{urlparse(url).path}?A0="]',
+            )
+
+            mlist_urls = [
+                urljoin(url_root, a_tag.get("href"))
+                for a_tag in a_tags_in_section
+            ]
+            mlist_urls = list(set(mlist_urls))  # remove duplicates
+
+            if only_mlist_urls:
+                # collect mailing-list urls
+                for mlist_url in mlist_urls:
+                    name = W3CList.get_name_from_url(mlist_url)
+                    # check if mailing list contains messages in period
+                    _period_urls = W3CList.get_all_periods_and_their_urls(
+                        mlist_url
+                    )[1]
+                    # check if mailing list is public
+                    if len(_period_urls) > 0:
+                        loops = 0
+                        for _period_url in _period_urls:
+                            loops += 1
+                            nr_msgs = len(
+                                W3CList.get_messages_urls(
+                                    name=name, url=_period_url
+                                )
+                            )
+                            if nr_msgs > 0:
+                                archive.append(mlist_url)
+                                break
+            else:
+                # collect mailing-list contents
+                for mlist_url in mlist_urls:
+                    name = W3CList.get_name_from_url(mlist_url)
+                    mlist = W3CList.from_url(
+                        name=name,
+                        url=mlist_url,
+                        select=select,
+                        session=session,
+                    )
+                    if len(mlist) != 0:
+                        if instant_save:
+                            dir_out = CONFIG.mail_path + name
+                            Path(dir_out).mkdir(parents=True, exist_ok=True)
+                            mlist.to_mbox(dir_out=CONFIG.mail_path)
+                            archive.append(mlist.name)
+                        else:
+                            logger.info(f"Recorded the list {mlist.name}.")
+                            archive.append(mlist)
+        return archive
+
+    def get_sections(url_root: str, url_home: str) -> int:
+        """
+        Get different sections of archive.
+        On the Listserv 16.5 website they look like:
+        [3GPP] [3GPP–AT1] [AT2–CONS] [CONS–EHEA] [EHEA–ERM_] ...
+        On the Listserv 17 website they look like:
+        [<<][<]1-50(798)[>][>>]
+
+        Returns
+        -------
+        If sections exist, it returns their urls and names. Otherwise it returns
+        the url_home.
+        """
+        soup = get_website_content(url_home)
+        sections = soup.select(
+            'a[href*="INDEX="][href*="p="]',
+        )
+        archive_sections_dict = {}
+        if sections:
+            for sec in sections:
+                key = urljoin(url_root, sec.get("href"))
+                value = sec.text
+                if value in ["Next", "Previous"]:
+                    continue
+                archive_sections_dict[key] = value
+            archive_sections_dict[re.sub(r"p=[0-9]+", "p=1", key)] = "FIRST"
+        else:
+            archive_sections_dict[url_home] = "Home"
+        return archive_sections_dict
+
+    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
+        """
+        Place all message in all lists into a dictionary of the form:
+            dic = {
+                "message_ID1": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+                "message_ID2": {
+                    "body": ...,
+                    "subject": ...,
+                    ... ,
+                }
+            }
+        """
+        # initialize dictionary
+        dic = {}
+        msg_nr = 0
+        # run through lists
+        for mlist in self.lists:
+            # run through messages
+            for msg in mlist.messages:
+                dic[f"ID{msg_nr}"] = msg.to_dict()
+                msg_nr += 1
+        return dic
+
+    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
+        """
+        Concatenates mailing list dictionaries created using
+        `W3CList.to_dict()`.
+        """
+        return ArchiveIO.to_dict(self.lists, include_body)
+
+    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
+        """
+        Concatenates mailing list pandas.DataFrames created using
+        `W3CList.to_pandas_dataframe()`.
+        """
+        return ArchiveIO.to_pandas_dataframe(self.lists, include_body)
+
+    def to_mbox(self, dir_out: str):
+        """
+        Save Archive content to .mbox files
+        """
+        ArchiveIO.to_mbox(self.lists, dir_out)
 
 
 def get_auth_session(
