@@ -625,6 +625,11 @@ class W3CList(ListIO):
             cond = lambda x: x == filtr
         return [idx for idx, time in enumerate(times) if cond(time)]
 
+    @staticmethod
+    def get_name_from_url(url: str) -> str:
+        """Get name of mailing list."""
+        return url.split("/")[-2]
+
     @classmethod
     def get_messages_urls(cls, name: str, url: str) -> List[str]:
         """
@@ -701,7 +706,6 @@ class W3CArchive(object):
     from_url()
     from_mbox()
     from_mailing_lists()
-    from_listserv_directory()
     get_lists()
     get_sections()
     to_dict()
@@ -870,47 +874,6 @@ class W3CArchive(object):
         return cls(name, url_root, lists)
 
     @classmethod
-    def from_listserv_directory(
-        cls,
-        name: str,
-        directorypath: str,
-        folderdsc: str = "*",
-        filedsc: str = "*.LOG?????",
-        select: Optional[dict] = None,
-    ) -> "W3CArchive":
-        """
-        This method is required if the files that contain the archive messages
-        were directly exported from W3C.
-        Each mailing list has its own subdirectory and is split over multiple
-        files with an extension starting with LOG and ending with five digits.
-
-        Parameters
-        ----------
-        name : Email archive name, such that multiple instances of `W3CArchive`
-            can easily be distinguished.
-        directorypath : Where the `W3CArchive` can be initialised.
-        folderdsc : A description of the relevant folders
-        filedsc : A description of the relevant files, e.g. *.LOG?????
-        select : Selection criteria that can filter messages by:
-            - content, i.e. header and/or body
-            - period, i.e. written in a certain year, month, week-of-month
-        """
-        lists = []
-        _dirpaths_to_lists = get_paths_to_dirs_in_directory(
-            directorypath, folderdsc
-        )
-        # run through directories and collect all filepaths
-        for dirpath in _dirpaths_to_lists:
-            _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
-            mlist = W3CList.from_listserv_files(
-                dirpath.split("/")[-2],
-                _filepaths,
-                select,
-            )
-            lists.append(mlist)
-        return cls(name, directorypath, lists)
-
-    @classmethod
     def from_mbox(
         cls,
         name: str,
@@ -967,117 +930,55 @@ class W3CArchive(object):
         archive_dict : the keys are the names of the lists and the value their url
         """
         archive = []
-        # run through archive sections
-        for url in list(W3CArchive.get_sections(url_root, url_home).keys()):
-            soup = get_website_content(url)
-            a_tags_in_section = soup.select(
-                f'a[href^="{urlparse(url).path}?A0="]',
-            )
-
-            mlist_urls = [
-                urljoin(url_root, a_tag.get("href"))
-                for a_tag in a_tags_in_section
-            ]
-            mlist_urls = list(set(mlist_urls))  # remove duplicates
-
-            if only_mlist_urls:
-                # collect mailing-list urls
-                for mlist_url in mlist_urls:
-                    name = W3CList.get_name_from_url(mlist_url)
-                    # check if mailing list contains messages in period
-                    _period_urls = W3CList.get_all_periods_and_their_urls(
-                        mlist_url
-                    )[1]
-                    # check if mailing list is public
-                    if len(_period_urls) > 0:
-                        loops = 0
-                        for _period_url in _period_urls:
-                            loops += 1
-                            nr_msgs = len(
-                                W3CList.get_messages_urls(
-                                    name=name, url=_period_url
-                                )
-                            )
-                            if nr_msgs > 0:
-                                archive.append(mlist_url)
-                                break
-            else:
-                # collect mailing-list contents
-                for mlist_url in mlist_urls:
-                    name = W3CList.get_name_from_url(mlist_url)
-                    mlist = W3CList.from_url(
-                        name=name,
-                        url=mlist_url,
-                        select=select,
-                        session=session,
-                    )
-                    if len(mlist) != 0:
-                        if instant_save:
-                            dir_out = CONFIG.mail_path + name
-                            Path(dir_out).mkdir(parents=True, exist_ok=True)
-                            mlist.to_mbox(dir_out=CONFIG.mail_path)
-                            archive.append(mlist.name)
-                        else:
-                            logger.info(f"Recorded the list {mlist.name}.")
-                            archive.append(mlist)
-        return archive
-
-    def get_sections(url_root: str, url_home: str) -> int:
-        """
-        Get different sections of archive.
-        On the Listserv 16.5 website they look like:
-        [3GPP] [3GPP–AT1] [AT2–CONS] [CONS–EHEA] [EHEA–ERM_] ...
-        On the Listserv 17 website they look like:
-        [<<][<]1-50(798)[>][>>]
-
-        Returns
-        -------
-        If sections exist, it returns their urls and names. Otherwise it returns
-        the url_home.
-        """
         soup = get_website_content(url_home)
-        sections = soup.select(
-            'a[href*="INDEX="][href*="p="]',
-        )
-        archive_sections_dict = {}
-        if sections:
-            for sec in sections:
-                key = urljoin(url_root, sec.get("href"))
-                value = sec.text
-                if value in ["Next", "Previous"]:
-                    continue
-                archive_sections_dict[key] = value
-            archive_sections_dict[re.sub(r"p=[0-9]+", "p=1", key)] = "FIRST"
-        else:
-            archive_sections_dict[url_home] = "Home"
-        return archive_sections_dict
+        mlist_urls = [
+            urljoin(url_root, h3_tag.select("a")[0].get("href"))
+            for h3_tag in soup.select("h3")
+            if h3_tag.select("a")
+        ]
+        mlist_urls = list(set(mlist_urls))  # remove duplicates
 
-    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
-        """
-        Place all message in all lists into a dictionary of the form:
-            dic = {
-                "message_ID1": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-                "message_ID2": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-            }
-        """
-        # initialize dictionary
-        dic = {}
-        msg_nr = 0
-        # run through lists
-        for mlist in self.lists:
-            # run through messages
-            for msg in mlist.messages:
-                dic[f"ID{msg_nr}"] = msg.to_dict()
-                msg_nr += 1
-        return dic
+        if only_mlist_urls:
+            # collect mailing-list urls
+            for mlist_url in mlist_urls:
+                name = W3CList.get_name_from_url(mlist_url)
+                # check if mailing list contains messages in period
+                _period_urls = W3CList.get_all_periods_and_their_urls(
+                    mlist_url
+                )[1]
+                # check if mailing list is public
+                if len(_period_urls) > 0:
+                    loops = 0
+                    for _period_url in _period_urls:
+                        loops += 1
+                        nr_msgs = len(
+                            W3CList.get_messages_urls(
+                                name=name, url=_period_url
+                            )
+                        )
+                        if nr_msgs > 0:
+                            archive.append(mlist_url)
+                            break
+        else:
+            # collect mailing-list contents
+            for mlist_url in mlist_urls:
+                name = W3CList.get_name_from_url(mlist_url)
+                mlist = W3CList.from_url(
+                    name=name,
+                    url=mlist_url,
+                    select=select,
+                    session=session,
+                )
+                if len(mlist) != 0:
+                    if instant_save:
+                        dir_out = CONFIG.mail_path + name
+                        Path(dir_out).mkdir(parents=True, exist_ok=True)
+                        mlist.to_mbox(dir_out=CONFIG.mail_path)
+                        archive.append(mlist.name)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        archive.append(mlist)
+        return archive
 
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         """

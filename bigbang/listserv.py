@@ -1366,33 +1366,6 @@ class ListservArchive(object):
             archive_sections_dict[url_home] = "Home"
         return archive_sections_dict
 
-    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
-        """
-        Place all message in all lists into a dictionary of the form:
-            dic = {
-                "message_ID1": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-                "message_ID2": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-            }
-        """
-        # initialize dictionary
-        dic = {}
-        msg_nr = 0
-        # run through lists
-        for mlist in self.lists:
-            # run through messages
-            for msg in mlist.messages:
-                dic[f"ID{msg_nr}"] = msg.to_dict()
-                msg_nr += 1
-        return dic
-
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         """
         Concatenates mailing list dictionaries created using
