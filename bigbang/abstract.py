@@ -145,6 +145,16 @@ class AbstractMessageParser(ABC):
                 body = None
         return self.create_email_message(url, body, **header)
 
+    @abstractmethod
+    def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
+        pass
+
+    @abstractmethod
+    def _get_body_from_html(
+        self, list_name: str, url: str, soup: BeautifulSoup
+    ) -> Union[str, None]:
+        pass
+
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
         """Convert mboxMessage to a Dictionary"""
@@ -166,57 +176,53 @@ class AbstractMessageParser(ABC):
         return MessageIO.to_mbox(msg, filepath)
 
 
-# class AbstractList(ListIO):
-#    """
-#    This class handles the scraping of a single mailing list of a public archive
-#    in the LISTSERV 16.5 format.
-#
-#    Parameters
-#    ----------
-#    name : The of whom the list (e.g. 3GPP_COMMON_IMS_XFER, IEEESCO-DIFUSION, ...)
-#    source : Contains the information of the location of the mailing list.
-#        It can be either an URL where the list or a path to the file(s).
-#    msgs : List of mboxMessage objects
-#
-#    Methods
-#    -------
-#    from_url()
-#    from_messages()
-#    from_mbox()
-#    from_listserv_files()
-#    from_listserv_directories()
-#    get_messages_from_url()
-#    get_message_urls()
-#    get_period_urls()
-#    get_line_numbers_of_header_starts()
-#    get_index_of_elements_in_selection()
-#    to_dict()
-#    to_pandas_dataframe()
-#    to_mbox()
-#    """
-#
-#    def __init__(
-#        self,
-#        name: str,
-#        source: Union[List[str], str],
-#        msgs: List[mboxMessage],
-#    ):
-#        self.name = name
-#        self.source = source
-#        self.messages = msgs
-#
-#    def __len__(self) -> int:
-#        """Get number of messsages within the mailing list."""
-#        return len(self.messages)
-#
-#    def __iter__(self):
-#        """Iterate over each message within the mailing list."""
-#        return iter(self.messages)
-#
-#    def __getitem__(self, index) -> mboxMessage:
-#        """Get specific message at position `index` within the mailing list."""
-#        return self.messages[index]
-#
+class AbstractList(ABC, ListIO):
+    """
+    This class handles the scraping of a single mailing list of a public archive
+    in the LISTSERV 16.5 format.
+
+    Parameters
+    ----------
+    name : The of whom the list (e.g. 3GPP_COMMON_IMS_XFER, IEEESCO-DIFUSION, ...)
+    source : Contains the information of the location of the mailing list.
+        It can be either an URL where the list or a path to the file(s).
+    msgs : List of mboxMessage objects
+
+    Methods
+    -------
+    from_url()
+    from_messages()
+    from_mbox()
+    from_listserv_files()
+    from_listserv_directories()
+    to_dict()
+    to_pandas_dataframe()
+    to_mbox()
+    """
+
+    def __init__(
+        self,
+        name: str,
+        source: Union[List[str], str],
+        msgs: List[mboxMessage],
+    ):
+        self.name = name
+        self.source = source
+        self.messages = msgs
+
+    def __len__(self) -> int:
+        """Get number of messsages within the mailing list."""
+        return len(self.messages)
+
+    def __iter__(self):
+        """Iterate over each message within the mailing list."""
+        return iter(self.messages)
+
+    def __getitem__(self, index) -> mboxMessage:
+        """Get specific message at position `index` within the mailing list."""
+        return self.messages[index]
+
+
 #    @classmethod
 #    def from_url(
 #        cls,

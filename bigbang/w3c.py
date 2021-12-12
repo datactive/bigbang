@@ -22,7 +22,7 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
-from bigbang.abstract import AbstractMessageParser
+from bigbang.abstract import AbstractList, AbstractMessageParser
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
@@ -182,7 +182,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         return message_id
 
 
-class W3CList(ListIO):
+class W3CList(AbstractList, ListIO):
     """
     This class handles the scraping of a single W3C mailing list.
 
@@ -224,28 +224,6 @@ class W3CList(ListIO):
     To save it as *.mbox file we do the following
     >>> mlist.to_mbox(path_to_file)
     """
-
-    def __init__(
-        self,
-        name: str,
-        source: Union[List[str], str],
-        msgs: List[mboxMessage],
-    ):
-        self.name = name
-        self.source = source
-        self.messages = msgs
-
-    def __len__(self) -> int:
-        """Get number of messsages within the mailing list."""
-        return len(self.messages)
-
-    def __iter__(self):
-        """Iterate over each message within the mailing list."""
-        return iter(self.messages)
-
-    def __getitem__(self, index: int) -> mboxMessage:
-        """Get specific message at position `index` within the mailing list."""
-        return self.messages[index]
 
     @classmethod
     def from_url(
@@ -316,6 +294,7 @@ class W3CList(ListIO):
                 website=True,
                 url_login=url_login,
                 login=login,
+                session=session,
             )
             for msg_url in tqdm(messages, ascii=True, desc=name):
                 msg = msg_parser.from_url(
