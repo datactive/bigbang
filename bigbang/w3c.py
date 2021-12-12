@@ -22,6 +22,7 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
+from bigbang.abstract import AbstractMessageParser
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
@@ -56,7 +57,7 @@ class W3CArchiveWarning(BaseException):
     pass
 
 
-class W3CMessageParser(email.parser.Parser):
+class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
     """
     This class handles the creation of an mailbox.mboxMessage object
     (using the from_*() methods) and its storage in various other file formats
@@ -95,98 +96,6 @@ class W3CMessageParser(email.parser.Parser):
     """
 
     empty_header = {}
-
-    def __init__(
-        self,
-        url_login: str = None,
-        url_pref: str = None,
-        website: bool = False,
-        login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[requests.Session] = None,
-    ):
-        if website:
-            if (session is None) and (url_login is not None):
-                session = get_auth_session(url_login, **login)
-            self.session = session
-
-    def create_email_message(
-        self,
-        archived_at: str,
-        body: str,
-        **header,
-    ) -> mboxMessage:
-        """
-        Parameters
-        ----------
-        archived_at : URL to the Email message.
-        body : String that contains the body of the message.
-        header : Dictionary that contains all available header fields of the
-            message.
-        """
-        # crea EmailMessage
-        msg = email.message.EmailMessage()
-        if body is not None:
-            try:
-                msg.set_content(body)  # don't use charset="utf-16"
-            except Exception:
-                # UnicodeEncodeError: 'utf-16' codec can't encode character
-                # '\ud83d' in position 8638: surrogates not allowed
-                pass
-        for key, value in header.items():
-            if "content-type" == key:
-                msg.set_param("Content-Type", value)
-            elif "mime-version" == key:
-                msg.set_param("MIME-Version", value)
-            elif "content-transfer-encoding" == key:
-                msg.set_param("Content-Transfer-Encoding", value)
-            else:
-                try:
-                    # TODO: find out why it sometimes raises
-                    # email/_header_value_parser.py
-                    # IndexError: list index out of range.
-                    # Also look into UTF-8 encoding.
-                    msg[key] = value
-                except Exception:
-                    pass
-        if (
-            (msg["Message-ID"] is None)
-            and (msg["Date"] is not None)
-            and (msg["From"] is not None)
-        ):
-            msg["Message-ID"] = archived_at.split("/")[-1]
-        # convert to EmailMessage to mboxMessage
-        mbox_msg = mboxMessage(msg)
-        mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
-        return mbox_msg
-
-    def from_url(
-        self,
-        list_name: str,
-        url: str,
-        fields: str = "total",
-    ) -> mboxMessage:
-        """
-        Parameters
-        ----------
-        list_name : The name of the W3C Email list.
-        url : URL of this Email
-        fields : Indicates whether to return 'header', 'body' or 'total'/both or
-            the Email. The latter is the default.
-        """
-        soup = get_website_content(url, session=self.session)
-        if soup == "RequestException":
-            body = "RequestException"
-            header = self.empty_header
-        else:
-            if fields in ["header", "total"]:
-                header = self._get_header_from_html(soup)
-            else:
-                header = self.empty_header
-            if fields in ["body", "total"]:
-                body = self._get_body_from_html(url, soup)
-            else:
-                body = None
-        return self.create_email_message(url, body, **header)
 
     def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
         """
@@ -227,7 +136,7 @@ class W3CMessageParser(email.parser.Parser):
         return header
 
     def _get_body_from_html(
-        self, url: str, soup: BeautifulSoup
+        self, list_name: str, url: str, soup: BeautifulSoup
     ) -> Union[str, None]:
         """
         Lexer for the message body/payload.
@@ -271,26 +180,6 @@ class W3CMessageParser(email.parser.Parser):
         # remove special characters
         message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
         return message_id
-
-    @staticmethod
-    def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
-        """Convert mboxMessage to a Dictionary"""
-        return MessageIO.to_dict(msg)
-
-    @staticmethod
-    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
-        """Convert mboxMessage to a pandas.DataFrame"""
-        return MessageIO.to_pandas_dataframe(msg)
-
-    @staticmethod
-    def to_mbox(msg: mboxMessage, filepath: str):
-        """
-        Parameters
-        ----------
-        msg : The Email.
-        filepath : Path to file in which the Email will be stored.
-        """
-        return MessageIO.to_mbox(msg, filepath)
 
 
 class W3CList(ListIO):

@@ -34,6 +34,8 @@ class TestListservMessageParser:
             auth_key = yaml.safe_load(stream)
         msg_parser = ListservMessageParser(
             website=True,
+            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
+            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
             login=auth_key,
         )
         msg = msg_parser.from_url(
@@ -42,13 +44,15 @@ class TestListservMessageParser:
             fields="total",
         )
         print(list(msg.keys()))
-        assert msg["from"] == 'iceeng-10'
+        assert msg["from"] == "iceeng-10"
         assert msg["in-reply-to"] is None
 
     @pytest.fixture(name="msg", scope="module")
     def get_message(self):
         msg_parser = ListservMessageParser(
             website=True,
+            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
+            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
             login=auth_key_mock,
         )
         msg = msg_parser.from_url(
@@ -79,6 +83,8 @@ class TestListservMessageParser:
     def test__only_header_from_url(self):
         msg_parser = ListservMessageParser(
             website=True,
+            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
+            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
             login=auth_key_mock,
         )
         msg = msg_parser.from_url(
@@ -91,6 +97,8 @@ class TestListservMessageParser:
     def test__only_body_from_url(self):
         msg_parser = ListservMessageParser(
             website=True,
+            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
+            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
             login=auth_key_mock,
         )
         msg = msg_parser.from_url(
@@ -98,7 +106,7 @@ class TestListservMessageParser:
             url=url_message,
             fields="body",
         )
-        assert str(msg["subject"]) == 'None'
+        assert str(msg["subject"]) == "None"
 
     def test__to_dict(self, msg):
         dic = ListservMessageParser.to_dict(msg)
@@ -115,7 +123,6 @@ class TestListservMessageParser:
 
 
 class TestListservList:
-
     @pytest.mark.skipif(
         not os.path.isfile(file_auth),
         reason="Key to log into LISTSERV could not be found",
@@ -134,9 +141,9 @@ class TestListservList:
             },
             login=auth_key,
         )
-        assert mlist.messages[0]["from"] == 'iceeng-10'
+        assert mlist.messages[0]["from"] == "iceeng-10"
         assert mlist.messages[0]["to"] is None
-    
+
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist_from_url(self):
         mlist = ListservList.from_url(
@@ -149,7 +156,7 @@ class TestListservList:
             login=auth_key_mock,
         )
         return mlist
-    
+
     def test__get_mailinglist_from_messages(self):
         msgs_urls = [
             "https://listserv.ieee.org/cgi-bin/wa?A2=IEEE-TEST;a57724f6.2105a",
