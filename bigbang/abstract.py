@@ -21,7 +21,7 @@ from tqdm import tqdm
 
 from config.config import CONFIG
 
-from bigbang.io import ListservMessageIO, ListservListIO, ListservArchiveIO
+from bigbang.io import MessageIO, ListIO, ArchiveIO
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
@@ -59,7 +59,7 @@ class AbstractArchiveWarning(BaseException):
     pass
 
 
-class ListservMessageParser(email.parser.Parser):
+class AbstractMessageParser(ABC):
     """
     This class handles the creation of an mailbox.mboxMessage object
     (using the from_*() methods) and its storage in various other file formats
@@ -77,29 +77,6 @@ class ListservMessageParser(email.parser.Parser):
 
     Methods
     -------
-    from_url()
-    from_listserv_file()
-    _get_header_from_html()
-    _get_body_from_html()
-    _get_header_from_listserv_file()
-    _get_body_from_listserv_file()
-    get_datetime()
-
-    Example
-    -------
-    To create a Email message parser object, use the following syntax:
-    >>> msg_parser = ListservMessageParser(
-    >>>     website=True,
-    >>>     login={"username": <your_username>, "password": <your_password>},
-    >>> )
-
-    To obtain the Email message content and return it as `email.message.EmailMessage`
-    object, you need to do the following:
-    >>> msg = msg_parser.from_url(
-    >>>     list_name="3GPP_TSG_RAN_DRAFTS",
-    >>>     url="https://list.etsi.org/scripts/wa.exe?A2=ind2010B&L=3GPP_TSG_RAN_DRAFTS&O=D&P=29883",
-    >>>     fields="total",
-    >>> )
     """
 
     empty_header = {}
@@ -256,181 +233,6 @@ class ListservMessageParser(email.parser.Parser):
                 break
         return header_end_line_nr
 
-    def _get_header_from_listserv_file(
-        self,
-        content: List[str],
-        header_start_line_nr: int,
-        header_end_line_nr: int,
-    ) -> Dict[str, str]:
-        """
-        Lexer for the message header.
-
-        Parameters
-        ----------
-        content : The content of one LISTSERV-file.
-        header_start_line_nr : Line number in the file on which a new message starts.
-        header_end_line_nr : Line number in the file on which a new message ends.
-        """
-        # TODO re-write using email.parser.Parser
-        content = content[header_start_line_nr:header_end_line_nr]
-        # collect important info from LISTSERV header
-        header = {}
-        for lnr in range(len(content)):
-            line = content[lnr]
-            # get header keyword and value
-            if re.match(r"\S+:\s+\S+", line):
-                key = line.split(":")[0]
-                value = line.replace(key + ":", "").strip().rstrip("\n")
-                # if not at the end of header
-                if lnr < len(content) - 1:
-                    # if header-keyword value is split over two lines
-                    if not re.match(r"\S+:\s+\S+", content[lnr + 1]):
-                        value += " " + content[lnr + 1].strip().rstrip("\n")
-                header[key.lower()] = value
-        return header
-
-    def _get_body_from_listserv_file(
-        self,
-        content: List[str],
-        header_end_line_nr: int,
-    ) -> str:
-        """
-        Lexer for the message body/payload.
-
-        Parameters
-        ----------
-        content : The content of one LISTSERV-file.
-        header_end_line_nr : Line number in the file on which a new message ends.
-        """
-        # TODO re-write using email.parser.Parser
-        found = False
-        # find body 'position' in file
-        for line_nr, line in enumerate(content[header_end_line_nr:]):
-            if "=" * 73 in line:
-                body_end_line_nr = line_nr + header_end_line_nr
-                found = True
-                break
-        if not found:
-            body_end_line_nr = -1
-        # get body content
-        body = content[header_end_line_nr:body_end_line_nr]
-        # remove empty lines and join into one string
-        body = ("").join([line for line in body if len(line) > 1])
-        return body
-
-    def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
-        """
-        Lexer for the message header.
-
-        Parameters
-        ----------
-        soup : HTML code from which the Email header can be obtained.
-
-        Note
-        ----
-        Currently, this module encodes Chinese characters in UTF-8.
-        This should be avoided. When improving this, you can use
-        https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_CT_WG4;d2c3487b.2106A&S=
-        to test.
-        """
-        try:
-            for string in ["Subject", "SUBJECT"]:
-                try:
-                    _text = soup.find(
-                        "b",
-                        text=re.compile(r"^\b%s\b" % string),
-                    )  # Sometimes this returns None!
-                    text = _text.parent.parent.parent.parent  # .text
-                    break
-                except Exception:
-                    continue
-            # collect important info from LISTSERV header
-            header = {}
-            for line in text.find_all("tr"):
-                key = str(line.find_all(re.compile("^b"))[0])
-                key = re.search(r"<b>(.*?)<\/b>", key).group(1).lower()
-                key = re.sub(r":", "", key).strip()
-                if "subject" in key:
-                    value = repr(
-                        str(line.find_all(re.compile("^a"))[0].text).strip()
-                    )
-                else:
-                    try:  # Listserv 17
-                        value = repr(str(line.find_all(re.compile("^div"))[0]))
-                        value = re.search(r'">(.*)<\/div>', value).group(1)
-                        if "content-type" in key:
-                            value = value.split(";")[0]
-                    except Exception:  # Listserv 16.5
-                        value = repr(str(line.find_all(re.compile("^p"))[1]))
-                        value = re.search(r"<p>(.*)<\/p>", value).group(1)
-                        value = value.split(" <")[0]
-                value = re.sub(r"&gt;", ">", value).strip()
-                value = re.sub(r"&lt;", "<", value).strip()
-                # remove Carriage return
-                value = re.sub(r"\\r", "", value).strip()
-                # remove Linefeed
-                value = re.sub(r"\\n", "", value).strip()
-                if "parts/attachments" in key:
-                    break
-                elif "comments" in key:
-                    key = "comments-to"
-                    value = re.sub(r"To:", "", value).strip()
-                header[key] = value
-        except Exception:
-            header = self.empty_header
-        return header
-
-    def _get_body_from_html(
-        self, list_name: str, url: str, soup: BeautifulSoup
-    ) -> Union[str, None]:
-        """
-        Lexer for the message body/payload.
-        This methods look first whether the body is available in text/plain,
-        before it looks for the text/html option. If neither is available it
-        returns None.
-
-        Therefore this method does not try to return the richest information
-        content, but simply the ascii format.
-
-        Parameters
-        ----------
-        list_name : The name of the LISTSERV Email list.
-        url : URL to the Email.
-        soup : HTML code from which the Email body can be obtained.
-        """
-        # TODO re-write using email.parser.Parser
-        url_root = ("/").join(url.split("/")[:-2])
-        a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
-        href_plain_text = [
-            tag.get("href") for tag in a_tags if "Fplain" in tag.get("href")
-        ]
-        href_html_text = [
-            tag.get("href") for tag in a_tags if "Fhtml" in tag.get("href")
-        ]
-        try:
-            if href_plain_text:
-                body_soup = get_website_content(
-                    urljoin(url_root, href_plain_text[0])
-                )
-                if body_soup == "RequestException":
-                    return body_soup
-                else:
-                    return body_soup.find("pre").text
-            elif href_html_text:
-                body_soup = get_website_content(
-                    urljoin(url_root, href_html_text[0])
-                )
-                if body_soup == "RequestException":
-                    return body_soup
-                else:
-                    return body_soup.get_text(strip=True)
-        except Exception:
-            logger.info(
-                f"The message body of {url} which is part of the "
-                f"list {list_name} could not be loaded."
-            )
-            return None
-
     @staticmethod
     def get_datetime(line: str) -> str:
         """
@@ -461,12 +263,12 @@ class ListservMessageParser(email.parser.Parser):
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
         """Convert mboxMessage to a Dictionary"""
-        return ListservMessageIO.to_dict(msg)
+        return MessageIO.to_dict(msg)
 
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         """Convert mboxMessage to a pandas.DataFrame"""
-        return ListservMessageIO.to_pandas_dataframe(msg)
+        return MessageIO.to_pandas_dataframe(msg)
 
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
@@ -476,10 +278,10 @@ class ListservMessageParser(email.parser.Parser):
         msg : The Email.
         filepath : Path to file in which the Email will be stored.
         """
-        return ListservMessageIO.to_mbox(msg, filepath)
+        return MessageIO.to_mbox(msg, filepath)
 
 
-class ListservList(ListservListIO):
+class AbstractList(ListIO):
     """
     This class handles the scraping of a single mailing list of a public archive
     in the LISTSERV 16.5 format.
@@ -506,26 +308,6 @@ class ListservList(ListservListIO):
     to_dict()
     to_pandas_dataframe()
     to_mbox()
-
-
-    Example
-    -------
-    To scrape a Listserv mailing list from an URL and store it in
-    run-time memory, we do the following
-    >>> mlist = ListservList.from_url(
-    >>>     name="IEEE-TEST",
-    >>>     url="https://listserv.ieee.org/cgi-bin/wa?A0=IEEE-TEST",
-    >>>     select={
-    >>>         "years": 2015,
-    >>>         "months": "November",
-    >>>         "weeks": 4,
-    >>>         "fields": "header",
-    >>>     },
-    >>>     login={"username": <your_username>, "password": <your_password>},
-    >>> )
-
-    To save it as *.mbox file we do the following
-    >>> mlist.to_mbox(path_to_file)
     """
 
     def __init__(
@@ -560,7 +342,7 @@ class ListservList(ListservListIO):
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
-    ) -> "ListservList":
+    ) -> "AbstractList":
         """
         Parameters
         ----------
@@ -596,7 +378,7 @@ class ListservList(ListservListIO):
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
-    ) -> "ListservList":
+    ) -> "AbstractList":
         """
         Parameters
         ----------
@@ -616,7 +398,7 @@ class ListservList(ListservListIO):
         elif isinstance(messages[0], str):
             # create ListservList from message URLs
             msgs = []
-            msg_parser = ListservMessageParser(
+            msg_parser = AbstractMessageParser(
                 website=True,
                 url_login=url_login,
                 login=login,
@@ -638,14 +420,14 @@ class ListservList(ListservListIO):
         return cls(name, url, msgs)
 
     @classmethod
-    def from_mbox(cls, name: str, filepath: str) -> "ListservList":
+    def from_mbox(cls, name: str, filepath: str) -> "AbstractList":
         """
         Parameters
         ----------
         name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
         filepath : Path to file in which mailing list is stored.
         """
-        msgs = ListservListIO.from_mbox(filepath)
+        msgs = ListIO.from_mbox(filepath)
         return cls(name, filepath, msgs)
 
     @classmethod
@@ -655,7 +437,7 @@ class ListservList(ListservListIO):
         directorypaths: List[str],
         filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
-    ) -> "ListservList":
+    ) -> "AbstractList":
         """
         This method is required if the files that contain the list messages
         were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
@@ -688,7 +470,7 @@ class ListservList(ListservListIO):
         name: str,
         filepaths: List[str],
         select: Optional[dict] = None,
-    ) -> "ListservList":
+    ) -> "AbstractList":
         """
         This method is required if the files that contain the list messages
         were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
@@ -720,7 +502,7 @@ class ListservList(ListservListIO):
             )
             file.close()
             # run through all messages in file
-            msg_parser = ListservMessageParser(website=False)
+            msg_parser = AbstractMessageParser(website=False)
             for msg_nr in header_start_line_nrs:
                 msgs.append(
                     msg_parser.from_listserv_file(
@@ -755,7 +537,7 @@ class ListservList(ListservListIO):
         """
         # get all message URLs
         msg_urls = cls.get_message_urls(name, url, select)
-        msg_parser = ListservMessageParser(website=True, session=session)
+        msg_parser = AbstractMessageParser(website=True, session=session)
         # get all message contents
         msgs = []
         for msg_url in tqdm(msg_urls, ascii=True, desc=name):
@@ -797,9 +579,9 @@ class ListservList(ListservListIO):
             select = {"fields": "total"}
         msg_urls = []
         # run through periods
-        for period_url in ListservList.get_period_urls(url, select):
+        for period_url in AbstractList.get_period_urls(url, select):
             # run through messages within period
-            for msg_url in ListservList.get_messages_urls(name, period_url):
+            for msg_url in AbstractList.get_messages_urls(name, period_url):
                 msg_urls.append(msg_url)
         return msg_urls
 
@@ -837,7 +619,7 @@ class ListservList(ListservListIO):
 
                 periodquants = [cond(period) for period in periods]
 
-                indices = ListservList.get_index_of_elements_in_selection(
+                indices = AbstractList.get_index_of_elements_in_selection(
                     periodquants,
                     urls_of_periods,
                     value,
@@ -912,45 +694,6 @@ class ListservList(ListservListIO):
         """Get name of mailing list."""
         return url.split("A0=")[-1]
 
-    @classmethod
-    def get_messages_urls(cls, name: str, url: str) -> List[str]:
-        """
-        Parameters
-        ----------
-        name : Name of the `ListservList`
-        url : URL to group of messages that are within the same period.
-
-        Returns
-        -------
-        List to URLs from which `mboxMessage` can be initialized.
-        """
-        url_root = ("/").join(url.split("/")[:-2])
-        soup = get_website_content(url)
-        a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
-        if a_tags:
-            a_tags = [urljoin(url_root, url.get("href")) for url in a_tags]
-        return a_tags
-
-    @classmethod
-    def get_line_numbers_of_header_starts(
-        cls, content: List[str]
-    ) -> List[int]:
-        """
-        By definition LISTSERV logs seperate new messages by a row
-        of 73 equal signs.
-
-        Parameters
-        ----------
-        content : The content of one LISTSERV file.
-
-        Returns
-        -------
-        List of line numbers where header starts
-        """
-        return [
-            line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
-        ]
-
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         """
         Parameters
@@ -965,7 +708,7 @@ class ListservList(ListservListIO):
         header field contents arranged by the order as they were scraped from
         the web. This format makes the conversion to a pandas.DataFrame easier.
         """
-        return ListservListIO.to_dict(self.messages, include_body)
+        return ListIO.to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
@@ -979,17 +722,17 @@ class ListservList(ListservListIO):
         Converts the mailing list into a pandas.DataFrame object in which each
         row represents an Email.
         """
-        return ListservListIO.to_pandas_dataframe(self.messages, include_body)
+        return ListIO.to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """Safe mailing list to .mbox files."""
         if filename is None:
-            ListservListIO.to_mbox(self.messages, dir_out, self.name)
+            ListIO.to_mbox(self.messages, dir_out, self.name)
         else:
-            ListservListIO.to_mbox(self.messages, dir_out, filename)
+            ListIO.to_mbox(self.messages, dir_out, filename)
 
 
-class ListservArchive(object):
+class AbstractArchive(object):
     """
     This class handles the scraping of a public mailing list archive that uses
     the LISTSERV 16.5 and 17 format.
@@ -1012,32 +755,10 @@ class ListservArchive(object):
     to_dict()
     to_pandas_dataframe()
     to_mbox()
-
-    Example
-    -------
-    To scrape a Listserv mailing list archive from an URL and store it in
-    run-time memory, we do the following
-    >>> arch = ListservArchive.from_url(
-    >>>     name="IEEE",
-    >>>     url_root="https://listserv.ieee.org/cgi-bin/wa?",
-    >>>     url_home="https://listserv.ieee.org/cgi-bin/wa?HOME",
-    >>>     select={
-    >>>         "years": 2015,
-    >>>         "months": "November",
-    >>>         "weeks": 4,
-    >>>         "fields": "header",
-    >>>     },
-    >>>     login={"username": <your_username>, "password": <your_password>},
-    >>>     instant_save=False,
-    >>>     only_mlist_urls=False,
-    >>> )
-
-    To save it as *.mbox file we do the following
-    >>> arch.to_mbox(path_to_directory)
     """
 
     def __init__(
-        self, name: str, url: str, lists: List[Union[ListservList, str]]
+        self, name: str, url: str, lists: List[Union[AbstractList, str]]
     ):
         self.name = name
         self.url = url
@@ -1068,7 +789,7 @@ class ListservArchive(object):
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> "ListservArchive":
+    ) -> "AbstractArchive":
         """
         Create ListservArchive from a given URL.
 
@@ -1120,7 +841,7 @@ class ListservArchive(object):
         cls,
         name: str,
         url_root: str,
-        url_mailing_lists: Union[List[str], List[ListservList]],
+        url_mailing_lists: Union[List[str], List[AbstractList]],
         select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
@@ -1128,7 +849,7 @@ class ListservArchive(object):
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
-    ) -> "ListservArchive":
+    ) -> "AbstractArchive":
         """
         Create ListservArchive from a given list of 'ListservList'.
 
@@ -1160,7 +881,7 @@ class ListservArchive(object):
             lists = []
             for url in url_mailing_lists:
                 mlist_name = url.split("A0=")[-1]
-                mlist = ListservList.from_url(
+                mlist = AbstractList.from_url(
                     name=mlist_name,
                     url=url,
                     select=select,
@@ -1186,7 +907,7 @@ class ListservArchive(object):
         folderdsc: str = "*",
         filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
-    ) -> "ListservArchive":
+    ) -> "AbstractArchive":
         """
         This method is required if the files that contain the archive messages
         were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
@@ -1211,7 +932,7 @@ class ListservArchive(object):
         # run through directories and collect all filepaths
         for dirpath in _dirpaths_to_lists:
             _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
-            mlist = ListservList.from_listserv_files(
+            mlist = AbstractList.from_listserv_files(
                 dirpath.split("/")[-2],
                 _filepaths,
                 select,
@@ -1225,7 +946,7 @@ class ListservArchive(object):
         name: str,
         directorypath: str,
         filedsc: str = "*.mbox",
-    ) -> "ListservArchive":
+    ) -> "AbstractArchive":
         """
         Parameters
         ----------
@@ -1239,7 +960,7 @@ class ListservArchive(object):
         lists = []
         for filepath in filepaths:
             name = filepath.split("/")[-1].split(".")[0]
-            lists.append(ListservList.from_mbox(name, filepath))
+            lists.append(AbstractList.from_mbox(name, filepath))
         return cls(name, directorypath, lists)
 
     @staticmethod
@@ -1250,7 +971,7 @@ class ListservArchive(object):
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> List[Union[ListservList, str]]:
+    ) -> List[Union[AbstractList, str]]:
         """
         Created dictionary of all lists in the archive.
 
@@ -1278,7 +999,7 @@ class ListservArchive(object):
         archive = []
         # run through archive sections
         for url in list(
-            ListservArchive.get_sections(url_root, url_home).keys()
+            AbstractArchive.get_sections(url_root, url_home).keys()
         ):
             soup = get_website_content(url)
             a_tags_in_section = soup.select(
@@ -1294,9 +1015,9 @@ class ListservArchive(object):
             if only_mlist_urls:
                 # collect mailing-list urls
                 for mlist_url in mlist_urls:
-                    name = ListservList.get_name_from_url(mlist_url)
+                    name = AbstractList.get_name_from_url(mlist_url)
                     # check if mailing list contains messages in period
-                    _period_urls = ListservList.get_all_periods_and_their_urls(
+                    _period_urls = AbstractList.get_all_periods_and_their_urls(
                         mlist_url
                     )[1]
                     # check if mailing list is public
@@ -1305,7 +1026,7 @@ class ListservArchive(object):
                         for _period_url in _period_urls:
                             loops += 1
                             nr_msgs = len(
-                                ListservList.get_messages_urls(
+                                AbstractList.get_messages_urls(
                                     name=name, url=_period_url
                                 )
                             )
@@ -1315,8 +1036,8 @@ class ListservArchive(object):
             else:
                 # collect mailing-list contents
                 for mlist_url in mlist_urls:
-                    name = ListservList.get_name_from_url(mlist_url)
-                    mlist = ListservList.from_url(
+                    name = AbstractList.get_name_from_url(mlist_url)
+                    mlist = AbstractList.from_url(
                         name=name,
                         url=mlist_url,
                         select=select,
@@ -1333,82 +1054,25 @@ class ListservArchive(object):
                             archive.append(mlist)
         return archive
 
-    def get_sections(url_root: str, url_home: str) -> int:
-        """
-        Get different sections of archive.
-        On the Listserv 16.5 website they look like:
-        [3GPP] [3GPP–AT1] [AT2–CONS] [CONS–EHEA] [EHEA–ERM_] ...
-        On the Listserv 17 website they look like:
-        [<<][<]1-50(798)[>][>>]
-
-        Returns
-        -------
-        If sections exist, it returns their urls and names. Otherwise it returns
-        the url_home.
-        """
-        soup = get_website_content(url_home)
-        sections = soup.select(
-            'a[href*="INDEX="][href*="p="]',
-        )
-        archive_sections_dict = {}
-        if sections:
-            for sec in sections:
-                key = urljoin(url_root, sec.get("href"))
-                value = sec.text
-                if value in ["Next", "Previous"]:
-                    continue
-                archive_sections_dict[key] = value
-            archive_sections_dict[re.sub(r"p=[0-9]+", "p=1", key)] = "FIRST"
-        else:
-            archive_sections_dict[url_home] = "Home"
-        return archive_sections_dict
-
-    def to_conversationkg_dict(self) -> Dict[str, List[str]]:
-        """
-        Place all message in all lists into a dictionary of the form:
-            dic = {
-                "message_ID1": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-                "message_ID2": {
-                    "body": ...,
-                    "subject": ...,
-                    ... ,
-                }
-            }
-        """
-        # initialize dictionary
-        dic = {}
-        msg_nr = 0
-        # run through lists
-        for mlist in self.lists:
-            # run through messages
-            for msg in mlist.messages:
-                dic[f"ID{msg_nr}"] = msg.to_dict()
-                msg_nr += 1
-        return dic
-
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         """
         Concatenates mailing list dictionaries created using
         `ListservList.to_dict()`.
         """
-        return ListservArchiveIO.to_dict(self.lists, include_body)
+        return ArchiveIO.to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
         Concatenates mailing list pandas.DataFrames created using
         `ListservList.to_pandas_dataframe()`.
         """
-        return ListservArchiveIO.to_pandas_dataframe(self.lists, include_body)
+        return ArchiveIO.to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """
         Save Archive content to .mbox files
         """
-        ListservArchiveIO.to_mbox(self.lists, dir_out)
+        ArchiveIO.to_mbox(self.lists, dir_out)
 
 
 def set_website_preference_for_header(
