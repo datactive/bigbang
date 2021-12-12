@@ -9,6 +9,7 @@ import yaml
 import bigbang
 from bigbang import listserv
 from bigbang.w3c import (
+    W3CArchive,
     W3CList,
     W3CMessageParser,
 )
@@ -133,3 +134,54 @@ class TestW3CList:
         )
         f.close()
         Path(file_temp_mbox).unlink()
+
+
+class TestW3CArchive:
+    @pytest.fixture(name="arch", scope="session")
+    def get_mailarchive(self):
+        arch = W3CArchive.from_mailing_lists(
+            name="W3C",
+            url_root=url_archive,
+            url_mailing_lists=[
+                "https://lists.w3.org/Archives/Public/public-ixml/",
+                "https://lists.w3.org/Archives/Public/public-traffic/",
+                "https://lists.w3.org/Archives/Public/wai-site-comments/",
+            ],
+            select={
+                "years": 2015,
+                "months": "November",
+                "fields": "header",
+            },
+            instant_save=False,
+            only_mlist_urls=False,
+        )
+        return arch
+
+    def test__archive_content(self, arch):
+        assert arch.name == "W3C"
+        assert arch.url == url_archive
+        assert len(arch) == 1
+        assert len(arch.lists[0]) == 2
+        assert (
+            arch.lists[0].messages[0]["Subject"]
+            == "Re: Web Accessibility Issue"
+        )
+
+    def test__to_dict(self, arch):
+        dic = arch.to_dict()
+        assert len(list(dic.keys())) == 10
+        assert len(dic[list(dic.keys())[0]]) == 2
+
+    def test__to_mbox(self, arch):
+        arch.to_mbox(dir_temp)
+        file_dic = {
+            f"{dir_temp}/wai-site-comments.mbox": 25,
+        }
+        for filepath, line_nr in file_dic.items():
+            assert Path(filepath).is_file()
+            f = open(filepath, "r")
+            lines = f.readlines()
+            lines = [ll for ll in lines if len(ll) > 1]
+            assert line_nr == len(lines)
+            f.close()
+            Path(filepath).unlink()

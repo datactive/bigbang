@@ -111,7 +111,7 @@ class ListservMessageParser(email.parser.Parser):
         session: Optional[requests.Session] = None,
     ):
         if website:
-            if session is None:
+            if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
                 session = set_website_preference_for_header(url_pref, session)
             self.session = session
@@ -573,7 +573,7 @@ class ListservList(ListIO):
             up AuthSession. You can create your own for the 3GPP archive.
         session : requests.Session() object for the Email archive website.
         """
-        if session is None:
+        if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
             session = set_website_preference_for_header(url_pref, session)
         if select is None:
@@ -1098,7 +1098,7 @@ class ListservArchive(object):
         only_list_urls : Boolean giving the choice to collect only `ListservList`
             URLs or also their contents.
         """
-        if session is None:
+        if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
             session = set_website_preference_for_header(url_pref, session)
         lists = cls.get_lists_from_url(
@@ -1157,12 +1157,12 @@ class ListservArchive(object):
             scraped which can require a lot of memory and time.
         """
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
-            if session is None:
+            if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
                 session = set_website_preference_for_header(url_pref, session)
             lists = []
             for url in url_mailing_lists:
-                mlist_name = url.split("A0=")[-1]
+                mlist_name = ListservList.get_name_from_url(url)
                 mlist = ListservList.from_url(
                     name=mlist_name,
                     url=url,

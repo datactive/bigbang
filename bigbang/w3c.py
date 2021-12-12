@@ -1,29 +1,23 @@
-import numpy as np
-import email
-from tqdm import tqdm
-from urllib.parse import urljoin, urlparse
 import datetime
-import yaml
-import email.header
-import email.parser
-import gzip
+import email
 import logging
-import mailbox
 import os
 import re
+import subprocess
 import time
-import urllib.error
-import urllib.parse
-import urllib.request
+import warnings
+import mailbox
+from mailbox import mboxMessage
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
-import requests
-from mailbox import mboxMessage
-from email.mime.text import MIMEText
-import pandas as pd
+from urllib.parse import urljoin, urlparse
 
-import dateutil
+import numpy as np
+import pandas as pd
+import requests
+import yaml
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
 from config.config import CONFIG
 
@@ -576,6 +570,7 @@ class W3CList(ListIO):
         """
         # wait between loading messages, for politeness
         time.sleep(0.5)
+        print("get_all_periods_and_their_urls = ", url)
         soup = get_website_content(url)
         periods = []
         urls_of_periods = []
@@ -684,6 +679,7 @@ class W3CList(ListIO):
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """Safe mailing list to .mbox files."""
+        print("List.tombox", self.name)
         if filename is None:
             ListIO.to_mbox(self.messages, dir_out, self.name)
         else:
@@ -717,16 +713,14 @@ class W3CArchive(object):
     To scrape a W3C mailing list archive from an URL and store it in
     run-time memory, we do the following
     >>> arch = W3CArchive.from_url(
-    >>>     name="IEEE",
-    >>>     url_root="https://listserv.ieee.org/cgi-bin/wa?",
-    >>>     url_home="https://listserv.ieee.org/cgi-bin/wa?HOME",
+    >>>     name="W3C",
+    >>>     url_root="https://lists.w3.org/Archives/Public/",
     >>>     select={
     >>>         "years": 2015,
     >>>         "months": "November",
     >>>         "weeks": 4,
     >>>         "fields": "header",
     >>>     },
-    >>>     login={"username": <your_username>, "password": <your_password>},
     >>>     instant_save=False,
     >>>     only_mlist_urls=False,
     >>> )
@@ -757,10 +751,10 @@ class W3CArchive(object):
         cls,
         name: str,
         url_root: str,
-        url_home: str,
+        url_home: Optional[str] = None,
         select: Optional[dict] = None,
-        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
+        url_login: Optional[str] = None,
+        url_pref: Optional[str] = None,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
         instant_save: bool = True,
@@ -792,12 +786,12 @@ class W3CArchive(object):
         only_list_urls : Boolean giving the choice to collect only `W3CList`
             URLs or also their contents.
         """
-        if session is None:
+        if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(
+            select,
             url_root,
             url_home,
-            select,
             session,
             instant_save,
             only_mlist_urls,
@@ -818,8 +812,8 @@ class W3CArchive(object):
         url_root: str,
         url_mailing_lists: Union[List[str], List[W3CList]],
         select: Optional[dict] = None,
-        url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
-        url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
+        url_login: Optional[str] = None,
+        url_pref: Optional[str] = None,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
@@ -850,11 +844,11 @@ class W3CArchive(object):
             scraped which can require a lot of memory and time.
         """
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
-            if session is None:
+            if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
             lists = []
             for url in url_mailing_lists:
-                mlist_name = url.split("A0=")[-1]
+                mlist_name = W3CList.get_name_from_url(url)
                 mlist = W3CList.from_url(
                     name=mlist_name,
                     url=url,
@@ -898,9 +892,9 @@ class W3CArchive(object):
 
     @staticmethod
     def get_lists_from_url(
-        url_root: str,
-        url_home: str,
         select: dict,
+        url_root: str,
+        url_home: Optional[str] = None,
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
@@ -930,7 +924,10 @@ class W3CArchive(object):
         archive_dict : the keys are the names of the lists and the value their url
         """
         archive = []
-        soup = get_website_content(url_home)
+        if url_home is None:
+            soup = get_website_content(url_root)
+        else:
+            soup = get_website_content(url_home)
         mlist_urls = [
             urljoin(url_root, h3_tag.select("a")[0].get("href"))
             for h3_tag in soup.select("h3")
