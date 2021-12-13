@@ -22,8 +22,15 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
-from bigbang.abstract import AbstractList, AbstractMessageParser
+from bigbang.abstract import (
+    AbstractArchive,
+    AbstractList,
+    AbstractMessageParser,
+)
 from bigbang.utils import (
+    get_website_content,
+    set_website_preference_for_header,
+    get_auth_session,
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
 )
@@ -182,7 +189,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         return message_id
 
 
-class W3CList(AbstractList, ListIO):
+class W3CList(AbstractList):
     """
     This class handles the scraping of a single W3C mailing list.
 
@@ -198,13 +205,10 @@ class W3CList(AbstractList, ListIO):
     from_url()
     from_messages()
     from_mbox()
-    get_messages_from_url()
-    get_message_urls()
+    get_messages_urls()
     get_period_urls()
-    get_index_of_elements_in_selection()
-    to_dict()
-    to_pandas_dataframe()
-    to_mbox()
+    get_all_periods_and_their_urls()
+    get_name_from_url()
 
 
     Example
@@ -230,34 +234,29 @@ class W3CList(AbstractList, ListIO):
         cls,
         name: str,
         url: str,
-        url_login: str = None,
-        url_pref: str = None,
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
+        url_login: Optional[str] = None,
+        url_pref: Optional[str] = None,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
     ) -> "W3CList":
-        """
-        Parameters
-        ----------
-        name : Name of the list of messages, e.g. 'public-bigdata'
-        url : URL to the W3C list.
-        select : Selection criteria that can filter messages by:
-            - content, i.e. header and/or body
-            - period, i.e. written in a certain year and month
-        url_login : URL to the 'Log In' page
-        url_pref : URL to the 'Preferences'/settings page
-        login : Login credentials (username and password) that were used to set
-            up AuthSession.
-        session : requests.Session() object for the Email archive website.
-        """
+        """Docstring in `AbstractList`."""
         if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
-        if select is None:
-            select = {"fields": "total"}
-        elif "fields" not in list(select.keys()):
+            session = set_website_preference_for_header(url_pref, session)
+        if "fields" not in list(select.keys()):
             select["fields"] = "total"
-        msgs = cls.get_messages_from_url(name, url, select, session)
-        return cls.from_messages(name, url, msgs)
+        msg_urls = cls.get_message_urls(name, url, select)
+        return cls.from_messages(
+            name,
+            url,
+            msg_urls,
+            select["fields"],
+            url_login,
+            url_pref,
+            login,
+            session,
+        )
 
     @classmethod
     def from_messages(
@@ -265,93 +264,31 @@ class W3CList(AbstractList, ListIO):
         name: str,
         url: str,
         messages: List[Union[str, mboxMessage]],
+        fields: str = "total",
         url_login: str = None,
         url_pref: str = None,
-        fields: str = "total",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
     ) -> "W3CList":
-        """
-        Parameters
-        ----------
-        name : Name of the list of messages, e.g. 'public-bigdata'
-        url : URL to the W3C Email list.
-        messages : Can either be a list of URLs to specific W3C messages
-            or a list of `mboxMessage` objects.
-        url_login : URL to the 'Log In' page.
-        url_pref : URL to the 'Preferences'/settings page.
-        login : Login credentials (username and password) that were used to set
-            up AuthSession. You can create your own for the W3C archive.
-        session : requests.Session() object for the W3C Email archive website.
-        """
+        """Docstring in `AbstractList`."""
         if not messages:
-            # create empty W3CList for W3CArchive
-            msgs = messages
-        elif isinstance(messages[0], str):
-            # create W3CList from message URLs
             msgs = []
+        elif isinstance(messages[0], str):
+            if (session is None) and (url_login is not None):
+                session = get_auth_session(url_login, **login)
+                session = set_website_preference_for_header(url_pref, session)
             msg_parser = W3CMessageParser(
                 website=True,
                 url_login=url_login,
                 login=login,
                 session=session,
             )
-            for msg_url in tqdm(messages, ascii=True, desc=name):
-                msg = msg_parser.from_url(
-                    list_name=name,
-                    url=msg_url,
-                    fields=fields,
-                )
-                if msg.get_payload() == "RequestException":
-                    time.sleep(30)
-                else:
-                    msgs.append(msg)
-                    logger.info(f"Recorded the message {msg_url}.")
+            msgs = super().get_messages_from_urls(
+                name, messages, msg_parser, fields
+            )
         else:
-            # create W3CList from list of mboxMessage
             msgs = messages
         return cls(name, url, msgs)
-
-    @classmethod
-    def get_messages_from_url(
-        cls,
-        name: str,
-        url: str,
-        select: Optional[dict] = None,
-        session: Optional[dict] = None,
-    ) -> List[mboxMessage]:
-        """
-        Generator that returns all messages within a certain period
-        (e.g. January 2021, Week 5).
-
-        Parameters
-        ----------
-        name : Name of the list of messages, e.g. 'public-bigdata'
-        url : URL to the W3C list.
-        select : Selection criteria that can filter messages by:
-            - content, i.e. header and/or body
-            - period, i.e. written in a certain year and month
-        session : requests.Session() object for the W3C Email archive website.
-        """
-        # get all message URLs
-        msg_urls = cls.get_message_urls(name, url, select)
-        msg_parser = W3CMessageParser(website=True, session=session)
-        # get all message contents
-        msgs = []
-        for msg_url in tqdm(msg_urls, ascii=True, desc=name):
-            msg = msg_parser.from_url(
-                list_name=name,
-                url=msg_url,
-                fields=select["fields"],
-            )
-            if msg.get_payload() == "RequestException":
-                time.sleep(30)
-            else:
-                msgs.append(msg)
-                logger.info(f"Recorded the message {msg_url}.")
-            # wait between loading messages, for politeness
-            time.sleep(1)
-        return msgs
 
     @classmethod
     def get_message_urls(
@@ -360,26 +297,24 @@ class W3CList(AbstractList, ListIO):
         url: str,
         select: Optional[dict] = None,
     ) -> List[str]:
-        """
-        Parameters
-        ----------
-        name : Name of the list of messages, e.g. 'public-bigdata'
-        url : URL to the W3C list.
-        select : Selection criteria that can filter messages by:
-            - content, i.e. header and/or body
-            - period, i.e. written in a certain year and month
+        """Docstring in `AbstractList`."""
 
-        Returns
-        -------
-        List of all selected URLs of the messages in the mailing list.
-        """
-        if select is None:
-            select = {"fields": "total"}
+        def get_message_urls_from_period_url(name: str, url: str) -> List[str]:
+            soup = get_website_content(url)
+            a_tags = soup.select("div.messages-list a")
+            if a_tags:
+                a_tags = [
+                    urljoin(url, a_tag.get("href"))
+                    for a_tag in a_tags
+                    if a_tag.get("href") is not None
+                ]
+            return a_tags
+
         msg_urls = []
         # run through periods
         for period_url in W3CList.get_period_urls(url, select):
             # run through messages within period
-            for msg_url in W3CList.get_messages_urls(name, period_url):
+            for msg_url in get_message_urls_from_period_url(name, period_url):
                 msg_urls.append(msg_url)
         return msg_urls
 
@@ -438,7 +373,6 @@ class W3CList(AbstractList, ListIO):
         """
         # wait between loading messages, for politeness
         time.sleep(0.5)
-        print("get_all_periods_and_their_urls = ", url)
         soup = get_website_content(url)
         periods = []
         urls_of_periods = []
@@ -448,50 +382,6 @@ class W3CList(AbstractList, ListIO):
             periods.append(link.text)
             urls_of_periods.append(url + link.get("href"))
         return periods, urls_of_periods
-
-    @staticmethod
-    def get_index_of_elements_in_selection(
-        times: List[Union[int, str]],
-        urls: List[str],
-        filtr: Union[tuple, list, int, str],
-    ) -> List[int]:
-        """
-        Filter out messages that where in a specific period. Period here is a set
-        containing units of year and month which can have the following
-        example elements:
-            - years: (1992, 2010), [2000, 2008], 2021
-            - months: ["January", "July"], "November"
-
-        Parameters
-        ----------
-        times : A list containing information of the period for each
-            group of mboxMessage.
-        urls : Corresponding URLs of each group of mboxMessage of which the
-            period info is contained in `times`.
-        filtr : Containing info on what should be filtered.
-
-        Returns
-        -------
-        Indices of to the elements in `times`/`ursl`.
-        """
-        if isinstance(filtr, tuple):
-            # filter year or week in range
-            cond = lambda x: (np.min(filtr) <= x <= np.max(filtr))
-        if isinstance(filtr, list):
-            # filter in year, week, or month in list
-            cond = lambda x: x in filtr
-        if isinstance(filtr, int):
-            # filter specific year or week
-            cond = lambda x: x == filtr
-        if isinstance(filtr, str):
-            # filter specific month
-            cond = lambda x: x == filtr
-        return [idx for idx, time in enumerate(times) if cond(time)]
-
-    @staticmethod
-    def get_name_from_url(url: str) -> str:
-        """Get name of mailing list."""
-        return url.split("/")[-2]
 
     @classmethod
     def get_messages_urls(cls, name: str, url: str) -> List[str]:
@@ -503,7 +393,7 @@ class W3CList(AbstractList, ListIO):
 
         Returns
         -------
-        List to URLs from which `mboxMessage` can be initialized.
+        List of URLs from which `mboxMessage` can be initialized.
         """
         soup = get_website_content(url)
         a_tags = soup.select("div.messages-list a")
@@ -515,46 +405,13 @@ class W3CList(AbstractList, ListIO):
             ]
         return a_tags
 
-    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
-        """
-        Parameters
-        ----------
-        include_body : A boolean that indicates whether the message body should
-            be included or not.
-
-        Returns
-        -------
-        A Dictionary with the first key layer being the header field names and
-        the "body" key. Each value field is a list containing the respective
-        header field contents arranged by the order as they were scraped from
-        the web. This format makes the conversion to a pandas.DataFrame easier.
-        """
-        return ListIO.to_dict(self.messages, include_body)
-
-    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
-        """
-        Parameters
-        ----------
-        include_body : A boolean that indicates whether the message body should
-            be included or not.
-
-        Returns
-        -------
-        Converts the mailing list into a pandas.DataFrame object in which each
-        row represents an Email.
-        """
-        return ListIO.to_pandas_dataframe(self.messages, include_body)
-
-    def to_mbox(self, dir_out: str, filename: Optional[str] = None):
-        """Safe mailing list to .mbox files."""
-        print("List.tombox", self.name)
-        if filename is None:
-            ListIO.to_mbox(self.messages, dir_out, self.name)
-        else:
-            ListIO.to_mbox(self.messages, dir_out, filename)
+    @staticmethod
+    def get_name_from_url(url: str) -> str:
+        """Get name of mailing list."""
+        return url.split("/")[-2]
 
 
-class W3CArchive(object):
+class W3CArchive(AbstractArchive):
     """
     This class handles the scraping of W3C public mailing list archive in the
     hypermail format.
@@ -597,23 +454,6 @@ class W3CArchive(object):
     >>> arch.to_mbox(path_to_directory)
     """
 
-    def __init__(self, name: str, url: str, lists: List[Union[W3CList, str]]):
-        self.name = name
-        self.url = url
-        self.lists = lists
-
-    def __len__(self):
-        """Get number of mailing lists within the mailing archive."""
-        return len(self.lists)
-
-    def __iter__(self):
-        """Iterate over each mailing list within the mailing archive."""
-        return iter(self.lists)
-
-    def __getitem__(self, index):
-        """Get specific mailing list at position `index` from the mailing archive."""
-        return self.lists[index]
-
     @classmethod
     def from_url(
         cls,
@@ -628,32 +468,7 @@ class W3CArchive(object):
         instant_save: bool = True,
         only_mlist_urls: bool = True,
     ) -> "W3CArchive":
-        """
-        Create W3CArchive from a given URL.
-
-        Parameters
-        ----------
-        name : Email archive name, such that multiple instances of `W3CArchive`
-            can easily be distinguished.
-        url_root : The invariant root URL that does not change no matter what
-            part of the W3C archive we access.
-        url_home : The 'home' space of the W3C archive. This is required as
-            it contains the different sections which we obtain using `get_sections()`.
-        select: Selection criteria that can filter messages by:
-            - content, i.e. header and/or body
-            - period, i.e. written in a certain year, month, week-of-month
-        url_login : URL to the 'Log In' page.
-        url_pref : URL to the 'Preferences'/settings page.
-        login : Login credentials (username and password) that were used to set
-            up AuthSession.
-        session : requests.Session() object for the W3C Email archive website.
-        instant_save : Boolean giving the choice to save a `W3CList` as
-            soon as it is completely scraped or collect entire archive. The
-            prior is recommended if a large number of mailing lists are
-            scraped which can require a lot of memory and time.
-        only_list_urls : Boolean giving the choice to collect only `W3CList`
-            URLs or also their contents.
-        """
+        """Docstring in `AbstractList`."""
         if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(
@@ -687,30 +502,7 @@ class W3CArchive(object):
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
     ) -> "W3CArchive":
-        """
-        Create W3CArchive from a given list of 'W3CList'.
-
-        Parameters
-        ----------
-        name : Email archive name, such that multiple instances of `W3CArchive`
-            can easily be distinguished.
-        url_root : The invariant root URL that does not change no matter what
-            part of the W3C archive we access.
-        url_mailing_lists : This argument can either be a list of `W3CList`
-            objects or a list of string containing the URLs to the W3C
-            Email lists of interest.
-        url_login : URL to the 'Log In' page.
-        url_pref : URL to the 'Preferences'/settings page.
-        login : Login credentials (username and password) that were used to set
-            up AuthSession.
-        session : requests.Session() object for the W3C Email archive website.
-        only_list_urls : Boolean giving the choice to collect only `W3CList`
-            URLs or also their contents.
-        instant_save : Boolean giving the choice to save a `W3CList` as
-            soon as it is completely scraped or collect entire archive. The
-            prior is recommended if a large number of mailing lists are
-            scraped which can require a lot of memory and time.
-        """
+        """Docstring in `AbstractList`."""
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
@@ -735,29 +527,6 @@ class W3CArchive(object):
             lists = url_mailing_lists
         return cls(name, url_root, lists)
 
-    @classmethod
-    def from_mbox(
-        cls,
-        name: str,
-        directorypath: str,
-        filedsc: str = "*.mbox",
-    ) -> "W3CArchive":
-        """
-        Parameters
-        ----------
-        name : Email archive name, such that multiple instances of `W3CArchive`
-            can easily be distinguished.
-        directorypath : Path to the folder in which `W3CArchive` is stored.
-        filedsc : Optional filter that only reads files matching the description.
-            By default all files with an mbox extension are read.
-        """
-        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
-        lists = []
-        for filepath in filepaths:
-            name = filepath.split("/")[-1].split(".")[0]
-            lists.append(W3CList.from_mbox(name, filepath))
-        return cls(name, directorypath, lists)
-
     @staticmethod
     def get_lists_from_url(
         select: dict,
@@ -767,30 +536,7 @@ class W3CArchive(object):
         instant_save: bool = True,
         only_mlist_urls: bool = True,
     ) -> List[Union[W3CList, str]]:
-        """
-        Created dictionary of all lists in the archive.
-
-        Parameters
-        ----------
-        url_root : The invariant root URL that does not change no matter what
-            part of the W3C archive we access.
-        url_home : The 'home' space of the W3C archive. This is required as
-            it contains the different sections which we obtain using `get_sections()`.
-        select : Selection criteria that can filter messages by:
-            - content, i.e. header and/or body
-            - period, i.e. written in a certain year, month, week-of-month
-        session : requests.Session() object for the W3C Email archive website.
-        instant_save : Boolean giving the choice to save a `W3CList` as
-            soon as it is completely scraped or collect entire archive. The
-            prior is recommended if a large number of mailing lists are
-            scraped which can require a lot of memory and time.
-        only_list_urls : Boolean giving the choice to collect only `W3CList`
-            URLs or also their contents.
-
-        Returns
-        -------
-        archive_dict : the keys are the names of the lists and the value their url
-        """
+        """Docstring in `AbstractList`."""
         archive = []
         if url_home is None:
             soup = get_website_content(url_root)
@@ -844,149 +590,6 @@ class W3CArchive(object):
                         logger.info(f"Recorded the list {mlist.name}.")
                         archive.append(mlist)
         return archive
-
-    def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
-        """
-        Concatenates mailing list dictionaries created using
-        `W3CList.to_dict()`.
-        """
-        return ArchiveIO.to_dict(self.lists, include_body)
-
-    def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
-        """
-        Concatenates mailing list pandas.DataFrames created using
-        `W3CList.to_pandas_dataframe()`.
-        """
-        return ArchiveIO.to_pandas_dataframe(self.lists, include_body)
-
-    def to_mbox(self, dir_out: str):
-        """
-        Save Archive content to .mbox files
-        """
-        ArchiveIO.to_mbox(self.lists, dir_out)
-
-
-def get_auth_session(
-    url_login: str, username: str, password: str
-) -> requests.Session:
-    """
-    Create AuthSession.
-
-    There are three ways to create an AuthSession:
-        - parse username & password directly into method
-        - create a /bigbang/config/authentication.yaml file that contains keys
-        - type then into terminal when the method 'get_login_from_terminal'
-            is raised
-    """
-    if os.path.isfile(filepath_auth):
-        # read from /config/authentication.yaml
-        with open(filepath_auth, "r") as stream:
-            auth_key = yaml.safe_load(stream)
-        username = auth_key["username"]
-        password = auth_key["password"]
-    else:
-        # ask user for login keys
-        username, password = get_login_from_terminal(username, password)
-
-    if username is None or password is None:
-        # continue without authentication
-        return None
-    else:
-        # Start the AuthSession
-        session = requests.Session()
-        # Create the payload
-        payload = {
-            "LOGIN1": "",
-            "Y": username,
-            "p": password,
-            "X": "",
-        }
-        # Post the payload to the site to log in
-        session.post(url_login, data=payload)
-        return session
-
-
-def get_login_from_terminal(
-    username: Union[str, None],
-    password: Union[str, None],
-    file_auth: str = directory_project + "/config/authentication.yaml",
-) -> Tuple[Union[str, None]]:
-    """
-    Get login key from user during run time if 'username' and/or 'password' is 'None'.
-    Return 'None' if no reply within 15 sec.
-    """
-    if username is None or password is None:
-        record = True
-    else:
-        record = False
-    if username is None:
-        username = ask_for_input("Enter your Email: ")
-    if password is None:
-        password = ask_for_input("Enter your Password: ")
-    if record and isinstance(username, str) and isinstance(password, str):
-        loginkey_to_file(username, password, file_auth)
-    return username, password
-
-
-def ask_for_input(request: str) -> Union[str, None]:
-    timeout = 15
-    end_time = time.time() + timeout
-    while time.time() < end_time:
-        reply = input(request)
-        try:
-            assert isinstance(reply, str)
-            break
-        except Exception:
-            reply = None
-            continue
-    return reply
-
-
-def loginkey_to_file(
-    username: str,
-    password: str,
-    file_auth: str,
-) -> None:
-    """Safe login key to yaml"""
-    file = open(file_auth, "w")
-    file.write(f"username: '{username}'\n")
-    file.write(f"password: '{password}'")
-    file.close()
-
-
-def get_website_content(
-    url: str,
-    session: Optional[requests.Session] = None,
-) -> Union[str, BeautifulSoup]:
-    """
-    Get HTML code from website
-
-    Note
-    ----
-    Servers don't like it when one is sending too many requests from same
-    ip address in short period of time. Therefore we need to:
-        a) catch 'requests.exceptions.RequestException' errors
-            (includes all possible errors to be on the safe side),
-        b) safe intermediate results,
-        c) continue where we left off at a later stage.
-    """
-    # TODO: include option to change BeautifulSoup args
-    try:
-        if session is None:
-            sauce = requests.get(url)
-            assert sauce.status_code == 200
-            soup = BeautifulSoup(sauce.content, "html.parser")
-        else:
-            sauce = session.get(url)
-            soup = BeautifulSoup(sauce.text, "html.parser")
-        return soup
-    except requests.exceptions.RequestException as e:
-        if "A2=" in url:
-            # if URL of mboxMessage
-            logger.info(f"{e} for {url}.")
-            return "RequestException"
-        else:
-            SystemExit()
 
 
 def text_for_selector(soup: BeautifulSoup, selector: str):
