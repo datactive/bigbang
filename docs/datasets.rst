@@ -28,3 +28,6 @@ categories in the ``category`` column with the following code:
 
   import bigbang.datasets.domains as domains``
   domain_data = domains.load_data()``
+
+The sources of this data are a hand-curated list of domains provided by BigBang contributors
+and a list of generic email domain providers provided by this `public gist <https://gist.github.com/ammarshah/f5c2624d767f91a7cbdc4e54db8dd0bf/>`_.
