@@ -17,7 +17,6 @@ import bigbang.mailman as mailman
 import bigbang.parse as parse
 import bigbang.process as process
 import bigbang.utils as utils
-import bigbang.w3crawl as w3crawl
 from bigbang import repo_loader
 from config.config import CONFIG
 

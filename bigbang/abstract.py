@@ -282,6 +282,7 @@ class AbstractList(ABC):
         pass
 
     @classmethod
+    @abstractmethod
     def from_mbox(cls, name: str, filepath: str) -> "AbstractList":
         """
         Parameters
@@ -289,8 +290,7 @@ class AbstractList(ABC):
         name : Name of the mailing list, e.g. '3GPP_TSG_SA_WG2_UPCON'.
         filepath : Path to file in which mailing list is stored.
         """
-        msgs = ListIO.from_mbox(filepath)
-        return cls(name, filepath, msgs)
+        pass
 
     @classmethod
     @abstractmethod
@@ -560,6 +560,7 @@ class AbstractArchive(ABC):
         pass
 
     @classmethod
+    @abstractmethod
     def from_mbox(
         cls,
         name: str,
@@ -575,12 +576,7 @@ class AbstractArchive(ABC):
         filedsc : Optional filter that only reads files matching the description.
             By default all files with an mbox extension are read.
         """
-        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
-        lists = []
-        for filepath in filepaths:
-            name = filepath.split("/")[-1].split(".")[0]
-            lists.append(AbstractList.from_mbox(name, filepath))
-        return cls(name, directorypath, lists)
+        pass
 
     @classmethod
     @abstractmethod

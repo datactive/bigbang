@@ -482,6 +482,12 @@ class ListservList(AbstractList):
         return cls(name, url, msgs)
 
     @classmethod
+    def from_mbox(cls, name: str, filepath: str) -> "ListservList":
+        """Docstring in `AbstractList`."""
+        msgs = ListIO.from_mbox(filepath)
+        return cls(name, filepath, msgs)
+
+    @classmethod
     def from_listserv_directories(
         cls,
         name: str,
@@ -846,6 +852,21 @@ class ListservArchive(AbstractArchive):
                 select,
             )
             lists.append(mlist)
+        return cls(name, directorypath, lists)
+
+    @classmethod
+    def from_mbox(
+        cls,
+        name: str,
+        directorypath: str,
+        filedsc: str = "*.mbox",
+    ) -> "ListservList":
+        """Docstring in `AbstractList`."""
+        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
+        lists = []
+        for filepath in filepaths:
+            name = filepath.split("/")[-1].split(".")[0]
+            lists.append(AbstractList.from_mbox(name, filepath))
         return cls(name, directorypath, lists)
 
     @staticmethod

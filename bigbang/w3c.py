@@ -291,6 +291,12 @@ class W3CList(AbstractList):
         return cls(name, url, msgs)
 
     @classmethod
+    def from_mbox(cls, name: str, filepath: str) -> "W3CList":
+        """Docstring in `AbstractList`."""
+        msgs = ListIO.from_mbox(filepath)
+        return cls(name, filepath, msgs)
+
+    @classmethod
     def get_message_urls(
         cls,
         name: str,
@@ -526,6 +532,21 @@ class W3CArchive(AbstractArchive):
         else:
             lists = url_mailing_lists
         return cls(name, url_root, lists)
+
+    @classmethod
+    def from_mbox(
+        cls,
+        name: str,
+        directorypath: str,
+        filedsc: str = "*.mbox",
+    ) -> "W3CArchive":
+        """Docstring in `AbstractList`."""
+        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
+        lists = []
+        for filepath in filepaths:
+            name = filepath.split("/")[-1].split(".")[0]
+            lists.append(AbstractList.from_mbox(name, filepath))
+        return cls(name, directorypath, lists)
 
     @staticmethod
     def get_lists_from_url(

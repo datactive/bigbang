@@ -14,6 +14,7 @@ from bigbang.listserv import (
     ListservList,
     ListservMessageParser,
 )
+from bigbang.utils import get_login_from_terminal
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
@@ -224,11 +225,11 @@ class TestListservArchive:
             Path(filepath).unlink()
 
 
-@mock.patch("bigbang.listserv.ask_for_input", return_value="check")
+@mock.patch("bigbang.utils.ask_for_input", return_value="check")
 def test__get_login_from_terminal(input):
     """test if login keys will be documented"""
     file_auth = dir_temp + "/authentication.yaml"
-    _, _ = listserv.get_login_from_terminal(
+    _, _ = get_login_from_terminal(
         username=None, password=None, file_auth=file_auth
     )
     f = open(file_auth, "r")
