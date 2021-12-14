@@ -866,7 +866,7 @@ class ListservArchive(AbstractArchive):
         lists = []
         for filepath in filepaths:
             name = filepath.split("/")[-1].split(".")[0]
-            lists.append(AbstractList.from_mbox(name, filepath))
+            lists.append(ListservList.from_mbox(name, filepath))
         return cls(name, directorypath, lists)
 
     @staticmethod
