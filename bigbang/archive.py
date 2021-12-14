@@ -14,6 +14,7 @@ import pandas as pd
 from pathlib import Path
 import pytz
 
+import bigbang.domain as domain
 import bigbang.mailman as mailman
 from bigbang.parse import get_date, get_text
 import bigbang.process as process
@@ -49,6 +50,7 @@ class Archive(object):
     activity = None
     threads = None
     entities = None
+    froms = None
 
     def __init__(self, data, archive_dir=CONFIG.mail_path, mbox=False):
         """
@@ -247,6 +249,34 @@ class Archive(object):
         activity = activity.reindex(new_date_range, fill_value=0)
 
         return activity
+
+    def get_froms(self):
+        """
+        Returns a dataframe with a row for every message of the archive, containing
+        column entries for:
+
+         - The From field of the email
+         - The email address extracted from the From field
+         - The domain of the From field
+
+        This dataframe is computed the first time this method is called and then cached.
+
+        Returns
+        ----------
+
+        froms: pandas.DataFrame
+        """
+        if self.froms is not None:
+            return self.froms
+        else:
+            emails = self.data["From"].apply(domain.extract_email)
+            domains = self.data["From"].apply(domain.extract_domain)
+            self.froms = pd.concat(
+                [self.data["From"], emails, domains],
+                axis=1,
+                keys=["From", "email", "domain"],
+            )
+            return self.froms
 
     def get_threads(self, verbose=False):
         """Get threads."""
