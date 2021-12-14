@@ -45,6 +45,7 @@ install_requires = [
     "pyyaml>=5.4.1",
     "pyzmq>=22.0.3",
     "requests>=2.25.1",
+    "seaborn",
     "tornado>=6.1",
     "tqdm>=4.60.0",
     "validator_collection>=1.5.0",

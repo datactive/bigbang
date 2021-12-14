@@ -19,6 +19,7 @@ dependencies:
   - pytest>=6.2.1
   - python-dateutil
   - pip
+  - seaborn
   - scipy>=1.6.0
   - requests>=2.25.1
   - pyyaml
