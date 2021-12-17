@@ -433,15 +433,13 @@ class AbstractList(ABC):
 
 class AbstractArchive(ABC):
     """
-    This class handles the scraping of a public mailing list archive that uses
-    the LISTSERV 16.5 and 17 format.
-    An archive is a list of ListservList elements.
+    This class handles the scraping of a public mailing list archive.
 
     Parameters
     ----------
-    name : The of whom the archive is (e.g. 3GPP, IEEE, ...)
+    name : The of whom the archive is (e.g. 3GPP, IEEE, W3C, ...)
     url : The URL where the archive lives
-    lists : A list containing the mailing lists as `ListservList` types
+    lists : A list containing the mailing lists as `AbstractList` types
 
     Methods
     -------
