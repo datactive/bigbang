@@ -35,8 +35,8 @@ class TestListservMessageParser:
             auth_key = yaml.safe_load(stream)
         msg_parser = ListservMessageParser(
             website=True,
-            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
-            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
+            url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
+            url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key,
         )
         msg = msg_parser.from_url(
@@ -52,8 +52,8 @@ class TestListservMessageParser:
     def get_message(self):
         msg_parser = ListservMessageParser(
             website=True,
-            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
-            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
+            url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
+            url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key_mock,
         )
         msg = msg_parser.from_url(
@@ -84,8 +84,8 @@ class TestListservMessageParser:
     def test__only_header_from_url(self):
         msg_parser = ListservMessageParser(
             website=True,
-            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
-            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
+            url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
+            url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key_mock,
         )
         msg = msg_parser.from_url(
@@ -98,8 +98,8 @@ class TestListservMessageParser:
     def test__only_body_from_url(self):
         msg_parser = ListservMessageParser(
             website=True,
-            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
-            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
+            url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
+            url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key_mock,
         )
         msg = msg_parser.from_url(
@@ -140,8 +140,8 @@ class TestListservList:
                 "weeks": 4,
                 "fields": "header",
             },
-            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
-            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
+            url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
+            url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key,
         )
         assert mlist.messages[0]["from"] == "iceeng-10"
@@ -214,8 +214,8 @@ class TestListservArchive:
                 "weeks": 4,
                 "fields": "header",
             },
-            url_login="https://list.etsi.org/scripts/wa.exe?LOGON",
-            url_pref="https://list.etsi.org/scripts/wa.exe?PREF",
+            url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
+            url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key_mock,
             instant_save=False,
             only_mlist_urls=False,

@@ -160,10 +160,15 @@ class ListservList:
     @staticmethod
     def get_name_localpart_domain(string: str) -> tuple:
         """
-        Split an address field which has a format as
-        'Heinrich von Kleist <Heinrich.vonKleist@SELBST.ORG>' into name,
+        Split an address field which has (ideally) a format as
+        'Heinrich von Kleist <Heinrich.vonKleist@SELBST.org>' into name,
         local-part, and domain.
         All strings are returned in lower case only to avoid duplicates.
+
+        Note
+        ----
+        Test whether the incorporation of email.utils.parseaddr() can improve
+        this function.
         """
         # test if name is in string or if address is duplicated
         test = string.split(" ")
@@ -172,10 +177,14 @@ class ListservList:
             and all("@" in st for st in test)
             and (test[0] == test[1])
         ):
+            # identifies addresses of the form:
+            # localpart@domain localpart@domain
             addr = test[0]
             localpart, domain = addr.split("@")
             return None, localpart.lower(), domain.lower()
-        elif (len(test) > 2) and "@" in test[-1]:
+        elif (len(test) > 2) and ("@" in test[-1]):
+            # identifies addresses of the form:
+            # abc def ghi localpart@domain
             name = (" ").join(test[:-1])
             name = name.replace('"', "").replace('"', "")
             addr = test[-1]
@@ -183,8 +192,12 @@ class ListservList:
             localpart, domain = addr.split("@")
             return name.lower(), localpart.lower(), domain.lower()
         else:
-            name, addr = email.utils.parseaddr(string)
-            addr = addr.split(" ")[-1]
+            # identifies addresses of the form:
+            # abc localpart@domain
+            name = string.split(" ")[0]
+            name = name.replace('"', "")
+            addr = string.split(" ")[-1]
+            addr = addr.replace("<", "").replace(">", "")
             if "@" in addr:
                 localpart, domain = addr.split("@")
                 return name.lower(), localpart.lower(), domain.lower()
@@ -199,10 +212,14 @@ class ListservList:
     def iterator_name_localpart_domain(li: list) -> tuple:
         """Generator for the self.get_name_localpart_domain() function."""
         for string in li:
-            if ("<" in string) and (">" in string):
+            # identify whether there are multiple addresses in one header field
+            if (string.count("<") > 1) and (string.count(">") > 1):
                 addresses = re.findall(r"(?<=\<).+?(?=\>)", string)
                 for addr in addresses:
-                    yield ListservList.get_name_localpart_domain(addr)
+                    if "@" in addr:
+                        yield ListservList.get_name_localpart_domain(addr)
+                    else:
+                        continue
             else:
                 yield ListservList.get_name_localpart_domain(string)
 

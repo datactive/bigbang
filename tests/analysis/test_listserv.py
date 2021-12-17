@@ -38,6 +38,35 @@ def get_mailinglist():
     return mlist
 
 
+def test_dissection_of_address_header_field():
+    filepath = CONFIG.test_data_path + "address_header_test_file.yaml"
+    with open(filepath, "r") as stream:
+        addresses = yaml.safe_load(stream)
+
+    generator = ListservList.iterator_name_localpart_domain(
+        list(addresses.keys())
+    )
+    address = tuple(s.lower() for s in list(addresses.values())[0].values())
+    assert next(generator) == address
+    address = tuple(s.lower() for s in list(addresses.values())[1].values())
+    assert next(generator) == address
+    address = tuple(s.lower() for s in list(addresses.values())[2].values())
+    assert next(generator) == address
+    address = tuple(
+        None if s is None else s.lower()
+        for s in list(addresses.values())[3].values()
+    )
+    assert next(generator) == address
+    address = tuple(s.lower() for s in list(addresses.values())[4].values())
+    assert next(generator) == address
+    address = tuple(s.lower() for s in list(addresses.values())[5].values())
+    assert next(generator) == address
+    address = tuple(s.lower() for s in list(addresses.values())[6].values())
+    assert next(generator) == address
+    address = tuple(s.lower() for s in list(addresses.values())[7].values())
+    assert next(generator) == address
+
+
 class TestListservList:
     def test__to_percentage(self):
         abso = np.array([1, 3])
