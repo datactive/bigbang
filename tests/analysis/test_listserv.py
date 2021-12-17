@@ -65,6 +65,16 @@ def test_dissection_of_address_header_field():
     assert next(generator) == address
     address = tuple(s.lower() for s in list(addresses.values())[7].values())
     assert next(generator) == address
+    address = list(addresses.values())[9]
+    assert next(generator)[1:] == tuple(
+        [address["localpart"][0].lower(), address["domain"][0].lower()]
+    )
+    assert next(generator)[1:] == tuple(
+        [address["localpart"][1].lower(), address["domain"][1].lower()]
+    )
+    assert next(generator)[1:] == tuple(
+        [address["localpart"][2].lower(), address["domain"][2].lower()]
+    )
 
 
 class TestListservList:
