@@ -8,8 +8,7 @@ import pytest
 import yaml
 
 import bigbang
-from bigbang import listserv
-from bigbang.listserv import (
+from bigbang.ingress.listserv import (
     ListservArchive,
     ListservList,
     ListservMessageParser,

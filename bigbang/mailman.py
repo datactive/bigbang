@@ -24,7 +24,8 @@ import bigbang.archive as archive
 
 from config.config import CONFIG
 
-from . import listserv, parse, w3c
+from bigbang.ingress import listserv, w3c
+from bigbang import parse
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
 txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')

@@ -7,8 +7,7 @@ import pytest
 import yaml
 
 import bigbang
-from bigbang import listserv
-from bigbang.w3c import (
+from bigbang.ingress import (
     W3CArchive,
     W3CList,
     W3CMessageParser,

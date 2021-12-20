@@ -22,7 +22,7 @@ from tqdm import tqdm
 from config.config import CONFIG
 
 from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
-from bigbang.abstract import (
+from bigbang.ingress import (
     AbstractArchive,
     AbstractList,
     AbstractMessageParser,
