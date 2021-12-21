@@ -47,8 +47,10 @@ def get_website_content(
     try:
         if session is None:
             sauce = requests.get(url)
-            assert sauce.status_code == 200
-            soup = BeautifulSoup(sauce.content, "html.parser")
+            if sauce.status_code == 200:
+                soup = BeautifulSoup(sauce.content, "html.parser")
+            elif sauce.status_code == 404:
+                return "RequestException"
         else:
             sauce = session.get(url)
             soup = BeautifulSoup(sauce.text, "html.parser")

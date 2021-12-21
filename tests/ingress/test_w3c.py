@@ -135,6 +135,19 @@ class TestW3CList:
 
 
 class TestW3CArchive:
+    # def test__get_only_mlist_urls(self):
+    #    arch = W3CArchive.from_url(
+    #        name="W3C",
+    #        url_root=url_archive,
+    #        select={
+    #            "years": 2015,
+    #            "months": "November",
+    #        },
+    #        instant_save=False,
+    #        only_mlist_urls=True,
+    #    )
+    #    return arch
+
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
         arch = W3CArchive.from_mailing_lists(
@@ -151,9 +164,20 @@ class TestW3CArchive:
                 "fields": "header",
             },
             instant_save=False,
-            only_mlist_urls=False,
+            only_mlist_urls=True,
         )
-        return arch
+        assert arch.lists == 1
+
+    def test__from_mbox(self):
+        arch = W3CArchive.from_mbox(
+            name="3GPP",
+            directorypath=CONFIG.test_data_path + "3GPP_mbox/",
+            filedsc="3GPP_TSG_*.mbox",
+        )
+        assert len(arch) == 2
+        print(arch.lists)
+        assert len(arch.lists[0]) == 50
+        assert len(arch.lists[1]) == 59
 
     def test__archive_content(self, arch):
         assert arch.name == "W3C"

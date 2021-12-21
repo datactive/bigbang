@@ -1,4 +1,3 @@
-import datetime
 import email
 import logging
 import os
@@ -82,14 +81,12 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
 
     Methods
     -------
-    create_email_message()
     from_url()
     from_listserv_file()
     _get_header_from_html()
     _get_body_from_html()
     _get_header_from_listserv_file()
     _get_body_from_listserv_file()
-    get_datetime()
 
     Example
     -------
@@ -343,33 +340,6 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
                 f"list {list_name} could not be loaded."
             )
             return None
-
-    @staticmethod
-    def get_datetime(line: str) -> str:
-        """
-        Parameters
-        ----------
-        line : String that contains date and time.
-        """
-        dt = (" ").join(line.split(" ")[:-1]).lstrip()
-        # convert format to local version of date and time
-        date_time_obj = datetime.datetime.strptime(
-            dt, "%a, %d %b %Y %H:%M:%S %z"
-        )
-        return date_time_obj.strftime("%c")
-
-    @staticmethod
-    def create_message_id(date: str, from_address: str) -> str:
-        """
-        Parameters
-        ----------
-        date : Date and time of Email.
-        from_address : The sender address of the Email.
-        """
-        message_id = (".").join([date, from_address])
-        # remove special characters
-        message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
-        return message_id
 
 
 class ListservList(AbstractList):

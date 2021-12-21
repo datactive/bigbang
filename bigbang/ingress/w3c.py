@@ -1,4 +1,3 @@
-import datetime
 import email
 import logging
 import os
@@ -86,7 +85,6 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
     from_url()
     _get_header_from_html()
     _get_body_from_html()
-    get_datetime()
 
     Example
     -------
@@ -160,33 +158,6 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         except Exception:
             logger.info(f"The message body of {url} could not be loaded.")
             return None
-
-    @staticmethod
-    def get_datetime(line: str) -> str:
-        """
-        Parameters
-        ----------
-        line : String that contains date and time.
-        """
-        dt = (" ").join(line.split(" ")[:-1]).lstrip()
-        # convert format to local version of date and time
-        date_time_obj = datetime.datetime.strptime(
-            dt, "%a, %d %b %Y %H:%M:%S %z"
-        )
-        return date_time_obj.strftime("%a, %d %b %Y %H:%M:%S %z")
-
-    @staticmethod
-    def create_message_id(date: str, from_address: str) -> str:
-        """
-        Parameters
-        ----------
-        date : Date and time of Email.
-        from_address : The sender address of the Email.
-        """
-        message_id = (".").join([date, from_address])
-        # remove special characters
-        message_id = re.sub(r"[^a-zA-Z0-9]+", "", message_id)
-        return message_id
 
 
 class W3CList(AbstractList):
@@ -384,7 +355,11 @@ class W3CList(AbstractList):
         urls_of_periods = []
         rows = soup.select("tbody tr")
         for row in rows:
-            link = row.select("td:nth-of-type(1) a")[0]
+            link = row.select("td:nth-of-type(1) a")
+            if len(link) > 0:
+                link = link[0]
+            else:
+                continue
             periods.append(link.text)
             urls_of_periods.append(url + link.get("href"))
         return periods, urls_of_periods
@@ -402,14 +377,17 @@ class W3CList(AbstractList):
         List of URLs from which `mboxMessage` can be initialized.
         """
         soup = get_website_content(url)
-        a_tags = soup.select("div.messages-list a")
-        if a_tags:
-            a_tags = [
-                urljoin(url, a_tag.get("href"))
-                for a_tag in a_tags
-                if a_tag.get("href") is not None
-            ]
-        return a_tags
+        if soup == "RequestException":
+            return []
+        else:
+            a_tags = soup.select("div.messages-list a")
+            if a_tags:
+                a_tags = [
+                    urljoin(url, a_tag.get("href"))
+                    for a_tag in a_tags
+                    if a_tag.get("href") is not None
+                ]
+            return a_tags
 
     @staticmethod
     def get_name_from_url(url: str) -> str:
@@ -545,7 +523,7 @@ class W3CArchive(AbstractArchive):
         lists = []
         for filepath in filepaths:
             name = filepath.split("/")[-1].split(".")[0]
-            lists.append(AbstractList.from_mbox(name, filepath))
+            lists.append(W3CList.from_mbox(name, filepath))
         return cls(name, directorypath, lists)
 
     @staticmethod

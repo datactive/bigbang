@@ -287,7 +287,7 @@ class AbstractList(ABC):
         """
         Parameters
         ----------
-        name : Name of the mailing list, e.g. '3GPP_TSG_SA_WG2_UPCON'.
+        name : Name of the list of messages, e.g. '3GPP_TSG_SA_WG2_UPCON'.
         filepath : Path to file in which mailing list is stored.
         """
         pass
