@@ -46,35 +46,50 @@ def test_dissection_of_address_header_field():
     generator = ListservList.iterator_name_localpart_domain(
         list(addresses.keys())
     )
-    address = tuple(s.lower() for s in list(addresses.values())[0].values())
-    assert next(generator) == address
-    address = tuple(s.lower() for s in list(addresses.values())[1].values())
-    assert next(generator) == address
-    address = tuple(s.lower() for s in list(addresses.values())[2].values())
-    assert next(generator) == address
-    address = tuple(
-        None if s is None else s.lower()
-        for s in list(addresses.values())[3].values()
+    assert (
+        list(next(generator))
+        == addresses[
+            '"xuxiaodong@chinamobile.com" <xuxiaodong@CHINAMOBILE.COM>'
+        ]
     )
-    assert next(generator) == address
-    address = tuple(s.lower() for s in list(addresses.values())[4].values())
-    assert next(generator) == address
-    address = tuple(s.lower() for s in list(addresses.values())[5].values())
-    assert next(generator) == address
-    address = tuple(s.lower() for s in list(addresses.values())[6].values())
-    assert next(generator) == address
-    address = tuple(s.lower() for s in list(addresses.values())[7].values())
-    assert next(generator) == address
-    address = list(addresses.values())[9]
-    assert next(generator)[1:] == tuple(
-        [address["localpart"][0].lower(), address["domain"][0].lower()]
+    assert (
+        list(next(generator))
+        == addresses["Jacob John <jacobjohn@MOTOROLA.COM>"]
     )
-    assert next(generator)[1:] == tuple(
-        [address["localpart"][1].lower(), address["domain"][1].lower()]
+    assert (
+        list(next(generator))
+        == addresses['"Wuyuchun (Wu Yuchun, Hisilicon)" <wuyuchun@HUAWEI.COM>']
     )
-    assert next(generator)[1:] == tuple(
-        [address["localpart"][2].lower(), address["domain"][2].lower()]
+    assert (
+        list(next(generator))
+        == addresses[
+            "xingjinqiang@chinamobile.com xingjinqiang@chinamobile.com"
+        ]
     )
+    assert (
+        list(next(generator))
+        == addresses["abdul rasheed m d rasheed@motorola.com"]
+    )
+    assert (
+        list(next(generator))
+        == addresses[
+            "fredrik =?utf-8?q?sundstr=c3=b6m?= fredrik.sundstrom@ericsson.com"
+        ]
+    )
+    assert (
+        list(next(generator))
+        == addresses["guozhili guozhili@starpointcomm.com"]
+    )
+    assert (
+        list(next(generator))
+        == addresses["=?utf-8?b?runjvc3lvkdnu6flrr4=?= zhangjibin@ecit.org.cn"]
+    )
+    replyto_sample = addresses[
+        '"Yanyali (Yali)" <yanyali@HUAWEI.COM>, Guchunying <guchunying@HUAWEI.COM>, Ingbert Sigovich <Ingbert.Sigovich@ETSI.ORG>'
+    ]
+    assert list(next(generator)) == replyto_sample[0][1]
+    assert list(next(generator)) == replyto_sample[1][2]
+    assert list(next(generator)) == replyto_sample[2][3]
 
 
 class TestListservList:

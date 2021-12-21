@@ -27,7 +27,6 @@ class TestW3CMessageParser:
         msg_parser = W3CMessageParser(
             website=True,
         )
-        print("------->", msg_parser.session)
         msg = msg_parser.from_url(
             list_name="public-test2",
             url=url_message,
@@ -126,7 +125,6 @@ class TestW3CList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        print(lines)
         assert len(lines) == 31
         assert (
             lines[5]
