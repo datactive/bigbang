@@ -164,9 +164,9 @@ class TestW3CArchive:
                 "fields": "header",
             },
             instant_save=False,
-            only_mlist_urls=True,
+            only_mlist_urls=False,
         )
-        assert arch.lists == 1
+        return arch
 
     def test__from_mbox(self):
         arch = W3CArchive.from_mbox(
