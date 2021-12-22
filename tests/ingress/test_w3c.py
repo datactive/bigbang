@@ -175,9 +175,11 @@ class TestW3CArchive:
             filedsc="3GPP_TSG_*.mbox",
         )
         assert len(arch) == 2
-        print(arch.lists)
-        assert len(arch.lists[0]) == 50
-        assert len(arch.lists[1]) == 59
+        names = [mlist.name for mlist in arch.lists]
+        index = names.index("3GPP_TSG_SA_WG4_EVS")
+        assert len(arch.lists[index]) == 50
+        index = names.index("3GPP_TSG_RAN_WG4_NR-MIMO-OTA")
+        assert len(arch.lists[index]) == 59
 
     def test__archive_content(self, arch):
         assert arch.name == "W3C"
