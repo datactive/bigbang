@@ -18,6 +18,7 @@ from bs4 import BeautifulSoup
 from config.config import CONFIG
 from bigbang.utils import get_paths_to_files_in_directory
 from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
+from bigbang.utils import get_website_content
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -736,38 +737,3 @@ def loginkey_to_file(
     file.write(f"username: '{username}'\n")
     file.write(f"password: '{password}'")
     file.close()
-
-
-def get_website_content(
-    url: str,
-    session: Optional[requests.Session] = None,
-) -> Union[str, BeautifulSoup]:
-    """
-    Get HTML code from website
-
-    Note
-    ----
-    Servers don't like it when one is sending too many requests from same
-    ip address in short period of time. Therefore we need to:
-        a) catch 'requests.exceptions.RequestException' errors
-            (includes all possible errors to be on the safe side),
-        b) safe intermediate results,
-        c) continue where we left off at a later stage.
-    """
-    # TODO: include option to change BeautifulSoup args
-    try:
-        if session is None:
-            sauce = requests.get(url)
-            assert sauce.status_code == 200
-            soup = BeautifulSoup(sauce.content, "html.parser")
-        else:
-            sauce = session.get(url)
-            soup = BeautifulSoup(sauce.text, "html.parser")
-        return soup
-    except requests.exceptions.RequestException as e:
-        if "A2=" in url:
-            # if URL of mboxMessage
-            logger.info(f"{e} for {url}.")
-            return "RequestException"
-        else:
-            SystemExit()
