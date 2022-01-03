@@ -160,7 +160,13 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
 
 class W3CList(AbstractList):
     """
-    This class handles the scraping of a single W3C mailing list.
+    This class handles the scraping of a all public Emails contained in a single
+    mailing list in the hypermail format.
+    To be more precise, each contributor to a mailing list sends
+    their message to an Email address that has the following structure:
+    <mailing_list_name>@w3.org.
+    Thus, this class contains all Emails send to a specific <mailing_list_name>
+    (the Email localpart, such as "public-abcg" or "public-accesslearn-contrib").
 
     Parameters
     ----------
@@ -171,13 +177,8 @@ class W3CList(AbstractList):
 
     Methods
     -------
-    from_url()
-    from_messages()
-    from_mbox()
-    get_messages_urls()
-    get_period_urls()
+    All methods in the `AbstractList` class in addition to:
     get_all_periods_and_their_urls()
-    get_name_from_url()
 
 
     Example
@@ -374,8 +375,16 @@ class W3CList(AbstractList):
 
 class W3CArchive(AbstractArchive):
     """
-    This class handles the scraping of W3C public mailing list archive in the
-    hypermail format.
+    This class handles the scraping of a all public Emails contained in a mailing
+    archive that has the hypermail format, such as W3C.
+    To be more precise, each contributor to a mailing archive sends their message
+    to an Email address that has the following structure:
+    <mailing_list_name>@w3.org.
+    Thus, this class contains all Emails send to <mailing_archive_name>
+    (the Email domain name). These Emails are contained in a list of
+    `W3CList` types, such that it is known to which <mailing_list_name>
+    (the Email localpart) was send.
+
 
     Parameters
     ----------
@@ -385,14 +394,7 @@ class W3CArchive(AbstractArchive):
 
     Methods
     -------
-    from_url()
-    from_mbox()
-    from_mailing_lists()
-    get_lists()
-    get_sections()
-    to_dict()
-    to_pandas_dataframe()
-    to_mbox()
+    All methods in the `AbstractArchive` class.
 
     Example
     -------

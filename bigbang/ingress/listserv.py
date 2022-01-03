@@ -346,8 +346,13 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
 
 class ListservList(AbstractList):
     """
-    This class handles the scraping of a single mailing list of a public archive
-    in the LISTSERV 16.5 and 17 format.
+    This class handles the scraping of a all public Emails contained in a single
+    mailing list in the LISTSERV 16.5 and 17 format.
+    To be more precise, each contributor to a mailing list sends
+    their message to an Email address that has the following structure:
+    <mailing_list_name>@LIST.ETSI.ORG.
+    Thus, this class contains all Emails send to a specific <mailing_list_name>
+    (the Email localpart, such as "3GPP_TSG_CT_WG1" or "3GPP_TSG_CT_WG3_108E_MAIN").
 
     Parameters
     ----------
@@ -358,18 +363,12 @@ class ListservList(AbstractList):
 
     Methods
     -------
-    from_url()
-    from_messages()
-    from_mbox()
+    All methods in the `AbstractList` class in addition to:
     from_listserv_files()
     from_listserv_directories()
-    get_messages_urls()
     get_period_urls()
     get_line_numbers_of_header_starts()
     get_index_of_elements_in_selection()
-    to_dict()
-    to_pandas_dataframe()
-    to_mbox()
 
 
     Example
@@ -665,27 +664,27 @@ class ListservList(AbstractList):
 
 class ListservArchive(AbstractArchive):
     """
-    This class handles the scraping of a public mailing list archive that uses
-    the LISTSERV 16.5 and 17 format.
-    An archive is a list of ListservList elements.
+    This class handles the scraping of a all public Emails contained in a mailing
+    archive that has the LISTSERV 16.5 and 17 format, such as 3GPP.
+    To be more precise, each contributor to a mailing archive sends their message
+    to an Email address that has the following structure:
+    <mailing_list_name>@w3.org.
+    Thus, this class contains all Emails send to <mailing_archive_name>
+    (the Email domain name). These Emails are contained in a list of
+    `ListservList` types, such that it is known to which <mailing_list_name>
+    (the Email localpart) was send.
 
     Parameters
     ----------
-    name : The of whom the archive is (e.g. 3GPP, IEEE, ...)
+    name : The archive name (e.g. 3GPP, IEEE, ...)
     url : The URL where the archive lives
     lists : A list containing the mailing lists as `ListservList` types
 
     Methods
     -------
-    from_url()
-    from_mbox()
-    from_mailing_lists()
+    All methods in the `AbstractArchive` class in addition to:
     from_listserv_directory()
-    get_lists()
     get_sections()
-    to_dict()
-    to_pandas_dataframe()
-    to_mbox()
 
     Example
     -------

@@ -181,7 +181,12 @@ class AbstractMessageParser(ABC):
 
 class AbstractList(ABC):
     """
-    This class handles the scraping of a single mailing list of a public archive
+    This class handles the scraping of a all public Emails contained in a single
+    mailing list. To be more precise, each contributor to a mailing list sends
+    their message to an Email address that has the following structure:
+    <mailing_list_name>@<mailing_archive_name>.
+    Thus, this class contains all Emails send to a specific <mailing_list_name>
+    (the Email localpart).
 
     Parameters
     ----------
@@ -195,10 +200,10 @@ class AbstractList(ABC):
     from_url()
     from_messages()
     from_mbox()
-    get_messages_from_url()
     get_message_urls()
-    get_period_urls()
+    get_messages_from_url()
     get_index_of_elements_in_selection()
+    get_name_from_url()
     to_dict()
     to_pandas_dataframe()
     to_mbox()
@@ -434,22 +439,27 @@ class AbstractList(ABC):
 
 class AbstractArchive(ABC):
     """
-    This class handles the scraping of a public mailing list archive.
+    This class handles the scraping of a all public Emails contained in a mailing
+    archive. To be more precise, each contributor to a mailing archive sends
+    their message to an Email address that has the following structure:
+    <mailing_list_name>@<mailing_archive_name>.
+    Thus, this class contains all Emails send to <mailing_archive_name>
+    (the Email domain name). These Emails are contained in a list of
+    `AbstractList` types, such that it is known to which <mailing_list_name>
+    (the Email localpart) was send.
 
     Parameters
     ----------
-    name : The of whom the archive is (e.g. 3GPP, IEEE, W3C, ...)
+    name : The archive name (e.g. 3GPP, IEEE, W3C)
     url : The URL where the archive lives
     lists : A list containing the mailing lists as `AbstractList` types
 
     Methods
     -------
     from_url()
-    from_mbox()
     from_mailing_lists()
-    from_listserv_directory()
-    get_lists()
-    get_sections()
+    from_mbox()
+    get_lists_from_url()
     to_dict()
     to_pandas_dataframe()
     to_mbox()
