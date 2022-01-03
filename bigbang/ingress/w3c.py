@@ -74,11 +74,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
     website : Set 'True' if messages are going to be scraped from websites,
         otherwise 'False' if read from local memory. This distinction needs to
         be made if missing messages should be added.
-    url_login : URL to the 'Log In' page.
     url_pref : URL to the 'Preferences'/settings page.
-    login : Login credentials (username and password) that were used to set
-        up AuthSession. You can create your own for the 3GPP archive.
-    session : requests.Session() object for the Email archive website.
 
     Methods
     -------
@@ -206,15 +202,8 @@ class W3CList(AbstractList):
         name: str,
         url: str,
         select: Optional[dict] = {"fields": "total"},
-        url_login: Optional[str] = None,
-        url_pref: Optional[str] = None,
-        login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[requests.Session] = None,
     ) -> "W3CList":
         """Docstring in `AbstractList`."""
-        if (session is None) and (url_login is not None):
-            session = get_auth_session(url_login, **login)
-            session = set_website_preference_for_header(url_pref, session)
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
         msg_urls = cls.get_message_urls(name, url, select)
@@ -223,10 +212,6 @@ class W3CList(AbstractList):
             url,
             msg_urls,
             select["fields"],
-            url_login,
-            url_pref,
-            login,
-            session,
         )
 
     @classmethod
@@ -236,23 +221,13 @@ class W3CList(AbstractList):
         url: str,
         messages: List[Union[str, mboxMessage]],
         fields: str = "total",
-        url_login: str = None,
-        url_pref: str = None,
-        login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[str] = None,
     ) -> "W3CList":
         """Docstring in `AbstractList`."""
         if not messages:
             msgs = []
         elif isinstance(messages[0], str):
-            if (session is None) and (url_login is not None):
-                session = get_auth_session(url_login, **login)
-                session = set_website_preference_for_header(url_pref, session)
             msg_parser = W3CMessageParser(
                 website=True,
-                url_login=url_login,
-                login=login,
-                session=session,
             )
             msgs = super().get_messages_from_urls(
                 name, messages, msg_parser, fields
@@ -445,21 +420,14 @@ class W3CArchive(AbstractArchive):
         url_root: str,
         url_home: Optional[str] = None,
         select: Optional[dict] = None,
-        url_login: Optional[str] = None,
-        url_pref: Optional[str] = None,
-        login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
     ) -> "W3CArchive":
         """Docstring in `AbstractList`."""
-        if (session is None) and (url_login is not None):
-            session = get_auth_session(url_login, **login)
         lists = cls.get_lists_from_url(
             select,
             url_root,
             url_home,
-            session,
             instant_save,
             only_mlist_urls,
         )
@@ -468,7 +436,6 @@ class W3CArchive(AbstractArchive):
             url_root,
             lists,
             select,
-            session,
             only_mlist_urls,
         )
 
@@ -479,17 +446,11 @@ class W3CArchive(AbstractArchive):
         url_root: str,
         url_mailing_lists: Union[List[str], List[W3CList]],
         select: Optional[dict] = None,
-        url_login: Optional[str] = None,
-        url_pref: Optional[str] = None,
-        login: Optional[Dict[str, str]] = {"username": None, "password": None},
-        session: Optional[str] = None,
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
     ) -> "W3CArchive":
         """Docstring in `AbstractList`."""
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
-            if (session is None) and (url_login is not None):
-                session = get_auth_session(url_login, **login)
             lists = []
             for url in url_mailing_lists:
                 mlist_name = W3CList.get_name_from_url(url)
@@ -497,7 +458,6 @@ class W3CArchive(AbstractArchive):
                     name=mlist_name,
                     url=url,
                     select=select,
-                    session=session,
                 )
                 if len(mlist) != 0:
                     if instant_save:
@@ -531,7 +491,6 @@ class W3CArchive(AbstractArchive):
         select: dict,
         url_root: str,
         url_home: Optional[str] = None,
-        session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
     ) -> List[Union[W3CList, str]]:
@@ -577,7 +536,6 @@ class W3CArchive(AbstractArchive):
                     name=name,
                     url=mlist_url,
                     select=select,
-                    session=session,
                 )
                 if len(mlist) != 0:
                     if instant_save:
