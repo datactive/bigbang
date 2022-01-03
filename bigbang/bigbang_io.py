@@ -1,7 +1,3 @@
-"""
-Input/Output for mailing data.
-"""
-
 import datetime
 import glob
 import os
@@ -30,6 +26,9 @@ logger = logging.getLogger(__name__)
 
 class MessageIO:
     """
+    This class handles writing an `mailbox.mboxMessage` object to various file
+    formats.
+
     Methods
     -------
     to_dict
@@ -64,7 +63,10 @@ class MessageIO:
 
 class ListIO:
     """
-    This class handles the data transformations for Lists.
+    This class handles reading/transforming/writing mailing lists
+    (e.g. `W3CList` and `ListservList`) from/to different file formats.
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
     """
 
     def from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
@@ -166,7 +168,10 @@ class ListIO:
 
 class ArchiveIO:
     """
-    This class handles the data transformations for Archives.
+    This class handles reading/transforming/writing mailing archives
+    (e.g. `W3CArchive` and `ListservArchive`) from/to different file formats.
+    For a clearer definition on what a mailing archive is, see:
+    bigbang.ingress.abstract.AbstractArchive
     """
 
     def to_dict(

@@ -67,7 +67,7 @@ class W3CArchiveWarning(BaseException):
 
 class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
     """
-    This class handles the creation of an mailbox.mboxMessage object
+    This class handles the creation of an `mailbox.mboxMessage` object
     (using the from_*() methods) and its storage in various other file formats
     (using the to_*() methods) that can be saved on the local memory.
 
