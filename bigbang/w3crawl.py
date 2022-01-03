@@ -16,7 +16,7 @@ import dateutil
 from bs4 import BeautifulSoup
 
 import bigbang.archive as archive
-import bigbang.mailman as mailman
+import bigbang.ingress.mailman as mailman
 
 
 class W3cMailingListArchivesParser(email.parser.Parser):

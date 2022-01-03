@@ -14,7 +14,7 @@ from IPython.nbformat import current as nbformat
 
 from config.config import CONFIG
 
-from .git_repo import GitRepo, MultiGitRepo
+from bigbang.ingress.git_repo import GitRepo, MultiGitRepo
 
 repoLocation = CONFIG.repo_path
 examplesLocation = CONFIG.urls_path
@@ -37,7 +37,7 @@ def url_to_name(url):
     Converts a github url (e.g. https://github.com/sbenthall/bigbang.git) to
     a human-readable name (bigbang) by looking at the word between the last "/" and ".git".
     """
-    url = url.replace("\n","")
+    url = url.replace("\n", "")
     name = nameRegex.search(url).group(1)
     return name
 
