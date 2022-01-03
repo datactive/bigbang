@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 from config.config import CONFIG
 from bigbang.utils import get_paths_to_files_in_directory
 from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
-from bigbang.utils import get_website_content
+from bigbang.ingress.utils import get_website_content
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)

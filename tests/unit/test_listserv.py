@@ -13,7 +13,6 @@ from bigbang.ingress.listserv import (
     ListservList,
     ListservMessageParser,
 )
-from bigbang.utils import get_login_from_terminal
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
@@ -222,17 +221,3 @@ class TestListservArchive:
             assert line_nr < len(lines)
             f.close()
             Path(filepath).unlink()
-
-
-@mock.patch("bigbang.utils.ask_for_input", return_value="check")
-def test__get_login_from_terminal(input):
-    """test if login keys will be documented"""
-    file_auth = dir_temp + "/authentication.yaml"
-    _, _ = get_login_from_terminal(
-        username=None, password=None, file_auth=file_auth
-    )
-    f = open(file_auth, "r")
-    lines = f.readlines()
-    assert lines[0].strip("\n") == "username: 'check'"
-    assert lines[1].strip("\n") == "password: 'check'"
-    os.remove(file_auth)

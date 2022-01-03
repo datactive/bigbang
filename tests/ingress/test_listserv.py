@@ -12,7 +12,7 @@ from bigbang.ingress import (
     ListservList,
     ListservMessageParser,
 )
-from bigbang.utils import get_login_from_terminal
+from bigbang.ingress.utils import get_login_from_terminal
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
@@ -251,7 +251,7 @@ class TestListservArchive:
             Path(filepath).unlink()
 
 
-@mock.patch("bigbang.utils.ask_for_input", return_value="check")
+@mock.patch("bigbang.ingress.utils.ask_for_input", return_value="check")
 def test__get_login_from_terminal(input):
     """test if login keys will be documented"""
     file_auth = dir_temp + "/authentication.yaml"

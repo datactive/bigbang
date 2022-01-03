@@ -26,10 +26,12 @@ from bigbang.ingress import (
     AbstractList,
     AbstractMessageParser,
 )
-from bigbang.utils import (
+from bigbang.ingress.utils import (
     get_website_content,
     set_website_preference_for_header,
     get_auth_session,
+)
+from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
 )
