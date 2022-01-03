@@ -14,6 +14,7 @@ import pandas as pd
 from pathlib import Path
 import pytz
 
+import bigbang.analysis.utils as analysis_utils
 import bigbang.ingress.mailman as mailman
 from bigbang.parse import get_date, get_text
 import bigbang.analysis.process as process
@@ -49,6 +50,7 @@ class Archive(object):
     activity = None
     threads = None
     entities = None
+    preprocessed = None
 
     def __init__(self, data, archive_dir=CONFIG.mail_path, mbox=False):
         """
@@ -120,6 +122,7 @@ class Archive(object):
 
         # convert any null fields to None -- csv saves these as nan sometimes
         self.data = self.data.where(pd.notnull(self.data), None)
+        self.preprocessed = {}
 
         try:
             # set the index to be the Message-ID column
@@ -247,6 +250,40 @@ class Archive(object):
         activity = activity.reindex(new_date_range, fill_value=0)
 
         return activity
+
+    def get_personal_headers(self, header="From"):
+        """
+        Returns a dataframe with a row for every message of the archive, containing
+        column entries for:
+
+         - The personal header specified. Defaults to "From". Could be "Repy-To".
+         - The email address extracted from the From field
+         - The domain of the From field
+
+        This dataframe is computed the first time this method is called and then cached.
+
+
+        Parameters
+        ------------
+
+        header: string, default "From"
+
+        Returns
+        ----------
+
+        data: pandas.DataFrame
+        """
+        if header in self.preprocessed:
+            return self.preprocessed[header]
+        else:
+            emails = self.data[header].apply(analysis_utils.extract_email)
+            domains = self.data[header].apply(analysis_utils.extract_domain)
+            self.preprocessed[header] = pd.concat(
+                [self.data[header], emails, domains],
+                axis=1,
+                keys=[header, "email", "domain"],
+            )
+            return self.preprocessed[header]
 
     def get_threads(self, verbose=False):
         """Get threads."""

@@ -1,0 +1,40 @@
+'"xuxiaodong@chinamobile.com" <xuxiaodong@CHINAMOBILE.COM>':
+  name: 'xuxiaodong@chinamobile.com'
+  localpart: 'xuxiaodong'
+  domain: 'CHINAMOBILE.COM'
+'Jacob John <jacobjohn@MOTOROLA.COM>':
+  name: 'Jacob John'
+  localpart: 'jacobjohn'
+  domain: 'MOTOROLA.COM'
+'"Wuyuchun (Wu Yuchun, Hisilicon)" <wuyuchun@HUAWEI.COM>':
+  name: 'Wuyuchun (Wu Yuchun, Hisilicon)'
+  localpart: 'wuyuchun'
+  domain: 'HUAWEI.COM'
+'xingjinqiang@chinamobile.com xingjinqiang@chinamobile.com':
+  name: null
+  localpart: 'xingjinqiang'
+  domain: 'chinamobile.com'
+'abdul rasheed m d rasheed@motorola.com':
+  name: 'abdul rasheed m d'
+  localpart: 'rasheed'
+  domain: 'motorola.com'
+'fredrik =?utf-8?q?sundstr=c3=b6m?= fredrik.sundstrom@ericsson.com':
+  name: 'fredrik =?utf-8?q?sundstr=c3=b6m?='
+  localpart: 'fredrik.sundstrom'
+  domain: 'ericsson.com'
+'guozhili guozhili@starpointcomm.com':
+  name: 'guozhili'
+  localpart: 'guozhili'
+  domain: 'starpointcomm.com'
+'=?utf-8?b?runjvc3lvkdnu6flrr4=?= zhangjibin@ecit.org.cn':
+  name: '=?utf-8?b?runjvc3lvkdnu6flrr4=?='
+  localpart: 'zhangjibin'
+  domain: 'ecit.org.cn'
+'Xueming Pan <<a href="/scripts/wa.exe?LOGON=A2%3D3GPP_TSG_RAN%3B82086c35.2012B%26S%3D&amp" target="_parent">[log in to unmask]</a>> <a href="/scripts/wa.exe?LOGON=A2%3D3GPP_TSG_RAN%3B82086c35.2012B%26S%3D&amp" target="_parent" /a':
+  name: null
+  localpart: null
+  domain: null
+'"Yanyali (Yali)" <yanyali@HUAWEI.COM>, Guchunying <guchunying@HUAWEI.COM>, Ingbert Sigovich <Ingbert.Sigovich@ETSI.ORG>':
+  name: ['Yanyali (Yali)', 'Guchunying', 'Ingbert Sigovich']
+  localpart: ['yanyali', 'guchunying', 'Ingbert.Sigovich']
+  domain: ['HUAWEI.COM', 'HUAWEI.COM', 'ETSI.ORG']
