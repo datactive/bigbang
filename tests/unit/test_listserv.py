@@ -9,9 +9,9 @@ import yaml
 
 import bigbang
 from bigbang.ingress.listserv import (
-    ListservArchive,
-    ListservList,
     ListservMessageParser,
+    ListservMailingList,
+    ListservMailingListDomain,
 )
 from config.config import CONFIG
 
@@ -23,7 +23,7 @@ auth_key_mock = {"username": "bla", "password": "bla"}
 
 @pytest.fixture(name="mlist", scope="module")
 def get_mailinglist():
-    mlist = ListservList.from_listserv_directories(
+    mlist = ListservMailingList.from_listserv_directories(
         name="3GPP_TSG_SA_ITUT_AHG",
         directorypaths=[CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"],
     )
@@ -82,10 +82,10 @@ class TestListservMessageParser:
         Path(file_temp_mbox).unlink()
 
 
-class TestListservList:
+class TestListservMailingList:
     def test__from_mbox(self):
         mlist_name = "3GPP_TSG_SA_WG4_EVS"
-        mlist = ListservList.from_mbox(
+        mlist = ListservMailingList.from_mbox(
             name=mlist_name,
             filepath=CONFIG.test_data_path + f"3GPP_mbox/{mlist_name}.mbox",
         )
@@ -100,7 +100,7 @@ class TestListservList:
             CONFIG.test_data_path
             + "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1703B"
         )
-        mlist = ListservList.from_listserv_files(
+        mlist = ListservMailingList.from_listserv_files(
             name="3GPP_TSG_SA_ITUT_AHG",
             filepaths=[filepath],
         )
@@ -152,9 +152,9 @@ class TestListservList:
         Path(file_temp_mbox).unlink()
 
 
-class TestListservArchive:
+class TestListservMailingListDomain:
     def test__from_mbox(self):
-        march = ListservArchive.from_mbox(
+        march = ListservMailingListDomain.from_mbox(
             name="3GPP_mbox_test",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
         )
@@ -169,7 +169,7 @@ class TestListservArchive:
 
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
-        arch = ListservArchive.from_listserv_directory(
+        arch = ListservMailingListDomain.from_listserv_directory(
             name="3GPP",
             directorypath=CONFIG.test_data_path + "3GPP/",
         )
