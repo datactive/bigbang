@@ -16,7 +16,6 @@ import pandas as pd
 import requests
 import yaml
 from bs4 import BeautifulSoup
-from tqdm import tqdm
 
 from config.config import CONFIG
 
