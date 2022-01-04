@@ -20,10 +20,11 @@ from bs4 import BeautifulSoup
 from config.config import CONFIG
 
 import bigbang.bigbang_io as bio
+from bigbang.data_types import MailingList
 from bigbang.ingress import (
-    AbstractArchive,
-    AbstractList,
     AbstractMessageParser,
+    AbstractMailingList,
+    AbstractMailingListDomain,
 )
 from bigbang.ingress.utils import (
     get_website_content,
@@ -47,19 +48,19 @@ logger = logging.getLogger(__name__)
 
 
 class ListservMessageParserWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+    """Base class for ListservMessageParser class specific exceptions"""
 
     pass
 
 
-class ListservListWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+class ListservMailingListWarning(BaseException):
+    """Base class for ListservMailingList class specific exceptions"""
 
     pass
 
 
-class ListservArchiveWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+class ListservMailingListDomainWarning(BaseException):
+    """Base class for ListservMailingListDomain class specific exceptions"""
 
     pass
 
@@ -343,7 +344,7 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
             return None
 
 
-class ListservList(AbstractList):
+class ListservMailingList(AbstractMailingList):
     """
     This class handles the scraping of a all public Emails contained in a single
     mailing list in the LISTSERV 16.5 and 17 format.
@@ -362,7 +363,7 @@ class ListservList(AbstractList):
 
     Methods
     -------
-    All methods in the `AbstractList` class in addition to:
+    All methods in the `AbstractMailingList` class in addition to:
     from_listserv_files()
     from_listserv_directories()
     get_period_urls()
@@ -374,7 +375,7 @@ class ListservList(AbstractList):
     -------
     To scrape a Listserv mailing list from an URL and store it in
     run-time memory, we do the following
-    >>> mlist = ListservList.from_url(
+    >>> mlist = ListservMailingList.from_url(
     >>>     name="IEEE-TEST",
     >>>     url="https://listserv.ieee.org/cgi-bin/wa?A0=IEEE-TEST",
     >>>     select={
@@ -400,8 +401,8 @@ class ListservList(AbstractList):
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
-    ) -> "ListservList":
-        """Docstring in `AbstractList`."""
+    ) -> "ListservMailingList":
+        """Docstring in `AbstractMailingList`."""
         if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
             session = set_website_preference_for_header(url_pref, session)
@@ -424,14 +425,14 @@ class ListservList(AbstractList):
         cls,
         name: str,
         url: str,
-        messages: List[Union[str, mboxMessage]],
+        messages: Union[List[str], MailingList],
         fields: str = "total",
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
-    ) -> "ListservList":
-        """Docstring in `AbstractList`."""
+    ) -> "ListservMailingList":
+        """Docstring in `AbstractMailingList`."""
         if not messages:
             msgs = []
         elif isinstance(messages[0], str):
@@ -452,8 +453,8 @@ class ListservList(AbstractList):
         return cls(name, url, msgs)
 
     @classmethod
-    def from_mbox(cls, name: str, filepath: str) -> "ListservList":
-        """Docstring in `AbstractList`."""
+    def from_mbox(cls, name: str, filepath: str) -> "ListservMailingList":
+        """Docstring in `AbstractMailingList`."""
         msgs = bio.mlist_from_mbox(filepath)
         return cls(name, filepath, msgs)
 
@@ -464,7 +465,7 @@ class ListservList(AbstractList):
         directorypaths: List[str],
         filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
-    ) -> "ListservList":
+    ) -> "ListservMailingList":
         """
         This method is required if the files that contain the list messages
         were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
@@ -497,13 +498,13 @@ class ListservList(AbstractList):
         name: str,
         filepaths: List[str],
         select: Optional[dict] = None,
-    ) -> "ListservList":
+    ) -> "ListservMailingList":
         """
         This method is required if the files that contain the list messages
         were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
         Each mailing list has its own directory and is split over multiple
         files with an extension starting with LOG and ending with five digits.
-        Compared to `ListservList.from_listserv_directories()`, this method
+        Compared to `ListservMailingList.from_listserv_directories()`, this method
         reads messages from single files, instead of all the files contained in
         a directory.
 
@@ -548,7 +549,7 @@ class ListservList(AbstractList):
         url: str,
         select: Optional[dict] = None,
     ) -> List[str]:
-        """Docstring in `AbstractList`."""
+        """Docstring in `AbstractMailingList`."""
 
         def get_message_urls_from_period_url(name: str, url: str) -> List[str]:
             url_root = ("/").join(url.split("/")[:-2])
@@ -560,7 +561,7 @@ class ListservList(AbstractList):
 
         msg_urls = []
         # run through periods
-        for period_url in ListservList.get_period_urls(url, select):
+        for period_url in ListservMailingList.get_period_urls(url, select):
             # run through messages within period
             for msg_url in get_message_urls_from_period_url(name, period_url):
                 msg_urls.append(msg_url)
@@ -600,10 +601,12 @@ class ListservList(AbstractList):
 
                 periodquants = [cond(period) for period in periods]
 
-                indices = ListservList.get_index_of_elements_in_selection(
-                    periodquants,
-                    urls_of_periods,
-                    value,
+                indices = (
+                    ListservMailingList.get_index_of_elements_in_selection(
+                        periodquants,
+                        urls_of_periods,
+                        value,
+                    )
                 )
 
                 periods = [periods[idx] for idx in indices]
@@ -661,7 +664,7 @@ class ListservList(AbstractList):
         ]
 
 
-class ListservArchive(AbstractArchive):
+class ListservMailingListDomain(AbstractMailingListDomain):
     """
     This class handles the scraping of a all public Emails contained in a mailing
     archive that has the LISTSERV 16.5 and 17 format, such as 3GPP.
@@ -670,26 +673,26 @@ class ListservArchive(AbstractArchive):
     <mailing_list_name>@w3.org.
     Thus, this class contains all Emails send to <mailing_archive_name>
     (the Email domain name). These Emails are contained in a list of
-    `ListservList` types, such that it is known to which <mailing_list_name>
+    `ListservMailingList` types, such that it is known to which <mailing_list_name>
     (the Email localpart) was send.
 
     Parameters
     ----------
-    name : The archive name (e.g. 3GPP, IEEE, ...)
-    url : The URL where the archive lives
-    lists : A list containing the mailing lists as `ListservList` types
+    name : The mailing list domain name (e.g. 3GPP, IEEE, ...)
+    url : The URL where the mailing list domain lives
+    lists : A list containing the mailing lists as `ListservMailingList` types
 
     Methods
     -------
-    All methods in the `AbstractArchive` class in addition to:
+    All methods in the `AbstractMailingListDomain` class in addition to:
     from_listserv_directory()
     get_sections()
 
     Example
     -------
-    To scrape a Listserv mailing list archive from an URL and store it in
+    To scrape a Listserv mailing list domain from an URL and store it in
     run-time memory, we do the following
-    >>> arch = ListservArchive.from_url(
+    >>> mlistdom = ListservMailingListDomain.from_url(
     >>>     name="IEEE",
     >>>     url_root="https://listserv.ieee.org/cgi-bin/wa?",
     >>>     url_home="https://listserv.ieee.org/cgi-bin/wa?HOME",
@@ -705,7 +708,7 @@ class ListservArchive(AbstractArchive):
     >>> )
 
     To save it as *.mbox file we do the following
-    >>> arch.to_mbox(path_to_directory)
+    >>> mlistdom.to_mbox(path_to_directory)
     """
 
     @classmethod
@@ -721,8 +724,8 @@ class ListservArchive(AbstractArchive):
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> "ListservArchive":
-        """Docstring in `AbstractList`."""
+    ) -> "ListservMailingListDomain":
+        """Docstring in `AbstractMailingList`."""
         if (session is None) and (url_login is not None):
             session = get_auth_session(url_login, **login)
             session = set_website_preference_for_header(url_pref, session)
@@ -748,7 +751,7 @@ class ListservArchive(AbstractArchive):
         cls,
         name: str,
         url_root: str,
-        url_mailing_lists: Union[List[str], List[ListservList]],
+        url_mailing_lists: Union[List[str], List[ListservMailingList]],
         select: Optional[dict] = None,
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
@@ -756,16 +759,16 @@ class ListservArchive(AbstractArchive):
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
-    ) -> "ListservArchive":
-        """Docstring in `AbstractList`."""
+    ) -> "ListservMailingListDomain":
+        """Docstring in `AbstractMailingList`."""
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
                 session = set_website_preference_for_header(url_pref, session)
             lists = []
             for url in url_mailing_lists:
-                mlist_name = ListservList.get_name_from_url(url)
-                mlist = ListservList.from_url(
+                mlist_name = ListservMailingList.get_name_from_url(url)
+                mlist = ListservMailingList.from_url(
                     name=mlist_name,
                     url=url,
                     select=select,
@@ -791,7 +794,7 @@ class ListservArchive(AbstractArchive):
         folderdsc: str = "*",
         filedsc: str = "*.LOG?????",
         select: Optional[dict] = None,
-    ) -> "ListservArchive":
+    ) -> "ListservMailingListDomain":
         """
         This method is required if the files that contain the archive messages
         were directly exported from LISTSERV 16.5 (e.g. by a member of 3GPP).
@@ -800,9 +803,9 @@ class ListservArchive(AbstractArchive):
 
         Parameters
         ----------
-        name : Email archive name, such that multiple instances of `ListservArchive`
+        name : Email archive name, such that multiple instances of `ListservMailingListDomain`
             can easily be distinguished.
-        directorypath : Where the `ListservArchive` can be initialised.
+        directorypath : Where the `ListservMailingListDomain` can be initialised.
         folderdsc : A description of the relevant folders
         filedsc : A description of the relevant files, e.g. *.LOG?????
         select : Selection criteria that can filter messages by:
@@ -816,7 +819,7 @@ class ListservArchive(AbstractArchive):
         # run through directories and collect all filepaths
         for dirpath in _dirpaths_to_lists:
             _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
-            mlist = ListservList.from_listserv_files(
+            mlist = ListservMailingList.from_listserv_files(
                 dirpath.split("/")[-2],
                 _filepaths,
                 select,
@@ -830,13 +833,13 @@ class ListservArchive(AbstractArchive):
         name: str,
         directorypath: str,
         filedsc: str = "*.mbox",
-    ) -> "ListservList":
-        """Docstring in `AbstractList`."""
+    ) -> "ListservMailingList":
+        """Docstring in `AbstractMailingList`."""
         filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
         lists = []
         for filepath in filepaths:
             name = filepath.split("/")[-1].split(".")[0]
-            lists.append(ListservList.from_mbox(name, filepath))
+            lists.append(ListservMailingList.from_mbox(name, filepath))
         return cls(name, directorypath, lists)
 
     @staticmethod
@@ -847,12 +850,12 @@ class ListservArchive(AbstractArchive):
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> List[Union[ListservList, str]]:
-        """Docstring in `AbstractList`."""
+    ) -> List[Union[ListservMailingList, str]]:
+        """Docstring in `AbstractMailingList`."""
         archive = []
         # run through archive sections
         for url in list(
-            ListservArchive.get_sections(url_root, url_home).keys()
+            ListservMailingListDomain.get_sections(url_root, url_home).keys()
         ):
             soup = get_website_content(url)
             a_tags_in_section = soup.select(
@@ -868,18 +871,20 @@ class ListservArchive(AbstractArchive):
             if only_mlist_urls:
                 # collect mailing-list urls
                 for mlist_url in mlist_urls:
-                    name = ListservList.get_name_from_url(mlist_url)
+                    name = ListservMailingList.get_name_from_url(mlist_url)
                     # check if mailing list contains messages in period
-                    _period_urls = ListservList.get_all_periods_and_their_urls(
-                        mlist_url
-                    )[1]
+                    _period_urls = (
+                        ListservMailingList.get_all_periods_and_their_urls(
+                            mlist_url
+                        )[1]
+                    )
                     # check if mailing list is public
                     if len(_period_urls) > 0:
                         loops = 0
                         for _period_url in _period_urls:
                             loops += 1
                             nr_msgs = len(
-                                ListservList.get_messages_urls(
+                                ListservMailingList.get_messages_urls(
                                     name=name, url=_period_url
                                 )
                             )
@@ -889,8 +894,8 @@ class ListservArchive(AbstractArchive):
             else:
                 # collect mailing-list contents
                 for mlist_url in mlist_urls:
-                    name = ListservList.get_name_from_url(mlist_url)
-                    mlist = ListservList.from_url(
+                    name = ListservMailingList.get_name_from_url(mlist_url)
+                    mlist = ListservMailingList.from_url(
                         name=name,
                         url=mlist_url,
                         select=select,

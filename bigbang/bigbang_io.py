@@ -177,7 +177,7 @@ def mlist_to_mbox(
     mbox.unlock()
 
 
-def march_to_dict(
+def mlistdom_to_dict(
     mlists: list, include_body: bool = True
 ) -> Dict[str, List[str]]:
     """
@@ -190,28 +190,28 @@ def march_to_dict(
     for ii, mlist in enumerate(mlists):
         dic_mlist = mlist_to_dict(mlist.messages, include_body)
         if ii == 0:
-            dic_march = dic_mlist
-            dic_march["mailing-list"] = [mlist.name] * len(mlist)
+            dic_mlistdom = dic_mlist
+            dic_mlistdom["mailing-list"] = [mlist.name] * len(mlist)
         else:
-            # add mlist items to march
+            # add mlist items to mlistdom
             for key, value in dic_mlist.items():
-                if key not in dic_march.keys():
-                    dic_march[key] = [np.nan] * nr_msgs
-                dic_march[key].extend(value)
-            # if mlist does not contain items that are in march
-            key_miss = list(set(dic_march.keys()) - set(dic_mlist.keys()))
+                if key not in dic_mlistdom.keys():
+                    dic_mlistdom[key] = [np.nan] * nr_msgs
+                dic_mlistdom[key].extend(value)
+            # if mlist does not contain items that are in mlistdom
+            key_miss = list(set(dic_mlistdom.keys()) - set(dic_mlist.keys()))
             key_miss.remove("mailing-list")
             for key in key_miss:
-                dic_march[key].extend([np.nan] * len(mlist))
+                dic_mlistdom[key].extend([np.nan] * len(mlist))
 
-            dic_march["mailing-list"].extend([mlist.name] * len(mlist))
+            dic_mlistdom["mailing-list"].extend([mlist.name] * len(mlist))
         nr_msgs += len(mlist)
-    lengths = [len(value) for value in dic_march.values()]
+    lengths = [len(value) for value in dic_mlistdom.values()]
     assert all([diff == 0 for diff in np.diff(lengths)])
-    return dic_march
+    return dic_mlistdom
 
 
-def march_to_pandas_dataframe(
+def mlistdom_to_pandas_dataframe(
     mlists: list, include_body: bool = True
 ) -> pd.DataFrame:
     """
@@ -220,7 +220,7 @@ def march_to_pandas_dataframe(
     For a clearer definition on what a mailing archive is, see:
     bigbang.ingress.abstract.AbstractArchive
     """
-    df = pd.DataFrame(march_to_dict(mlists, include_body)).set_index(
+    df = pd.DataFrame(mlistdom_to_dict(mlists, include_body)).set_index(
         "message-id"
     )
     # get index of date-times
@@ -242,7 +242,7 @@ def march_to_pandas_dataframe(
     return df
 
 
-def march_to_mbox(mlists: list, dir_out: str):
+def mlistdom_to_mbox(mlists: list, dir_out: str):
     """
     Saves a List[AbstractList] as .mbox file.
     For a clearer definition on what a mailing archive is, see:

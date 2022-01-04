@@ -18,7 +18,12 @@ from bs4 import BeautifulSoup
 from config.config import CONFIG
 from bigbang.utils import get_paths_to_files_in_directory
 import bigbang.bigbang_io as bio
-from bigbang.ingress.utils import get_website_content
+from bigbang.data_types import Message, MailingList
+from bigbang.ingress.utils import (
+    get_website_content,
+    get_auth_session,
+    set_website_preference_for_header,
+)
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -37,13 +42,13 @@ class AbstractMessageParserWarning(BaseException):
     pass
 
 
-class AbstractListWarning(BaseException):
+class AbstractMailingListWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
     pass
 
 
-class AbstractArchiveWarning(BaseException):
+class AbstractMailingListDomainWarning(BaseException):
     """Base class for Archive class specific exceptions"""
 
     pass
@@ -75,7 +80,7 @@ class AbstractMessageParser(ABC):
         archived_at: str,
         body: str,
         **header,
-    ) -> mboxMessage:
+    ) -> Message:
         """
         Parameters
         ----------
@@ -124,7 +129,7 @@ class AbstractMessageParser(ABC):
         list_name: str,
         url: str,
         fields: str = "total",
-    ) -> mboxMessage:
+    ) -> Message:
         """
         Parameters
         ----------
@@ -159,17 +164,17 @@ class AbstractMessageParser(ABC):
         pass
 
     @staticmethod
-    def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
+    def to_dict(msg: Message) -> Dict[str, List[str]]:
         """Convert mboxMessage to a Dictionary"""
         return bio.email_to_dict(msg)
 
     @staticmethod
-    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+    def to_pandas_dataframe(msg: Message) -> pd.DataFrame:
         """Convert mboxMessage to a pandas.DataFrame"""
         return bio.email_to_pandas_dataframe(msg)
 
     @staticmethod
-    def to_mbox(msg: mboxMessage, filepath: str):
+    def to_mbox(msg: Message, filepath: str):
         """
         Parameters
         ----------
@@ -179,7 +184,7 @@ class AbstractMessageParser(ABC):
         return bio.email_to_mbox(msg, filepath)
 
 
-class AbstractList(ABC):
+class AbstractMailingList(ABC):
     """
     This class handles the scraping of a all public Emails contained in a single
     mailing list. To be more precise, each contributor to a mailing list sends
@@ -213,7 +218,7 @@ class AbstractList(ABC):
         self,
         name: str,
         source: Union[List[str], str],
-        msgs: List[mboxMessage],
+        msgs: MailingList,
     ):
         self.name = name
         self.source = source
@@ -227,7 +232,7 @@ class AbstractList(ABC):
         """Iterate over each message within the mailing list."""
         return iter(self.messages)
 
-    def __getitem__(self, index) -> mboxMessage:
+    def __getitem__(self, index) -> Message:
         """Get specific message at position `index` within the mailing list."""
         return self.messages[index]
 
@@ -242,7 +247,7 @@ class AbstractList(ABC):
         url_pref: Optional[str] = None,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
-    ) -> "AbstractList":
+    ) -> "AbstractMailingList":
         """
         Parameters
         ----------
@@ -265,13 +270,13 @@ class AbstractList(ABC):
         cls,
         name: str,
         url: str,
-        messages: List[Union[str, mboxMessage]],
+        messages: Union[List[str], MailingList],
         fields: str = "total",
         url_login: str = None,
         url_pref: str = None,
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[str] = None,
-    ) -> "AbstractList":
+    ) -> "AbstractMailingList":
         """
         Parameters
         ----------
@@ -289,7 +294,7 @@ class AbstractList(ABC):
 
     @classmethod
     @abstractmethod
-    def from_mbox(cls, name: str, filepath: str) -> "AbstractList":
+    def from_mbox(cls, name: str, filepath: str) -> "AbstractMailingList":
         """
         Parameters
         ----------
@@ -327,7 +332,7 @@ class AbstractList(ABC):
         msg_urls: list,
         msg_parser,
         fields: Optional[str] = "total",
-    ) -> List[mboxMessage]:
+    ) -> MailingList:
         """
         Generator that returns all messages within a certain period
         (e.g. January 2021, Week 5).
@@ -437,7 +442,7 @@ class AbstractList(ABC):
             bio.mlist_to_mbox(self.messages, dir_out, filename)
 
 
-class AbstractArchive(ABC):
+class AbstractMailingListDomain(ABC):
     """
     This class handles the scraping of a all public Emails contained in a mailing
     archive. To be more precise, each contributor to a mailing archive sends
@@ -445,14 +450,14 @@ class AbstractArchive(ABC):
     <mailing_list_name>@<mailing_archive_name>.
     Thus, this class contains all Emails send to <mailing_archive_name>
     (the Email domain name). These Emails are contained in a list of
-    `AbstractList` types, such that it is known to which <mailing_list_name>
+    `AbstractMailingList` types, such that it is known to which <mailing_list_name>
     (the Email localpart) was send.
 
     Parameters
     ----------
     name : The archive name (e.g. 3GPP, IEEE, W3C)
     url : The URL where the archive lives
-    lists : A list containing the mailing lists as `AbstractList` types
+    lists : A list containing the mailing lists as `AbstractMailingList` types
 
     Methods
     -------
@@ -466,7 +471,7 @@ class AbstractArchive(ABC):
     """
 
     def __init__(
-        self, name: str, url: str, lists: List[Union[AbstractList, str]]
+        self, name: str, url: str, lists: List[Union[AbstractMailingList, str]]
     ):
         self.name = name
         self.url = url
@@ -498,13 +503,13 @@ class AbstractArchive(ABC):
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> "AbstractArchive":
+    ) -> "AbstractMailingListDomain":
         """
         Create a mail archive from a given URL.
         Parameters
         ----------
-        name : Email archive name, such that multiple instances of `AbstractArchive`
-            can easily be distinguished.
+        name : Email archive name, such that multiple instances of
+            `AbstractMailingListDomain` can easily be distinguished.
         url_root : The invariant root URL that does not change no matter what
             part of the archive we access.
         url_home : The 'home' space of the archive. This is required as
@@ -517,11 +522,11 @@ class AbstractArchive(ABC):
         login : Login credentials (username and password) that were used to set
             up AuthSession.
         session : requests.Session() object for the Email archive website.
-        instant_save : Boolean giving the choice to save a `AbstractList` as
+        instant_save : Boolean giving the choice to save a `AbstractMailingList` as
             soon as it is completely scraped or collect entire archive. The
             prior is recommended if a large number of mailing lists are
             scraped which can require a lot of memory and time.
-        only_list_urls : Boolean giving the choice to collect only `AbstractList`
+        only_list_urls : Boolean giving the choice to collect only `AbstractMailingList`
             URLs or also their contents.
         """
         pass
@@ -532,7 +537,7 @@ class AbstractArchive(ABC):
         cls,
         name: str,
         url_root: str,
-        url_mailing_lists: Union[List[str], List[AbstractList]],
+        url_mailing_lists: Union[List[str], List[AbstractMailingList]],
         select: Optional[dict] = None,
         url_login: Optional[str] = None,
         url_pref: Optional[str] = None,
@@ -540,18 +545,18 @@ class AbstractArchive(ABC):
         session: Optional[str] = None,
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
-    ) -> "AbstractArchive":
+    ) -> "AbstractMailingListDomain":
         """
-        Create mailing archive from a given list of 'AbstractList` instances or URLs
+        Create mailing archive from a given list of 'AbstractMailingList` instances or URLs
         pointing to mailing lists.
 
         Parameters
         ----------
-        name : Email archive name, such that multiple instances of `AbstractArchive`
-            can easily be distinguished.
+        name : Email archive name, such that multiple instances of
+            `AbstractMailingListDomain` can easily be distinguished.
         url_root : The invariant root URL that does not change no matter what
             part of the archive we access.
-        url_mailing_lists : This argument can either be a list of `AbstractList`
+        url_mailing_lists : This argument can either be a list of `AbstractMailingList`
             objects or a list of string containing the URLs to the mailing
             list of interest.
         url_login : URL to the 'Log In' page.
@@ -561,7 +566,7 @@ class AbstractArchive(ABC):
         session : requests.Session() object for the archive website.
         only_list_urls : Boolean giving the choice to collect only mailing list
             URLs or also their contents.
-        instant_save : Boolean giving the choice to save a `AbstractList` as
+        instant_save : Boolean giving the choice to save a `AbstractMailingList` as
             soon as it is completely scraped or collect entire archive. The
             prior is recommended if a large number of mailing lists are
             scraped which can require a lot of memory and time.
@@ -575,13 +580,13 @@ class AbstractArchive(ABC):
         name: str,
         directorypath: str,
         filedsc: str = "*.mbox",
-    ) -> "AbstractArchive":
+    ) -> "AbstractMailingListDomain":
         """
         Parameters
         ----------
-        name : Email archive name, such that multiple instances of `AbstractArchive`
-            can easily be distinguished.
-        directorypath : Path to the folder in which `AbstractArchive` is stored.
+        name : Email archive name, such that multiple instances of
+            `AbstractMailingListDomain` can easily be distinguished.
+        directorypath : Path to the folder in which `AbstractMailingListDomain` is stored.
         filedsc : Optional filter that only reads files matching the description.
             By default all files with an mbox extension are read.
         """
@@ -596,7 +601,7 @@ class AbstractArchive(ABC):
         session: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> List[Union[AbstractList, str]]:
+    ) -> List[Union[AbstractMailingList, str]]:
         """
         Created dictionary of all lists in the archive.
 
@@ -610,11 +615,11 @@ class AbstractArchive(ABC):
             - content, i.e. header and/or body
             - period, i.e. written in a certain year, month, week-of-month
         session : requests.Session() object for the archive website.
-        instant_save : Boolean giving the choice to save a `AbstractList` as
+        instant_save : Boolean giving the choice to save a `AbstractMailingList` as
             soon as it is completely scraped or collect entire archive. The
             prior is recommended if a large number of mailing lists are
             scraped which can require a lot of memory and time.
-        only_list_urls : Boolean giving the choice to collect only `AbstractList`
+        only_list_urls : Boolean giving the choice to collect only `AbstractMailingList`
             URLs or also their contents.
 
         Returns
@@ -626,124 +631,19 @@ class AbstractArchive(ABC):
     def to_dict(self, include_body: bool = True) -> Dict[str, List[str]]:
         """
         Concatenates mailing list dictionaries created using
-        `AbstractList.to_dict()`.
+        `AbstractMailingList.to_dict()`.
         """
-        return bio.march_to_dict(self.lists, include_body)
+        return bio.mlistdom_to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
         Concatenates mailing list pandas.DataFrames created using
-        `AbstractList.to_pandas_dataframe()`.
+        `AbstractMailingList.to_pandas_dataframe()`.
         """
-        return bio.march_to_pandas_dataframe(self.lists, include_body)
+        return bio.mlistdom_to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """
         Save Archive content to .mbox files
         """
-        bio.march_to_mbox(self.lists, dir_out)
-
-
-def set_website_preference_for_header(
-    url_pref: str,
-    session: requests.Session,
-) -> requests.Session:
-    """
-    Set the 'Email Headers' of the 'Archive Preferences' for the auth session
-    to 'Show All Headers'. Otherwise only a restricted list of header fields is
-    shown.
-    """
-    url_archpref = url_pref + "&TAB=2"
-    payload = {
-        "Email Headers": "b",
-    }
-    session.post(url_archpref, data=payload)
-    return session
-
-
-def get_auth_session(
-    url_login: str, username: str, password: str
-) -> requests.Session:
-    """
-    Create AuthSession.
-
-    There are three ways to create an AuthSession:
-        - parse username & password directly into method
-        - create a /bigbang/config/authentication.yaml file that contains keys
-        - type then into terminal when the method 'get_login_from_terminal'
-            is raised
-    """
-    if os.path.isfile(filepath_auth):
-        # read from /config/authentication.yaml
-        with open(filepath_auth, "r") as stream:
-            auth_key = yaml.safe_load(stream)
-        username = auth_key["username"]
-        password = auth_key["password"]
-    else:
-        # ask user for login keys
-        username, password = get_login_from_terminal(username, password)
-
-    if username is None or password is None:
-        # continue without authentication
-        return None
-    else:
-        # Start the AuthSession
-        session = requests.Session()
-        # Create the payload
-        payload = {
-            "LOGIN1": "",
-            "Y": username,
-            "p": password,
-            "X": "",
-        }
-        # Post the payload to the site to log in
-        session.post(url_login, data=payload)
-        return session
-
-
-def get_login_from_terminal(
-    username: Union[str, None],
-    password: Union[str, None],
-    file_auth: str = directory_project + "/config/authentication.yaml",
-) -> Tuple[Union[str, None]]:
-    """
-    Get login key from user during run time if 'username' and/or 'password' is 'None'.
-    Return 'None' if no reply within 15 sec.
-    """
-    if username is None or password is None:
-        record = True
-    else:
-        record = False
-    if username is None:
-        username = ask_for_input("Enter your Email: ")
-    if password is None:
-        password = ask_for_input("Enter your Password: ")
-    if record and isinstance(username, str) and isinstance(password, str):
-        loginkey_to_file(username, password, file_auth)
-    return username, password
-
-
-def ask_for_input(request: str) -> Union[str, None]:
-    timeout = 15
-    end_time = time.time() + timeout
-    while time.time() < end_time:
-        reply = input(request)
-        try:
-            assert isinstance(reply, str)
-            break
-        except Exception:
-            reply = None
-            continue
-    return reply
-
-
-def loginkey_to_file(
-    username: str,
-    password: str,
-    file_auth: str,
-) -> None:
-    """Safe login key to yaml"""
-    file = open(file_auth, "w")
-    file.write(f"username: '{username}'\n")
-    file.write(f"password: '{password}'")
-    file.close()
+        bio.mlistdom_to_mbox(self.lists, dir_out)

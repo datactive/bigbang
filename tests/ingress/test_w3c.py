@@ -8,16 +8,16 @@ import yaml
 
 import bigbang
 from bigbang.ingress import (
-    W3CArchive,
-    W3CList,
     W3CMessageParser,
+    W3CMailingList,
+    W3CMailingListDomain,
 )
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
-url_archive = "https://lists.w3.org/Archives/Public/"
-url_list = url_archive + "public-test2/"
-url_message = url_archive + "public-test2/2012Sep/0000.html"
+url_mlistdom = "https://lists.w3.org/Archives/Public/"
+url_list = url_mlistdom + "public-test2/"
+url_message = url_mlistdom + "public-test2/2012Sep/0000.html"
 file_temp_mbox = dir_temp + "/w3c.mbox"
 
 
@@ -81,10 +81,10 @@ class TestW3CMessageParser:
         Path(file_temp_mbox).unlink()
 
 
-class TestW3CList:
+class TestW3CMailingList:
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist_from_url(self):
-        mlist = W3CList.from_url(
+        mlist = W3CMailingList.from_url(
             name="public-test2",
             url=url_list,
             select={
@@ -99,7 +99,7 @@ class TestW3CList:
             "https://lists.w3.org/Archives/Public/public-test2/2019Apr/0000.html",
             "https://lists.w3.org/Archives/Public/public-test2/2019Mar/0000.html",
         ]
-        mlist = W3CList.from_messages(
+        mlist = W3CMailingList.from_messages(
             name="public-test2",
             url=url_list,
             messages=msgs_urls,
@@ -134,11 +134,11 @@ class TestW3CList:
         Path(file_temp_mbox).unlink()
 
 
-class TestW3CArchive:
+class TestW3CMailingListDomain:
     # def test__get_only_mlist_urls(self):
-    #    arch = W3CArchive.from_url(
+    #    arch = W3CMailingListDomain.from_url(
     #        name="W3C",
-    #        url_root=url_archive,
+    #        url_root=url_mlistdom,
     #        select={
     #            "years": 2015,
     #            "months": "November",
@@ -148,11 +148,11 @@ class TestW3CArchive:
     #    )
     #    return arch
 
-    @pytest.fixture(name="arch", scope="session")
+    @pytest.fixture(name="mlistdom", scope="session")
     def get_mailarchive(self):
-        arch = W3CArchive.from_mailing_lists(
+        mlistdom = W3CMailingListDomain.from_mailing_lists(
             name="W3C",
-            url_root=url_archive,
+            url_root=url_mlistdom,
             url_mailing_lists=[
                 "https://lists.w3.org/Archives/Public/public-ixml/",
                 "https://lists.w3.org/Archives/Public/public-traffic/",
@@ -166,38 +166,38 @@ class TestW3CArchive:
             instant_save=False,
             only_mlist_urls=False,
         )
-        return arch
+        return mlistdom
 
     def test__from_mbox(self):
-        arch = W3CArchive.from_mbox(
+        mlistdom = W3CMailingListDomain.from_mbox(
             name="3GPP",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
             filedsc="3GPP_TSG_*.mbox",
         )
-        assert len(arch) == 2
-        names = [mlist.name for mlist in arch.lists]
+        assert len(mlistdom) == 2
+        names = [mlist.name for mlist in mlistdom.lists]
         index = names.index("3GPP_TSG_SA_WG4_EVS")
-        assert len(arch.lists[index]) == 50
+        assert len(mlistdom.lists[index]) == 50
         index = names.index("3GPP_TSG_RAN_WG4_NR-MIMO-OTA")
-        assert len(arch.lists[index]) == 59
+        assert len(mlistdom.lists[index]) == 59
 
-    def test__archive_content(self, arch):
-        assert arch.name == "W3C"
-        assert arch.url == url_archive
-        assert len(arch) == 1
-        assert len(arch.lists[0]) == 2
+    def test__archive_content(self, mlistdom):
+        assert mlistdom.name == "W3C"
+        assert mlistdom.url == url_mlistdom
+        assert len(mlistdom) == 1
+        assert len(mlistdom.lists[0]) == 2
         assert (
-            arch.lists[0].messages[0]["Subject"]
+            mlistdom.lists[0].messages[0]["Subject"]
             == "Re: Web Accessibility Issue"
         )
 
-    def test__to_dict(self, arch):
-        dic = arch.to_dict()
+    def test__to_dict(self, mlistdom):
+        dic = mlistdom.to_dict()
         assert len(list(dic.keys())) == 10
         assert len(dic[list(dic.keys())[0]]) == 2
 
-    def test__to_mbox(self, arch):
-        arch.to_mbox(dir_temp)
+    def test__to_mbox(self, mlistdom):
+        mlistdom.to_mbox(dir_temp)
         file_dic = {
             f"{dir_temp}/wai-site-comments.mbox": 25,
         }

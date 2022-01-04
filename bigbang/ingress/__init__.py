@@ -1,15 +1,15 @@
 from bigbang.ingress.abstract import (
-    AbstractArchive,
-    AbstractList,
     AbstractMessageParser,
+    AbstractMailingList,
+    AbstractMailingListDomain,
 )
 from bigbang.ingress.listserv import (
-    ListservArchive,
-    ListservList,
     ListservMessageParser,
+    ListservMailingList,
+    ListservMailingListDomain,
 )
 from bigbang.ingress.w3c import (
-    W3CArchive,
-    W3CList,
     W3CMessageParser,
+    W3CMailingList,
+    W3CMailingListDomain,
 )

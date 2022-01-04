@@ -5,8 +5,6 @@ import re
 import subprocess
 import time
 import warnings
-import mailbox
-from mailbox import mboxMessage
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.parse import urljoin, urlparse
@@ -20,10 +18,11 @@ from bs4 import BeautifulSoup
 from config.config import CONFIG
 
 import bigbang.bigbang_io as bio
+from bigbang.data_types import MailingList
 from bigbang.ingress import (
-    AbstractArchive,
-    AbstractList,
     AbstractMessageParser,
+    AbstractMailingList,
+    AbstractMailingListDomain,
 )
 from bigbang.ingress.utils import (
     get_website_content,
@@ -47,19 +46,19 @@ logger = logging.getLogger(__name__)
 
 
 class W3CMessageParserWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+    """Base class for W3CMessageParser class specific exceptions"""
 
     pass
 
 
-class W3CListWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+class W3CMailingListWarning(BaseException):
+    """Base class for W3CMailingList class specific exceptions"""
 
     pass
 
 
-class W3CArchiveWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+class W3CMailingListDomainWarning(BaseException):
+    """Base class for W3CMailingListDomain class specific exceptions"""
 
     pass
 
@@ -157,7 +156,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
             return None
 
 
-class W3CList(AbstractList):
+class W3CMailingList(AbstractMailingList):
     """
     This class handles the scraping of a all public Emails contained in a single
     mailing list in the hypermail format.
@@ -176,7 +175,7 @@ class W3CList(AbstractList):
 
     Methods
     -------
-    All methods in the `AbstractList` class in addition to:
+    All methods in the `AbstractMailingList` class in addition to:
     get_all_periods_and_their_urls()
 
 
@@ -184,7 +183,7 @@ class W3CList(AbstractList):
     -------
     To scrape a W3C mailing list from an URL and store it in
     run-time memory, we do the following
-    >>> mlist = W3CList.from_url(
+    >>> mlist = W3CMailingList.from_url(
     >>>     name="public-bigdata",
     >>>     url="https://lists.w3.org/Archives/Public/public-bigdata/",
     >>>     select={
@@ -204,8 +203,8 @@ class W3CList(AbstractList):
         name: str,
         url: str,
         select: Optional[dict] = {"fields": "total"},
-    ) -> "W3CList":
-        """Docstring in `AbstractList`."""
+    ) -> "W3CMailingList":
+        """Docstring in `AbstractMailingList`."""
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
         msg_urls = cls.get_message_urls(name, url, select)
@@ -221,10 +220,10 @@ class W3CList(AbstractList):
         cls,
         name: str,
         url: str,
-        messages: List[Union[str, mboxMessage]],
+        messages: Union[List[str], MailingList],
         fields: str = "total",
-    ) -> "W3CList":
-        """Docstring in `AbstractList`."""
+    ) -> "W3CMailingList":
+        """Docstring in `AbstractMailingList`."""
         if not messages:
             msgs = []
         elif isinstance(messages[0], str):
@@ -239,8 +238,8 @@ class W3CList(AbstractList):
         return cls(name, url, msgs)
 
     @classmethod
-    def from_mbox(cls, name: str, filepath: str) -> "W3CList":
-        """Docstring in `AbstractList`."""
+    def from_mbox(cls, name: str, filepath: str) -> "W3CMailingList":
+        """Docstring in `AbstractMailingList`."""
         msgs = bio.mlist_from_mbox(filepath)
         return cls(name, filepath, msgs)
 
@@ -251,7 +250,7 @@ class W3CList(AbstractList):
         url: str,
         select: Optional[dict] = None,
     ) -> List[str]:
-        """Docstring in `AbstractList`."""
+        """Docstring in `AbstractMailingList`."""
 
         def get_message_urls_from_period_url(name: str, url: str) -> List[str]:
             soup = get_website_content(url)
@@ -266,7 +265,7 @@ class W3CList(AbstractList):
 
         msg_urls = []
         # run through periods
-        for period_url in W3CList.get_period_urls(url, select):
+        for period_url in W3CMailingList.get_period_urls(url, select):
             # run through messages within period
             for msg_url in get_message_urls_from_period_url(name, period_url):
                 msg_urls.append(msg_url)
@@ -302,7 +301,7 @@ class W3CList(AbstractList):
 
                 periodquants = [cond(period) for period in periods]
 
-                indices = W3CList.get_index_of_elements_in_selection(
+                indices = W3CMailingList.get_index_of_elements_in_selection(
                     periodquants,
                     urls_of_periods,
                     value,
@@ -372,7 +371,7 @@ class W3CList(AbstractList):
         return url.split("/")[-2]
 
 
-class W3CArchive(AbstractArchive):
+class W3CMailingListDomain(AbstractMailingListDomain):
     """
     This class handles the scraping of a all public Emails contained in a mailing
     archive that has the hypermail format, such as W3C.
@@ -381,25 +380,25 @@ class W3CArchive(AbstractArchive):
     <mailing_list_name>@w3.org.
     Thus, this class contains all Emails send to <mailing_archive_name>
     (the Email domain name). These Emails are contained in a list of
-    `W3CList` types, such that it is known to which <mailing_list_name>
+    `W3CMailingList` types, such that it is known to which <mailing_list_name>
     (the Email localpart) was send.
 
 
     Parameters
     ----------
-    name : The name of the archive.
-    url : The URL where the archive lives
-    lists : A list containing the mailing lists as `W3CList` types
+    name : The name of the mailing list domain.
+    url : The URL where the mailing list domain lives
+    lists : A list containing the mailing lists as `W3CMailingList` types
 
     Methods
     -------
-    All methods in the `AbstractArchive` class.
+    All methods in the `AbstractMailingListDomain` class.
 
     Example
     -------
-    To scrape a W3C mailing list archive from an URL and store it in
+    To scrape a W3C mailing list mailing list domain from an URL and store it in
     run-time memory, we do the following
-    >>> arch = W3CArchive.from_url(
+    >>> mlistdom = W3CMailingListDomain.from_url(
     >>>     name="W3C",
     >>>     url_root="https://lists.w3.org/Archives/Public/",
     >>>     select={
@@ -413,7 +412,7 @@ class W3CArchive(AbstractArchive):
     >>> )
 
     To save it as *.mbox file we do the following
-    >>> arch.to_mbox(path_to_directory)
+    >>> mlistdom.to_mbox(path_to_directory)
     """
 
     @classmethod
@@ -425,8 +424,8 @@ class W3CArchive(AbstractArchive):
         select: Optional[dict] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> "W3CArchive":
-        """Docstring in `AbstractList`."""
+    ) -> "W3CMailingListDomain":
+        """Docstring in `AbstractMailingListDomain`."""
         lists = cls.get_lists_from_url(
             select,
             url_root,
@@ -447,17 +446,17 @@ class W3CArchive(AbstractArchive):
         cls,
         name: str,
         url_root: str,
-        url_mailing_lists: Union[List[str], List[W3CList]],
+        url_mailing_lists: Union[List[str], List[W3CMailingList]],
         select: Optional[dict] = None,
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
-    ) -> "W3CArchive":
-        """Docstring in `AbstractList`."""
+    ) -> "W3CMailingListDomain":
+        """Docstring in `AbstractMailingListDomain`."""
         if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
             lists = []
             for url in url_mailing_lists:
-                mlist_name = W3CList.get_name_from_url(url)
-                mlist = W3CList.from_url(
+                mlist_name = W3CMailingList.get_name_from_url(url)
+                mlist = W3CMailingList.from_url(
                     name=mlist_name,
                     url=url,
                     select=select,
@@ -480,13 +479,13 @@ class W3CArchive(AbstractArchive):
         name: str,
         directorypath: str,
         filedsc: str = "*.mbox",
-    ) -> "W3CArchive":
-        """Docstring in `AbstractList`."""
+    ) -> "W3CMailingListDomain":
+        """Docstring in `AbstractMailingListDomain`."""
         filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
         lists = []
         for filepath in filepaths:
             name = filepath.split("/")[-1].split(".")[0]
-            lists.append(W3CList.from_mbox(name, filepath))
+            lists.append(W3CMailingList.from_mbox(name, filepath))
         return cls(name, directorypath, lists)
 
     @staticmethod
@@ -496,8 +495,8 @@ class W3CArchive(AbstractArchive):
         url_home: Optional[str] = None,
         instant_save: bool = True,
         only_mlist_urls: bool = True,
-    ) -> List[Union[W3CList, str]]:
-        """Docstring in `AbstractList`."""
+    ) -> List[Union[W3CMailingList, str]]:
+        """Docstring in `AbstractMailingListDomain`."""
         archive = []
         if url_home is None:
             soup = get_website_content(url_root)
@@ -513,9 +512,9 @@ class W3CArchive(AbstractArchive):
         if only_mlist_urls:
             # collect mailing-list urls
             for mlist_url in mlist_urls:
-                name = W3CList.get_name_from_url(mlist_url)
+                name = W3CMailingList.get_name_from_url(mlist_url)
                 # check if mailing list contains messages in period
-                _period_urls = W3CList.get_all_periods_and_their_urls(
+                _period_urls = W3CMailingList.get_all_periods_and_their_urls(
                     mlist_url
                 )[1]
                 # check if mailing list is public
@@ -524,7 +523,7 @@ class W3CArchive(AbstractArchive):
                     for _period_url in _period_urls:
                         loops += 1
                         nr_msgs = len(
-                            W3CList.get_messages_urls(
+                            W3CMailingList.get_messages_urls(
                                 name=name, url=_period_url
                             )
                         )
@@ -534,8 +533,8 @@ class W3CArchive(AbstractArchive):
         else:
             # collect mailing-list contents
             for mlist_url in mlist_urls:
-                name = W3CList.get_name_from_url(mlist_url)
-                mlist = W3CList.from_url(
+                name = W3CMailingList.get_name_from_url(mlist_url)
+                mlist = W3CMailingList.from_url(
                     name=name,
                     url=mlist_url,
                     select=select,

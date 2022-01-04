@@ -8,17 +8,17 @@ import yaml
 
 import bigbang
 from bigbang.ingress import (
-    ListservArchive,
-    ListservList,
     ListservMessageParser,
+    ListservMailingList,
+    ListservMailingListDomain,
 )
 from bigbang.ingress.utils import get_login_from_terminal
 from config.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
-url_archive = "https://listserv.ieee.org/cgi-bin/wa?"
-url_list = url_archive + "A0=IEEE-TEST"
-url_message = url_archive + "A2=ind1511d&L=IEEE-TEST&P=67"
+url_mlistdom = "https://listserv.ieee.org/cgi-bin/wa?"
+url_list = url_mlistdom + "A0=IEEE-TEST"
+url_message = url_mlistdom + "A2=ind1511d&L=IEEE-TEST&P=67"
 file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
@@ -122,7 +122,7 @@ class TestListservMessageParser:
         Path(file_temp_mbox).unlink()
 
 
-class TestListservList:
+class TestListservMailingList:
     @pytest.mark.skipif(
         not os.path.isfile(file_auth),
         reason="Key to log into LISTSERV could not be found",
@@ -130,7 +130,7 @@ class TestListservList:
     def test__from_url_with_login(self):
         with open(file_auth, "r") as stream:
             auth_key = yaml.safe_load(stream)
-        mlist = ListservList.from_url(
+        mlist = ListservMailingList.from_url(
             name="IEEE-TEST",
             url=url_list,
             select={
@@ -148,7 +148,7 @@ class TestListservList:
 
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist_from_url(self):
-        mlist = ListservList.from_url(
+        mlist = ListservMailingList.from_url(
             name="IEEE-TEST",
             url=url_list,
             select={
@@ -164,7 +164,7 @@ class TestListservList:
             "https://listserv.ieee.org/cgi-bin/wa?A2=IEEE-TEST;a57724f6.2105a",
             "https://listserv.ieee.org/cgi-bin/wa?A2=IEEE-TEST;fc0a9fdd.2105b",
         ]
-        mlist = ListservList.from_messages(
+        mlist = ListservMailingList.from_messages(
             name="IEEE-TEST",
             url=url_list,
             messages=msgs_urls,
@@ -200,13 +200,13 @@ class TestListservList:
         Path(file_temp_mbox).unlink()
 
 
-class TestListservArchive:
-    @pytest.fixture(name="arch", scope="session")
+class TestListservMailingListDomain:
+    @pytest.fixture(name="mlistdom", scope="session")
     def get_mailarchive(self):
-        arch = ListservArchive.from_url(
+        mlistdom = ListservMailingListDomain.from_url(
             name="IEEE",
-            url_root=url_archive,
-            url_home=url_archive + "HOME",
+            url_root=url_mlistdom,
+            url_home=url_mlistdom + "HOME",
             select={
                 "years": 2015,
                 "months": "November",
@@ -219,25 +219,25 @@ class TestListservArchive:
             instant_save=False,
             only_mlist_urls=False,
         )
-        return arch
+        return mlistdom
 
-    def test__archive_content(self, arch):
-        assert arch.name == "IEEE"
-        assert arch.url == url_archive
-        assert len(arch) == 1
-        assert len(arch.lists[0]) == 1
+    def test__archive_content(self, mlistdom):
+        assert mlistdom.name == "IEEE"
+        assert mlistdom.url == url_mlistdom
+        assert len(mlistdom) == 1
+        assert len(mlistdom.lists[0]) == 1
         assert (
-            arch.lists[0].messages[0]["subject"]
+            mlistdom.lists[0].messages[0]["subject"]
             == '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
         )
 
-    def test__to_dict(self, arch):
-        dic = arch.to_dict()
+    def test__to_dict(self, mlistdom):
+        dic = mlistdom.to_dict()
         assert len(list(dic.keys())) == 8
         assert len(dic[list(dic.keys())[0]]) == 1
 
-    def test__to_mbox(self, arch):
-        arch.to_mbox(dir_temp)
+    def test__to_mbox(self, mlistdom):
+        mlistdom.to_mbox(dir_temp)
         file_dic = {
             f"{dir_temp}/IEEE-TEST.mbox": 14,
         }
