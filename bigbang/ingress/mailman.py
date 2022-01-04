@@ -24,8 +24,8 @@ import bigbang.archive as archive
 
 from config.config import CONFIG
 
-from bigbang.ingress import listserv, w3c
-from bigbang import parse
+from . import listserv, w3c
+from .. import parse
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
 txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
@@ -248,7 +248,13 @@ def collect_archive_from_url(
         url_root = "https://" + urlparse(url).hostname
 
     if w3c_archives_exp.search(url):
-        return w3c.collect_from_url(url, archive_dir, notes=notes)
+        return w3c.W3CArchive.from_mailing_lists(
+            name="W3C",
+            url_root=url_root,
+            url_mailing_lists=urls,
+            only_mlist_urls=False,
+            instant_save=True,
+        )
     elif tgpp_archives_exp.search(url):
         return listserv.ListservArchive.from_mailing_lists(
             name="3GPP",

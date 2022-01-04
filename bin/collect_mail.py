@@ -4,7 +4,7 @@ import logging
 import sys
 from argparse import RawTextHelpFormatter
 
-import bigbang.mailman as mailman
+import bigbang.ingress.mailman as mailman
 
 parser = argparse.ArgumentParser(
     formatter_class=RawTextHelpFormatter,

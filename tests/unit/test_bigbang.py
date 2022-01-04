@@ -12,11 +12,11 @@ import pandas as pd
 from testfixtures import LogCapture
 
 import bigbang.archive as archive
-import bigbang.mailman as mailman
+import bigbang.ingress.mailman as mailman
 import bigbang.parse as parse
-import bigbang.process as process
+import bigbang.analysis.process as process
 import bigbang.utils as utils
-from bigbang import repo_loader
+from bigbang.analysis import repo_loader
 from config.config import CONFIG
 
 test_txt = ""
