@@ -12,6 +12,7 @@ import pandas as pd
 from config.config import CONFIG
 
 from bigbang.analysis import utils
+from bigbang.data_types import Message, MailingList, MailingListDomain
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -24,7 +25,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def email_to_dict(msg: mboxMessage) -> Dict[str, str]:
+def email_to_dict(msg: Message) -> Dict[str, str]:
     """
     Handles data type transformation from `mailbox.mboxMessage` to `Dictionary`.
     """
@@ -34,7 +35,7 @@ def email_to_dict(msg: mboxMessage) -> Dict[str, str]:
     return dic
 
 
-def email_to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
+def email_to_pandas_dataframe(msg: Message) -> pd.DataFrame:
     """
     Handles data type transformation from `mailbox.mboxMessage` to `pandas.DataFrame`.
     """
@@ -44,7 +45,7 @@ def email_to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
     )
 
 
-def email_to_mbox(msg: mboxMessage, filepath: str, mode: str = "w") -> None:
+def email_to_mbox(msg: Message, filepath: str, mode: str = "w") -> None:
     """
     Saves `mailbox.mboxMessage` as .mbox file.
     """
@@ -87,7 +88,7 @@ def mlist_from_mbox(filepath: str) -> list:
 
 
 def mlist_to_dict(
-    msgs: List[mboxMessage],
+    msgs: MailingList,
     include_body: bool = True,
 ) -> Dict[str, List[str]]:
     """
@@ -115,7 +116,7 @@ def mlist_to_dict(
 
 
 def mlist_to_pandas_dataframe(
-    msgs: List[mboxMessage],
+    msgs: MailingList,
     include_body: bool = True,
 ) -> pd.DataFrame:
     """
@@ -146,9 +147,7 @@ def mlist_to_pandas_dataframe(
     return df
 
 
-def mlist_to_mbox(
-    msgs: List[mboxMessage], dir_out: str, filename: str
-) -> None:
+def mlist_to_mbox(msgs: MailingList, dir_out: str, filename: str) -> None:
     """
     Saves a List[mailbox.mboxMessage] as .mbox file.
     For a clearer definition on what a mailing list is, see:
@@ -178,7 +177,7 @@ def mlist_to_mbox(
 
 
 def mlistdom_to_dict(
-    mlists: list, include_body: bool = True
+    mlists: MailingListDomain, include_body: bool = True
 ) -> Dict[str, List[str]]:
     """
     Handles data type transformation from a List[AbstractList] to a
@@ -212,7 +211,7 @@ def mlistdom_to_dict(
 
 
 def mlistdom_to_pandas_dataframe(
-    mlists: list, include_body: bool = True
+    mlists: MailingListDomain, include_body: bool = True
 ) -> pd.DataFrame:
     """
     Handles data type transformation from a List[AbstractList] to a
@@ -242,7 +241,7 @@ def mlistdom_to_pandas_dataframe(
     return df
 
 
-def mlistdom_to_mbox(mlists: list, dir_out: str):
+def mlistdom_to_mbox(mlists: MailingListDomain, dir_out: str):
     """
     Saves a List[AbstractList] as .mbox file.
     For a clearer definition on what a mailing archive is, see:
