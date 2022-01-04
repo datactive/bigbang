@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 
 from config.config import CONFIG
 
-from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
+import bigbang.bigbang_io as bio
 from bigbang.utils import (
     get_paths_to_files_in_directory,
     get_paths_to_dirs_in_directory,
@@ -126,7 +126,7 @@ class ListservList:
         filepath: str,
         include_body: bool = True,
     ) -> "ListservList":
-        df = ListIO.from_mbox_to_pandas_dataframe(filepath)
+        df = bio.mlist_from_mbox_to_pandas_dataframe(filepath)
         return cls.from_pandas_dataframe(df, name, filepath)
 
     @classmethod

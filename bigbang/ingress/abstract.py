@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 
 from config.config import CONFIG
 from bigbang.utils import get_paths_to_files_in_directory
-from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
+import bigbang.bigbang_io as bio
 from bigbang.ingress.utils import get_website_content
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
@@ -161,12 +161,12 @@ class AbstractMessageParser(ABC):
     @staticmethod
     def to_dict(msg: mboxMessage) -> Dict[str, List[str]]:
         """Convert mboxMessage to a Dictionary"""
-        return MessageIO.to_dict(msg)
+        return bio.email_to_dict(msg)
 
     @staticmethod
     def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
         """Convert mboxMessage to a pandas.DataFrame"""
-        return MessageIO.to_pandas_dataframe(msg)
+        return bio.email_to_pandas_dataframe(msg)
 
     @staticmethod
     def to_mbox(msg: mboxMessage, filepath: str):
@@ -176,7 +176,7 @@ class AbstractMessageParser(ABC):
         msg : The Email.
         filepath : Path to file in which the Email will be stored.
         """
-        return MessageIO.to_mbox(msg, filepath)
+        return bio.email_to_mbox(msg, filepath)
 
 
 class AbstractList(ABC):
@@ -413,7 +413,7 @@ class AbstractList(ABC):
         header field contents arranged by the order as they were scraped from
         the web. This format makes the conversion to a pandas.DataFrame easier.
         """
-        return ListIO.to_dict(self.messages, include_body)
+        return bio.mlist_to_dict(self.messages, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
@@ -427,14 +427,14 @@ class AbstractList(ABC):
         Converts the mailing list into a pandas.DataFrame object in which each
         row represents an Email.
         """
-        return ListIO.to_pandas_dataframe(self.messages, include_body)
+        return bio.mlist_to_pandas_dataframe(self.messages, include_body)
 
     def to_mbox(self, dir_out: str, filename: Optional[str] = None):
         """Safe mailing list to .mbox files."""
         if filename is None:
-            ListIO.to_mbox(self.messages, dir_out, self.name)
+            bio.mlist_to_mbox(self.messages, dir_out, self.name)
         else:
-            ListIO.to_mbox(self.messages, dir_out, filename)
+            bio.mlist_to_mbox(self.messages, dir_out, filename)
 
 
 class AbstractArchive(ABC):
@@ -628,20 +628,20 @@ class AbstractArchive(ABC):
         Concatenates mailing list dictionaries created using
         `AbstractList.to_dict()`.
         """
-        return ArchiveIO.to_dict(self.lists, include_body)
+        return bio.march_to_dict(self.lists, include_body)
 
     def to_pandas_dataframe(self, include_body: bool = True) -> pd.DataFrame:
         """
         Concatenates mailing list pandas.DataFrames created using
         `AbstractList.to_pandas_dataframe()`.
         """
-        return ArchiveIO.to_pandas_dataframe(self.lists, include_body)
+        return bio.march_to_pandas_dataframe(self.lists, include_body)
 
     def to_mbox(self, dir_out: str):
         """
         Save Archive content to .mbox files
         """
-        ArchiveIO.to_mbox(self.lists, dir_out)
+        bio.march_to_mbox(self.lists, dir_out)
 
 
 def set_website_preference_for_header(

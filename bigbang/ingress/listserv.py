@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 
 from config.config import CONFIG
 
-from bigbang.bigbang_io import MessageIO, ListIO, ArchiveIO
+import bigbang.bigbang_io as bio
 from bigbang.ingress import (
     AbstractArchive,
     AbstractList,
@@ -454,7 +454,7 @@ class ListservList(AbstractList):
     @classmethod
     def from_mbox(cls, name: str, filepath: str) -> "ListservList":
         """Docstring in `AbstractList`."""
-        msgs = ListIO.from_mbox(filepath)
+        msgs = bio.mlist_from_mbox(filepath)
         return cls(name, filepath, msgs)
 
     @classmethod
