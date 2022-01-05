@@ -1,3 +1,4 @@
+from tqdm import tqdm
 import email
 import logging
 import os
@@ -337,7 +338,7 @@ class W3CMailList(AbstractMailList):
             else:
                 continue
             periods.append(link.text)
-            urls_of_periods.append(url + link.get("href"))
+            urls_of_periods.append(url + "/" + link.get("href"))
         return periods, urls_of_periods
 
     @classmethod
@@ -421,7 +422,7 @@ class W3CMailListDomain(AbstractMailListDomain):
         name: str,
         url_root: str,
         url_home: Optional[str] = None,
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
         instant_save: bool = True,
         only_mlist_urls: bool = True,
     ) -> "W3CMailListDomain":
@@ -447,7 +448,7 @@ class W3CMailListDomain(AbstractMailListDomain):
         name: str,
         url_root: str,
         url_mailing_lists: Union[List[str], List[W3CMailList]],
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
     ) -> "W3CMailListDomain":
@@ -511,7 +512,7 @@ class W3CMailListDomain(AbstractMailListDomain):
 
         if only_mlist_urls:
             # collect mailing-list urls
-            for mlist_url in mlist_urls:
+            for mlist_url in tqdm(mlist_urls, ascii=True):
                 name = W3CMailList.get_name_from_url(mlist_url)
                 # check if mailing list contains messages in period
                 _period_urls = W3CMailList.get_all_periods_and_their_urls(
@@ -519,17 +520,7 @@ class W3CMailListDomain(AbstractMailListDomain):
                 )[1]
                 # check if mailing list is public
                 if len(_period_urls) > 0:
-                    loops = 0
-                    for _period_url in _period_urls:
-                        loops += 1
-                        nr_msgs = len(
-                            W3CMailList.get_messages_urls(
-                                name=name, url=_period_url
-                            )
-                        )
-                        if nr_msgs > 0:
-                            archive.append(mlist_url)
-                            break
+                    archive.append(mlist_url)
         else:
             # collect mailing-list contents
             for mlist_url in mlist_urls:
