@@ -122,6 +122,8 @@ def collect_from_file(
         collect_from_url(urls, archive_dir=archive_dir, notes=notes)
     elif ieee_archives_exp.search(urls[0]):
         collect_from_url(urls, archive_dir=archive_dir, notes=notes)
+    elif w3c_archives_exp.search(urls[0]):
+        collect_from_url(urls, archive_dir=archive_dir, notes=notes)
     else:
         for url in urls:
             collect_from_url(url, archive_dir=archive_dir, notes=notes)
