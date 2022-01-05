@@ -15,10 +15,10 @@ from pathlib import Path
 import pytz
 
 import bigbang.analysis.utils as analysis_utils
-import bigbang.mailman as mailman
+import bigbang.ingress.mailman as mailman
 from bigbang.parse import get_date, get_text
-import bigbang.process as process
-from bigbang.thread import Node, Thread
+import bigbang.analysis.process as process
+from bigbang.analysis.thread import Node, Thread
 from config.config import CONFIG
 
 from . import utils
