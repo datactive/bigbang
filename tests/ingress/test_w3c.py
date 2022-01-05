@@ -9,8 +9,8 @@ import yaml
 import bigbang
 from bigbang.ingress import (
     W3CMessageParser,
-    W3CMailingList,
-    W3CMailingListDomain,
+    W3CMailList,
+    W3CMailListDomain,
 )
 from config.config import CONFIG
 
@@ -81,10 +81,10 @@ class TestW3CMessageParser:
         Path(file_temp_mbox).unlink()
 
 
-class TestW3CMailingList:
+class TestW3CMailList:
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist_from_url(self):
-        mlist = W3CMailingList.from_url(
+        mlist = W3CMailList.from_url(
             name="public-test2",
             url=url_list,
             select={
@@ -99,7 +99,7 @@ class TestW3CMailingList:
             "https://lists.w3.org/Archives/Public/public-test2/2019Apr/0000.html",
             "https://lists.w3.org/Archives/Public/public-test2/2019Mar/0000.html",
         ]
-        mlist = W3CMailingList.from_messages(
+        mlist = W3CMailList.from_messages(
             name="public-test2",
             url=url_list,
             messages=msgs_urls,
@@ -134,9 +134,9 @@ class TestW3CMailingList:
         Path(file_temp_mbox).unlink()
 
 
-class TestW3CMailingListDomain:
+class TestW3CMailListDomain:
     # def test__get_only_mlist_urls(self):
-    #    arch = W3CMailingListDomain.from_url(
+    #    arch = W3CMailListDomain.from_url(
     #        name="W3C",
     #        url_root=url_mlistdom,
     #        select={
@@ -149,8 +149,8 @@ class TestW3CMailingListDomain:
     #    return arch
 
     @pytest.fixture(name="mlistdom", scope="session")
-    def get_mailarchive(self):
-        mlistdom = W3CMailingListDomain.from_mailing_lists(
+    def get_maillistdomain(self):
+        mlistdom = W3CMailListDomain.from_mailing_lists(
             name="W3C",
             url_root=url_mlistdom,
             url_mailing_lists=[
@@ -169,7 +169,7 @@ class TestW3CMailingListDomain:
         return mlistdom
 
     def test__from_mbox(self):
-        mlistdom = W3CMailingListDomain.from_mbox(
+        mlistdom = W3CMailListDomain.from_mbox(
             name="3GPP",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
             filedsc="3GPP_TSG_*.mbox",
@@ -181,7 +181,7 @@ class TestW3CMailingListDomain:
         index = names.index("3GPP_TSG_RAN_WG4_NR-MIMO-OTA")
         assert len(mlistdom.lists[index]) == 59
 
-    def test__archive_content(self, mlistdom):
+    def test__maillistdomain_content(self, mlistdom):
         assert mlistdom.name == "W3C"
         assert mlistdom.url == url_mlistdom
         assert len(mlistdom) == 1

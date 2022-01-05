@@ -8,8 +8,8 @@ import numpy as np
 import pytest
 import yaml
 
-from bigbang.analysis.listserv import ListservArchive
-from bigbang.analysis.listserv import ListservList
+from bigbang.analysis.listserv import ListservMailListDomain
+from bigbang.analysis.listserv import ListservMailList
 
 from config.config import CONFIG
 
@@ -21,7 +21,7 @@ auth_key_mock = {"username": "bla", "password": "bla"}
 
 @pytest.fixture(name="march", scope="module")
 def get_mailingarchive():
-    march = ListservArchive.from_mbox(
+    march = ListservMailListDomain.from_mbox(
         name="3GPP",
         directorypath=CONFIG.test_data_path + "3GPP_mbox/",
         filedsc="3GPP_TSG_*",
@@ -31,7 +31,7 @@ def get_mailingarchive():
 
 @pytest.fixture(name="mlist", scope="module")
 def get_mailinglist():
-    mlist = ListservList.from_mbox(
+    mlist = ListservMailList.from_mbox(
         name="3GPP_TSG_SA_WG4_EVS",
         filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_TSG_SA_WG4_EVS.mbox",
     )
@@ -43,7 +43,7 @@ def test_dissection_of_address_header_field():
     with open(filepath, "r") as stream:
         addresses = yaml.safe_load(stream)
 
-    generator = ListservList.iterator_name_localpart_domain(
+    generator = ListservMailList.iterator_name_localpart_domain(
         list(addresses.keys())
     )
     assert (
@@ -92,15 +92,17 @@ def test_dissection_of_address_header_field():
     assert list(next(generator)) == replyto_sample[2][3]
 
 
-class TestListservList:
+class TestListservMailList:
     def test__to_percentage(self):
         abso = np.array([1, 3])
-        perc = ListservList.to_percentage(abso)
+        perc = ListservMailList.to_percentage(abso)
         np.testing.assert_array_equal(perc, np.array([0.25, 0.75]))
 
     def test__get_name_localpart_domain(self):
         addr = '"gabin frederic" <frederic.gabin@dolby.com>'
-        name, localpart, domain = ListservList.get_name_localpart_domain(addr)
+        name, localpart, domain = ListservMailList.get_name_localpart_domain(
+            addr
+        )
         assert name == "gabin frederic"
         assert localpart == "frederic.gabin"
         assert domain == "dolby.com"

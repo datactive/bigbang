@@ -55,19 +55,19 @@ reply_labels = [
 # =?utf-8?b?J++9llNSVkND?=
 
 
-class ListservListWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+class ListservMailListWarning(BaseException):
+    """Base class for ListservMailList class specific exceptions"""
 
     pass
 
 
-class ListservArchiveWarning(BaseException):
-    """Base class for Archive class specific exceptions"""
+class ListservMailListDomainWarning(BaseException):
+    """Base class for ListservMailListDomain class specific exceptions"""
 
     pass
 
 
-class ListservList:
+class ListservMailList:
     """
     Note
     ----
@@ -125,7 +125,7 @@ class ListservList:
         name: str,
         filepath: str,
         include_body: bool = True,
-    ) -> "ListservList":
+    ) -> "ListservMailList":
         df = bio.mlist_from_mbox_to_pandas_dataframe(filepath)
         return cls.from_pandas_dataframe(df, name, filepath)
 
@@ -135,7 +135,7 @@ class ListservList:
         df: pd.DataFrame,
         name: Optional[str] = None,
         filepath: Optional[str] = None,
-    ) -> "ListservList":
+    ) -> "ListservMailList":
         return cls(name, filepath, df)
 
     @staticmethod
@@ -217,11 +217,11 @@ class ListservList:
                 addresses = re.findall(r"(?<=\<).+?(?=\>)", string)
                 for addr in addresses:
                     if "@" in addr:
-                        yield ListservList.get_name_localpart_domain(addr)
+                        yield ListservMailList.get_name_localpart_domain(addr)
                     else:
                         continue
             else:
-                yield ListservList.get_name_localpart_domain(string)
+                yield ListservMailList.get_name_localpart_domain(string)
 
     def period_of_activity(self) -> list:
         """
@@ -235,7 +235,7 @@ class ListservList:
         ]
         return period_of_activity
 
-    def crop_by_year(self, yrs: Union[int, list]) -> "ListservList":
+    def crop_by_year(self, yrs: Union[int, list]) -> "ListservMailList":
         """
         Filter `self.df` DataFrame by year in message date.
 
@@ -246,7 +246,7 @@ class ListservList:
 
         Returns
         -------
-        `ListservList` object cropped to specification.
+        `ListservMailList` object cropped to specification.
         """
         index = get_index_of_msgs_with_datetime(self.df)
         _df = self.df.loc[index]
@@ -257,7 +257,7 @@ class ListservList:
                 (dt.year >= min(yrs)) & (dt.year < max([yrs]))
                 for dt in _df["date"].values
             ]
-        return ListservList.from_pandas_dataframe(
+        return ListservMailList.from_pandas_dataframe(
             df=_df.loc[mask],
             name=self.name,
             filepath=self.filepath,
@@ -267,7 +267,7 @@ class ListservList:
         self,
         header_field: str,
         per_address_field: Dict[str, List[str]],
-    ) -> "ListservList":
+    ) -> "ListservMailList":
         """
         Parameters
         ----------
@@ -280,13 +280,13 @@ class ListservList:
 
         Returns
         -------
-        `ListservList` object cropped to specification.
+        `ListservMailList` object cropped to specification.
         """
         mlist = self.df.dropna(subset=["from"])
         if "domain" in list(per_address_field.keys()):
             _addr = pd.Series(
                 [
-                    ListservList.get_name_localpart_domain(addr)[-1]
+                    ListservMailList.get_name_localpart_domain(addr)[-1]
                     for addr in mlist["from"].values
                 ],
                 index=mlist.index.values,
@@ -296,20 +296,20 @@ class ListservList:
         if "localpart" in list(per_address_field.keys()):
             _addr = pd.Series(
                 [
-                    ListservList.get_name_localpart_domain(addr)[1]
+                    ListservMailList.get_name_localpart_domain(addr)[1]
                     for addr in mlist["from"].values
                 ],
                 index=mlist.index.values,
             ).dropna()
             mlist = mlist.loc[_addr.index]
             mlist = mlist[_addr.isin(per_address_field["localpart"])]
-        return ListservList.from_pandas_dataframe(
+        return ListservMailList.from_pandas_dataframe(
             df=mlist,
             name=self.name,
             filepath=self.filepath,
         )
 
-    def crop_by_subject(self, match=str, place: int = 2) -> "ListservList":
+    def crop_by_subject(self, match=str, place: int = 2) -> "ListservMailList":
         """
         Parameters
         ----------
@@ -321,7 +321,7 @@ class ListservList:
 
         Returns
         -------
-        `ListservList` object cropped to message subject.
+        `ListservMailList` object cropped to message subject.
         """
         index = get_index_of_msgs_with_subject(self.df)
         _df = self.df.loc[index]
@@ -346,7 +346,7 @@ class ListservList:
                 else False
             )
         mask = _df["subject"].apply(func).values  # returns bool-type array
-        return ListservList.from_pandas_dataframe(
+        return ListservMailList.from_pandas_dataframe(
             df=_df.loc[mask],
             name=self.name,
             filepath=self.filepath,
@@ -378,7 +378,7 @@ class ListservList:
             df = self.df
         domains = {}
         for header_field in header_fields:
-            generator = ListservList.iterator_name_localpart_domain(
+            generator = ListservMailList.iterator_name_localpart_domain(
                 df[header_field].dropna().values
             )
             # collect domain labels
@@ -456,7 +456,7 @@ class ListservList:
             if per_domain:
                 # TODO: Needs two for loop. Find way to reduce it.
                 localparts[header_field] = {}
-                generator = ListservList.iterator_name_localpart_domain(
+                generator = ListservMailList.iterator_name_localpart_domain(
                     df[header_field].dropna().values
                 )
                 _domains = list(
@@ -469,7 +469,7 @@ class ListservList:
                     )
                 )
                 _localparts = {d: [] for d in _domains}
-                generator = ListservList.iterator_name_localpart_domain(
+                generator = ListservMailList.iterator_name_localpart_domain(
                     df[header_field].dropna().values
                 )
                 for _, localpart, domain in generator:
@@ -482,7 +482,7 @@ class ListservList:
                     _localparts[_domain] = _dolpsu
                 localparts[header_field] = _localparts
             else:
-                generator = ListservList.iterator_name_localpart_domain(
+                generator = ListservMailList.iterator_name_localpart_domain(
                     df[header_field].dropna().values
                 )
                 _localparts = [
@@ -666,7 +666,7 @@ class ListservList:
         }
         # sort into address field
         if per_address_field:
-            generator = ListservList.iterator_name_localpart_domain(
+            generator = ListservMailList.iterator_name_localpart_domain(
                 _df["from"].values
             )
             if "domain" in per_address_field:
@@ -852,13 +852,15 @@ class ListservList:
             dic = {lp: {} for lp in localparts}
         # loop through messages
         for index, row in df.iterrows():
-            _, f_localpart, f_domain = ListservList.get_name_localpart_domain(
-                row["from"]
-            )
+            (
+                _,
+                f_localpart,
+                f_domain,
+            ) = ListservMailList.get_name_localpart_domain(row["from"])
             if f_domain is None:
                 continue
 
-            ct_generator = ListservList.iterator_name_localpart_domain(
+            ct_generator = ListservMailList.iterator_name_localpart_domain(
                 [df.loc[index]["comments-to"]]
             )
             for _, ct_localpart, ct_domain in ct_generator:
@@ -923,7 +925,7 @@ class ListservList:
     ):
         """
         Create directed graph from messaging network created with
-        ListservList.get_sender_receiver_dict().
+        ListservMailList.get_sender_receiver_dict().
 
         Parameters
         ----------
@@ -1025,16 +1027,16 @@ class ListservList:
         return dic_evol
 
 
-class ListservArchive:
+class ListservMailListDomain:
     """
     Parameters
     ----------
     name
-        The of whom the archive is (e.g. 3GPP, IEEE, ...)
+        The of whom the mail list domain is (e.g. 3GPP, IEEE, ...)
     filedsc
-        The file description of the archive
+        The file description of the mail list domain
     lists
-        A list containing the mailing lists as `ListservList` types
+        A list containing the mailing lists as `ListservMailList` types
 
     Methods
     -------
@@ -1052,13 +1054,15 @@ class ListservArchive:
         name: str,
         directorypath: str,
         filedsc: str = "*.mbox",
-    ) -> "ListservArchive":
+    ) -> "ListservMailListDomain":
         filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
         if len(filepaths) > 0:
-            ListservArchiveWarning("No files found fitting the description")
+            ListservMailListDomainWarning(
+                "No files found fitting the description"
+            )
         for count, filepath in enumerate(filepaths):
             name = filepath.split("/")[-1].split(".")[0]
-            mlist = ListservList.from_mbox(name, filepath).df
+            mlist = ListservMailList.from_mbox(name, filepath).df
             mlist["mailing-list"] = name
             if count == 0:
                 mlists = mlist

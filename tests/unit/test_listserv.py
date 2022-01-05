@@ -10,8 +10,8 @@ import yaml
 import bigbang
 from bigbang.ingress.listserv import (
     ListservMessageParser,
-    ListservMailingList,
-    ListservMailingListDomain,
+    ListservMailList,
+    ListservMailListDomain,
 )
 from config.config import CONFIG
 
@@ -22,8 +22,8 @@ auth_key_mock = {"username": "bla", "password": "bla"}
 
 
 @pytest.fixture(name="mlist", scope="module")
-def get_mailinglist():
-    mlist = ListservMailingList.from_listserv_directories(
+def get_maillist():
+    mlist = ListservMailList.from_listserv_directories(
         name="3GPP_TSG_SA_ITUT_AHG",
         directorypaths=[CONFIG.test_data_path + "3GPP/3GPP_TSG_SA_ITUT_AHG/"],
     )
@@ -82,10 +82,10 @@ class TestListservMessageParser:
         Path(file_temp_mbox).unlink()
 
 
-class TestListservMailingList:
+class TestListservMailList:
     def test__from_mbox(self):
         mlist_name = "3GPP_TSG_SA_WG4_EVS"
-        mlist = ListservMailingList.from_mbox(
+        mlist = ListservMailList.from_mbox(
             name=mlist_name,
             filepath=CONFIG.test_data_path + f"3GPP_mbox/{mlist_name}.mbox",
         )
@@ -100,7 +100,7 @@ class TestListservMailingList:
             CONFIG.test_data_path
             + "3GPP/3GPP_TSG_SA_ITUT_AHG/3GPP_TSG_SA_ITUT_AHG.LOG1703B"
         )
-        mlist = ListservMailingList.from_listserv_files(
+        mlist = ListservMailList.from_listserv_files(
             name="3GPP_TSG_SA_ITUT_AHG",
             filepaths=[filepath],
         )
@@ -152,9 +152,9 @@ class TestListservMailingList:
         Path(file_temp_mbox).unlink()
 
 
-class TestListservMailingListDomain:
+class TestListservMailListDomain:
     def test__from_mbox(self):
-        march = ListservMailingListDomain.from_mbox(
+        march = ListservMailListDomain.from_mbox(
             name="3GPP_mbox_test",
             directorypath=CONFIG.test_data_path + "3GPP_mbox/",
         )
@@ -169,7 +169,7 @@ class TestListservMailingListDomain:
 
     @pytest.fixture(name="arch", scope="session")
     def get_mailarchive(self):
-        arch = ListservMailingListDomain.from_listserv_directory(
+        arch = ListservMailListDomain.from_listserv_directory(
             name="3GPP",
             directorypath=CONFIG.test_data_path + "3GPP/",
         )
