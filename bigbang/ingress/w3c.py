@@ -369,7 +369,7 @@ class W3CMailList(AbstractMailList):
     @staticmethod
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
-        return url.split("/")[-1]
+        return url.split("/")[-2]
 
 
 class W3CMailListDomain(AbstractMailListDomain):
@@ -428,6 +428,7 @@ class W3CMailListDomain(AbstractMailListDomain):
     ) -> "W3CMailListDomain":
         """Docstring in `AbstractMailListDomain`."""
         lists = cls.get_lists_from_url(
+            name,
             select,
             url_root,
             url_home,
@@ -491,6 +492,7 @@ class W3CMailListDomain(AbstractMailListDomain):
 
     @staticmethod
     def get_lists_from_url(
+        name: str,
         select: dict,
         url_root: str,
         url_home: Optional[str] = None,
@@ -513,7 +515,6 @@ class W3CMailListDomain(AbstractMailListDomain):
         if only_mlist_urls:
             # collect mailing-list urls
             for mlist_url in tqdm(mlist_urls, ascii=True):
-                name = W3CMailList.get_name_from_url(mlist_url)
                 # check if mailing list contains messages in period
                 _period_urls = W3CMailList.get_all_periods_and_their_urls(
                     mlist_url
@@ -524,9 +525,9 @@ class W3CMailListDomain(AbstractMailListDomain):
         else:
             # collect mailing-list contents
             for mlist_url in mlist_urls:
-                name = W3CMailList.get_name_from_url(mlist_url)
+                mlist_name = W3CMailList.get_name_from_url(mlist_url)
                 mlist = W3CMailList.from_url(
-                    name=name,
+                    name=mlist_name,
                     url=mlist_url,
                     select=select,
                 )

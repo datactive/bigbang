@@ -646,4 +646,4 @@ class AbstractMailListDomain(ABC):
         """
         Save mail list domain content to .mbox files
         """
-        bio.mlistdom_to_mbox(self.lists, dir_out)
+        bio.mlistdom_to_mbox(self.lists, dir_out + "/" + self.name)
