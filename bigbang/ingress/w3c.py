@@ -153,7 +153,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         try:
             return text_for_selector(soup, "#body")
         except Exception:
-            logger.info(f"The message body of {url} could not be loaded.")
+            logger.exception(f"The message body of {url} could not be loaded.")
             return None
 
 
@@ -369,7 +369,7 @@ class W3CMailList(AbstractMailList):
     @staticmethod
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
-        return url.split("/")[-2]
+        return url.split("/")[-1]
 
 
 class W3CMailListDomain(AbstractMailListDomain):
@@ -551,7 +551,7 @@ def text_for_selector(soup: BeautifulSoup, selector: str):
         result = results[0].get_text(strip=True)
     else:
         result = ""
-        logging.debug("No matching text for selector %s", selector)
+        logger.debug("No matching text for selector %s", selector)
 
     return str(result)
 
@@ -561,5 +561,5 @@ def parse_dfn_header(header_text):
     if len(header_texts) == 2:
         return header_texts[1]
     else:
-        logging.debug("Split failed on %s", header_text)
+        logger.debug("Split failed on %s", header_text)
         return ""
