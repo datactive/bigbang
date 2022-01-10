@@ -877,7 +877,7 @@ class ListservMailList:
 
         if entity_in_focus is not None:
             dic = self.crop_dic_to_entity_in_focus(dic)
-
+        dic = {k: v for k, v in dic.items() if len(v) > 0}
         return dic
 
     def crop_dic_to_entity_in_focus(
@@ -1063,10 +1063,13 @@ class ListservMailListDomain:
         for count, filepath in enumerate(filepaths):
             name = filepath.split("/")[-1].split(".")[0]
             mlist = ListservMailList.from_mbox(name, filepath).df
-            mlist["mailing-list"] = name
             if count == 0:
+                mlist["mailing-list"] = name
                 mlists = mlist
+            elif mlist is None:
+                continue
             else:
+                mlist["mailing-list"] = name
                 mlists = mlists.append(mlist, ignore_index=True)
         return cls(name, directorypath + filedsc, mlists)
 

@@ -66,15 +66,24 @@ def mlist_from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
     bigbang.ingress.abstract.AbstractList
     """
     box = mailbox.mbox(filepath, create=False)
-    mlist = [dict(msg) for msg in list(box.values())]
-    # TODO: find out why some fields are missing in some messages
-    nr_of_fields = np.array([len(msg.keys()) for msg in mlist])
-    nr_of_fields = np.unique(nr_of_fields, return_counts=True)
-    df = pd.DataFrame(mlist)
-    df = utils.clean_addresses(df)
-    df = utils.clean_subject(df)
-    df = utils.clean_datetime(df)
-    return df
+    mlist = []
+    for msg in list(box.values()):
+        _msg = dict(msg)
+        _msg["body"] = msg.get_payload()
+        mlist.append(_msg)
+    # mlist = [dict(msg) for msg in list(box.values())]
+    mlist = [{k.lower(): v for k, v in msg.items()} for msg in mlist]
+    if len(mlist) > 0:
+        # TODO: find out why some fields are missing in some messages
+        nr_of_fields = np.array([len(msg.keys()) for msg in mlist])
+        nr_of_fields = np.unique(nr_of_fields, return_counts=True)
+        df = pd.DataFrame(mlist)
+        # df = utils.clean_addresses(df)
+        df = utils.clean_subject(df)
+        # df = utils.clean_datetime(df)
+        return df
+    else:
+        return None
 
 
 def mlist_from_mbox(filepath: str) -> list:

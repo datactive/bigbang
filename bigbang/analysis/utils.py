@@ -122,12 +122,15 @@ def clean_subject(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def clean_datetime(df: pd.DataFrame) -> pd.DataFrame:
+def clean_datetime(
+    df: pd.DataFrame,
+    dt_format: str = "%a, %d %b %Y %H:%M:%S %z",
+) -> pd.DataFrame:
     # filter out messages with unrecognisable datetime
     index = get_index_of_msgs_with_datetime(df)
     # convert data type from string to datetime.datetime object
     df.loc[index, "date"] = [
-        datetime.datetime.strptime(dt, "%a, %d %b %Y %H:%M:%S %z")
+        datetime.datetime.strptime(dt, dt_format)
         for dt in df.loc[index, "date"].values
     ]
     return df
