@@ -337,7 +337,7 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
                 else:
                     return body_soup.get_text(strip=True)
         except Exception:
-            logger.info(
+            logger.exception(
                 f"The message body of {url} which is part of the "
                 f"list {list_name} could not be loaded."
             )

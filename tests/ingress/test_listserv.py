@@ -2,6 +2,7 @@ import os
 import tempfile
 from pathlib import Path
 from unittest import mock
+import shutil
 
 import pytest
 import yaml
@@ -239,7 +240,7 @@ class TestListservMailListDomain:
     def test__to_mbox(self, mlistdom):
         mlistdom.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/IEEE-TEST.mbox": 14,
+            f"{dir_temp}/{mlistdom.name}/IEEE-TEST.mbox": 14,
         }
         for filepath, line_nr in file_dic.items():
             assert Path(filepath).is_file()
@@ -249,6 +250,7 @@ class TestListservMailListDomain:
             assert line_nr == len(lines)
             f.close()
             Path(filepath).unlink()
+        shutil.rmtree(f"{dir_temp}/{mlistdom.name}/")
 
 
 @mock.patch("bigbang.ingress.utils.ask_for_input", return_value="check")
