@@ -2,6 +2,7 @@ import os
 import tempfile
 from pathlib import Path
 from unittest import mock
+import shutil
 
 import pytest
 import yaml
@@ -249,7 +250,7 @@ class TestListservMailListDomain:
             assert line_nr == len(lines)
             f.close()
             Path(filepath).unlink()
-        Path(f"{dir_temp}/{mlistdom.name}/").rmdir()
+        shutil.rmtree(f"{dir_temp}/{mlistdom.name}/")
 
 
 @mock.patch("bigbang.ingress.utils.ask_for_input", return_value="check")

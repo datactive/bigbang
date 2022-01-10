@@ -2,6 +2,7 @@ import os
 import tempfile
 from pathlib import Path
 from unittest import mock
+import shutil
 
 import pytest
 import yaml
@@ -209,4 +210,4 @@ class TestW3CMailListDomain:
             assert line_nr == len(lines)
             f.close()
             Path(filepath).unlink()
-        Path(f"{dir_temp}/{mlistdom.name}/").rmdir()
+        shutil.rmtree(f"{dir_temp}/{mlistdom.name}")

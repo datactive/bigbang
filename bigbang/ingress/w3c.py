@@ -369,7 +369,12 @@ class W3CMailList(AbstractMailList):
     @staticmethod
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
-        return url.split("/")[-1]
+        name = ""
+        url_position = -1
+        while len(name) == 0:
+            name = url.split("/")[url_position]
+            url_position -= 1
+        return name
 
 
 class W3CMailListDomain(AbstractMailListDomain):
