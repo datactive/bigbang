@@ -1,7 +1,3 @@
-"""
-Input/Output for Listserv data.
-"""
-
 import datetime
 import glob
 import os
@@ -16,6 +12,7 @@ import pandas as pd
 from config.config import CONFIG
 
 from bigbang.analysis import utils
+from bigbang.data_types import Message, MailList, MailListDomain
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -28,209 +25,230 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class ListservMessageIO:
+def email_to_dict(msg: Message) -> Dict[str, str]:
     """
-    Methods
-    -------
-    to_dict
-    to_pandas_dataframe
-    to_mbox
+    Handles data type transformation from `mailbox.mboxMessage` to `Dictionary`.
     """
+    dic = {"Body": msg.get_payload()}
+    for key, value in msg.items():
+        dic[key] = value
+    return dic
 
-    def to_dict(msg: mboxMessage) -> Dict[str, str]:
-        dic = {"Body": msg.get_payload()}
+
+def email_to_pandas_dataframe(msg: Message) -> pd.DataFrame:
+    """
+    Handles data type transformation from `mailbox.mboxMessage` to `pandas.DataFrame`.
+    """
+    return pd.DataFrame(
+        email_to_dict(msg),
+        index=[msg["Message-ID"]],
+    )
+
+
+def email_to_mbox(msg: Message, filepath: str, mode: str = "w") -> None:
+    """
+    Saves `mailbox.mboxMessage` as .mbox file.
+    """
+    if Path(filepath).is_file():
+        Path(filepath).unlink()
+    mbox = mailbox.mbox(filepath)
+    mbox.lock()
+    mbox.add(msg)
+    mbox.flush()
+    mbox.unlock()
+
+
+def mlist_from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
+    """
+    Reads `mailbox.mboxMessage` objects from .mbox file and transforms it to a
+    `pandas.DataFrame`.
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
+    """
+    box = mailbox.mbox(filepath, create=False)
+    mlist = [dict(msg) for msg in list(box.values())]
+    # TODO: find out why some fields are missing in some messages
+    nr_of_fields = np.array([len(msg.keys()) for msg in mlist])
+    nr_of_fields = np.unique(nr_of_fields, return_counts=True)
+    df = pd.DataFrame(mlist)
+    df = utils.clean_addresses(df)
+    df = utils.clean_subject(df)
+    df = utils.clean_datetime(df)
+    return df
+
+
+def mlist_from_mbox(filepath: str) -> list:
+    """
+    Reads `mailbox.mboxMessage` objects from .mbox file.
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
+    """
+    box = mailbox.mbox(filepath, create=False)
+    return list(box.values())
+
+
+def mlist_to_dict(
+    msgs: MailList,
+    include_body: bool = True,
+) -> Dict[str, List[str]]:
+    """
+    Handles data type transformation from a List[mailbox.mboxMessage] to a
+    Dictionary.
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
+    """
+    dic = {}
+    for idx, msg in enumerate(msgs):
+        # if msg["message-id"] != None:  #TODO: why are some 'None'?
         for key, value in msg.items():
-            dic[key] = value
-        return dic
-
-    def to_pandas_dataframe(msg: mboxMessage) -> pd.DataFrame:
-        return pd.DataFrame(
-            ListservMessageIO.to_dict(msg),
-            index=[msg["Message-ID"]],
-        )
-
-    def to_mbox(msg: mboxMessage, filepath: str, mode: str = "w"):
-        """
-        Safe message to .mbox file.
-        """
-        if Path(filepath).is_file():
-            Path(filepath).unlink()
-        mbox = mailbox.mbox(filepath)
-        mbox.lock()
-        mbox.add(msg)
-        mbox.flush()
-        mbox.unlock()
-
-
-class ListservListIO:
-    """
-    This class handles the data transformations for Listserv Lists.
-    """
-
-    def from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
-        box = mailbox.mbox(filepath, create=False)
-        mlist = [dict(msg) for msg in list(box.values())]
-        # TODO: find out why some fields are missing in some messages
-        nr_of_fields = np.array([len(msg.keys()) for msg in mlist])
-        nr_of_fields = np.unique(nr_of_fields, return_counts=True)
-        df = pd.DataFrame(mlist)
-        df = utils.clean_addresses(df)
-        df = utils.clean_subject(df)
-        df = utils.clean_datetime(df)
-        return df
-
-    def from_mbox(filepath: str) -> list:
-        """
-        Parameters
-        ----------
-        name : Name of the mailing list, e.g., '3GPP_TSG_RAN_WG3'
-        filepath : Path to the file, e.g.,
-            '/home/rumpelstielzchen/bigbang/archive/3GPP/3GPP_TSG_RAN_WG3.mbox'
-        """
-        box = mailbox.mbox(filepath, create=False)
-        return list(box.values())
-
-    def to_dict(msgs: list, include_body: bool = True) -> Dict[str, List[str]]:
-        """
-        Place all message into a dictionary.
-        """
-        dic = {}
+            key = key.lower()
+            if key not in dic.keys():
+                dic[key] = [np.nan] * len(msgs)
+            dic[key][idx] = value
+    if include_body:
+        dic["body"] = [np.nan] * len(msgs)
         for idx, msg in enumerate(msgs):
-            # if msg["message-id"] != None:  #TODO: why are some 'None'?
-            for key, value in msg.items():
-                key = key.lower()
-                if key not in dic.keys():
-                    dic[key] = [np.nan] * len(msgs)
-                dic[key][idx] = value
-        if include_body:
-            dic["body"] = [np.nan] * len(msgs)
-            for idx, msg in enumerate(msgs):
-                # if msg["message-id"] != None:
-                dic["body"][idx] = msg.get_payload()
-        lengths = [len(value) for value in dic.values()]
-        assert all([diff == 0 for diff in np.diff(lengths)])
-        return dic
-
-    def to_pandas_dataframe(
-        msgs: list, include_body: bool = True
-    ) -> pd.DataFrame:
-        dic = ListservListIO.to_dict(msgs, include_body)
-        df = pd.DataFrame(dic)
-        # filter out messages with unrecognisable datetime
-        index = np.array(
-            [
-                True
-                if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
-                else False
-                for i, dt in enumerate(df["date"])
-            ],
-            dtype="bool",
-        )
-        df = df.loc[index, :]
-        # convert data type from string to datetime.datetime object
-        df.loc[:, "date"].update(
-            df.loc[:, "date"].apply(
-                lambda x: datetime.datetime.strptime(
-                    x, "%a, %d %b %Y %H:%M:%S %z"
-                )
-            )
-        )
-        return df
-
-    def to_mbox(msgs: list, dir_out: str, filename: str):
-        """
-        Safe mailing list to .mbox files.
-        """
-        # create filepath
-        filepath = f"{dir_out}/{filename}.mbox"
-        # delete file if there is one at the filepath
-        if Path(filepath).is_file():
-            Path(filepath).unlink()
-        mbox = mailbox.mbox(filepath)
-        mbox.lock()
-        for msg in msgs:
-            try:
-                mbox.add(msg)
-            except Exception as e:
-                logger.info(
-                    f'Add to .mbox error for {msg["Archived-At"]} because, {e}'
-                )
-        mbox.flush()
-        mbox.unlock()
-        logger.info(f"The list {filename} is saved at {filepath}.")
-        mbox.lock()
-        mbox.add(msg)
-        mbox.flush()
-        mbox.unlock()
+            # if msg["message-id"] != None:
+            dic["body"][idx] = msg.get_payload()
+    lengths = [len(value) for value in dic.values()]
+    assert all([diff == 0 for diff in np.diff(lengths)])
+    return dic
 
 
-class ListservArchiveIO:
+def mlist_to_pandas_dataframe(
+    msgs: MailList,
+    include_body: bool = True,
+) -> pd.DataFrame:
     """
-    This class handles the data transformations for Listserv Archives.
+    Handles data type transformation from a List[mailbox.mboxMessage] to a
+    pandas.DataFrame.
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
     """
-
-    def to_dict(
-        mlists: list, include_body: bool = True
-    ) -> Dict[str, List[str]]:
-        """
-        Place all message into a dictionary.
-        """
-        nr_msgs = 0
-        for ii, mlist in enumerate(mlists):
-            dic_mlist = ListservListIO.to_dict(mlist.messages, include_body)
-            if ii == 0:
-                dic_march = dic_mlist
-                dic_march["mailing-list"] = [mlist.name] * len(mlist)
-            else:
-                # add mlist items to march
-                for key, value in dic_mlist.items():
-                    if key not in dic_march.keys():
-                        dic_march[key] = [np.nan] * nr_msgs
-                    dic_march[key].extend(value)
-                # if mlist does not contain items that are in march
-                key_miss = list(set(dic_march.keys()) - set(dic_mlist.keys()))
-                key_miss.remove("mailing-list")
-                for key in key_miss:
-                    dic_march[key].extend([np.nan] * len(mlist))
-
-                dic_march["mailing-list"].extend([mlist.name] * len(mlist))
-            nr_msgs += len(mlist)
-        lengths = [len(value) for value in dic_march.values()]
-        assert all([diff == 0 for diff in np.diff(lengths)])
-        return dic_march
-
-    def to_pandas_dataframe(
-        mlists: list, include_body: bool = True
-    ) -> pd.DataFrame:
-        df = pd.DataFrame(
-            ListservArchiveIO.to_dict(mlists, include_body)
-        ).set_index("message-id")
-        # get index of date-times
-        index = np.array(
-            [
-                True
-                if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
-                else False
-                for i, dt in enumerate(df["date"])
-            ],
-            dtype="bool",
+    dic = mlist_to_dict(msgs, include_body)
+    df = pd.DataFrame(dic)
+    # filter out messages with unrecognisable datetime
+    index = np.array(
+        [
+            True
+            if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
+            else False
+            for i, dt in enumerate(df["date"])
+        ],
+        dtype="bool",
+    )
+    df = df.loc[index, :]
+    # convert data type from string to datetime.datetime object
+    df.loc[:, "date"].update(
+        df.loc[:, "date"].apply(
+            lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
         )
-        # convert data type from string to datetime.datetime object
-        df.loc[index, "date"].update(
-            df.loc[index, "date"].apply(
-                lambda x: datetime.datetime.strptime(
-                    x, "%a, %d %b %Y %H:%M:%S %z"
-                )
+    )
+    return df
+
+
+def mlist_to_mbox(msgs: MailList, dir_out: str, filename: str) -> None:
+    """
+    Saves a List[mailbox.mboxMessage] as .mbox file.
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
+    """
+    # create filepath
+    filepath = f"{dir_out}/{filename}.mbox"
+    # delete file if there is one at the filepath
+    if Path(filepath).is_file():
+        Path(filepath).unlink()
+    mbox = mailbox.mbox(filepath)
+    mbox.lock()
+    for msg in msgs:
+        try:
+            mbox.add(msg)
+        except Exception as e:
+            logger.info(
+                f'Add to .mbox error for {msg["Archived-At"]} because, {e}'
             )
-        )
-        return df
+    mbox.flush()
+    mbox.unlock()
+    logger.info(f"The list {filename} is saved at {filepath}.")
+    mbox.lock()
+    mbox.add(msg)
+    mbox.flush()
+    mbox.unlock()
 
-    def to_mbox(mlists: list, dir_out: str):
-        """
-        Save Archive content to .mbox files
-        """
-        for mlist in mlists:
-            mlist.to_mbox(dir_out)
+
+def mlistdom_to_dict(
+    mlists: MailListDomain, include_body: bool = True
+) -> Dict[str, List[str]]:
+    """
+    Handles data type transformation from a List[AbstractList] to a
+    `Dictionary`.
+    For a clearer definition on what a mailing archive is, see:
+    bigbang.ingress.abstract.AbstractArchive
+    """
+    nr_msgs = 0
+    for ii, mlist in enumerate(mlists):
+        dic_mlist = mlist_to_dict(mlist.messages, include_body)
+        if ii == 0:
+            dic_mlistdom = dic_mlist
+            dic_mlistdom["mailing-list"] = [mlist.name] * len(mlist)
+        else:
+            # add mlist items to mlistdom
+            for key, value in dic_mlist.items():
+                if key not in dic_mlistdom.keys():
+                    dic_mlistdom[key] = [np.nan] * nr_msgs
+                dic_mlistdom[key].extend(value)
+            # if mlist does not contain items that are in mlistdom
+            key_miss = list(set(dic_mlistdom.keys()) - set(dic_mlist.keys()))
+            key_miss.remove("mailing-list")
+            for key in key_miss:
+                dic_mlistdom[key].extend([np.nan] * len(mlist))
+
+            dic_mlistdom["mailing-list"].extend([mlist.name] * len(mlist))
+        nr_msgs += len(mlist)
+    lengths = [len(value) for value in dic_mlistdom.values()]
+    assert all([diff == 0 for diff in np.diff(lengths)])
+    return dic_mlistdom
+
+
+def mlistdom_to_pandas_dataframe(
+    mlists: MailListDomain, include_body: bool = True
+) -> pd.DataFrame:
+    """
+    Handles data type transformation from a List[AbstractList] to a
+    pandas.DataFrame.
+    For a clearer definition on what a mailing archive is, see:
+    bigbang.ingress.abstract.AbstractArchive
+    """
+    df = pd.DataFrame(mlistdom_to_dict(mlists, include_body)).set_index(
+        "message-id"
+    )
+    # get index of date-times
+    index = np.array(
+        [
+            True
+            if (isinstance(dt, str)) and (len(dt) > 10) and not pd.isna(dt)
+            else False
+            for i, dt in enumerate(df["date"])
+        ],
+        dtype="bool",
+    )
+    # convert data type from string to datetime.datetime object
+    df.loc[index, "date"].update(
+        df.loc[index, "date"].apply(
+            lambda x: datetime.datetime.strptime(x, "%a, %d %b %Y %H:%M:%S %z")
+        )
+    )
+    return df
+
+
+def mlistdom_to_mbox(mlists: MailListDomain, dir_out: str):
+    """
+    Saves a List[AbstractList] as .mbox file.
+    For a clearer definition on what a mailing archive is, see:
+    bigbang.ingress.abstract.AbstractArchive
+    """
+    for mlist in mlists:
+        mlist.to_mbox(dir_out)
 
 
 def get_paths_to_files_in_directory(

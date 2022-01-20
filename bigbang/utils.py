@@ -1,12 +1,30 @@
 """
 Miscellaneous utility functions used in other modules.
 """
-
+import os
+import time
+import logging
 import glob
+import yaml
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
+from bs4 import BeautifulSoup
+import requests
 
 import networkx as nx
 import pandas as pd
+
+from config.config import CONFIG
+
+filepath_auth = CONFIG.config_path + "authentication.yaml"
+directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
+logging.basicConfig(
+    filename=directory_project + "/scraping.log",
+    filemode="w",
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 
 def get_paths_to_files_in_directory(
