@@ -9,7 +9,7 @@ import sys
 import networkx as nx
 import pandas as pd
 import requests
-from IPython.nbconvert import PythonExporter
+from nbconvert import PythonExporter
 from IPython.nbformat import current as nbformat
 
 from config.config import CONFIG
