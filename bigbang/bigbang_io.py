@@ -69,7 +69,12 @@ def mlist_from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
     mlist = []
     for msg in list(box.values()):
         _msg = dict(msg)
-        _msg["body"] = msg.get_payload()
+        if msg.is_multipart():
+            # if message has many submessages, only get the top one
+            payloads = msg.get_payload()
+            _msg["body"] = str(payloads[0].get_payload(decode=True))
+        else:
+            _msg["body"] = str(msg.get_payload(decode=True))
         mlist.append(_msg)
     # mlist = [dict(msg) for msg in list(box.values())]
     mlist = [{k.lower(): v for k, v in msg.items()} for msg in mlist]
