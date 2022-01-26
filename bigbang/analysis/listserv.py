@@ -124,7 +124,6 @@ class ListservMailList:
         cls,
         name: str,
         filepath: str,
-        include_body: bool = True,
     ) -> "ListservMailList":
         df = bio.mlist_from_mbox_to_pandas_dataframe(filepath)
         return cls.from_pandas_dataframe(df, name, filepath)

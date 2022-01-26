@@ -71,6 +71,9 @@ def mlist_from_mbox_to_pandas_dataframe(filepath: str) -> pd.DataFrame:
         _msg = dict(msg)
         if msg.is_multipart():
             # if message has many submessages, only get the top one
+            # TODO: it does not detect that
+            # https://list.etsi.org/scripts/wa.exe?A2=3GPP_TSG_SA_WG3_LI;6b0e2163.2008B&S=
+            # is multipart
             payloads = msg.get_payload()
             _msg["body"] = str(payloads[0].get_payload(decode=True))
         else:

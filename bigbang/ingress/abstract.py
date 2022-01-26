@@ -118,6 +118,8 @@ class AbstractMessageParser(ABC):
             and (msg["Date"] is not None)
             and (msg["From"] is not None)
         ):
+            # TODO: this assignment of message-id might only work for 3GPP and
+            # not for e.g. W3C. Needs improvement
             msg["Message-ID"] = archived_at.split("/")[-1]
         # convert to `EmailMessage` to `mboxMessage`
         mbox_msg = mboxMessage(msg)
