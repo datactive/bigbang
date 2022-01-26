@@ -19,7 +19,7 @@ from config.config import CONFIG
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 logging.basicConfig(
-    filename=directory_project + "/scraping.log",
+    filename=directory_project + "/ingress.log",
     filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
@@ -49,16 +49,18 @@ def get_website_content(
             sauce = requests.get(url)
             if sauce.status_code == 200:
                 soup = BeautifulSoup(sauce.content, "html.parser")
+                return soup
             elif sauce.status_code == 404:
+                logger.exception(f"HTTP 404 Error for {url}.")
                 return "RequestException"
         else:
             sauce = session.get(url)
             soup = BeautifulSoup(sauce.text, "html.parser")
-        return soup
+            return soup
     except requests.exceptions.RequestException as e:
         if "A2=" in url:
             # if URL of mboxMessage
-            logger.info(f"{e} for {url}.")
+            logger.exception(f"{e} for {url}.")
             return "RequestException"
         else:
             SystemExit()

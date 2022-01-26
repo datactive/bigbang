@@ -170,6 +170,8 @@ def mlist_to_mbox(msgs: MailList, dir_out: str, filename: str) -> None:
     For a clearer definition on what a mailing list is, see:
     bigbang.ingress.abstract.AbstractList
     """
+    # create directory path if it doesn't exist yet
+    Path(dir_out).mkdir(parents=True, exist_ok=True)
     # create filepath
     filepath = f"{dir_out}/{filename}.mbox"
     # delete file if there is one at the filepath

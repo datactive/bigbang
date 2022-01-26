@@ -167,57 +167,59 @@ class TestListservMailListDomain:
             == "Tomas =?utf-8?q?Toftg=C3=A5rd?= <tomas.toftgard@ERICSSON.COM>"
         )
 
-    @pytest.fixture(name="arch", scope="session")
+    @pytest.fixture(name="mlistdom", scope="session")
     def get_mailarchive(self):
-        arch = ListservMailListDomain.from_listserv_directory(
+        mlistdom = ListservMailListDomain.from_listserv_directory(
             name="3GPP",
             directorypath=CONFIG.test_data_path + "3GPP/",
         )
-        return arch
+        return mlistdom
 
-    def test__mailinglist_in_archive(self, arch):
-        assert arch.name == "3GPP"
-        mlist_names = [mlist.name for mlist in arch.lists]
+    def test__mailinglist_in_archive(self, mlistdom):
+        assert mlistdom.name == "3GPP"
+        mlist_names = [mlist.name for mlist in mlistdom.lists]
         assert "3GPP_TSG_SA_ITUT_AHG" in mlist_names
         assert "3GPP_TSG_SA_WG2_MTCE" in mlist_names
         ahg_index = mlist_names.index("3GPP_TSG_SA_ITUT_AHG")
         mtce_index = mlist_names.index("3GPP_TSG_SA_WG2_MTCE")
         global mlist_ahg_length, mlist_mtce_length
-        mlist_ahg_length = len(arch.lists[ahg_index])
-        mlist_mtce_length = len(arch.lists[mtce_index])
+        mlist_ahg_length = len(mlistdom.lists[ahg_index])
+        mlist_mtce_length = len(mlistdom.lists[mtce_index])
         assert mlist_ahg_length == 25
         assert mlist_mtce_length == 57
 
-    def test__message_in_mailinglist_in_archive(self, arch):
-        mlist_names = [mlist.name for mlist in arch.lists]
+    def test__message_in_mailinglist_in_archive(self, mlistdom):
+        mlist_names = [mlist.name for mlist in mlistdom.lists]
         mtce_index = mlist_names.index("3GPP_TSG_SA_WG2_MTCE")
         msg = [
             msg
-            for msg in arch.lists[mtce_index].messages
+            for msg in mlistdom.lists[mtce_index].messages
             if msg["Subject"] == "test email - please ignore"
         ][0]
         assert msg["From"] == '"Jain, Puneet" <puneet.jain@INTEL.COM>'
         assert msg["Reply-To"] == '"Jain, Puneet" <puneet.jain@INTEL.COM>'
         assert msg["Date"] == "Thu, 28 Feb 2013 18:58:18 +0000"
 
-    def test__to_dict(self, arch):
-        dic = arch.to_dict()
+    def test__to_dict(self, mlistdom):
+        dic = mlistdom.to_dict()
         keys = list(dic.keys())
         lengths = [len(value) for value in dic.values()]
         assert len(keys) == 14
         assert all([diff == 0 for diff in np.diff(lengths)])
         assert lengths[0] == (mlist_ahg_length + mlist_mtce_length)
 
-    def test__to_mbox(self, arch):
-        arch.to_mbox(dir_temp)
+    def test__to_mbox(self, mlistdom):
+        mlistdom.to_mbox(dir_temp)
         file_dic = {
-            f"{dir_temp}/3GPP_TSG_SA_ITUT_AHG.mbox": 40000,
-            f"{dir_temp}/3GPP_TSG_SA_WG2_MTCE.mbox": 60000,
+            f"{dir_temp}/{mlistdom.name}/3GPP_TSG_SA_ITUT_AHG.mbox": 40000,
+            f"{dir_temp}/{mlistdom.name}/3GPP_TSG_SA_WG2_MTCE.mbox": 60000,
         }
         for filepath, line_nr in file_dic.items():
+            print(filepath)
             assert Path(filepath).is_file()
             f = open(filepath, "r")
             lines = f.readlines()
             assert line_nr < len(lines)
             f.close()
             Path(filepath).unlink()
+        Path(f"{dir_temp}/{mlistdom.name}/").rmdir()
