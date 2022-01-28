@@ -1,3 +1,4 @@
+from tqdm import tqdm
 import email
 import logging
 import os
@@ -152,7 +153,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         try:
             return text_for_selector(soup, "#body")
         except Exception:
-            logger.info(f"The message body of {url} could not be loaded.")
+            logger.exception(f"The message body of {url} could not be loaded.")
             return None
 
 
@@ -337,7 +338,7 @@ class W3CMailList(AbstractMailList):
             else:
                 continue
             periods.append(link.text)
-            urls_of_periods.append(url + link.get("href"))
+            urls_of_periods.append(url + "/" + link.get("href"))
         return periods, urls_of_periods
 
     @classmethod
@@ -368,7 +369,12 @@ class W3CMailList(AbstractMailList):
     @staticmethod
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
-        return url.split("/")[-2]
+        name = ""
+        url_position = -1
+        while len(name) == 0:
+            name = url.split("/")[url_position]
+            url_position -= 1
+        return name
 
 
 class W3CMailListDomain(AbstractMailListDomain):
@@ -421,12 +427,13 @@ class W3CMailListDomain(AbstractMailListDomain):
         name: str,
         url_root: str,
         url_home: Optional[str] = None,
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
         instant_save: bool = True,
         only_mlist_urls: bool = True,
     ) -> "W3CMailListDomain":
         """Docstring in `AbstractMailListDomain`."""
         lists = cls.get_lists_from_url(
+            name,
             select,
             url_root,
             url_home,
@@ -447,7 +454,7 @@ class W3CMailListDomain(AbstractMailListDomain):
         name: str,
         url_root: str,
         url_mailing_lists: Union[List[str], List[W3CMailList]],
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
         only_mlist_urls: bool = True,
         instant_save: Optional[bool] = True,
     ) -> "W3CMailListDomain":
@@ -490,6 +497,7 @@ class W3CMailListDomain(AbstractMailListDomain):
 
     @staticmethod
     def get_lists_from_url(
+        name: str,
         select: dict,
         url_root: str,
         url_home: Optional[str] = None,
@@ -511,31 +519,20 @@ class W3CMailListDomain(AbstractMailListDomain):
 
         if only_mlist_urls:
             # collect mailing-list urls
-            for mlist_url in mlist_urls:
-                name = W3CMailList.get_name_from_url(mlist_url)
+            for mlist_url in tqdm(mlist_urls, ascii=True):
                 # check if mailing list contains messages in period
                 _period_urls = W3CMailList.get_all_periods_and_their_urls(
                     mlist_url
                 )[1]
                 # check if mailing list is public
                 if len(_period_urls) > 0:
-                    loops = 0
-                    for _period_url in _period_urls:
-                        loops += 1
-                        nr_msgs = len(
-                            W3CMailList.get_messages_urls(
-                                name=name, url=_period_url
-                            )
-                        )
-                        if nr_msgs > 0:
-                            archive.append(mlist_url)
-                            break
+                    archive.append(mlist_url)
         else:
             # collect mailing-list contents
             for mlist_url in mlist_urls:
-                name = W3CMailList.get_name_from_url(mlist_url)
+                mlist_name = W3CMailList.get_name_from_url(mlist_url)
                 mlist = W3CMailList.from_url(
-                    name=name,
+                    name=mlist_name,
                     url=mlist_url,
                     select=select,
                 )
@@ -560,7 +557,7 @@ def text_for_selector(soup: BeautifulSoup, selector: str):
         result = results[0].get_text(strip=True)
     else:
         result = ""
-        logging.debug("No matching text for selector %s", selector)
+        logger.debug("No matching text for selector %s", selector)
 
     return str(result)
 
@@ -570,5 +567,5 @@ def parse_dfn_header(header_text):
     if len(header_texts) == 2:
         return header_texts[1]
     else:
-        logging.debug("Split failed on %s", header_text)
+        logger.debug("Split failed on %s", header_text)
         return ""

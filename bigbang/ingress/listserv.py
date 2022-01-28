@@ -337,7 +337,7 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
                 else:
                     return body_soup.get_text(strip=True)
         except Exception:
-            logger.info(
+            logger.exception(
                 f"The message body of {url} which is part of the "
                 f"list {list_name} could not be loaded."
             )
@@ -715,7 +715,7 @@ class ListservMailListDomain(AbstractMailListDomain):
         name: str,
         url_root: str,
         url_home: str,
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
@@ -750,7 +750,7 @@ class ListservMailListDomain(AbstractMailListDomain):
         name: str,
         url_root: str,
         url_mailing_lists: Union[List[str], List[ListservMailList]],
-        select: Optional[dict] = None,
+        select: Optional[dict] = {"fields": "total"},
         url_login: str = "https://list.etsi.org/scripts/wa.exe?LOGON",
         url_pref: str = "https://list.etsi.org/scripts/wa.exe?PREF",
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
