@@ -1,7 +1,8 @@
-ingress.mailman
+ingress.abstract
 -----------------
 
-.. automodule:: bigbang.ingress.mailman
+.. automodule:: bigbang.ingress.abstract
    :members:
    :undoc-members:
    :show-inheritance:
+

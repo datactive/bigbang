@@ -1,11 +1,13 @@
-# twopeople.py
-#
-# Written by Raj Agrawal and Ki Deuk Kim
-#
-# Contains functions used to analyze communication between two people in mailing list
-# Examples can be found in ipython notebook "Collaboration Robustness" in examples folder
-# Each function needs a pandas DataFrame called "exchanges" that contains every two-pair
-# communication between participants in a mailing list.
+"""
+twopeople.py
+
+Written by Raj Agrawal and Ki Deuk Kim
+
+Contains functions used to analyze communication between two people in mailing list
+Examples can be found in ipython notebook "Collaboration Robustness" in examples folder
+Each function needs a pandas DataFrame called "exchanges" that contains every two-pair
+communication between participants in a mailing list.
+"""
 
 from pprint import pprint as pp
 

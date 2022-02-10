@@ -5,20 +5,27 @@ API Documentation
    :maxdepth: 3
 
    reference/archive
-   reference/domain
-   reference/entity_resolution
-   reference/get_dependencies
-   reference/git_repo
-   reference/graph
-   reference/io
-   reference/listserv
-   reference/mailman
+   reference/bigbang_io
    reference/parse
-   reference/plot
-   reference/process
    reference/thread
-   reference/twopeople
    reference/utils
-   reference/w3crawl
+
+   reference/analysis-attendance
+   reference/entity_resolution
+   reference/graph
+   reference/analysis-listserv
+   reference/process
+   reference/analysis-thread
+   reference/twopeople
+   reference/domain
 
    reference/domains
+
+   reference/ingress-abstract
+   reference/git_repo
+   reference/listserv
+   reference/mailman
+   reference/w3crawl
+   reference/ingress-utils
+
+   reference/plot

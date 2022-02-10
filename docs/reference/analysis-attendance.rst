@@ -1,7 +1,7 @@
-ingress.mailman
+analysis.attendance
 -----------------
 
-.. automodule:: bigbang.ingress.mailman
+.. automodule:: bigbang.analysis.attendance
    :members:
    :undoc-members:
    :show-inheritance:

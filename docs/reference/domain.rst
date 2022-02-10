@@ -1,7 +1,7 @@
-domain
+analysis.utils
 -------
 
-.. automodule:: bigbang.domain
+.. automodule:: bigbang.analysis.utils
    :members:
    :undoc-members:
    :show-inheritance:

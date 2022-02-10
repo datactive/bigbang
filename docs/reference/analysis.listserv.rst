@@ -1,7 +1,7 @@
-ingress.mailman
+analysis.repo_loader
 -----------------
 
-.. automodule:: bigbang.ingress.mailman
+.. automodule:: bigbang.analysis.repo_loader
    :members:
    :undoc-members:
    :show-inheritance:

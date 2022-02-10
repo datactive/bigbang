@@ -1,7 +1,7 @@
-graph
+analysis.graph
 -----------------
 
-.. automodule:: bigbang.graph
+.. automodule:: bigbang.analysis.graph
    :members:
    :undoc-members:
    :show-inheritance:

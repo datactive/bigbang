@@ -1,7 +1,7 @@
-w3crawl
+ingress.w3c
 -----------------
 
-.. automodule:: bigbang.w3crawl
+.. automodule:: bigbang.ingress.w3c
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,4 +1,4 @@
-bigbang.datasets.domains
+datasets.domains
 ------------------------------------
 
 .. automodule:: bigbang.datasets.domains.domains

@@ -1,7 +1,7 @@
-ingress.mailman
+analysis.thread
 -----------------
 
-.. automodule:: bigbang.ingress.mailman
+.. automodule:: bigbang.analysis.thread
    :members:
    :undoc-members:
    :show-inheritance:

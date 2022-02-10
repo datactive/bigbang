@@ -1,7 +1,7 @@
-twopeople
+analysis.twopeople
 -----------------
 
-.. automodule:: bigbang.twopeople
+.. automodule:: bigbang.analysis.twopeople
    :members:
    :undoc-members:
    :show-inheritance:

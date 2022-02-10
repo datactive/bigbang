@@ -1,7 +1,7 @@
-io
+bigbang_io
 -----------------
 
-.. automodule:: bigbang.io
+.. automodule:: bigbang.bigbang_io
    :members:
    :undoc-members:
    :show-inheritance:

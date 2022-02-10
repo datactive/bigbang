@@ -1,7 +1,7 @@
-plot
+visualisation.plot
 -----------------
 
-.. automodule:: bigbang.plot
+.. automodule:: bigbang.visualisation.plot
    :members:
    :undoc-members:
    :show-inheritance:

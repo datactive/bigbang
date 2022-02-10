@@ -14,7 +14,7 @@ import pandas
 import pytz
 
 import bigbang.parse as parse
-import bigbang.process as process
+import bigbang.analysis.process as process
 
 
 def messages_to_reply_graph(messages):
