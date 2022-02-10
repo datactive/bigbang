@@ -27,6 +27,7 @@ pyyaml
 common>=0.1.2
 powerlaw
 seaborn
+setuptools
 sphinx==3.3.1
 validator_collection>=1.5.0
 testfixtures>=6.17.1
