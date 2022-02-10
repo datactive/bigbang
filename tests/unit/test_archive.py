@@ -1,16 +1,10 @@
-import email
-import logging
-import mailbox
+import dateutil
 import os
-import pathlib
-import re
-import shutil
 from pathlib import Path
+import shutil
 import unittest
 
-import networkx as nx
 import pandas as pd
-from testfixtures import LogCapture
 
 import bigbang.archive as archive
 from config.config import CONFIG
@@ -64,3 +58,31 @@ class TestArchive(unittest.TestCase):
         )
         assert len(data.columns.values) == 6
         assert len(data.index.values) == 108
+
+        ## Testing add_affilation
+
+        rel_email_affil = pd.DataFrame.from_records(
+            [
+                {
+                    "email": "wangruixin@caict.ac.cn",
+                    "affiliation": "TestOrg",
+                    "min_date": dateutil.parser.parse("2019-04-18"),
+                    "max_date": dateutil.parser.parse("2021-04-18"),
+                }
+            ]
+        )
+
+        arx = archive.Archive(data)
+
+        arx.add_affiliation(rel_email_affil)
+
+        assert (
+            arx.data.loc["028c01d4fa43$13f2d060$3bd87120$@caict.ac.cn"][
+                "affiliation"
+            ]
+            == "TestOrg"
+        )
+        assert (
+            arx.data.loc["2019030112374440934718@caict.ac.cn"]["affiliation"]
+            is None
+        )

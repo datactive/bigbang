@@ -163,6 +163,49 @@ class Archive(object):
                 "Archive after initial processing is empty. Was data collected properly?"
             )
 
+    def add_affiliation(self, rel_email_affil):
+        """
+        Uses a DataFrame of email affiliation information and adds it to the archive's data table.
+
+        The email affilation data is expected to have a regular format, with columns:
+
+          - ``email`` - strings, complete email addresses
+          - ``affilation`` - strings, names of organizatiosn of affilation
+          - ``min_date`` - datetime, the starting date of the affiliation
+          - ``max_date`` - datetime,the end date of the affilation.
+
+        Note that this mutates the dataframe in ``self.data`` to add the affiliation data.
+
+        Params
+        ------
+
+        rel_email_affil : pandas.DataFrame
+        """
+
+        def match_affiliation(row):
+            ## TODO: Option to turn off the max or min constraints in case of limited data.
+            matches = rel_email_affil[
+                (
+                    rel_email_affil["email"]
+                    == analysis_utils.extract_email(row["From"])
+                )
+                & (
+                    rel_email_affil["min_date"].dt.tz_localize("utc")
+                    <= pd.to_datetime(row["Date"])
+                )
+                & (
+                    rel_email_affil["max_date"].dt.tz_localize("utc")
+                    >= pd.to_datetime(row["Date"])
+                )
+            ]
+            return (
+                matches["affiliation"].values[0]
+                if matches.shape[0] > 0
+                else None
+            )
+
+        self.data["affiliation"] = self.data.apply(match_affiliation, axis=1)
+
     def resolve_entities(self, inplace=True):
         """Return data with resolved entities.
 
