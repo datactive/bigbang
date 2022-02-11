@@ -1,6 +1,5 @@
 # these are IETF mailing lists hosted at ietf.org 
 # may not include some IETF WG lists hosted elsewhere
-https://www.ietf.org/mail-archive/text/?C=N;O=D>Name</a>                            <a href=https://www.ietf.org/mail-archive/text/?C=M;O=A>Last modified</a>      <a href=https://www.ietf.org/mail-archive/text/?C=S;O=A>Size</a>  <a href=https://www.ietf.org/mail-archive/text/?C=D;O=A>Description</a><hr><img src=./Index of _mail-archive_text_files/back.gif alt=[PARENTDIR]> <a href=https://www.ietf.org/mail-archive/
 https://www.ietf.org/mail-archive/text/3gpp-ietf-coord/
 https://www.ietf.org/mail-archive/text/3gv6/
 https://www.ietf.org/mail-archive/text/5gangip/
