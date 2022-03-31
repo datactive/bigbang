@@ -7,7 +7,6 @@ API Documentation
    reference/archive
    reference/bigbang_io
    reference/parse
-   reference/thread
    reference/utils
 
    reference/analysis-attendance
