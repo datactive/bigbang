@@ -12,6 +12,7 @@ dependencies:
   - graphviz
   - networkx>=2.5
   - pytz>=2020.5
+  - Jinja2<3.1
   - jupyter
   - notebook
   - pandas>=1.2.1

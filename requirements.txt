@@ -7,7 +7,7 @@ gender-detector
 html2text>=2020.1.16
 ietfdata>=0.4.0
 # ipython
-jinja2>=2.11.2
+Jinja2<3.1
 jupyter
 jsonschema
 GitPython
