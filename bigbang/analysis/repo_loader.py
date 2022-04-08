@@ -89,7 +89,7 @@ def get_files(filepath):
         for filename in fnmatch.filter(filenames, "*.ipynb"):
             try:
                 with open(filename) as fh:
-                    nb = nbformat.reads_json(fh.read())
+                    nb = nbformat.reads(fh.read())
                     export_path = filename.replace(".ipynb", ".py")
                     exporter = PythonExporter()
                     source, meta = exporter.from_notebook_node(nb)
