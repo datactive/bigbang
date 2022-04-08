@@ -328,6 +328,8 @@ class W3CMailList(AbstractMailList):
         # wait between loading messages, for politeness
         time.sleep(0.5)
         soup = get_website_content(url)
+        print("get_all_periods_and_their_urls:")
+        print(url)
         periods = []
         urls_of_periods = []
         rows = soup.select("tbody tr")
