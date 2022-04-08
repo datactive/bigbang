@@ -10,7 +10,7 @@ import networkx as nx
 import pandas as pd
 import requests
 from nbconvert import PythonExporter
-from nbformat import current as nbformat
+import nbformat
 
 from config.config import CONFIG
 
@@ -89,7 +89,7 @@ def get_files(filepath):
         for filename in fnmatch.filter(filenames, "*.ipynb"):
             try:
                 with open(filename) as fh:
-                    nb = nbformat.reads_json(fh.read())
+                    nb = nbformat.read(fh.read())
                     export_path = filename.replace(".ipynb", ".py")
                     exporter = PythonExporter()
                     source, meta = exporter.from_notebook_node(nb)

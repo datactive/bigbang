@@ -549,7 +549,11 @@ class ListservMailList(AbstractMailList):
         url: str,
         select: Optional[dict] = None,
     ) -> List[str]:
-        """Docstring in `AbstractMailList`."""
+        """
+        Docstring in `AbstractMailList`.
+
+        This routine is needed for Listserv 16.5
+        """
 
         def get_message_urls_from_period_url(name: str, url: str) -> List[str]:
             url_root = ("/").join(url.split("/")[:-2])
@@ -559,12 +563,28 @@ class ListservMailList(AbstractMailList):
                 a_tags = [urljoin(url_root, url.get("href")) for url in a_tags]
             return a_tags
 
+        def get_message_urls_from_mlist_url(name: str, url: str) -> List[str]:
+            url_root = ("/").join(url.split("/")[:-2])
+            soup = get_website_content(url)
+            a_tags = soup.select(f'a[href*="A2="][href*="{name}"]')
+            if a_tags:
+                a_tags = [urljoin(url_root, url.get("href")) for url in a_tags]
+            return a_tags
+
         msg_urls = []
-        # run through periods
-        for period_url in ListservMailList.get_period_urls(url, select):
-            # run through messages within period
-            for msg_url in get_message_urls_from_period_url(name, period_url):
-                msg_urls.append(msg_url)
+        period_urls = ListservMailList.get_period_urls(url, select)
+        if len(period_urls) != 0:
+            # Method for Listserv 16.5
+            # run through periods
+            for period_url in ListservMailList.get_period_urls(url, select):
+                # run through messages within period
+                for msg_url in get_message_urls_from_period_url(
+                    name, period_url
+                ):
+                    msg_urls.append(msg_url)
+        else:
+            # Method for Listserv 17
+            msg_urls = get_message_urls_from_mlist_url(name, url)
         return msg_urls
 
     @classmethod
