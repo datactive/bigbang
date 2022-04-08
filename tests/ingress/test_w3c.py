@@ -15,11 +15,9 @@ from bigbang.ingress import (
 )
 from config.config import CONFIG
 
-dir_temp = tempfile.gettempdir()
 url_mlistdom = "https://lists.w3.org/Archives/Public/"
-url_list = url_mlistdom + "public-test2/"
-url_message = url_mlistdom + "public-test2/2012Sep/0000.html"
-file_temp_mbox = dir_temp + "/w3c.mbox"
+url_list = url_mlistdom + "public-testtwf/"
+url_message = url_mlistdom + "public-testtwf/2014Sep/0000.html"
 
 
 class TestW3CMessageParser:
@@ -29,7 +27,7 @@ class TestW3CMessageParser:
             website=True,
         )
         msg = msg_parser.from_url(
-            list_name="public-test2",
+            list_name="public-testtwf",
             url=url_message,
             fields="total",
         )
@@ -37,23 +35,17 @@ class TestW3CMessageParser:
 
     def test__message_content(self, msg):
         lines = msg.get_payload()  # .split("C")[1].split("=")[0]
-        assert lines.split("\n")[0] == "Dear Community Group participant,"
-        assert (
-            msg["Subject"]
-            == "Survey on Community and Business Group Experience [reminder]"
-        )
-        assert msg["From"] == "Coralie Mercier <coralie@w3.org>"
-        assert (
-            msg["To"]
-            == '"team-community-process@w3.org" <team-community-process@w3.org>'
-        )
-        assert msg["Date"] == "Fri, 07 Sep 2012 00:50:51 +0200"
+        assert "I have been working on an update" in lines.split("\n")[0]
+        assert msg["Subject"] == "Test the Web Forward Documentation Update"
+        assert msg["From"] == "James Graham <james@hoppipolla.co.uk>"
+        assert msg["To"] == '"public-testtwf@w3.org" <public-testtwf@w3.org>'
+        assert msg["Date"] == "Tue, 02 Sep 2014 17:37:11 +0100"
         assert msg["Content-Type"] == 'text/plain; charset="utf-8"'
 
     def test__only_header_from_url(self):
         msg_parser = W3CMessageParser(website=True)
         msg = msg_parser.from_url(
-            list_name="public-test2",
+            list_name="public-testtwf",
             url=url_message,
             fields="header",
         )
@@ -62,7 +54,7 @@ class TestW3CMessageParser:
     def test__only_body_from_url(self):
         msg_parser = W3CMessageParser(website=True)
         msg = msg_parser.from_url(
-            list_name="public-test2",
+            list_name="public-testtwf",
             url=url_message,
             fields="body",
         )
@@ -72,24 +64,15 @@ class TestW3CMessageParser:
         dic = W3CMessageParser.to_dict(msg)
         assert len(list(dic.keys())) == 11
 
-    def test__to_mbox(self, msg):
-        W3CMessageParser.to_mbox(msg, filepath=file_temp_mbox)
-        f = open(file_temp_mbox, "r")
-        lines = f.readlines()
-        assert len(lines) == 37
-        assert lines[1] == 'Content-Type: text/plain; charset="utf-8"\n'
-        f.close()
-        Path(file_temp_mbox).unlink()
-
 
 class TestW3CMailList:
     @pytest.fixture(name="mlist", scope="module")
     def get_mailinglist_from_url(self):
         mlist = W3CMailList.from_url(
-            name="public-test2",
+            name="public-testtwf",
             url=url_list,
             select={
-                "years": 2019,
+                "years": 2014,
                 "fields": "header",
             },
         )
@@ -97,58 +80,32 @@ class TestW3CMailList:
 
     def test__get_mailinglist_from_messages(self):
         msgs_urls = [
-            "https://lists.w3.org/Archives/Public/public-test2/2019Apr/0000.html",
-            "https://lists.w3.org/Archives/Public/public-test2/2019Mar/0000.html",
+            "https://lists.w3.org/Archives/Public/public-testtwf/2014Sep/0000.html",
+            "https://lists.w3.org/Archives/Public/public-testtwf/2014Apr/0001.html",
         ]
         mlist = W3CMailList.from_messages(
-            name="public-test2",
+            name="public-testtwf",
             url=url_list,
             messages=msgs_urls,
         )
         assert len(mlist.messages) == 2
 
     def test__mailinglist_content(self, mlist):
-        assert mlist.name == "public-test2"
+        assert mlist.name == "public-testtwf"
         assert mlist.source == url_list
-        assert len(mlist) == 2
+        assert len(mlist) == 14
         assert (
             mlist.messages[0]["Subject"]
-            == "Re: W3C TPAC 2019 - Will your Community Group meet in Fukuoka?"
+            == "Re: Test the Web Forward Documentation Update"
         )
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
         assert len(list(dic.keys())) == 9
-        assert len(dic[list(dic.keys())[0]]) == 2
-
-    def test__to_mbox(self, mlist):
-        mlist.to_mbox(dir_temp, filename=mlist.name)
-        file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
-        f = open(file_temp_mbox, "r")
-        lines = f.readlines()
-        assert len(lines) == 31
-        assert (
-            lines[5]
-            == "Subject: Re: W3C TPAC 2019 - Will your Community Group meet in Fukuoka?\n"
-        )
-        f.close()
-        Path(file_temp_mbox).unlink()
+        assert len(dic[list(dic.keys())[0]]) == 14
 
 
 class TestW3CMailListDomain:
-    # def test__get_only_mlist_urls(self):
-    #    arch = W3CMailListDomain.from_url(
-    #        name="W3C",
-    #        url_root=url_mlistdom,
-    #        select={
-    #            "years": 2015,
-    #            "months": "November",
-    #        },
-    #        instant_save=False,
-    #        only_mlist_urls=True,
-    #    )
-    #    return arch
-
     @pytest.fixture(name="mlistdom", scope="session")
     def get_maillistdomain(self):
         mlistdom = W3CMailListDomain.from_mailing_lists(
@@ -196,18 +153,3 @@ class TestW3CMailListDomain:
         dic = mlistdom.to_dict()
         assert len(list(dic.keys())) == 10
         assert len(dic[list(dic.keys())[0]]) == 2
-
-    def test__to_mbox(self, mlistdom):
-        mlistdom.to_mbox(dir_temp)
-        file_dic = {
-            f"{dir_temp}/{mlistdom.name}/wai-site-comments.mbox": 25,
-        }
-        for filepath, line_nr in file_dic.items():
-            assert Path(filepath).is_file()
-            f = open(filepath, "r")
-            lines = f.readlines()
-            lines = [ll for ll in lines if len(ll) > 1]
-            assert line_nr == len(lines)
-            f.close()
-            Path(filepath).unlink()
-        shutil.rmtree(f"{dir_temp}/{mlistdom.name}")
