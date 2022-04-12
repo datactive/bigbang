@@ -25,19 +25,34 @@ The function argument ``include_body`` is by default ``True``, but if one has to
 with a large quantity of Emails, it might be necessary to set it to `False` to
 avoid out-of-memory errors.
 
-Cropping
---------
+Cropping of mailinglist
+-----------------------
 
 If one is interested in specific subgroups contained in a mailinglist, then the
 `ListservList` class instance can be cropped using the following functions:
 
 .. code-block:: python
 
+    # select Emails send in a specific year
+    mlist.crop_by_year(yrs=[2011])
+
+    # select Emails send within a period
     mlist.crop_by_year(yrs=[2011, 2021])
 
-    mlist.crop_by_address(header_field='from', per_address_field={'domain': [t-mobile.at, nokia.com]})
+    # select Emails send or received from specified addresses
+    mlist.crop_by_address(
+        header_field='from',
+        per_address_field={'domain': ['t-mobile.at', 'nokia.com']}
+    )
 
+    # select Emails containing string in subject
     mlist.crop_by_subject(match='OpenPGP')
+
+In the second example, the function has an ``per_address_field`` argument. This
+argument is a dictionary in which the top-level keys can be ``localpart``
+and ``domain``, where the former is the part of an Email address that stands
+in front of the @ and the latter after. Thus for `Heinrich.vonKleist@selbst.org`,
+localpart is `Heinrich.vonKleist` and the domain is `selbst.org`.
 
 Who is sending/receiving?
 -------------------------
@@ -59,11 +74,45 @@ also how much, change the default argument of ``return_msg_counts=False`` to ``T
 
     mlist.get_domains(header_fields=['from', 'reply-to'], return_msg_counts=True)
 
+Alternatively, one can also get the number of Emails send or received by a certain
+address via,
 
+.. code-block:: python
+
+    mlist.get_messagescount(
+        header_fields=['from', 'reply-to'],
+        per_address_field={
+            'domain': ['t-mobile.at', 'nokia.com'],
+            'localpart': ['ian.hacking', 'victor.klemperer'],
+        }
+    )
+
+Communication Network
+---------------------
+For a more in-depth view into who is sending (receiving) to (from) whom in a
+mailing list, one can use the ``return_msg_counts=False`` as follows:
+
+.. code-block:: python
+
+    mlist.create_sender_receiver_digraph()
+
+This will create a new ``networkx.DiGraph()`` instance attribute for ``mlist``,
+which can be used to perform a number of standard calculations using the
+``networkx`` python package:
+
+.. code-block:: python
+
+    import networkx as nx
+
+    nx.betweenness_centrality(mlist.dg, weight="weight")
+    nx.closeness_centrality(mlist.dg)
+    nx.degree_centrality(mlist.dg)
 
 
 Time-series
 -----------
-To find out during which period Emails were send to a mailinglist, one can call
-``mlist.period_of_activity()``, which will help if one is interested in a
-time-series analysis.
+To study, e.g., the continuity of an actors contribution to a mailinglist, many
+function have an optional ``per_year`` boolean argument.
+
+To simply find out during which period Emails were in a mailinglist, one can call
+``mlist.period_of_activity()``.

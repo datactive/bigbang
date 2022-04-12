@@ -72,9 +72,6 @@ class ListservMailList:
     Note
     ----
     Issues loading 3GPP_TSG_RAN_WG1 which is 3.3Gb large
-
-    Methods
-    -------
     """
 
     def __init__(
@@ -919,8 +916,8 @@ class ListservMailList:
         Parameters
         ----------
         nw : dictionary created with self.get_sender_receiver_dict()
-        entity_in_focus : This can a list of domain names or localparts. If such
-            a list is provided, the creaed di-graph will only focus on their
+        entity_in_focus : This can be a list of domain names or localparts. If
+            such a list is provided, the creaed di-graph will only focus on their
             relations.
         """
         if nw is None:
