@@ -1,9 +1,22 @@
-Data sources - Email
+Mailinglists
 *********************
 
-Mailman (IETF)
+Data Access
+===========
+
+The mailing-list archives are large and time consuming to scrape from the web.
+That is why we keep a complete and up-to-date copy of it in .mbox format that can easily
+be converted into other data structures to make its analysis as easy as possible.
+If you would like to obtain access to these archives, we would ask you send us your
+filled in `data access permit application <https://github.com/datactive/bigbang/blob/master/data_access_permit_application.md>`_
+to `bigbang-dev mailing list <hhttps://lists.ghserv.net/mailman/listinfo/bigbang-dev>`_.
+
+
+IETF
 ================
 
+Public Mailman Web Archive
+--------------------------
 BigBang comes with a script for collecting files from public Mailman web
 archives. An example of this is the
 `scipy-dev <http://mail.python.org/pipermail/scipy-dev/>`_
@@ -20,14 +33,19 @@ You can also give this command a file with several urls, one per line. One of th
 Once the data has been collected, BigBang has functions to support analysis.
 
 
+Datatracker
+-----------
+BigBang can also be used to analyze data from IETF drafts.
+
+It does this using the Glasgow IPL group's `ietfdata` `tool <https://github.com/glasgow-ipl/ietfdata>`_.
+
+The script takes an argument, the working group acronym
+
+``python3 bin/collect_draft_metadata.py -w httpbis``
+
+
 W3C
-======
-
-Usage
--------
-
-Ethical Considerations
-------------------------
+================
 
 
 
@@ -42,14 +60,16 @@ https://list.etsi.org/scripts/wa.exe?GETPW1=&X=&Y=
 
 The entire archive reaches back to 1998 and is multiple GBs in size. Therefore,
 it takes a considerable amount of time to scrape the entire archive and strain on
-the server host if everyone of interest would scrape them individually. To 
+the server host if everyone of interest would scrape them individually. To
 resolve this issue we keep an up to date version of the archive.
 
 We are currently working on a improved version of the 'Data Access Permit Application'.
 
-Usage
--------
 
-Ethical Considerations
-------------------------
 
+IEEE
+================
+
+
+ICANN
+================

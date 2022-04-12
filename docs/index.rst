@@ -19,29 +19,24 @@ Last but not least, BigBang is a community of researchers sharing code and best 
    :maxdepth: 2
    :caption: Getting Started
 
+   introduction
    installation
-   intro
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Documentation
 
-   data-sources
-   datatracker
-   git
-   datasets
-   analysis
-   visualization
-   api-docs
-
+   datasets/index.rst
+   analysis/index.rst
+   visualisation/index.rst
+   reference/index.rst
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Community
 
    contributing
-   data-access
-   release-notes
+   release_notes
 
 Indices and tables
 ==================

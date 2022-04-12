@@ -77,11 +77,6 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         be made if missing messages should be added.
     url_pref : URL to the 'Preferences'/settings page.
 
-    Methods
-    -------
-    from_url()
-    _get_header_from_html()
-    _get_body_from_html()
 
     Example
     -------
@@ -174,16 +169,11 @@ class W3CMailList(AbstractMailList):
         It can be either an URL where the list or a path to the file(s).
     msgs : List of mboxMessage objects
 
-    Methods
-    -------
-    All methods in the `AbstractMailList` class in addition to:
-    get_all_periods_and_their_urls()
-
-
     Example
     -------
     To scrape a W3C mailing list from an URL and store it in
     run-time memory, we do the following
+
     >>> mlist = W3CMailList.from_url(
     >>>     name="public-bigdata",
     >>>     url="https://lists.w3.org/Archives/Public/public-bigdata/",
@@ -194,7 +184,7 @@ class W3CMailList(AbstractMailList):
     >>>     },
     >>> )
 
-    To save it as *.mbox file we do the following
+    To save it as ``*.mbox`` file we do the following
     >>> mlist.to_mbox(path_to_file)
     """
 

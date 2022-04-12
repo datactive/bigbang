@@ -1,7 +1,7 @@
-bigbang_io
+analysis.listserv
 -----------------
 
-.. automodule:: bigbang.bigbang_io
+.. automodule:: bigbang.analysis.listserv
    :members:
    :undoc-members:
    :show-inheritance:
