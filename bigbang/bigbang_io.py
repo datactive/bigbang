@@ -4,6 +4,7 @@ import os
 import re
 import logging
 from typing import Dict, List, Optional, Tuple, Union
+import email
 import mailbox
 from mailbox import mboxMessage
 from pathlib import Path
@@ -113,6 +114,36 @@ def mlist_to_dict(
     lengths = [len(value) for value in dic.values()]
     assert all([diff == 0 for diff in np.diff(lengths)])
     return dic
+
+
+def mlist_to_list_of_mboxMessage(
+    msgs: pd.DataFrame,
+    include_body: bool = True,
+) -> List[mboxMessage]:
+    """
+    Handles data type transformation from a pandas.DataFrame. to a
+    List[mailbox.mboxMessage].
+    For a clearer definition on what a mailing list is, see:
+    bigbang.ingress.abstract.AbstractList
+    """
+    mlist = []
+    for idx, row in msgs.iterrows():
+        msg = email.message.EmailMessage()
+        if include_body is True:
+            try:
+                msg.set_content(row["body"])  # don't use charset="utf-16"
+            except Exception:
+                # UnicodeEncodeError: 'utf-16' codec can't encode character
+                # '\ud83d' in position 8638: surrogates not allowed
+                pass
+        msg.set_param("Date", row["date"])
+        msg.set_param("Message-ID", row["message-id"])
+        msg.set_param("From", row["from"])
+        msg.set_param("Subject", row["subject"])
+        # convert to `EmailMessage` to `mboxMessage`
+        mbox_msg = mboxMessage(msg)
+        mlist.append(mbox_msg)
+    return mlist
 
 
 def mlist_to_pandas_dataframe(
