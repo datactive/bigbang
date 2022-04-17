@@ -1,3 +1,5 @@
+.. _analysis_3gpp:
+
 3GPP
 ======
 
@@ -87,6 +89,8 @@ address via,
         }
     )
 
+.. _communication_network:
+
 Communication Network
 ---------------------
 For a more in-depth view into who is sending (receiving) to (from) whom in a
@@ -108,6 +112,7 @@ which can be used to perform a number of standard calculations using the
     nx.closeness_centrality(mlist.dg)
     nx.degree_centrality(mlist.dg)
 
+.. _time_series:
 
 Time-series
 -----------

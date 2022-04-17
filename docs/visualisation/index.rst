@@ -4,7 +4,6 @@ Visualisation
 .. toctree::
   :maxdepth: 2
 
-  colours
-  histograms
   lines
+  histograms
   graphs

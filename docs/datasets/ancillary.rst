@@ -1,5 +1,9 @@
+.. _ancillary_datasets:
+
 Ancillary Datasets
 *********************
+
+In addition to providing tools for gathering data from public sources, ``BigBang`` also includes some datasets that have been curated by contributors and researchers.
 
 General
 ================
