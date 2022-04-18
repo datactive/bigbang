@@ -1,0 +1,21 @@
+#These are RIPE mailinglists hosted by RIPE NCC https://www.ripe.net/participate/mail/ripe-mailing-lists
+https://www.ripe.net/ripe/mail/archives/address-policy-wg/
+https://www.ripe.net/ripe/mail/archives/anti-abuse-wg/
+https://www.ripe.net/ripe/mail/archives/coc-tf/
+https://www.ripe.net/ripe/mail/archives/connect-wg/
+https://www.ripe.net/ripe/mail/archives/cooperation-wg/
+https://www.ripe.net/ripe/mail/archives/db-wg/
+https://www.ripe.net/ripe/mail/archives/dns-wg/
+https://www.ripe.net/ripe/mail/archives/ipv6-wg/
+https://www.ripe.net/ripe/mail/archives/iot-wg/
+https://www.ripe.net/ripe/mail/archives/mat-wg/
+https://www.ripe.net/ripe/mail/archives/opensource-wg/
+https://www.ripe.net/ripe/mail/archives/policy-announce/
+https://www.ripe.net/ripe/mail/archives/raci-list/
+https://www.ripe.net/ripe/mail/archives/ripe-chair-discuss/
+https://www.ripe.net/ripe/mail/archives/ripe-db-requirements-tf/
+https://www.ripe.net/ripe/mail/archives/ripe-list/
+https://www.ripe.net/ripe/mail/archives/diversity/
+https://www.ripe.net/ripe/mail/archives/ncc-services-wg/
+https://www.ripe.net/ripe/mail/archives/routing-wg/
+https://www.ripe.net/ripe/mail/archives/bcop/
