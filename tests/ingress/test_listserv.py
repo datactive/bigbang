@@ -19,7 +19,7 @@ from config.config import CONFIG
 dir_temp = tempfile.gettempdir()
 url_mlistdom = "https://listserv.ieee.org/cgi-bin/wa?"
 url_list = url_mlistdom + "A0=IEEE-TEST"
-url_message = url_mlistdom + "A2=ind1511d&L=IEEE-TEST&P=67"
+url_message = url_mlistdom + "A2=IEEE-TEST;52220ef8.1511d&S="
 file_temp_mbox = dir_temp + "/listserv.mbox"
 file_auth = CONFIG.config_path + "authentication.yaml"
 auth_key_mock = {"username": "bla", "password": "bla"}
@@ -135,9 +135,6 @@ class TestListservMailList:
             name="IEEE-TEST",
             url=url_list,
             select={
-                "years": 2015,
-                "months": "November",
-                "weeks": 4,
                 "fields": "header",
             },
             url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
@@ -153,7 +150,6 @@ class TestListservMailList:
             name="IEEE-TEST",
             url=url_list,
             select={
-                "years": 2015,
                 "fields": "header",
             },
             login=auth_key_mock,
@@ -176,42 +172,33 @@ class TestListservMailList:
     def test__mailinglist_content(self, mlist):
         assert mlist.name == "IEEE-TEST"
         assert mlist.source == url_list
-        assert len(mlist) == 1
+        # On 08/04/22 the mailing list contained 95 Emails.
+        assert len(mlist) >= 95
+        subjects = [msg["subject"] for msg in mlist.messages]
         assert (
-            mlist.messages[0]["subject"]
-            == '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
+            '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
+            in subjects
         )
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
-        assert len(list(dic.keys())) == 7
-        assert len(dic[list(dic.keys())[0]]) == 1
-
-    def test__to_mbox(self, mlist):
-        mlist.to_mbox(dir_temp, filename=mlist.name)
-        file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
-        f = open(file_temp_mbox, "r")
-        lines = f.readlines()
-        assert len(lines) == 18
-        assert (
-            lines[1]
-            == 'subject: "10th International Conference on Electrical Engineering (ICEENG\'10)"\n'
-        )
-        f.close()
-        Path(file_temp_mbox).unlink()
+        # On 08/04/22 the mailing list had 8 (header fields + body).
+        assert len(list(dic.keys())) == 8
+        # On 08/04/22 the mailing list contained 95 Emails.
+        assert len(dic[list(dic.keys())[0]]) >= 95
 
 
 class TestListservMailListDomain:
     @pytest.fixture(name="mlistdom", scope="session")
     def get_maillistdomain(self):
-        mlistdom = ListservMailListDomain.from_url(
+        mlistdom = ListservMailListDomain.from_mailing_lists(
             name="IEEE",
             url_root=url_mlistdom,
-            url_home=url_mlistdom + "HOME",
+            url_mailing_lists=[
+                "https://listserv.ieee.org/cgi-bin/wa?A0=STDS-802-15-15",
+                "https://listserv.ieee.org/cgi-bin/wa?A0=STDS-802-15-14",
+            ],
             select={
-                "years": 2015,
-                "months": "November",
-                "weeks": 4,
                 "fields": "header",
             },
             url_login="https://listserv.ieee.org/cgi-bin/wa?LOGON",
@@ -225,32 +212,18 @@ class TestListservMailListDomain:
     def test__maillistdomain_content(self, mlistdom):
         assert mlistdom.name == "IEEE"
         assert mlistdom.url == url_mlistdom
-        assert len(mlistdom) == 1
-        assert len(mlistdom.lists[0]) == 1
-        assert (
-            mlistdom.lists[0].messages[0]["subject"]
-            == '"10th International Conference on Electrical Engineering (ICEENG\'10)"'
-        )
+        assert len(mlistdom) == 2
+        assert any([len(mlist) > 26 for mlist in mlistdom.lists])
+        mlist_names = [mlist.name for mlist in mlistdom.lists]
+        assert "STDS-802-15-15" in mlist_names
+        assert "STDS-802-15-14" in mlist_names
 
     def test__to_dict(self, mlistdom):
         dic = mlistdom.to_dict()
-        assert len(list(dic.keys())) == 8
-        assert len(dic[list(dic.keys())[0]]) == 1
-
-    def test__to_mbox(self, mlistdom):
-        mlistdom.to_mbox(dir_temp)
-        file_dic = {
-            f"{dir_temp}/{mlistdom.name}/IEEE-TEST.mbox": 14,
-        }
-        for filepath, line_nr in file_dic.items():
-            assert Path(filepath).is_file()
-            f = open(filepath, "r")
-            lines = f.readlines()
-            lines = [ll for ll in lines if len(ll) > 1]
-            assert line_nr == len(lines)
-            f.close()
-            Path(filepath).unlink()
-        shutil.rmtree(f"{dir_temp}/{mlistdom.name}/")
+        # On 08/04/22 the mlistdom had 9 (header fields + body).
+        assert len(list(dic.keys())) == 9
+        # On 08/04/22 the mlistdom contained 95 Emails.
+        assert len(dic[list(dic.keys())[0]]) >= 57
 
 
 @mock.patch("bigbang.ingress.utils.ask_for_input", return_value="check")

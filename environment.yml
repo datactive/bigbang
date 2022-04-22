@@ -5,6 +5,7 @@ dependencies:
   - python=3.7
   - ipykernel
   - nb_conda_kernels
+  - nbformat>=5.3.0
   - cython
   - beautifulsoup4>=4.9.3
   - coverage>=5.3.1

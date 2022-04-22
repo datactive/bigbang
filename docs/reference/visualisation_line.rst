@@ -1,5 +1,5 @@
 visualisation.plot
------------------
+------------------
 
 .. automodule:: bigbang.visualisation.plot
    :members:

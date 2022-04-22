@@ -67,3 +67,6 @@ examples/.ipynb_checkpoints/*
 
 # Sensitive Information
 config/authentication.yaml
+
+# OS costum attributes
+.DS_Store

@@ -72,33 +72,6 @@ class ListservMailList:
     Note
     ----
     Issues loading 3GPP_TSG_RAN_WG1 which is 3.3Gb large
-
-    Methods
-    -------
-    from_mbox()
-    from_pandas_dataframe()
-    to_percentage()
-    contract()
-    get_name_localpart_domain()
-    iterator_name_localpart_domain()
-    period_of_activity()
-    crop_by_year()
-    crop_by_address()
-    crop_by_subject()
-    get_domains()
-    get_domainscount()
-    get_localparts()
-    get_localpartscount()
-    add_thread_info()
-    get_threads()
-    get_threadsroot()
-    get_threadsrootcount()
-    get_messages()
-    get_messagescount()
-    get_messagescount_per_timezone()
-    get_sender_receiver_dict()
-    create_sender_receiver_digraph()
-    get_graph_prop_per_domain_per_year()
     """
 
     def __init__(
@@ -143,13 +116,21 @@ class ListservMailList:
         return arr / np.sum(arr)
 
     @staticmethod
-    def contract(count: np.array, label: list, contract: float) -> dict:
+    def contract(
+        count: np.array, label: list, contract: float
+    ) -> Dict[str, int]:
         """
+        This function contracts all domain names that contributed to a mailinglists
+        below the `contract` threshold into one entity called `Others`. Meaning,
+        if `contract=3` and `nokia.com`, `nokia.com`, `t-mobile.at` all wrote less
+        then three Emails to the mailinglist in question, their contributions are
+        going to be summed into one entity denoted as `Others`.
+
         Parameters
         ----------
-        count :
-        label :
-        contract :
+        count : Number of Emails send to mailinglist.
+        label : Names of contributers to mailinglist.
+        contract : Threshold below which all contributions will be summed.
         """
         idx_low = np.arange(len(count))[count < contract]
         idx_high = np.arange(len(count))[count >= contract]
@@ -223,15 +204,24 @@ class ListservMailList:
             else:
                 yield ListservMailList.get_name_localpart_domain(string)
 
-    def period_of_activity(self) -> list:
+    def period_of_activity(
+        self,
+        format: str = "%a, %d %b %Y %H:%M:%S %z",
+    ) -> list:
         """
         Return a list containing the datetime of the first and last message
         written in the mailing list.
         """
-        index = get_index_of_msgs_with_datetime(self.df)
+        indices = get_index_of_msgs_with_datetime(self.df)
+        if not isinstance(self.df.loc[indices[0], "date"], datetime.datetime):
+            self.df["date"] = pd.to_datetime(
+                self.df["date"],
+                format=format,
+                errors="coerce",
+            )
         period_of_activity = [
-            min(self.df.loc[index, "date"].values),
-            max(self.df.loc[index, "date"].values),
+            min(self.df.loc[indices, "date"].values),
+            max(self.df.loc[indices, "date"].values),
         ]
         return period_of_activity
 
@@ -406,6 +396,9 @@ class ListservMailList:
             mailing list the most representative header fields of
             senders and receivers are 'from' and 'comments-to' respectively.
         per_year : Aggregate results for each year.
+
+        Return
+        ------
         """
         if per_year:
             dics = {}
@@ -761,7 +754,7 @@ class ListservMailList:
                             per_domain=False,
                             return_msg_counts=True,
                         )
-                    dics[header_field][year] = {
+                    dics[header_field][int(year)] = {
                         label: count for label, count in res[header_field]
                     }
             return dics
@@ -778,8 +771,8 @@ class ListservMailList:
                     return_msg_counts=True,
                 )
             dics = {}
-            for header_field, res in res.items():
-                dics[header_field] = {label: count for label, count in res}
+            for header_field, _res in res.items():
+                dics[header_field] = {label: count for label, count in _res}
             return dics
         else:
             return len(self.df.index.values)
@@ -930,8 +923,8 @@ class ListservMailList:
         Parameters
         ----------
         nw : dictionary created with self.get_sender_receiver_dict()
-        entity_in_focus : This can a list of domain names or localparts. If such
-            a list is provided, the creaed di-graph will only focus on their
+        entity_in_focus : This can be a list of domain names or localparts. If
+            such a list is provided, the creaed di-graph will only focus on their
             relations.
         """
         if nw is None:
