@@ -204,17 +204,24 @@ class ListservMailList:
             else:
                 yield ListservMailList.get_name_localpart_domain(string)
 
-    def period_of_activity(self) -> list:
+    def period_of_activity(
+        self,
+        format: str = "%a, %d %b %Y %H:%M:%S %z",
+    ) -> list:
         """
         Return a list containing the datetime of the first and last message
         written in the mailing list.
         """
-        index = get_index_of_msgs_with_datetime(self.df)
-        self.df = self.df.loc[index, :]
-        self.df["date"] = pd.to_datetime(self.df["date"])
+        indices = get_index_of_msgs_with_datetime(self.df)
+        if not isinstance(self.df.loc[indices[0], "date"], datetime.datetime):
+            self.df["date"] = pd.to_datetime(
+                self.df["date"],
+                format=format,
+                errors="coerce",
+            )
         period_of_activity = [
-            min(self.df["date"].values),
-            max(self.df["date"].values),
+            min(self.df.loc[indices, "date"].values),
+            max(self.df.loc[indices, "date"].values),
         ]
         return period_of_activity
 
