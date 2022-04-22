@@ -17,10 +17,10 @@ import numpy as np
 import pandas as pd
 import pytz
 
-import bigbang.graph as graph
-import bigbang.mailman as mailman
+import bigbang.analysis.graph as graph
+import bigbang.analysis.process as process
+import bigbang.ingress.mailman as mailman
 import bigbang.parse as parse
-import bigbang.process as process
 from bigbang.archive import Archive
 
 

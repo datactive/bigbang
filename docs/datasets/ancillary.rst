@@ -1,17 +1,15 @@
-Provided Datasets
-====================
+.. _ancillary_datasets:
 
-In addition to providing tools for gathering data from public sources,
-BigBang also includes some datasets that have been curated by contributors and researchers.
+Ancillary Datasets
+*********************
 
-The BigBang repository does not contain personally identifiable information of any kind.
+In addition to providing tools for gathering data from public sources, ``BigBang`` also includes some datasets that have been curated by contributors and researchers.
 
-The datasets included in BigBang pertain to organizational entities and provide metadata useful in
-preprocessing and analysis of those entities.
-
+General
+================
 
 Email domain categories
-----------------------------
+-----------------------
 
 BigBang comes with a partial list of email domains, categorized as:
 
@@ -21,7 +19,7 @@ BigBang comes with a partial list of email domains, categorized as:
 - **Academic**. A domain associated with a university or academic professional organization. E.g. ``mit.edu``
 - **SDO**. A domain associated with a Standards Development Organization. E.g. ``ietf.org``
 
-This data can be loaded as a Pandas DataFrame with indices as email domains and 
+This data can be loaded as a Pandas DataFrame with indices as email domains and
 categories in the ``category`` column with the following code:
 
 ::
@@ -31,3 +29,14 @@ categories in the ``category`` column with the following code:
 
 The sources of this data are a hand-curated list of domains provided by BigBang contributors
 and a list of generic email domain providers provided by this `public gist <https://gist.github.com/ammarshah/f5c2624d767f91a7cbdc4e54db8dd0bf/>`_.
+
+
+IETF
+================
+
+Publication date of protocols.
+
+3GPP
+================
+
+Release dates of standards.

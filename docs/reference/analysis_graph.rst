@@ -1,5 +1,5 @@
 analysis.graph
------------------
+--------------
 
 .. automodule:: bigbang.analysis.graph
    :members:

@@ -1,5 +1,5 @@
 analysis.utils
--------
+------------------------------------
 
 .. automodule:: bigbang.analysis.utils
    :members:

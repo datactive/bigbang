@@ -361,15 +361,6 @@ class ListservMailList(AbstractMailList):
         It can be either an URL where the list or a path to the file(s).
     msgs : List of mboxMessage objects
 
-    Methods
-    -------
-    All methods in the `AbstractMailList` class in addition to:
-    from_listserv_files()
-    from_listserv_directories()
-    get_period_urls()
-    get_line_numbers_of_header_starts()
-    get_index_of_elements_in_selection()
-
 
     Example
     -------
