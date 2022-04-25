@@ -169,3 +169,13 @@ def loginkey_to_file(
     file.write(f"username: '{username}'\n")
     file.write(f"password: '{password}'")
     file.close()
+
+
+def remove_control_characters(text: str) -> str:
+    """
+    Strip out all these control characters from text.
+    """
+    control_characters = "".join([chr(char) for char in range(1, 32)])
+    replace_characters = "".join([" " for ws in range(1, 32)])
+    translator = str.maketrans(control_characters, replace_characters)
+    return text.translate(translator)

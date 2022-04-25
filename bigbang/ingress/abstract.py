@@ -79,6 +79,7 @@ class AbstractMessageParser(ABC):
         self,
         archived_at: str,
         body: str,
+        attachments: Optional[List] = None,
         **header,
     ) -> Message:
         """
@@ -122,6 +123,13 @@ class AbstractMessageParser(ABC):
         # convert to `EmailMessage` to `mboxMessage`
         mbox_msg = mboxMessage(msg)
         mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
+        if attachments is not None:
+            for idx, attachment in enumerate(attachments):
+                mbox_msg.add_header(
+                    "Attachment-%d" % idx,
+                    attachment.text,
+                    filename=attachment.filename,
+                )
         return mbox_msg
 
     def from_url(
@@ -149,9 +157,12 @@ class AbstractMessageParser(ABC):
                 header = self.empty_header
             if fields in ["body", "total"]:
                 body = self._get_body_from_html(list_name, url, soup)
+                attachments = self._get_attachments_from_html(
+                    list_name, url, soup
+                )
             else:
                 body = None
-        return self.create_email_message(url, body, **header)
+        return self.create_email_message(url, body, attachments, **header)
 
     @abstractmethod
     def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
