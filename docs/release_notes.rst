@@ -1,10 +1,27 @@
 Release notes
 ***************
 
-v0.3.0 Joie de vivre
+v0.3.0 Syzygy
 ----------------------
 
+Work on this release was supported by the Prototype Fund.
 
+- Robust ListServ data ingress #460  #459 #457 
+- New ReadTheDocs/Sphinx based documentation: domain name and organization metadata #414 #499 #548 
+- New code submodule organization
+- 3GPP  analysis #465
+- `datasets` submodule for ancillary data #509 
+- Integration of IETF datatracker source and analysis of IETF attendance data #368 #560 #434
+- IETF draft analysis #370
+- Tools to identify the institution of email senders #25
+- Improved test coverage #343
+- Change from nose to unittest for testing framework #366
+- Updates and corrections to example notebooks #364
+- Bug fixes #538 #553 #555 #390
+- Preliminary work towards entity resolution #405
+
+v0.3.0 Joie de vivre
+----------------------
 
 This release converted the codebase to Python 3 and introduced the DataTracker and LISTSERV data sources, among with several new scientific notebooks and maintenance improvements.
 
