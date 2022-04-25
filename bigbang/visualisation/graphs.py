@@ -11,6 +11,49 @@ import matplotlib.lines as mlines
 from matplotlib.pyplot import figure
 
 
+def draw_edges(
+    digraph: nx.DiGraph,
+    pos: dict,
+    edgelist: List[tuple],
+    axis: mpl.axes.Axes,
+    color_limits: Optional[List[float]] = None,
+    edge_color: Optional[Union[float, List[float]]] = None,
+    alpha: float = 1.0,
+    widths: Union[float, List[float]] = 1.0,
+    connectionstyle="arc3, rad = 0.",
+    edge_cmap: Optional[mpl.colors.LinearSegmentedColormap] = None,
+):
+    if edge_color is None:
+        edge_color = widths
+
+    if color_limits is not None:
+        edge_vmin = np.min(color_limits)
+        edge_vmax = np.max(color_limits)
+    else:
+        edge_vmin = None
+        edge_vmax = None
+
+    arrows = nx.draw_networkx_edges(
+        digraph,
+        pos,
+        width=widths,
+        edgelist=edgelist,
+        connectionstyle=connectionstyle,
+        edge_color=edge_color,
+        edge_vmin=edge_vmin,
+        edge_vmax=edge_vmax,
+        alpha=alpha,
+        arrowstyle="-|>",
+        edge_cmap=edge_cmap,
+        ax=axis,
+    )
+    if isinstance(widths, float) is False:
+        for a, w in zip(arrows, widths):
+            a.set_mutation_scale(20 + w)
+            a.set_joinstyle("miter")
+            a.set_capstyle("butt")
+
+
 def edge_thickness(
     graph,
     entity_in_focus: Optional[List[str]] = None,
