@@ -1,7 +1,7 @@
 Release notes
 ***************
 
-v0.3.0 Syzygy
+v0.4.0 Syzygy
 ----------------------
 
 Work on this release was supported by the Prototype Fund.
