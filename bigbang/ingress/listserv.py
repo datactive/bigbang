@@ -5,6 +5,7 @@ import re
 import subprocess
 import time
 import warnings
+from collections import namedtuple
 from io import BytesIO
 from docx import Document
 import mailbox
