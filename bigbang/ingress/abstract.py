@@ -148,8 +148,9 @@ class AbstractMessageParser(ABC):
         """
         soup = get_website_content(url, session=self.session)
         if soup == "RequestException":
-            body = "RequestException"
             header = self.empty_header
+            body = "RequestException"
+            attachments = "RequestException"
         else:
             if fields in ["header", "total"]:
                 header = self._get_header_from_html(soup)
@@ -157,11 +158,15 @@ class AbstractMessageParser(ABC):
                 header = self.empty_header
             if fields in ["body", "total"]:
                 body = self._get_body_from_html(list_name, url, soup)
-                attachments = self._get_attachments_from_html(
-                    list_name, url, soup
-                )
+                if "lists.w3.org" in url:
+                    attachments = None
+                elif "listserv." in url:
+                    attachments = self._get_attachments_from_html(
+                        list_name, url, soup
+                    )
             else:
                 body = None
+                attachments = None
         return self.create_email_message(url, body, attachments, **header)
 
     @abstractmethod
