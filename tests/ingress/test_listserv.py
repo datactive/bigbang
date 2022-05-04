@@ -141,8 +141,10 @@ class TestListservMailList:
             url_pref="https://listserv.ieee.org/cgi-bin/wa?PREF",
             login=auth_key,
         )
-        assert mlist.messages[0]["from"] == "iceeng-10"
-        assert mlist.messages[0]["to"] is None
+        froms = list(set([msg["from"] for msg in mlist.messages]))
+        assert '"Gilberto Santiago"' in froms
+        tos = list(set([msg["to"] for msg in mlist.messages]))
+        assert [None] == tos
 
     @pytest.fixture(name="mlist", scope="module")
     def get_maillist_from_url(self):
