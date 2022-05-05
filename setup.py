@@ -49,6 +49,7 @@ install_requires = [
     "tornado>=6.1",
     "tqdm>=4.60.0",
     "validator_collection>=1.5.0",
+    "python-docx>=0.8",
 ]
 # test dependencies
 test_requires = ["pytest>=6.2.3", "coverage>=5.5", "testfixtures>=6.17.1"]
