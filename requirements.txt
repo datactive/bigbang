@@ -33,6 +33,9 @@ validator_collection>=1.5.0
 testfixtures>=6.17.1
 git+https://github.com/gitpython-developers/GitPython.git
 m2r2
+transformers[torch]
+email_reply_parser
+spacy
 
 # dev-dependencies
 black>=20.8b1

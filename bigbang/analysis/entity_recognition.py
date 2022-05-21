@@ -7,6 +7,7 @@ from typing import List, Dict
 from collections import defaultdict
 import re
 import contractions
+from email_reply_parser import EmailReplyParser
 
 
 class SpanVisualizer:
@@ -18,6 +19,9 @@ class SpanVisualizer:
         self.ents = []
         self.entity_dict = {}
         self.entity_type = defaultdict(list)
+        self.merged_tokens = None
+        self.merged_labels = None
+        self.maps = None
 
     def get_list_per_type(self):
         if self.entity_dict:
@@ -48,7 +52,9 @@ class SpanVisualizer:
                 if (i == (len(tokens) - 1)) or (i != len(tokens) - 1 and (not tokens[i + 1].startswith('##'))):
                     merged_tokens.append(merged_token)
                     merged_token = ''
-        return merged_tokens, maps
+            self.merged_tokens = merged_tokens
+            self.maps = maps
+        return merged_tokens
 
     def get_type(self, label: Dict):
         return label['entity'].split('-')[-1]
@@ -80,23 +86,67 @@ class SpanVisualizer:
                 stack.append(label)
         if stack:
             merged_labels.append(stack)
+        self.merged_labels = merged_labels
         return merged_labels
 
-    def get_doc_for_visualization(self, merged_labels: List, maps: Dict, doc: Doc):
+    def find_all_cap_ents(self, body: str, merged_tokens: list, doc: Doc):
+        # currently only supports single token all_cap words
+        # match all_cap words and find their positions
+        pattern = '[A-Z]+[A-Z]+[A-Z]*[\s]+'
+        all_caps = re.findall(pattern, body)
+        all_caps = [s.strip() for s in all_caps]
+        # find the words in the tokens
+        indexes = []
+        for word in all_caps:
+            for i, t in enumerate(merged_tokens):
+                if t == word:
+                    if i not in indexes:
+                        indexes.append(i)
+                        break
+        # curating identified indexes list
+        rec_positions = []
+        for ent in self.ents:
+            for pos in range(ent.start, ent.end+1):
+                rec_positions.append(pos)
+        # if not, adding to the entity list
+        entity_type = 'ALLCAPS'
+        all_cap_ents = []
+        for start in indexes:
+            if start not in rec_positions:
+                end = start + 1
+                ent = Span(doc, start, end, entity_type)
+                # TODO: includnig differnet entities with the same names
+                self.entity_dict[str(ent)] = entity_type
+                all_cap_ents.append(ent)
+        self.ents.extend(all_cap_ents)
+        # for ent in self.ents:
+        #     print(ent.start)
+        # print(self.ents)
+        doc.set_ents(self.ents)
+        return doc
+
+    def get_doc_for_visualization(self, tokens: List, labels: list, body: str, doc: Doc, find_all_caps: bool=True):
+        if not self.merged_tokens or self.maps:
+            _ = self.merge_tokens(tokens)
+        if not self.merged_labels:
+            _ = self.merge_labels(labels, self.maps)
+
         ents = []
         starts = []
 
-        for m_labels in merged_labels:
-            start = self.get_map_index(m_labels[0], maps)
-            end = self.get_map_index(m_labels[-1], maps) + 1
+        for m_labels in self.merged_labels:
+            start = self.get_map_index(m_labels[0], self.maps)
+            end = self.get_map_index(m_labels[-1], self.maps) + 1
             entity_type = self.get_type(m_labels[0])
             if start not in starts:
                 ent = Span(doc, start, end, entity_type)
                 self.entity_dict[str(ent)] = entity_type
                 ents.append(ent)
                 starts.append(start)
-        doc.set_ents(ents)
         self.ents.extend(ents)
+        doc.set_ents(self.ents)
+        if find_all_caps:
+            doc = self.find_all_cap_ents(body, self.merged_tokens, doc)
         return doc
 
 
@@ -111,11 +161,10 @@ class EntityRecognizer:
 
     def remove_ori_message(self, body: str):
         """
-        A function to remove the original message in a hard-coded way
+        A function to remove the original message using package parsing
         """
-        body = body.split('---- Original Message ----')[0]
+        body = EmailReplyParser.parse_reply(body)
         return body
-
 
     def pre_processing(self, body: str, lowercase: bool=False):
         """
@@ -126,6 +175,8 @@ class EntityRecognizer:
         - remove all digits
         - remove extra spaces and newlines
         """
+        # parse reply
+        body = self.remove_ori_message(body)
         # expand contractions
         body = contractions.fix(body)
         # remove punctuations
@@ -161,3 +212,4 @@ class EntityRecognizer:
             entities.append(name_type)
         self.entities = entities
         return entities
+
