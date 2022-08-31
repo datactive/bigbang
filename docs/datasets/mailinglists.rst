@@ -1,7 +1,7 @@
 Mailinglists
 ************
 
-Below we describe, how the public mailing lists of each of the Internet standard developing organisations can be scrabed from the web. Some mailng lists reach back to 1998 and is multiple GBs in size. Therefore, it can take a considerable amount of time to scrape an entire mailing list. This process can't be speed up, since one would commit a DDoS attack otherwise. So be prepared to leave your machine running over (multiple) night(s).
+Below we describe, how the public mailing lists of each of the Internet standard developing organisations can be scraped from the web. Some mailng lists reach back to 1998 and are multiple GBs in size. Therefore, it can take a considerable amount of time to scrape an entire mailing list. This process can't be sped up, since one would commit a DDoS attack otherwise. So be prepared to leave your machine running over (multiple) night(s).
 
 IETF
 ================
