@@ -244,7 +244,7 @@ class ListservMailList:
             mask = [dt.year == yrs for dt in _df["date"].values]
         if isinstance(yrs, list):
             mask = [
-                (dt.year >= min(yrs)) & (dt.year < max([yrs]))
+                (dt.year >= min(yrs)) & (dt.year < max(yrs))
                 for dt in _df["date"].values
             ]
         return ListservMailList.from_pandas_dataframe(
@@ -926,6 +926,7 @@ class ListservMailList:
         entity_in_focus : This can be a list of domain names or localparts. If
             such a list is provided, the creaed di-graph will only focus on their
             relations.
+        node_attributes: A dictionary with
         """
         if nw is None:
             nw = self.get_sender_receiver_dict(
@@ -934,15 +935,17 @@ class ListservMailList:
             )
         # initialise graph
         DG = nx.DiGraph()
-        # create nodes
-        [DG.add_node(sender) for sender in nw.keys()]
         if entity_in_focus:
-            [
-                DG.add_node(receiver)
-                for receivers in nw.values()
-                for receiver in receivers.keys()
-                if receiver in entity_in_focus
-            ]
+            # create nodes
+            nodes = []
+            for sender, _dic in nw.items():
+                if sender in entity_in_focus:
+                    nodes.append(sender)
+                for receiver in _dic.keys():
+                    if receiver in entity_in_focus:
+                        nodes.append(receiver)
+            nodes = list(set(nodes))
+            [DG.add_node(node) for node in nodes]
             # create edges
             for sender, receivers in nw.items():
                 if sender not in entity_in_focus:
@@ -950,11 +953,14 @@ class ListservMailList:
                 for receiver, nr_msgs in receivers.items():
                     DG.add_edge(sender, receiver, weight=nr_msgs)
         else:
-            [
-                DG.add_node(receiver)
-                for receivers in nw.values()
-                for receiver in receivers.keys()
-            ]
+            # create nodes
+            nodes = []
+            for sender, _dic in nw.items():
+                nodes.append(sender)
+                for receiver in _dic.keys():
+                    nodes.append(receiver)
+            nodes = list(set(nodes))
+            [DG.add_node(node) for node in nodes]
             # create edges
             for sender, receivers in nw.items():
                 for receiver, nr_msgs in receivers.items():
@@ -962,15 +968,13 @@ class ListservMailList:
         if node_attributes is not None:
             node_attribute_value = {}
             for index, node in enumerate(DG.nodes):
-                attribute_row = node_attributes[
-                    node_attributes["node_name"] == node
-                ]
-                if any(attribute_row.index):
-                    node_attribute_value[node] = attribute_row[
-                        "node_attribute"
-                    ].values[0]
+                if node in node_attributes["node_name"]:
+                    node_attr = node_attributes["node_attribute"][
+                        node_attributes["node_name"].index(node)
+                    ]
+                    node_attribute_value[node] = node_attr
                 else:
-                    node_attribute_value[node] = "-"
+                    node_attribute_value[node] = "Unkown"
             nx.set_node_attributes(
                 DG, node_attribute_value, name="node_attribute"
             )
