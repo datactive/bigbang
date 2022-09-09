@@ -1,5 +1,5 @@
 analysis.twopeople
------------------
+------------------
 
 .. automodule:: bigbang.analysis.twopeople
    :members:

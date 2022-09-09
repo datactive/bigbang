@@ -1,1 +1,0 @@
-.. mdinclude:: git-readme.md

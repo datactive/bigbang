@@ -1,3 +1,23 @@
+[project]
+name = "bigang-py"
+version = "0.4.1"
+authors = [
+  { name="BigBang Team", email="bigbang-dev@data-activism.net" },
+]
+description = "BigBang is a toolkit for studying communications data from collaborative projects. It currently supports analyzing mailing lists from Sourceforge, Mailman, ListServ, or .mbox files."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/datactive/bigbang"
+"Bug Tracker" = "https://github.com/datactive/bigbang/issues"
+
 [tool.isort]
 profile = "black"
 multi_line_output = 3

@@ -24,7 +24,9 @@ def evolution_of_participation_1D(
     Parameters
     ----------
     data : Dictionary with a format {'x_axis_labels': {'y_axis_labels': y_values}}
-    entity_in_focus :
+    entity_in_focus : A list of domain names (e.g. huawei.com, nokia.com),
+        of which the edges will be highlighted while the
+        entities-out-of-focused will be greyed out.
     percentage :
     """
     x = list(data.keys())
@@ -82,7 +84,9 @@ def evolution_of_participation_2D(
     Parameters
     ----------
     data : Dictionary with a format {'x_axis_labels': {'y_axis_labels': y_values}}
-    entity_in_focus :
+    entity_in_focus : A list of domain names (e.g. huawei.com, nokia.com),
+        of which the edges will be highlighted while the
+        entities-out-of-focused will be greyed out.
     percentage :
     """
     # TODO: include time indication
@@ -151,7 +155,9 @@ def evolution_of_graph_property_by_domain(
         data : Dictionary create with
             bigbang.analysis.ListservList.get_graph_prop_per_domain_per_year()
         ax :
-        entity_in_focus :
+        entity_in_focus : A list of domain names (e.g. huawei.com, nokia.com),
+            of which the edges will be highlighted while the
+            entities-out-of-focused will be greyed out.
         percentile :
     """
     colors = utils.create_color_palette(

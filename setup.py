@@ -49,6 +49,7 @@ install_requires = [
     "tornado>=6.1",
     "tqdm>=4.60.0",
     "validator_collection>=1.5.0",
+    "python-docx>=0.8",
 ]
 # test dependencies
 test_requires = ["pytest>=6.2.3", "coverage>=5.5", "testfixtures>=6.17.1"]
@@ -61,10 +62,10 @@ dev_requires = [
 
 config = {
     "name": "BigBang",
-    "version": "0.3",
-    "description": "Analysis of Mailman archives",
-    "author": "Sebastian Benthall",
-    "author_email": "sb@ischool.berkeley.edu",
+    "version": "0.4.1",
+    "description": "BigBang is a toolkit for studying communications data from collaborative projects. It currently supports analyzing mailing lists from Sourceforge, Mailman, ListServ, or .mbox files.",
+    "author": "BigBang Team",
+    "author_email": "bigbang-dev@data-activism.net",
     "packages": ["bigbang"],
     "install_requires": install_requires,
     "extras_require": {

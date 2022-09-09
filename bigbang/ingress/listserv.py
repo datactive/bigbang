@@ -5,6 +5,9 @@ import re
 import subprocess
 import time
 import warnings
+from collections import namedtuple
+from io import BytesIO
+from docx import Document
 import mailbox
 from mailbox import mboxMessage
 from pathlib import Path
@@ -30,6 +33,7 @@ from bigbang.ingress.utils import (
     get_website_content,
     set_website_preference_for_header,
     get_auth_session,
+    remove_control_characters,
 )
 from bigbang.utils import (
     get_paths_to_files_in_directory,
@@ -343,6 +347,50 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
             )
             return None
 
+    def _get_attachments_from_html(
+        self, list_name: str, url: str, soup: BeautifulSoup
+    ) -> Union[List[namedtuple], None]:
+        """
+        Lexer for the message attachment.
+        This methods look first whether a attachment is available
+        before it transforms the attached content into a string.
+        """
+        url_root = ("/").join(url.split("/")[:-2])
+        a_tags = soup.select(f'a[href*="A3="][href*="{list_name}"]')
+        href_html_attachment = [
+            tag.get("href") for tag in a_tags if "Fvnd" in tag.get("href")
+        ]
+        if href_html_attachment:
+            attachments = []
+            urls_attachment = [
+                urljoin(url_root, href) for href in href_html_attachment
+            ]
+            for url_attachment in urls_attachment:
+                filename = re.search("\%22(.*?)\%22", url_attachment).group(1)
+                subtype = filename.split(".")[-1].lower()
+                doc = namedtuple("attachment", "text subtype filename")
+                if subtype == "docx":
+                    try:
+                        docx = Document(
+                            BytesIO(requests.get(url_attachment).content)
+                        )
+                    except Exception:
+                        logger.exception(
+                            f"The attachment of {url} which is part of the "
+                            f"list {list_name} could not be loaded."
+                        )
+                        continue
+                    document = ("\n").join(
+                        [para.text for para in docx.paragraphs]
+                    )
+                    document = remove_control_characters(document)
+                    attachments.append(
+                        doc(text=document, subtype=subtype, filename=filename)
+                    )
+            return attachments
+        else:
+            return None
+
 
 class ListservMailList(AbstractMailList):
     """
@@ -360,15 +408,6 @@ class ListservMailList(AbstractMailList):
     source : Contains the information of the location of the mailing list.
         It can be either an URL where the list or a path to the file(s).
     msgs : List of mboxMessage objects
-
-    Methods
-    -------
-    All methods in the `AbstractMailList` class in addition to:
-    from_listserv_files()
-    from_listserv_directories()
-    get_period_urls()
-    get_line_numbers_of_header_starts()
-    get_index_of_elements_in_selection()
 
 
     Example
