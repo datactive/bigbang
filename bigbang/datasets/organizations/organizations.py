@@ -27,4 +27,10 @@ def load_data():
     data: pandas.DataFrame
     """
     domain_data_path = os.path.join(DOMAIN_DATA_DIR, DOMAIN_DATA_FILENAME)
-    return pd.read_csv(domain_data_path)
+    df = pd.read_csv(
+        domain_data_path,
+        sep=",",
+        header=0,
+        index_col=False,
+    )
+    return df
