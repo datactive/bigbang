@@ -6,6 +6,8 @@ import re
 import subprocess
 import time
 import warnings
+import tempfile
+import gzip
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.parse import urljoin, urlparse
@@ -35,6 +37,7 @@ from bigbang.utils import (
     get_paths_to_dirs_in_directory,
 )
 
+dir_temp = tempfile.gettempdir()
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent.parent)
 logging.basicConfig(
@@ -204,21 +207,37 @@ class PipermailMailList(AbstractMailList):
         cls,
         name: str,
         url: str,
-        messages: Union[List[str], MailList],
+        period_urls: str,
         fields: str = "total",
     ) -> "PipermailMailList":
         """Docstring in `AbstractMailList`."""
-        if not messages:
-            msgs = []
-        elif isinstance(messages[0], str):
-            msg_parser = PipermailMessageParser(
-                website=True,
+        for period_url in period_urls:
+            file = requests.get(
+                period_url,
+                verify=f"{directory_project}/config/icann_certificate.pem",
             )
-            msgs = super().get_messages_from_urls(
-                name, messages, msg_parser, fields
-            )
-        else:
-            msgs = messages
+            file_text = gzip.decompress(file.content).decode("utf-8")
+            file_lines = file_text.split('\n')
+            nr_line_w_msg_id = [
+                idx
+                for idx, fl in enumerate(file_lines)
+                if 'Message-ID:' in fl
+            ]
+            print(nr_line_w_msg_id)
+            nr_line_new_message = []
+            for lmi in nr_line_w_msg_id:
+                for sl in range(30):
+                    if file_lines[lmi-sl] == '':
+                        nr_line_new_message.append(lmi-sl+3)
+                        break
+            print(nr_line_new_message)
+            #with open(period_url.split('/')[-1], "w") as text_file:
+            #    text_file.write(file_content)
+            break
+
+        #msg_parser = PipermailMessageParser(
+        #    website=True,
+        #)
         return cls(name, url, msgs)
 
     @classmethod
@@ -289,41 +308,15 @@ class PipermailMailList(AbstractMailList):
         periods = []
         urls_of_periods = []
         rows = soup.select(f'a[href*=".txt.gz"]')
-        print("rows", rows)
         for row in rows:
-            link = row.select("td:nth-of-type(1) a")
-            if len(link) > 0:
-                link = link[0]
-            else:
+            filename =  row.get("href")
+            if filename.endswith(".txt.gz") is False:
                 continue
-            periods.append(link.text)
-            urls_of_periods.append(url + "/" + link.get("href"))
+            year = re.findall(r"\d{4}", filename)[0]
+            month = filename.split('.')[0].replace(f"{year}-", '')
+            periods.append(f"{month} {year}")
+            urls_of_periods.append(url + "/" + filename)
         return periods, urls_of_periods
-
-    @classmethod
-    def get_messages_urls(cls, name: str, url: str) -> List[str]:
-        """
-        Parameters
-        ----------
-        name : Name of the Pipermail mailing list.
-        url : URL to group of messages that are within the same period.
-
-        Returns
-        -------
-        List of URLs from which `mboxMessage` can be initialized.
-        """
-        soup = get_website_content(url)
-        if soup == "RequestException":
-            return []
-        else:
-            a_tags = soup.select("div.messages-list a")
-            if a_tags:
-                a_tags = [
-                    urljoin(url, a_tag.get("href"))
-                    for a_tag in a_tags
-                    if a_tag.get("href") is not None
-                ]
-            return a_tags
 
     @staticmethod
     def get_name_from_url(url: str) -> str:
