@@ -36,9 +36,9 @@ from bigbang.utils import (
 )
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
-directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
+directory_project = str(Path(os.path.abspath(__file__)).parent.parent.parent)
 logging.basicConfig(
-    filename=directory_project + "/w3c.scraping.log",
+    filename=directory_project + "/icann.scraping.log",
     filemode="w",
     level=logging.INFO,
     format="%(asctime)s %(message)s",
@@ -57,11 +57,6 @@ class PipermailMailListWarning(BaseException):
 
     pass
 
-
-class PipermailMailListDomainWarning(BaseException):
-    """Base class for PipermailMailListDomain class specific exceptions"""
-
-    pass
 
 
 class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
@@ -155,12 +150,9 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
 class PipermailMailList(AbstractMailList):
     """
     This class handles the scraping of a all public Emails contained in a single
-    mailing list in the hypermail format.
-    To be more precise, each contributor to a mailing list sends
-    their message to an Email address that has the following structure:
-    <mailing_list_name>@w3.org.
-    Thus, this class contains all Emails send to a specific <mailing_list_name>
-    (the Email localpart, such as "public-abcg" or "public-accesslearn-contrib").
+    mailing list in the pipermail format.
+    This is done by downloading the gzip'd file for each month of a year in which
+    an email was send to the mailing list.
 
     Parameters
     ----------
@@ -198,16 +190,17 @@ class PipermailMailList(AbstractMailList):
         """Docstring in `AbstractMailList`."""
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
-        msg_urls = cls.get_message_urls(name, url, select)
-        return cls.from_messages(
+        period_urls = cls.get_period_urls(url, select)
+        print("period_urls", period_urls)
+        return cls.from_periods(
             name,
             url,
-            msg_urls,
+            period_urls,
             select["fields"],
         )
 
     @classmethod
-    def from_messages(
+    def from_periods(
         cls,
         name: str,
         url: str,
@@ -235,34 +228,6 @@ class PipermailMailList(AbstractMailList):
         return cls(name, filepath, msgs)
 
     @classmethod
-    def get_message_urls(
-        cls,
-        name: str,
-        url: str,
-        select: Optional[dict] = None,
-    ) -> List[str]:
-        """Docstring in `AbstractMailList`."""
-
-        def get_message_urls_from_period_url(name: str, url: str) -> List[str]:
-            soup = get_website_content(url)
-            a_tags = soup.select("div.messages-list a")
-            if a_tags:
-                a_tags = [
-                    urljoin(url, a_tag.get("href"))
-                    for a_tag in a_tags
-                    if a_tag.get("href") is not None
-                ]
-            return a_tags
-
-        msg_urls = []
-        # run through periods
-        for period_url in PipermailMailList.get_period_urls(url, select):
-            # run through messages within period
-            for msg_url in get_message_urls_from_period_url(name, period_url):
-                msg_urls.append(msg_url)
-        return msg_urls
-
-    @classmethod
     def get_period_urls(
         cls, url: str, select: Optional[dict] = None
     ) -> List[str]:
@@ -276,7 +241,7 @@ class PipermailMailList(AbstractMailList):
             - content, i.e. header and/or body
             - period, i.e. written in a certain year and month
         """
-        # create dictionary with key indicating period and values the url
+        # create dictionary where keys are a period and values the url
         periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
 
         if any(
@@ -308,7 +273,7 @@ class PipermailMailList(AbstractMailList):
     ) -> Tuple[List[str], List[str]]:
         """
         Pipermail groups messages into monthly time bundles. This method
-        obtains all the URLs that lead to the messages of each time bundle.
+        obtains all the URLs of time bundles and are downaloadable as gzip'd files.
 
         Returns
         -------
@@ -317,12 +282,14 @@ class PipermailMailList(AbstractMailList):
         """
         # wait between loading messages, for politeness
         time.sleep(0.5)
-        soup = get_website_content(url)
-        print("get_all_periods_and_their_urls:")
-        print(url)
+        soup = get_website_content(
+            url,
+            verify=f"{directory_project}/config/icann_certificate.pem",
+        )
         periods = []
         urls_of_periods = []
-        rows = soup.select("tbody tr")
+        rows = soup.select(f'a[href*=".txt.gz"]')
+        print("rows", rows)
         for row in rows:
             link = row.select("td:nth-of-type(1) a")
             if len(link) > 0:
@@ -367,177 +334,6 @@ class PipermailMailList(AbstractMailList):
             name = url.split("/")[url_position]
             url_position -= 1
         return name
-
-
-class PipermailMailListDomain(AbstractMailListDomain):
-    """
-    This class handles the scraping of a all public Emails contained in a mail
-    list domain that has the hypermail format, such as Pipermail.
-    To be more precise, each contributor to a mail list domain sends their message
-    to an Email address that has the following structure:
-    <mailing_list_name>@atlarge-lists.icann.org
-    Thus, this class contains all Emails send to <mail_list_domain_name>
-    (the Email domain name). These Emails are contained in a list of
-    `PipermailMailList` types, such that it is known to which <mailing_list_name>
-    (the Email localpart) was send.
-
-
-    Parameters
-    ----------
-    name : The name of the mailing list domain.
-    url : The URL where the mailing list domain lives
-    lists : A list containing the mailing lists as `PipermailMailList` types
-
-    Methods
-    -------
-    All methods in the `AbstractMailListDomain` class.
-
-    Example
-    -------
-    To scrape a Pipermail mailing list mailing list domain from an URL and store it in
-    run-time memory, we do the following
-    >>> mlistdom = PipermailMailListDomain.from_url(
-    >>>     name="ICANN",
-    >>>     url_root="https://mm.icann.org/pipermail/",
-    >>>     select={
-    >>>         "years": 2015,
-    >>>         "months": "November",
-    >>>         "weeks": 4,
-    >>>         "fields": "header",
-    >>>     },
-    >>>     instant_save=False,
-    >>>     only_mlist_urls=False,
-    >>> )
-
-    To save it as *.mbox file we do the following
-    >>> mlistdom.to_mbox(path_to_directory)
-    """
-
-    @classmethod
-    def from_url(
-        cls,
-        name: str,
-        url_root: str,
-        url_home: Optional[str] = None,
-        select: Optional[dict] = {"fields": "total"},
-        instant_save: bool = True,
-        only_mlist_urls: bool = True,
-    ) -> "PipermailMailListDomain":
-        """Docstring in `AbstractMailListDomain`."""
-        lists = cls.get_lists_from_url(
-            name,
-            select,
-            url_root,
-            url_home,
-            instant_save,
-            only_mlist_urls,
-        )
-        return cls.from_mailing_lists(
-            name,
-            url_root,
-            lists,
-            select,
-            only_mlist_urls,
-        )
-
-    @classmethod
-    def from_mailing_lists(
-        cls,
-        name: str,
-        url_root: str,
-        url_mailing_lists: Union[List[str], List[PipermailMailList]],
-        select: Optional[dict] = {"fields": "total"},
-        only_mlist_urls: bool = True,
-        instant_save: Optional[bool] = True,
-    ) -> "PipermailMailListDomain":
-        """Docstring in `AbstractMailListDomain`."""
-        if isinstance(url_mailing_lists[0], str) and only_mlist_urls is False:
-            lists = []
-            for url in url_mailing_lists:
-                mlist_name = PipermailMailList.get_name_from_url(url)
-                mlist = PipermailMailList.from_url(
-                    name=mlist_name,
-                    url=url,
-                    select=select,
-                )
-                if len(mlist) != 0:
-                    if instant_save:
-                        dir_out = CONFIG.mail_path + name
-                        Path(dir_out).mkdir(parents=True, exist_ok=True)
-                        mlist.to_mbox(dir_out=dir_out)
-                    else:
-                        logger.info(f"Recorded the list {mlist.name}.")
-                        lists.append(mlist)
-        else:
-            lists = url_mailing_lists
-        return cls(name, url_root, lists)
-
-    @classmethod
-    def from_mbox(
-        cls,
-        name: str,
-        directorypath: str,
-        filedsc: str = "*.mbox",
-    ) -> "PipermailMailListDomain":
-        """Docstring in `AbstractMailListDomain`."""
-        filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
-        lists = []
-        for filepath in filepaths:
-            name = filepath.split("/")[-1].split(".")[0]
-            lists.append(PipermailMailList.from_mbox(name, filepath))
-        return cls(name, directorypath, lists)
-
-    @staticmethod
-    def get_lists_from_url(
-        name: str,
-        select: dict,
-        url_root: str,
-        url_home: Optional[str] = None,
-        instant_save: bool = True,
-        only_mlist_urls: bool = True,
-    ) -> List[Union[PipermailMailList, str]]:
-        """Docstring in `AbstractMailListDomain`."""
-        archive = []
-        if url_home is None:
-            soup = get_website_content(url_root)
-        else:
-            soup = get_website_content(url_home)
-        mlist_urls = [
-            urljoin(url_root, h3_tag.select("a")[0].get("href"))
-            for h3_tag in soup.select("h3")
-            if h3_tag.select("a")
-        ]
-        mlist_urls = list(set(mlist_urls))  # remove duplicates
-
-        if only_mlist_urls:
-            # collect mailing-list urls
-            for mlist_url in tqdm(mlist_urls, ascii=True):
-                # check if mailing list contains messages in period
-                _period_urls = PipermailMailList.get_all_periods_and_their_urls(
-                    mlist_url
-                )[1]
-                # check if mailing list is public
-                if len(_period_urls) > 0:
-                    archive.append(mlist_url)
-        else:
-            # collect mailing-list contents
-            for mlist_url in mlist_urls:
-                mlist_name = PipermailMailList.get_name_from_url(mlist_url)
-                mlist = PipermailMailList.from_url(
-                    name=mlist_name,
-                    url=mlist_url,
-                    select=select,
-                )
-                if len(mlist) != 0:
-                    if instant_save:
-                        dir_out = CONFIG.mail_path + name
-                        Path(dir_out).mkdir(parents=True, exist_ok=True)
-                        mlist.to_mbox(dir_out=CONFIG.mail_path)
-                        archive.append(mlist.name)
-                    else:
-                        logger.info(f"Recorded the list {mlist.name}.")
-                        archive.append(mlist)
-        return archive
 
 
 def text_for_selector(soup: BeautifulSoup, selector: str):
