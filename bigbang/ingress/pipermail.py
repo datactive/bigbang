@@ -8,6 +8,8 @@ import time
 import warnings
 import tempfile
 import gzip
+import mailbox
+from mailbox import mboxMessage
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.parse import urljoin, urlparse
@@ -22,11 +24,7 @@ from config.config import CONFIG
 
 import bigbang.bigbang_io as bio
 from bigbang.data_types import MailList
-from bigbang.ingress import (
-    AbstractMessageParser,
-    AbstractMailList,
-    AbstractMailListDomain,
-)
+from bigbang.ingress import AbstractMailList
 from bigbang.ingress.utils import (
     get_website_content,
     set_website_preference_for_header,
@@ -62,7 +60,7 @@ class PipermailMailListWarning(BaseException):
 
 
 
-class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
+class PipermailMessageParser(email.parser.Parser):
     """
     This class handles the creation of an `mailbox.mboxMessage` object
     (using the from_*() methods) and its storage in various other file formats
@@ -70,16 +68,13 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
 
     Parameters
     ----------
-    website : Set 'True' if messages are going to be scraped from websites,
-        otherwise 'False' if read from local memory. This distinction needs to
-        be made if missing messages should be added.
     url_pref : URL to the 'Preferences'/settings page.
 
 
     Example
     -------
     To create a Email message parser object, use the following syntax:
-    >>> msg_parser = PipermailMessageParser(website=True)
+    >>> msg_parser = PipermailMessageParser()
 
     To obtain the Email message content and return it as `mboxMessage` object,
     you need to do the following:
@@ -92,7 +87,39 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
 
     empty_header = {}
 
-    def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
+    def from_pipermail_file(
+        self,
+        list_name: str,
+        fcontent: str,
+        header_end_line_nr: int,
+        fields: str = "total",
+    ) -> mboxMessage:
+        for i in range(30):
+            if fcontent[header_end_line_nr - i - 1] == '':
+                header_start_line_nr = header_end_line_nr - i + 1
+                break
+
+        if fields in ["header", "total"]:
+            header = self._get_header_from_pipermail_file(
+                fcontent, header_start_line_nr, header_end_line_nr
+            )
+        else:
+            header = self.empty_header
+        if fields in ["body", "total"]:
+            body = self._get_body_from_pipermail_file(
+                fcontent, header_end_line_nr
+            )
+        else:
+            body = None
+
+        return self.create_email_message(file_path, body, **header)
+
+    def _get_header_from_pipermail_file(
+        self,
+        fcontent: List[str],
+        header_start_line_nr: int,
+        header_end_line_nr: int,
+    ) -> Dict[str, str]:
         """
         Lexer for the message header.
 
@@ -100,54 +127,39 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
         ----------
         soup : HTML code from which the Email header can be obtained.
         """
-        header = {
-            "message-ID": "#message-id",
-            "Date": "#date",
-            "To": "#to",
-            "Cc": "#cc",
-        }
-        for key, value in header.items():
-            try:
-                header[key] = parse_dfn_header(
-                    text_for_selector(soup, value)
-                ).strip()
-            except Exception:
-                header[key] = ""
-                continue
-        header["Subject"] = text_for_selector(soup, "h1")
-
-        from_text = parse_dfn_header(text_for_selector(soup, "#from"))
-        from_name = from_text.split("<")[0].strip()
-        from_address = text_for_selector(soup, "#from a")
-        header["From"] = email.utils.formataddr(
-            (from_name, email.header.Header(from_address).encode())
-        )
-
-        in_reply_to_pattern = re.compile('<!-- inreplyto="(.+?)"')
-        match = in_reply_to_pattern.search(str(soup))
-        if match:
-            header["In-Reply-To"] = "<" + match.groups()[0] + ">"
-
+        fheader = fcontent[header_start_line_nr:header_end_line_nr]
+        header = {}
+        for lnr in range(len(fheader)):
+            line = fheader[lnr]
+            # get header keyword and value
+            if re.match(r"\S+:\s+\S+", line):
+                key = line.split(":")[0]
+                value = line.replace(key + ":", "").strip().rstrip("\n")
+                header[key.lower()] = value
         return header
-
-    def _get_body_from_html(
-        self, list_name: str, url: str, soup: BeautifulSoup
-    ) -> Union[str, None]:
-        """
-        Lexer for the message body/payload.
-        This methods assumes that the body is available in text/plain.
-
-        Parameters
-        ----------
-        url : URL to the Email message.
-        soup : HTML code from which the Email body can be obtained.
-        """
+    
+    def _get_body_from_pipermail_file(
+        self,
+        fcontent: List[str],
+        body_start_line_nr: int,
+    ) -> str:
         # TODO re-write using email.parser.Parser
-        try:
-            return text_for_selector(soup, "#body")
-        except Exception:
-            logger.exception(f"The message body of {url} could not be loaded.")
-            return None
+        found = False
+        # find body 'position' in file
+        for line_nr, line in enumerate(fcontent[body_start_line_nr:]):
+            if "Message-ID:" in line:
+                for i in range(30):
+                    if fcontent[body_start_line_nr + line_nr - i] == '':
+                        body_end_line_nr = body_start_line_nr + line_nr - i
+                        break
+
+        if not found:
+            body_end_line_nr = -1
+        # get body content
+        body = fcontent[body_start_line_nr:body_end_line_nr]
+        # remove empty lines and join into one string
+        body = ("").join([line for line in body if len(line) > 1])
+        return body
 
 
 class PipermailMailList(AbstractMailList):
@@ -194,7 +206,6 @@ class PipermailMailList(AbstractMailList):
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
         period_urls = cls.get_period_urls(url, select)
-        print("period_urls", period_urls)
         return cls.from_periods(
             name,
             url,
@@ -211,33 +222,26 @@ class PipermailMailList(AbstractMailList):
         fields: str = "total",
     ) -> "PipermailMailList":
         """Docstring in `AbstractMailList`."""
+        msg_parser = PipermailMessageParser()
+        
         for period_url in period_urls:
             file = requests.get(
                 period_url,
                 verify=f"{directory_project}/config/icann_certificate.pem",
             )
-            file_text = gzip.decompress(file.content).decode("utf-8")
-            file_lines = file_text.split('\n')
-            nr_line_w_msg_id = [
-                idx
-                for idx, fl in enumerate(file_lines)
+            fcontent = gzip.decompress(file.content).decode("utf-8")
+            fcontent = fcontent.split('\n')
+            header_end_line_nrs = [
+                idx+1
+                for idx, fl in enumerate(fcontent)
                 if 'Message-ID:' in fl
             ]
-            print(nr_line_w_msg_id)
-            nr_line_new_message = []
-            for lmi in nr_line_w_msg_id:
-                for sl in range(30):
-                    if file_lines[lmi-sl] == '':
-                        nr_line_new_message.append(lmi-sl+3)
-                        break
-            print(nr_line_new_message)
-            #with open(period_url.split('/')[-1], "w") as text_file:
-            #    text_file.write(file_content)
+            for header_end_line_nr in header_end_line_nrs: 
+                msg_parser.from_pipermail_file(
+                    name, fcontent, header_end_line_nr, fields
+                )
             break
 
-        #msg_parser = PipermailMessageParser(
-        #    website=True,
-        #)
         return cls(name, url, msgs)
 
     @classmethod
