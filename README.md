@@ -10,7 +10,7 @@
 
 BigBang is a toolkit for studying communications data from collaborative
 projects. It currently supports analyzing mailing lists from Sourceforge,
-Mailman, ListServ, or [.mbox][mbox] files.
+Mailman, ListServ (version 16.5 and 17), Pipermail (version 0.09), Hypermail (version 2.4.0) or [.mbox][mbox] files.
 
 Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang-py.readthedocs.io/en/latest/).
 

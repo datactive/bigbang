@@ -35,7 +35,7 @@ The script takes an argument, the working group acronym
 
 W3C
 ================
-The World Wide Web Consortium (W3C) mailing archive is managed using the Hypermail software and is hosted at:
+The World Wide Web Consortium (W3C) mailing archive is managed using the Hypermail 2.4.0 software and is hosted at:
 
 ``https://lists.w3.org/Archives/Public/``
 
@@ -87,7 +87,7 @@ Or one can use the command line script and a file containg all mailing-list URLs
 
 IEEE
 ================
-The Institute of Electrical and Electronics Engineers (W3C) mailing archive is managed using the LISTSERV software and is hosted at:
+The Institute of Electrical and Electronics Engineers (IEEE) mailing archive is managed using the LISTSERV software and is hosted at:
 
 ``https://listserv.ieee.org/cgi-bin/wa?INDEX``
 
@@ -110,3 +110,40 @@ There are two ways you can scrape the public mailing-list from that domain. Firs
 Or one can use the command line script and a file containg all mailing-list URLs one wants to scrape:
 
 ``python bin/collect_mail.py -f examples/url_collections/listserv.IEEE.txt``
+
+
+ICANN
+================
+The Internet Corporation for Assigned Names and Numbers (ICANN) mailing archive is managed using the Pipermail 0.09 format and is hosted at:
+
+``https://mm.icann.org/pipermail/<name_of_mailing_list>``
+
+where the part inside ``<name_of_mailing_list>`` needs to substituted by the name of the mailing list one wants to ingress.
+
+Mailing lists in this format are scraped by reading their ``.txt`` or ``.txt.gz`` files of each month of a year. For a singled month, this can be done as follows
+
+.. code-block:: python
+
+    from bigbang.ingress import PipermailMailList
+
+    mlist = PipermailMailList.from_period_urls(
+        name="accred-model",
+        url="https://mm.icann.org/pipermail/accred-model",
+        period_urls=["https://mm.icann.org/pipermail/accred-model/2018-August.txt.gz"],
+        fields="total",
+    )
+
+while an entire mailing list can be ingressed using
+
+.. code-block:: python
+
+    from bigbang.ingress import PipermailMailList
+
+    mlist = PipermailMailList.from_url(
+        name="accred-model",
+        url="https://mm.icann.org/pipermail/accred-model",
+        select={
+            "years": 2018,
+            "fields": "total",
+        },
+    )
