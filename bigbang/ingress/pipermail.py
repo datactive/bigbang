@@ -167,7 +167,7 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
 class PipermailMailList(AbstractMailList):
     """
     This class handles the scraping of a all public Emails contained in a single
-    mailing list in the pipermail format.
+    mailing list in the Pipermail 0.09 format.
     This is done by downloading the gzip'd file for each month of a year in which
     an email was send to the mailing list.
 
