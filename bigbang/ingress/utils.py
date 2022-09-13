@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from bs4 import BeautifulSoup
 import requests
+import certifi
 
 import networkx as nx
 import pandas as pd
@@ -30,6 +31,7 @@ logger = logging.getLogger(__name__)
 def get_website_content(
     url: str,
     session: Optional[requests.Session] = None,
+    verify: Optional[Union[str, bool]] = True,
 ) -> Union[str, BeautifulSoup]:
     """
     Get HTML code from website
@@ -46,7 +48,7 @@ def get_website_content(
     # TODO: include option to change BeautifulSoup args
     try:
         if session is None:
-            sauce = requests.get(url)
+            sauce = requests.get(url, verify=verify)
             if sauce.status_code == 200:
                 soup = BeautifulSoup(sauce.content, "html.parser")
                 return soup

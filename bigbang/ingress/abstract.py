@@ -69,6 +69,12 @@ class AbstractMessageParser(ABC):
         login: Optional[Dict[str, str]] = {"username": None, "password": None},
         session: Optional[requests.Session] = None,
     ):
+        """
+        If message is read from an URL (instead of a locally stored file),
+        it might be necessary to create an authentication session or have the
+        required SSL certificates. Therefore in the initialisation of this class,
+        the necessary method is declared.
+        """
         if website:
             if (session is None) and (url_login is not None):
                 session = get_auth_session(url_login, **login)
@@ -91,6 +97,7 @@ class AbstractMessageParser(ABC):
             message.
         """
         msg = email.message.EmailMessage()
+
         if body is not None:
             try:
                 msg.set_content(body)  # don't use charset="utf-16"
@@ -98,7 +105,11 @@ class AbstractMessageParser(ABC):
                 # UnicodeEncodeError: 'utf-16' codec can't encode character
                 # '\ud83d' in position 8638: surrogates not allowed
                 pass
+
         for key, value in header.items():
+            if "from" == key:
+                value = value.replace(" at ", '@')
+
             if "content-type" == key:
                 msg.set_param("Content-Type", value)
             elif "mime-version" == key:
@@ -114,15 +125,14 @@ class AbstractMessageParser(ABC):
                     msg[key] = value
                 except Exception:
                     pass
-        if (
-            (msg["Message-ID"] is None)
-            and (msg["Date"] is not None)
-            and (msg["From"] is not None)
-        ):
+
+        if msg["Message-ID"] is None:
             msg["Message-ID"] = archived_at.split("/")[-1]
+
         # convert to `EmailMessage` to `mboxMessage`
         mbox_msg = mboxMessage(msg)
         mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
+
         if attachments is not None:
             for idx, attachment in enumerate(attachments):
                 mbox_msg.add_header(
@@ -168,16 +178,6 @@ class AbstractMessageParser(ABC):
                 body = None
                 attachments = None
         return self.create_email_message(url, body, attachments, **header)
-
-    @abstractmethod
-    def _get_header_from_html(self, soup: BeautifulSoup) -> Dict[str, str]:
-        pass
-
-    @abstractmethod
-    def _get_body_from_html(
-        self, list_name: str, url: str, soup: BeautifulSoup
-    ) -> Union[str, None]:
-        pass
 
     @staticmethod
     def to_dict(msg: Message) -> Dict[str, List[str]]:
@@ -320,7 +320,6 @@ class AbstractMailList(ABC):
         pass
 
     @classmethod
-    @abstractmethod
     def get_message_urls(
         cls,
         name: str,

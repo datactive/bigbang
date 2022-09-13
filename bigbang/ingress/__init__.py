@@ -13,3 +13,7 @@ from bigbang.ingress.w3c import (
     W3CMailList,
     W3CMailListDomain,
 )
+from bigbang.ingress.pipermail import (
+    PipermailMessageParser,
+    PipermailMailList,
+)
