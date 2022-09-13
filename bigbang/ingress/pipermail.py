@@ -24,7 +24,10 @@ from config.config import CONFIG
 
 import bigbang.bigbang_io as bio
 from bigbang.data_types import MailList
-from bigbang.ingress import AbstractMailList
+from bigbang.ingress import (
+    AbstractMessageParser,
+    AbstractMailList,
+)
 from bigbang.ingress.utils import (
     get_website_content,
     set_website_preference_for_header,
@@ -60,7 +63,7 @@ class PipermailMailListWarning(BaseException):
 
 
 
-class PipermailMessageParser(email.parser.Parser):
+class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
     """
     This class handles the creation of an `mailbox.mboxMessage` object
     (using the from_*() methods) and its storage in various other file formats
@@ -111,8 +114,8 @@ class PipermailMessageParser(email.parser.Parser):
             )
         else:
             body = None
-
-        return self.create_email_message(file_path, body, **header)
+        archived_at = f"{list_name}_line_nr_{header_start_line_nr}"
+        return self.create_email_message(archived_at, body, **header)
 
     def _get_header_from_pipermail_file(
         self,
@@ -152,7 +155,6 @@ class PipermailMessageParser(email.parser.Parser):
                     if fcontent[body_start_line_nr + line_nr - i] == '':
                         body_end_line_nr = body_start_line_nr + line_nr - i
                         break
-
         if not found:
             body_end_line_nr = -1
         # get body content
@@ -206,7 +208,7 @@ class PipermailMailList(AbstractMailList):
         if "fields" not in list(select.keys()):
             select["fields"] = "total"
         period_urls = cls.get_period_urls(url, select)
-        return cls.from_periods(
+        return cls.from_period_urls(
             name,
             url,
             period_urls,
@@ -214,16 +216,32 @@ class PipermailMailList(AbstractMailList):
         )
 
     @classmethod
-    def from_periods(
+    def from_messages(
         cls,
         name: str,
         url: str,
-        period_urls: str,
+        messages: MailList,
+        fields: str = "total",
+    ) -> "ListservMailList":
+        """Docstring in `AbstractMailList`."""
+        if not messages:
+            messages = []
+        return cls(name, url, messages)
+
+    @classmethod
+    def from_period_urls(
+        cls,
+        name: str,
+        url: str,
+        period_urls: List[str],
         fields: str = "total",
     ) -> "PipermailMailList":
-        """Docstring in `AbstractMailList`."""
-        msg_parser = PipermailMessageParser()
-        
+        """
+        Parameters
+        ----------
+        """
+        msg_parser = PipermailMessageParser(website=False)
+        msgs = []
         for period_url in period_urls:
             file = requests.get(
                 period_url,
@@ -236,12 +254,12 @@ class PipermailMailList(AbstractMailList):
                 for idx, fl in enumerate(fcontent)
                 if 'Message-ID:' in fl
             ]
-            for header_end_line_nr in header_end_line_nrs: 
-                msg_parser.from_pipermail_file(
-                    name, fcontent, header_end_line_nr, fields
+            for header_end_line_nr in header_end_line_nrs:
+                msgs.append(
+                    msg_parser.from_pipermail_file(
+                        name, fcontent, header_end_line_nr, fields
+                    )
                 )
-            break
-
         return cls(name, url, msgs)
 
     @classmethod
@@ -325,12 +343,7 @@ class PipermailMailList(AbstractMailList):
     @staticmethod
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
-        name = ""
-        url_position = -1
-        while len(name) == 0:
-            name = url.split("/")[url_position]
-            url_position -= 1
-        return name
+        return url.split('/')[-1]
 
 
 def text_for_selector(soup: BeautifulSoup, selector: str):
