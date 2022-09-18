@@ -130,8 +130,9 @@ class ThreeGPPWGArchive():
         return urls_doc_sel
 
 
-    @staticmethod
+    @classmethod
     def get_all_doc_urls(
+        cls,
         url: str,
         urls_dir: List[str] = [],
         urls_doc: List[str] = [],
@@ -142,29 +143,36 @@ class ThreeGPPWGArchive():
         -------
         """
         if len(urls_doc) >= doc_limit:
-            return urls_doc
+            return urls_doc[:]
         
-        # wait between loading messages, for politeness
-        time.sleep(0.5)
-        soup = get_website_content(url)
+        else:
+            # wait between loading messages, for politeness
+            time.sleep(0.5)
+            soup = get_website_content(url)
         
-        if isinstance(soup, BeautifulSoup):
-            hrefs = soup.select(f'a[href*="{url}"]')
-            _urls = [href.get("href") for href in hrefs]
-            _urls_dir = [u for u in _urls if '.' not in u.split('/')[-1]]
-            _urls_doc = list(set(_urls) - set(_urls_dir))
-            urls_dir += _urls_dir
-            urls_doc += _urls_doc
-        
-        if len(urls_doc) <  doc_limit:
-            for ud in urls_dir:
-                urls_dir.remove(ud)
-                ThreeGPPWGArchive.get_all_doc_urls(ud, urls_dir, urls_doc, doc_limit)
-        return urls_doc
-        
+            if isinstance(soup, BeautifulSoup):
+                hrefs = soup.select(f'a[href*="{url}"]')
+                _urls = [href.get("href") for href in hrefs]
+                _urls_dir = [u for u in _urls if '.' not in u.split('/')[-1]]
+                _urls_doc = list(set(_urls) - set(_urls_dir))
+                urls_dir += _urls_dir
+                urls_doc += _urls_doc
+            
+            if len(urls_dir) > 0:
+                return ThreeGPPWGArchive.get_all_doc_urls(
+                    urls_dir[0],
+                    urls_dir[1:],
+                    urls_doc,
+                    doc_limit,
+                )
+            else:
+                return urls_doc[:]
+   
+    def to_txt_file(
+        self,
+        file_path=directory_project + "/threegpp_meetingreports_urls.txt",
+    ):
+        with open(file_path, 'w') as fp:
+            for doc_url in self.doc_urls:
+                fp.write("%s\n" % doc_url)
 
-
-    @staticmethod
-    def get_name_from_url(url: str) -> str:
-        """Get name of mailing list."""
-        return url.split('/')[-1]
