@@ -54,11 +54,21 @@ class ThreeGPPWGArchiveWarning(BaseException):
     pass
 
 
-class ThreeGPPWGArchive(AbstractMailList):
+class ThreeGPPWGArchive():
     """
     Parameters
     ----------
     """
+
+    def __init__(
+        self,
+        name: str,
+        source: Union[List[str], str],
+        doc_urls: List[str],
+    ):
+        self.name = name
+        self.source = source
+        self.doc_urls = doc_urls
 
     @classmethod
     def from_url(
@@ -66,86 +76,92 @@ class ThreeGPPWGArchive(AbstractMailList):
         name: str,
         url: str,
         select: Optional[dict] = None,
+        doc_limit: Optional[int] = None,
     ) -> "ThreeGPPWGArchive":
         """Docstring in `AbstractMailList`."""
-        meeting_urls = cls.get_meeting_urls(url, select)
-        return cls.from_meeting_urls(
+        doc_urls = cls.filter_doc_urls(url, select, doc_limit)
+        print(len(doc_urls))
+        return cls.from_doc_urls(
             name,
             url,
-            meeting_urls,
-            select["file_extensions"],
+            doc_urls,
         )
 
     @classmethod
-    def from_meeting_urls(
+    def from_doc_urls(
         cls,
         name: str,
         url: str,
-        period_urls: List[str],
-        fields: str = "total",
+        doc_urls: List[str],
     ) -> "ThreeGPPWGArchive":
         """
         Parameters
         ----------
         """
-        return cls(name, url, msgs)
+        return cls(name, url, doc_urls)
 
     @classmethod
-    def get_meeting_urls(
-        cls, url: str, select: Optional[dict] = None,
+    def filter_doc_urls(
+        cls,
+        url: str,
+        select: Optional[dict] = None,
+        doc_limit: Optional[int] = None,
+        keyterms: Optional[List[str]] = None,
     ) -> List[str]:
         """
         Parameters
         ----------
         """
-        meeting_urls = cls.get_all_meeting_urls_and_dates(url, [])
-        print(meeting_urls[:10])
-        print(len(meeting_urls))
+        urls_doc = cls.get_all_doc_urls(url, [], [], doc_limit)
 
-        if any(
-            period in list(select.keys()) for period in ["years", "months"]
-        ):
-            for key, value in select.items():
-                if key == "years":
-                    cond = lambda x: int(re.findall(r"\d{4}", x)[0])
-                elif key == "months":
-                    cond = lambda x: x.split(" ")[0]
-                else:
-                    continue
+        keyterms = [
+            "meetingreport",
+            "report",
+            "_rep_",
+            "rp_",
+        ] 
 
-                periodquants = [cond(period) for period in periods]
+        urls_doc_sel = [
+            url
+            for url in urls_doc
+            if any([True if kt in url.lower() else False for kt in keyterms])
+        ]
 
-                indices = ThreeGPPWGArchive.get_index_of_elements_in_selection(
-                    periodquants,
-                    urls_of_periods,
-                    value,
-                )
+        return urls_doc_sel
 
-                periods = [periods[idx] for idx in indices]
-                urls_of_periods = [urls_of_periods[idx] for idx in indices]
-        return urls_of_periods
 
     @staticmethod
-    def get_all_meeting_urls_and_dates(
+    def get_all_doc_urls(
         url: str,
-        meeting_urls: List[str] = [],
-    ) -> Tuple[List[str], List[str]]:
+        urls_dir: List[str] = [],
+        urls_doc: List[str] = [],
+        doc_limit: Optional[int] = None,
+    ) -> List[str]:
         """
         Returns
         -------
         """
+        if len(urls_doc) >= doc_limit:
+            return urls_doc
+        
         # wait between loading messages, for politeness
         time.sleep(0.5)
         soup = get_website_content(url)
-        hrefs = soup.select(f'a[href*="{url}"]')
-        urls = [href.get("href") for href in hrefs]
-        meeting_urls += urls
-
-        for u in meeting_urls:
-            if '.' not in url.split('/')[-1]:
-                meeting_urls.remove(u)
-                ThreeGPPWGArchive.get_all_meeting_urls_and_dates(u, meeting_urls)
-        return meeting_urls
+        
+        if isinstance(soup, BeautifulSoup):
+            hrefs = soup.select(f'a[href*="{url}"]')
+            _urls = [href.get("href") for href in hrefs]
+            _urls_dir = [u for u in _urls if '.' not in u.split('/')[-1]]
+            _urls_doc = list(set(_urls) - set(_urls_dir))
+            urls_dir += _urls_dir
+            urls_doc += _urls_doc
+        
+        if len(urls_doc) <  doc_limit:
+            for ud in urls_dir:
+                urls_dir.remove(ud)
+                ThreeGPPWGArchive.get_all_doc_urls(ud, urls_dir, urls_doc, doc_limit)
+        return urls_doc
+        
 
 
     @staticmethod

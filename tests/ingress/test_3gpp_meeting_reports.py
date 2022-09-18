@@ -30,6 +30,7 @@ class TestThreeGPPWGArchive:
                 "years": 2018,
                 "file_extensions": ["docx", "txt"],
             },
+            doc_limit=10,
         )
         return marchive
 
