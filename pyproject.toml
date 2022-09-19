@@ -1,6 +1,6 @@
 [project]
-name = "bigang-py"
-version = "0.4.1"
+name = "bigbang-py"
+version = "0.4.2"
 authors = [
   { name="BigBang Team", email="bigbang-dev@data-activism.net" },
 ]
@@ -13,6 +13,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
 
 [project.urls]
 "Homepage" = "https://github.com/datactive/bigbang"
