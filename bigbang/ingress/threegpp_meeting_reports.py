@@ -7,10 +7,10 @@ import subprocess
 import time
 import warnings
 import tempfile
-import gzip
+import zipfile
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
-from urllib.parse import urljoin, urlparse
+import urllib.parse
 
 import numpy as np
 import pandas as pd
@@ -176,3 +176,40 @@ class ThreeGPPWGArchive():
             for doc_url in self.doc_urls:
                 fp.write("%s\n" % doc_url)
 
+    def download_docs(self):
+        self.doc_file_path = []
+        for url in self.doc_urls:
+            file = requests.get(url)
+            file_name = ('_').join(urllib.parse.unquote(url).split('/')[-3:])
+            file_path =  CONFIG.mail_path + file_name
+            self.doc_file_path.append(file_path)
+            try:
+                open(file_path, 'wb').write(file.content)
+            except Exception:
+                print(f'Couldnt save: {url}')
+
+    def unzip_docs(self):
+        for dfp in self.doc_file_path:
+            if (dfp.lower().endswith('zip')):
+                try:
+                    zipdata = zipfile.ZipFile(dfp)
+                    zipinfos = zipdata.infolist()
+
+                    for zipinfo in zipinfos:
+                        zipinfo.filename = dfp.split('/')[-1].split('.')[0] + '_' + zipinfo.filename
+                        zipdata.extract(zipinfo, path=CONFIG.mail_path)
+                except Exception:
+                    print(f"Doesnt work for {dfp}")
+
+            #elif url.lower().endswith('doc'):
+            #elif url.lower().endswith('docx'):
+            #elif url.lower().endswith('pdf'):
+            #elif url.lower().endswith('rtf'):
+            #elif url.lower().endswith('xls'):
+            #elif url.lower().endswith('xlsx'):
+            #elif url.lower().endswith('xlsm'):
+            #elif url.lower().endswith('xml'):
+            #elif url.lower().endswith('pptx'):
+            #elif url.lower().endswith('htm'):
+            #else:
+            #    print(f'Dont know the format of {url}')
