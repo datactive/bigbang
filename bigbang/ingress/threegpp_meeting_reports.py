@@ -8,6 +8,7 @@ import time
 import warnings
 import tempfile
 import zipfile
+import textract
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 import urllib.parse
@@ -201,6 +202,21 @@ class ThreeGPPWGArchive():
                 except Exception:
                     print(f"Doesnt work for {dfp}")
 
+    def read_docs(self, keyterms: List[str]):
+        self.docs_of_interest = []
+        for dfp in self.doc_file_path:
+            if (dfp.lower().endswith('zip')):
+                continue
+            else:
+                try:
+                    text = textract.process(dfp).decode("utf-8")
+                    counts = text.count('objected')
+                    if counts > 0:
+                        self.docs_of_interest.append(dfp)
+                        print(counts, dfp)
+                except Exception:
+                    print(f"Doesnt work for {dfp}")
+            
             #elif url.lower().endswith('doc'):
             #elif url.lower().endswith('docx'):
             #elif url.lower().endswith('pdf'):
