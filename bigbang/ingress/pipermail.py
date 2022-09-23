@@ -62,6 +62,11 @@ class PipermailMailListWarning(BaseException):
     pass
 
 
+class PipermailMailListDomainWarning(BaseException):
+    """Base class for PipermailMailListDomain class specific exceptions"""
+
+    pass
+
 
 class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
     """
@@ -97,24 +102,29 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
         header_end_line_nr: int,
         fields: str = "total",
     ) -> mboxMessage:
-        for i in range(30):
+        for i in range(200):  # 200 lines up just to make sure...
             if fcontent[header_end_line_nr - i - 1] == '':
                 header_start_line_nr = header_end_line_nr - i + 1
                 break
 
-        if fields in ["header", "total"]:
-            header = self._get_header_from_pipermail_file(
-                fcontent, header_start_line_nr, header_end_line_nr
-            )
+        if header_start_line_nr is None:
+            logger.info("The start of header in {list_name}" +\
+                "{header_end_line_nr} couldnt be found.")
         else:
-            header = self.empty_header
-        if fields in ["body", "total"]:
-            body = self._get_body_from_pipermail_file(
-                fcontent, header_end_line_nr
-            )
-        else:
-            body = None
-        archived_at = f"{list_name}_line_nr_{header_start_line_nr}"
+
+            if fields in ["header", "total"]:
+                header = self._get_header_from_pipermail_file(
+                    fcontent, header_start_line_nr, header_end_line_nr
+                )
+            else:
+                header = self.empty_header
+            if fields in ["body", "total"]:
+                body = self._get_body_from_pipermail_file(
+                    fcontent, header_end_line_nr
+                )
+            else:
+                body = None
+            archived_at = f"{list_name}_line_nr_{header_start_line_nr}"
         return self.create_email_message(archived_at, body, **header)
 
     def _get_header_from_pipermail_file(
@@ -344,6 +354,59 @@ class PipermailMailList(AbstractMailList):
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
         return url.split('/')[-1]
+
+
+class PipermailMailListDomain():
+
+
+    def __init__(
+        self, name: str, lists: List[Union[AbstractMailList, str]]
+    ):
+        self.name = name
+        self.lists = lists
+
+    def __len__(self):
+        """Get number of mailing lists within the mail list domain."""
+        return len(self.lists)
+
+    def __iter__(self):
+        """Iterate over each mailing list within the mail list domain."""
+        return iter(self.lists)
+
+    def __getitem__(self, index):
+        """Get specific mailing list at position `index` from the mail list domain."""
+        return self.lists[index]
+
+    @classmethod
+    def from_mailing_lists(
+        cls,
+        name: str,
+        url_mailing_lists: Union[List[str], List[PipermailMailList]],
+        select: Optional[dict] = {"fields": "total"},
+        instant_save: Optional[bool] = True,
+    ) -> "PipermailMailListDomain":
+        """ """
+        if isinstance(url_mailing_lists[0], str):
+            lists = []
+            for mlist_url in url_mailing_lists:
+                mlist_name = PipermailMailList.get_name_from_url(mlist_url)
+                mlist = PipermailMailList.from_url(
+                    name=mlist_name,
+                    url=mlist_url,
+                    select=select,
+                )
+                if len(mlist) != 0:
+                    if instant_save:
+                        dir_out = CONFIG.mail_path + name
+                        Path(dir_out).mkdir(parents=True, exist_ok=True)
+                        mlist.to_mbox(dir_out=dir_out)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        lists.append(mlist)
+        else:
+            lists = url_mailing_lists
+        return cls(name, lists)
+
 
 
 def text_for_selector(soup: BeautifulSoup, selector: str):
