@@ -42,7 +42,7 @@ class TestPipermailMessageParser:
     def test__message_content(self, msg):
         firstline = msg.get_payload().split('=')[0]
         assert "Theo, hope you are well." in firstline
-        assert len(firstline) == 77
+        assert len(firstline) == 635
         assert msg["subject"] == "[Accred-Model] Codes of conduct"
         assert msg["from"] == "jonathan.matkowsky@riskiq.net"
         assert msg["to"] is None

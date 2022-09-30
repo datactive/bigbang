@@ -126,12 +126,12 @@ class AbstractMessageParser(ABC):
                 except Exception:
                     pass
 
-        if msg["Message-ID"] is None:
+        if (msg["Message-ID"] is None) and isinstance(archived_at, str):
             msg["Message-ID"] = archived_at.split("/")[-1]
 
         # convert to `EmailMessage` to `mboxMessage`
         mbox_msg = mboxMessage(msg)
-        mbox_msg.add_header("Archived-At", "<" + archived_at + ">")
+        mbox_msg.add_header("Archived-At", "<" + str(archived_at) + ">")
 
         if attachments is not None:
             for idx, attachment in enumerate(attachments):
@@ -157,10 +157,12 @@ class AbstractMessageParser(ABC):
             the Email. The latter is the default.
         """
         soup = get_website_content(url, session=self.session)
+        
         if soup == "RequestException":
             header = self.empty_header
             body = "RequestException"
             attachments = "RequestException"
+        
         else:
             if fields in ["header", "total"]:
                 header = self._get_header_from_html(soup)
@@ -177,6 +179,7 @@ class AbstractMessageParser(ABC):
             else:
                 body = None
                 attachments = None
+        
         return self.create_email_message(url, body, attachments, **header)
 
     @staticmethod
