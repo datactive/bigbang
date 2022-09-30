@@ -52,8 +52,8 @@ def get_website_content(
             if sauce.status_code == 200:
                 soup = BeautifulSoup(sauce.content, "html.parser")
                 return soup
-            elif sauce.status_code == 404:
-                logger.exception(f"HTTP 404 Error for {url}.")
+            elif sauce.status_code >= 400:
+                logger.exception(f"HTTP {sauce.status_code} Error for {url}.")
                 return "RequestException"
         else:
             sauce = session.get(url)

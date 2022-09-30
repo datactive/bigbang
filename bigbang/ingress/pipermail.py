@@ -107,9 +107,9 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
 
         if header_start_line_nr is None:
             logger.info("The start of header in {list_name}" +\
-                "{header_end_line_nr} couldnt be found.")
-            print("The start of header in {list_name}" +\
-                "{header_end_line_nr} couldnt be found.")
+                " {header_end_line_nr} couldnt be found.")
+            print(f"The start of header in {list_name}" +\
+                f"{header_end_line_nr} couldnt be found.")
             archived_at = None
             body = None
             header = {}
@@ -197,9 +197,9 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
             if line_nr >= len(fcontent):
                 body_end_line_nr = -1
                 found = True
-            elif "Message-ID:" in fcontent[line_nr]:
+            elif fcontent[line_nr].startswith('Message-ID:'):
                 for i in range(200):
-                    if "From:" in fcontent[line_nr - i]:
+                    if 'From:' in fcontent[line_nr - i]:
                         body_end_line_nr = line_nr - i - 2
                         found = True
                         break
@@ -294,12 +294,18 @@ class PipermailMailList(AbstractMailList):
                 period_url,
                 verify=f"{directory_project}/config/icann_certificate.pem",
             )
-            fcontent = gzip.decompress(file.content).decode("utf-8")
+            
+            try:
+                fcontent = gzip.decompress(file.content).decode("utf-8")
+            except Exception:
+                print(f"File {period_url} in {name} could not be decoded")
+                continue
+            
             fcontent = fcontent.split('\n')
             header_end_line_nrs = [
                 idx+1
                 for idx, fl in enumerate(fcontent)
-                if 'Message-ID:' in fl
+                if fl.startswith('Message-ID:')
             ]
             for header_end_line_nr in header_end_line_nrs:
                 msgs.append(
@@ -382,15 +388,18 @@ class PipermailMailList(AbstractMailList):
         )
         periods = []
         urls_of_periods = []
-        rows = soup.select(f'a[href*=".txt.gz"]')
-        for row in rows:
-            filename =  row.get("href")
-            if filename.endswith(".txt.gz") is False:
-                continue
-            year = re.findall(r"\d{4}", filename)[0]
-            month = filename.split('.')[0].replace(f"{year}-", '')
-            periods.append(f"{month} {year}")
-            urls_of_periods.append(url + "/" + filename)
+        
+        if soup != "RequestException":
+            rows = soup.select(f'a[href*=".txt.gz"]')
+            for row in rows:
+                filename =  row.get("href")
+                if filename.endswith(".txt.gz") is False:
+                    continue
+                year = re.findall(r"\d{4}", filename)[0]
+                month = filename.split('.')[0].replace(f"{year}-", '')
+                periods.append(f"{month} {year}")
+                urls_of_periods.append(url + "/" + filename)
+        
         return periods, urls_of_periods
 
     @staticmethod
