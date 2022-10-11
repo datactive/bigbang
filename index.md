@@ -33,6 +33,7 @@ BigBang version 1.0 is about to be released, some functionality you can now find
 ### Publications
 These academic publications use BigBang as part of their methods:
 
+- Nanni, Riccardo. “Digital Sovereignty and Internet Standards: Normative Implications of Public-Private Relations among Chinese Stakeholders in the Internet Engineering Task Force.” Information, Communication & Society 0, no. 0 (October 1, 2022): 1–21. https://doi.org/10.1080/1369118X.2022.2129270.
 - Becker, Christoph., ten Oever, Niels, and Riccardo Nanni. 2022 “The standardisation of lawful interception technologies in the 3GPP: interrogating 5G and surveillance amid US-China competition“, TPRC2022, Washington DC https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4167105
 - Benthall, Sebastian. 2015. “Testing Generative Models of Online Collaboration with BigBang.” In , 182–89. https://conference.scipy.org/proceedings/scipy2015/sebastian_benthall.html.
 - Doty, Nick. 2015. “Reviewing for Privacy in Internet and Web Standard-Setting.” In Security and Privacy Workshops (SPW), 2015 IEEE, 185–192. IEEE. https://ieeexplore.ieee.org/document/7163224/
@@ -44,4 +45,4 @@ These academic publications use BigBang as part of their methods:
 ### License
 MIT, see LICENSE for its text. This license may be changed at any time according to the principles of the project [Governance](https://github.com/datactive/bigbang/wiki/Governance).
 
-BigBang is maintained by <a href="https://github.com/sbenthall">sbenthall</a> <a href="https://github.com/nllz">Niels ten Oever</a> and <a href="https://github.com/npdoty">Nick Doty</a><br>
+BigBang is maintained by <a href="https://github.com/sbenthall">sbenthall</a> <a href="https://github.com/nllz">Niels ten Oever</a> <a href="https://github.com/christovis">Christoph Becker</a> and <a href="https://github.com/npdoty">Nick Doty</a><br>
