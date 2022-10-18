@@ -15,7 +15,7 @@ import certifi
 import networkx as nx
 import pandas as pd
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)

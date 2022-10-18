@@ -13,7 +13,7 @@ from bigbang.ingress.listserv import (
     ListservMailList,
     ListservMailListDomain,
 )
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
 file_temp_mbox = dir_temp + "/listserv.mbox"
@@ -82,7 +82,6 @@ class TestListservMessageParser:
 
 
 class TestListservMailList:
-    
     def test__from_mbox(self):
         mlist_name = "3GPP_TSG_SA_WG4_EVS"
         mlist = ListservMailList.from_mbox(

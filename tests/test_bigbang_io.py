@@ -12,7 +12,7 @@ from bigbang.analysis.listserv import ListservMailListDomain
 from bigbang.analysis.listserv import ListservMailList
 import bigbang.bigbang_io as bio
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
 file_temp_mbox = dir_temp + "/listserv.mbox"
@@ -27,6 +27,7 @@ def get_mailinglist():
         filepath=CONFIG.test_data_path + "3GPP_mbox/3GPP_TSG_SA_WG4_EVS.mbox",
     )
     return mlist
+
 
 def test__mlist_to_list_of_mboxMessage(mlist):
     mbox = bio.mlist_to_list_of_mboxMessage(mlist.df, include_body=False)

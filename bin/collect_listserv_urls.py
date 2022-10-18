@@ -4,7 +4,7 @@ import logging
 import sys
 from argparse import RawTextHelpFormatter
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 from bigbang.listserv import ListservArchive
 
 march = ListservArchive.from_url(
@@ -20,5 +20,5 @@ textfile = open(
     "w",
 )
 for element in march.lists:
-    textfile.write(element+"\n")
-textfile. close()
+    textfile.write(element + "\n")
+textfile.close()

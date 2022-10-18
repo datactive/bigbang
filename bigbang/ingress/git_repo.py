@@ -8,7 +8,7 @@ import pandas as pd
 from git import *
 from git import Repo
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 from bigbang import utils
 from bigbang.analysis.entity_resolution import entity_resolve

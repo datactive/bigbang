@@ -10,7 +10,7 @@
 # For Configuration to work properly, paths need to have "path"
 # in their keyword.
 # NOTE: BE CAFEFUL NOT TO PUT 'path' IN OTHER ATTRIBUTE NAMES
-config_path : "config/"
+config_path : "bigbang/"
 repo_path : "archives/sample-git-repos/"
 mail_path : "archives/"
 datatracker_path : "archives/datatracker"

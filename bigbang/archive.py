@@ -19,7 +19,7 @@ import bigbang.ingress.mailman as mailman
 from bigbang.parse import get_date, get_text
 import bigbang.analysis.process as process
 from bigbang.analysis.thread import Node, Thread
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 from . import utils
 

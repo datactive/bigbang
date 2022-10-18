@@ -14,7 +14,7 @@ from testfixtures import LogCapture
 
 import bigbang.archive as archive
 import bigbang.ingress.mailman as mailman
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 test_txt = ""
 TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")
