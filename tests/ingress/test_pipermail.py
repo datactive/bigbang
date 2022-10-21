@@ -9,17 +9,11 @@ import requests
 import pytest
 import yaml
 
-import bigbang
 from bigbang.ingress import (
     PipermailMessageParser,
     PipermailMailList,
 )
 from bigbang.config import CONFIG
-
-# import pdb;
-# pdb.set_trace()
-
-# f"{CONFIG.bigbang_path}/icann_certificate.pem"
 
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 url_mlistdom = "https://mm.icann.org/pipermail/"
@@ -31,7 +25,7 @@ class TestPipermailMessageParser:
     def get_message(self):
         file = requests.get(
             "https://mm.icann.org/pipermail/accred-model/2018-August.txt.gz",
-            verify=f"{CONFIG.config_path}/icann_certificate.pem",
+            verify=os.path.join(CONFIG.config_path, "icann_certificate.pem"),
         )
         fcontent = gzip.decompress(file.content).decode("utf-8")
         fcontent = fcontent.split("\n")

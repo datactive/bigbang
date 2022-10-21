@@ -298,7 +298,9 @@ class PipermailMailList(AbstractMailList):
         for period_url in tqdm(period_urls, ascii=True, desc=name):
             file = requests.get(
                 period_url,
-                verify=f"{directory_project}/config/icann_certificate.pem",
+                verify=os.path.join(
+                    CONFIG.config_path, "icann_certificate.pem"
+                ),
             )
 
             try:
@@ -393,7 +395,7 @@ class PipermailMailList(AbstractMailList):
         time.sleep(0.5)
         soup = get_website_content(
             url,
-            verify=f"{directory_project}/config/icann_certificate.pem",
+            verify=os.path.join(CONFIG.config_path, "icann_certificate.pem"),
         )
         periods = []
         urls_of_periods = []
