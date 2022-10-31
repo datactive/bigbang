@@ -16,6 +16,7 @@ from bigbang.ingress.w3c import (
 from bigbang.ingress.pipermail import (
     PipermailMessageParser,
     PipermailMailList,
+    PipermailMailListDomain,
 )
 from bigbang.ingress.threegpp_meeting_reports import (
     ThreeGPPWGArchive,

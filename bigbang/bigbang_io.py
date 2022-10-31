@@ -192,18 +192,28 @@ def mlist_to_pandas_dataframe(
     return df
 
 
-def mlist_to_mbox(msgs: MailList, dir_out: str, filename: str) -> None:
+def mlist_to_mbox(
+    msgs: MailList,
+    dir_out: str,
+    filename: str,
+    mode: Optional[str]='w',
+) -> None:
     """
     Saves a List[mailbox.mboxMessage] as .mbox file.
-    For a clearer definition on what a mailing list is, see:
+    For a definition on what a mailing list is, see:
     bigbang.ingress.abstract.AbstractList
+
+    Parameters
+    ----------
+    mode: 'w' = write
+          'a' = append
     """
     # create directory path if it doesn't exist yet
     Path(dir_out).mkdir(parents=True, exist_ok=True)
     # create filepath
     filepath = f"{dir_out}/{filename}.mbox"
     # delete file if there is one at the filepath
-    if Path(filepath).is_file():
+    if Path(filepath).is_file() and mode == 'w':
         Path(filepath).unlink()
     mbox = mailbox.mbox(filepath)
     mbox.lock()
@@ -217,10 +227,6 @@ def mlist_to_mbox(msgs: MailList, dir_out: str, filename: str) -> None:
     mbox.flush()
     mbox.unlock()
     logger.info(f"The list {filename} is saved at {filepath}.")
-    mbox.lock()
-    mbox.add(msg)
-    mbox.flush()
-    mbox.unlock()
 
 
 def mlistdom_to_dict(

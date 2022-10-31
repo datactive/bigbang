@@ -62,6 +62,11 @@ class PipermailMailListWarning(BaseException):
     pass
 
 
+class PipermailMailListDomainWarning(BaseException):
+    """Base class for PipermailMailListDomain class specific exceptions"""
+
+    pass
+
 
 class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
     """
@@ -97,24 +102,33 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
         header_end_line_nr: int,
         fields: str = "total",
     ) -> mboxMessage:
-        for i in range(30):
-            if fcontent[header_end_line_nr - i - 1] == '':
-                header_start_line_nr = header_end_line_nr - i + 1
-                break
+        """ """
+        header_start_line_nr = self.find_start_of_header(fcontent, header_end_line_nr)
 
-        if fields in ["header", "total"]:
-            header = self._get_header_from_pipermail_file(
-                fcontent, header_start_line_nr, header_end_line_nr
-            )
-        else:
-            header = self.empty_header
-        if fields in ["body", "total"]:
-            body = self._get_body_from_pipermail_file(
-                fcontent, header_end_line_nr
-            )
-        else:
+        if header_start_line_nr is None:
+            logger.info("The start of header in {list_name}" +\
+                " {header_end_line_nr} couldnt be found.")
+            print(f"The start of header in {list_name}" +\
+                f"{header_end_line_nr} couldnt be found.")
+            archived_at = None
             body = None
-        archived_at = f"{list_name}_line_nr_{header_start_line_nr}"
+            header = {}
+        
+        else:
+            if fields in ["header", "total"]:
+                header = self._get_header_from_pipermail_file(
+                    fcontent, header_start_line_nr, header_end_line_nr
+                )
+            else:
+                header = self.empty_header
+            if fields in ["body", "total"]:
+                body = self._get_body_from_pipermail_file(
+                    fcontent, header_end_line_nr
+                )
+            else:
+                body = None
+            archived_at = f"{list_name}_line_nr_{header_start_line_nr}"
+        
         return self.create_email_message(archived_at, body, **header)
 
     def _get_header_from_pipermail_file(
@@ -132,6 +146,7 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
         """
         fheader = fcontent[header_start_line_nr:header_end_line_nr]
         header = {}
+        
         for lnr in range(len(fheader)):
             line = fheader[lnr]
             # get header keyword and value
@@ -139,6 +154,7 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
                 key = line.split(":")[0]
                 value = line.replace(key + ":", "").strip().rstrip("\n")
                 header[key.lower()] = value
+        
         return header
     
     def _get_body_from_pipermail_file(
@@ -147,21 +163,48 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
         body_start_line_nr: int,
     ) -> str:
         # TODO re-write using email.parser.Parser
-        found = False
-        # find body 'position' in file
-        for line_nr, line in enumerate(fcontent[body_start_line_nr:]):
-            if "Message-ID:" in line:
-                for i in range(30):
-                    if fcontent[body_start_line_nr + line_nr - i] == '':
-                        body_end_line_nr = body_start_line_nr + line_nr - i
-                        break
-        if not found:
-            body_end_line_nr = -1
+        body_end_line_nr = self.find_end_of_body(fcontent, body_start_line_nr)
         # get body content
         body = fcontent[body_start_line_nr:body_end_line_nr]
         # remove empty lines and join into one string
-        body = ("").join([line for line in body if len(line) > 1])
+        body = ("\n").join([line for line in body if len(line) > 1])
         return body
+    
+    def find_start_of_header(
+        self,
+        fcontent: List[str],
+        header_end_line_nr: int,
+    ) -> int:
+        header_start_line_nr = None
+        
+        for i in range(200):  # 200 lines up just to make sure...
+            if fcontent[header_end_line_nr - i - 1] == '':
+                header_start_line_nr = header_end_line_nr - i + 1
+                break
+        
+        return header_start_line_nr
+    
+    def find_end_of_body(
+        self,
+        fcontent: List[str],
+        body_start_line_nr: int,
+    ) -> int:
+        found = False
+        line_nr = body_start_line_nr + 2
+        
+        while found is False:
+            line_nr += 1
+            if line_nr >= len(fcontent):
+                body_end_line_nr = -1
+                found = True
+            elif fcontent[line_nr].startswith('Message-ID:'):
+                for i in range(200):
+                    if 'From:' in fcontent[line_nr - i]:
+                        body_end_line_nr = line_nr - i - 2
+                        found = True
+                        break
+
+        return body_end_line_nr
 
 
 class PipermailMailList(AbstractMailList):
@@ -203,6 +246,7 @@ class PipermailMailList(AbstractMailList):
         name: str,
         url: str,
         select: Optional[dict] = {"fields": "total"},
+        instant_save: Optional[bool]=True,
     ) -> "PipermailMailList":
         """Docstring in `AbstractMailList`."""
         if "fields" not in list(select.keys()):
@@ -213,6 +257,7 @@ class PipermailMailList(AbstractMailList):
             url,
             period_urls,
             select["fields"],
+            instant_save,
         )
 
     @classmethod
@@ -226,6 +271,7 @@ class PipermailMailList(AbstractMailList):
         """Docstring in `AbstractMailList`."""
         if not messages:
             messages = []
+            logger.info(f"{name} initialised with no messages")
         return cls(name, url, messages)
 
     @classmethod
@@ -235,6 +281,7 @@ class PipermailMailList(AbstractMailList):
         url: str,
         period_urls: List[str],
         fields: str = "total",
+        instant_save: Optional[bool]=True,
     ) -> "PipermailMailList":
         """
         Parameters
@@ -242,17 +289,23 @@ class PipermailMailList(AbstractMailList):
         """
         msg_parser = PipermailMessageParser(website=False)
         msgs = []
-        for period_url in period_urls:
+        for period_url in tqdm(period_urls, ascii=True, desc=name):
             file = requests.get(
                 period_url,
                 verify=f"{directory_project}/config/icann_certificate.pem",
             )
-            fcontent = gzip.decompress(file.content).decode("utf-8")
+            
+            try:
+                fcontent = gzip.decompress(file.content).decode("utf-8")
+            except Exception:
+                print(f"File {period_url} in {name} could not be decoded")
+                continue
+            
             fcontent = fcontent.split('\n')
             header_end_line_nrs = [
                 idx+1
                 for idx, fl in enumerate(fcontent)
-                if 'Message-ID:' in fl
+                if fl.startswith('Message-ID:')
             ]
             for header_end_line_nr in header_end_line_nrs:
                 msgs.append(
@@ -260,6 +313,12 @@ class PipermailMailList(AbstractMailList):
                         name, fcontent, header_end_line_nr, fields
                     )
                 )
+                if (len(msgs) > 1e3) and (instant_save):
+                    bio.mlist_to_mbox(
+                        msgs, CONFIG.mail_path+"ICANN/", name, 'a',
+                    )
+                    msgs = []
+                
         return cls(name, url, msgs)
 
     @classmethod
@@ -329,21 +388,78 @@ class PipermailMailList(AbstractMailList):
         )
         periods = []
         urls_of_periods = []
-        rows = soup.select(f'a[href*=".txt.gz"]')
-        for row in rows:
-            filename =  row.get("href")
-            if filename.endswith(".txt.gz") is False:
-                continue
-            year = re.findall(r"\d{4}", filename)[0]
-            month = filename.split('.')[0].replace(f"{year}-", '')
-            periods.append(f"{month} {year}")
-            urls_of_periods.append(url + "/" + filename)
+        
+        if soup != "RequestException":
+            rows = soup.select(f'a[href*=".txt.gz"]')
+            for row in rows:
+                filename =  row.get("href")
+                if filename.endswith(".txt.gz") is False:
+                    continue
+                year = re.findall(r"\d{4}", filename)[0]
+                month = filename.split('.')[0].replace(f"{year}-", '')
+                periods.append(f"{month} {year}")
+                urls_of_periods.append(url + "/" + filename)
+        
         return periods, urls_of_periods
 
     @staticmethod
     def get_name_from_url(url: str) -> str:
         """Get name of mailing list."""
         return url.split('/')[-1]
+
+
+class PipermailMailListDomain():
+
+
+    def __init__(
+        self, name: str, lists: List[Union[AbstractMailList, str]]
+    ):
+        self.name = name
+        self.lists = lists
+
+    def __len__(self):
+        """Get number of mailing lists within the mail list domain."""
+        return len(self.lists)
+
+    def __iter__(self):
+        """Iterate over each mailing list within the mail list domain."""
+        return iter(self.lists)
+
+    def __getitem__(self, index):
+        """Get specific mailing list at position `index` from the mail list domain."""
+        return self.lists[index]
+
+    @classmethod
+    def from_mailing_lists(
+        cls,
+        name: str,
+        url_mailing_lists: Union[List[str], List[PipermailMailList]],
+        select: Optional[dict] = {"fields": "total"},
+        instant_save: Optional[bool] = True,
+    ) -> "PipermailMailListDomain":
+        """ """
+        if isinstance(url_mailing_lists[0], str):
+            lists = []
+            for mlist_url in url_mailing_lists:
+                mlist_name = PipermailMailList.get_name_from_url(mlist_url)
+                mlist = PipermailMailList.from_url(
+                    name=mlist_name,
+                    url=mlist_url,
+                    select=select,
+                    instant_save=instant_save,
+                )
+                if len(mlist) != 0:
+                    if instant_save:
+                        dir_out = CONFIG.mail_path + name
+                        Path(dir_out).mkdir(parents=True, exist_ok=True)
+                        mlist.to_mbox(dir_out=dir_out)
+                    else:
+                        logger.info(f"Recorded the list {mlist.name}.")
+                        lists.append(mlist)
+        else:
+            lists = url_mailing_lists
+        return cls(name, lists)
+
 
 
 def text_for_selector(soup: BeautifulSoup, selector: str):

@@ -108,6 +108,19 @@ pip3 install -r requirements.txt
 python3 setup.py develop --user
 ```
 
+## Publications
+
+These academic publications use BigBang as part of their methods:
+
+- Becker, Christoph., ten Oever, Niels, and Riccardo Nanni. 2022 “The standardisation of lawful interception technologies in the 3GPP: interrogating 5G and surveillance amid US-China competition“, TPRC2022, Washington DC https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4167105
+- Benthall, Sebastian. 2015. “Testing Generative Models of Online Collaboration with BigBang.” In , 182–89. https://conference.scipy.org/proceedings/scipy2015/sebastian_benthall.html.
+- Doty, Nick. 2015. “Reviewing for Privacy in Internet and Web Standard-Setting.” In Security and Privacy Workshops (SPW), 2015 IEEE, 185–192. IEEE. https://ieeexplore.ieee.org/document/7163224/
+- Milan, Stefania, and Niels ten Oever. 2017. “Coding and Encoding Rights in Internet Infrastructure.” Internet Policy Review 6 (1)
+- ten Oever, Niels. 2018. “Productive Contestation, Civil Society, and Global Governance: Human Rights as a Boundary Object in ICANN.” Policy & Internet, June. https://doi.org/10.1002/poi3.172.
+- Nanni, Riccardo. “Digital Sovereignty and Internet Standards: Normative Implications of Public-Private Relations among Chinese Stakeholders in the Internet Engineering Task Force.” Information, Communication & Society 0, no. 0 (October 1, 2022): 1–21. https://doi.org/10.1080/1369118X.2022.2129270.
+- ten Oever, Niels. 2021. “‘This Is Not How We Imagined It’ -  Technological Affordances, Economic Drivers and the Internet Architecture Imaginary.” New Media & Society. https://journals.sagepub.com/doi/full/10.1177/1461444820929320
+- ten Oever, N., Milan, S., & Beraldo, D. (2020). Studying Discourse in Internet Governance through Mailing-list Analysis. In D. L. Cogburn, L. DeNardis, N. S. Levinson, & F. Musiani (Eds.), Research Methods in Internet Governance. Cambridge, MA: MIT Press. https://direct.mit.edu/books/oa-monograph/4936/chapter/625914/Studying-Discourse-in-Internet-Governance-through
+
 
 ## License
 

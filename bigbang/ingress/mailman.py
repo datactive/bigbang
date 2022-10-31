@@ -24,7 +24,7 @@ import bigbang.archive as archive
 
 from config.config import CONFIG
 
-from . import listserv, w3c
+from . import listserv, w3c, pipermail
 from .. import parse
 
 ml_exp = re.compile(r"/([\w-]+)/?$")
@@ -32,6 +32,7 @@ txt_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt)"')
 gz_exp = re.compile(r'href="(\d\d\d\d-\w*\.txt\.gz)"')
 ietf_ml_exp = re.compile(r'href="([\d-]+.mail)"')
 w3c_archives_exp = re.compile(r"lists\.w3\.org")
+icann_archives_exp = re.compile(r"mm\.icann\.org")
 tgpp_archives_exp = re.compile(r"list\.etsi\.org")
 ieee_archives_exp = re.compile(r"listserv\.ieee\.org")
 
@@ -123,6 +124,8 @@ def collect_from_file(
     elif ieee_archives_exp.search(urls[0]):
         collect_from_url(urls, archive_dir=archive_dir, notes=notes)
     elif w3c_archives_exp.search(urls[0]):
+        collect_from_url(urls, archive_dir=archive_dir, notes=notes)
+    elif icann_archives_exp.search(urls[0]):
         collect_from_url(urls, archive_dir=archive_dir, notes=notes)
     else:
         for url in urls:
@@ -263,6 +266,12 @@ def collect_archive_from_url(
             url_root=url_root,
             url_mailing_lists=urls,
             only_mlist_urls=False,
+            instant_save=True,
+        )
+    elif icann_archives_exp.search(url):
+        return pipermail.PipermailMailListDomain.from_mailing_lists(
+            name="ICANN",
+            url_mailing_lists=urls,
             instant_save=True,
         )
     elif ieee_archives_exp.search(url):

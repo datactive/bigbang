@@ -62,7 +62,6 @@ class TestListservMessageParser:
         assert msg["Date"] == "Mon, 08 May 2017 10:47:41 +0000"
 
     def test__first_message_body(self, msg):
-        # print(msg.get_payload())
         assert msg.get_payload().split("\n")[3] == "Hi,"
         assert len(msg.get_payload()) == 24809
 
@@ -83,6 +82,7 @@ class TestListservMessageParser:
 
 
 class TestListservMailList:
+    
     def test__from_mbox(self):
         mlist_name = "3GPP_TSG_SA_WG4_EVS"
         mlist = ListservMailList.from_mbox(
@@ -125,7 +125,7 @@ class TestListservMailList:
         file_temp_mbox = f"{dir_temp}/{mlist.name}.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()
-        assert len(lines) >= 48940
+        assert len(lines) >= 48774
         assert "What do you think of the approach?\n" in lines
         f.close()
         Path(file_temp_mbox).unlink()
@@ -215,7 +215,6 @@ class TestListservMailListDomain:
             f"{dir_temp}/{mlistdom.name}/3GPP_TSG_SA_WG2_MTCE.mbox": 60000,
         }
         for filepath, line_nr in file_dic.items():
-            print(filepath)
             assert Path(filepath).is_file()
             f = open(filepath, "r")
             lines = f.readlines()
