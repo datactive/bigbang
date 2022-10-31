@@ -389,7 +389,7 @@ class PipermailMailList(AbstractMailList):
         periods = []
         urls_of_periods = []
         
-        if soup != "RequestException":
+        if (soup != "RequestException") and (soup is not None):
             rows = soup.select(f'a[href*=".txt.gz"]')
             for row in rows:
                 filename =  row.get("href")
