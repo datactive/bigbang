@@ -13,7 +13,7 @@ from bigbang.ingress import (
     W3CMailList,
     W3CMailListDomain,
 )
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 url_mlistdom = "https://lists.w3.org/Archives/Public/"
 url_list = url_mlistdom + "public-testtwf/"

@@ -7,7 +7,7 @@ import unittest
 import pandas as pd
 
 import bigbang.archive as archive
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 test_txt = ""
 TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")

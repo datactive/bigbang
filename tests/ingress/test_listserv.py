@@ -14,7 +14,7 @@ from bigbang.ingress import (
     ListservMailListDomain,
 )
 from bigbang.ingress.utils import get_login_from_terminal
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
 url_mlistdom = "https://listserv.ieee.org/cgi-bin/wa?"

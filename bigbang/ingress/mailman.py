@@ -22,7 +22,7 @@ from validator_collection import checkers
 
 import bigbang.archive as archive
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 from . import listserv, w3c, pipermail
 from .. import parse

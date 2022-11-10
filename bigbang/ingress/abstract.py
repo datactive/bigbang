@@ -15,7 +15,7 @@ import requests
 import yaml
 from bs4 import BeautifulSoup
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 from bigbang.utils import get_paths_to_files_in_directory
 import bigbang.bigbang_io as bio
 from bigbang.data_types import Message, MailList
@@ -108,7 +108,7 @@ class AbstractMessageParser(ABC):
 
         for key, value in header.items():
             if "from" == key:
-                value = value.replace(" at ", '@')
+                value = value.replace(" at ", "@")
 
             if "content-type" == key:
                 msg.set_param("Content-Type", value)
@@ -157,12 +157,12 @@ class AbstractMessageParser(ABC):
             the Email. The latter is the default.
         """
         soup = get_website_content(url, session=self.session)
-        
+
         if soup == "RequestException":
             header = self.empty_header
             body = "RequestException"
             attachments = "RequestException"
-        
+
         else:
             if fields in ["header", "total"]:
                 header = self._get_header_from_html(soup)
@@ -179,7 +179,7 @@ class AbstractMessageParser(ABC):
             else:
                 body = None
                 attachments = None
-        
+
         return self.create_email_message(url, body, attachments, **header)
 
     @staticmethod

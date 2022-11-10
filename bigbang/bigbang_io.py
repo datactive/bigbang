@@ -10,7 +10,7 @@ from mailbox import mboxMessage
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 from bigbang.analysis import utils
 from bigbang.data_types import Message, MailList, MailListDomain
@@ -196,7 +196,7 @@ def mlist_to_mbox(
     msgs: MailList,
     dir_out: str,
     filename: str,
-    mode: Optional[str]='w',
+    mode: Optional[str] = "w",
 ) -> None:
     """
     Saves a List[mailbox.mboxMessage] as .mbox file.
@@ -213,7 +213,7 @@ def mlist_to_mbox(
     # create filepath
     filepath = f"{dir_out}/{filename}.mbox"
     # delete file if there is one at the filepath
-    if Path(filepath).is_file() and mode == 'w':
+    if Path(filepath).is_file() and mode == "w":
         Path(filepath).unlink()
     mbox = mailbox.mbox(filepath)
     mbox.lock()

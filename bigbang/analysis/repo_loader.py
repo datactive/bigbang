@@ -12,7 +12,7 @@ import requests
 from nbconvert import PythonExporter
 import nbformat
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 from bigbang.ingress.git_repo import GitRepo, MultiGitRepo
 

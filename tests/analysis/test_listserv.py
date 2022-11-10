@@ -11,7 +11,7 @@ import yaml
 from bigbang.analysis.listserv import ListservMailListDomain
 from bigbang.analysis.listserv import ListservMailList
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 dir_temp = tempfile.gettempdir()
 file_temp_mbox = dir_temp + "/listserv.mbox"

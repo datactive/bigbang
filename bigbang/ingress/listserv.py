@@ -20,7 +20,7 @@ import requests
 import yaml
 from bs4 import BeautifulSoup
 
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 import bigbang.bigbang_io as bio
 from bigbang.data_types import MailList

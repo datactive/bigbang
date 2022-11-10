@@ -17,7 +17,7 @@ import bigbang.parse as parse
 import bigbang.analysis.process as process
 import bigbang.utils as utils
 from bigbang.analysis import repo_loader
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 test_txt = ""
 TEMP_DIR = os.path.join(CONFIG.test_data_path, "tmp")

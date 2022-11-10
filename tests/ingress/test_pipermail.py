@@ -9,12 +9,11 @@ import requests
 import pytest
 import yaml
 
-import bigbang
 from bigbang.ingress import (
     PipermailMessageParser,
     PipermailMailList,
 )
-from config.config import CONFIG
+from bigbang.config import CONFIG
 
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 url_mlistdom = "https://mm.icann.org/pipermail/"
@@ -26,10 +25,10 @@ class TestPipermailMessageParser:
     def get_message(self):
         file = requests.get(
             "https://mm.icann.org/pipermail/accred-model/2018-August.txt.gz",
-            verify=f"{CONFIG.config_path}/icann_certificate.pem",
+            verify=os.path.join(CONFIG.config_path, "icann_certificate.pem"),
         )
         fcontent = gzip.decompress(file.content).decode("utf-8")
-        fcontent = fcontent.split('\n')
+        fcontent = fcontent.split("\n")
         msg_parser = PipermailMessageParser(website=False)
         msg = msg_parser.from_pipermail_file(
             list_name="accred-model",
@@ -40,7 +39,7 @@ class TestPipermailMessageParser:
         return msg
 
     def test__message_content(self, msg):
-        firstline = msg.get_payload().split('=')[0]
+        firstline = msg.get_payload().split("=")[0]
         assert "Theo, hope you are well." in firstline
         assert len(firstline) == 635
         assert msg["subject"] == "[Accred-Model] Codes of conduct"
@@ -48,7 +47,7 @@ class TestPipermailMessageParser:
         assert msg["to"] is None
         assert msg["date"] == "Wed, 01 Aug 2018 13:29:58 +0300"
         assert msg["Content-Type"] == 'text/plain; charset="utf-8"'
-        assert msg["Archived-At"] == '<accred-model_line_nr_1>'
+        assert msg["Archived-At"] == "<accred-model_line_nr_1>"
 
     def test__to_dict(self, msg):
         dic = PipermailMessageParser.to_dict(msg)
@@ -74,7 +73,7 @@ class TestPipermailMailList:
         # On 13/09/22 the mailing list contained 175 Emails.
         assert len(mlist) >= 175
         subjects = [msg["subject"] for msg in mlist.messages]
-        assert '[Accred-Model] Codes of conduct' in subjects
+        assert "[Accred-Model] Codes of conduct" in subjects
 
     def test__to_dict(self, mlist):
         dic = mlist.to_dict()
