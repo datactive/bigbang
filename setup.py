@@ -62,7 +62,7 @@ dev_requires = [
 
 config = {
     "name": "BigBang",
-    "version": "0.4.1",
+    "version": "0.4.4",
     "description": "BigBang is a toolkit for studying communications data from collaborative projects. It currently supports analyzing mailing lists from Sourceforge, Mailman, ListServ, or .mbox files.",
     "author": "BigBang Team",
     "author_email": "bigbang-dev@data-activism.net",

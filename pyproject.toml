@@ -1,6 +1,6 @@
 [project]
 name = "bigbang-py"
-version = "0.4.2"
+version = "0.4.4"
 authors = [
   { name="BigBang Team", email="bigbang-dev@data-activism.net" },
 ]
