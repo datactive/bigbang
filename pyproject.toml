@@ -20,7 +20,7 @@ classifiers = [
 
 [project.optional-dependencies]
 test = ['pytest', 'coverage', 'testfixtures']
-dev = test + ['black', 'isort', 'pre-commit']
+dev = ['bigbang-py[test]', 'black', 'isort', 'pre-commit']
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
