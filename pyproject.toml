@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "bigbang-py"
 version = "0.4.4"
@@ -13,6 +17,10 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[project.optional-dependencies]
+test = ['pytest', 'coverage', 'testfixtures']
+dev = test + ['black', 'isort', 'pre-commit']
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
