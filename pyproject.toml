@@ -36,6 +36,7 @@ dependencies = [
     "GitPython",
     "nbformat",
     "nbconvert",
+    "validator-collection",
 ]
 
 [project.optional-dependencies]
