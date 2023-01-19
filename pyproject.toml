@@ -25,8 +25,8 @@ dependencies = {file = ["requirements.txt"]}
 profile = "black"
 multi_line_output = 3
 line_length = 88
-include_trailing_comma = True
-known_third_party = celery,django,environ,pyquery,pytz,redis,requests,rest_framework
+include_trailing_comma = "True"
+known_third_party = "celery,django,environ,pyquery,pytz,redis,requests,rest_framework"
 
 [tool.black]
 line-length = 79
@@ -45,3 +45,6 @@ exclude = '''
   | dist
 )/
 '''
+
+[tool.ruff]
+ignore = ['F401', 'E501', 'E731', 'F403', 'F821', 'F541']
