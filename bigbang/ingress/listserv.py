@@ -146,9 +146,7 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
         else:
             header = self.empty_header
         if fields in ["body", "total"]:
-            body = self._get_body_from_listserv_file(
-                fcontent, header_end_line_nr
-            )
+            body = self._get_body_from_listserv_file(fcontent, header_end_line_nr)
         else:
             body = None
         return self.create_email_message(file_path, body, **header)
@@ -267,9 +265,7 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
                 key = re.search(r"<b>(.*?)<\/b>", key).group(1).lower()
                 key = re.sub(r":", "", key).strip()
                 if "subject" in key:
-                    value = repr(
-                        str(line.find_all(re.compile("^a"))[0].text).strip()
-                    )
+                    value = repr(str(line.find_all(re.compile("^a"))[0].text).strip())
                 else:
                     try:  # Listserv 17
                         value = repr(str(line.find_all(re.compile("^div"))[0]))
@@ -325,17 +321,13 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
         ]
         try:
             if href_plain_text:
-                body_soup = get_website_content(
-                    urljoin(url_root, href_plain_text[0])
-                )
+                body_soup = get_website_content(urljoin(url_root, href_plain_text[0]))
                 if body_soup == "RequestException":
                     return body_soup
                 else:
                     return body_soup.find("pre").text
             elif href_html_text:
-                body_soup = get_website_content(
-                    urljoin(url_root, href_html_text[0])
-                )
+                body_soup = get_website_content(urljoin(url_root, href_html_text[0]))
                 if body_soup == "RequestException":
                     return body_soup
                 else:
@@ -362,27 +354,21 @@ class ListservMessageParser(AbstractMessageParser, email.parser.Parser):
         ]
         if href_html_attachment:
             attachments = []
-            urls_attachment = [
-                urljoin(url_root, href) for href in href_html_attachment
-            ]
+            urls_attachment = [urljoin(url_root, href) for href in href_html_attachment]
             for url_attachment in urls_attachment:
                 filename = re.search("\%22(.*?)\%22", url_attachment).group(1)
                 subtype = filename.split(".")[-1].lower()
                 doc = namedtuple("attachment", "text subtype filename")
                 if subtype == "docx":
                     try:
-                        docx = Document(
-                            BytesIO(requests.get(url_attachment).content)
-                        )
+                        docx = Document(BytesIO(requests.get(url_attachment).content))
                     except Exception:
                         logger.exception(
                             f"The attachment of {url} which is part of the "
                             f"list {list_name} could not be loaded."
                         )
                         continue
-                    document = ("\n").join(
-                        [para.text for para in docx.paragraphs]
-                    )
+                    document = ("\n").join([para.text for para in docx.paragraphs])
                     document = remove_control_characters(document)
                     attachments.append(
                         doc(text=document, subtype=subtype, filename=filename)
@@ -484,9 +470,7 @@ class ListservMailList(AbstractMailList):
                 login=login,
                 session=session,
             )
-            msgs = super().get_messages_from_urls(
-                name, messages, msg_parser, fields
-            )
+            msgs = super().get_messages_from_urls(name, messages, msg_parser, fields)
         else:
             msgs = messages
         return cls(name, url, msgs)
@@ -524,9 +508,7 @@ class ListservMailList(AbstractMailList):
         _filepaths = []
         # run through directories and collect all filepaths
         for directorypath in directorypaths:
-            _filepaths.append(
-                get_paths_to_files_in_directory(directorypath, filedsc)
-            )
+            _filepaths.append(get_paths_to_files_in_directory(directorypath, filedsc))
         # flatten list of lists
         filepaths = [fp for li in _filepaths for fp in li]
         return cls.from_listserv_files(name, filepaths, select)
@@ -564,9 +546,7 @@ class ListservMailList(AbstractMailList):
             file = open(filepath, "r", errors="replace")
             fcontent = file.readlines()
             # get positions of all Emails in file
-            header_start_line_nrs = cls.get_line_numbers_of_header_starts(
-                fcontent
-            )
+            header_start_line_nrs = cls.get_line_numbers_of_header_starts(fcontent)
             file.close()
             # run through all messages in file
             msg_parser = ListservMessageParser(website=False)
@@ -617,9 +597,7 @@ class ListservMailList(AbstractMailList):
             # run through periods
             for period_url in ListservMailList.get_period_urls(url, select):
                 # run through messages within period
-                for msg_url in get_message_urls_from_period_url(
-                    name, period_url
-                ):
+                for msg_url in get_message_urls_from_period_url(name, period_url):
                     msg_urls.append(msg_url)
         else:
             # Method for Listserv 17
@@ -627,9 +605,7 @@ class ListservMailList(AbstractMailList):
         return msg_urls
 
     @classmethod
-    def get_period_urls(
-        cls, url: str, select: Optional[dict] = None
-    ) -> List[str]:
+    def get_period_urls(cls, url: str, select: Optional[dict] = None) -> List[str]:
         """
         All messages within a certain period
         (e.g. January 2021, Week 5).
@@ -645,8 +621,7 @@ class ListservMailList(AbstractMailList):
         periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
 
         if any(
-            period in list(select.keys())
-            for period in ["years", "months", "weeks"]
+            period in list(select.keys()) for period in ["years", "months", "weeks"]
         ):
             for key, value in select.items():
                 if key == "years":
@@ -701,9 +676,7 @@ class ListservMailList(AbstractMailList):
         return url.split("A0=")[-1]
 
     @classmethod
-    def get_line_numbers_of_header_starts(
-        cls, content: List[str]
-    ) -> List[int]:
+    def get_line_numbers_of_header_starts(cls, content: List[str]) -> List[int]:
         """
         By definition LISTSERV logs seperate new messages by a row
         of 73 equal signs.
@@ -716,9 +689,7 @@ class ListservMailList(AbstractMailList):
         -------
         List of line numbers where header starts
         """
-        return [
-            line_nr for line_nr, line in enumerate(content) if "=" * 73 in line
-        ]
+        return [line_nr for line_nr, line in enumerate(content) if "=" * 73 in line]
 
 
 class ListservMailListDomain(AbstractMailListDomain):
@@ -870,9 +841,7 @@ class ListservMailListDomain(AbstractMailListDomain):
             - period, i.e. written in a certain year, month, week-of-month
         """
         lists = []
-        _dirpaths_to_lists = get_paths_to_dirs_in_directory(
-            directorypath, folderdsc
-        )
+        _dirpaths_to_lists = get_paths_to_dirs_in_directory(directorypath, folderdsc)
         # run through directories and collect all filepaths
         for dirpath in _dirpaths_to_lists:
             _filepaths = get_paths_to_files_in_directory(dirpath, filedsc)
@@ -911,17 +880,14 @@ class ListservMailListDomain(AbstractMailListDomain):
         """Docstring in `AbstractMailList`."""
         archive = []
         # run through archive sections
-        for url in list(
-            ListservMailListDomain.get_sections(url_root, url_home).keys()
-        ):
+        for url in list(ListservMailListDomain.get_sections(url_root, url_home).keys()):
             soup = get_website_content(url)
             a_tags_in_section = soup.select(
                 f'a[href^="{urlparse(url).path}?A0="]',
             )
 
             mlist_urls = [
-                urljoin(url_root, a_tag.get("href"))
-                for a_tag in a_tags_in_section
+                urljoin(url_root, a_tag.get("href")) for a_tag in a_tags_in_section
             ]
             mlist_urls = list(set(mlist_urls))  # remove duplicates
 
@@ -930,11 +896,9 @@ class ListservMailListDomain(AbstractMailListDomain):
                 for mlist_url in mlist_urls:
                     name = ListservMailList.get_name_from_url(mlist_url)
                     # check if mailing list contains messages in period
-                    _period_urls = (
-                        ListservMailList.get_all_periods_and_their_urls(
-                            mlist_url
-                        )[1]
-                    )
+                    _period_urls = ListservMailList.get_all_periods_and_their_urls(
+                        mlist_url
+                    )[1]
                     # check if mailing list is public
                     if len(_period_urls) > 0:
                         loops = 0

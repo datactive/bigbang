@@ -75,9 +75,7 @@ def collect_from_url(
 
         # hard coding the archives directory in too many places
         # need to push this default to a configuration file
-        path = os.path.join(archive_dir, get_list_name(url) + ".csv").replace(
-            "\\", "/"
-        )
+        path = os.path.join(archive_dir, get_list_name(url) + ".csv").replace("\\", "/")
 
         try:
             data.to_csv(path, ",", encoding="utf-8")
@@ -161,9 +159,7 @@ def normalize_archives_url(url):
         "https://mailarchive\\.ietf\\.org/arch/search/"
         "\\?email_list=(?P<list_name>[\\w-]+)"
     )
-    ietf_text_archives = (
-        r"https://www.ietf.org/mail-archive/text/\g<list_name>/"
-    )
+    ietf_text_archives = r"https://www.ietf.org/mail-archive/text/\g<list_name>/"
     new_ietf_browse_exp = re.compile(
         r"https://mailarchive.ietf.org/arch/browse/(?P<list_name>[\w-]+)/?"
     )
@@ -189,9 +185,7 @@ def populate_provenance(directory, list_name, list_url, notes=None):
         "date_collected": str(datetime.date.today()),  # uses ISO-8601
         "complete": False,
         "code_version": {
-            "long_hash": subprocess.check_output(
-                ["git", "rev-parse", "HEAD"]
-            ).strip(),
+            "long_hash": subprocess.check_output(["git", "rev-parse", "HEAD"]).strip(),
             "description": subprocess.check_output(
                 ["git", "describe", "--long", "--always", "--all"]
             ).strip()
@@ -320,9 +314,7 @@ def collect_archive_from_url(
                 )
                 encountered_error = True
 
-    if (
-        not encountered_error
-    ):  # mark that all available archives were collected
+    if not encountered_error:  # mark that all available archives were collected
         provenance = access_provenance(arc_dir)
         provenance["complete"] = True
         update_provenance(arc_dir, provenance)

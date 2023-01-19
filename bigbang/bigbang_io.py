@@ -221,9 +221,7 @@ def mlist_to_mbox(
         try:
             mbox.add(msg)
         except Exception as e:
-            logger.info(
-                f'Add to .mbox error for {msg["Archived-At"]} because, {e}'
-            )
+            logger.info(f'Add to .mbox error for {msg["Archived-At"]} because, {e}')
     mbox.flush()
     mbox.unlock()
     logger.info(f"The list {filename} is saved at {filepath}.")
@@ -272,9 +270,7 @@ def mlistdom_to_pandas_dataframe(
     For a clearer definition on what a mailing archive is, see:
     bigbang.ingress.abstract.AbstractArchive
     """
-    df = pd.DataFrame(mlistdom_to_dict(mlists, include_body)).set_index(
-        "message-id"
-    )
+    df = pd.DataFrame(mlistdom_to_dict(mlists, include_body)).set_index("message-id")
     # get index of date-times
     index = np.array(
         [
@@ -304,18 +300,14 @@ def mlistdom_to_mbox(mlists: MailListDomain, dir_out: str):
         mlist.to_mbox(dir_out)
 
 
-def get_paths_to_files_in_directory(
-    directory: str, file_dsc: str = "*"
-) -> List[str]:
+def get_paths_to_files_in_directory(directory: str, file_dsc: str = "*") -> List[str]:
     """Get paths of all files matching file_dsc in directory"""
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
 
 
-def get_paths_to_dirs_in_directory(
-    directory: str, folder_dsc: str = "*"
-) -> List[str]:
+def get_paths_to_dirs_in_directory(directory: str, folder_dsc: str = "*") -> List[str]:
     """Get paths of all directories matching file_dsc in directory"""
     template = f"{directory}{folder_dsc}"
     dir_paths = glob.glob(template)

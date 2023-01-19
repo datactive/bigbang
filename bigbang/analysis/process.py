@@ -62,9 +62,7 @@ def sorted_matrix(from_dataframe, limit=None, sort_key=None):
     if limit is None:
         limit = len(from_dataframe.columns)
 
-    distancedf = matricize(
-        from_dataframe.columns[: limit - 1], from_header_distance
-    )
+    distancedf = matricize(from_dataframe.columns[: limit - 1], from_header_distance)
 
     # specify that the values in the matrix are integers
     df = distancedf.astype(int)
@@ -92,9 +90,7 @@ def resolve_sender_entities(act, lexical_distance=0):
     # senders orders by descending total activity
     senders = act.sum(0).sort_values(ascending=False)
 
-    return resolve_entities(
-        senders, from_header_distance, threshold=lexical_distance
-    )
+    return resolve_entities(senders, from_header_distance, threshold=lexical_distance)
 
 
 def resolve_entities(significance, distance_function, threshold=0):
@@ -130,9 +126,7 @@ def resolve_entities(significance, distance_function, threshold=0):
 
     # An entity is a connected component of the resulting graph
     G = nx.Graph(sim)
-    entities_list = [
-        [entities_lex[j] for j in x] for x in nx.connected_components(G)
-    ]
+    entities_list = [[entities_lex[j] for j in x] for x in nx.connected_components(G)]
 
     # given each entity a label based on its most active 'member'
     entities_dict = {}
@@ -162,9 +156,7 @@ def from_header_distance(a, b, verbose=False):
     b_normal = ""
 
     try:
-        a_normal = (
-            str(a).lower().translate(stop_characters_map).replace(" at ", "@")
-        )
+        a_normal = str(a).lower().translate(stop_characters_map).replace(" at ", "@")
     except UnicodeDecodeError:
         a_normal = (
             a.decode("utf-8")
@@ -174,9 +166,7 @@ def from_header_distance(a, b, verbose=False):
         )
 
     try:
-        b_normal = (
-            str(b).lower().translate(stop_characters_map).replace(" at ", "@")
-        )
+        b_normal = str(b).lower().translate(stop_characters_map).replace(" at ", "@")
     except UnicodeDecodeError:
         b_normal = (
             b.decode("utf-8")
@@ -202,9 +192,7 @@ def from_header_distance(a, b, verbose=False):
         ) + Levenshtein.distance(ag.groups()[1], bg.groups()[1])
 
         if len(ag.groups()[2]) > 5 and len(ag.groups()[2]) > 5:
-            dist = min(
-                dist, Levenshtein.distance(ag.groups()[2], bg.groups()[2])
-            )
+            dist = min(dist, Levenshtein.distance(ag.groups()[2], bg.groups()[2]))
 
     return dist
 

@@ -77,12 +77,7 @@ class TestArchive(unittest.TestCase):
         arx.add_affiliation(rel_email_affil)
 
         assert (
-            arx.data.loc["028c01d4fa43$13f2d060$3bd87120$@caict.ac.cn"][
-                "affiliation"
-            ]
+            arx.data.loc["028c01d4fa43$13f2d060$3bd87120$@caict.ac.cn"]["affiliation"]
             == "TestOrg"
         )
-        assert (
-            arx.data.loc["2019030112374440934718@caict.ac.cn"]["affiliation"]
-            is None
-        )
+        assert arx.data.loc["2019030112374440934718@caict.ac.cn"]["affiliation"] is None

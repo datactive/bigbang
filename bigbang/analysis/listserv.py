@@ -116,9 +116,7 @@ class ListservMailList:
         return arr / np.sum(arr)
 
     @staticmethod
-    def contract(
-        count: np.array, label: list, contract: float
-    ) -> Dict[str, int]:
+    def contract(count: np.array, label: list, contract: float) -> Dict[str, int]:
         """
         This function contracts all domain names that contributed to a mailinglists
         below the `contract` threshold into one entity called `Others`. Meaning,
@@ -153,11 +151,7 @@ class ListservMailList:
         """
         # test if name is in string or if address is duplicated
         test = string.split(" ")
-        if (
-            (len(test) == 2)
-            and all("@" in st for st in test)
-            and (test[0] == test[1])
-        ):
+        if (len(test) == 2) and all("@" in st for st in test) and (test[0] == test[1]):
             # identifies addresses of the form:
             # localpart@domain localpart@domain
             addr = test[0]
@@ -324,12 +318,7 @@ class ListservMailList:
                 lambda x: True
                 if any(
                     [
-                        len(
-                            x.replace(match, "")
-                            .replace(rl, "")
-                            .replace(" ", "")
-                        )
-                        == 0
+                        len(x.replace(match, "").replace(rl, "").replace(" ", "")) == 0
                         for rl in reply_labels
                     ]
                 )
@@ -372,14 +361,10 @@ class ListservMailList:
                 df[header_field].dropna().values
             )
             # collect domain labels
-            _domains = [
-                domain for _, _, domain in generator if domain is not None
-            ]
+            _domains = [domain for _, _, domain in generator if domain is not None]
             _domains_unique = list(set(_domains))
             if return_msg_counts:
-                _domains_unique = [
-                    [du, _domains.count(du)] for du in _domains_unique
-                ]
+                _domains_unique = [[du, _domains.count(du)] for du in _domains_unique]
             domains[header_field] = _domains_unique
         return domains
 
@@ -453,13 +438,7 @@ class ListservMailList:
                     df[header_field].dropna().values
                 )
                 _domains = list(
-                    set(
-                        [
-                            domain
-                            for _, _, domain in generator
-                            if domain is not None
-                        ]
-                    )
+                    set([domain for _, _, domain in generator if domain is not None])
                 )
                 _localparts = {d: [] for d in _domains}
                 generator = ListservMailList.iterator_name_localpart_domain(
@@ -486,8 +465,7 @@ class ListservMailList:
                 _localparts_unique = list(set(_localparts))
                 if return_msg_counts:
                     _localparts_unique = [
-                        [lpu, _localparts.count(lpu)]
-                        for lpu in _localparts_unique
+                        [lpu, _localparts.count(lpu)] for lpu in _localparts_unique
                     ]
                 localparts[header_field] = _localparts_unique
         return localparts
@@ -635,9 +613,7 @@ class ListservMailList:
         into the domain or localpart from which they originate.
         """
         if df is None:
-            indices = get_index_of_msgs_with_subject(
-                self.df, return_boolmask=True
-            )
+            indices = get_index_of_msgs_with_subject(self.df, return_boolmask=True)
             _df = self.df.loc[indices]
         else:
             indices = get_index_of_msgs_with_subject(df, return_boolmask=True)
@@ -654,9 +630,7 @@ class ListservMailList:
             if all(subject_not_reply):
                 indices.append(index)
         _df = self.df.loc[indices]
-        subjects = {
-            value: key for key, value in _df["subject"].to_dict().items()
-        }
+        subjects = {value: key for key, value in _df["subject"].to_dict().items()}
         # sort into address field
         if per_address_field:
             generator = ListservMailList.iterator_name_localpart_domain(
@@ -670,9 +644,7 @@ class ListservMailList:
                         dics[do][sb] = subjects[sb]
             elif "localpart" in per_address_field:
                 localparts = [localpart for _, localpart, _ in generator]
-                dics = {
-                    lp: {} for lp in list(set(localparts)) if lp is not None
-                }
+                dics = {lp: {} for lp in list(set(localparts)) if lp is not None}
                 for lp, sb in zip(localparts, list(subjects.keys())):
                     if lp is not None:
                         dics[lp][sb] = subjects[sb]
@@ -701,13 +673,9 @@ class ListservMailList:
 
             for year in years:
                 mlist_fi = self.crop_by_year(year)
-                subjects = self.get_threadsroot(
-                    per_address_field, df=mlist_fi.df
-                )
+                subjects = self.get_threadsroot(per_address_field, df=mlist_fi.df)
                 if per_address_field:
-                    dics[year] = {
-                        key: len(values) for key, values in subjects.items()
-                    }
+                    dics[year] = {key: len(values) for key, values in subjects.items()}
                 else:
                     dics[year] = len(subjects)
             return dics
@@ -836,12 +804,8 @@ class ListservMailList:
             domains = list(set(domains["from"] + domains["comments-to"]))
             dic = {do: {} for do in domains}
         if address_field == "localpart":
-            localparts = self.get_localparts(
-                header_fields=["from", "comments-to"]
-            )
-            localparts = list(
-                set(localparts["from"] + localparts["comments-to"])
-            )
+            localparts = self.get_localparts(header_fields=["from", "comments-to"])
+            localparts = list(set(localparts["from"] + localparts["comments-to"]))
             dic = {lp: {} for lp in localparts}
         # loop through messages
         for index, row in df.iterrows():
@@ -864,18 +828,14 @@ class ListservMailList:
                     dic = self.add_weight_to_edge(dic, f_domain, ct_domain)
                 if address_field == "localpart":
                     # counting the messages
-                    dic = self.add_weight_to_edge(
-                        dic, f_localpart, ct_localpart
-                    )
+                    dic = self.add_weight_to_edge(dic, f_localpart, ct_localpart)
 
         if entity_in_focus is not None:
             dic = self.crop_dic_to_entity_in_focus(dic)
 
         return dic
 
-    def crop_dic_to_entity_in_focus(
-        self, dic: dict, entity_in_focus: list
-    ) -> dict:
+    def crop_dic_to_entity_in_focus(self, dic: dict, entity_in_focus: list) -> dict:
         """
         Parameters
         ----------
@@ -975,9 +935,7 @@ class ListservMailList:
                     node_attribute_value[node] = node_attr
                 else:
                     node_attribute_value[node] = "Unkown"
-            nx.set_node_attributes(
-                DG, node_attribute_value, name="node_attribute"
-            )
+            nx.set_node_attributes(DG, node_attribute_value, name="node_attribute")
         # attach directed graph to class
         self.dg = DG
 
@@ -1054,9 +1012,7 @@ class ListservMailListDomain:
     ) -> "ListservMailListDomain":
         filepaths = get_paths_to_files_in_directory(directorypath, filedsc)
         if len(filepaths) > 0:
-            ListservMailListDomainWarning(
-                "No files found fitting the description"
-            )
+            ListservMailListDomainWarning("No files found fitting the description")
         for count, filepath in enumerate(filepaths):
             name = filepath.split("/")[-1].split(".")[0]
             mlist = ListservMailList.from_mbox(name, filepath).df
@@ -1085,9 +1041,7 @@ class ListservMailListDomain:
             if domain not in dic_mlis.keys():
                 dic_mlis[domain] = []
             dic_mlis[domain] += mlist_names
-        dic_mlis = {
-            key: len(list(set(value))) for key, value in dic_mlis.items()
-        }
+        dic_mlis = {key: len(list(set(value))) for key, value in dic_mlis.items()}
         return dic_mlis
 
 

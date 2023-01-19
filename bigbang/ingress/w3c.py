@@ -110,9 +110,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         }
         for key, value in header.items():
             try:
-                header[key] = parse_dfn_header(
-                    text_for_selector(soup, value)
-                ).strip()
+                header[key] = parse_dfn_header(text_for_selector(soup, value)).strip()
             except Exception:
                 header[key] = ""
                 continue
@@ -221,9 +219,7 @@ class W3CMailList(AbstractMailList):
             msg_parser = W3CMessageParser(
                 website=True,
             )
-            msgs = super().get_messages_from_urls(
-                name, messages, msg_parser, fields
-            )
+            msgs = super().get_messages_from_urls(name, messages, msg_parser, fields)
         else:
             msgs = messages
         return cls(name, url, msgs)
@@ -263,9 +259,7 @@ class W3CMailList(AbstractMailList):
         return msg_urls
 
     @classmethod
-    def get_period_urls(
-        cls, url: str, select: Optional[dict] = None
-    ) -> List[str]:
+    def get_period_urls(cls, url: str, select: Optional[dict] = None) -> List[str]:
         """
         All messages within a certain period (e.g. January 2021).
 
@@ -279,9 +273,7 @@ class W3CMailList(AbstractMailList):
         # create dictionary with key indicating period and values the url
         periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
 
-        if any(
-            period in list(select.keys()) for period in ["years", "months"]
-        ):
+        if any(period in list(select.keys()) for period in ["years", "months"]):
             for key, value in select.items():
                 if key == "years":
                     cond = lambda x: int(re.findall(r"\d{4}", x)[0])
@@ -513,9 +505,7 @@ class W3CMailListDomain(AbstractMailListDomain):
             # collect mailing-list urls
             for mlist_url in tqdm(mlist_urls, ascii=True):
                 # check if mailing list contains messages in period
-                _period_urls = W3CMailList.get_all_periods_and_their_urls(
-                    mlist_url
-                )[1]
+                _period_urls = W3CMailList.get_all_periods_and_their_urls(mlist_url)[1]
                 # check if mailing list is public
                 if len(_period_urls) > 0:
                     archive.append(mlist_url)

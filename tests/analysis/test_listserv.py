@@ -43,43 +43,28 @@ def test_dissection_of_address_header_field():
     with open(filepath, "r") as stream:
         addresses = yaml.safe_load(stream)
 
-    generator = ListservMailList.iterator_name_localpart_domain(
-        list(addresses.keys())
-    )
+    generator = ListservMailList.iterator_name_localpart_domain(list(addresses.keys()))
     assert (
         list(next(generator))
-        == addresses[
-            '"xuxiaodong@chinamobile.com" <xuxiaodong@CHINAMOBILE.COM>'
-        ]
+        == addresses['"xuxiaodong@chinamobile.com" <xuxiaodong@CHINAMOBILE.COM>']
     )
-    assert (
-        list(next(generator))
-        == addresses["Jacob John <jacobjohn@MOTOROLA.COM>"]
-    )
+    assert list(next(generator)) == addresses["Jacob John <jacobjohn@MOTOROLA.COM>"]
     assert (
         list(next(generator))
         == addresses['"Wuyuchun (Wu Yuchun, Hisilicon)" <wuyuchun@HUAWEI.COM>']
     )
     assert (
         list(next(generator))
-        == addresses[
-            "xingjinqiang@chinamobile.com xingjinqiang@chinamobile.com"
-        ]
+        == addresses["xingjinqiang@chinamobile.com xingjinqiang@chinamobile.com"]
     )
-    assert (
-        list(next(generator))
-        == addresses["abdul rasheed m d rasheed@motorola.com"]
-    )
+    assert list(next(generator)) == addresses["abdul rasheed m d rasheed@motorola.com"]
     assert (
         list(next(generator))
         == addresses[
             "fredrik =?utf-8?q?sundstr=c3=b6m?= fredrik.sundstrom@ericsson.com"
         ]
     )
-    assert (
-        list(next(generator))
-        == addresses["guozhili guozhili@starpointcomm.com"]
-    )
+    assert list(next(generator)) == addresses["guozhili guozhili@starpointcomm.com"]
     assert (
         list(next(generator))
         == addresses["=?utf-8?b?runjvc3lvkdnu6flrr4=?= zhangjibin@ecit.org.cn"]
@@ -100,9 +85,7 @@ class TestListservMailList:
 
     def test__get_name_localpart_domain(self):
         addr = '"gabin frederic" <frederic.gabin@dolby.com>'
-        name, localpart, domain = ListservMailList.get_name_localpart_domain(
-            addr
-        )
+        name, localpart, domain = ListservMailList.get_name_localpart_domain(addr)
         assert name == "gabin frederic"
         assert localpart == "frederic.gabin"
         assert domain == "dolby.com"
@@ -145,9 +128,7 @@ class TestListservMailList:
             assert domain[0] in domains_comp
             if domain[0] == "qti.qualcomm.com":
                 assert domain[1] == 8
-        domains = mlist.get_domains(
-            header_fields=["from"], return_msg_counts=False
-        )
+        domains = mlist.get_domains(header_fields=["from"], return_msg_counts=False)
         domains_comp = [
             "samsung.com",
             "qti.qualcomm.com",

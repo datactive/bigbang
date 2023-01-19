@@ -13,9 +13,7 @@ from bigbang.visualisation import utils
 
 
 def get_ylabels(data) -> List[str]:
-    ylabels = list(
-        set([ykey for ydic in data.values() for ykey in ydic.keys()])
-    )
+    ylabels = list(set([ykey for ydic in data.values() for ykey in ydic.keys()]))
     return ylabels
 
 

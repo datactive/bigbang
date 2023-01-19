@@ -232,9 +232,7 @@ class TestListservMailListDomain:
 def test__get_login_from_terminal(input):
     """test if login keys will be documented"""
     file_auth = dir_temp + "/authentication.yaml"
-    _, _ = get_login_from_terminal(
-        username=None, password=None, file_auth=file_auth
-    )
+    _, _ = get_login_from_terminal(username=None, password=None, file_auth=file_auth)
     f = open(file_auth, "r")
     lines = f.readlines()
     assert lines[0].strip("\n") == "username: 'check'"

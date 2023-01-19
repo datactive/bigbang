@@ -46,16 +46,12 @@ class TestMailman(unittest.TestCase):
         )
 
         self.assertTrue(
-            os.path.exists(
-                os.path.join(TEMP_DIR, mailman.PROVENANCE_FILENAME)
-            ),
+            os.path.exists(os.path.join(TEMP_DIR, mailman.PROVENANCE_FILENAME)),
             msg="provenance file should have been created",
         )
 
         provenance = mailman.access_provenance(TEMP_DIR)
-        self.assertTrue(
-            provenance is not None, "provenance should be something"
-        )
+        self.assertTrue(provenance is not None, "provenance should be something")
         self.assertTrue(
             provenance["list"]["list_name"] == test_list_name,
             "list name should be in the provenance",
@@ -78,9 +74,7 @@ class TestMailman(unittest.TestCase):
         )
 
     def test__valid_urls(self):
-        test_urls_path = os.path.join(
-            CONFIG.test_data_path, "urls-test-file.txt"
-        )
+        test_urls_path = os.path.join(CONFIG.test_data_path, "urls-test-file.txt")
         with LogCapture() as _l:
             urls = mailman.urls_to_collect(test_urls_path)
             self.assertTrue(
@@ -99,9 +93,7 @@ class TestMailman(unittest.TestCase):
                 "https://www.example.com/3/" in urls,
                 msg="failed to find valid url, whitespace strip issue",
             )
-            self.assertTrue(
-                "invalid.com" not in urls, msg="accepted invalid url"
-            )
+            self.assertTrue("invalid.com" not in urls, msg="accepted invalid url")
             self.assertTrue(
                 len(list(_l.actual())) == 2, msg="wrong number of log entries"
             )
@@ -115,9 +107,7 @@ class TestMailman(unittest.TestCase):
                 )
 
     def test__empty_list_compute_activity_issue_246(self):
-        test_df_csv_path = os.path.join(
-            CONFIG.test_data_path, "empty-archive-df.csv"
-        )
+        test_df_csv_path = os.path.join(CONFIG.test_data_path, "empty-archive-df.csv")
         df = pd.read_csv(test_df_csv_path)
 
         with self.assertRaises(archive.MissingDataException):
@@ -126,9 +116,7 @@ class TestMailman(unittest.TestCase):
 
     def test__normalizer(self):
         browse_url = "https://mailarchive.ietf.org/arch/browse/ietf/"
-        search_url = (
-            "https://mailarchive.ietf.org/arch/search/?email_list=ietf"
-        )
+        search_url = "https://mailarchive.ietf.org/arch/search/?email_list=ietf"
         random_url = "http://example.com"
 
         better_url = "https://www.ietf.org/mail-archive/text/ietf/"
@@ -148,9 +136,7 @@ class TestMailman(unittest.TestCase):
 
     def test__get_list_name(self):
         ietf_archive_url = "https://www.ietf.org/mail-archive/text/ietf/"
-        w3c_archive_url = (
-            "https://lists.w3.org/Archives/Public/public-privacy/"
-        )
+        w3c_archive_url = "https://lists.w3.org/Archives/Public/public-privacy/"
         random_url = "http://example.com"
 
         self.assertTrue(
@@ -167,16 +153,13 @@ class TestMailman(unittest.TestCase):
         )
 
     def test__activity_summary(self):
-        list_url = (
-            "https://lists.w3.org/Archives/Public/test-activity-summary/"
-        )
+        list_url = "https://lists.w3.org/Archives/Public/test-activity-summary/"
         activity_frame = mailman.open_activity_summary(
             list_url, archive_dir=CONFIG.test_data_path
         )
 
         self.assertTrue(
-            str(type(activity_frame))
-            == "<class 'pandas.core.frame.DataFrame'>",
+            str(type(activity_frame)) == "<class 'pandas.core.frame.DataFrame'>",
             msg="not a DataFrame?",
         )
         self.assertTrue(

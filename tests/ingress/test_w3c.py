@@ -144,10 +144,7 @@ class TestW3CMailListDomain:
         assert mlistdom.url == url_mlistdom
         assert len(mlistdom) == 1
         assert len(mlistdom.lists[0]) == 2
-        assert (
-            mlistdom.lists[0].messages[0]["Subject"]
-            == "Re: Web Accessibility Issue"
-        )
+        assert mlistdom.lists[0].messages[0]["Subject"] == "Re: Web Accessibility Issue"
 
     def test__to_dict(self, mlistdom):
         dic = mlistdom.to_dict()

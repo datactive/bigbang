@@ -38,9 +38,7 @@ def stack(
 
     # if an item in the portition is not in the dataframe,
     # clean it up
-    partition = [
-        (kv[0], [i for i in kv[1] if i in df.columns]) for kv in partition
-    ]
+    partition = [(kv[0], [i for i in kv[1] if i in df.columns]) for kv in partition]
     # remove empty partitions
     partition = [kv for kv in partition if kv[1]]
 
@@ -68,8 +66,7 @@ def stack(
     # legend
     # make proxy artists
     proxy_rects = [
-        patches.Rectangle((0, 0), 1, 1, fc=pc.get_facecolor()[0])
-        for pc in stacks
+        patches.Rectangle((0, 0), 1, 1, fc=pc.get_facecolor()[0]) for pc in stacks
     ]
     # make the legend
     ax.legend(proxy_rects, [kv[0] for kv in partition])
@@ -92,9 +89,7 @@ def draw_adjacency_matrix(
     If partitions is specified, the same number of colors needs to be
     specified.
     """
-    adjacency_matrix = nx.to_numpy_matrix(
-        G, dtype=np.bool, nodelist=node_order
-    )
+    adjacency_matrix = nx.to_numpy_matrix(G, dtype=np.bool, nodelist=node_order)
 
     plt.figure(figsize=figsize)  # in inches
     plt.imshow(adjacency_matrix, cmap=cmap, interpolation="none")

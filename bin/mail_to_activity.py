@@ -67,10 +67,7 @@ def main(args):
                 activity.to_csv(f, encoding="utf-8")
         except Exception:
             logging.warning(
-                (
-                    "Failed to produce activity frame export for %s."
-                    % subdirectory
-                ),
+                ("Failed to produce activity frame export for %s." % subdirectory),
                 exc_info=True,
             )
 
