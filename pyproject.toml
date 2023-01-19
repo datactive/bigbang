@@ -69,8 +69,9 @@ exclude = '''
   | buck-out
   | build
   | dist
+  | docs
 )/
 '''
 
 [tool.ruff]
-ignore = ['F401', 'E501', 'E731', 'F403', 'F821', 'F541']
+ignore = ['F401', 'E501', 'E731', 'F403', 'F821', 'F541', 'E402', 'F405']
