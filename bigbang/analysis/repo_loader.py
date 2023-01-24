@@ -123,9 +123,7 @@ def get_dependency_network(filepath):
 
             elif isinstance(node, tree.From):
                 if file in dependencies:
-                    dependencies[file].append(
-                        node.modname + "/" + node.names[0][0]
-                    )
+                    dependencies[file].append(node.modname + "/" + node.names[0][0])
     return create_graph(dependencies)
 
 
@@ -151,9 +149,7 @@ def get_repo(repo_in, in_type="name", update=False):
 
         if isinstance(ans, GitRepo):
             # We cache it hopefully???
-            ans.commit_data.to_csv(
-                cache_path(repo_in), sep="\t", encoding="utf-8"
-            )
+            ans.commit_data.to_csv(cache_path(repo_in), sep="\t", encoding="utf-8")
         else:
             print("We failed to find a local copy of this repo")
         return ans

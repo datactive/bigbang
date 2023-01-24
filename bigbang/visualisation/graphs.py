@@ -104,9 +104,7 @@ def contract_nodes_by_attribute(
     dg: nx.DiGraph,
     node_attributes: Dict[str, List],
 ) -> nx.DiGraph:
-    attribute_of = {
-        name: att["node_attribute"] for name, att in dg.nodes(data=True)
-    }
+    attribute_of = {name: att["node_attribute"] for name, att in dg.nodes(data=True)}
     same_attribute = lambda u, v: attribute_of[u] == attribute_of[v]
     dg = nx.quotient_graph(dg, same_attribute)
 

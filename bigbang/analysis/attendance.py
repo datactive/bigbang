@@ -65,9 +65,7 @@ def name_email_affil_relations_from_IETF_attendance(
         if (
             meeting["num"] in meeting_range
         ):  # can filter here by the meetings to analyze
-            registrations = dt.meeting_registrations(
-                meeting=meeting["meeting_obj"]
-            )
+            registrations = dt.meeting_registrations(meeting=meeting["meeting_obj"])
             df = pd.DataFrame.from_records(
                 [dataclasses.asdict(x) for x in list(registrations)]
             )
@@ -92,9 +90,7 @@ def name_email_affil_relations_from_IETF_attendance(
         for r in [{name: ent for name in ents[ent]} for ent in ents]:
             replacements.update(r)
 
-        ind_affiliation.loc[:, "affiliation"] = ind_affiliation[
-            "affiliation"
-        ].apply(
+        ind_affiliation.loc[:, "affiliation"] = ind_affiliation["affiliation"].apply(
             lambda x: replacements[x]
         )  # , axis = 1)
 

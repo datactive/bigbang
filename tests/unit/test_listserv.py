@@ -104,9 +104,7 @@ class TestListservMailList:
             filepaths=[filepath],
         )
         assert len(mlist) == 1
-        assert (
-            mlist.messages[0]["From"] == "Kevin Holley <kevin.holley@BT.COM>"
-        )
+        assert mlist.messages[0]["From"] == "Kevin Holley <kevin.holley@BT.COM>"
 
     def test__number_of_messages(self, mlist):
         assert len(mlist) == 25
@@ -139,9 +137,7 @@ class TestListservMailList:
             if msg["Subject"] == "R: How to proceed with ITUT-AH"
         ][0]
         assert msg["Date"] is None
-        ListservMessageParser().to_mbox(
-            msg, filepath=f"{dir_temp}/msg_test.mbox"
-        )
+        ListservMessageParser().to_mbox(msg, filepath=f"{dir_temp}/msg_test.mbox")
         file_temp_mbox = f"{dir_temp}/msg_test.mbox"
         f = open(file_temp_mbox, "r")
         lines = f.readlines()

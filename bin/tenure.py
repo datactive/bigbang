@@ -112,9 +112,7 @@ def total_messages(s):
 
     Takes a pandas.Series where the columns are the dates (and a couple of calculated columns which will be ignored for the purposes of the calculation) and the cells are the number of messages sent on each date. This does not ignore but instead adds up an existing 'Total Messages' column.
     """
-    just_dates = s.drop(
-        ["Earliest Date", "Latest Date", "Tenure"], errors="ignore"
-    )
+    just_dates = s.drop(["Earliest Date", "Latest Date", "Tenure"], errors="ignore")
     return just_dates.sum()
 
 
@@ -157,9 +155,7 @@ def main(args):
         with open(combined_out_path, "w") as f:
             combined_df.to_csv(f, encoding="utf-8")
             logging.info("Completed combined tenure frame output.")
-            logging.info(
-                "Subdirectories included: %s" % ",".join(combined_lists)
-            )
+            logging.info("Subdirectories included: %s" % ",".join(combined_lists))
     else:
         manager = enlighten.get_manager()
         progress = manager.counter(
@@ -178,9 +174,7 @@ def main(args):
                     continue
             try:
                 logging.debug("Opening list archives in %s", subdirectory)
-                archives = mailman.open_list_archives(
-                    subdirectory, args.archives
-                )
+                archives = mailman.open_list_archives(subdirectory, args.archives)
 
                 logging.debug("Creating archive")
                 archive = bigbang.archive.Archive(archives)
@@ -224,15 +218,10 @@ def main(args):
                 logging.debug("Writing tenure frame to file")
                 with open(out_path, "w") as f:
                     tenure_frame.to_csv(f, encoding="utf-8")
-                    logging.info(
-                        "Completed tenure frame export for %s" % subdirectory
-                    )
+                    logging.info("Completed tenure frame export for %s" % subdirectory)
             except Exception:
                 logging.warning(
-                    (
-                        "Failed to produce tenure frame export for %s."
-                        % subdirectory
-                    ),
+                    ("Failed to produce tenure frame export for %s." % subdirectory),
                     exc_info=True,
                 )
             progress.update()

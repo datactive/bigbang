@@ -52,9 +52,7 @@ def get_index_of_msgs_with_datetime(
         and not pd.isna(x)
         else False
     )
-    boolmask = np.array(
-        [cond(dt) for dt in df.loc[:, "date"].values], dtype="bool"
-    )
+    boolmask = np.array([cond(dt) for dt in df.loc[:, "date"].values], dtype="bool")
     if return_boolmask:
         return boolmask
     else:
@@ -75,11 +73,7 @@ def clean_addresses(df: pd.DataFrame) -> pd.DataFrame:
     # 3 all characters in lower case
     # 4 remove apostrophes and commas as they are not allowed in an atom- or obs-phrase
     df.loc[index, "from"] = [
-        re.sub(" +", " ", adrs)
-        .strip()
-        .lower()
-        .replace('"', "")
-        .replace(",", "")
+        re.sub(" +", " ", adrs).strip().lower().replace('"', "").replace(",", "")
         for adrs in df.loc[index, "from"].values
     ]
     index = np.array(
@@ -94,11 +88,7 @@ def clean_addresses(df: pd.DataFrame) -> pd.DataFrame:
     # 3 all characters in lower case
     # 4 remove apostrophes and commas as they are not allowed in an atom- or obs-phrase
     df.loc[index, "comments-to"] = [
-        re.sub(" +", " ", adrs)
-        .strip()
-        .lower()
-        .replace('"', "")
-        .replace(",", "")
+        re.sub(" +", " ", adrs).strip().lower().replace('"', "").replace(",", "")
         for adrs in df.loc[index, "comments-to"].values
     ]
     return df

@@ -31,9 +31,7 @@ def create_color_palette(
     """
     if domains_in_focus:
         if return_dict is False:
-            domains_in_focus = [
-                dof for dof in domains_in_focus if dof in ylabels
-            ]
+            domains_in_focus = [dof for dof in domains_in_focus if dof in ylabels]
         color_dif = colormap(np.linspace(0, 1, len(domains_in_focus)))
         if include_dof:
             if return_dict:
@@ -58,9 +56,7 @@ def create_color_palette(
                         )
         else:
             if return_dict:
-                colors = {
-                    ylab: col for ylab, col in zip(domains_in_focus, color_dif)
-                }
+                colors = {ylab: col for ylab, col in zip(domains_in_focus, color_dif)}
             else:
                 colors = color_dif
     else:

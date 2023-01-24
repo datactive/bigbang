@@ -185,10 +185,7 @@ class Archive(object):
         def match_affiliation(row):
             ## TODO: Option to turn off the max or min constraints in case of limited data.
             matches = rel_email_affil[
-                (
-                    rel_email_affil["email"]
-                    == analysis_utils.extract_email(row["From"])
-                )
+                (rel_email_affil["email"] == analysis_utils.extract_email(row["From"]))
                 & (
                     rel_email_affil["min_date"].dt.tz_localize("utc")
                     <= pd.to_datetime(row["Date"])
@@ -198,11 +195,7 @@ class Archive(object):
                     >= pd.to_datetime(row["Date"])
                 )
             ]
-            return (
-                matches["affiliation"].values[0]
-                if matches.shape[0] > 0
-                else None
-            )
+            return matches["affiliation"].values[0] if matches.shape[0] > 0 else None
 
         self.data["affiliation"] = self.data.apply(match_affiliation, axis=1)
 
@@ -234,9 +227,7 @@ class Archive(object):
                 to_replace.append(n)
                 value.append(e)
 
-        data = self.data.replace(
-            to_replace=to_replace, value=value, inplace=inplace
-        )
+        data = self.data.replace(to_replace=to_replace, value=value, inplace=inplace)
 
         # clear and replace activity with resolved activity
         self.activity = None
@@ -285,9 +276,7 @@ class Archive(object):
         mdf2 = mdf.reindex(columns=["From", "Date"])
         mdf2["Date"] = mdf["Date"].apply(lambda x: x.toordinal())
 
-        activity = (
-            mdf2.groupby(["From", "Date"]).size().unstack("From").fillna(0)
-        )
+        activity = mdf2.groupby(["From", "Date"]).size().unstack("From").fillna(0)
         new_date_range = np.arange(mdf2["Date"].min(), mdf2["Date"].max())
         # activity.set_index('Date')
         activity = activity.reindex(new_date_range, fill_value=0)
@@ -427,24 +416,18 @@ def find_footer(messages, number=1):
 
     # reduce candidates that are strictly longer and less frequent
     # than most promising footer candidates
-    for n, foot1 in sorted(
-        [(v, k) for k, v in list(counts.items())], reverse=True
-    ):
+    for n, foot1 in sorted([(v, k) for k, v in list(counts.items())], reverse=True):
         for foot2, m in list(counts.items()):
             if n > m and foot1 in foot2 and len(foot1) > 0:
                 counts[foot1] = counts[foot1] + counts[foot2]
                 del counts[foot2]
 
-    candidates = sorted(
-        [(v, k) for k, v in list(counts.items())], reverse=True
-    )
+    candidates = sorted([(v, k) for k, v in list(counts.items())], reverse=True)
 
     return candidates[0:number]
 
 
-def load_data(
-    name: str, archive_dir: str = CONFIG.mail_path, mbox: bool = False
-):
+def load_data(name: str, archive_dir: str = CONFIG.mail_path, mbox: bool = False):
     """
     Load the data associated with an archive name, given as a string.
 
@@ -567,9 +550,7 @@ def open_list_archives(
 
     if mbox and (os.path.isfile(os.path.join(archive_dir, archive_name))):
         # treat string as the path to a file that is an mbox
-        box = mailbox.mbox(
-            os.path.join(archive_dir, archive_name), create=False
-        )
+        box = mailbox.mbox(os.path.join(archive_dir, archive_name), create=False)
         messages = list(box.values())
 
     else:

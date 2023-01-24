@@ -64,21 +64,13 @@ class GitRepo(object):
                     missing.append(attr)
 
             if len(missing) > 0:
-                print(
-                    (
-                        "There were "
-                        + str(len(missing))
-                        + " missing attributes: "
-                    )
-                )
+                print(("There were " + str(len(missing)) + " missing attributes: "))
                 print(missing)
 
         if "Committer Name" in attribs and "Committer Email" in attribs:
             self._commit_data["Person-ID"] = None
             self._commit_data = self._commit_data.apply(
-                lambda row: entity_resolve(
-                    row, "Committer Email", "Committer Name"
-                ),
+                lambda row: entity_resolve(row, "Committer Email", "Committer Name"),
                 axis=1,
             )
 
@@ -117,17 +109,11 @@ class GitRepo(object):
                 if "Commit Message" in raw:
                     raw["Commit Message"].append(commit.message)
 
-                if (
-                    "Time" in raw or True
-                ):  # TODO: For now, we always ask for the time
-                    raw["Time"].append(
-                        pd.to_datetime(commit.committed_date, unit="s")
-                    )
+                if "Time" in raw or True:  # TODO: For now, we always ask for the time
+                    raw["Time"].append(pd.to_datetime(commit.committed_date, unit="s"))
 
                 if "Parent Commit" in raw:
-                    raw["Parent Commit"].append(
-                        [par.hexsha for par in commit.parents]
-                    )
+                    raw["Parent Commit"].append([par.hexsha for par in commit.parents])
 
                 if "HEXSHA" in raw:
                     raw["HEXSHA"].append(commit.hexsha)

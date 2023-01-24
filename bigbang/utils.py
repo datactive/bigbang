@@ -27,18 +27,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def get_paths_to_files_in_directory(
-    directory: str, file_dsc: str = "*"
-) -> List[str]:
+def get_paths_to_files_in_directory(directory: str, file_dsc: str = "*") -> List[str]:
     """Get paths of all files matching file_dsc in directory"""
     template = f"{directory}{file_dsc}"
     file_paths = glob.glob(template)
     return file_paths
 
 
-def get_paths_to_dirs_in_directory(
-    directory: str, folder_dsc: str = "*"
-) -> List[str]:
+def get_paths_to_dirs_in_directory(directory: str, folder_dsc: str = "*") -> List[str]:
     """Get paths of all directories matching file_dsc in directory"""
     template = f"{directory}{folder_dsc}"
     dir_paths = glob.glob(template)

@@ -36,9 +36,7 @@ parser.add_argument(
     help="Path to a specified directory for storing downloaded mail archives",
 )
 
-parser.add_argument(
-    "--notes", type=str, help="Notes to record regarding provenance"
-)
+parser.add_argument("--notes", type=str, help="Notes to record regarding provenance")
 
 args = parser.parse_args()
 
@@ -52,17 +50,13 @@ def main(args):
 
     if args.u:
         if args.archives:
-            mailman.collect_from_url(
-                args.u, archive_dir=args.archives, notes=notes
-            )
+            mailman.collect_from_url(args.u, archive_dir=args.archives, notes=notes)
         else:
             mailman.collect_from_url(args.u, notes=notes)
         sys.exit()
     elif args.f:
         if args.archives:
-            mailman.collect_from_file(
-                args.f, archive_dir=args.archives, notes=notes
-            )
+            mailman.collect_from_file(args.f, archive_dir=args.archives, notes=notes)
         else:
             mailman.collect_from_file(args.f, notes=notes)
 

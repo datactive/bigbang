@@ -173,9 +173,7 @@ class AbstractMessageParser(ABC):
                 if "lists.w3.org" in url:
                     attachments = None
                 elif "listserv." in url:
-                    attachments = self._get_attachments_from_html(
-                        list_name, url, soup
-                    )
+                    attachments = self._get_attachments_from_html(list_name, url, soup)
             else:
                 body = None
                 attachments = None
@@ -488,9 +486,7 @@ class AbstractMailListDomain(ABC):
     to_mbox()
     """
 
-    def __init__(
-        self, name: str, url: str, lists: List[Union[AbstractMailList, str]]
-    ):
+    def __init__(self, name: str, url: str, lists: List[Union[AbstractMailList, str]]):
         self.name = name
         self.url = url
         self.lists = lists

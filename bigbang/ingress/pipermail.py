@@ -103,9 +103,7 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
         fields: str = "total",
     ) -> mboxMessage:
         """ """
-        header_start_line_nr = self.find_start_of_header(
-            fcontent, header_end_line_nr
-        )
+        header_start_line_nr = self.find_start_of_header(fcontent, header_end_line_nr)
 
         if header_start_line_nr is None:
             logger.info(
@@ -128,9 +126,7 @@ class PipermailMessageParser(AbstractMessageParser, email.parser.Parser):
             else:
                 header = self.empty_header
             if fields in ["body", "total"]:
-                body = self._get_body_from_pipermail_file(
-                    fcontent, header_end_line_nr
-                )
+                body = self._get_body_from_pipermail_file(fcontent, header_end_line_nr)
             else:
                 body = None
             archived_at = f"{list_name}_line_nr_{header_start_line_nr}"
@@ -298,9 +294,7 @@ class PipermailMailList(AbstractMailList):
         for period_url in tqdm(period_urls, ascii=True, desc=name):
             file = requests.get(
                 period_url,
-                verify=os.path.join(
-                    CONFIG.config_path, "icann_certificate.pem"
-                ),
+                verify=os.path.join(CONFIG.config_path, "icann_certificate.pem"),
             )
 
             try:
@@ -339,9 +333,7 @@ class PipermailMailList(AbstractMailList):
         return cls(name, filepath, msgs)
 
     @classmethod
-    def get_period_urls(
-        cls, url: str, select: Optional[dict] = None
-    ) -> List[str]:
+    def get_period_urls(cls, url: str, select: Optional[dict] = None) -> List[str]:
         """
         All messages within a certain period (e.g. January 2021).
 
@@ -355,9 +347,7 @@ class PipermailMailList(AbstractMailList):
         # create dictionary where keys are a period and values the url
         periods, urls_of_periods = cls.get_all_periods_and_their_urls(url)
 
-        if any(
-            period in list(select.keys()) for period in ["years", "months"]
-        ):
+        if any(period in list(select.keys()) for period in ["years", "months"]):
             for key, value in select.items():
                 if key == "years":
                     cond = lambda x: int(re.findall(r"\d{4}", x)[0])

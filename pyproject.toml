@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "bigbang-py"
 version = "0.4.4"
@@ -13,9 +17,31 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "numpy",
+    "networkx",
+    "requests",
+    "pandas",
+    "beautifulsoup4",
+    "chardet",
+    "html2text",
+    "python-dateutil",
+    "pytz",
+    "tqdm",
+    "pyyaml",
+    "certifi",
+    "levenshtein",
+    "ietfdata",
+    "python-docx",
+    "GitPython",
+    "nbformat",
+    "nbconvert",
+    "validator-collection",
+]
 
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+[project.optional-dependencies]
+test = ['pytest', 'coverage', 'testfixtures']
+dev = ['bigbang-py[test]', 'black', 'isort', 'pre-commit']
 
 [project.urls]
 "Homepage" = "https://github.com/datactive/bigbang"
@@ -24,21 +50,9 @@ dependencies = {file = ["requirements.txt"]}
 [tool.isort]
 profile = "black"
 multi_line_output = 3
+line_length = 88
+include_trailing_comma = "True"
+known_third_party = "celery,django,environ,pyquery,pytz,redis,requests,rest_framework"
 
-[tool.black]
-line-length = 79
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.eggs
-    \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+[tool.ruff]
+ignore = ['F401', 'E501', 'E731', 'F403', 'F821', 'F541', 'E402', 'F405']

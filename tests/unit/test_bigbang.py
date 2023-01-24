@@ -36,9 +36,7 @@ class TestArchive(unittest.TestCase):
         name = "bigbang-dev-test.txt"
 
         # archive loaded from mbox
-        arx = archive.Archive(
-            name, archive_dir=CONFIG.test_data_path, mbox=True
-        )
+        arx = archive.Archive(name, archive_dir=CONFIG.test_data_path, mbox=True)
 
         arx.save("test.csv")
 
@@ -75,9 +73,7 @@ class TestArchive(unittest.TestCase):
     def test_clean_message(self):
         name = "2001-November.txt"
 
-        arx = archive.Archive(
-            name, archive_dir=CONFIG.test_data_path, mbox=True
-        )
+        arx = archive.Archive(name, archive_dir=CONFIG.test_data_path, mbox=True)
 
         body = arx.data["Body"]["<E165uMn-0002IJ-00@spock.physics.mcgill.ca>"]
 
@@ -92,17 +88,14 @@ class TestArchive(unittest.TestCase):
         )
 
         self.assertTrue(
-            "Is it a problem of lapack3.0 of of"
-            not in utils.clean_message(body),
+            "Is it a problem of lapack3.0 of of" not in utils.clean_message(body),
             msg="Quoted text is in cleaned message",
         )
 
     def test_email_entity_resolution(self):
         name = "2001-November.txt"
 
-        arx = archive.Archive(
-            name, archive_dir=CONFIG.test_data_path, mbox=True
-        )
+        arx = archive.Archive(name, archive_dir=CONFIG.test_data_path, mbox=True)
 
         e = process.resolve_sender_entities(arx.get_activity(resolved=False))
 
@@ -130,9 +123,7 @@ class TestMailParsing(unittest.TestCase):
         self.assertTrue(clean_name == "John Doe", msg="name not fully cleaned")
 
         empty_name = parse.clean_name(" ")
-        self.assertTrue(
-            empty_name is None, msg="empty name not cleaned to None"
-        )
+        self.assertTrue(empty_name is None, msg="empty name not cleaned to None")
 
         tokenized_name = parse.tokenize_name(clean_name)
         self.assertTrue(
@@ -141,9 +132,7 @@ class TestMailParsing(unittest.TestCase):
         )
 
         parse.tokenize_name(str("   "))
-        self.assertTrue(
-            empty_name is None, msg="empty name not tokenized to None"
-        )
+        self.assertTrue(empty_name is None, msg="empty name not tokenized to None")
 
 
 class TestMailProcessing(unittest.TestCase):

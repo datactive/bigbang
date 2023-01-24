@@ -38,8 +38,7 @@ def extract_data(doc, dt):
 
     # use submissions for dates
     sub_data = [
-        {"date": dt.submission(sub_url).document_date}
-        for sub_url in doc.submissions
+        {"date": dt.submission(sub_url).document_date} for sub_url in doc.submissions
     ]
 
     for sd in sub_data:
@@ -65,16 +64,12 @@ def collect_drafts(wg):
     # This returns a generator
     drafts = dt.documents(
         group=group,
-        doctype=dt.document_type(
-            DocumentTypeURI("/api/v1/name/doctypename/draft/")
-        ),
+        doctype=dt.document_type(DocumentTypeURI("/api/v1/name/doctypename/draft/")),
     )
 
     fn = os.path.join(wg_path, "draft_metadata.csv")
 
-    collection = [
-        sub_data for draft in drafts for sub_data in extract_data(draft, dt)
-    ]
+    collection = [sub_data for draft in drafts for sub_data in extract_data(draft, dt)]
 
     draft_df = pd.DataFrame(collection)
     draft_df.to_csv(fn)

@@ -85,9 +85,7 @@ def set_website_preference_for_header(
     return session
 
 
-def get_auth_session(
-    url_login: str, username: str, password: str
-) -> requests.Session:
+def get_auth_session(url_login: str, username: str, password: str) -> requests.Session:
     """
     Create AuthSession.
 

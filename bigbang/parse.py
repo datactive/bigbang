@@ -122,9 +122,7 @@ def guess_first_name(cleaned_from):
     if heuristic doesn't recognize a separable first name.
     """
 
-    cleaned_from = (
-        cleaned_from.strip()
-    )  # remove leading and trailing whitespace
+    cleaned_from = cleaned_from.strip()  # remove leading and trailing whitespace
 
     # accomodate Last, First name format
     if "," in cleaned_from:
@@ -133,9 +131,7 @@ def guess_first_name(cleaned_from):
             return None
         first_part = parts[1].strip()
 
-        if (
-            " " in first_part
-        ):  # Last, First Middle? Or something entirely different
+        if " " in first_part:  # Last, First Middle? Or something entirely different
             return None
         else:
             return first_part
@@ -184,9 +180,7 @@ def get_text(msg):
             charset = part.get_content_charset()
             if part.get_content_type() == "text/plain":
                 try:
-                    text = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
+                    text = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError:
                     logging.debug(
                         "Unknown encoding %s in message %s. Will use UTF-8 instead.",
@@ -194,14 +188,10 @@ def get_text(msg):
                         msg["Message-ID"],
                     )
                     charset = "utf-8"
-                    text = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
+                    text = str(part.get_payload(decode=True), str(charset), "ignore")
             if part.get_content_type() == "text/html":
                 try:
-                    html = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
+                    html = str(part.get_payload(decode=True), str(charset), "ignore")
                 except LookupError:
                     logging.debug(
                         "Unknown encoding %s in message %s. Will use UTF-8 instead.",
@@ -209,9 +199,7 @@ def get_text(msg):
                         msg["Message-ID"],
                     )
                     charset = "utf-8"
-                    html = str(
-                        part.get_payload(decode=True), str(charset), "ignore"
-                    )
+                    html = str(part.get_payload(decode=True), str(charset), "ignore")
 
         if text is not None:
             return text.strip()
