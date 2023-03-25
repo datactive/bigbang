@@ -87,17 +87,6 @@ If you are interested in participating in BigBang development or would like supp
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers [pledge to make participation in our project and our community a harassment-free experience for everyone](CODE_OF_CONDUCT.md).
 
-## Troubleshooting
-
-If the installation described above does not work, you can try to run the installation with Pip:
-
-```bash
-git clone https://github.com/datactive/bigbang.git
-# optionally create a new virtualenv here
-pip3 install -r requirements.txt
-python3 setup.py develop --user
-```
-
 ## Publications
 
 These academic publications use BigBang as part of their methods:
