@@ -37,39 +37,29 @@ def collect_mail(url, file, archives, notes):
 # collect git
 
 
-@main.group()
-@click.option("--update", default=False, show_default=True, help="Update the git repo")
-@click.pass_context
-def collect_git(ctx, update):
-    """Loads data from a git repo"""
-    ctx.ensure_object(dict)
-    ctx.obj["update"] = update
-
-
-@collect_git.command()
+@main.command()
 @click.option("--url", "url", required=True, help="URL of the git repo")
-@click.pass_context
-def from_url(ctx, url):
+@click.option("--update", default=False, show_default=True, help="Update the git repo")
+def collect_git_from_url(url, update):
     """Load git data from a repo URL"""
-    repo_loader.get_repo(url, "remote", ctx.get("update"))
+    repo_loader.get_repo(url, "remote", update)
 
 
-@collect_git.command()
+@main.command()
 @click.option(
     "--path", "path", required=True, help="Path of the file full of git repo URLs"
 )
-@click.pass_context
-def from_file_of_urls(ctx, path):
+@click.option("--update", default=False, show_default=True, help="Update the git repo")
+def collect_git_from_file_of_urls(path, update):
     """Load git data from repo URLs listed in a file"""
     with open(path, "r") as f:
         for line in f.readlines():
             url = line.strip()
-            repo_loader.get_repo(url, "remote", ctx.get("update"))
+            repo_loader.get_repo(url, "remote", update)
 
 
-@collect_git.command()
+@main.command()
 @click.option("--org-name", "org_name", required=True, help="GitHub organization name")
-@click.pass_context
-def from_github_org(ctx, org_name):
+def collect_git_from_github_org(org_name):
     """Load git data from repos in a GitHub organization"""
     repo_loader.get_org_repos(org_name)
