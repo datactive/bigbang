@@ -22,17 +22,7 @@ Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang
 
 ## Installation*
 
-You can use [Anaconda](https://www.anaconda.com/). This will also install
-the `conda` package management system, which you can use to complete
-installation.
-
-[Install Anaconda](https://www.anaconda.com/download/), with Python version
-3.*.
-
-If you choose not to use Anaconda, you may run into issues with versioning in
-Python. Add the Conda installation directory to your path during installation.
-
-You also need need to have Git and Pip (for Python3) installed.
+You need to have Git and Pip (for Python3) installed.
 
 Run the following commands:
 
