@@ -28,9 +28,10 @@ Run the following commands:
 
 ```bash
 
+conda create -n bigbang 
 git clone https://github.com/datactive/bigbang.git
 cd bigbang
-pip install .[dev]
+pip install ".[dev]"
 ```
 
 This video tutorial shows how to install BigBang.
@@ -85,17 +86,6 @@ Run `pre-commit install` to get automated usage of `black`, `flake8` and `isort`
 If you are interested in participating in BigBang development or would like support from the core development team, please subscribe to the [bigbang-dev mailing list](https://lists.ghserv.net/mailman/listinfo/bigbang-dev) and let us know your suggestions, questions, requests and comments. A [development chatroom](https://gitter.im/datactive/bigbang) is also available.
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers [pledge to make participation in our project and our community a harassment-free experience for everyone](CODE_OF_CONDUCT.md).
-
-## Troubleshooting
-
-If the installation described above does not work, you can try to run the installation with Pip:
-
-```bash
-git clone https://github.com/datactive/bigbang.git
-# optionally create a new virtualenv here
-pip3 install -r requirements.txt
-python3 setup.py develop --user
-```
 
 ## Publications
 
