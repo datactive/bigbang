@@ -13,11 +13,11 @@ Public Mailman Web Archive
 BigBang comes with a script for collecting files from public Mailman web archives. An example of this is the
 `scipy-dev <http://mail.python.org/pipermail/scipy-dev/>`_ mailing list page. To collect the archives of the scipy-dev mailing list, run the following command from the root directory of this repository:
 
-``python3 bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/``
+``bigbang collect-mail --url http://mail.python.org/pipermail/scipy-dev/``
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
-``python3 bin/collect_mail.py -f examples/urls.txt``
+``bigbang collect-mail --file examples/urls.txt``
 
 Once the data has been collected, BigBang has functions to support analysis.
 
@@ -54,7 +54,7 @@ There are two ways you can scrape the public mailing-list from that domain. Firs
 
 Or one can use the command line script and a file containg all mailing-list URLs one wants to scrape:
 
-``python bin/collect_mail.py -f examples/url_collections/W3C.txt``
+``bigbang collect-mail --file examples/url_collections/W3C.txt``
 
 3GPP
 =================
@@ -83,7 +83,7 @@ There are two ways you can scrape the public mailing-list from that domain. Firs
 
 Or one can use the command line script and a file containg all mailing-list URLs one wants to scrape:
 
-``python bin/collect_mail.py -f examples/url_collections/listserv.3GPP.txt``
+``bigbang collect-mail --file examples/url_collections/listserv.3GPP.txt``
 
 IEEE
 ================
@@ -109,7 +109,7 @@ There are two ways you can scrape the public mailing-list from that domain. Firs
 
 Or one can use the command line script and a file containg all mailing-list URLs one wants to scrape:
 
-``python bin/collect_mail.py -f examples/url_collections/listserv.IEEE.txt``
+``bigbang collect-mail --file examples/url_collections/listserv.IEEE.txt``
 
 
 ICANN
