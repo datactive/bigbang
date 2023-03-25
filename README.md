@@ -28,9 +28,10 @@ Run the following commands:
 
 ```bash
 
+conda create -n bigbang 
 git clone https://github.com/datactive/bigbang.git
 cd bigbang
-pip install .[dev]
+pip install ".[dev]"
 ```
 
 This video tutorial shows how to install BigBang.
