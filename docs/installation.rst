@@ -19,12 +19,11 @@ You also need need to have Git and Pip (for Python3) installed.
 Run the following commands:
 
 .. code-block:: console
-
+    
+    conda create -n bigbang 
     git clone https://github.com/datactive/bigbang.git
     cd bigbang
-    bash conda-setup.sh
-    python3 setup.py develop --user
-
+    pip install .[dev]
 
 pip
 =======
