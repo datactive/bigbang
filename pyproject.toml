@@ -37,6 +37,7 @@ dependencies = [
     "nbformat",
     "nbconvert",
     "validator-collection",
+    "markdown"
 ]
 
 [project.optional-dependencies]
@@ -56,3 +57,6 @@ known_third_party = "celery,django,environ,pyquery,pytz,redis,requests,rest_fram
 
 [tool.ruff]
 ignore = ['F401', 'E501', 'E731', 'F403', 'F821', 'F541', 'E402', 'F405']
+
+[tool.setuptools]
+py-modules = []
