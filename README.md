@@ -40,8 +40,7 @@ Run the following commands:
 
 git clone https://github.com/datactive/bigbang.git
 cd bigbang
-bash conda-setup.sh
-python3 setup.py develop --user
+pip install .[dev]
 ```
 
 This video tutorial shows how to install BigBang.
