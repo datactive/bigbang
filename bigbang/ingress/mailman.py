@@ -68,7 +68,9 @@ def collect_from_url(
         unzip_archive(url)
         try:
             data = archive.open_list_archives(url)
-        except archive.MissingDataException as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
+        except (
+            archive.MissingDataException
+        ) as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
             logging.info(e)
             return None
 
@@ -307,8 +309,7 @@ def collect_archive_from_url(
                     f.write(r.content)
             else:
                 logging.warning(
-                    "%s error code trying to retrieve %s"
-                    % (str(r.status_code, gz_url))
+                    "%s error code trying to retrieve %s" % (str(r.status_code, gz_url))
                 )
                 encountered_error = True
 
@@ -353,6 +354,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
 
 # This doesn't yet work for parsing the dates. Because of %z Bullshit
 # datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
+
 
 # x is a String, a Message, or a list of Messages
 # The payload of a Message may be a String, a Message, or a list of Messages.
