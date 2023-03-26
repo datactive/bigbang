@@ -37,7 +37,8 @@ dependencies = [
     "nbformat",
     "nbconvert",
     "validator-collection",
-    "markdown"
+    "markdown",
+    "notebook"
 ]
 
 [project.optional-dependencies]
