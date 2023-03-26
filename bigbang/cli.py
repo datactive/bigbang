@@ -1,6 +1,13 @@
+import os
+import pandas as pd
+
+from ietfdata.datatracker import *
+
 import click
 from .ingress import mailman
 from .analysis import repo_loader
+
+from .config import CONFIG
 
 
 @click.group()
@@ -63,3 +70,85 @@ def collect_git_from_file_of_urls(path, update):
 def collect_git_from_github_org(org_name):
     """Load git data from repos in a GitHub organization"""
     repo_loader.get_org_repos(org_name)
+
+
+# collect draft metadata
+
+
+def collect_draft_metadata_setup_path(wg):
+    if not os.path.exists(CONFIG.datatracker_path):
+        os.makedirs(CONFIG.datatracker_path)
+
+    wg_path = os.path.join(CONFIG.datatracker_path, wg)
+
+    if not os.path.exists(wg_path):
+        os.makedirs(wg_path)
+
+    return wg_path
+
+
+def collect_draft_metadata_extract_data(doc, dt):
+    data = {}
+    data["title"] = doc.title
+
+    ## TODO: do this in only one loop over authors
+    data["person"] = [
+        dt.person(doc_author.person) for doc_author in dt.document_authors(doc)
+    ]
+
+    data["affiliation"] = [
+        doc_author.affiliation for doc_author in dt.document_authors(doc)
+    ]
+    data["group-acronym"] = dt.group(doc.group).acronym
+    data["type"] = doc.type.uri
+
+    # use submissions for dates
+    sub_data = [
+        {"date": dt.submission(sub_url).document_date} for sub_url in doc.submissions
+    ]
+
+    for sd in sub_data:
+        sd.update(data)
+
+    return sub_data
+
+
+def collect_draft_metadata_collect_drafts(wg):
+    wg_path = collect_draft_metadata_setup_path(wg)
+
+    ## initialize datatracker
+    dt = DataTracker(cache_dir=Path("cache"))
+
+    group = dt.group_from_acronym(wg)
+
+    if group is None:
+        raise Exception(f"Group {wg} not found in datatracker")
+
+    ## Begin execution
+    print("Collecting drafts from datatracker")
+
+    # This returns a generator
+    drafts = dt.documents(
+        group=group,
+        doctype=dt.document_type(DocumentTypeURI("/api/v1/name/doctypename/draft/")),
+    )
+
+    fn = os.path.join(wg_path, "draft_metadata.csv")
+
+    collection = [
+        sub_data
+        for draft in drafts
+        for sub_data in collect_draft_metadata_extract_data(draft, dt)
+    ]
+
+    draft_df = pd.DataFrame(collection)
+    draft_df.to_csv(fn)
+
+
+@main.command()
+@click.option(
+    "--working-group", "working_group", required=True, help="IETF working group acronym"
+)
+def collect_draft_metadata(working_group):
+    """Collects files from public mailing list archives"""
+    collect_draft_metadata_collect_drafts(working_group)
