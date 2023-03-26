@@ -113,11 +113,14 @@ def collect_draft_metadata_extract_data(doc, dt):
     return sub_data
 
 
-def collect_draft_metadata_collect_drafts(wg):
+@main.command()
+@click.option("--working-group", "wg", required=True, help="IETF working group acronym")
+def collect_draft_metadata(wg):
+    """Collects files from public mailing list archives"""
     wg_path = collect_draft_metadata_setup_path(wg)
 
     ## initialize datatracker
-    dt = DataTracker(cache_dir=Path("cache"))
+    dt = DataTracker()
 
     group = dt.group_from_acronym(wg)
 
@@ -143,12 +146,3 @@ def collect_draft_metadata_collect_drafts(wg):
 
     draft_df = pd.DataFrame(collection)
     draft_df.to_csv(fn)
-
-
-@main.command()
-@click.option(
-    "--working-group", "working_group", required=True, help="IETF working group acronym"
-)
-def collect_draft_metadata(working_group):
-    """Collects files from public mailing list archives"""
-    collect_draft_metadata_collect_drafts(working_group)
