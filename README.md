@@ -24,14 +24,26 @@ Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang
 
 You need to have Git and Pip (for Python3) installed.
 
-Run the following commands:
+Clone the repository and create a virtualenv:
 
-```bash
-
-conda create -n bigbang 
+```sh
 git clone https://github.com/datactive/bigbang.git
 cd bigbang
+python3 -m venv env
+# activate the virtualenv
+. env/bin/activate
+```
+
+Inside the virtualenv, install BigBang:
+
+```sh
 pip install ".[dev]"
+```
+
+When you're done, you can deactivate the virtualenv:
+
+```sh
+deactivate
 ```
 
 This video tutorial shows how to install BigBang.
@@ -45,14 +57,14 @@ repository. To open them and begin exploring, run the following commands in the 
 
 ```bash
 source activate bigbang
-ipython notebook examples/
+jupyter notebook --notebook-dir=examples/
 ```
 
 BigBang contains scripts that make it easy to collect data from a variety of sources.
 For example, to collect data from an open mailing list archive hosted by Mailman, use:
 
 ```bash
-bigbang collect-mail --url http://mail.python.org/pipermail/scipy-dev/
+bigbang collect-mail --url https://mail.python.org/pipermail/scipy-dev/
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
