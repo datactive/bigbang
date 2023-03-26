@@ -39,9 +39,7 @@ dependencies = [
     "validator-collection",
     "markdown",
     "notebook",
-    "click",
-    "matplotlib",
-    "seaborn"
+    "click"
 ]
 
 [project.optional-dependencies]
