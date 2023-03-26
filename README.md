@@ -8,9 +8,7 @@
 
 # BigBang
 
-BigBang is a toolkit for studying communications data from collaborative
-projects. It currently supports analyzing mailing lists from Sourceforge,
-Mailman, ListServ (version 16.5 and 17), Pipermail (version 0.09), Hypermail (version 2.4.0) or [.mbox][mbox] files.
+BigBang is a toolkit for studying communications data from collaborative projects. It currently supports analyzing mailing lists from Sourceforge, Mailman, ListServ (version 16.5 and 17), Pipermail (version 0.09), Hypermail (version 2.4.0) or [.mbox][mbox] files.
 
 Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang-py.readthedocs.io/en/latest/).
 
@@ -19,6 +17,30 @@ Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang
 [![DOI](https://img.shields.io/badge/DIO-10.25080%2FMajora--7b98e3ed--01b-blue)](http://conference.scipy.org/proceedings/scipy2015/sebastian_benthall.html)
 [![codecov](https://codecov.io/gh/datactive/bigbang/branch/main/graph/badge.svg?token=Nhyl6g4ZIO)](https://codecov.io/gh/datactive/bigbang)
 [![Gitter](https://badges.gitter.im/datactive/bigbang.svg)](https://gitter.im/datactive/bigbang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+## Background
+
+Many Standards Development Organizations (SDOs) have working groups that organize themselves through mailing lists. This mailing list data is a valuable source of research insights but can be challenging to gather and analyze. BigBang is an open source toolkit for studying processes of open collaboration and deliberation via analysis of the communications records. Its tools for collecting, analyzing, and visualizing mailing list data are used by a community of information policy researchers to study participation trends and interaction in these settings. This tutorial is a hands-on introduction to the toolkit’s capabilities.
+
+### Three things BigBang Does
+
+- **Ingress**. Tools for collecting data from SDOs, especially their mailing lists.
+- **Analysis**. Tools for (pre)processing the data to produce useful insights.
+- **Usability/Visualization**. Tools for visualizing and interacting with data.
+
+### Institutional Collaboration
+
+BigBang has been developed by a growing team of researchers spread across many universities and institutions, including UC Berkeley, University of Amsterdam, and New York University. Its development has been funded by Article 19 and Germany's Prototype Fund.
+
+In addition to its scholarly use, BigBang has been building relationships with SDOs themselves. In 2021, the Internet Architecture Board hosted a workshop on Analyzing IETF Data, in which BigBang was featured as a tool for IAB to develop insights into internet governance.
+
+### BigBang as Research Software
+
+BigBing is research software -- written by scholars for our research purposes. 
+
+It is part of Scientific Python ecosystem, drawing on many other open source scientific software libraries, such as NumPy, Matplotlib, Pandas, and Jupyter Notebook.
+
+BigBang is a reflexive process. Several of the core developers are also qualitative scholars of socio-technical systems and institutions. Researchers commonly combine BigBang with participant observation in the SDOs they are studying. BigBang is governed by a steering committee of its core developers.
 
 ## Installation*
 
