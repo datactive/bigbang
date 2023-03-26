@@ -30,7 +30,7 @@ It does this using the Glasgow IPL group's ``ietfdata`` `tool <https://github.co
 
 The script takes an argument, the working group acronym
 
-``python3 bin/collect_draft_metadata.py -w httpbis``
+``bigbang collect-draft-metadata --working-group httpbis``
 
 
 W3C
