@@ -64,13 +64,13 @@ BigBang contains scripts that make it easy to collect data from a variety of sou
 For example, to collect data from an open mailing list archive hosted by Mailman, use:
 
 ```bash
-python3 bin/collect_mail.py -u https://mail.python.org/pipermail/scipy-dev/
+bigbang collect-mail --url https://mail.python.org/pipermail/scipy-dev/
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python3 bin/collect_mail.py -f examples/urls.txt
+bigbang collect-mail --file examples/urls.txt
 ```
 
 Once the data has been collected, BigBang has functions to support analysis.

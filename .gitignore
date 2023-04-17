@@ -70,3 +70,4 @@ config/authentication.yaml
 
 # OS costum attributes
 .DS_Store
+.vscode

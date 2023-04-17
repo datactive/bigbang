@@ -3,10 +3,11 @@
 After the git repositories have been cloned locally, you will be able to start analyzing them. To do this, you will need a GitRepo object, which is a convenient wrapper which does the work of extracting and generating git information and storing it internally in a pandas dataframe. You can then use this GitRepo object's methods to gain access to the large pandas dataframe.
 
 There are many ways to generate a GitRepo object for a repository, using RepoLoader:
-* Bash scripts (in the bigbang directory):
-    * single url `python bin/collect_git.py -u https://github.com/scipy/scipy.git`
-    * file of urls `python bin/collect_git.py -f examples/git_urls.txt`
-    * Github organization name `python bin/collect_git.py -g glass-bead-labs`
+
+* CLI tool:
+    * single URL `bigbang collect-git-from-url --url https://github.com/scipy/scipy.git`
+    * file of URLs `bigbang collect-git-from-file-of-urls --path examples/git_urls.txt`
+    * Github organization name `bigbang collect-git-from-github-org --org-name glass-bead-labs`
 * Single Repo:
     * remote `get_repo("https://github.com/sbenthall/bigbang.git", in_type = "remote" )`
     * local `get_repo("~/urap/bigbang/archives/sample_git_repos/bigbang",  in_type = "local" )`
@@ -22,24 +23,24 @@ As of now, repos are clones into `archives/sample_git_repos/{repo_name}`. Their 
 ### Caches
 Caches are stored at `archives/sample_git_repos/{repo_name}_backup.csv`. They are the dumped `.csv` files of a GitRepo object's `commit_data` attribute, which is a pandas dataframe of all commit information. We can initialize a GitRepo object by feeding the cache's Pandas dataframe into the GitRepo init function. However, the init function will need to do some processing before it can use the cache as its commit data. It needs to convert the `"Touched File"` attribute of the cache dataframe from unicode `"[file1, file2, file3]"` to an actual list `["file1", "file2", "file3"]`. It will also need to convert the time index of the cache from string to datetime.
 
-### Bash Scripts
+### CLI tools
 
 Run the following commands while in the bigbang directory. The repo information will go into the default repo location.
 
 ```bash
-python bin/collect_git.py -u https://github.com/scipy/scipy.git
+bigbang collect-git-from-url --url https://github.com/scipy/scipy.git
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python bin/collect_git.py -f examples/git_urls.txt
+bigbang collect-git-from-file-of-urls --path examples/git_urls.txt
 ```
 
 This command will load all of the repos of a github organization. Make sure that the name is exactly as it appears on Github.
 
 ```bash
-python bin/collect_git.py -g glass-bead-labs
+bigbang collect-git-from-github-org --org-name glass-bead-labs
 ```
 
 ### Single Repos
