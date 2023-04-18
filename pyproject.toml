@@ -38,8 +38,8 @@ dependencies = [
     "nbconvert",
     "validator-collection",
     "markdown",
-    "click",
-    "notebook"
+    "notebook",
+    "click"
 ]
 
 [project.optional-dependencies]

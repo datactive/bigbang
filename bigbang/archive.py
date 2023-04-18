@@ -332,7 +332,6 @@ class Archive(object):
         c = 0
 
         for i in df.iterrows():
-
             if verbose:
                 c += 1
                 if c % 1000 == 0:
