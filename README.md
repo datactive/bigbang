@@ -20,7 +20,7 @@ Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang
 
 ## Background
 
-Many Standards Development Organizations (SDOs) have working groups that organize themselves through mailing lists. This mailing list data is a valuable source of research insights but can be challenging to gather and analyze. BigBang is an open source toolkit for studying processes of open collaboration and deliberation via analysis of the communications records. Its tools for collecting, analyzing, and visualizing mailing list data are used by a community of information policy researchers to study participation trends and interaction in these settings. This tutorial is a hands-on introduction to the toolkit’s capabilities.
+Many Standards Development Organizations (SDOs) have working groups that organize themselves through mailing lists. This mailing list data is a valuable source of research insights but can be challenging to gather and analyze. BigBang is an open source toolkit for studying processes of open collaboration and deliberation via analysis of the communications records. Its tools for collecting, analyzing, and visualizing mailing list data are used by a community of information policy researchers to study participation trends and interaction in these settings.
 
 ### Three things BigBang Does
 
