@@ -337,7 +337,7 @@ class Archive(object):
                 if c % 1000 == 0:
                     logging.info("Processed %d of %d" % (c, total))
 
-            if i[1]["In-Reply-To"] == "None":
+            if i[1]["In-Reply-To"] == "None" or i[1]["In-Reply-To"] is None:
                 root = Node(i[0], i[1])
                 visited[i[0]] = root
                 threads.append(Thread(root))
