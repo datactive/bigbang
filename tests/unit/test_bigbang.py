@@ -60,6 +60,7 @@ class TestArchive(unittest.TestCase):
             [t.get_num_messages() for t in arx.get_threads()] == [3, 1, 2],
             msg="Thread message count in mbox archive is off",
         )
+
         self.assertTrue(
             [t.get_num_messages() for t in arx2.get_threads()] == [3, 1, 2],
             msg="Thread message count in restored archive is off",
