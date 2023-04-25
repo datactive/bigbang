@@ -45,7 +45,7 @@ class SpanVisualizer:
         maps = {}
         merged_token = ''
         for i, token in enumerate(tokens):
-            if not merged_token and token.startswith('##'):
+            if not merged_token and token.startswith("##"):
                 merged_token = merged_tokens.pop()
                 merged_token += token[2:]
                 maps[i] = len(merged_tokens)
