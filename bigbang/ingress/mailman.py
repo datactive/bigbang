@@ -7,10 +7,9 @@ import mailbox
 import os
 import re
 import subprocess
-import urllib.error
-import urllib.parse
-import urllib.request
 import warnings
+
+import requests
 
 from pprint import pprint as pp
 from typing import Union
@@ -61,7 +60,7 @@ def collect_from_url(
         has_archives = collect_archive_from_url(
             url, archive_dir=archive_dir, notes=notes
         )
-    except urllib.error.HTTPError:
+    except requests.HTTPError:
         logging.exception("HTTP Error in collecting archive: %s", url)
         return None
 
@@ -69,7 +68,9 @@ def collect_from_url(
         unzip_archive(url)
         try:
             data = archive.open_list_archives(url)
-        except archive.MissingDataException as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
+        except (
+            archive.MissingDataException
+        ) as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
             logging.info(e)
             return None
 
@@ -277,8 +278,8 @@ def collect_archive_from_url(
             instant_save=True,
         )
 
-    response = urllib.request.urlopen(url)
-    html = codecs.decode(response.read())
+    r = requests.get(url)
+    html = r.text
 
     results = []
     for exp in mailing_list_path_expressions:
@@ -301,16 +302,14 @@ def collect_archive_from_url(
         if not os.path.isfile(result_path):
             gz_url = "/".join([url.strip("/"), res])
             logging.info("retrieving %s", gz_url)
-            resp = urllib.request.urlopen(gz_url)
-            if resp.getcode() == 200:
+            r = requests.get(gz_url)
+            if r.status_code == 200:
                 logging.info("200 - writing file to %s", result_path)
-                output = open(result_path, "wb")
-                output.write(resp.read())
-                output.close()
+                with open(result_path, "wb") as f:
+                    f.write(r.content)
             else:
                 logging.warning(
-                    "%s error code trying to retrieve %s"
-                    % (str(resp.getcode(), gz_url))
+                    "%s error code trying to retrieve %s" % (str(r.status_code, gz_url))
                 )
                 encountered_error = True
 
@@ -355,6 +354,7 @@ def unzip_archive(url, archive_dir=CONFIG.mail_path):
 
 # This doesn't yet work for parsing the dates. Because of %z Bullshit
 # datetime.datetime.strptime(arch[0][0].get('Date'),"%a, %d %b %Y %H:%M:%S %z")
+
 
 # x is a String, a Message, or a list of Messages
 # The payload of a Message may be a String, a Message, or a list of Messages.

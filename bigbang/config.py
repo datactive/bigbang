@@ -18,7 +18,7 @@ class Config(object):
         if query in self.CONFIG:
             ans = self.CONFIG[query]
             if "path" in query:
-                ans = os.path.join(base_loc, ans)
+                ans = os.path.join(os.getcwd(), ans)
             return ans
         else:
             return None

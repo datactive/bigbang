@@ -41,7 +41,9 @@ dependencies = [
     "spacy",
     "transformers[torch]",
     "contractions",
-    "email_reply_parser"
+    "email_reply_parser",
+    "notebook",
+    "click"
 ]
 
 [project.optional-dependencies]
@@ -51,6 +53,9 @@ dev = ['bigbang-py[test]', 'black', 'isort', 'pre-commit']
 [project.urls]
 "Homepage" = "https://github.com/datactive/bigbang"
 "Bug Tracker" = "https://github.com/datactive/bigbang/issues"
+
+[project.scripts]
+bigbang = "bigbang:main_cli"
 
 [tool.isort]
 profile = "black"
