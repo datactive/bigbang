@@ -23,6 +23,7 @@ class SpanVisualizer:
     A class to visualize spans. Results are taken from the huggingface models.
     Using spacy for span visualization
     """
+
     def __init__(self):
         self.ents = []
         self.entity_dict = {}
@@ -43,37 +44,40 @@ class SpanVisualizer:
         merged_tokens = []
         # this dictionary is used to store the mapping between the old index with the new merged index
         maps = {}
-        merged_token = ''
+        merged_token = ""
         for i, token in enumerate(tokens):
             if not merged_token and token.startswith("##"):
                 merged_token = merged_tokens.pop()
                 merged_token += token[2:]
                 maps[i] = len(merged_tokens)
-            elif merged_token != '' and token.startswith('##'):
+            elif merged_token != "" and token.startswith("##"):
                 merged_token += token[2:]
                 maps[i] = len(merged_tokens)
 
-            if merged_token == '':
+            if merged_token == "":
                 merged_tokens.append(token)
                 maps[i] = len(merged_tokens) - 1
             else:
-                if (i == (len(tokens) - 1)) or (i != len(tokens) - 1 and (not tokens[i + 1].startswith('##'))):
+                if (i == (len(tokens) - 1)) or (
+                    i != len(tokens) - 1 and (not tokens[i + 1].startswith("##"))
+                ):
                     merged_tokens.append(merged_token)
-                    merged_token = ''
+                    merged_token = ""
             self.merged_tokens = merged_tokens
             self.maps = maps
         return merged_tokens
 
     def get_type(self, label: Dict):
-        return label['entity'].split('-')[-1]
+        return label["entity"].split("-")[-1]
 
     def get_map_index(self, label: Dict, maps: Dict):
         # get the mapped index from the merged tokens
-        return maps[label['index'] - 1]
+        return maps[label["index"] - 1]
 
     def is_same(self, label: Dict, p_label: Dict, maps: Dict):
         return (self.get_type(label) == self.get_type(p_label)) and (
-                    self.get_map_index(label, maps) - self.get_map_index(p_label, maps) <= 1)
+            self.get_map_index(label, maps) - self.get_map_index(p_label, maps) <= 1
+        )
 
     def merge_labels(self, labels: List, maps: Dict):
         # we merge the tokens that are consecutive with the same type as one entity mention
@@ -100,7 +104,7 @@ class SpanVisualizer:
     def find_all_cap_ents(self, body: str, merged_tokens: list, doc: Doc):
         # currently only supports single token all_cap words
         # match all_cap words and find their positions
-        pattern = '[A-Z]+[A-Z]+[A-Z]*[\s]+'
+        pattern = "[A-Z]+[A-Z]+[A-Z]*[\s]+"
         all_caps = re.findall(pattern, body)
         all_caps = [s.strip() for s in all_caps]
         # find the words in the tokens
@@ -114,10 +118,10 @@ class SpanVisualizer:
         # curating identified indexes list
         rec_positions = []
         for ent in self.ents:
-            for pos in range(ent.start, ent.end+1):
+            for pos in range(ent.start, ent.end + 1):
                 rec_positions.append(pos)
         # if not, adding to the entity list
-        entity_type = 'ALLCAPS'
+        entity_type = "ALLCAPS"
         all_cap_ents = []
         for start in indexes:
             if start not in rec_positions:
@@ -133,7 +137,14 @@ class SpanVisualizer:
         doc.set_ents(self.ents)
         return doc
 
-    def get_doc_for_visualization(self, tokens: List, labels: list, body: str, doc: Doc, find_all_caps: bool=True):
+    def get_doc_for_visualization(
+        self,
+        tokens: List,
+        labels: list,
+        body: str,
+        doc: Doc,
+        find_all_caps: bool = True,
+    ):
         if not self.merged_tokens or self.maps:
             _ = self.merge_tokens(tokens)
         if not self.merged_labels:
@@ -160,7 +171,7 @@ class SpanVisualizer:
 
 
 class EntityRecognizer:
-    def __init__(self, model_name: str="dslim/bert-base-NER"):
+    def __init__(self, model_name: str = "dslim/bert-base-NER"):
         self.entities = []
         self.model_name = model_name
 
@@ -175,7 +186,7 @@ class EntityRecognizer:
         body = EmailReplyParser.parse_reply(body)
         return body
 
-    def pre_processing(self, body: str, lowercase: bool=False):
+    def pre_processing(self, body: str, lowercase: bool = False):
         """
         A function to pre-process the email bodies. Including:
         - expand contractions
@@ -193,7 +204,7 @@ class EntityRecognizer:
         # remove links
         body = re.sub(r"http\S+", "", body)
         # remove all digits
-        body = re.sub(r'\d+', '', body)
+        body = re.sub(r"\d+", "", body)
         # remove extra spaces and newlines
         body = body.strip()
         body = body.replace("\n", " ")
@@ -216,18 +227,60 @@ class EntityRecognizer:
         entities = []
         for tag in tags:
             name_type = {}
-            name_type['entity'] = tag['entity']
-            name_type['word'] = tag['word']
+            name_type["entity"] = tag["entity"]
+            name_type["word"] = tag["word"]
             entities.append(name_type)
         self.entities = entities
         return entities
 
 
-pronouns = ['i', 'you', 'me', 'my', 'mine', 'myself', 'your', 'yours',
-              'yourself', 'we', 'us', 'our', 'ours', 'ourselves', 'yourselves',
-              'he', 'him', 'himself', 'his', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself',
-              'they', 'them', 'their', 'theirs', 'themself', 'themselves', 'this', 'that', 'something',
-              'these', 'those', 'someone', 'somebody', 'who', 'whom', 'whose', 'which', 'what']
+pronouns = [
+    "i",
+    "you",
+    "me",
+    "my",
+    "mine",
+    "myself",
+    "your",
+    "yours",
+    "yourself",
+    "we",
+    "us",
+    "our",
+    "ours",
+    "ourselves",
+    "yourselves",
+    "he",
+    "him",
+    "himself",
+    "his",
+    "she",
+    "her",
+    "hers",
+    "herself",
+    "it",
+    "its",
+    "itself",
+    "they",
+    "them",
+    "their",
+    "theirs",
+    "themself",
+    "themselves",
+    "this",
+    "that",
+    "something",
+    "these",
+    "those",
+    "someone",
+    "somebody",
+    "who",
+    "whom",
+    "whose",
+    "which",
+    "what",
+]
+
 
 def process_list_entities(mailing_list="scipy-dev"):
     mailing_list = "../../archives/scipy-dev/"
@@ -250,8 +303,8 @@ def process_list_entities(mailing_list="scipy-dev"):
     nlp = spacy.load("en_core_web_sm")
     vocab = nlp.tokenizer.vocab
     save_file_path = "../../archives/"
-    save_file_name = mailing_list.split("/")[-2] + '-entities.csv'
-    columns_names = ['email_id', 'entity', 'type']
+    save_file_name = mailing_list.split("/")[-2] + "-entities.csv"
+    columns_names = ["email_id", "entity", "type"]
     df = pd.DataFrame(columns=columns_names)
 
     email_entity_types = defaultdict(list)
@@ -259,8 +312,10 @@ def process_list_entities(mailing_list="scipy-dev"):
     # print('Process emails with id: ', indexes)
     for index in indexes:
         if index % 200 == 0:
-            print("{} emails processed, {} emails left.".format(index, (num_data - index)))
-        body = list(archive_data['Body'].iloc[[index]])[0]
+            print(
+                "{} emails processed, {} emails left.".format(index, (num_data - index))
+            )
+        body = list(archive_data["Body"].iloc[[index]])[0]
         body = recognizer.pre_processing(body, lowercase=lowercase)
 
         visualizer = SpanVisualizer()
@@ -270,7 +325,9 @@ def process_list_entities(mailing_list="scipy-dev"):
         # merge tokens and spans in visualizer
         merged_tokens = visualizer.merge_tokens(tokens)
         doc = Doc(vocab=vocab, words=merged_tokens)
-        doc = visualizer.get_doc_for_visualization(tokens, labels, body, doc, find_all_caps)
+        doc = visualizer.get_doc_for_visualization(
+            tokens, labels, body, doc, find_all_caps
+        )
         visualizer.get_list_per_type()
         entity_type = visualizer.entity_type
         for k, v in entity_type.items():
