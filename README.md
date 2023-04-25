@@ -8,9 +8,7 @@
 
 # BigBang
 
-BigBang is a toolkit for studying communications data from collaborative
-projects. It currently supports analyzing mailing lists from Sourceforge,
-Mailman, ListServ (version 16.5 and 17), Pipermail (version 0.09), Hypermail (version 2.4.0) or [.mbox][mbox] files.
+BigBang is a toolkit for studying communications data from collaborative projects. It currently supports analyzing mailing lists from Sourceforge, Mailman, ListServ (version 16.5 and 17), Pipermail (version 0.09), Hypermail (version 2.4.0) or [.mbox][mbox] files.
 
 Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang-py.readthedocs.io/en/latest/).
 
@@ -20,18 +18,54 @@ Complete documentation for BigBang can be found on [ReadTheDocs](https://bigbang
 [![codecov](https://codecov.io/gh/datactive/bigbang/branch/main/graph/badge.svg?token=Nhyl6g4ZIO)](https://codecov.io/gh/datactive/bigbang)
 [![Gitter](https://badges.gitter.im/datactive/bigbang.svg)](https://gitter.im/datactive/bigbang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+## Background
+
+Many Standards Development Organizations (SDOs) have working groups that organize themselves through mailing lists. This mailing list data is a valuable source of research insights but can be challenging to gather and analyze. BigBang is an open source toolkit for studying processes of open collaboration and deliberation via analysis of the communications records. Its tools for collecting, analyzing, and visualizing mailing list data are used by a community of information policy researchers to study participation trends and interaction in these settings.
+
+### Three things BigBang Does
+
+- **Ingress**. Tools for collecting data from SDOs, especially their mailing lists.
+- **Analysis**. Tools for (pre)processing the data to produce useful insights.
+- **Usability/Visualization**. Tools for visualizing and interacting with data.
+
+### Institutional Collaboration
+
+BigBang has been developed by a growing team of researchers spread across many universities and institutions, including UC Berkeley, University of Amsterdam, and New York University. Its development has been funded by Article 19 and Germany's Prototype Fund.
+
+In addition to its scholarly use, BigBang has been building relationships with SDOs themselves. In 2021, the Internet Architecture Board hosted a workshop on Analyzing IETF Data, in which BigBang was featured as a tool for IAB to develop insights into internet governance.
+
+### BigBang as Research Software
+
+BigBing is research software -- written by scholars for our research purposes. 
+
+It is part of Scientific Python ecosystem, drawing on many other open source scientific software libraries, such as NumPy, Matplotlib, Pandas, and Jupyter Notebook.
+
+BigBang is a reflexive process. Several of the core developers are also qualitative scholars of socio-technical systems and institutions. Researchers commonly combine BigBang with participant observation in the SDOs they are studying. BigBang is governed by a steering committee of its core developers.
+
 ## Installation*
 
 You need to have Git and Pip (for Python3) installed.
 
-Run the following commands:
+Clone the repository and create a virtualenv:
 
-```bash
-
-conda create -n bigbang 
+```sh
 git clone https://github.com/datactive/bigbang.git
 cd bigbang
+python3 -m venv env
+# activate the virtualenv
+. env/bin/activate
+```
+
+Inside the virtualenv, install BigBang:
+
+```sh
 pip install ".[dev]"
+```
+
+When you're done, you can deactivate the virtualenv:
+
+```sh
+deactivate
 ```
 
 This video tutorial shows how to install BigBang.
@@ -45,20 +79,20 @@ repository. To open them and begin exploring, run the following commands in the 
 
 ```bash
 source activate bigbang
-ipython notebook examples/
+jupyter notebook --notebook-dir=examples/
 ```
 
 BigBang contains scripts that make it easy to collect data from a variety of sources.
 For example, to collect data from an open mailing list archive hosted by Mailman, use:
 
 ```bash
-python3 bin/collect_mail.py -u http://mail.python.org/pipermail/scipy-dev/
+bigbang collect-mail --url https://mail.python.org/pipermail/scipy-dev/
 ```
 
 You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
 
 ```bash
-python3 bin/collect_mail.py -f examples/urls.txt
+bigbang collect-mail --file examples/urls.txt
 ```
 
 Once the data has been collected, BigBang has functions to support analysis.
