@@ -37,7 +37,11 @@ dependencies = [
     "nbformat",
     "nbconvert",
     "validator-collection",
-    "markdown"
+    "markdown",
+    "spacy",
+    "transformers[torch]",
+    "contractions",
+    "email_reply_parser"
 ]
 
 [project.optional-dependencies]

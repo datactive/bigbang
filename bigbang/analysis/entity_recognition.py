@@ -280,5 +280,5 @@ def process_list_entities(mailing_list="scipy-dev"):
                 if v_i.lower() not in pronouns:
                     new_row = {"email_id": index, "entity": v_i, "type": k}
                     df = df.append(new_row, ignore_index=True)
-    df.to_csv(save_file_name)
+    df.to_csv(save_file_path + save_file_name)
     print("Extracted entities saved!")
