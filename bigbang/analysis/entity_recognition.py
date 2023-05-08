@@ -302,7 +302,6 @@ def process_list_entities(mailing_list="scipy-dev"):
 
     nlp = spacy.load("en_core_web_sm")
     vocab = nlp.tokenizer.vocab
-    save_file_path = "../../archives/"
     save_file_name = mailing_list.split("/")[-2] + "-entities.csv"
     columns_names = ["email_id", "entity", "type"]
     df = pd.DataFrame(columns=columns_names)
