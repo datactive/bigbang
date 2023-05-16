@@ -38,6 +38,10 @@ dependencies = [
     "nbconvert",
     "validator-collection",
     "markdown",
+    "spacy",
+    "transformers[torch]",
+    "contractions",
+    "email_reply_parser",
     "notebook",
     "click"
 ]
