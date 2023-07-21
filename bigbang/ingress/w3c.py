@@ -241,7 +241,7 @@ class W3CMailList(AbstractMailList):
 
         def get_message_urls_from_period_url(name: str, url: str) -> List[str]:
             soup = get_website_content(url)
-            a_tags = soup.select("div.messages-list a")
+            a_tags = soup.select("main.messages-list a")
             if a_tags:
                 a_tags = [
                     urljoin(url, a_tag.get("href"))
@@ -341,7 +341,7 @@ class W3CMailList(AbstractMailList):
         if soup == "RequestException":
             return []
         else:
-            a_tags = soup.select("div.messages-list a")
+            a_tags = soup.select("main.messages-list a")
             if a_tags:
                 a_tags = [
                     urljoin(url, a_tag.get("href"))
