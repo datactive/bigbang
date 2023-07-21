@@ -43,7 +43,7 @@ There are two ways you can scrape the public mailing-list from that domain. Firs
 
 .. code-block:: python
 
-    from bigbang.ingress import ListservMailList
+    from bigbang.ingress import W3CMailList
 
     mlist = W3CMailList.from_url(
         name="public-testtwf",
