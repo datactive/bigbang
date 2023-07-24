@@ -103,10 +103,10 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         soup : HTML code from which the Email header can be obtained.
         """
         header = {
-            "message-ID": "#message-id",
-            "Date": "#date",
-            "To": "#to",
-            "Cc": "#cc",
+            "message-ID": ".message-id",
+            "Date": ".date",
+            "To": ".to",
+            "Cc": ".cc",
         }
         for key, value in header.items():
             try:
@@ -116,9 +116,9 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
                 continue
         header["Subject"] = text_for_selector(soup, "h1")
 
-        from_text = parse_dfn_header(text_for_selector(soup, "#from"))
+        from_text = parse_dfn_header(text_for_selector(soup, ".from"))
         from_name = from_text.split("<")[0].strip()
-        from_address = text_for_selector(soup, "#from a")
+        from_address = text_for_selector(soup, ".from a")
         header["From"] = email.utils.formataddr(
             (from_name, email.header.Header(from_address).encode())
         )
@@ -144,7 +144,7 @@ class W3CMessageParser(AbstractMessageParser, email.parser.Parser):
         """
         # TODO re-write using email.parser.Parser
         try:
-            return text_for_selector(soup, "#body")
+            return text_for_selector(soup, ".body")
         except Exception:
             logger.exception(f"The message body of {url} could not be loaded.")
             return None
