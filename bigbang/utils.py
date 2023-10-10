@@ -85,7 +85,6 @@ def get_common_head(str1, str2, delimiter=None):
         else:
             # this is ugly control flow clean it
             if delimiter is not None:
-
                 dstr1 = str1.split(delimiter)
                 dstr2 = str2.split(delimiter)
 
