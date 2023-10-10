@@ -3,34 +3,40 @@ Mailinglists
 
 Below we describe, how the public mailing lists of each of the Internet standard developing organisations can be scraped from the web. Some mailng lists reach back to 1998 and are multiple GBs in size. Therefore, it can take a considerable amount of time to scrape an entire mailing list. This process can't be sped up, since one would commit a DDoS attack otherwise. So be prepared to leave your machine running over (multiple) night(s).
 
+
 IETF
 ================
 
-To scrabed public mailing lists of the Internet Engineering Task Force (IETF), there are two options outlined below.
+There are severa many ways to access the public mailing list data of the Internet Engineering Task Force (IETF).
 
-Public Mailman Web Archive
---------------------------
-BigBang comes with a script for collecting files from public Mailman web archives. An example of this is the
-`scipy-dev <http://mail.python.org/pipermail/scipy-dev/>`_ mailing list page. To collect the archives of the scipy-dev mailing list, run the following command from the root directory of this repository:
+The IETF documents many access methods `here <https://www.ietf.org/how/lists/>`_.
+We discuss several oprtions.
 
-``bigbang collect-mail --url http://mail.python.org/pipermail/scipy-dev/``
+Export from Web Interface
+-----------------------
 
-You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
+The IETF allow logged in users to export up to 5000 messages at a time from their
+on-line `mail archive <https://mailarchive.ietf.org/arch/>`_.
 
-``bigbang collect-mail --file examples/urls.txt``
+These are downloaded as a compressed directory of ``.mbox`` files.
 
-Once the data has been collected, BigBang has functions to support analysis.
+Put this directoy in you `archives/` directory to make it available for analysis.
 
 
-Datatracker
------------
-BigBang can also be used to analyze data of IETF RFC drafts.
+Collect-mail from text archives
+-------------------------------
 
-It does this using the Glasgow IPL group's ``ietfdata`` `tool <https://github.com/glasgow-ipl/ietfdata>`_.
+The full email archives are also `available as text files <https://www.ietf.org/mail-archive/text/>`_` (``.mail``) 
+available through the web.
 
-The script takes an argument, the working group acronym
+BigBang comes with a script for collecting files like. For example, mail for a specific list can be collected using its archival URL.
 
-``bigbang collect-draft-metadata --working-group httpbis``
+For example, for the mailing list archive of the ``dnsop`` working group,
+run the following command from the root directory of this repository:
+
+``bigbang collect-mail --url https://www.ietf.org/mail-archive/text/dnsop/``
+
+More information is available in the CLI help interface: ``bigbang collect-mail --help``
 
 
 W3C
@@ -147,3 +153,18 @@ while an entire mailing list can be ingressed using
             "fields": "total",
         },
     )
+
+
+Public Mailman 1 Web Archive
+==============================
+
+BigBang comes with a script for collecting files from public Mailman 1 web archives. An example of this is the
+`scipy-dev <http://mail.python.org/pipermail/scipy-dev/>`_ mailing list page. To collect the archives of the scipy-dev mailing list, run the following command from the root directory of this repository:
+
+``bigbang collect-mail --url http://mail.python.org/pipermail/scipy-dev/``
+
+You can also give this command a file with several urls, one per line. One of these is provided in the `examples/` directory.
+
+``bigbang collect-mail --file examples/urls.txt``
+
+Once the data has been collected, BigBang has functions to support analysis.

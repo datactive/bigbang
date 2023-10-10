@@ -8,5 +8,6 @@ This section outlines, how various public mailing lists can be scraped from the 
   :maxdepth: 2
 
   mailinglists
+  drafts
   ancillary
   git
