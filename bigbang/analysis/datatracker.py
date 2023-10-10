@@ -35,7 +35,7 @@ def draft_authors_from_working_group(acr):
                 at = authors_text.replace("'", "\"")
                 at = at.replace("None", "null")
                 authors = json.loads(at)
-            except Exception as e:
+            except Exception:
                 authors = [{'raw_text' : authors_text}]
 
             for a in authors:
