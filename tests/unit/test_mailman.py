@@ -97,7 +97,7 @@ class TestMailman(unittest.TestCase):
             self.assertTrue(
                 len(list(_l.actual())) == 2, msg="wrong number of log entries"
             )
-            for (fromwhere, level, msg) in _l.actual():
+            for fromwhere, level, msg in _l.actual():
                 self.assertTrue(
                     level == "WARNING",
                     msg="logged something that wasn't a warning",
