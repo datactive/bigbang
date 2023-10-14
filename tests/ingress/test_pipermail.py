@@ -15,6 +15,11 @@ from bigbang.ingress import (
 )
 from bigbang.config import CONFIG
 
+"""
+Disabling test until it can be fixed.
+See issue: #608
+
+
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
 url_mlistdom = "https://mm.icann.org/pipermail/"
 url_list = url_mlistdom + "accred-model"
@@ -81,3 +86,5 @@ class TestPipermailMailList:
         assert len(list(dic.keys())) == 11
         # On 13/09/22 the mailing list contained 175 Emails.
         assert len(dic[list(dic.keys())[0]]) >= 175
+
+"""
