@@ -26,38 +26,41 @@ def draft_authors_from_working_group(acr):
     # get drafts.
     # filter by rfc status here?
     for draft in dt.documents(
-        group=g, doctype=dt.document_type_from_slug("draft")
+        group=g, doctype=dt.document_type_from_slug("rfc") #"draft"
     ):  # status argument
         # interested in all submissions, or just the most recent?
-        #
-        submissions = [dt.submission(sub_url) for sub_url in draft.submissions]
-        submissions = sorted(submissions, key=lambda s: s.submission_date, reverse=True)
+        
+        if draft.rfc:
+            submissions = [dt.submission(sub_url) for sub_url in draft.submissions]
+            submissions = sorted(submissions, key=lambda s: s.submission_date, reverse=True)
 
-        if len(submissions) > 0:
-            latest = submissions[0]
+            if len(submissions) > 0:
+                latest = submissions[0]
 
-            authors_text = latest.authors
+                authors_text = latest.authors
 
-            try:
-                at = authors_text.replace("'", '"')
-                at = at.replace("None", "null")
-                authors = json.loads(at)
-            except Exception:
-                authors = [{"raw_text": authors_text}]
+                try:
+                    at = authors_text.replace("'", '"')
+                    at = at.replace("None", "null")
+                    authors = json.loads(at)
+                except Exception as e:
+                    print(e)
+                    authors = [{"raw_text": authors_text}]
 
-            for a in authors:
-                a["submission_date"] = latest.submission_date
-                a["draft_uri"] = latest.draft.uri
-                a["title"] = latest.title
+                for a in authors:
+                    a["submission_date"] = latest.submission_date
+                    a["draft_uri"] = latest.draft.uri
+                    a["title"] = latest.title
+                    a["rfc"] = int(draft.rfc)
 
-            records.append(authors)
+                records.append(authors)
 
     records = sum(records, [])
+    records = sorted(records, key=lambda x: x['rfc'])
 
     df = pd.DataFrame.from_records(records)
 
     return df
-
 
 em_re = "/api/v1/person/email/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7})/"
 
@@ -131,5 +134,6 @@ def leadership_ranges(group_acronym):
     agged["datetime_min"].replace({ghcr_df["datetime_min"].min(): None}, inplace=True)
 
     agged["datetime_max"].replace({ghcr_df["datetime_max"].max(): None}, inplace=True)
+    agged = agged.sort_values(by="datetime_max")
 
     return ghcr_df, agged
