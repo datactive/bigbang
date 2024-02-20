@@ -4,6 +4,7 @@ Scripts for processing data from the IETF DataTracker
 
 from ietfdata.datatracker import *
 from ietfdata.datatracker_ext import *
+from datetime import date, datetime, timezone
 from dateutil.parser import *
 import json as json
 
@@ -109,10 +110,10 @@ def leadership_ranges(group_acronym):
             {
                 "datetime_max": h.time,
                 "datetime_min": h.time,
-                "email": email_from_uri(r.email.uri),
+                #"email": email_from_uri(r.email.uri),
                 "person_uri": r.person.uri,
                 "name": dt.person(r.person).name,
-                "biography": dt.person(r.person).biography,
+                #"biography": dt.person(r.person).biography,
             }
             for r in list(
                 dt.group_role_histories(
@@ -127,13 +128,15 @@ def leadership_ranges(group_acronym):
     gh_chair_records = sum(gh_chair_records, [])
     ghcr_df = pd.DataFrame.from_records(gh_chair_records)
 
-    agged = ghcr_df.groupby(["name", "person_uri", "email", "biography"]).agg(
+    agged = ghcr_df.groupby(["name", "person_uri"]).agg( # "email", "biography"
         {"datetime_min": "min", "datetime_max": "max"}
     )
 
-    agged["datetime_min"].replace({ghcr_df["datetime_min"].min(): None}, inplace=True)
+    ## Minimum time is the first record.
+    #agged["datetime_min"].replace({ghcr_df["datetime_min"].min(): None}, inplace=True)
 
-    agged["datetime_max"].replace({ghcr_df["datetime_max"].max(): None}, inplace=True)
+    ## TODO: replace with current time
+    agged["datetime_max"].replace({ghcr_df["datetime_max"].max(): datetime.now(timezone.utc)}, inplace=True)
     agged = agged.sort_values(by="datetime_max")
 
     return ghcr_df, agged
