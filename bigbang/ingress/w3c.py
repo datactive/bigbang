@@ -534,7 +534,12 @@ def text_for_selector(soup: BeautifulSoup, selector: str):
     """
     Filter out header or body field from website and return them as utf-8 string.
     """
-    results = soup.select(selector)
+    if soup is not None:
+        results = soup.select(selector)
+    else:
+        results = None
+        logger.debug("No soup provided to select on.")
+
     if results:
         result = results[0].get_text(strip=True)
     else:
