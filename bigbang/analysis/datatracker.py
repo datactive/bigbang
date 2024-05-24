@@ -12,12 +12,96 @@ import pandas as pd
 import re
 
 dt = DataTrackerExt()
+ri = RFCIndex()
 
+
+def rfc_author_data(rfc):
+    record = {}
+
+    record['title'] = rfc.title
+    record['draft'] = rfc.draft
+    record['date'] = rfc.date()
+    record['wg'] = rfc.wg
+    record['docid'] = rfc.doc_id
+
+    draft = None
+    if rfc.draft is not None:
+        draft = dt.document_from_draft(rfc.draft[:-3])
+        if draft is None:
+            draft = dt.document_from_rfc(rfc.doc_id)
+    else:
+        draft = dt.document_from_rfc(rfc.doc_id)
+    if draft is not None:
+
+        record['draft-date'] = draft.time
+        record['authors'] = []
+
+
+        for author in dt.document_authors(draft):
+            person = dt.person(author.person)
+
+            author = {
+                "id" : person.id,
+                "country" : author.country,
+                "name" : person.name,
+                "affiliation" : author.affiliation
+            }
+
+            record['authors'].append(author)
+
+        record['revision'] = draft.rev
+
+        return record
+
+    else:
+        return None
+
+def authorship_from_rfc_data(rfc_data):
+    records = []
+
+    for author in rfc_data['authors']:
+        author_record = author.copy()
+
+        author_record['draft'] = rfc_data['draft']
+        author_record['title'] = rfc_data['title']
+        author_record['date'] = rfc_data['date'].strftime('%Y-%m-%d') # format this to string!
+        author_record['wg'] = rfc_data['wg']
+        author_record['docid'] = rfc_data['docid']
+
+        records.append(author_record)
+
+    return records
+
+def rfc_authors_from_working_group(acr):
+    """
+    Get a dataframe of all authors of RFCs published
+    by the working group.
+    """
+
+    author_records = []
+
+    for rfc in ri.rfcs(wg=acr):
+        rfc_data = rfc_author_data(rfc)
+        if rfc_data is not None:
+
+            authorship = authorship_from_rfc_data(rfc_data)
+            author_records.extend(authorship)
+        else:
+            print(f"No rfc data for {rfc}")
+
+    df = pd.DataFrame.from_records(author_records)
+
+    return df
 
 def draft_authors_from_working_group(acr):
     """
     Get a dataframe of all authors of drafts published
     by the working group.
+
+    NOTE: In a change in late 2023 or early 2024, the IETD DataTracker
+    API changed, and rfc documents are no longer listed with their
+    drafts as submissions. This version of the query is now deprecated.
+
     """
 
     # identify group
@@ -30,11 +114,12 @@ def draft_authors_from_working_group(acr):
         group=g, doctype=dt.document_type_from_slug("rfc") #"draft"
     ):  # status argument
         # interested in all submissions, or just the most recent?
-        
+
         if draft.rfc:
             submissions = [dt.submission(sub_url) for sub_url in draft.submissions]
             submissions = sorted(submissions, key=lambda s: s.submission_date, reverse=True)
 
+            print(f"len(submissions) == {len(submissions)}")
             if len(submissions) > 0:
                 latest = submissions[0]
 
