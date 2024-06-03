@@ -47,6 +47,7 @@ def normalize_senders_by_domain(row):
         else:
             return parse.clean_from(row["From"])
     except Exception as e:
+        print(e)
         return parse.clean_from(row["From"])
 
 
@@ -56,7 +57,8 @@ def is_affiliation(domain):
             return lookup_stakeholder_by_domain(domain)
         else:
             return "Unaffiliated"
-    except:
+    except Exception as e:
+        print(e)
         return "Unaffiliated"
 
 
