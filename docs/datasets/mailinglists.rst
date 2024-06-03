@@ -7,10 +7,22 @@ Below we describe, how the public mailing lists of each of the Internet standard
 IETF
 ================
 
-There are severa many ways to access the public mailing list data of the Internet Engineering Task Force (IETF).
+There are several ways to access the public mailing list data of the Internet Engineering Task Force (IETF).
 
 The IETF documents many access methods `here <https://www.ietf.org/how/lists/>`_.
 We discuss several oprtions.
+
+Remotely sync
+----------------
+
+The most efficient and reliable way to export a full mailing list archive from the IETF is with the ``rsync`` tool.
+
+For example:
+
+``rsync -v -r rsync.ietf.org::mailman-archive/listname .``
+
+BigBang can then be pointed to create directory and used for analytics.
+
 
 Export from Web Interface
 -----------------------
