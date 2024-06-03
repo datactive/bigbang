@@ -20,41 +20,45 @@ the affilation/organization level.
 dd = domains.load_data()
 odf = organizations.load_data()
 
-good_categories = ["company", "academic", "sdo"] # not "generic"
+good_categories = ["company", "academic", "sdo"]  # not "generic"
+
 
 def lookup_stakeholder_by_domain(domain):
     """
     For an email domain, use the organization data provided in BigBang
     to look up the organization name associate with that email domain.
     """
-    search = odf['email domain names'].apply(lambda dn: domain in str(dn))
-    
+    search = odf["email domain names"].apply(lambda dn: domain in str(dn))
+
     orgs = odf[search]
-    
-    top_orgs = orgs[orgs['subsidiary of / alias of'].isna()]
-    
-    if top_orgs.shape[0] > 0: 
-        return top_orgs['name'].iloc[0]
+
+    top_orgs = orgs[orgs["subsidiary of / alias of"].isna()]
+
+    if top_orgs.shape[0] > 0:
+        return top_orgs["name"].iloc[0]
     else:
         return domain
 
+
 def normalize_senders_by_domain(row):
     try:
-        if dd.loc[row['domain']]['category'] in good_categories:
-            return lookup_stakeholder_by_domain(row['domain'])
+        if dd.loc[row["domain"]]["category"] in good_categories:
+            return lookup_stakeholder_by_domain(row["domain"])
         else:
-            return parse.clean_from(row['From'])
+            return parse.clean_from(row["From"])
     except Exception as e:
-        return parse.clean_from(row['From'])
+        return parse.clean_from(row["From"])
+
 
 def is_affiliation(domain):
     try:
-        if dd.loc[domain]['category'] in good_categories:
+        if dd.loc[domain]["category"] in good_categories:
             return lookup_stakeholder_by_domain(domain)
         else:
             return "Unaffiliated"
     except:
         return "Unaffiliated"
+
 
 def augment(arx):
     """
@@ -63,9 +67,10 @@ def augment(arx):
     organization name, 'Unaffiliated', or a cleaned version of the email's
     From field.
     """
-    arx.data['email'] = arx.data['From'].apply(utils.extract_email)
-    arx.data['domain'] = arx.data['From'].apply(utils.extract_domain)
-    arx.data['sender_cat'] = arx.data.apply(normalize_senders_by_domain, axis=1)
+    arx.data["email"] = arx.data["From"].apply(utils.extract_email)
+    arx.data["domain"] = arx.data["From"].apply(utils.extract_domain)
+    arx.data["sender_cat"] = arx.data.apply(normalize_senders_by_domain, axis=1)
+
 
 def aggregate_activity(aarx, top_n):
     """
@@ -76,14 +81,19 @@ def aggregate_activity(aarx, top_n):
     TODO: generalize this, with more flexible frequency.
     TODO: Internalize the 'augment' preprocessing.
     """
-    grouped = aarx.data.groupby(['sender_cat', pd.Grouper(key='Date', freq='Y')]) \
-        .count().reset_index().sort_values('Date')
-    
+    grouped = (
+        aarx.data.groupby(["sender_cat", pd.Grouper(key="Date", freq="Y")])
+        .count()
+        .reset_index()
+        .sort_values("Date")
+    )
+
     ddd = grouped.pivot(columns="sender_cat", index="Date", values="From").fillna(0)
 
     top_ddd = ddd[ddd.sum().sort_values(ascending=False)[:top_n].index]
-    
+
     return top_ddd
+
 
 def influence_from_arx(arx, top_n):
     """
@@ -93,5 +103,5 @@ def influence_from_arx(arx, top_n):
     top_n = 50
     augment(arx)
     aaarx = aggregate_activity(arx, top_n)
-    
+
     return aaarx

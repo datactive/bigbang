@@ -1,4 +1,5 @@
 import datetime
+from datetime import datetime
 import math
 import os
 import re
@@ -7,9 +8,11 @@ from typing import Dict, List, Optional, Tuple, Union
 import mailbox
 from mailbox import mboxMessage
 from pathlib import Path
+import pytz
 import numpy as np
 import pandas as pd
 from bigbang.config import CONFIG
+
 
 filepath_auth = CONFIG.config_path + "authentication.yaml"
 directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
@@ -192,3 +195,69 @@ def domain_entropy(domain, froms):
         entropy = entropy - p_em * math.log(p_em)
 
     return entropy
+
+
+def is_localized(dt):
+    """
+    Check if a datetime object is localized.
+    """
+    return dt.tzinfo is not None and dt.tzinfo.utcoffset(dt) is not None
+
+
+def localize_to_utc(dt):
+    """
+    Localize a datetime object to UTC.
+    """
+    if is_localized(dt):
+        # Datetime object is already localized
+        return dt.astimezone(pytz.utc)
+    else:
+        # Assume naive datetime is in UTC
+        return pytz.utc.localize(dt)
+
+
+def parse_date_from_formats(date_str, date_formats):
+    """
+    Parse a date from a string using one of several possible formats.
+
+    Args:
+        date_str (str): The date string to parse.
+        date_formats (list): A list of date format strings to attempt parsing.
+
+    Returns:
+        datetime object: The parsed datetime object, or None if parsing fails.
+    """
+    for date_format in date_formats:
+        try:
+            return datetime.strptime(date_str, date_format)
+        except ValueError:
+            pass
+    return None
+
+
+def clean_dates(data, start=True):
+    if (
+        data == "Present"
+        or data == "NaN"
+        or data == "NaT"
+        or issubclass(type(data), type(pd.NaT))
+        or data == ""
+        or (isinstance(data, float) and np.isnan(data))
+    ):
+        if start:
+            data = datetime.min
+        else:
+            data = datetime.now()
+
+    if isinstance(data, str):
+        data = parse_date_from_formats(data, ["%m/%Y", "%Y"])
+
+        if data is None:
+            if start:
+                data = datetime.min
+            else:
+                data = datetime.now()
+
+    data = localize_to_utc(data)
+
+    return data

@@ -18,11 +18,11 @@ ri = RFCIndex()
 def rfc_author_data(rfc):
     record = {}
 
-    record['title'] = rfc.title
-    record['draft'] = rfc.draft
-    record['date'] = rfc.date()
-    record['wg'] = rfc.wg
-    record['docid'] = rfc.doc_id
+    record["title"] = rfc.title
+    record["draft"] = rfc.draft
+    record["date"] = rfc.date()
+    record["wg"] = rfc.wg
+    record["docid"] = rfc.doc_id
 
     draft = None
     if rfc.draft is not None:
@@ -33,44 +33,47 @@ def rfc_author_data(rfc):
         draft = dt.document_from_rfc(rfc.doc_id)
     if draft is not None:
 
-        record['draft-date'] = draft.time
-        record['authors'] = []
-
+        record["draft-date"] = draft.time
+        record["authors"] = []
 
         for author in dt.document_authors(draft):
             person = dt.person(author.person)
 
             author = {
-                "id" : person.id,
-                "country" : author.country,
-                "name" : person.name,
-                "affiliation" : author.affiliation
+                "id": person.id,
+                "country": author.country,
+                "name": person.name,
+                "affiliation": author.affiliation,
             }
 
-            record['authors'].append(author)
+            record["authors"].append(author)
 
-        record['revision'] = draft.rev
+        record["revision"] = draft.rev
 
         return record
 
     else:
         return None
 
+
 def authorship_from_rfc_data(rfc_data):
     records = []
 
-    for author in rfc_data['authors']:
+    for author in rfc_data["authors"]:
         author_record = author.copy()
 
-        author_record['draft'] = rfc_data['draft']
-        author_record['title'] = rfc_data['title']
-        author_record['date'] = rfc_data['date'].strftime('%Y-%m-%d') # format this to string!
-        author_record['wg'] = rfc_data['wg']
-        author_record['docid'] = rfc_data['docid']
+        author_record["draft"] = rfc_data["draft"]
+        author_record["title"] = rfc_data["title"]
+        author_record["date"] = rfc_data["date"].strftime(
+            "%Y-%m-%d"
+        )  # format this to string!
+        author_record["wg"] = rfc_data["wg"]
+        author_record["docid"] = rfc_data["docid"]
 
         records.append(author_record)
 
     return records
+
 
 def rfc_authors_from_working_group(acr):
     """
@@ -93,6 +96,7 @@ def rfc_authors_from_working_group(acr):
 
     return df
 
+
 def draft_authors_from_working_group(acr):
     """
     Get a dataframe of all authors of drafts published
@@ -111,13 +115,15 @@ def draft_authors_from_working_group(acr):
     # get drafts.
     # filter by rfc status here?
     for draft in dt.documents(
-        group=g, doctype=dt.document_type_from_slug("rfc") #"draft"
+        group=g, doctype=dt.document_type_from_slug("rfc")  # "draft"
     ):  # status argument
         # interested in all submissions, or just the most recent?
 
         if draft.rfc:
             submissions = [dt.submission(sub_url) for sub_url in draft.submissions]
-            submissions = sorted(submissions, key=lambda s: s.submission_date, reverse=True)
+            submissions = sorted(
+                submissions, key=lambda s: s.submission_date, reverse=True
+            )
 
             print(f"len(submissions) == {len(submissions)}")
             if len(submissions) > 0:
@@ -142,11 +148,12 @@ def draft_authors_from_working_group(acr):
                 records.append(authors)
 
     records = sum(records, [])
-    records = sorted(records, key=lambda x: x['rfc'])
+    records = sorted(records, key=lambda x: x["rfc"])
 
     df = pd.DataFrame.from_records(records)
 
     return df
+
 
 em_re = "/api/v1/person/email/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7})/"
 
@@ -195,10 +202,10 @@ def leadership_ranges(group_acronym):
             {
                 "datetime_max": h.time,
                 "datetime_min": h.time,
-                #"email": email_from_uri(r.email.uri),
+                # "email": email_from_uri(r.email.uri),
                 "person_uri": r.person.uri,
                 "name": dt.person(r.person).name,
-                #"biography": dt.person(r.person).biography,
+                # "biography": dt.person(r.person).biography,
             }
             for r in list(
                 dt.group_role_histories(
@@ -213,15 +220,17 @@ def leadership_ranges(group_acronym):
     gh_chair_records = sum(gh_chair_records, [])
     ghcr_df = pd.DataFrame.from_records(gh_chair_records)
 
-    agged = ghcr_df.groupby(["name", "person_uri"]).agg( # "email", "biography"
+    agged = ghcr_df.groupby(["name", "person_uri"]).agg(  # "email", "biography"
         {"datetime_min": "min", "datetime_max": "max"}
     )
 
     ## Minimum time is the first record.
-    #agged["datetime_min"].replace({ghcr_df["datetime_min"].min(): None}, inplace=True)
+    # agged["datetime_min"].replace({ghcr_df["datetime_min"].min(): None}, inplace=True)
 
     ## TODO: replace with current time
-    agged["datetime_max"].replace({ghcr_df["datetime_max"].max(): datetime.now(timezone.utc)}, inplace=True)
+    agged["datetime_max"].replace(
+        {ghcr_df["datetime_max"].max(): datetime.now(timezone.utc)}, inplace=True
+    )
     agged = agged.sort_values(by="datetime_max")
 
     return ghcr_df, agged
