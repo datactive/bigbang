@@ -50,7 +50,7 @@ def get_index_of_msgs_with_datetime(
     cond = lambda x: (
         True
         if (isinstance(x, str) and (len(x) > 10))
-        or isinstance(x, datetime.datetime)
+        or isinstance(x, datetime)
         and not pd.isna(x)
         else False
     )
@@ -119,7 +119,7 @@ def clean_datetime(df: pd.DataFrame) -> pd.DataFrame:
     index = get_index_of_msgs_with_datetime(df)
     # convert data type from string to datetime.datetime object
     df.loc[index, "date"] = [
-        datetime.datetime.strptime(dt, "%a, %d %b %Y %H:%M:%S %z")
+        datetime.strptime(dt, "%a, %d %b %Y %H:%M:%S %z")
         for dt in df.loc[index, "date"].values
     ]
     return df
