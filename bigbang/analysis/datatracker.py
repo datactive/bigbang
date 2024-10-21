@@ -2,8 +2,10 @@
 Scripts for processing data from the IETF DataTracker
 """
 
-from ietfdata.datatracker import *
-from ietfdata.datatracker_ext import *
+from bigbang.config import CONFIG
+
+import bigbang.datasets.organizations as bdo
+
 from datetime import date, datetime, timezone
 from dateutil.parser import *
 import json as json
@@ -11,11 +13,24 @@ import json as json
 import pandas as pd
 import re
 
+
+from ietfdata.datatracker import *
+from ietfdata.datatracker_ext import *
+from ietfdata.rfcindex    import *
+
+import sys
+
+# adding the cache configuration path here
+cache_path = os.path.abspath(os.path.join(os.path.dirname(__file__), CONFIG.ietfdata_cache_path))
+sys.path.insert(0, cache_path)
+print(f"cache path: {cache_path}")
+
 dt = DataTrackerExt()
 ri = RFCIndex()
 
+odf = bdo.load_data()
 
-def rfc_author_data(rfc):
+def rfc_author_data(rfc, normalize = True):
     record = {}
 
     record["title"] = rfc.title
@@ -39,11 +54,16 @@ def rfc_author_data(rfc):
         for author in dt.document_authors(draft):
             person = dt.person(author.person)
 
+            affiliation = author.affiliation
+
+            if normalize:
+                affiliation = normalize_affiliation(affiliation)
+
             author = {
                 "id": person.id,
                 "country": author.country,
                 "name": person.name,
-                "affiliation": author.affiliation,
+                "affiliation": affiliation,
             }
 
             record["authors"].append(author)
@@ -164,7 +184,7 @@ def email_from_uri(email_uri):
     return m.group(1) if m else None
 
 
-dt = DataTracker(use_cache=True)
+dt = DataTracker()
 
 
 def get_group_histories(wg_name):
@@ -178,7 +198,7 @@ def get_group_histories(wg_name):
     group_role_histories = [
         dt.group_role_histories(
             group=grp_hist,
-            name=dt.role_name(RoleNameURI("/api/v1/name/rolename/chair/")),
+            name=dt.role_name(RoleNameURI(uri="/api/v1/name/rolename/chair/")),
         )
         for grp_hist in group_histories
     ]
@@ -210,7 +230,7 @@ def leadership_ranges(group_acronym):
             for r in list(
                 dt.group_role_histories(
                     group=h,
-                    name=dt.role_name(RoleNameURI("/api/v1/name/rolename/chair/")),
+                    name=dt.role_name(RoleNameURI(uri="/api/v1/name/rolename/chair/")),
                 )
             )
         ]
@@ -234,3 +254,18 @@ def leadership_ranges(group_acronym):
     agged = agged.sort_values(by="datetime_max")
 
     return ghcr_df, agged
+
+
+def normalize_affiliation(affil):
+    """
+
+    Probably should be somewhere else.
+    """
+    affil = affil.strip()
+
+    lookup = bdo.lookup_normalized(affil, odf)
+
+    if lookup is not None:
+        affil = lookup
+
+    return affil

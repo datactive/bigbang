@@ -34,3 +34,24 @@ def load_data():
         index_col=False,
     )
     return df
+
+def lookup_normalized(name, odf):
+    """
+    For an orgname, find the 'top level' version of that organization.
+    I.e. AT&T Global Network Services Belgium SPRL -> AT&T
+    """
+    
+    rows = odf[odf['name'] == name]
+        
+    if rows.shape[0] < 1:
+        return None
+    elif rows['subsidiary of / alias of'].isna().iloc[0]:
+        return name
+    else:
+        for row in rows.iterrows():
+            term = lookup_normalized(row[1]['subsidiary of / alias of'], odf)
+                          
+            if term is not None:
+                return term
+
+    return None
