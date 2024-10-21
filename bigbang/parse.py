@@ -11,7 +11,7 @@ import pytz
 re_cache = {
     "top_exp": re.compile(r"From .*\d\d\d\d\n"),
     "msg_id": re.compile(r"<\S*@\S*>"),
-    "from_header_1" : re.compile(r"\"?([\w \-\=\?]*[\w\=])\"? <([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)>")
+    "from_header_1" : re.compile(r"\"?([\w\,\.\_\/ \-\=\?]*[\w\=\.\"])\"? <([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)>")
 }
 
 def split_references(refs):
