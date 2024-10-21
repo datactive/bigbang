@@ -3,6 +3,8 @@ from bigbang.archive import Archive, open_list_archives
 import bigbang.parse as parse
 import bigbang.analysis.utils as utils
 
+import email.header
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -45,10 +47,13 @@ def normalize_senders_by_domain(row):
         if dd.loc[row["domain"]]["category"] in good_categories:
             return lookup_stakeholder_by_domain(row["domain"])
         else:
-            return parse.clean_from(row["From"])
+            cleaned = parse.clean_from(row["From"])
+
+            return cleaned
     except Exception as e:
-        print(e)
-        return parse.clean_from(row["From"])
+        cleaned = parse.clean_from(row["From"])
+        print(row["From"], " --> ", cleaned)
+        return cleaned
 
 
 def is_affiliation(domain):
@@ -72,6 +77,8 @@ def augment(arx):
     arx.data["email"] = arx.data["From"].apply(utils.extract_email)
     arx.data["domain"] = arx.data["From"].apply(utils.extract_domain)
     arx.data["sender_cat"] = arx.data.apply(normalize_senders_by_domain, axis=1)
+
+    # TODO test for garbage here?
 
 
 def aggregate_activity(aarx, top_n):

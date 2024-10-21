@@ -1,4 +1,4 @@
-import email
+import email.header
 import html2text
 import logging
 import re
@@ -11,8 +11,8 @@ import pytz
 re_cache = {
     "top_exp": re.compile(r"From .*\d\d\d\d\n"),
     "msg_id": re.compile(r"<\S*@\S*>"),
+    "from_header_1" : re.compile(r"\"?([\w \-\=\?]*[\w\=])\"? <([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)>")
 }
-
 
 def split_references(refs):
     return re_cache["msg_id"].findall(refs)
@@ -34,6 +34,8 @@ def clean_from(m_from):
     """
     Return a person's name extracted from 'From' field
     of email, based on heuristics.
+    
+    TODO: fix the unclear name of this method
     """
 
     cleaned = m_from
@@ -41,14 +43,24 @@ def clean_from(m_from):
     try:
         if "(" in m_from:
             cleaned = m_from[m_from.index("(") + 1 : m_from.rindex(")")]
-        elif "<" in m_from:
-            # if m_from.index("<") > -1:
-            cleaned = m_from[0 : m_from.index("<") - 1]
-
     except ValueError:
         warnings.warn("%s is hard to clean" % (m_from))
 
     cleaned = cleaned.strip('"')
+
+    match = re.search(re_cache["from_header_1"], cleaned)
+
+    if match:
+        name = match.group(1)
+            
+        part, charset = email.header.decode_header(name)[0]
+
+        if charset is None:
+            charset = 'utf-8'
+        if isinstance(part, bytes):
+            part = part.decode(charset)
+
+        cleaned = part
 
     return cleaned
 
@@ -67,6 +79,7 @@ def clean_name(name):
 
     Returns None if the name portion is missing anything name-like. Otherwise, returns the cleaned name.
     """
+    name = email.header.decode_header(name)[0][0]
 
     # we see these specific strings due to parsing issues in email somewhere
     name = name.replace("unknown charset", " ")
@@ -82,7 +95,6 @@ def clean_name(name):
     # do we need to also catch email archives that use anti-spam measures?
     # like: .replace(' at ','@')
 
-    # TODO: decode or collapse rfc2231 encodings, like '=?utf-8?q?carlos_gonz=c3=a1lez-cadenas?=' ?
 
     name = name.strip()  # remove leading and trailing whitespace
 
