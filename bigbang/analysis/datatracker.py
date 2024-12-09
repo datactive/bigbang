@@ -59,6 +59,9 @@ def rfc_author_data(rfc, normalize = True):
             if normalize:
                 affiliation = normalize_affiliation(affiliation)
 
+            if affiliation == "":
+                affiliation = person.name
+
             author = {
                 "id": person.id,
                 "country": author.country,
@@ -112,7 +115,21 @@ def rfc_authors_from_working_group(acr):
         else:
             print(f"No rfc data for {rfc}")
 
-    df = pd.DataFrame.from_records(author_records)
+    if len(author_records) > 0 :
+        df = pd.DataFrame.from_records(author_records)
+    else:
+        # IRTF groups don't have their RFCs listed in the same way.
+        wg = dt.group_from_acronym(acr)
+        rfcs = dt.documents(group=wg, doctype=dt.document_type_from_slug("rfc"))
+
+        for rfc_doc in rfcs:
+            rfc = ri.rfc(rfc_doc.name.upper()) 
+
+            rfc_data = rfc_author_data(rfc)
+            if rfc_data is not None:
+
+                authorship = authorship_from_rfc_data(rfc_data)
+                author_records.extend(authorship)
 
     return df
 
@@ -267,5 +284,7 @@ def normalize_affiliation(affil):
 
     if lookup is not None:
         affil = lookup
+
+    affil = affil.strip() # in case there's an error there
 
     return affil
