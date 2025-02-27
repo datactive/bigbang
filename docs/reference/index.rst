@@ -20,7 +20,11 @@ Reference
    mailman
    ingress_utils
 
+   analysis_affiliation
    analysis_attendance
+   analysis_datatracker
+   analysis_graph
+   analysis_influence
    analysis_listserv
    analysis_thread
    analysis_entity_resolution
