@@ -18,10 +18,12 @@ sandelman.ca,personal
 lowentropy.net,personal
 gbiv.com,personal
 apple.com,company
+bt.com,company
 cisco.com,company
 chromium.org,company
 microsoft.com,company
 oracle.com,company
+orange.com,company
 google.com,company
 facebook.com,company
 intel.com,company
@@ -41,7 +43,8 @@ sandvine.com,company
 marconi.com,company
 trilliant.com,company
 huawei.com,company
-zte.com.cnchinamobile.com,company
+zte.com.cn,company
+chinamobile.com,company
 chinaunicom.cn,company
 chinatelecom.cn,company
 cnnic.cn,company
@@ -631,7 +634,6 @@ brusseler.com,generic
 bsdmail.com,generic
 bsnow.net,generic
 bspamfree.org,generic
-bt.com,generic
 btcc.org,generic
 btcmail.pw,generic
 btconnect.co.uk,generic
