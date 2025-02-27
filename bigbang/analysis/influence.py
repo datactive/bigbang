@@ -29,6 +29,8 @@ def lookup_stakeholder_by_domain(domain):
     """
     For an email domain, use the organization data provided in BigBang
     to look up the organization name associate with that email domain.
+
+    TODO: reconcile with bigbang.datasets.organizations.lookup_normalized
     """
     search = odf["email domain names"].apply(lambda dn: domain in str(dn))
 
@@ -45,15 +47,20 @@ def lookup_stakeholder_by_domain(domain):
 def normalize_senders_by_domain(row):
     try:
         if dd.loc[row["domain"]]["category"] in good_categories:
-            return lookup_stakeholder_by_domain(row["domain"])
+            cleaned = lookup_stakeholder_by_domain(row["domain"])
         else:
             cleaned = parse.clean_from(row["From"])
 
-            return cleaned
     except Exception as e:
-        cleaned = parse.clean_from(row["From"])
-        print(row["From"], " --> ", cleaned)
-        return cleaned
+        try:
+            # doing this by exception handling is messy.
+            cleaned = parse.clean_from(row["From"])
+            #print(row["From"], " --> ", cleaned)
+        except Exception as e:
+            print(e, f"{row['From']} not cleaned")
+            cleaned =  row["From"]
+
+    return cleaned
 
 
 def is_affiliation(domain):
@@ -81,7 +88,7 @@ def augment(arx):
     # TODO test for garbage here?
 
 
-def aggregate_activity(aarx, top_n):
+def aggregate_activity(arx, top_n):
     """
     Transform an 'augmented' email archive into a 'wide' format datafame
     that has the activity of each actor (organizational level, where possible)
@@ -91,7 +98,7 @@ def aggregate_activity(aarx, top_n):
     TODO: Internalize the 'augment' preprocessing.
     """
     grouped = (
-        aarx.data.groupby(["sender_cat", pd.Grouper(key="Date", freq="Y")])
+        arx.data.groupby(["sender_cat", pd.Grouper(key="Date", freq="Y")])
         .count()
         .reset_index()
         .sort_values("Date")

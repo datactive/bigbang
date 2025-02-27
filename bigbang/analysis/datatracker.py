@@ -103,7 +103,6 @@ def rfc_authors_from_working_group(acr):
     Get a dataframe of all authors of RFCs published
     by the working group.
     """
-
     author_records = []
 
     for rfc in ri.rfcs(wg=acr):
@@ -115,8 +114,6 @@ def rfc_authors_from_working_group(acr):
         else:
             print(f"No rfc data for {rfc}")
 
-    if len(author_records) > 0 :
-        df = pd.DataFrame.from_records(author_records)
     else:
         # IRTF groups don't have their RFCs listed in the same way.
         wg = dt.group_from_acronym(acr)
@@ -130,6 +127,9 @@ def rfc_authors_from_working_group(acr):
 
                 authorship = authorship_from_rfc_data(rfc_data)
                 author_records.extend(authorship)
+
+    #if len(author_records) > 0 :
+    df = pd.DataFrame.from_records(author_records)
 
     return df
 

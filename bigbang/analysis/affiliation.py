@@ -1,12 +1,13 @@
 from bigbang.analysis.influence import *
 from bigbang.analysis.utils import localize_to_utc
+from bigbang.archive import Archive
 
 affil_start_date_col_name = "Time start (mm/yyyy)"
 affil_end_date_col_name = "Time end (mm/yyyy)"
 affil_affiliation_col_name = "Affiliation"
 
 
-def affiliated_influence(arx, affiliations, top_n=50):
+def affiliated_influence(arx, affiliations, corrections = {}, top_n=50):
     ## this is defined in influence.py, and builds a sender_cat column
     ## based on email domain
     augment(arx)
@@ -18,7 +19,11 @@ def affiliated_influence(arx, affiliations, top_n=50):
         axis=1,
     )
 
-    top_ddd = aggregate_activity(arx, top_n)
+    adata = arx.data.copy()
+
+    adata["sender_cat"] = adata["sender_cat"].map(lambda x: corrections.get(x, x))
+
+    top_ddd = aggregate_activity(Archive(adata), top_n)
 
     return top_ddd
 
@@ -38,5 +43,7 @@ def lookup_affiliation(name, date, affiliation_data):
             and date < na_row[1][affil_end_date_col_name]
         ):
             return na_row[1][affil_affiliation_col_name]
+
+    name = name.strip()
 
     return name
