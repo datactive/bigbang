@@ -40,7 +40,6 @@ def lookup_normalized(name, odf):
     For an orgname, find the 'top level' version of that organization.
     I.e. AT&T Global Network Services Belgium SPRL -> AT&T
     """
-    
     rows = odf[odf['name'] == name]
         
     if rows.shape[0] < 1:
