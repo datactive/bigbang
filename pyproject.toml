@@ -38,12 +38,14 @@ dependencies = [
     "nbconvert",
     "validator-collection",
     "markdown",
+    "matplotlib",
     "spacy",
     "transformers[torch]",
     "contractions",
     "email_reply_parser",
     "notebook",
-    "click"
+    "click",
+    "testfixtures"
 ]
 
 [project.optional-dependencies]
