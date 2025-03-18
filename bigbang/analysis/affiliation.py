@@ -33,7 +33,7 @@ def lookup_affiliation(name, date, affiliation_data):
     Find the affiliation of a name on a particular date,
     given an affiliation data file.
     """
-    name_affils = affiliation_data[affiliation_data["Name"] == name]
+    name_affils = affiliation_data[affiliation_data["Name"].apply(lambda x:str(x).strip()) == name]
 
     date = localize_to_utc(date)
 
