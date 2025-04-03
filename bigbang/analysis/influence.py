@@ -32,6 +32,7 @@ def lookup_stakeholder_by_domain(domain):
 
     TODO: reconcile with bigbang.datasets.organizations.lookup_normalized
     """
+
     search = odf["email domain names"].apply(lambda dn: domain in str(dn))
 
     orgs = odf[search]
@@ -40,7 +41,19 @@ def lookup_stakeholder_by_domain(domain):
 
     if top_orgs.shape[0] > 0:
         return top_orgs["name"].iloc[0]
+    elif orgs.shape[0] > 0:
+        # look up the domain of the parent organization
+        parent_name = orgs["subsidiary of / alias of"].iloc[0]
+
+        search_up = odf[odf['name'] == parent_name]
+
+        if search_up.shape[0] > 0:
+            return lookup_stakeholder_by_domain(search_up["email domain names"].iloc[0])
+        else:
+            print(f"{domain} is neither top level org nor has a parent org -- should never happen")
+            return domain
     else:
+        # domain isn't in the database
         return domain
 
 
@@ -53,9 +66,10 @@ def normalize_senders_by_domain(row):
 
     except Exception as e:
         try:
+            print(f"Exception in normalizing sender by domain: {e}")
             # doing this by exception handling is messy.
             cleaned = parse.clean_from(row["From"])
-            #print(row["From"], " --> ", cleaned)
+            print(row["From"], " --> ", cleaned)
         except Exception as e:
             print(e, f"{row['From']} not cleaned")
             cleaned =  row["From"]
