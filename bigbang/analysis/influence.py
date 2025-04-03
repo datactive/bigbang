@@ -60,6 +60,9 @@ def normalize_senders_by_domain(row):
             print(e, f"{row['From']} not cleaned")
             cleaned =  row["From"]
 
+    if " via Datatracker" in cleaned:
+        cleaned = cleaned.replace(" via Datatracker", "")
+
     return cleaned
 
 
