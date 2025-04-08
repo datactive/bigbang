@@ -24,6 +24,8 @@ chromium.org,company
 microsoft.com,company
 oracle.com,company
 orange.com,company
+orange-ftgroup.com,company
+orange-ft.com,company
 google.com,company
 facebook.com,company
 intel.com,company
@@ -48,6 +50,8 @@ chinamobile.com,company
 chinaunicom.cn,company
 chinatelecom.cn,company
 cnnic.cn,company
+telekom.de,company
+fujitsu.com,company
 caict.ac.cn,academic
 scu.edu.cn,academic
 tongji.edu.cn,academic
@@ -57,6 +61,7 @@ acm.org,academic
 berkeley.edu,academic
 harvard.edu,academic
 lbl.gov,academic
+inf.ethz.ch,academic
 isoc.org,sdo
 icann.org,sdo
 amsl.com,sdo
