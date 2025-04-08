@@ -17,9 +17,6 @@ def affiliated_influence(arx, affiliations, corrections = {}, top_n=50):
     adata["sender_cat"] = adata["sender_cat"].map(lambda x: corrections.get(x, x))
     arx = Archive(adata)
 
-    if ("Mankin, Allison" == arx.data["sender_cat"]).sum() > 0:
-        import pdb; pdb.set_trace()
-
     ## this further looks up the email author in the affiliations table
     ## and modifies the sender_cat column
     arx.data["sender_cat"] = arx.data.apply(
