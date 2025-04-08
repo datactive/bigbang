@@ -12,6 +12,14 @@ def affiliated_influence(arx, affiliations, corrections = {}, top_n=50):
     ## based on email domain
     augment(arx)
 
+    # first pass at corrections: normalize the names of senders
+    adata = arx.data.copy()
+    adata["sender_cat"] = adata["sender_cat"].map(lambda x: corrections.get(x, x))
+    arx = Archive(adata)
+
+    if ("Mankin, Allison" == arx.data["sender_cat"]).sum() > 0:
+        import pdb; pdb.set_trace()
+
     ## this further looks up the email author in the affiliations table
     ## and modifies the sender_cat column
     arx.data["sender_cat"] = arx.data.apply(
@@ -19,9 +27,10 @@ def affiliated_influence(arx, affiliations, corrections = {}, top_n=50):
         axis=1,
     )
 
+    # second pass at corrections: normalize the names of companies.
     adata = arx.data.copy()
-
     adata["sender_cat"] = adata["sender_cat"].map(lambda x: corrections.get(x, x))
+    arx = Archive(adata)
 
     top_ddd = aggregate_activity(Archive(adata), top_n)
 
