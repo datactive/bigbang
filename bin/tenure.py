@@ -123,7 +123,9 @@ def main(args):
         combined_out_path = os.path.join(args.archives, "combined-tenure.csv")
 
         combined_df = None
-        combined_lists = []  # list of all the mailing lists included in the combined dataframe
+        combined_lists = (
+            []
+        )  # list of all the mailing lists included in the combined dataframe
         for subdirectory in subdirectories:
             in_path = os.path.join(
                 args.archives, subdirectory, ("%s-tenure.csv" % subdirectory)
