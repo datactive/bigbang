@@ -13,7 +13,9 @@ from bigbang.config import CONFIG
 from bigbang import utils
 from bigbang.analysis.entity_resolution import entity_resolve
 
-ALL_ATTRIBUTES = CONFIG.all_attributes  # ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
+ALL_ATTRIBUTES = (
+    CONFIG.all_attributes
+)  # ["HEXSHA", "Committer Name", "Committer Email", "Commit Message", "Time", "Parent Commit", "Touched File"]
 
 
 def cache_fixer(r):
