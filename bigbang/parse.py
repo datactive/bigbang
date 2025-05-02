@@ -11,8 +11,11 @@ import pytz
 re_cache = {
     "top_exp": re.compile(r"From .*\d\d\d\d\n"),
     "msg_id": re.compile(r"<\S*@\S*>"),
-    "from_header_1" : re.compile(r"\"?([\w\,\.\_\/ \-\=\?]*[\w\=\.])\"* <([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)>")
+    "from_header_1": re.compile(
+        r"\"?([\w\,\.\_\/ \-\=\?]*[\w\=\.])\"* <([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)>"
+    ),
 }
+
 
 def split_references(refs):
     return re_cache["msg_id"].findall(refs)
@@ -34,7 +37,7 @@ def clean_from(m_from):
     """
     Return a person's name extracted from 'From' field
     of email, based on heuristics.
-    
+
     TODO: fix the unclear name of this method
     """
 
@@ -52,11 +55,11 @@ def clean_from(m_from):
 
     if match:
         name = match.group(1)
-            
+
         part, charset = email.header.decode_header(name)[0]
 
         if charset is None:
-            charset = 'utf-8'
+            charset = "utf-8"
         if isinstance(part, bytes):
             part = part.decode(charset)
 
@@ -96,7 +99,6 @@ def clean_name(name):
 
     # do we need to also catch email archives that use anti-spam measures?
     # like: .replace(' at ','@')
-
 
     name = name.strip()  # remove leading and trailing whitespace
 

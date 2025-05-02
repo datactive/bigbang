@@ -45,12 +45,14 @@ def lookup_stakeholder_by_domain(domain):
         # look up the domain of the parent organization
         parent_name = orgs["subsidiary of / alias of"].iloc[0]
 
-        search_up = odf[odf['name'] == parent_name]
+        search_up = odf[odf["name"] == parent_name]
 
         if search_up.shape[0] > 0:
             return lookup_stakeholder_by_domain(search_up["email domain names"].iloc[0])
         else:
-            print(f"{domain} is neither top level org nor has a parent org -- should never happen")
+            print(
+                f"{domain} is neither top level org nor has a parent org -- should never happen"
+            )
             return domain
     else:
         # domain isn't in the database
@@ -72,7 +74,7 @@ def normalize_senders_by_domain(row):
             print(row["From"], " --> ", cleaned)
         except Exception as e:
             print(e, f"{row['From']} not cleaned")
-            cleaned =  row["From"]
+            cleaned = row["From"]
 
     if " via Datatracker" in cleaned:
         cleaned = cleaned.replace(" via Datatracker", "")

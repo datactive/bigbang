@@ -582,10 +582,7 @@ def open_list_archives(
 
         if len(arch) == 0:
             raise MissingDataException(
-                (
-                    "No messages in %s under %s. Did you run the "
-                    "collect_mail.py script?"
-                )
+                ("No messages in %s under %s. Did you run the collect_mail.py script?")
                 % (archive_dir, list_name)
             )
 

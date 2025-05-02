@@ -68,9 +68,7 @@ def collect_from_url(
         unzip_archive(url)
         try:
             data = archive.open_list_archives(url)
-        except (
-            archive.MissingDataException
-        ) as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
+        except archive.MissingDataException as e:  # don't strictly need to open the archives during the collection process, so catch the Exception and return
             logging.info(e)
             return None
 
@@ -189,7 +187,7 @@ def populate_provenance(directory, list_name, list_url, notes=None):
             "long_hash": subprocess.check_output(["git", "rev-parse", "HEAD"]).strip(),
             "description": subprocess.check_output(
                 ["git", "describe", "--long", "--always", "--all"]
-            ).strip()
+            ).strip(),
             # 'version': '' #TODO: programmatically access BigBang version number, see #288
         },
     }

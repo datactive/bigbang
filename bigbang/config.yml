@@ -17,6 +17,7 @@ datatracker_path : "archives/datatracker"
 urls_path : "examples/"
 test_data_path: "tests/data/"
 
+ietfdata_cache_path : "archives/datatracker/cache"
 
 # REGEX
 # These are certain important regular expressions

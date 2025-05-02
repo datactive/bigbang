@@ -221,7 +221,7 @@ def mlist_to_mbox(
         try:
             mbox.add(msg)
         except Exception as e:
-            logger.info(f'Add to .mbox error for {msg["Archived-At"]} because, {e}')
+            logger.info(f"Add to .mbox error for {msg['Archived-At']} because, {e}")
     mbox.flush()
     mbox.unlock()
     logger.info(f"The list {filename} is saved at {filepath}.")

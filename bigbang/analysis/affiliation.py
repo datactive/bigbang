@@ -7,7 +7,7 @@ affil_end_date_col_name = "Time end (mm/yyyy)"
 affil_affiliation_col_name = "Affiliation"
 
 
-def affiliated_influence(arx, affiliations, corrections = {}, top_n=50):
+def affiliated_influence(arx, affiliations, corrections={}, top_n=50):
     ## this is defined in influence.py, and builds a sender_cat column
     ## based on email domain
     augment(arx)
@@ -39,7 +39,9 @@ def lookup_affiliation(name, date, affiliation_data):
     Find the affiliation of a name on a particular date,
     given an affiliation data file.
     """
-    name_affils = affiliation_data[affiliation_data["Name"].apply(lambda x:str(x).strip()) == name]
+    name_affils = affiliation_data[
+        affiliation_data["Name"].apply(lambda x: str(x).strip()) == name
+    ]
 
     date = localize_to_utc(date)
 

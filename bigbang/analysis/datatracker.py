@@ -16,12 +16,14 @@ import re
 
 from ietfdata.datatracker import *
 from ietfdata.datatracker_ext import *
-from ietfdata.rfcindex    import *
+from ietfdata.rfcindex import *
 
 import sys
 
 # adding the cache configuration path here
-cache_path = os.path.abspath(os.path.join(os.path.dirname(__file__), CONFIG.ietfdata_cache_path))
+cache_path = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), CONFIG.ietfdata_cache_path)
+)
 sys.path.insert(0, cache_path)
 print(f"cache path: {cache_path}")
 
@@ -30,7 +32,8 @@ ri = RFCIndex()
 
 odf = bdo.load_data()
 
-def rfc_author_data(rfc, normalize = True):
+
+def rfc_author_data(rfc, normalize=True):
     record = {}
 
     record["title"] = rfc.title
@@ -47,7 +50,6 @@ def rfc_author_data(rfc, normalize = True):
     else:
         draft = dt.document_from_rfc(rfc.doc_id)
     if draft is not None:
-
         record["draft-date"] = draft.time
         record["authors"] = []
 
@@ -108,7 +110,6 @@ def rfc_authors_from_working_group(acr):
     for rfc in ri.rfcs(wg=acr):
         rfc_data = rfc_author_data(rfc)
         if rfc_data is not None:
-
             authorship = authorship_from_rfc_data(rfc_data)
             author_records.extend(authorship)
         else:
@@ -120,15 +121,14 @@ def rfc_authors_from_working_group(acr):
         rfcs = dt.documents(group=wg, doctype=dt.document_type_from_slug("rfc"))
 
         for rfc_doc in rfcs:
-            rfc = ri.rfc(rfc_doc.name.upper()) 
+            rfc = ri.rfc(rfc_doc.name.upper())
 
             rfc_data = rfc_author_data(rfc)
             if rfc_data is not None:
-
                 authorship = authorship_from_rfc_data(rfc_data)
                 author_records.extend(authorship)
 
-    #if len(author_records) > 0 :
+    # if len(author_records) > 0 :
     df = pd.DataFrame.from_records(author_records)
 
     return df
@@ -152,7 +152,8 @@ def draft_authors_from_working_group(acr):
     # get drafts.
     # filter by rfc status here?
     for draft in dt.documents(
-        group=g, doctype=dt.document_type_from_slug("rfc")  # "draft"
+        group=g,
+        doctype=dt.document_type_from_slug("rfc"),  # "draft"
     ):  # status argument
         # interested in all submissions, or just the most recent?
 
@@ -285,6 +286,6 @@ def normalize_affiliation(affil):
     if lookup is not None:
         affil = lookup
 
-    affil = affil.strip() # in case there's an error there
+    affil = affil.strip()  # in case there's an error there
 
     return affil
