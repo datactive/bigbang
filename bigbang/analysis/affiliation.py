@@ -50,6 +50,6 @@ def lookup_affiliation(name, date, affiliation_data):
         ):
             return na_row[1][affil_affiliation_col_name]
 
-    name = name.strip()
+    name = name.strip() if isinstance(name, str) else name
 
     return name
