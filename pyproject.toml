@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bigbang-py"
-version = "0.4.4"
+version = "0.6.1"
 authors = [
   { name="BigBang Team", email="bigbang-dev@data-activism.net" },
 ]
 description = "BigBang is a toolkit for studying communications data from collaborative projects. It currently supports analyzing mailing lists from Sourceforge, Mailman, ListServ, or .mbox files."
 readme = "README.md"
 license = { file="LICENSE" }
-requires-python = ">=3.7"
+requires-python = ">=3.12"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -35,7 +35,6 @@ dependencies = [
     "python-docx",
     "GitPython",
     "nbformat",
-    "nbconvert",
     "validator-collection",
     "markdown",
     "matplotlib",
